@@ -52,7 +52,7 @@ var AppView = Backbone.View.extend({
     $('iframe').css('height', (width * .5625 )+ 'px');
   },
 
-  renderPlaylist: function(videos) {
+  renderPlaylist: function() {
     var videos = this.model.get('videos');
     var playlist = this.$videoPlaylist;
 
