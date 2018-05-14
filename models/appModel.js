@@ -1,6 +1,6 @@
 var AppModel = Backbone.Model.extend({
   constructor: function() {
-    this.videos = new VideoCollection()
+    this.videos = new VideoCollection();
     this.currentVideo = null;
   },
 

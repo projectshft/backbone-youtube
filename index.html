@@ -22,7 +22,7 @@
 
 <script id="sidebar-template">
 </script>
-<script id="main-display-template">
+<script id="main-display-template" type="text/x-handlebars-template">
   <iframe width="420" height="315" src="https://www.youtube.com/embed/{{videoId}}"></iframe>
   <h4>{{title}}</h4>
   <div id="description">{{description}}</div>
@@ -31,6 +31,7 @@
 <script src="models/videoModel.js"></script>
 <script src="collections/videoCollection.js"></script>
 <script src="models/appModel.js"></script>
+<script src="views/mainVideoView.js"></script>
 
 <script src="main.js"></script>
 </body>
