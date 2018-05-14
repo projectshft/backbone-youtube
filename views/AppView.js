@@ -21,8 +21,6 @@ var AppView = Backbone.View.extend({
     // confirm user hit enter and input is not empty
     if (e.keyCode === 13 && query != '') {
 
-      var self = this;
-
       this.model.get('videos').fetch({
         data: {
           q: query,
