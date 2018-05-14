@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Backbone-Youtube</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+
+  <!-- input section -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <input id="video-search-input" type="text" class="col-md-6 m-3" placeholder="Search on Enter">
+    </div>
+
+    <!-- videos section -->
+    <div class="row videos-section">
+      <div id="current-video-section" class="col-md-6">
+      </div>
+
+      <!-- playlist section -->
+      <div id="playlist-section" class="col-md-5">
+      </div>
+    </div>
+
+    <!-- playing video template -->
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <div id="video-player" class="row justify-content-center">
+        <iframe width="100%" height="360" src="https://www.youtube.com/embed/{{ _id }}"></iframe>
+      </div>
+      <div id="video-title" class="row m-2">
+        <h3>{{ title }}</h3>
+      </div>
+      <div id="video-description" class="row m-2">
+        <p>{{ description }}</p>
+      </div>
+    </script>
+
+    <!-- playlist template -->
+    <script id="playlist-template" type="text/x-handlebars-template">
+      <div class="row side-vid">
+        <img id="thumbnail" class="col-md-4" src={{ thumbnail }}></img>
+        <div id="side-title" class="col-md-8 p-3">{{ title }}</div>
+      </div>
+    </script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="models/videoModel.js"></script>
+    <script src="views/currentVideoDetailView.js"></script>
+    <script src="collections/videosCollection.js"></script>
+    <script src="views/sideVideosView.js"></script>
+    <script src="models/appModel.js"></script>
+    <script src="views/appView.js"></script>
+    <script src="routers/router.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
