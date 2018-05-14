@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+
+<script src="node_modules\jquery\dist\jquery.min.js" charset="utf-8"></script>
+<script src="node_modules\underscore\underscore-min.js"></script>
+<script src="node_modules\backbone\backbone-min.js"></script>
+<script src="node_modules\handlebars\dist\handlebars.min.js"></script>
+  <body>
+
+    <div class="search-bar container mt-5">
+      <div class="row test-center justify-content-center mt-4">
+        <div class="col-8">
+          <input type="text" id="search-query" placeholder="search here">
+          <button class="btn btn-primary submit-search" id="submit-button">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-8"></div>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+
+    <div class="col-4">
+      <div class="related-videos"></div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="video-desc col-8">
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+
+  <script type="text/x-handlebars-template" id="related-template">
+    <div class="img-container">
+      <img class="thumbnail" src="{{thumbnailUrl}}" alt="">
+    </div>
+    <div class="text-container">
+      <div>{{title}}</div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars-template" id="video-template">
+    <div>{{title}}</div>
+    <div>{{description}}</div>
+  </script>
+
+  <script src="youtube-player.js"></script>
+<script src="models/VideoModel.js"></script>
+<script src="collections/VideoCollection.js"></script>
+<script src="models/AppModel.js"></script>
+<script src="views/AppView.js"></script>
+<script src="views/VideoView.js"></script>
+<script src="views/RelatedView.js"></script>
+<script src="main.js" charset="utf-8"></script>
+</html>
