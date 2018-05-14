@@ -42,10 +42,12 @@
 
     <!-- playlist template -->
     <script id="playlist-template" type="text/x-handlebars-template">
-      <div class="row side-vid">
-        <img id="thumbnail" class="col-md-4" src={{ thumbnail }}></img>
-        <div id="side-title" class="col-md-8 p-3">{{ title }}</div>
-      </div>
+      <a href="#/{{_id}}">
+        <div class="row side-vid">
+          <img id="thumbnail" class="col-md-4" src={{ thumbnail }}></img>
+          <div id="side-title" class="col-md-8 p-3">{{ title }}</div>
+        </div>
+      </a>
     </script>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
