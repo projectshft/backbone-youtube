@@ -2,12 +2,12 @@ var AppView = Backbone.View.extend({
   el: '.container',
 
   events: {
-    'keydown #search': 'fetchVideos',
+    'keydown #search-videos': 'fetchVideos',
     'click .video': 'updateCurrentVideoIndex'
   },
 
   initialize: function() {
-    this.$searchInput = this.$('#search');
+    this.$searchInput = this.$('#search-videos');
     this.$videoPlayer = this.$('.video-player');
     this.$videoPlaylist = this.$('.video-playlist');
 
@@ -16,13 +16,20 @@ var AppView = Backbone.View.extend({
   },
 
   fetchVideos: function(e) {
+    var query = this.$searchInput.val();
+
     // confirm user hit enter and input is not empty
     if (e.keyCode === 13 && query != '') {
 
-      var query = this.$searchInput.val();
       var self = this;
 
-      this.model.get('videos').fetch({data: {q:query}});
+      this.model.get('videos').fetch({
+        data: {
+          q: query,
+          part: 'snippet',
+          key: config.MY_KEY
+        }
+      });
 
       // reset currentVideoIndex on new search to play first video
       this.model.set('currentVideoIndex', 0);
@@ -32,7 +39,13 @@ var AppView = Backbone.View.extend({
   },
 
   initialFetch: function() {
-    this.model.get('videos').fetch({data: {q:'dogs'}});
+    this.model.get('videos').fetch({
+      data: {
+        q: 'dogs',
+        part: 'snippet',
+        key: config.MY_KEY
+      }
+    });
   },
 
   renderAll: function() {
@@ -43,13 +56,15 @@ var AppView = Backbone.View.extend({
   renderPlayer: function() {
     var video = this.model.get('videos').at(this.model.get('currentVideoIndex'));
 
-    var videoPlayerView = new VideoPlayerView({model: video});
+    var videoPlayerView = new VideoPlayerView({
+      model: video
+    });
 
     this.$videoPlayer.append(videoPlayerView.render().el);
 
     // fixes aspect ratio of iframe
     var width = $('iframe').outerWidth();
-    $('iframe').css('height', (width * .5625 )+ 'px');
+    $('iframe').css('height', (width * .5625) + 'px');
   },
 
   renderPlaylist: function() {
@@ -59,7 +74,9 @@ var AppView = Backbone.View.extend({
     playlist.empty();
 
     videos.forEach(function(video) {
-      var view = new PlaylistVideoView({model: video});
+      var view = new PlaylistVideoView({
+        model: video
+      });
       playlist.append(view.render().el);
     });
   },
