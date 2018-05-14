@@ -3,8 +3,6 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
 
-      apiKey: '',
-
       currentVideoIndex: 0
     }
   }
