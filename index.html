@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <meta charset="utf-8">
+  <title>Hew's Backbone Youtube</title>
+</head>
+
+<body>
+
+  <nav class="top-nav navbar navbar-dark bg-dark">
+
+    <div class="container-fluid">
+      <div class="row">
+        <a href="#"><i id="open-history" class="fa fa-2x pr-2 fa-history fa-inverse"></i></a>
+
+        <a style="color:black" id="open-playlists" href="#" class="fa-stack fa-1x mr-2">
+        <i class="fa fa-folder fa-stack-2x fa-inverse"></i>
+        <i class="fa fa-music fa-stack-1x fa-dark"></i>
+      </a>
+        <a href="#"><i id="close-pop-out" class="hidden fa fa-2x pr-2 fa-times fa-inverse"></i></a>
+        <!-- <a href="#"><i  class="fa fa-2x pr-2 fa-music fa-inverse"></i></a> -->
+      </div>
+      <div style="width:50vw">
+        <form class="form-inline">
+
+          <input style="width:90%" id="search-query" class="form-control" placeholder="Search Videos...">
+
+          <button type="submit" style="display:none" class="search">Search</button>
+
+        </form>
+      </div>
+      <div style="">
+        <ul class="navbar-nav nav navbar-right">
+          <li><a class="text-muted toggle-right-nav" href="#"><i class="fa fa-2x pr-2 fa-eye-slash fa-inverse"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <nav id="nav-pop-out" class="side-nav  hidden bg-dark pt-1">
+
+    <div class="row navbar">
+      <h4 class="text-white side-header ml-4"></h4>
+      <a href="#" class="create-playlist hidden"><i class="fa fa-plus fa-2x fa-inverse"></i></a>
+
+      <a href="#" class="cancel-create-playlist hidden"><i class="fa fa-ban fa-2x fa-inverse"></i></a>
+      <a></a>
+    </div>
+    <ul class="playlist-name-input hidden">
+      <form class="form-inline">
+
+        <input id="playlist-name" placeholder="Playlist Name">
+
+        <button type="submit" style="display:none" class="enter-playlist">Search</button>
+
+      </form>
+    </ul>
+
+    <ul id="playlists" class="hidden">
+      <div class = "py-3">
+        <h5 class="text-white">A Playlist</h5>
+    </div>
+
+    </ul>
+
+    <ul id="nav-side-list" class="hidden">
+
+    </ul>
+  </nav>
+
+  <nav id="nav-right" class="side-nav pb-5 mb-5">
+    <ul id="related-videos" class="">
+
+    </ul>
+  </nav>
+
+  <div class="top-nav-padding"></div>
+
+  <div class="container-fluid pl-5 pt-3">
+    <div class="row">
+
+      <div class="searched-video"></div>
+
+      <div class="test-area"></div>
+    </div>
+  </div>
+
+</body>
+
+<script id="searched-video-template" type="text/x-handlebars-template">
+  <div class="content-container">
+    <!-- <h1>https://www.youtube.com/embed/{{videoId}}</h1> -->
+    <iframe allowfullscreen="0" width="853" height="505" src="https://www.youtube.com/embed/{{videoId}}">
+    </iframe>
+    <div style="width:850px">
+      <h3> {{title}} </h3>
+    </div>
+  </div>
+</script>
+
+<script id="related-videos-template" type="text/x-handlebars-template">
+  <div class="related container pr-2">
+    <div class="row">
+      <!-- <h1>https://www.youtube.com/embed/{{videoId}}</h1> -->
+      <a class="position-left" href="#"><img style="width:168px; height:94;" src="{{thumbnail}}"></a>
+      <div style="width:200px">
+        <p>{{title}}</p>
+
+      </div>
+    </div>
+
+  </div>
+</script>
+
+<script id="history-template" type="text/x-handlebars-template">
+  <div class="container">
+    <div class="row">
+      <!-- <h1>https://www.youtube.com/embed/{{videoId}}</h1> -->
+      <div class="this-history">
+        <a class="position-left" href="#/video/{{_id}}"><img style="width:168px; height:94;" src="{{thumbnail}}"></a>
+      </div>
+      <div style="width:200px">
+        <p class='text-white'>{{title}}</p>
+
+      </div>
+    </div>
+
+  </div>
+</script>
+
+<script id="playlists-template" type="text/x-handlebars-template">
+  <div class="content-container">
+    <div>
+
+        <h5 class=" text-white pr-2">
+          <a class = "playlist-link text-white" href='#'>
+             {{playlistName}} </a></h5>
+
+      <a href="#" class="manage-playlist"><p class=" text-white">
+        <i class="fa fa-edit fa-inverse"></i>
+        manage playlist</p></a>
+
+        <a href="#" class="delete-playlist hidden"><p class="text-white">X delete playlist</p></a>
+
+      <a href="#" class="add-video hidden"><p class="text-white">+ add current video</p></a>
+      <div class="playlist-list hidden">
+      </div>
+    </div>
+      <!-- <a href='#'><p class="add-video text-white">add current song</p></a> -->
+
+    <!-- </div> -->
+  </div>
+</script>
+
+<script id="playlists-details-template" type="text/x-handlebars-template">
+  <div class="content-container">
+    <div class='this-playlist' data-videoId='{{videoId}}'>
+
+        <p class="playlist-video-title ml-3">
+          <a class="text-white videoId-data" href="#"> X {{title}} </a>
+           </p>
+
+    </div>
+      <!-- <a href='#'><p class="add-video text-white">add current song</p></a> -->
+
+    <!-- </div> -->
+  </div>
+</script>
+<script src="views/PlaylistDetailView.js"></script>
+<script src="models/VideoModel.js"></script>
+<script src="collections/VideoCollections.js"></script>
+<!-- <script src="models/VideoModel.js"></script> -->
+<script src="collections/PlaylistsModel.js"></script>
+<script src="collections/PlaylistCollection.js"></script>
+
+<script src="models/AppModel.js"></script>
+<script src="views/PlaylistView.js"></script>
+<script src="views/HistoryView.js"></script>
+<script src="views/AppView.js"></script>
+<script src="views/RelatedVideosView.js"></script>
+
+<script src="views/SearchedVideoView.js"></script>
+<script src="routers/router.js"></script>
+<script src="main.js"></script>
+
+</html>
