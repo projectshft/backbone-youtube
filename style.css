@@ -1,0 +1,7 @@
+#playlist-section {
+  width: 100%;
+  height: 600px;
+  overflow: scroll;
+  margin-left: 20px;
+  border: 1px solid black;
+}
