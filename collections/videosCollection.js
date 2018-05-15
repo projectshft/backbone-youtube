@@ -1,6 +1,6 @@
 // api key is placed on top, instead of making multiple copies
 // also easier to replace or delete, incase something goes wrong.
-var youtubeAPIkey = 'AIzaSyD7G4ceeUxcKA-EHzzdmNGT_gvoO7YnsvY';
+var youtubeAPIkey = 'Your API Here';
 
 // a fetch request variable, so that it can be customized or reused by different function for different request.
 // The request is set to filtered to creative commons, so licensed videos will not show up on reponses.
