@@ -11,6 +11,8 @@ var appView = new AppView({
 });
 
 
+
+
 var HISTORY_ID = 'backbone-youtube-history';
 
 var saveToLocalStorage = function () {
@@ -46,4 +48,11 @@ playlistsArray.forEach(function(m){
 
 $( document ).ready(function() {
     appView.updatePlaylists()
+
+    appModel.get('videos').url ='https://www.googleapis.com/youtube/v3/search?key=AIzaSyC9u6cfMLyCe3h_UA2zEIJJ5B9jaR1iP9U&part=snippet&format=5&rel=0&fs=0&maxResults=50&type=video&videoLicense=creativeCommon&regionCode=us&q=freshlyground';
+
+    appModel.get('videos').fetch({
+      success: function () {
+        appModel.set('searchQuery', 'freshlyground')
+    }}, { reset: true });
 });
