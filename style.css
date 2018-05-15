@@ -1,0 +1,123 @@
+.center {
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.top-nav {
+  position:fixed;
+  top:0;
+  height: 60px;
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.top-nav .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-nav .container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav li {
+  display: block;
+}
+
+/* assign this class to button inside pop-out nav */
+
+.close-pop-out {
+  /* position:relative;
+  right: 0;
+  top: -40px;
+  text-decoration: none; */
+  /* font-size: 30px; */
+}
+
+.nav-header {
+  position: relative;
+  /* margin-top: -20px */
+}
+
+nav h3 a {
+  text-decoration: none;
+  color: grey;
+}
+
+#nav-pop-out li a {
+  line-height: 50px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 5px 0px 5px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.side-header {
+  /* padding-top: 60px; */
+}
+
+.top-nav-padding{
+  padding-top: 60px;
+}
+
+.red-square {
+  height: 500px;
+  background-color: red;
+  margin: -10px;
+}
+
+#nav-pop-out {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  top:60px;
+  overflow-y: auto;
+  width: 300px
+}
+
+#nav-right {
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  /* float: right; */
+  /* top:60px; */
+  overflow: scroll;
+  width: 450px;
+
+}
+
+.playlist-input-padding-y{
+  height:30px;
+}
+
+.add-video{
+  font-size: 13px;
+}
+.manage-playlist{
+  font-size: 13px;
+}
+
+.playlist-video-title{
+  font-size: 13px;
+}
+
+.position-left {
+  /* padding-right: 15px; */
+}
