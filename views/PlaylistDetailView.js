@@ -7,15 +7,15 @@ var PlaylistDetailView = Backbone.View.extend({
     'click .playlist-video-title':'removeVideo'
   },
 
+  //destroy videoModel from playlist and save to storage
   removeVideo: function() {
 
     this.model.destroy();
     savePlaylistsToLocalStorage();
-    // console.log(this.model)
+
   },
 
   render: function(){
-
 
     this.$el.html(this.template(this.model.toJSON()));
     // console.log(this.template())

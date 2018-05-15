@@ -9,18 +9,19 @@ var HistoryView = Backbone.View.extend({
     'click .this-history': 'queryThis',
   },
 
+  //renders history video to current video
   queryThis: function(){
     console.log('QUERIED HISTORY:')
     console.log(this.model)
 
-    /* I know I shouldn't call appView directly */
+    /* I know I probably shouldn't call appView directly */
     appView._renderCurrentVideo(this.model);
   },
 
   render: function (index) {
-    // console.log(this.model)
+
     this.$el.html(this.template(this.model.toJSON()));
-    // console.log(this.model.toJSON())
+
     return this;
   }
 })

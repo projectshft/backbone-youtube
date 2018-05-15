@@ -8,7 +8,6 @@ var PlaylistView = Backbone.View.extend({
     'click .add-video': 'addVideoToPlaylist',
     'click .delete-playlist': 'deletePlaylist',
     'click .playlist-link': 'loadPlaylist',
-    // 'click .playlist-video-title':'testThis'
   },
 
   initialize: function() {
@@ -17,8 +16,9 @@ var PlaylistView = Backbone.View.extend({
     this.listenTo(this.model.get('playlist'), 'add', this._renderPlaylistDetails);
   },
 
+  //renders details of playlist in left-navbar
   _renderPlaylistDetails: function(m){
-
+    //store the div target in a variable to use in the forEach(function) since the data is lost for some reason inside that function
     let details = this.model.get('playlist').models
     let targetDiv = this.$('.add-video').closest('.playlist').find('.playlist-list')
     targetDiv.empty();
@@ -26,10 +26,12 @@ var PlaylistView = Backbone.View.extend({
 
       var playlistDetailView = new PlaylistDetailView({model:m})
 
+      /*this.$('.add-video').closest('.playlist').find('.playlist-list') doesn't equal targetDiv here for some reason*/
       targetDiv.append(playlistDetailView.render().el);
     })
   },
 
+  //whenever manage-playlist is clicked, toggle displays to show playlist details in left-navbar and executre this._renderPlaylistDetails() *FIX: hide other playlists*
   displayPlaylistManager: function() {
     let targetDiv = this.$('.add-video').closest('.playlist').find('.playlist-list')
     this.$('.add-video').toggleClass('hidden')
@@ -43,6 +45,7 @@ var PlaylistView = Backbone.View.extend({
 
   },
 
+  //when playlist name is clicked, load playlist to currentVideoView and relatedVideosView by executing appViews _renderCurrentVideo & _renderRelatedVideos
   loadPlaylist: function() {
     $('#related-videos').empty();
 
@@ -53,9 +56,11 @@ var PlaylistView = Backbone.View.extend({
       }
       appView._renderRelatedVideos(m);
     })
-    // alert('success')
   },
 
+  /*FOLLOWING FUNCTION NOT FINISHED: needs to check to see if video is already in playlist before adding. I already did this in appView.rememberHistory. Do it again. Maybe create a function that both of these use and then returns found as true or false*/
+
+  //from click event above: adds current_video to playlist
   addVideoToPlaylist: function() {
 
     let playlist = this.model.attributes.playlist
@@ -67,9 +72,8 @@ var PlaylistView = Backbone.View.extend({
       /* Check to see if video already in playlist */
     }
 
+    //checks to see if there is a current video loaded
     if (appModel.get('current_video').videoId != null) {
-
-
       playlist.add({
         title: appModel.get('current_video').title,
         videoId: appModel.get('current_video').videoId,
@@ -84,6 +88,7 @@ var PlaylistView = Backbone.View.extend({
 
   },
 
+  // from click event above: delete entire playlist and re-render view
   deletePlaylist: function(){
     this.model.destroy();
     savePlaylistsToLocalStorage();
@@ -91,7 +96,6 @@ var PlaylistView = Backbone.View.extend({
   },
 
   render: function(index) {
-    // console.log(this.model)
     this.$el.html(this.template(this.model.toJSON()));
 
     return this;

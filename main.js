@@ -47,7 +47,7 @@ playlistsArray.forEach(function(m){
 })
 
 $( document ).ready(function() {
-    appView.updatePlaylists()
+    appView._updatePlaylists()
 
     appModel.get('videos').url ='https://www.googleapis.com/youtube/v3/search?key=AIzaSyC9u6cfMLyCe3h_UA2zEIJJ5B9jaR1iP9U&part=snippet&format=5&rel=0&fs=0&maxResults=50&type=video&videoLicense=creativeCommon&regionCode=us&q=freshlyground';
 

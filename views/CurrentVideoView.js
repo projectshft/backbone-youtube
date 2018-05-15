@@ -1,5 +1,5 @@
 
-var SearchedVideoView = Backbone.View.extend({
+var CurrentVideoView = Backbone.View.extend({
   className: 'test',
 
   template: Handlebars.compile($('#searched-video-template').html()),

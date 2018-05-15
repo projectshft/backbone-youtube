@@ -7,19 +7,20 @@ var RelatedVideosView = Backbone.View.extend({
     'click .related': 'queryThis',
   },
 
-  queryThis: function(){  
-    /* I know I shouldn't call appView directly */
+  //renders related video to current video
+  queryThis: function(){
+    /* I know I probably shouldn't call appView directly */
     appView._renderCurrentVideo(this.model);
   },
 
   render: function () {
     let attributes = this.model.toJSON()
-    // console.log(attributes)
+
     if(attributes.title.length>40){
       attributes.title = attributes.title.split('').slice(0,40).join('')
       attributes.title+=' ...'
     }
-    // console.log(this.model.toJSON().title)
+  
     this.$el.html(this.template(attributes));
 
     return this;
