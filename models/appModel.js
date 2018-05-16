@@ -1,7 +1,7 @@
 var AppModel = Backbone.Model.extend({
   constructor: function() {
     this.videos = new VideoCollection();
-    this.currentVideo = null;
+    this.currentVideo = new VideoModel();
   },
 
   getVideos: function(query) {
@@ -33,6 +33,7 @@ var AppModel = Backbone.Model.extend({
             }); //I realize I'm accessing two arrays with the same loop and that's not good practice because they could be different lengths, but the query should always return an array of the same length, unless I specify a different maxresults in the query. If someone were to add "&maxresults=" and a number other than 5 (the default) at the end of their query, it would break, but I'm not really worried about accounting for that case.
           }
         }
+        self.currentVideo.set(self.videos.at(0));
       }
     });
   }

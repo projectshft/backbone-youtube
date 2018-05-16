@@ -14,24 +14,32 @@
 
 <body>
   <div id="app">
-    <input class="form-control inline-form"><button id="search">Search</button>
+    <input class="form-control inline-form" id="search-term"><button id="search">Search</button>
     <div id="main-display"></div>
     <div id="sidebar"></div>
   </div>
 
 
-<script id="sidebar-template">
-</script>
 <script id="main-display-template" type="text/x-handlebars-template">
   <iframe width="420" height="315" src="https://www.youtube.com/embed/{{videoId}}"></iframe>
   <h4>{{title}}</h4>
   <div id="description">{{description}}</div>
 </script>
 
+<script id="side-video-template" type="text/x-handlebars-template">
+  <div class="video-thumbnail">
+    <img src="{{thumbnailURL}}">
+    <h6>{{title}}</h6>
+</div>
+</script>
+
 <script src="models/videoModel.js"></script>
 <script src="collections/videoCollection.js"></script>
 <script src="models/appModel.js"></script>
 <script src="views/mainVideoView.js"></script>
+<script src="views/appView.js"></script>
+<script src="views/sideVideoView.js"></script>
+<script src="views/sidebarView.js"></script>
 
 <script src="main.js"></script>
 </body>
