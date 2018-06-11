@@ -9,81 +9,70 @@
   <script src="node_modules/underscore/underscore-min.js"></script>
   <script src="node_modules/backbone/backbone-min.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-  <title>BeerList</title>
+  <title>DavisTube</title>
 </head>
 
 <body>
 
   <div class="container">
     <div class="row text-center">
-      <div class="col">
+      <div class="col-10 offset-1 justify-content-center">
         <div class="header">
           <h1><i class="fas fa-video fa-lg" style="color:red"></i> DavisTube</h1>
         </div>
       </div>
     </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col">
+    <div class="row">
+        <div class="col-10 offset-1 justify-content-center">
           <div class="form-group">
             <input type="text" class="form-control" id="search-input" placeholder="search">
-            <button class="btn btn-primary submit-search">submit</button>
+            <button class="btn btn-primary search-button btn-block mt-2">submit</button>
           </div>
         </div>
+    </div>
+  </div>  
+
+  <div class="container">
+    <div class="row justify-content-start">
+      <!-- video will be shown here -->
+      <div class="col-xl-8 player">
       </div>
+      <!-- the playlist that is shown on the side -->
+      <div class="col-xl-4 col-lg-8 justify-content-end playlist">
+      </div>
+    </div>
+  </div>
 
-
-  <div id="player"></div>
-
-  <script>
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    var player;
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '390',
-        width: '640',
-        videoId: 'M7lc1UVf-VE',
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
-    var done = false;
-
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-      }
-    }
-
-    function stopVideo() {
-      player.stopVideo();
-    }
-  </script>
-
-  <script id="video-template" type="text/x-handlebars-template">
-    <div class="content-container">
-      <h2 class="video-title">{{name}}</h2>
-      <h2 class="description">{{description}}</h2>
+  <!-- playlist handlebars -->
+  <script id="playlist-template" type="text/x-handlebars-template">
+    <div class="row playlist-item">
+      <div class="col-4">
+        <img class="thumb" src="{{thumbnail}}"></img>
+      </div>
+      <div class="col-8">
+        <p>{{title}}</p>
+      </div>
     </div>
   </script>
 
-  <script src="videoCollection.js"></script>
-  <script src="videoModel.js"></script>
-  <script src="videoView.js"></script>
+  <!-- videoplayer handlebars -->
+  <script id="player-template" type="text/x-handlebars-template">
+    <iframe id="player" type="text/html" width="720" height="440"
+      src="http://www.youtube.com/embed/{{videoId}}?enablejsapi=1"
+      frameborder="0">
+    </iframe>
+    <div class="details">
+      <h4>{{title}}</h4>
+      <p>{{description}}</p>
+    </div>
+  </script>
+
+  <script src="collections/models/AppModel.js"></script>
+  <script src="collections/models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="views/PlaylistView.js"></script>
   <script src="main.js"></script>
 </body>
 

@@ -1,5 +1,2 @@
-var videoModel = new VideoModel();
-
-var videoView = new VideoView({
-  model: videoModel
-})
+var appModel = new AppModel();
+var appView = new AppView({ model: appModel });
