@@ -1,0 +1,19 @@
+body {
+    padding-top: 2em;
+  }
+  
+  .playlist {
+    overflow: auto;
+    height: 640px;
+  }
+  
+  .playlist-item:hover {
+    cursor: pointer;
+    color: blue;
+    filter: none;
+  }
+  
+  .details {
+    width: 640px;
+  }
+  
