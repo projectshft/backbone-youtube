@@ -25,7 +25,8 @@ var AppView = Backbone.View.extend({
         data: {
           q: query,
           part: 'snippet',
-          key: config.MY_KEY
+          key: config.MY_KEY,
+          type: 'video'
         }
       });
 

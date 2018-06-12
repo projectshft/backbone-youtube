@@ -3,7 +3,13 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
 
-      currentVideoIndex: 0
+      currentVideo: null
+
+      // currentQuery
     }
   }
+
+  // fetchVideos:() {
+  //   this.videos.getVideoWithQuery();
+  // }
 });
