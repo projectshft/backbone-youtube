@@ -13,6 +13,5 @@ for a config.js file in your root directory. This is where your key should live.
 ```javascript
 var config = {
   MY_KEY : 'ENTER YOUR KEY IN HERE'
-  }
 }
 ```
