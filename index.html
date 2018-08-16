@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>YouTube - Backbone</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-search text-white" aria-hidden="true"></i></span>
+          </div>
+          <input id="search-videos" class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="video-player col-md-8">
+        <!-- video player will be appended here -->
+      </div>
+
+      <ul class="video-playlist col-md-4">
+        <!-- videos in playlist will be appended here -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- ******************** Templates ************************* -->
+  <script id="playlist-video-template" type="text/x-handlebars-template">
+    <img class="video-thumbnail" src="{{ imgURL }}" alt="{{ title }}">
+    <div class="video-title">{{ title }}</div>
+  </script>
+
+  <script id="video-player-template" type="text/x-handlebars-template">
+    <iframe src="{{ iframeURL }}" frameborder="0"></iframe>
+    <div class="details">
+      <div class="title">{{ title }}</div>
+      <div class="description">{{ description }}</div>
+    </div>
+  </script>
+
+  <!-- ******************** JS files ************************* -->
+  <script type='text/javascript' src='config.js'></script>
+  <script src="models/AppModel.js"></script>
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/VideoPlayerView.js"></script>
+  <script src="views/PlaylistVideoView.js"></script>
+  <script type='text/javascript'  src="main.js"></script>
+</body>
+
+</html>
