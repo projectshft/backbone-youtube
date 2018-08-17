@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "backbone.localstorage": "^1.1.16",
+    "bootstrap": "^4.1.3",
+    "handlebars": "^4.0.5",
+    "jquery": "^2.1.3",
+    "underscore": "^1.7.0"
+  },
+  "name": "backbone-youtube",
+  "description": "",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schinindsay/backbone-youtube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schinindsay/backbone-youtube/issues"
+  },
+  "homepage": "https://github.com/schinindsay/backbone-youtube#readme"
+}
