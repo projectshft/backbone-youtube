@@ -10,7 +10,7 @@ var AppView = Backbone.View.extend({
   },
 
   createVideosList : function(){
-    console.log( 'CreateVideoList function was invoked' );
+
   }
 
 });
