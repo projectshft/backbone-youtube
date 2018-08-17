@@ -1,0 +1,29 @@
+.btn-inline {
+  display: inline-block;
+}
+
+.result-box {
+  border: 1px solid black;
+  padding: 15px;
+  margin: 15px;
+  height: 125px;
+  width: 100%;
+  box-shadow: 1px 1px grey;
+}
+
+.main-box {
+  border: 1px solid black;
+  padding: 15px;
+  margin: 15px;
+  height: 125px;
+  width: 100%;
+  box-shadow: 1px 1px grey;
+}
+
+.page-header {
+  margin-bottom: 3em;
+}
+
+.form-control {
+  margin-bottom: 5em;
+}
