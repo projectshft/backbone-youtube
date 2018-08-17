@@ -8,7 +8,7 @@ var Video = Backbone.Model.extend({
       videoId: '',
       name: '',
       description: '',
-      img: ''
+      imgUrl: ''
     }
   }
 
@@ -32,6 +32,7 @@ var VideosCollection = Backbone.Collection.extend({
           'videoId' : response.items[data].id.videoId ,
           'name' : response.items[data].snippet.title,
           'description' : response.items[data].snippet.description,
+          'imgUrl' : response.items[data].snippet.thumbnails.default.url
       };
 
       arrayOfVideos.push(oneVideoForArrayOfVideos);
