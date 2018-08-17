@@ -3,6 +3,15 @@
   text-align: center;
 }
 
+.side-videos-area {
+  width: 30%;
+
+}
+
+.main-video-area {
+  width: 50%
+}
+
 input {
-  width: 50%;
+  width: 40%;
 }

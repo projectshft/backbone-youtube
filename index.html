@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>YouTube Backbone</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
   <body>
 
@@ -17,22 +18,32 @@
     </div>
 
 
-  <!-- <script id="video-template" type="text/x-handlebars-template">
-    <div class="main-video col-md-6">
-      <div><strong>{{ image }}</strong></div>
-      <div><strong>{{ username }}</strong></div>
-      <div><strong>{{ sha }}</strong></div>
+  <script id="video-sidebar" type="text/x-handlebars-template">
+    <div class="side-videos col-md-6 offset-md-1">
+      <div>Thumbnail:<strong>{{ image }}</strong></div>
+      <div>Title:<strong>{{ username }}</strong></div>
+      <div>Description:<strong>{{ sha }}</strong></div>
     </div>
-  </script> -->
+  </script>
+
+  <script id="video-sidebar" type="text/x-handlebars-template">
+    <div class="side-videos col-md-6 offset-md-1">
+      <div>Thumbnail:<strong>{{ image }}</strong></div>
+      <div>Title:<strong>{{ username }}</strong></div>
+      <div>Description:<strong>{{ sha }}</strong></div>
+    </div>
+  </script>
 
   <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="node_modules/underscore/underscore.js"></script>
   <script src="node_modules/backbone/backbone.js"></script>
   <script src="https://apis.google.com/js/api.js"></script>
-  <script src="SearchCollection.js"></script>
-  <script src="SearchModel.js"></script>
-  <script src="SearchView.js"></script>
+  <script src="VideoModel.js"></script>
+  <script src="VideoCollection.js"></script>
+  <script src="VideoView.js"></script>
   <script src="main.js"></script>
 
   </body>

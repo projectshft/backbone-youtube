@@ -1,2 +1,2 @@
 
-var searchView = new SearchView();
+var videoView = new VideoView();
