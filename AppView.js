@@ -1,4 +1,4 @@
-VideoView = Backbone.View.extend({
+AppView = Backbone.View.extend({
   el: '#form-area',
 
   events: {
@@ -7,18 +7,10 @@ VideoView = Backbone.View.extend({
 
   getData: function () {
     var $input = this.$el.find('#main-input')
-
-
-
+    
     var issue = new VideoCollection();
-
     issue.urlSearchAppender( $input.val() )
-
-
-
-      issue.on('change', function () { console.log(issue.toJSON()); });
-
-      issue.fetch().then(function(){ console.log(issue); });
-
-    }
+    issue.fetch().then(function(){ console.log(issue); });
+    // var newSidebar = new SidebarView();
+  }
 });

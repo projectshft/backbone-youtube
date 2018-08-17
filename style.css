@@ -4,12 +4,13 @@
 }
 
 .side-videos-area {
-  width: 30%;
+  text-align: right;
 
 }
 
 .main-video-area {
-  width: 50%
+  text-align: center;
+
 }
 
 input {

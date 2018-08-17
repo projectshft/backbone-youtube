@@ -1,2 +1,2 @@
 
-var videoView = new VideoView();
+var appView = new AppView();

@@ -17,9 +17,15 @@
       </div>
     </div>
 
+  <div class="main-video-area">
+    <iframe id="player" class="" type="text/html" width="640" height="390"
+      src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+      frameborder="0"></iframe>
+  </div>
 
-  <script id="video-sidebar" type="text/x-handlebars-template">
-    <div class="side-videos col-md-6 offset-md-1">
+
+  <script id="video-player" type="text/x-handlebars-template">
+    <div class=" col-md-6 offset-md-1">
       <div>Thumbnail:<strong>{{ image }}</strong></div>
       <div>Title:<strong>{{ username }}</strong></div>
       <div>Description:<strong>{{ sha }}</strong></div>
@@ -27,12 +33,13 @@
   </script>
 
   <script id="video-sidebar" type="text/x-handlebars-template">
-    <div class="side-videos col-md-6 offset-md-1">
+    <div class="side-videos-area col-md-3 offset-md-1">
       <div>Thumbnail:<strong>{{ image }}</strong></div>
       <div>Title:<strong>{{ username }}</strong></div>
       <div>Description:<strong>{{ sha }}</strong></div>
     </div>
   </script>
+
 
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -43,7 +50,7 @@
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="VideoModel.js"></script>
   <script src="VideoCollection.js"></script>
-  <script src="VideoView.js"></script>
+  <script src="AppView.js"></script>
   <script src="main.js"></script>
 
   </body>
