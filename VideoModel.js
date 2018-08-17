@@ -1,0 +1,3 @@
+VideoModel = Backbone.Model.extend({
+
+});

@@ -1,0 +1,3 @@
+VideoCollection = Backbone.Collection.extend({
+
+});

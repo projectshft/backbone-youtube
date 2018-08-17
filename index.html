@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>YouTube Backbone</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+
+    <div id="form-area">
+      <input type="text" id="main-input" placeholder="Search Videos"></input>
+      <button type="button" id="main-button" class="btn btn-primary search">Search</button>
+
+      <div id="video-posts">
+        <!-- stuff goes here -->
+      </div>
+    </div>
+
+
+  <!-- <script id="video-template" type="text/x-handlebars-template">
+    <div class="main-video col-md-6">
+      <div><strong>{{ image }}</strong></div>
+      <div><strong>{{ username }}</strong></div>
+      <div><strong>{{ sha }}</strong></div>
+    </div>
+  </script> -->
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="node_modules/underscore/underscore.js"></script>
+  <script src="node_modules/backbone/backbone.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="VideoCollection.js"></script>
+  <script src="VideoModel.js"></script>
+  <script src="VideoView.js"></script>
+  <script src="main.js"></script>
+
+  </body>
+
+</html>
