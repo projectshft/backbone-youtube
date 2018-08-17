@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>BackTube</title>
+</head>
+
+
+<!-- Add @media.  Currently works well on desktop, maximized. -->
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8 page-header text-center">
+        <h1>Project Weather</h1>
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4"></div>
+      <form>
+        <div class="location-form col-xs-3">
+          <input type="text" id="location-input" class="form-control" placeholder="Enter a US city or ZIP">
+          </input>
+        </div>
+        <span class="input-group-btn">
+          <button type="button" id="location-submit" class="btn btn-inline btn-primary">Submit</button>
+        </span>
+      </form>
+      <div class="col-xs-4"></div>
+    </div>
+    <div class="row">
+     <div class ="col-xs-5"></div>
+     <div class ="col-xs-2">
+       <span class="location-button input-group-btn">
+         <button type="button" id="location-find" class="btn btn-inline btn-primary">Find my location</button>
+       </span>
+      </div>
+     <div class ="col-xs-5"></div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+        <div class="weather-main">
+        </div>
+      </div>
+      <div class="col-xs-4"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-10">
+        <div class="forecast-main">
+        </div>
+      </div>
+      <div class="col-xs-1"></div>
+    </div>
+  </div>
+
+</body>
+
+  <script id="weather-handlebars" type="text/x-handlebars-template">
+    <div class="temperature-display">
+      <h1><strong> {{ temp }} </strong></h1>
+    </div>
+    <span class="img weather-icon">
+      <img src="{{ image }}"</img>
+    </span>
+    <div class="location-display">
+      <h3><strong> {{ location }} </strong></h3>
+    </div>
+    <div class="description-display">
+      <h3><strong> {{ description }} </strong></h3>
+    </div>
+    <button type="button" id="set-default" class="btn btn-secondary btn">Set as default location</button>
+  </script>
+
+  <script id="forecast-handlebars" type="text/x-handlebars-template">
+    <div class="col-xs-2 box text-center">
+      <h3><strong> {{ description }} </strong></h3><p>
+      <h3><strong> {{ temp }} </h3></strong><p>
+      <img src="{{ image }}"</img>
+      <h3><strong> {{ day }} </h3></strong><p>
+    </div>
+  </script>
+
+  <script src="js/models/video.js"></script>
+  <script src="js/collections/videos.js"></script>
+  <script src="js/views/appView.js"></script>
+  <script src="js/views/videoView.js"></script>
+  <script src="js/main.js"></script>
+
+</html>
