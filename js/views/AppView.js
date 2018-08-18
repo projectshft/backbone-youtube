@@ -14,28 +14,35 @@ var AppView = Backbone.View.extend({
     //bind to relatedVideoList for reference when changing it.
     this.$relatedVideoList = this.$('.related-videos')
 
-    this.listenTo(this.VideosCollection, 'change', this.renderAll)
+    this.listenTo(VideosCollection, 'add', this.renderVideo)
 
   },
 
+  logVideos:
+    function(){
+    this.model.get('videos').each(function () { console.log(videos.toJSON());
+  });
+},
 
-  //add all videos in videoscollection to page all at once
-  renderAll: { function() {
-    this.model.get('videos').each(
-      function(m){
-      $('.related-video-list').append(this.render().el);
-    }
-    )}
-  }
 
-//event --> when the search button is clicked --> video list is created
 
-  //
-  // events: {
-  //   'click .search-btn': 'fetchVideos',
-  // },
-  //
-  //
-  // }
+  //event --> when the search button is clicked --> video list is created
+
+    // events: {
+    //   'click .search-btn':
+    // },
+
+
+    renderVideos: function () {
+      this.model.get('videos').each(function (m) {
+        this.renderVideo(m);
+      }, this);
+    },
+
+    renderVideo: function (review) {
+      var videoView = new VideoView({ model: review });
+      this.$('.related-video-list').append(videoView.render().el);
+}
+
 
 });
