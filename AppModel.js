@@ -3,6 +3,7 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideoCollection(),
 
+      query: ''
       // current_video: null
 
     }
