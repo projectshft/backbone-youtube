@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Project YouTube</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/underscore/underscore.js"></script>
+    <script src="node_modules/backbone/backbone.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="header"><h1>Project YouTube</h1></div>
+        </div>
+        <div class="col-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="form-group">
+            <input type="text" id="search" placeholder="search">
+            <button class="btn btn-primary search-button">submit</button>
+          </div>
+        <div class="col-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <script scr="models/AppModel.js"></script>
+    <script scr="models/VideoModel.js"></script>
+    <script scr="collections/VideoCollection.js"></script>
+    <script scr="views/Appview.js"></script>
+    <script scr="views/VideoView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
