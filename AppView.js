@@ -17,19 +17,21 @@ AppView = Backbone.View.extend({
   },
 
   getData: function () {
-    // query: $('#main-input').val()
+    this.model.get('videos').fetch({reset: true}).then(function(){
+      console.log( 'data came back' );
 
-    var appModel = new AppModel(); // my input.val() needs to go inside of AppModel({ HERE })
-    var appView = new AppView({ model: appModel });
-    // appModel.get('videos').
-    appModel.get('videos').fetch({reset: true});
-
-    // modelVideos.urlSearchAppender( this.$input.val() );
-    // modelVideos.fetch({reset: true}).then(function(){
-    //   console.log( 'data came back' );
-    //   console.log(modelVideos)
-    // });
+    });
   },
+
+
+  // query: $('#main-input').val()
+
+  // var appModel = new AppModel(); // my input.val() needs to go inside of AppModel({ HERE })
+  // var appView = new AppView({ model: appModel });
+  // // appModel.get('videos').
+  // appModel.get('videos').fetch({reset: true});
+
+
 
   // ////////// use the .each() function
   // renderSidebar: function (video) {
