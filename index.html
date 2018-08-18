@@ -35,8 +35,30 @@
       </div>
     </div>
 
-    
+  <!--  =============== Related Videos Section========= -->
 
+    <div class="main-video"></div>
+    <div class="container">
+      <ul class="related-video-list">
+        <!-- li will be each video in related video list -->
+      </ul>
+    </div>
+
+
+    <script id="video-template" type="text/x-handlebars-template">
+        <div class="img-container">
+          <img src="{{imgUrl}}">
+        </div>
+        <div class="content-container">
+          <p class="title">{{title}}</p>
+          <p class="decscription" >{{description}}</p>
+        </div>
+    </script>
+
+<script src="js/models/AppModel.js"></script>
+<script src="js/models/VideoModel.js"></script>
+<script src="js/collections/VideosCollection.js"></script>
+<script src="js/views/VideoView.js"></script>
 <script src="js/views/AppView.js"></script>
 <script src="main.js"></script>
 </body>
