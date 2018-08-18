@@ -1,4 +1,4 @@
-var BeerView = Backbone.View.extend({
+var VideoView = Backbone.View.extend({
   className: 'video',
 
   template: {
@@ -6,16 +6,19 @@ var BeerView = Backbone.View.extend({
     // Handlebars.compile($('#video-info').html())
   },
 
-  // events: {
-  // },
+  events: {
 
-  // initialize: function () {
-  // },
+  },
+
+  initialize: function () {
+    // this.listenTo(this.model, 'destroy', this.remove);
+    // this.listenTo(this.model, 'change:edit_mode', this.renderEdit);
+    // this.listenTo(this.model, 'change:name', this.render);
+  },
 
   render: function () {
-    this.$el.html(this.template(this.model.toJSON()));
-
-    this.$nameInput = this.$('.edit-mode');
+    console.log('invoked videoView render');
+    // this.$el.html(this.template(this.model.toJSON()));
 
     return this;
   }
