@@ -1,5 +1,6 @@
 VideoCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDTEoq5bStax1IZYW9UZxabnL1k8kwUpC8&part=snippet&type=video&q=',
+
+  url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDTEoq5bStax1IZYW9UZxabnL1k8kwUpC8&part=snippet&type=video&q=dogs',
 
   urlSearchAppender: function (search) {
      this.url = this.url + search

@@ -11,47 +11,36 @@ AppView = Backbone.View.extend({
     this.$videoPosts = this.$('#video-posts')
 
     console.log('initializing!');
-    // console.log(this.model.get('videos')); // 'videos' is empty at this point
 
-    // this.renderVideos();
-    // this.listenTo(this.model.get('videos'), 'add', console.log('getting videos from collection' + this.model.get('videos')));
-    // this.listenTo(this.collection, 'change', console.log('collection has changed!'));
-    // this.listenTo(this.model, 'change:videos', console.log('model videos have changed'));
-    // this.listenTo(this.model.set())
+    this.listenTo(this.collection, 'reset', console.log('reset is TRUE!'));
 
   },
-
-//
-//   $('#main-button').on('click', function () {
-//   var appModel = new AppModel({ query: $('#search-input').val() });
-//   var appView = new AppView({ model: appModel });
-//
-//   appModel.get('videos').fetch({reset: true});
-// });
 
   getData: function () {
-    var videos = new VideoCollection();
-    videos.urlSearchAppender( this.$input.val() );
-    // issue.on('change', function () { 'videos changing' + console.log(issue.toJSON()); });
-    videos.fetch().then(function(){
-      console.log( 'data came back' );
-      console.log(videos)
+    // query: $('#main-input').val()
 
-    });
+    var appModel = new AppModel(); // my input.val() needs to go inside of AppModel({ HERE })
+    var appView = new AppView({ model: appModel });
+    // appModel.get('videos').
+    appModel.get('videos').fetch({reset: true});
+
+    // modelVideos.urlSearchAppender( this.$input.val() );
+    // modelVideos.fetch({reset: true}).then(function(){
+    //   console.log( 'data came back' );
+    //   console.log(modelVideos)
+    // });
   },
 
-
-
-  ////////// use the .each() function
-  renderSidebar: function (video) {
-    var sidebarView = new SidevarView({ model: VideoModel });
-    this.$videoPosts.append(sidebarView.render().el);
-  },
-
-  renderVideos: function () {
-    this.model.get('videos').each(function (m) {
-      this.renderSidebar(m);
-    }, this);
-  },
+  // ////////// use the .each() function
+  // renderSidebar: function (video) {
+  //   var sidebarView = new SidevarView({ model: VideoModel });
+  //   this.$videoPosts.append(sidebarView.render().el);
+  // },
+  //
+  // renderVideos: function () {
+  //   this.model.get('videos').each(function (m) {
+  //     this.renderSidebar(m);
+  //   }, this);
+  // },
 
 });
