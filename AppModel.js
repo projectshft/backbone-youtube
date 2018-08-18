@@ -1,5 +1,10 @@
-AppModel = Backbone.Model.extend({
+var AppModel = Backbone.Model.extend({
+  defaults: function () {
+    return {
+      videos: new VideoCollection(),
 
-  // model: ''
+      // current_video: null
 
+    }
+  }
 });
