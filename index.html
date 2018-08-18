@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>YouTube</title>
+  </head>
+  <body>
+    <form id='search-form'>
+      <div class='container col-12 col-md-10 col-lg-8'>
+        <div class="search-input offset-3">
+          <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search Videos">
+          <div class="form-control-append">
+            <button class="btn btn-outline-secondary submit" type="button">Search</button>
+          </div>
+        </div>
+      </form>
+      <br>
+      <div class="container">
+        <div class="video-view">
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <script src="model/VideoModel.js"></script>
+      <script src="collection/VideoCollection.js"></script>
+      <script src="model/AppModel.js"></script>
+      <script src="views/appView.js"></script>
+      <script src="views/VideoView.js"></script>
+      <script src="main.js"></script>
+
+  </body>
+</html>
