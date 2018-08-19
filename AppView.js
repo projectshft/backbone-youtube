@@ -1,5 +1,6 @@
 AppView = Backbone.View.extend({
   el: $('body'),
+  collection: VideoCollection,
 
   events: {
     'click #main-button': 'getData',
@@ -12,24 +13,13 @@ AppView = Backbone.View.extend({
 
     console.log('initializing!');
 
-    this.listenTo(this.collection, 'reset', console.log('reset is TRUE!'));
-
+    this.listenTo(this.model.get('videos'), "reset", console.log('reset is TRUE!'));
   },
 
   getData: function () {
-    this.model.get('videos').fetch({reset: true}).then(function(){
-      console.log( 'data came back' );
-
-    });
+    console.log('clicked search');
+    this.model.get('videos').fetch({reset: true}).then(function(){console.log( 'data came back' )});
   },
-
-
-  // query: $('#main-input').val()
-
-  // var appModel = new AppModel(); // my input.val() needs to go inside of AppModel({ HERE })
-  // var appView = new AppView({ model: appModel });
-  // // appModel.get('videos').
-  // appModel.get('videos').fetch({reset: true});
 
 
 
