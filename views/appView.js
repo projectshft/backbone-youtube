@@ -5,15 +5,10 @@ var AppView = Backbone.View.extend({
 
   events: {
     'click #search-submit': 'search',
-    'click': 'handleClick'
   },
 
   initialize: function () {
-
-    this.model.on('add change', this.onChange, this);
-    // videosCollection.on('change', function () {console.log("appview says: videos collection changed" + videosCollection.toJSON());});
-    this.listenTo(this.model, 'change', this.onChange);
-
+    this.listenTo(this.model, 'change', this.renderVideo);
     return this;
   },
 
@@ -28,19 +23,21 @@ var AppView = Backbone.View.extend({
     return this;
   },
 
+  createVideo: function () {
+    this.model.get('video').add({
+      videoId: items[0].id.videoId
+    });
+  },
+
   renderVideo: function () {
+    var videoModel = new VideoModel
+    // console.log("new video model created by main");
+    var videoView = new VideoView({ model: videoModel });
+    // console.log("new video view created by main");
     var $playerDiv = $('.player-div');
     console.log('renderVideo invoked');
 
     videoView.render();
-  },
-
-  onChange: function () {
-    console.log('app view says: added or changed app model!');
-  },
-
-  handleClick: function () {
-    this.model.clicked();
   },
 
   // renderVideos: function () {
@@ -48,10 +45,5 @@ var AppView = Backbone.View.extend({
   //     this.renderVideo(m);
   //   }, this);
   // },
-
-  render: function () {
-
-    return this;
-  }
 
 });
