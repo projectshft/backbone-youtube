@@ -1,11 +1,11 @@
 var AppModel = Backbone.Model.extend({
-  defaults: function () {
+  defaults: function() {
     return {
       videos: function() {
-        var videoModels = new VideoCollection();
-        videoModels.fetch();
+        var videoModels = newCollection;
+
         return videoModels;
+      }
     }
   }
-}
 });
