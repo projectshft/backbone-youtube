@@ -13,6 +13,5 @@ var AppView = Backbone.View.extend({
 
   postVideo: function(video){
     console.log('post video function accessed')
-    this.model.
   }
 })
