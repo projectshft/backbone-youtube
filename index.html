@@ -7,34 +7,70 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/underscore/underscore-min.js"></script>
-    <script src="node_modules/backbone/backbone-min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
     <title>YouTube</title>
   </head>
   <body>
+    <br/>
+    <div clas="container">
+    <div class="col-12 offset-1">
     <form id='search-form'>
-      <div class='container col-12 col-md-10 col-lg-8'>
-        <div class="search-input offset-3">
-          <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search Videos">
-          <div class="form-control-append">
-            <button class="btn btn-outline-secondary submit" type="button">Search</button>
+      <div class="row">
+        <div class="col-xs-10 col-md-10">
+        <div class="input-group">
+          <input type="search" class="form-control"  placeholder="Search Videos" id="txtSearch"/>
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-primary">
+              <span>Search</span>
+              </button>
           </div>
         </div>
-      </form>
+      </div>
+    </div>
+    </form>
+  </div>
+<!--Video-->
       <br>
-      <div class="container">
-        <div class="video-view">
+      <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-12 px-0">
+            <div id="video-view" class="embed-responsive embed-responsive-16by9">
+          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/4sEV1lMn64k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
         </div>
       </div>
+      <div class="col-12 py-3">
+        <h6>Video Title:</h6>
+        <p>Description</p>
+      </div>
+    </div>
+  </div>
+  <!--list-->
+  <div class="col-4">
+    <h1>Something</h1>
+  </div>
+</div>
+</div>
 
-
+<script id="video-template" type="text/x-handlebars-template">
+  <div class="content-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/{{id}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</script>
+<script id="description-template" type="text/x-handlebars-template">
+  <div class="title-container">
+    <p>{{Title}}</p>
+    <p>{{Description}}</p>
+  </div>
+</script>
 
 
 
 
 
       <script src="model/VideoModel.js"></script>
-      <script src="collection/VideoCollection.js"></script>
+      <script src="collection/VideosCollection.js"></script>
       <script src="model/AppModel.js"></script>
       <script src="views/appView.js"></script>
       <script src="views/VideoView.js"></script>
