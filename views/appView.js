@@ -28,7 +28,10 @@ var AppView = Backbone.View.extend({
   renderVideo: function () {
     var $playerDiv = $('.player-div');
     console.log('renderVideo invoked');
-    var videoView = new VideoView({ model: VideoModel });
+
+    var videoModel = new VideoModel
+    var videoView = new VideoView({ model: videoModel });
+    
     $playerDiv.append(videoView.render().el);
   },
 

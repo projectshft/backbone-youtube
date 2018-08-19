@@ -23,15 +23,13 @@ var VideoModel = Backbone.Model.extend({
 
   updateDefaults: function (items) {
     this.set('videoId', items[0].id.videoId);
-    this.trigger('change');
-    this.trigger('change:model');
     console.log("updateDefaults videoId: " + this.get('videoId'));
     // this.onChange();
     return this;
   },
 
   clicked: function () {
-    this.trigger('clickedInMyView', this);
+    console.log('Video Model says: clicked in Video View');
   }
 
   // onChange: function (model) {
