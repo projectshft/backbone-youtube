@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+  </head>
+  <body>
+    <div id="search-container">
+      <form style="margin-top:20px;">
+        <h1>Bootleg Youtube</h1>
+        <div class="search-video">
+        <input id="search-query" type="text"
+          class="form-control"
+          placeholder="search"></input>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="video-container"></div>
+
+
+    <div class="current-video-container"></div>
+
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideoCollection.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
