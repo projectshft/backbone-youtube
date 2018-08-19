@@ -1,3 +1,3 @@
-var videoModel = new VideoModel();
+var appModel = new AppModel();
 
-var appView = new AppView({ model: videoModel });
+var appView = new AppView({ model: appModel });

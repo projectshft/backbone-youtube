@@ -1,6 +1,7 @@
-//Colection:
+//Collection:
 //Provide base URL with API key
-//Model will append the id
+//View will provide the searchQuery
+//Model will listen and append the id
 
 //this URL works for both a query and a specific video
 // url: https://www.googleapis.com/youtube/v3/search?key={{your api key}}&part=snippet&type=video&q={{ your search query }}
@@ -23,10 +24,7 @@ var VideosCollection = Backbone.Collection.extend({
     console.log('One of my models was clicked in the DOM!')
   }
 
-  // parse: function (response) {
-  //   console.log('invoked parse');
-  //   console.log(response);
-  //   return response;
-  // }
-
 });
+
+var videosCollection = new VideosCollection();
+console.log("initialized a new collection");

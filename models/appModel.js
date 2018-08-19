@@ -3,5 +3,9 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
     }
+  },
+
+  clicked: function () {
+    console.log('App Model says: clicked in App View');
   }
 });

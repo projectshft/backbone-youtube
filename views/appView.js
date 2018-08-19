@@ -1,5 +1,5 @@
 var AppView = Backbone.View.extend({
-  el: $('body'),
+  el: 'body',
 
   collection: VideosCollection,
 
@@ -9,36 +9,34 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    var videosCollection = new VideosCollection();
-
-    this.$playerDiv = this.$('.player-div');
-
     this.model.on('add change', this.onChange, this);
-    videosCollection.on('change', function () {console.log("invoked videoView" + videosCollection.toJSON());});
-    // this.listenTo(this.model, 'change', this.onChange);
+    videosCollection.on('change', function () {console.log("appview says: videos collection changed" + videosCollection.toJSON());});
+    this.listenTo(this.model, 'change', this.onChange);
   },
 
   search: function () {
     console.log('clicked submit');
-    var videosCollection = new VideosCollection();
     var searchQuery = this.$el.find('#search-input').val();
     console.log('the search query is: ' + searchQuery);
+
     videosCollection.getData(searchQuery);
     videosCollection.on('change', function () {console.log(videosCollection.toJSON());}); //change to what target function?
-    videosCollection.fetch();
+    videosCollection.fetch().then(this.renderVideo);
+
   },
 
   renderVideo: function () {
+    var $playerDiv = $('.player-div');
     console.log('renderVideo invoked');
     var videoView = new VideoView({ model: VideoModel });
-    this.$playerDiv.append(videoView.render().el);
+    $playerDiv.append(videoView.render().el);
   },
 
   onChange: function () {
-    console.log('view says: added or changed a model!');
+    console.log('app view says: added or changed app model!');
   },
 
-  viewClick: function () {
+  handleClick: function () {
     this.model.clicked();
   },
 

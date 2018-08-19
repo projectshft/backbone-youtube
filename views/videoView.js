@@ -1,24 +1,27 @@
 var VideoView = Backbone.View.extend({
-  className: 'video',
+  el: '.player-div',
 
-  template: {
-    // Handlebars.compile($('#iframe').html()),
-    // Handlebars.compile($('#video-info').html())
-  },
+  template: Handlebars.compile($('#iframe').html()),
 
-  events: {
-
-  },
+  // events: {
+  //
+  // },
 
   initialize: function () {
-    // this.listenTo(this.model, 'destroy', this.remove);
-    // this.listenTo(this.model, 'change:edit_mode', this.renderEdit);
-    // this.listenTo(this.model, 'change:name', this.render);
+    this.listenTo(this.model, 'change', this.render);
+    // this.model.on('add change', this.onChange, this);
+  },
+
+  onChange: function () {
+    console.log('video view says: added or changed video model!');
   },
 
   render: function () {
     console.log('invoked videoView render');
-    // this.$el.html(this.template(this.model.toJSON()));
+    var $playerDiv = $('.player-div');
+    //append to player-div
+    // $playerDiv.append(this.template().el);
+    this.$el.html(this.template(this.model));
 
     return this;
   }
