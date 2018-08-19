@@ -1,7 +1,7 @@
 var VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
 
-  url: "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBZv7oOxB5qYLsabM8t35bn2frCIjmDtqc&part=snippet&type=video&q=cats",
+  url: "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBZv7oOxB5qYLsabM8t35bn2frCIjmDtqc&part=snippet&type=video&q=cat",
 
   parse: function (query) {
   videoArray = [];

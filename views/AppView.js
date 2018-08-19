@@ -1,14 +1,14 @@
 var AppView = Backbone.View.extend({
-  el: $('body'),
+  el: '.video-search',
 
   events: {
     'click #submit': 'searchVideo'
   },
 
   initialize: function() {
-    this.$input = this.$('#searchInput');
+    this.$input = this.$('.search');
     this.$mainVideo = this.$('#mainVideo');
-    this.listenTo(this.model.get('videoID'), 'add', this.renderVideo);
+    this.listenTo(VideoCollection, 'add', this.renderVideo);
     this.renderVideo();
   },
 
@@ -20,14 +20,17 @@ var AppView = Backbone.View.extend({
   },
 
   searchVideo: function () {
-    var input = this.$input;
-    var newvideoSearch = new VideoCollection({
-      input: input
+    VideoCollection.add({
+      'videoID': '',
+      'videoTitle': '',
+      'videoDesc': '',
     });
-    
-    newvideoSearch.fetch();
-
+      this.$input.val('');
+    // var newvideoSearch = new VideoCollection({
+    //   input: input
+    // });
+  alert(this.$input.val());
+    // newvideoSearch.fetch();
   },
-
 
 })
