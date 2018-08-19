@@ -15,30 +15,60 @@
   <body>
 
     <div class="container">
-      <div class="row">
-        <div class="col-2"></div>
+
+      <div class="row text-center justify-content-center">
         <div class="col-8">
           <div class="header"><h1>Project YouTube</h1></div>
         </div>
-        <div class="col-2"></div>
       </div>
-      <div class="row">
-        <div class="col-2"></div>
+
+      <div class="row text-center justify-content-center">
         <div class="col-8">
           <div class="form-group">
-            <input type="text" id="search" placeholder="search">
-            <button class="btn btn-primary search-button">submit</button>
+            <input type="text" class="form-control" id="search" placeholder="Search">
+            <button class="btn btn-primary search-button">Submit</button>
           </div>
-        <div class="col-2"></div>
         </div>
       </div>
     </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- Main video will display here -->
+      <div class="col-8 video-player">
+      </div>
+      <!-- Related videos will display here -->
+      <div class="col-4 next-videos">
+      </div>
+    </div>
+  </div>
+
+  <script id="video-player-template" type="text/x-handlebars-template">
+    <iframe id="video-player" type="text/html" width="720" height="480"
+      src="http://www.youtube.com/embed/{{ video-id }}?enablejsapi=1" border="none">
+    </iframe>
+    <div class="details">
+      <h4>{{ title }}</h4>
+      <p>{{ description }}</p>
+    </div>
+  </script>
+
+  <script id="next-videos-template" type="text/x-handlebars-template">
+    <div class="row next-videos">
+      <div class="col-4">
+        <img class="thumbnail" src="{{ thumbnail }}"></img>
+      </div>
+      <div class="col-8">
+        <h4>{{ title }}</h4>
+    </div>
+  </script>
 
     <script scr="models/AppModel.js"></script>
     <script scr="models/VideoModel.js"></script>
     <script scr="collections/VideoCollection.js"></script>
     <script scr="views/Appview.js"></script>
     <script scr="views/VideoView.js"></script>
+    <script scr="views/NextVideosView.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
