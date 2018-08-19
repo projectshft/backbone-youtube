@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Youtube Generator</title>
+  <meta name="viewport" content="width=device-width" , initial-scale="1">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="search-bar container-fluid ">
+    <span><input type="text" id="searchInput" class="search rounded" placeholder="search"></input></span>
+    <button type="submit" id="submit"><i class="fa fa-search"></i></button>
+  </div>
+  <hr>
+  <div id="mainVideo">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoID}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+  </div>
+  <script id="video-template" type="text/x-handlebars-template">
+    <h3>{{title}}</h3>
+    <h5>Video Description: {{videoDesc}}</h5>
+  </script>
+
+
+</body>
+
+<script src="models/VideoModel.js"></script>
+<script src="collection/VideoCollection.js"></script>
+<script src="models/AppModel.js"></script>
+<script src="views/AppView.js"></script>
+<script src="views/VideoView.js"></script>
+<script src="main.js"></script>
+
+</html>
