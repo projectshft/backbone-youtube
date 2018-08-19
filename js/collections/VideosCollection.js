@@ -32,5 +32,5 @@ var VideosCollection = Backbone.Collection.extend({
 
 
 //instantiate a new collection based on fetch
-var videos = new VideosCollection();
-videos.fetch();
+// var videos = new VideosCollection();
+// videos.fetch();
