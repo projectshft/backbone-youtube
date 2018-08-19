@@ -21,18 +21,4 @@ AppView = Backbone.View.extend({
     this.model.get('videos').fetch({reset: true}).then(function(){console.log( 'data came back' )});
   },
 
-
-
-  // ////////// use the .each() function
-  // renderSidebar: function (video) {
-  //   var sidebarView = new SidevarView({ model: VideoModel });
-  //   this.$videoPosts.append(sidebarView.render().el);
-  // },
-  //
-  // renderVideos: function () {
-  //   this.model.get('videos').each(function (m) {
-  //     this.renderSidebar(m);
-  //   }, this);
-  // },
-
 });
