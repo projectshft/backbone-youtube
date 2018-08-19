@@ -8,8 +8,8 @@ var VideoView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model, 'change', this.render);
-    // this.model.on('add change', this.onChange, this);
+    // this.listenTo(this.model, 'change', this.render);
+    this.model.on('add change', this.updateModel, this);
   },
 
   onChange: function () {
@@ -21,11 +21,12 @@ var VideoView = Backbone.View.extend({
   },
 
   render: function () {
+
     console.log('invoked videoView render');
     var $playerDiv = $('.player-div');
     //append to player-div
     // $playerDiv.append(this.template().el);
-    this.$el.html(this.template(this.model));
+    this.$el.html(this.template(this.model.id));
     //Remember that the model that is given to a view should represent all the data that a view needs to render itself
     //the URL concatenation needs to happen here so that when the view renders, it's got  a video ID
 

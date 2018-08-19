@@ -9,9 +9,12 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
+
     this.model.on('add change', this.onChange, this);
-    videosCollection.on('change', function () {console.log("appview says: videos collection changed" + videosCollection.toJSON());});
+    // videosCollection.on('change', function () {console.log("appview says: videos collection changed" + videosCollection.toJSON());});
     this.listenTo(this.model, 'change', this.onChange);
+
+    return this;
   },
 
   search: function () {
@@ -20,19 +23,16 @@ var AppView = Backbone.View.extend({
     console.log('the search query is: ' + searchQuery);
 
     videosCollection.getData(searchQuery);
-    videosCollection.on('change', function () {console.log(videosCollection.toJSON());}); //change to what target function?
+    // videosCollection.on('change', function () {console.log(videosCollection.toJSON());}); //change to what target function?
     videosCollection.fetch().then(this.renderVideo);
-
+    return this;
   },
 
   renderVideo: function () {
     var $playerDiv = $('.player-div');
     console.log('renderVideo invoked');
 
-    var videoModel = new VideoModel
-    var videoView = new VideoView({ model: videoModel });
-    
-    $playerDiv.append(videoView.render().el);
+    videoView.render();
   },
 
   onChange: function () {

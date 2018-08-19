@@ -25,6 +25,3 @@ var VideosCollection = Backbone.Collection.extend({
   }
 
 });
-
-var videosCollection = new VideosCollection();
-console.log("initialized a new collection");

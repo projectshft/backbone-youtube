@@ -18,6 +18,7 @@ var VideoModel = Backbone.Model.extend({
     var items = response.items;
     console.log('invoked parse');
     console.log(items);
+    // return items;
     this.updateDefaults(items);
   },
 
@@ -25,7 +26,7 @@ var VideoModel = Backbone.Model.extend({
     this.set('videoId', items[0].id.videoId);
     console.log("updateDefaults videoId: " + this.get('videoId'));
     // this.onChange();
-    return this;
+    return this.model;
   },
 
   clicked: function () {
