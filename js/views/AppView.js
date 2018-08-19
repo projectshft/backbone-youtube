@@ -6,43 +6,20 @@ var AppView = Backbone.View.extend({
 
   //at initialize, bind to the relevant events on the 'Videos' collection when Items are added or changed
   initialize : function(){
-    //do i need to bind to input here so i can empty it when search is done?:
-    //this.$input = input...
+    this.$mainVideo = this.$('mainVideo');
 
-    //bind to main-video content for reference when changing it
-    this.$mainVideo = this.$('.main-video');
-    //bind to relatedVideoList for reference when changing it.
-    this.$relatedVideoList = this.$('.related-videos')
+    //keeping this listen function here now, but not yet using it because it throws errors - needs to be fixed
+    //this.listenTo(this.model.get('videos'), 'change', this.renderVideo)
 
-    this.listenTo(VideosCollection, 'add', this.renderVideo)
+    //invoke renderVideo function when program initializes
+    this.renderVideo()
 
   },
 
-  logVideos:
-    function(){
-    this.model.get('videos').each(function () { console.log(videos.toJSON());
-  });
-},
-
-
-
-  //event --> when the search button is clicked --> video list is created
-
-    // events: {
-    //   'click .search-btn':
-    // },
-
-
-    renderVideos: function () {
-      this.model.get('videos').each(function (m) {
-        this.renderVideo(m);
-      }, this);
-    },
-
-    renderVideo: function (review) {
-      var videoView = new VideoView({ model: review });
-      this.$('.related-video-list').append(videoView.render().el);
-}
-
+  //renderVideo is invoked in the AppView's initialization function above and appends a new instance of the videoView to the page using video model to source the attributes used in the template.
+  renderVideo: function () {
+    var videoView = new VideoView({model : Video});
+    this.$mainVideo.append(videoView.render().el);
+  }
 
 });

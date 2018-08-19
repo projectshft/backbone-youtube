@@ -3,7 +3,8 @@
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
-      videos : new VideosCollection();
-    }
+//creates a new instance of videoCollection when new instance of AppModel is made.
+    videos: new VideosCollection()
   }
+}
 });
