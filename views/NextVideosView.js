@@ -10,7 +10,7 @@ var NextVideosView = Backbone.View.extend({
   },
 
   events: {
-    'click .next-videos': function () {
+    'click .next-videos-item': function () {
       appModel.set('current_video', this.model.get('videoId'));
     }
   }

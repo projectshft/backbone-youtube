@@ -4,8 +4,12 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+
     <title>Project YouTube</title>
+
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
     <script src="node_modules/backbone/backbone.js"></script>
@@ -18,7 +22,7 @@
 
       <div class="row text-center justify-content-center">
         <div class="col-8">
-          <div class="header"><h1>Project YouTube</h1></div>
+          <div class="header"><h1><a href="#" class="fa fa-youtube"></a>Project YouTube</h1></div>
         </div>
       </div>
 
@@ -34,18 +38,14 @@
 
   <div class="container">
     <div class="row">
-      <!-- Main video will display here -->
-      <div class="col-8 video-player">
-      </div>
-      <!-- Related videos will display here -->
-      <div class="col-4 next-videos">
-      </div>
+      <div class="col-md-8 video-player"></div>
+      <div class="col-md-4 next-videos"></div>
     </div>
   </div>
 
   <script id="video-player-template" type="text/x-handlebars-template">
     <iframe id="video-player" type="text/html" width="720" height="480"
-      src="http://www.youtube.com/embed/{{ video-id }}?enablejsapi=1" border="none">
+      src="http://www.youtube.com/embed/{{ videoId }}?enablejsapi=1" border="none">
     </iframe>
     <div class="details">
       <h4>{{ title }}</h4>
@@ -54,7 +54,7 @@
   </script>
 
   <script id="next-videos-template" type="text/x-handlebars-template">
-    <div class="row next-videos">
+    <div class="row next-videos-item">
       <div class="col-4">
         <img class="thumbnail" src="{{ thumbnail }}"></img>
       </div>
@@ -63,12 +63,12 @@
     </div>
   </script>
 
-    <script scr="models/AppModel.js"></script>
-    <script scr="models/VideoModel.js"></script>
-    <script scr="collections/VideoCollection.js"></script>
-    <script scr="views/Appview.js"></script>
-    <script scr="views/VideoView.js"></script>
-    <script scr="views/NextVideosView.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideoCollection.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="views/NextVideosView.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

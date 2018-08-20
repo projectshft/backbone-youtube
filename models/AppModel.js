@@ -4,8 +4,12 @@ var AppModel = Backbone.Model.extend({
 
   defaults: function() {
     return {
-      videos: new VideosCollection(),
-      current_video: null
+      videos: new VideoCollection(),
+      current_video: null,
+      videoId: '',
+      title: '',
+      thumbnail: '',
+      description: ''
     }
   }
 

@@ -1,3 +1,7 @@
+* {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
 #search {
   width: 60%;
   margin-left: 20%;
@@ -7,4 +11,27 @@
 .btn {
   margin-top: 5px;
   width: 20%;
+}
+
+.next-videos {
+  overflow: scroll;
+  height:720px;
+
+}
+
+.next-videos-item:hover {
+  cursor: pointer;
+  color: blue;
+  filter: none;
+}
+
+.fa {
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
 }
