@@ -1,6 +1,6 @@
 var VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
-  query: this.$('.search').val(),
+  // query: this.$('.search').val(),
 
   url: "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBZv7oOxB5qYLsabM8t35bn2frCIjmDtqc&part=snippet&type=video&q=" + query,
 

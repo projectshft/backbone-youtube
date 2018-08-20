@@ -9,6 +9,8 @@ var AppView = Backbone.View.extend({
     this.$input = this.$('.search');
     this.$mainVideo = this.$('#mainVideo');
     this.listenTo(VideoCollection, 'change', this.renderVideo);
+    this.listenTo(this.model.get('videos'), "reset", this.renderVideo);
+    return this;
     this.renderVideo();
   },
 
@@ -24,24 +26,9 @@ var AppView = Backbone.View.extend({
     return this;
   },
 
-  fetch: function(query) {
-    $.ajax({
-      method: "GET",
-      url: "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBZv7oOxB5qYLsabM8t35bn2frCIjmDtqc&part=snippet&type=video&q=" + query,
-      dataType: "json",
-      success: function(data) {
-        VideoCollection(data);
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus);
-      }
-    });
-  },
 
   searchVideo: function(query) {
-    fetch(query);
+    this.model.get('videos').fetch({ reset: true });
   },
 
 });
-
-var query = this.$('.search').val();
