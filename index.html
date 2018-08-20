@@ -9,27 +9,32 @@
     <script src="node_modules/backbone/backbone-min.js"></script>
   </head>
   <body>
+    <section class="videoapp">
     <div id="search-container">
       <form style="margin-top:20px;">
         <h1>Bootleg Youtube</h1>
-        <div class="search-video">
-        <input id="search-query" type="text"
-          class="form-control"
-          placeholder="search"></input>
-        </div>
-      </form>
-    </div>
-
+        <form class="form-inline">
+          <input style="width:90%" id="search-query" class="form-control" placeholder="Search Videos">
+        </form>
+        <span>
+          <button type="button" id="search-button" class="btn btn-inline btn-primary">Search</button>
+        </span>
 
     <div class="video-container"></div>
-
-
     <div class="current-video-container"></div>
+  </section>
 
+  <script id="video-item-template" type="text/x-handlebars-template">
+    <li class="video-item" data-id="{{ videoId }}">
+      <img src="{{img}}">
+      <img src="{{thumbnail}}">
+    </li>
+  </script>
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideoCollection.js"></script>
     <script src="views/VideoView.js"></script>
     <script src="views/CurrentVideoView.js"></script>
+    <script src="views/AppView.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
