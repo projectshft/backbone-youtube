@@ -12,16 +12,6 @@ var VideoModel = Backbone.Model.extend({
 
   },
 
-  // when 'reviews' come in from the server, they're an array...
-  // this will set them back to being a collection
-  parse: function (response) {
-    var items = response.items;
-    console.log('invoked parse');
-    console.log(items);
-    // return items;
-    this.updateDefaults(items);
-  },
-
   //   parse: function(response) {
   //     var items = response.data.items;
   //     return _.pluck(items, 'video');
@@ -37,5 +27,5 @@ var VideoModel = Backbone.Model.extend({
   clicked: function () {
     console.log('Video Model says: clicked in Video View');
   }
-  
+
 });
