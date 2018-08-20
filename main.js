@@ -1,5 +1,9 @@
-//new AppView pass in the AppModel
+//instantiate a new appModel when page loads
 
 var appModel = new AppModel();
 
-var appView = new AppView({model: appModel});
+//create new appView that passes in the new appModel
+
+var appView = new AppView({
+  model: appModel
+});

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,54 +15,58 @@
 
   <title>Document</title>
 </head>
+
 <body>
 
   <!-- ========= Header and Form Sections ============= -->
-    <div class="py-5 text-center">
-      <div class="container py-2">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="display-3 mb-4 text-primary">You-toooooob</h1>
-            <blockquote class="blockquote">
-              <p class="mb-0">All truths are easy to understand once they are discovered; the point is to discover them.</p>
-              <footer class="blockquote-footer">Galileo Galilei</footer>
-            </blockquote>
-            <form class="search-query-form" style="opacity: 0.5;">
-              <div class="form-group"><input type="text" class="form-control" placeholder="Search"></div>
-              <button type="button" class="btn btn-primary search-btn" id= "search-btn">Search</button>
-            </form>
-          </div>
+  <div class="py-5 text-center">
+    <div class="container py-2">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="display-3 mb-4 text-primary">You-toooooob</h1>
+          <blockquote class="blockquote">
+            <p class="mb-0">All truths are easy to understand once they are discovered; the point is to discover them.</p>
+            <footer class="blockquote-footer">Galileo Galilei</footer>
+          </blockquote>
+          <form class="search-query-form" style="opacity: 0.5;">
+            <div class="form-group">
+              <input type="text" class="form-control search-input" placeholder="Search">
+            </div>
+            <button type="button" class="btn btn-primary search-btn" id="search-btn">Search</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
   <!--  =============== Related Videos Section========= -->
 
-    <div class="main-video" id="main-video-section"></div>
+  <div class="main-video" id="main-video-section"></div>
 
-      <div class="related-videos-list container">
-        <ul>
-        <!-- render video list here -->
-      </ul>
+  <div class="related-videos-list container">
+    <ul>
+      <!-- render video list here -->
+    </ul>
+  </div>
+
+
+  <script id="video-template" type="text/x-handlebars-template">
+    <div class="img-container">
+      <img src="{{imgUrl}}">
     </div>
+    <div class="content-container">
+      <p class="title">title: {{title}}</p>
+      <p class="decscription"> description: {{description}} </p>
+      <iframe width="560" height="315" src=https://www.youtube.com/embed/{{videoID}}></iframe>
+    </div>
+  </script>
 
-
-    <script id="video-template" type="text/x-handlebars-template">
-        <div class="img-container">
-          <img src="{{imgUrl}}">
-        </div>
-        <div class="content-container">
-          <p class="title">title: {{title}}</p>
-          <p class="decscription"> description: {{description}} </p>
-          <iframe width="560" height="315" src=https://www.youtube.com/embed/{{videoID}}></iframe>
-        </div>
-    </script>
-
-<script src="js/models/AppModel.js"></script>
-<script src="js/models/VideoModel.js"></script>
-<script src="js/collections/VideosCollection.js"></script>
-<script src="js/views/VideoView.js"></script>
-<script src="js/views/AppView.js"></script>
-<script src="main.js"></script>
+  <script src="js/models/AppModel.js"></script>
+  <script src="js/models/VideoModel.js"></script>
+  <script src="js/collections/VideosCollection.js"></script>
+  <script src="js/views/VideoView.js"></script>
+  <script src="js/views/AppView.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>
