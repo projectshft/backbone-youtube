@@ -14,7 +14,7 @@ var AppView = Backbone.View.extend({
     this.$videoPlayer = this.$('.video-player');
     this.listenTo(this.model.get('videos'), 'add', this.renderNextVideos);
     this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo);
-    this.makeVideoList("cats");
+    this.makeVideoList('cats');
   },
 
   fetchSearch: function (e) {
