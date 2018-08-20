@@ -9,6 +9,7 @@ var VideosCollection = Backbone.Collection.extend({
 //url is hardcoded for now, but should populate dynamically based on search query user input
   url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyD0EafJFEfzx7pWml4jkg9kLbdRJT0sFnM&part=snippet&type=video&q=cats',
 
+
 //using the model defined in the VideosCollection constructor (in this case videoModel) create new instances of the model  and return an array of model objects to the collection (i.e. get back the info to render on the page)
 
   parse: function (response) {
