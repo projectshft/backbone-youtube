@@ -40,10 +40,10 @@ var AppView = Backbone.View.extend({
   // Add all items in the collection at once.
   //myCollection.each(function(model, index, [context]) {...});
   renderAll: function() {
-    this.model.get('videos').each(function(m) {
-      console.log(m.attributes);
+    this.model.get('videos').each(function(model) {
+      console.log(model.attributes);
       var videoView = new VideoView({
-        model: Video,
+        model: model,
         wait: true
       });
       this.$relatedVideosList.append(videoView.render().el)
