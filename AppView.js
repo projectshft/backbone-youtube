@@ -1,6 +1,6 @@
 AppView = Backbone.View.extend({
   el: $('body'),
-  collection: VideoCollection,
+  // collection: VideoCollection,
 
   events: {
     'click #main-button': 'getData',
@@ -11,9 +11,11 @@ AppView = Backbone.View.extend({
     this.$input = this.$el.find('#main-input')
     this.$videoPosts = this.$('#video-posts')
 
-    console.log('initializing!');
+    console.log('initializing');
 
-    this.listenTo(this.model.get('videos'), "reset", console.log('reset is TRUE!'));
+    this.listenTo(this.model.get('videos'), "reset", this.showModel);
+    // this.listenTo(this.model, "change", collection.showModel);
+
   },
 
   getData: function () {
