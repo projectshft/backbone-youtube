@@ -19,9 +19,9 @@
       <div class="row">
         <div class="col-xs-10 col-md-10">
         <div class="input-group">
-          <input type="search" class="form-control"  placeholder="Search Videos" id="txtSearch"/>
+          <input type="search" class="form-control"  placeholder="Search Videos" id="txtSearch">
           <div class="input-group-btn">
-            <button type="submit" class="btn btn-primary">
+            <button type="button" class="btn btn-primary submit">
               <span>Search</span>
               </button>
           </div>
@@ -47,15 +47,15 @@
     </div>
   </div>
   <!--list-->
-  <div class="col-4">
-    <h1>Something</h1>
+  <div class="col-4" id="list-view">
+    <!-- <h1>Something</h1> -->
   </div>
 </div>
 </div>
 
 <script id="video-template" type="text/x-handlebars-template">
   <div class="content-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/{{id}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/{{videoId}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 </script>
 <script id="description-template" type="text/x-handlebars-template">
@@ -64,6 +64,13 @@
     <p>{{Description}}</p>
   </div>
 </script>
+<script id="list-template" type="text/x-handlebars-template">
+  <div class="sideVideo-container">
+    <ul>{{title}}</ul>
+  </div>
+</script>
+
+
 
 
 

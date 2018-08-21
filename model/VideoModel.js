@@ -3,6 +3,10 @@ var VideoModel = Backbone.Model.extend({
     videoId: '',
     title: '',
     description: '',
-    image_URL: '',
+    thumbnail: '',
+  },
+  initialize: function(){
+    console.log('video model initialized')
   }
 })
+var videoModel = new VideoModel();

@@ -1,8 +1,15 @@
 var AppModel = Backbone.Model.extend({
   defaults: function () {
-      videos: new VideoCollection();
+    return {
+      videos: new VideoCollection(),
 
-      return videos;
 
+      current_video: null
+    }
+
+  },
+  initialize: function(){
+    console.log('app model initialized')
   }
 })
+var appModel = new AppModel();

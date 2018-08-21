@@ -4,7 +4,8 @@ var VideoView = Backbone.View.extend ({
   template: Handlebars.compile($('#video-template').html()),
 
   initialize: function() {
-   this.listenTo(this.model, 'change', this.render);
+    console.log('video view initialized')
+    this.listenTo(this.model, 'change', this.render);
  },
 
  render: function() {
@@ -13,3 +14,4 @@ var VideoView = Backbone.View.extend ({
  }
 
 })
+videoView = new VideoView();
