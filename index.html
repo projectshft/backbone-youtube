@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="node_modules/backbone/backbone-min.js"></script>
+    <script type="text/javascript" src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <input id="search-input">
 
-<head>
-  <meta charset="utf-8">
-  <title>Youtube Generator</title>
-  <meta name="viewport" content="width=device-width" , initial-scale="1">
-  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <button type="button" id="submit">Search</button>
 
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/underscore/underscore-min.js"></script>
-  <script src="node_modules/backbone/backbone-min.js"></script>
-  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+      <div id="video-detail"></div>
 
-</head>
+      <ul id="video-list"></ul>
+    </div>
 
-<body>
-<section class="video-search">
-  <div class="search-bar container-fluid ">
-    <span><input type="text" id="searchInput" class="search rounded" placeholder="search"></input></span>
-    <button type="submit" id="submit"><i class="fa fa-search"></i></button>
-  </div>
-  <hr>
-  <div id="mainVideo">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoID}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-    </iframe>
-  </div>
-  <script id="video-template" type="text/x-handlebars-template">
-    <h3>{{title}}</h3>
-    <h5>Video Description: {{videoDesc}}</h5>
-  </script>
-</section>
+    <script id="video-detail-template" type="text/x-handlebars-template">
+      <div class="video-detail">
+        <div className="embed-responsive embed-responsive-16by9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div className="details">
+          <div>{{ title }}</div>
+          <div>{{ description }}</div>
+        </div>
+      </div>
+    </script>
 
+    <script id="video-item-template" type="text/x-handlebars-template">
+      <li class="video-item" data-id="{{ videoId }}">
+        <img src="{{thumbnail}}">
+      </li>
+    </script>
 
-</body>
-
-<script src="models/VideoModel.js"></script>
-<script src="collection/VideoCollection.js"></script>
-<script src="models/AppModel.js"></script>
-<script src="views/AppView.js"></script>
-<script src="views/VideoView.js"></script>
-<script src="main.js"></script>
-
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
