@@ -47,7 +47,7 @@ var VideoDetailView = Backbone.View.extend({
     model: VideoModel,
   
     fetchVideos: function(query) {
-      this.url = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyC2Aa1sPnkdlCOoY4FBapOe1zO3lrE8I0k&part=snippet&type=video&q=' + query;
+      this.url = 'https://www.googleapis.com/youtube/v3/search?key=' + query;
       // When we fetch we send the reset value to trigger a reset event on the model that we can watch for on the view
       this.fetch({reset:true})
     },
