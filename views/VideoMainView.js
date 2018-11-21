@@ -1,0 +1,8 @@
+var VideoMainView = Backbone.View.extend({
+  model: VideoModel,
+  template: Handlebars.compile($('#video-main-view-template').html()),
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
+})
