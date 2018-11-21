@@ -19,35 +19,47 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-        <div id="search">
-            <input type="text" placeholder="Search..">
-        </div>
 
-        <br>
 
-        <section class="currentlyPlaying">
-            <div id="videoPlayer"></div>
-
-            <div id="videoInfo"></div>
-        </section>
-
-        <section id="relatedVideoList">
-
-        </section>
+    <div id="search">
+        <input class="search" type="text" placeholder="Search..">
     </div>
 
-    <script id="player-template" type="text/x-handlebars-template">
-        <div>{{player}}</div>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 currentlyPlaying">
+                <div id="videoPlayer">
+                    <h3>Currently Playing Video goes here</h3>
+
+                </div>
+
+                <div id="videoInfo">
+                    <h4>Video Title</h4>
+                    <p>Video Description</p>
+                </div>
+            </div>
+
+            <div class="col-med-4 relatedVideoList">
+                <p>Video 1 thumbnail and image</p>
+                <p>Video 2 thumbnail and image</p>
+                <p>Video 3 thumbnail and image</p>
+                <p>Video 4 thumbnail and image</p>
+                <p>Video 5 thumbnail and image</p>
+            </div>
+        </div>
+
+        <script id="player-template" type="text/x-handlebars-template">
+            <div>{{player}}</div>
         <div>
             {{video title}}
             {{video description}}
         </div>
     </script>
 
-    <script id="list-template" type="text/x-handlebars-template">
-        <section id="videoList">
+        <script id="list-template" type="text/x-handlebars-template">
+            <section id="videoList">
             <h3> Related Videos</h3>
             <div class="list-group">
                 <!--Bootstrap - actionable with active, disabled, and hover states -->
@@ -63,8 +75,10 @@
     </script>
 
 
-    <script src=""
-    <script src="script.js"></script>
+        <!-- ADD SCRIPT TAGS FOR JS FILES  -->
+        <script src="Models/AppModel.js"></script>
+        <script src="Views/AppView.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>

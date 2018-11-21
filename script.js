@@ -1,4 +1,6 @@
-var appModel = new appModel();
+// var appModel = new AppModel();
 
-var appView = new appView();
+var appView = new AppView();
 
+//fetch collection when page loads
+// appModel.get(#).fetch({reset: true});

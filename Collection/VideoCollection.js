@@ -3,4 +3,11 @@ var VideoCollection = Backbone.Collection.extend ({
 
     model: VideoView,
     
+    //have videos already showing from server
+
+//     addVideo: function ( ###){
+//         this.add({
+//             ##: ##,
+//         })
+//     }
 })
