@@ -15,25 +15,28 @@
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-    
-    </head> 
-    
-    <body>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
         <div id="search">
-        <input type="text" placeholder="Search..">
+            <input type="text" placeholder="Search..">
+        </div>
+
+        <br>
+
+        <section class="currentlyPlaying">
+            <div id="videoPlayer"></div>
+
+            <div id="videoInfo"></div>
+        </section>
+
+        <section id="relatedVideoList">
+
+        </section>
     </div>
-
-    <br>
-
-    <section>
-        <div id="videoPlayer"></div>
-
-        <div id="videoInfo"></div>
-    </section>
-
-    <section id="relatedVideoList">
-
-    </section>
 
     <script id="player-template" type="text/x-handlebars-template">
         <div>{{player}}</div>
@@ -60,8 +63,8 @@
     </script>
 
 
-
+    <script src=""
     <script src="script.js"></script>
-    </body>
+</body>
 
 </html>
