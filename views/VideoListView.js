@@ -1,5 +1,5 @@
 const VideoListView = Backbone.View.extend({
-  className: 'video-list-item',
+  className: 'video-list-item mb-3',
   template: Handlebars.compile($(`#video-list-template`).html()),
 
   render() {
