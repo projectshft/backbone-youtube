@@ -1,4 +1,4 @@
-const ytAPI = `AIzaSyDHgux6pyvNhGIGufPIEF5E-qePUfMdKqo`;
+const ytAPI = `{API KEY}`;
 
 const app = new App();
 // Initialize app with a videos
