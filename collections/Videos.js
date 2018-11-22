@@ -11,7 +11,7 @@ const Videos = Backbone.Collection.extend({
       id: m.id.videoId,
       title: m.snippet.title,
       desc: m.snippet.description,
-      thumbnail: m.snippet.thumbnails.default
+      thumbnail: m.snippet.thumbnails.default.url
     }));
   }
 });

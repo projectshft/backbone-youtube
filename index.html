@@ -9,10 +9,57 @@
   <title>Backbone YouTube</title>
 </head>
 <body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <header class="text-center">
+          <h1 class="my-5">BackBone YouTube</h1>
+          <div class="d-flex justify-content-center">
+            <input class="search-videos form-control mb-5" type="text" placeholder="Search" required autofocus>
+            <hr>
+          </div>
+        </header>
+      </div>
+    </div>
 
+    <div class="row">
+      <section class="main col-md-6 offset-md-1"></section>
+      <aside class="playlist col-md-4">
+        <div class="video-list list-group"></div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- *********** Handlebars Templates *********** -->
+  <!-- Video Template -->
+  <script type="text/template" id="video-template">
+    <div class="card-img-top embed-responsive embed-responsive-16by9">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ id }}" frameborder="2" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="card-body video-details">
+      <h5 class="card-title"><strong>{{ title }}</strong></h5>
+      <p class="card-text">{{ desc }}</p>
+    </div>
+  </script>
+
+  <!-- Video List Template -->
+  <script type="text/template" id="video-list-template">
+    <a href="#" data-id="{{ id }}" class="list-group-item list-group-item-action">
+      <img src="{{ thumbnail }}" alt="Video Thumbnail">
+      <p>{{ title }}</p>
+    </a>
+  </script>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="node_modules/underscore/underscore-min.js"></script>
   <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="models/Video.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="collections/Videos.js"></script>
+  <script src="views/VideoListView.js"></script>
+  <script src="models/App.js"></script>
+  <script src="views/AppView.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
