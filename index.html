@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -41,43 +42,67 @@
                 </div>
             </div>
 
-            <div class="col-med-4 relatedVideoList">
-                <p>Video 1 thumbnail and image</p>
-                <p>Video 2 thumbnail and image</p>
-                <p>Video 3 thumbnail and image</p>
-                <p>Video 4 thumbnail and image</p>
-                <p>Video 5 thumbnail and image</p>
+            <div class="col-md-4 relatedVideoList">
+                <h3> Related Videos</h3>
             </div>
         </div>
 
         <script id="player-template" type="text/x-handlebars-template">
-            <div>{{player}}</div>
-        <div>
-            {{video title}}
-            {{video description}}
-        </div>
-    </script>
+            <div>
+                <video>{{player}}</video>
+            </div>
+            <div>
+                <p class="title">{{snippet.title}}</p>
+                <p class="description">{{snippet.description}}</p>
+            </div>
+        </script>
 
         <script id="list-template" type="text/x-handlebars-template">
-            <section id="videoList">
-            <h3> Related Videos</h3>
+            <!-- <section id="videoList"> -->
+            
             <div class="list-group">
                 <!--Bootstrap - actionable with active, disabled, and hover states -->
-                <a href="#" class="list-group-item list-group-item-action active">
-                    {{thumbnail 1}} {{title 1}}
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div> 
+                        <img id="thumbnailImage" src="{{image}}">
+                    <h3 class="list-group-item-heading title">{{title}}
+                        </h3>
+                        <p class="list-group-item-text description">{{description}}</p>
+                    </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">{{thumbnail 2}} {{title 2}}</a>
-                <a href="#" class="list-group-item list-group-item-action">{{thumbnail 3}} {{title 3}}</a>
-                <a href="#" class="list-group-item list-group-item-action">{{thumbnail 4}} {{title 4}}</a>
-                <a href="#" class="list-group-item list-group-item-action disabled">{{thumbnail 5}} {{title 5}}</a>
             </div>
-        </section>
-    </script>
+
+               <!-- <a href="#" class="list-group-item list-group-item-action">
+                    {{snippet.thumbnails.default.url}} 
+                    {{snippet.description}}
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    {{snippet.thumbnails.default.url}} 
+                    {{snippet.description}}
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    {{snippet.thumbnails.default.url}}
+                     {{snippet.description}}
+                    </a>
+                <a href="#" class="list-group-item list-group-item-action disabled">
+                    {{snippet.thumbnails.default.url}}
+                    {{snippet.description}}
+                </a> -->
+            </div>
+        <!-- </section> -->
+        </script>
 
 
         <!-- ADD SCRIPT TAGS FOR JS FILES  -->
-        <script src="Models/AppModel.js"></script>
         <script src="Views/AppView.js"></script>
+        <script src="Models/AppModel.js"></script>
+
+        <script src="Models/VideoModel.js"></script>
+        <script src="Collection/VideoCollection.js"></script>
+        <script src="Models/AppModel.js"></script>
+        <script src="Views/VideoView.js"></script>
+
+
         <script src="script.js"></script>
 </body>
 
