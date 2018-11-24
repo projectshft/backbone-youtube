@@ -30,7 +30,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 currentlyPlaying">
+            <div class="col-sm-8 currentlyPlaying">
                 <div id="videoPlayer">
                     <h3>Currently Playing Video goes here</h3>
 
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 relatedVideoList">
+            <div class="col-sm-4 relatedVideoList">
                 <h3> Related Videos</h3>
             </div>
         </div>
@@ -52,8 +52,8 @@
                 <video>{{player}}</video>
             </div>
             <div>
-                <p class="title">{{snippet.title}}</p>
-                <p class="description">{{snippet.description}}</p>
+                <p class="title">{{items.0.snippet.title}}</p>
+                <p class="description">{{items.0.snippet.description}}</p>
             </div>
         </script>
 
@@ -62,15 +62,56 @@
             
             <div class="list-group">
                 <!--Bootstrap - actionable with active, disabled, and hover states -->
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="#" class="list-group-item list-group-item-action media">
                     <div> 
-                        <img id="thumbnailImage" src="{{image}}">
-                    <h3 class="list-group-item-heading title">{{title}}
-                        </h3>
-                        <p class="list-group-item-text description">{{description}}</p>
+                        <img id="thumbnailImage" src="{{items.0.snippet.thumbnails.default.url}}">
+                        <div class="media-body">
+                            <h6 class="list-group-item-heading title"><b>{{items.0.snippet.title}}</b>
+                            </h6>
+                            <p class="list-group-item-text description">{{items.0.snippet.description}}</p>
+                        </div>
                     </div>
                 </a>
-            </div>
+                <a href="#" class="list-group-item list-group-item-action media">
+                    <div>
+                        <img id="thumbnailImage" src="{{items.1.snippet.thumbnails.default.url}}">
+                        <div class="media-body">
+                            <h6 class="list-group-item-heading title"><b>{{items.1.snippet.title}}</b>
+                            </h6>
+                            <p class="list-group-item-text description">{{items.1.snippet.description}}</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action media">
+                    <div>
+                        <img id="thumbnailImage" src="{{items.2.snippet.thumbnails.default.url}}">
+                        <div class="media-body">
+                            <h6 class="list-group-item-heading title"><b>{{items.2.snippet.title}}</b>
+                            </h6>
+                            <p class="list-group-item-text description">{{items.2.snippet.description}}</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action media">
+                    <div>
+                        <img id="thumbnailImage" src="{{items.3.snippet.thumbnails.default.url}}">
+                        <div class="media-body">
+                            <h6 class="list-group-item-heading title"><b>{{items.3.snippet.title}}</b>
+                            </h6>
+                            <p class="list-group-item-text description">{{items.3.snippet.description}}</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action media">
+                    <div>
+                        <img id="thumbnailImage" src="{{items.4.snippet.thumbnails.default.url}}">
+                        <div class="media-body">
+                            <h6 class="list-group-item-heading title"><b>{{items.4.snippet.title}}</b>
+                            </h6>
+                            <p class="list-group-item-text description">{{items.4.snippet.description}}</p>
+                        </div>
+                    </div>
+                </a>
 
                <!-- <a href="#" class="list-group-item list-group-item-action">
                     {{snippet.thumbnails.default.url}} 
