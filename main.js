@@ -1,5 +1,13 @@
-var videoCollection = new VideoCollection();
+var appModel = new AppModel();
 
-var appView = new AppView();
+var appView = new AppView({model: appModel});
 
-//appModel.get('videos').fetch({ reset: true });
+//default search on page load
+appModel.get('videos').fetchQuery("cats");
+
+//working on infinite scroll
+// $(window).scroll(function() {
+//    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+//        console.log("near bottom!");
+//    }
+// });

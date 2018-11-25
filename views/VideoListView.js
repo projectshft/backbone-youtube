@@ -1,3 +1,4 @@
+//right-hand column view - list of five videos
 var VideoListView = Backbone.View.extend({
   model: VideoModel,
   template: Handlebars.compile($('#video-list-view-template').html()),
