@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+  <title></title>
+</head>
+<body>
+
+  <div class="container">
+      // This is the Search Container
+    <div class="col-md-10 offset-md-3">
+      <form class="form-inline">
+        <div>
+          <input id="search" type="text" class="mysearch form-control mb-2 mr-sm-2" placeholder="Search"/>
+        </div>
+        <div>
+          <button type="button" id="search-button" class="btn btn-primary mb-2">Search</button>
+        </div>
+      </form>
+      <div class="row">
+          <div class="col" id="video">
+          </div>
+          <div class="col" id="video-list">
+          <!-- <form class="form-online">
+          <div>Related Video
+          </div>
+          <div>Related Video</div>
+          <div>Related Video</div>
+          <div>Related_Video</div>
+          </form> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script id="video-template" type="text/x-handlebars-template">
+  // This is the Video.
+  <iframe width="420" height="345" src="https://www.youtube.com/embed/{{id}}">
+  </iframe>
+  // This is the container of the Video Title and Video Description
+  <div class="container">
+    <div class="card text-left">
+        <div class="card-body">
+    <div class="video-container show">
+      <div class="form-group">
+         Video Title: {{title}}
+      </div>
+        <div class="form-group">
+       Video Description: {{description}}
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+</script>
+<script id="video-list-template" type="text/x-handlebars-template">
+  //This contains the Related Video.
+    {{#each this}}
+  <div class="card text-center">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <img src={{thumbnail_url}}>
+          </div>
+          <div class="col">
+          {{title}}
+          </div>
+        </div>
+      </div>
+  </div>
+    {{/each}}
+</script>
+<script id="video-list-item-template" type="text/x-handlebars-template">
+</script>
+
+  <script src="models/AppModel.js"></script>
+  <script src="models/SearchModel.js"></script>
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/SearchView.js"></script>
+  <script src="views/VideoListItemView.js"></script>
+  <script src="views/VideoListView.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
