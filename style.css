@@ -5,3 +5,30 @@
 #search-bar {
   max-width: 60rem;
 }
+
+.col-6 {
+  max-width: 60rem;
+  height: 500px;
+  border: black solid;
+  text-align: center;
+
+}
+
+#youtube-logo {
+  max-width: 75px;
+}
+
+
+.container {
+  margin-left: 60px;
+}
+
+
+.list-group {
+  margin-top: 40px;
+}
+
+.section {
+  border: black solid;
+  text-align: left;
+}

@@ -12,16 +12,41 @@
   </head>
   <body>
     <div class="container" id="search-section">
-    <h1>BackBone Youtube</h1>
+      <h1><img id="youtube-logo" src="https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/512/youtube.png">BackBone Youtube</h1>
           <div class="form-group">
             <input type="text" class="form-control" id="search-bar" placeholder="Search">
           </div>
         </div>
-
+      <div class="container row flex-center">
+        <div class="col-6" id="current-video">
+          <h3>Currently Playing</h3>
+          <!-- <iframe src="https://www.youtube.com/embed/hDm22pMfvEQ/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="section" id="currently playing description">
+            <p>Video Title</p>
+            <p>Video Description</p>
+          </div> -->
+        </div>
+        <div class="col-6">
+          <ul class="list-group" id="additional-vids">
+            <!-- <li class="list-group-item">Vid 1</li>
+            <li class="list-group-item">Vid 2</li>
+            <li class="list-group-item">Vid 3</li> -->
+          </ul>
+        </div>
 
     <script id="currently-playing-template" type="text/x-handlebars-template">
+      <div>
+        <iframe src= "https://www.youtube.com/embed/"{{ videoId }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+          <div class="section" id="currently playing description">
+            <p>{{ title }}</p>
+            <p>{{ desc }}</p>
+          </div>
+      </div>
     </script>
-    <script type="additional-videos-template" type="text/x-handlebars-template">
+
+    <script id="additional-videos-template" type="text/x-handlebars-template">
+        <li class="list-group-item"> {{ title }} {{ desc }} {{ thumbnail }}</li>
     </script>
 
     <script src="models/VideoModel.js"></script>
@@ -32,3 +57,12 @@
     <script src="main.js"></script>
   </body>
 </html>
+
+
+<!-- function search() {
+  var q = $('#query').val();
+  var request = gapi.client.youtube.search.list({
+    q: q,
+    part: 'snippet'
+  });
+ -->
