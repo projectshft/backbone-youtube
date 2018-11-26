@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;">
+
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- Search bar and search button -->
+  <div class="container row">
+    <div class="search-bar input-group col-md-9 col-offset-6">
+      <input type="text" class="form-control" id="search-bar-input" placeholder="Enter Video Search Here">
+      <div class="input-group-append">
+        <button class="btn btn-default search" type="button">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- The video player element and the related videos are in one row -->
+    <div class="row">
+      <div class="current-video-player col-md-7">
+      </div>
+      <div class="related-container col-md-5">
+      <div class="related-videos">
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- handlebar scripts -->
+
+  <!-- current player script -->
+
+  <script id="current-player" type="text/x-handlebars-template">
+    <div class="current-video col-md-7">
+    <div class="video">
+      <iframe id="ytplayer" type="text/html" width="620" height="390"
+      src="https://www.youtube.com/embed/{{videoId}}"
+      frameborder="1"></iframe>
+  </div>
+    <div class="video-info">
+      <h4>{{title}}</h4>
+      <h5>{{description}}</h5>
+    </div>
+  </div>
+</script>
+
+<!-- Related Videos template -->
+<script id="related-videos" type="text/x-handlebars-template">
+  <div class="related-video row select" data-id='{{videoId}}'>
+    <img class="col-xs-8" src='{{thumb_url}}' width="150px" height="100px" >
+    <a href="#" class=" col-xs-4">{{title}}</a>
+  </div>
+</script
+
+
+
+<!-- Backbone scripts and files  -->
+<script src="models/VideoModel.js"></script>
+
+<script src="collections/VideoCollection.js"></script>
+
+<script src="models/AppModel.js"></script>
+<script src="views/RelatedView.js"></script>
+
+<script src="views/VideoView.js"></script>
+
+<script src="views/AppView.js"></script>
+
+<script src="main.js" charset="utf-8"></script>
+  <!--example js file order -->
+  <!-- <script src="models/BeerModel.js"></script>
+<script src="models/ReviewModel.js"></script>
+<script src="collections/BeersCollection.js"></script>
+<script src="collections/ReviewsCollection.js"></script>
+<script src="models/AppModel.js"></script>
+<script src="views/AppView.js"></script>
+<script src="views/BeerView.js"></script>
+<script src="views/ReviewView.js"></script>
+<script src="views/BeerDetailView.js"></script>
+<script src="main.js"></script> -->
+
+</body>
+</html>

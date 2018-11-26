@@ -1,0 +1,28 @@
+body{
+  overflow: scroll;
+}
+.search-bar{
+  margin:20px;
+  margin-left:150px;
+}
+
+.related-video{
+  background-color:#EEEEEF;
+  margin:5px;
+  border-radius: 5px;
+
+}
+.related-videos a {
+  color:black;
+}
+.related-container{
+  overflow: scroll;
+  height:500px;
+}
+.video-info{
+  width:500px;
+}
+.video-info h5{
+  font-size:.9em;
+  font-weight: 300;
+}
