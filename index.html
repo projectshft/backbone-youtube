@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+  <meta charset="utf-8">
+  <title>Backbone YouTube</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 offset-md-2">
+        <header class="text-center">
+          <h1><i class="fa fa-youtube-play"></i>YouTube</h1>
+          <input class="search form-control mb-3" type="text" placeholder="Search" required autofocus>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 current-video">
+      </div>
+
+      <div class="col-sm-4">
+        <ul class="up-next-videos">
+        </ul>
+      </div>
+    </div>
+
+    <!--HandleBars Templates-->
+    <!--video description template-->
+    <script id="video-description-template" type="text/x-handlebars-template">
+      <div class="embed-responsive embed-responsive-16by9" id="ytplayer">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+       <div class="current-video-info">
+         <p>{{videoTitle}}<p>
+         <p>{{videoDescription}}<p>
+  </div>
+</div>
+  </script>
+
+  <!--up-next-video template-->
+
+  <script id="up-next-template" type="text/x-handlebars-template">
+    <div>
+      <a href="#" data-id="{{id}}" class="next-video">
+      <img src="{{thumbnail}}"></img>
+      <div>{{videoTitle}}</div>
+    </a>
+  </div>
+  </script>
+
+
+    <script src="models/currentlyPlayingModel.js"></script>
+    <script src="views/currentlyPlayingView.js"></script>
+    <script src="collections/UpNextVideoCollection.js"></script>
+    <script src="views/upNextView.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
