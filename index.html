@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -10,6 +11,7 @@
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
   <title>YouTube Backbone Project</title>
 </head>
+
 <body>
   <div class="container page rounded">
     <div class="row">
@@ -19,11 +21,9 @@
     </div>
     <div class="row">
       <div class="col-8 current-video-container">
-
       </div>
       <div class="col-4">
         <ul class="side-video-list">
-
         </ul>
       </div>
     </div>
@@ -45,7 +45,7 @@
   </script>
 
   <script id="sidebar-template" type="text/x-handlebars-template">
-      <img src="{{ thumbnail }}" alt="thumbnail"><a class="video" href="#" data-videoID="{{ videoID }}">{{ title }}</a>
+    <img src="{{ thumbnail }}" alt="thumbnail"><a class="video" href="#" data-videoID="{{ videoID }}">{{ title }}</a>
   </script>
 
   <script src="models/VideoModel.js"></script>
@@ -56,4 +56,5 @@
   <script src="views/VideoView.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>
