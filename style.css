@@ -16,7 +16,7 @@ input {
 }
 
 .side-video {
-  height: 80px;
+  height: 90px;
   margin: 10px 0;
   background: white;
 }
@@ -31,4 +31,14 @@ a.unlink {
 }
 a.unlink:hover {
   color: inherit;
+}
+
+img {
+  float: left;
+  width: 25%;
+  height: auto;
+}
+
+a {
+  font-size: 10px;
 }

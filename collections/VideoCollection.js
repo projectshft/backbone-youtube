@@ -1,11 +1,18 @@
 var VideoCollection = Backbone.Collection.extend({
 
-  model: VideoModel,
-
-  query: "bohemian+rhapsody+covers",
+  initialize: function(models, options) {
+    this.query = options.query;
+  },
 
   url: function() {
-      return "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video$videoEmbeddable=true&key=AIzaSyBx1hXgYHVu15iL3tVUumBApjWhI41C848&maxResults=5&order=viewCount&q=" + this.query;
+    return "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video$videoEmbeddable=true&key=AIzaSyBx1hXgYHVu15iL3tVUumBApjWhI41C848&maxResults=5&order=viewCount&q=" + this.query;
+  },
+
+  model: VideoModel,
+
+  setQueryAndFetch: function(newQuery) {
+    this.query = newQuery;
+    this.fetch({reset: true});
   },
 
   parse: function (response) {

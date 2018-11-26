@@ -2,12 +2,9 @@ var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
 
-      videos: new VideoCollection(),
+      videos: new VideoCollection(null, {query:"cute+cats"}),
 
       current_video: null,
     }
   },
-  // getVideos: function(){
-  //   console.log(this.attributes);
-  // }
 });

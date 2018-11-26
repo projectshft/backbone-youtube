@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
@@ -31,12 +31,12 @@
 
 
   <script id="current-video-template" type="text/x-handlebars-template">
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/" + {{ videoID }} ></iframe>
+    <div id="ytplayer" type="text/html" class="embed-responsive embed-responsive-16by9" frameborder='0' allowfullscreen>
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ videoID }}"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="box rounded current-info">
       <div class="current-title">
-        <p>{{ title }}</p>
+        <p><b>{{ title }}</b></p>
       </div>
       <div class="current-description">
         <p>{{ description }}</p>
@@ -45,15 +45,14 @@
   </script>
 
   <script id="sidebar-template" type="text/x-handlebars-template">
-    <a href="#"><li class="side-video rounded">
-      <img src="{{ thumbnail }}" alt="thumbnail"><span>{{ title }}</span>
-    </li></a>
+      <img src="{{ thumbnail }}" alt="thumbnail"><a class="video" href="#" data-videoID="{{ videoID }}">{{ title }}</a>
   </script>
 
   <script src="models/VideoModel.js"></script>
   <script src="collections/VideoCollection.js"></script>
   <script src="models/AppModel.js"></script>
   <script src="views/AppView.js"></script>
+  <script src="views/CurrentVideoView.js"></script>
   <script src="views/VideoView.js"></script>
   <script src="main.js"></script>
 </body>
