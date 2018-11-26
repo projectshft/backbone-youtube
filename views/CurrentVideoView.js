@@ -1,6 +1,6 @@
 var CurrentVideoView = Backbone.View.extend({
 
-  // className: 'currently-playing-video',
+  className: 'currently-playing-video',
 
   template: Handlebars.compile($('#currently-playing-template').html()),
 

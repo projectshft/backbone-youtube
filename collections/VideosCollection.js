@@ -6,7 +6,7 @@ var VideosCollection = Backbone.Collection.extend({
     //set the url for the fetch request to the youtube API endpoint with my API key set up and allow for the query to be a parameter
     //passed into the getVideos property to allow for dynamic results each search
     this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyDnc1FKH9lz6AlgkofR3m62u2gZnpLqUk4&q=${query}`;
-    //reset the values each search
+    //using the reset property to trigger the reset event in appView
     this.fetch({ reset: true });
   },
 
@@ -21,7 +21,8 @@ var VideosCollection = Backbone.Collection.extend({
         videoId: video.id.videoId
       }
     })
-    console.log(result);
+    // console.log(result);
+    return result;
   }
 });
 //

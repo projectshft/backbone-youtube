@@ -8,9 +8,10 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model.get('videos'), 'change', this.renderVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+
     // this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-    this.renderVideos();
+    // this.renderVideos();
   },
 
   searchVideos: function(e) {
@@ -25,12 +26,18 @@ var AppView = Backbone.View.extend({
         this.model.set('query', query)
         this.model.get('videos').getVideos(this.model.get('query'));
       }
+      $('#search-bar').val('')
     }
   },
 
   renderVideo: function (video) {
-      var videoView = new VideoView({ model: video });
-      this.$('#additional-vids').append(videoView.render().el)
+    var videoView = new VideoView( { model: video });
+    this.$('#additional-vids').append(videoView.render().el)
+    console.log(videoView)
+  },
+
+  renderCurrentVideo: function () {
+
   },
 
   renderVideos: function () {
@@ -38,6 +45,7 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').each(function (video) {
       this.renderVideo(video);
     }, this);
+    // console.log('hello')
   },
 
   selectVideo: function() {
