@@ -36,9 +36,9 @@
 
     <script id="currently-playing-template" type="text/x-handlebars-template">
       <div>
-        <iframe src= "https://www.youtube.com/embed/"{{ videoId }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        <iframe src= "https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allowfullscreen>
         </iframe>
-          <div class="section" id="currently playing description">
+          <div class="section" id="currently-playing-description">
             <p>{{ title }}</p>
             <p>{{ desc }}</p>
           </div>
@@ -54,6 +54,7 @@
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="views/VideoView.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

@@ -10,8 +10,7 @@ var AppView = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
-    //there is probably a more DRY approach to initalizing a search, but alas, this works
-    this.model.set('query', 'asmr');
+    //initial a get request
     this.model.get('videos').getVideos(this.model.get('query'));
 
 
@@ -27,7 +26,7 @@ var AppView = Backbone.View.extend({
           //error handling to account for an empty search query
           alert('Please enter a valid video topic to search!');
         } else {
-        //set a new attribute to the AppModel that represents the query
+        //set the query attribute to the search information
         this.model.set('query', query)
         this.model.get('videos').getVideos(this.model.get('query'));
       }
@@ -36,27 +35,32 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideo: function (video) {
-
+    // var loopingVariable = this.model.get('videos').models;
     // var loopingVids = this.model.get('videos').length;
-    // for (var i = 0; i < loopingVids; i ++) {
-      var videoView = new VideoView( { model: video });
-      // if (i > 0) {
-        this.$('#additional-vids').append(videoView.render().el)
-    //   }
+    // for (var i = 0; i < loopingVariable.length; i++) {
+      // if (loopingVariable[i] > 0) {
+        var videoView = new VideoView( { model: video } );
+        this.$('#additional-vids').append(videoView.render().el);
+      // }
     // }
   },
 
-  renderCurrentVideo: function () {
-
+  renderCurrentVideo: function (video) {
+    var currentVideoView = new CurrentVideoView ( { model: video } );
+    this.$('#current-video').append(currentVideoView.render().el)
   },
 
   renderVideos: function () {
-    $('#additional-vids').empty()
-    //this will allow for the view to cycle through each video and render them accordingly
-    this.model.get('videos').each(function (video) {
-      this.renderVideo(video);
-    }, this);
-    console.log(this.model.get('videos'))
+    $('#additional-vids').empty();
+    $('#current-video').empty();
+
+    var firstVideo = this.model.get('videos').models[0];
+
+    this.renderCurrentVideo(firstVideo);
+
+    for (var i = 1; i < this.model.get('videos').models.length; i++) {
+      this.renderVideo(this.model.get('videos').models[i]);
+    }
   },
 
   selectVideo: function() {
