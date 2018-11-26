@@ -10,6 +10,11 @@ var AppView = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
+    //there is probably a more DRY approach to initalizing a search, but alas, this works
+    this.model.set('query', 'asmr');
+    this.model.get('videos').getVideos(this.model.get('query'));
+
+
     // this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
     // this.renderVideos();
   },
@@ -31,9 +36,14 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideo: function (video) {
-    var videoView = new VideoView( { model: video });
-    this.$('#additional-vids').append(videoView.render().el)
-    console.log(videoView)
+
+    // var loopingVids = this.model.get('videos').length;
+    // for (var i = 0; i < loopingVids; i ++) {
+      var videoView = new VideoView( { model: video });
+      // if (i > 0) {
+        this.$('#additional-vids').append(videoView.render().el)
+    //   }
+    // }
   },
 
   renderCurrentVideo: function () {
@@ -41,11 +51,12 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideos: function () {
+    $('#additional-vids').empty()
     //this will allow for the view to cycle through each video and render them accordingly
     this.model.get('videos').each(function (video) {
       this.renderVideo(video);
     }, this);
-    // console.log('hello')
+    console.log(this.model.get('videos'))
   },
 
   selectVideo: function() {
@@ -55,6 +66,3 @@ var AppView = Backbone.View.extend({
 
 
 });
-
-
- //https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=

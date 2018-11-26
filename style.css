@@ -23,12 +23,11 @@
   margin-left: 60px;
 }
 
-
-.list-group {
-  margin-top: 40px;
-}
-
 .section {
   border: black solid;
+  text-align: left;
+}
+
+.list-group-item {
   text-align: left;
 }
