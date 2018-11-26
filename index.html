@@ -31,15 +31,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 currentlyPlaying">
-                <div id="videoPlayer">
-                    <h3>Currently Playing Video goes here</h3>
-
-                </div>
-
-                <div id="videoInfo">
-                    <h4>Video Title</h4>
-                    <p>Video Description</p>
-                </div>
             </div>
 
             <div class="col-sm-4 relatedVideoList">
@@ -47,22 +38,24 @@
             </div>
         </div>
 
-        <script id="player-template" type="text/x-handlebars-template">
-            <div>
-                <video>{{player}}</video>
+        <script id="current-template" type="text/x-handlebars-template">
+            <div class="player-container">
+            <!-- change to video player -->
+                <video controls> 
+                    <source src="https://youtu.be/{{items.0.id.videoId}}">
+                </video>
             </div>
-            <div>
+            <div class="content-container">
                 <p class="title">{{items.0.snippet.title}}</p>
                 <p class="description">{{items.0.snippet.description}}</p>
             </div>
         </script>
-
+        
         <script id="list-template" type="text/x-handlebars-template">
-            <!-- <section id="videoList"> -->
-            
+
             <div class="list-group">
                 <!--Bootstrap - actionable with active, disabled, and hover states -->
-                <a href="#" class="list-group-item list-group-item-action media">
+                <a href="#" class="list-group-item list-group-item-action media view-Video" data-id={{id}}>
                     <div> 
                         <img id="thumbnailImage" src="{{items.0.snippet.thumbnails.default.url}}">
                         <div class="media-body">
@@ -113,25 +106,11 @@
                     </div>
                 </a>
 
-               <!-- <a href="#" class="list-group-item list-group-item-action">
-                    {{snippet.thumbnails.default.url}} 
-                    {{snippet.description}}
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    {{snippet.thumbnails.default.url}} 
-                    {{snippet.description}}
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    {{snippet.thumbnails.default.url}}
-                     {{snippet.description}}
-                    </a>
-                <a href="#" class="list-group-item list-group-item-action disabled">
-                    {{snippet.thumbnails.default.url}}
-                    {{snippet.description}}
-                </a> -->
             </div>
-        <!-- </section> -->
+       
         </script>
+
+
 
 
         <!-- ADD SCRIPT TAGS FOR JS FILES  -->
@@ -142,6 +121,7 @@
         <script src="Collection/VideoCollection.js"></script>
         <script src="Models/AppModel.js"></script>
         <script src="Views/VideoView.js"></script>
+        <!-- <script src="Views/PlayerView.js"></script> -->
 
 
         <script src="script.js"></script>

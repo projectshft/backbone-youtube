@@ -1,19 +1,37 @@
 var AppView = Backbone.View.extend({
     el: $('body'),
 
-    events: {
-        'keypress .search': 'createVideos'
-
-    },
+    template: Handlebars.compile($('#current-template').html()),
 
     initialize: function () {
-        //change to create
         this.listenTo(this.model.get('videoList'), 'add', this.renderThumbnails);
 
+    // this.listenTo(this.model, 'change:default_video', this.renderPage);
+
+
+        // this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo)
+
+        //on load, show videos already in que
         this.renderVideoList();
-        //      this.listenTo(this.model.get('videoList'), 'reset', this.renderVideoList);
+        this.renderDefaultVideo();
+        
+
+      
+
+    },
+    
+    events: {
+        'keypress .search': 'createVideos',
+        'click .view-Video': 'viewVideo'
     },
 
+    render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
+
+        //  this.renderCurrentVideo();
+
+        return this;
+    },
 
     createVideos: function (e) {
         //13 = enter key
@@ -23,7 +41,7 @@ var AppView = Backbone.View.extend({
             //make new collection and add videos
             this.model.get('videoList').addVideos(
                 //grab input
-               this.$('.search').val()
+                this.$('.search').val()
             );
 
             // read/GET/fetch data from API jQuery AJAX --> https://www.googleapis.com/youtube/v3/search
@@ -46,9 +64,21 @@ var AppView = Backbone.View.extend({
         this.$('.relatedVideoList').append(videoView.render().el);
     },
 
+    // viewVideo: function (e) {
+    //     //jQuery to add data to attribute (data) of e.currentTarget = this
+    //     var clickedVideoId = $(e.currentTarget).data().id;
+    //     this.model.playVideo(clickedVideoId);
+    // },
+
     renderVideoList: function () {
         this.model.get('videoList').each(function (v) {
             this.renderThumbnails(v);
         }, this);
-    }
+    },
+
+    renderDefaultVideo: function () {
+         this.model.setDefaultVideo();
+
+         this.$('.currentlyPlaying').append(this.render().el);
+     }
 });
