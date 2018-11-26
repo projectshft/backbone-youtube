@@ -4,6 +4,7 @@
 
 #search-bar {
   max-width: 60rem;
+  margin-left: 60px;
 }
 
 .col-6 {
@@ -23,13 +24,18 @@
 }
 
 .section {
-  border: black solid;
+  border: grey solid;
   text-align: left;
+  border-radius: 5px;
 }
 
 .list-group-item {
   text-align: left;
   border: none;
+}
+
+.list-group-item:hover {
+  color: blue;
 }
 
 #currently-playing-description {

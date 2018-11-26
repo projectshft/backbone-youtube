@@ -6,6 +6,7 @@ var VideoModel = Backbone.Model.extend({
       desc: '',
       thumbnail: '',
       videoId: '',
+      current_video: false
     }
   }
 });
