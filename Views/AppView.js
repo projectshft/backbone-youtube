@@ -4,10 +4,12 @@ var AppView = Backbone.View.extend({
     template: Handlebars.compile($('#current-template').html()),
 
     initialize: function () {
+             
+        // this.listenTo(this.model.get('videoList'), 'reset', this.renderVideoList);
+
         this.listenTo(this.model.get('videoList'), 'add', this.renderThumbnails);
 
-    // this.listenTo(this.model, 'change:default_video', this.renderPage);
-
+        // this.listenTo(this.model.get('videoList'), 'add', this.renderDefaultVideo);
 
         // this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo)
 
@@ -22,7 +24,7 @@ var AppView = Backbone.View.extend({
     
     events: {
         'keypress .search': 'createVideos',
-        'click .view-Video': 'viewVideo'
+        // 'click .view-Video': 'viewVideo'
     },
 
     render: function () {
@@ -33,29 +35,21 @@ var AppView = Backbone.View.extend({
         return this;
     },
 
+   
+
     createVideos: function (e) {
         //13 = enter key
         if (e.which === 13) {
-            // console.log('test');
+        console.log('test');
 
-            //make new collection and add videos
-            this.model.get('videoList').addVideos(
-                //grab input
-                this.$('.search').val()
+        //make new collection and add videos
+        this.model.get('videoList').addVideos(
+            //grab input
+            this.$('.search').val()
             );
-
-            // read/GET/fetch data from API jQuery AJAX --> https://www.googleapis.com/youtube/v3/search
-            // buildApiRequest('GET', '/youtube/v3/search', {
-            //         'maxResults': '25',
-            //         'part': 'snippet',
-            //         //value of search input
-            //         'q ': '',
-            //         'type': 'video'
-
-            //     };
         }
     },
-
+     
     renderThumbnails: function (thumbnails) {
         // console.log(thumbnails);
         var videoView = new VideoView({
@@ -64,6 +58,7 @@ var AppView = Backbone.View.extend({
         this.$('.relatedVideoList').append(videoView.render().el);
     },
 
+    
     // viewVideo: function (e) {
     //     //jQuery to add data to attribute (data) of e.currentTarget = this
     //     var clickedVideoId = $(e.currentTarget).data().id;
@@ -77,8 +72,7 @@ var AppView = Backbone.View.extend({
     },
 
     renderDefaultVideo: function () {
-         this.model.setDefaultVideo();
-
-         this.$('.currentlyPlaying').append(this.render().el);
-     }
+        var defaultAppView = new AppView({ model: appModel });
+        this.$('.currentlyPlaying').append(defaultAppView.render().el);
+    }
 });

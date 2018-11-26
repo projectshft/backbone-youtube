@@ -3,18 +3,22 @@ var AppModel = Backbone.Model.extend({
         return {
             //change null to current video
             videoList: new VideoCollection(),
-            default_video: null,
-            current_video: null
+            default_video: null
+
+            
+            // current_video: null
             
             
         }
     },
 
-    setDefaultVideo: function () {
+    playDefaultVideo: function () {
         var videosAll = this.get('videoList'); 
-        var array = _.toArray(videosAll);
-        
-        var defaultVideo = _.first(array);
+        // var array = _.toArray(videosAll);
+        // var defaultVideo = array[0];
+
+        var defaultVideo = videosAll.findWhere({ids: 1});
+
         console.log(defaultVideo);
         this.set('default_video', defaultVideo);
     }
@@ -23,7 +27,7 @@ var AppModel = Backbone.Model.extend({
     //     ids = parseInt(id);
     //     var allVideos = this.get('videoList');
     //     var currentVideo = allVideos.findWhere({
-    //         id: id
+    //         ids: id
     //     });
     //     this.set('current_video', currentVideo);
 

@@ -1,7 +1,8 @@
 var VideoCollection = Backbone.Collection.extend ({
-    // url: 'https://www.googleapis.com/youtube/v3/search?&key=AIzaSyCx1sNMmT0WK3AmUp3UTLMPXX1v8Vw7Cqs&part=snippet&fields=id/videoId,snippet(title,description,thumbnails/key/url)&maxResults=5&type=video&q=surfing',
-    
-  // where/how add API Key and search terms
+    // url: 'https://www.googleapis.com/youtube/v3/search?&key=AIzaSyCx1sNMmT0WK3AmUp3UTLMPXX1v8Vw7Cqs&part=snippet&fields=id/videoId,snippet(title,description,thumbnails/key/url)&maxResults=5&type=video&q=' +search+ '',
+
+    url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=surfing&type=video&key=AIzaSyCx1sNMmT0WK3AmUp3UTLMPXX1v8Vw7Cqs',
+
 
     model: VideoModel,
    
