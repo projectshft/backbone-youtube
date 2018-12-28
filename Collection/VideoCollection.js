@@ -18,3 +18,9 @@ var VideoCollection = Backbone.Collection.extend ({
         key: 'AIzaSyCx1sNMmT0WK3AmUp3UTLMPXX1v8Vw7Cqs'
     }), 
 });
+
+//create new list collection
+var videoList = new VideoCollection();
+
+//fetch data
+videoList.fetch();

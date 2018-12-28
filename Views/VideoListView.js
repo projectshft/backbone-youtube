@@ -22,4 +22,7 @@ var VideoListView = Backbone.View.extend({
     },
 
     
-})
+});
+
+//create new instance and associate with its collection
+var videosListView = new VideoListView({ collection: videoList});
