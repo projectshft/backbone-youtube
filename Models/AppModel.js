@@ -3,24 +3,19 @@ var AppModel = Backbone.Model.extend({
         return {
             //change null to current video
             videoList: new VideoCollection(),
-            default_video: null
-
-            
-            // current_video: null
-            
-            
+            current_video: null
         }
     },
 
-    playDefaultVideo: function () {
+    playCurrentVideo: function () {
         var videosAll = this.get('videoList'); 
         // var array = _.toArray(videosAll);
-        // var defaultVideo = array[0];
+        // var currentVideo = array[0];
 
-        var defaultVideo = videosAll.findWhere({ids: 1});
+        var currentVideo = videosAll.findWhere({ids: 1});
 
-        console.log(defaultVideo);
-        this.set('default_video', defaultVideo);
+        console.log(currentVideo);
+        this.set('default_video', currentVideo);
     }
 
     // playVideo: function (id) {

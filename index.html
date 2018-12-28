@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BAckbone YouTube</title>
+    <title>Backbone YouTube</title>
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -20,109 +20,65 @@
 </head>
 
 <body>
-
-
     <div id="search">
         <input class="search" type="text" placeholder="Search..">
     </div>
 
     <br>
 
-    <div class="container">
+    <div class="container" id="video-app">
         <div class="row">
             <div class="col-sm-8 currentlyPlaying">
             </div>
 
             <div class="col-sm-4 relatedVideoList">
                 <h3> Related Videos</h3>
+                <ul class="videos-list list-unstyled"></ul>
             </div>
         </div>
+    </div>
 
-        <script id="current-template" type="text/x-handlebars-template">
+    <script id="current-template" type="text/x-handlebars-template">
             <div class="player-container">
             <!-- change to video player -->
-                <video controls> 
-                    <source src="https://youtu.be/{{items.0.id.videoId}}">
-                </video>
+                <iframe width="" height="" src="https://youtu.be/embed/{{items.0.id.videoId}}" >
+                </iframe>
             </div>
             <div class="content-container">
-                <p class="title">{{items.0.snippet.title}}</p>
-                <p class="description">{{items.0.snippet.description}}</p>
+                <p class="title">{{title}}</p>
+                <p class="description">{{description}}</p>
             </div>
         </script>
-        
-        <script id="list-template" type="text/x-handlebars-template">
 
+    <script id="list-template" type="text/x-handlebars-template">
             <div class="list-group">
-                <!--Bootstrap - actionable with active, disabled, and hover states -->
+                <!--Bootstrap - actionable with active, disabled, and hover states  & media object list-->
                 <a href="#" class="list-group-item list-group-item-action media view-Video" data-id={{id}} style="padding: 5px;">
                     <div> 
-                        <img id="thumbnailImage" src="{{items.0.snippet.thumbnails.default.url}}">
+                        <img id="thumbnailImage" src="{{url}}">
                         <div class="media-body">
-                            <h6 class="list-group-item-heading title"><b>{{items.0.snippet.title}}</b>
+                            <h6 class="list-group-item-heading title"><b>{{title}}</b>
                             </h6>
-                            <p class="list-group-item-text description">{{items.0.snippet.description}}</p>
+                            <p class="list-group-item-text description">{{description}}</p>
                         </div>
                     </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action media">
-                    <div>
-                        <img id="thumbnailImage" src="{{items.1.snippet.thumbnails.default.url}}">
-                        <div class="media-body">
-                            <h6 class="list-group-item-heading title"><b>{{items.1.snippet.title}}</b>
-                            </h6>
-                            <p class="list-group-item-text description">{{items.1.snippet.description}}</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action media">
-                    <div>
-                        <img id="thumbnailImage" src="{{items.2.snippet.thumbnails.default.url}}">
-                        <div class="media-body">
-                            <h6 class="list-group-item-heading title"><b>{{items.2.snippet.title}}</b>
-                            </h6>
-                            <p class="list-group-item-text description">{{items.2.snippet.description}}</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action media">
-                    <div>
-                        <img id="thumbnailImage" src="{{items.3.snippet.thumbnails.default.url}}">
-                        <div class="media-body">
-                            <h6 class="list-group-item-heading title"><b>{{items.3.snippet.title}}</b>
-                            </h6>
-                            <p class="list-group-item-text description">{{items.3.snippet.description}}</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action media">
-                    <div>
-                        <img id="thumbnailImage" src="{{items.4.snippet.thumbnails.default.url}}">
-                        <div class="media-body">
-                            <h6 class="list-group-item-heading title"><b>{{items.4.snippet.title}}</b>
-                            </h6>
-                            <p class="list-group-item-text description">{{items.4.snippet.description}}</p>
-                        </div>
-                    </div>
-                </a>
-
             </div>
-       
         </script>
 
 
 
 
-        <!-- ADD SCRIPT TAGS FOR JS FILES  -->
-        <script src="Views/AppView.js"></script>
-        <script src="Models/AppModel.js"></script>
+    <!-- ADD SCRIPT TAGS FOR JS FILES  -->
+    <script src="Views/AppView.js"></script>
+    <script src="Models/AppModel.js"></script>
 
-        <script src="Models/VideoModel.js"></script>
-        <script src="Collection/VideoCollection.js"></script>
-        
-        <script src="Views/VideoView.js"></script>
-        <!-- <script src="Views/PlayerView.js"></script> -->
-        <script src="script.js"></script>
+    <script src="Models/VideoModel.js"></script>
+    <script src="Collection/VideoCollection.js"></script>
+
+    <script src="Views/VideoView.js"></script>
+    <!-- <script src="Views/PlayerView.js"></script> -->
+    <script src="script.js"></script>
 </body>
 
 </html>
