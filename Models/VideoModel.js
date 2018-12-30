@@ -1,6 +1,6 @@
 //Model for each video item; 
 //set attributes, fire an event based on changes to a specific attribute
-//Load and save from server
+
 
 var VideoModel = Backbone.Model.extend({
     //tell Backbone to assign different id (or an id from the given attributes) to each item

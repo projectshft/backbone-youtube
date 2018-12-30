@@ -23,9 +23,6 @@ var VideoCollection = Backbone.Collection.extend ({
 });
 
 
-//Create new collection
-var videoList = new VideoCollection();
 
-//fetch videos, parse items from response, create videoModels
-// videoList.fetch({ reset: true });
-videoList.fetch();
+
+

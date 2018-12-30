@@ -1,11 +1,10 @@
 
+var appModel = new AppModel();
 
+var appView = new AppView({ model: appModel });
 
-//fetch data for collection and reset it to empty 1st
-// var videoList = new VideoCollection();
-// videoList.fetch('surfing');
-
-
+// get the collection,  fetch videos, parse items from response, create videoModels
+appModel.get('videoList').fetch({ reset: true });
 
 
 
