@@ -12,22 +12,12 @@ var ListView = Backbone.View.extend({
 
     //render view as soon as collection finishes sync with API
     initialize: function () {
-        this.listenTo(this.collection, 'sync reset', this.renderList);
+        this.listenTo(this.collection, 'sync reset', this.render, this);
     },
 
 
-    //renderBeers: function () {
-//     this.model.get('beers').each(function (m) {
-//         this.renderBeer(m);
-//     }, this);
-// },
-    // renderBeer: function (beer) {
-    //     var beerView = new BeerView({ model: beer });
-    //     this.$beerList.append(beerView.render().el);
-    // },
-
     // Take Collection of Models and render to #list-template <div .relatedVideosList <ul .videos-list>
-    renderList: function () {
+    render: function () {
        //empty list container with jQuery
         var $list = this.$('ul.videos-list').empty()
         
@@ -46,4 +36,4 @@ var ListView = Backbone.View.extend({
 
 // //create new instance and associate with its collection
 var videosListView = new ListView({ collection: videoList });
-// videosListView.$el.append('<li>Hello</li>');
+

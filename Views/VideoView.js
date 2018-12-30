@@ -8,22 +8,18 @@ var VideoView = Backbone.View.extend({
     className: 'videoItem',
     template: Handlebars.compile($('#list-template').html()),
 
+    //SHOULD RENDER ITSELF WITH THE TEMPLATE, NO INITIALIZE NEEDED, NO CALL TO RENDER NEEDED
     // initialize: function () {
-    //     videoId = this.id.videoId;
-    //     title = this.snippet.title;
-    //     description = this.snippet.description;
-    //     image = this.snippet.thumnails.default.url;
+   
 
-    //     //     //this.model.get('videoList')
-    //     //     this.listenTo(this.model, 'add change', this.render);
-    // },
+    // //   this.model.get('videoList');
+    //   this.listenTo(this.model, 'add change', this.render);
+    // }, 
 
-    renderVideo: function () {
-        // var videoView = new VideoView({ model: model });  //{ model: VideoModel }
-        // this.$list.append(videoView.render().$el); //$el
-        // this.$list.append('<li>Hello</li>'); //$el
-        var html = this.template(this.model.toJSON());
-        this.$el.html(html);
+    render: function () {
+        // var html = this.template(this.model.toJSON());
+        // this.$el.html(html);
+        this.$el.html(this.template(this.model.toJSON()));
         return this;
     },
 
