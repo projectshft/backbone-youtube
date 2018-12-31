@@ -8,6 +8,7 @@ var AppModel = Backbone.Model.extend({
 
             //playing video
             current_video: null,
+            
         }
     },
 
@@ -15,6 +16,6 @@ var AppModel = Backbone.Model.extend({
         var allVideos = this.get('videoList');
         var currentVideo = allVideos.findWhere({videoId: videoId});
         this.set('current_video', currentVideo);
-
+        
     },
 });

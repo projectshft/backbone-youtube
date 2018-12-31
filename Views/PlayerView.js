@@ -7,15 +7,21 @@ var PlayerView = Backbone.View.extend({
     className: 'videoPlayer',
     el: $('.currentlyPlaying'),
     template: Handlebars.compile($('#current-template').html()),
+
     
-    render: function(){
+
+    
+    render: function () {
+        
         this.$el.html(this.template(this.model.toJSON()));
         return this;
-    }
+    },
+
+
 })
 
-  
 
-   
+
+
 
 
