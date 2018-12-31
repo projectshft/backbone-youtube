@@ -6,7 +6,15 @@ var AppModel = Backbone.Model.extend({
             //Create new collection
             videoList: new VideoCollection(),
 
-            //current_video: null or surfing???
+            //playing video
+            current_video: null,
         }
-    }
+    },
+
+    changePlayingVideo: function (videoId){
+        var allVideos = this.get('videoList');
+        var currentVideo = allVideos.findWhere({videoId: videoId});
+        this.set('current_video', currentVideo);
+
+    },
 });
