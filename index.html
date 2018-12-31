@@ -29,65 +29,97 @@
     <div class="container" id="video-app">
         <div class="row">
             <div class="col-sm-8 currentlyPlaying">
+                <h3>Currently Playing</h3>
+                <iframe id="currentVideo" width="480" height="270" src="https://www.youtube.com/embed/rj7xMBxd5iY?enablejsapi=1"
+                    frameborder="0" style="border: solid 4px #37474F"></iframe>
             </div>
 
             <div class="col-sm-4 relatedVideoList">
                 <h3> Related Videos</h3>
+                <p> - Click to play the video.</p>
                 <ul class="related-videos list-unstyled"></ul>
             </div>
         </div>
     </div>
 
+<!-- YOUTUBE IFRAME PLAYER API CODE -->
+    <script type="text/javascript">
+        var tag = document.createElement('script');
+        tag.id = 'iframe-demo';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('currentVideo', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        function onPlayerReady(event) {
+            document.getElementById('currentVideo').style.borderColor = '#FF6D00';
+        }
+        function changeBorderColor(playerStatus) {
+            var color;
+            if (playerStatus == -1) {
+                color = "#37474F"; // unstarted = gray
+            } else if (playerStatus == 0) {
+                color = "#FFFF00"; // ended = yellow
+            } else if (playerStatus == 1) {
+                color = "#33691E"; // playing = green
+            } else if (playerStatus == 2) {
+                color = "#DD2C00"; // paused = red
+            } else if (playerStatus == 3) {
+                color = "#AA00FF"; // buffering = purple
+            } else if (playerStatus == 5) {
+                color = "#FF6DOO"; // video cued = orange
+            }
+            if (color) {
+                document.getElementById('currentVideo').style.borderColor = color;
+            }
+        }
+        function onPlayerStateChange(event) {
+            changeBorderColor(event.data);
+        }
+    </script>
+       
+    <!-- HANDELBARS TEMPLATES -->
     <script id="current-template" type="text/x-handlebars-template">
-            <div class="player-container">
-            <!-- change to video player -->
-                <iframe width="" height="" src="https://youtu.be/embed/{{id.videoId}}" >
-                </iframe>
-            </div>
-            <div class="content-container">
-                <p class="title">{{title}}</p>
-                <p class="description">{{description}}</p>
-            </div>
-        </script>
+        <div class="player-container">
+            
+        </div>
+        <div class="content-container">
+            <p class="title">{{title}}</p>
+            <p class="description">{{description}}</p>
+        </div>
+    </script>
 
-    <!-- <script id="list-template" type="text/x-handlebars-template">
-            <div class="list-group"> -->
-                <!--Bootstrap - actionable with active, disabled, and hover states  & media object list-->
-                <!-- <a href="#" class="list-group-item list-group-item-action media view-Video" data-id={{videoId}} style="padding: 5px;">
-                    <div> 
-                        <img id="thumbnailImage" src="{{image}}">
-                        <div class="media-body">
-                            <h6 class="list-group-item-heading title"><b>{{title}}</b>
-                            </h6>
-                            <p class="list-group-item-text description">{{description}}</p>
-                        </div>
-                    </div>
-                </a> -->
-            <!-- </div> -->
-        <!-- </script> --> 
 
-        <script id="list-template" type="text/x-handlebars-template">
-            <a href="#" class="view-Video" data-id="{{videoId}}">
-                <img id="thumbnailImage" src="{{image}}">
-                <h6 class="list-group-item-heading title"><b>{{title}}</b></h6>
-                <p class="list-group-item-text description">{{description}}</p>
-            </a>
-        </script>
+    <script id="list-template" type="text/x-handlebars-template">
+        <a href="#" class="view-Video" data-id="{{videoId}}">
+            <img id="thumbnailImage" src="{{image}}">
+            <h6 class="list-group-item-heading title"><b>{{title}}</b></h6>
+            <p class="list-group-item-text description">{{description}}</p>
+        </a>
+    </script>
 
 
 
     <!-- ADD SCRIPT TAGS FOR JS FILES  -->
-   
+
 
     <script src="Models/VideoModel.js"></script>
     <script src="Collection/VideoCollection.js"></script>
-  
+
     <script src="Models/AppModel.js"></script>
     <script src="Views/AppView.js"></script>
-   
+
     <script src="Views/VideoView.js"></script>
     <script src="Views/ListView.js"></script>
-   
+
     <script src="Views/PlayerView.js"></script>
     <script src="script.js"></script>
 </body>
