@@ -1,36 +1,22 @@
+//Holds all the state for the app (other than the values it delegates to its children)
+
 var AppModel = Backbone.Model.extend({
-     defaults: function () {
+    defaults: function () {
         return {
-            //change null to current video
+            //Create new collection
             videoList: new VideoCollection(),
-            default_video: null
 
-            
-            // current_video: null
-            
-            
+            //playing video
+            current_video: null
         }
+            
+    }, 
+
+
+    //change currently playing video to one from list
+    changePlayingVideo: function (videoId) {
+        var allVideos = this.get('videoList');
+        var currentVideo = allVideos.findWhere({ videoId: videoId });
+        this.set('current_video', currentVideo);
     },
-
-    playDefaultVideo: function () {
-        var videosAll = this.get('videoList'); 
-        // var array = _.toArray(videosAll);
-        // var defaultVideo = array[0];
-
-        var defaultVideo = videosAll.findWhere({ids: 1});
-
-        console.log(defaultVideo);
-        this.set('default_video', defaultVideo);
-    }
-
-    // playVideo: function (id) {
-    //     ids = parseInt(id);
-    //     var allVideos = this.get('videoList');
-    //     var currentVideo = allVideos.findWhere({
-    //         ids: id
-    //     });
-    //     this.set('current_video', currentVideo);
-
-    // }
 });
-
