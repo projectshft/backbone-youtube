@@ -1,6 +1,6 @@
 //your 5 videos
-var upNextVideoCollection = Backbone.Collection.extend({
-  model: currentlyPlayingVideo,
+var VideosCollection = Backbone.Collection.extend({
+  model: VideoModel,
 
   //fetch your videos from the API
   fetchVideos: function(query) {

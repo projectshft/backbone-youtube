@@ -1,4 +1,4 @@
-var upNext = Backbone.View.extend({
+var VideoView = Backbone.View.extend({
   className: 'next-video',
   template: Handlebars.compile($('#up-next-template').html()),
 

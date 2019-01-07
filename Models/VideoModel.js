@@ -1,9 +1,9 @@
 var currentlyPlayingVideo = Backbone.Model.extend({
-  defaults: {
+  defaults:  {
     videoTitle: '',
     videoDescription: '',
     videoId: '',
-    thumbnail: ''
+    thumbnail: '',
   }
 
 })

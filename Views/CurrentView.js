@@ -1,4 +1,4 @@
-var currentlyPlaying = Backbone.View.extend({
+var CurrentView = Backbone.View.extend({
   className: 'current-video-info',
   template: Handlebars.compile($('#video-description-template').html()),
 

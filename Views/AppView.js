@@ -8,6 +8,9 @@ var AppView = Backbone.View.extend({
       },
 
       initialize: function() {
+        //initial fetch request
+        this.model.get('videos').fetchVideos(this.model.get('query'));
+
         this.listenTo(this.model.get('videos'), 'reset', this.rendernextVideos)
         this.listenTo(this.model, 'change: currentVideo', this.renderCurrentVideo)
       },
@@ -15,6 +18,8 @@ var AppView = Backbone.View.extend({
       //fetch data from collection when user presses enter
       fetchVideos: function(e) {
         if (e.which === 13) {
+          var query = $('#search').val();
+            
           this.model.get('videos').fetchVideos($('.search').val());
         }
       },
