@@ -1,10 +1,9 @@
 var AppView = Backbone.View.extend({
       el: $('body'),
 
-      //listen for new searches or videos. Fetch the appropriate videos when user presses enter. Change current video with the up next video that the user clicks
       events: {
         'keypress #search-bar': 'findVideos',
-        'click #current-video': 'showCurrentVideo'
+        'click .video-list-next': 'showCurrentVideo'
       },
 
       initialize: function() {
@@ -18,7 +17,7 @@ var AppView = Backbone.View.extend({
         this.listenTo(this.model, 'change: current_video', this.renderCurrentVideo);
       },
 
-      //fetch data from collection when user presses enter
+      //fetches your 5 videos from youtubeAPI based on your search query and adds them to the collection
       findVideos: function(e) {
         if(e.which === 13 && this.$input.val()) {
           this.model.set('query', this.$input.val());
@@ -27,14 +26,16 @@ var AppView = Backbone.View.extend({
         }
       },
 
+      //renders your currently playing video
       renderCurrentVideo: function() {
         this.$('#current-video').empty();
-        var upNext = new CurrentView({
-          model: this.model.get('current_video') || this.model.get('videos').models[0]
+        var current = new CurrentView({
+          model: this.model.get('videos').models[0]
         });
-        this.$('#current-video').append(upNext.render().el);
+        this.$('#current-video').append(current.render().el);
         },
 
+      //loops through and renders your upcoming videos
       renderNextVideos: function () {
         this.$nextVideo.empty();
         for(var i = 1; i < this.model.get('videos').models.length; i++) {
@@ -44,9 +45,10 @@ var AppView = Backbone.View.extend({
         }
       },
 
+      //replaces the currently playing video with the clicked video from the list of upcoming videos
       showCurrentVideo: function(e) {
-        var currentVideoId = $(e.currentTarget).data.id();
-        var selectedVideo = this.model.get('videos').findWhere({id: currentVideoId});
+        var currentVideoId = $(e.currentTarget).data().videoId();
+        var selectedVideo = this.model.get('videos').findWhere({videoId: currentVideoId});
         this.model.set('current_video', selectedVideo);
       }
     });

@@ -5,7 +5,7 @@ var AppModel = Backbone.Model.extend({
       videos: new VideosCollection(),
       current_video: null,
         //default search criteria
-        query: 'flat twist'
+        query: 'Elevation Worship'
        
       }
     },
