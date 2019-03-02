@@ -18,53 +18,51 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-10 offset-md-2">
-        <header class="text-center">
           <h1><i class="fa fa-youtube-play"></i>YouTube</h1>
           <input class="search form-control mb-3"  id ="search-bar" type="text" placeholder="Search" required autofocus>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-6" id="current-video">
+      <div class="col-8 container-fluid" id="current-video">
       </div>
 
-      <div class="col-6">
+      <div class="col-4">
         <ul class="video-list" id="up-next-videos">
         </ul>
       </div>
     </div>
+  </div>
 
     <!--HandleBars Templates-->
     <!--video description template-->
-    <script id="video-description-template" type="text/x-handlebars-template">
+    <script id="current-video-template" type="text/x-handlebars-template">
       <div class="embed-responsive embed-responsive-16by9" id="ytplayer">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-       <div class="section" id="current-video-info">
-         <p>{{videoTitle}}<p>
-         <p>{{videoDescription}}<p>
-  </div>
-</div>
-  </script>
+        <iframe src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="fullscreen"></iframe>
+      </div>
+      <div class="section" id="current-video-info">
+         <p><b>{{ videoTitle }}</b></p>
+         <p><b>{{ videoDescription }}</b></p>
+      </div>     
+    </script>
 
   <!--up-next-video template-->
 
   <script id="up-next-template" type="text/x-handlebars-template">
-    <div>
-      <a href="#" data-id="{{id}}" class="next-video">
-      <img src="{{thumbnail}}"></img>
-      <div>{{videoTitle}}</div>
+    <a href="#" data-id="{{ videoId }}" class="video-list-next">
+      <img src="{{ thumbnail }}" alt="thumbnail">
+      <p><b>{{ videoTitle }}</b></p>
     </a>
-  </div>
-  </script>
+  </script>  
 
 
-    <script src="models/VideoModel.js"></script>
-    <script src="collections/VideosCollection.js"></script>
-    <script src="models/AppModel.js"></script>
-    <script src="views/AppView.js"></script>
-    <script src="VideoView.js"></script>
-    <script src="views/CurrentView.js"></script>
-    <script src="main.js"></script>
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="views/CurrentView.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

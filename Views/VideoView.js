@@ -1,5 +1,5 @@
 var VideoView = Backbone.View.extend({
-  className: 'next-video',
+  className: 'next-list',
   template: Handlebars.compile($('#up-next-template').html()),
 
   render: function () {

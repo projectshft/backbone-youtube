@@ -3,37 +3,52 @@ var AppView = Backbone.View.extend({
 
       //listen for new searches or videos. Fetch the appropriate videos when user presses enter. Change current video with the up next video that the user clicks
       events: {
-        'keypress .search': 'fetchVideos',
-        'click .next-video': 'changeCurrentVideo'
+        'keypress #search-bar': 'findVideos',
+        'click #current-video': 'showCurrentVideo'
       },
 
       initialize: function() {
-        //initial fetch request
-        this.model.get('videos').fetchVideos(this.model.get('query'));
+        this.$input = this.$('#search-bar');
+        this.$nextVideo = this.$('#up-next-videos');
 
-        this.listenTo(this.model.get('videos'), 'reset', this.rendernextVideos)
-        this.listenTo(this.model, 'change: currentVideo', this.renderCurrentVideo)
+        this.listenTo(this.model.get('videos'), 'reset', function() {
+          this.renderCurrentVideo();
+          this.renderNextVideos();
+        })
+        this.listenTo(this.model, 'change: current_video', this.renderCurrentVideo);
       },
 
       //fetch data from collection when user presses enter
-      fetchVideos: function(e) {
-        if (e.which === 13) {
-          var query = $('#search').val();
-            
-          this.model.get('videos').fetchVideos($('.search').val());
+      findVideos: function(e) {
+        if(e.which === 13 && this.$input.val()) {
+          this.model.set('query', this.$input.val());
+          this.model.get('videos').fetchVideos(this.model.get('query'));
+          this.$input.val('');
         }
       },
 
-      //loop and render each of the up next videos
-      renderNextVideos: function() {
-        this.$('.next-video').empty();
-        this.model.get('videos').each(function(vid) {
-          this.renderNextVideo(vid);
-        }, this);
+      renderCurrentVideo: function() {
+        this.$('#current-video').empty();
+        var upNext = new CurrentView({
+          model: this.model.get('current_video') || this.model.get('videos').models[0]
+        });
+        this.$('#current-video').append(upNext.render().el);
+        },
+
+      renderNextVideos: function () {
+        this.$nextVideo.empty();
+        for(var i = 1; i < this.model.get('videos').models.length; i++) {
+          var nextVideo = this.model.get('videos').models[i];
+          var nextVideoList = new CurrentView({model: nextVideo});
+          this.$nextVideo.append(nextVideoList.render().el);
+        }
+      },
+
+      showCurrentVideo: function(e) {
+        var currentVideoId = $(e.currentTarget).data.id();
+        var selectedVideo = this.model.get('videos').findWhere({id: currentVideoId});
+        this.model.set('current_video', selectedVideo);
       }
     });
 
-      //write a render next video function that for an individual video in the up next list.
-      //also need to figure out how to change your current video to be one of the upNext videos when it's clicked...need a function that does thumbnails
-      //As of right now, nothing is showing up beyond your search bar. Spend some time debugging, double check to make sure you have the appropriate views, models, and collections defined.Right now you have no obvious errors in your console, so it could be a data flow issue/you are missing a key piece that will give you the needed functionality
-      //You haven't done any edge testing. Include the following: what happens when a user's query isn't a string? Should this be allowed or no?
+
