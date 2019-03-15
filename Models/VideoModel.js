@@ -1,4 +1,6 @@
-var VideoModel = Backbone.Model.extend({
+// Creates a default framework for the VideoModel
+
+const VideoModel = Backbone.Model.extend({
 
   defaults: function() {
     return {
