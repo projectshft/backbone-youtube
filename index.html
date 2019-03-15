@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!--- bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!--- fontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<!--- javascript files -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <title>MarielTube</title>
+  </head>
+
+  <body>
+		<!--- Navbar & Search Window -->
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand">
+					<i class="fas fa-tv"></i><strong> Mariel</strong>Tube</a>
+				<div class="flex-grow-1 d-flex">
+					<form class="form-inline flex-nowrap mx-0 mx-lg-auto rounded p-1">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+				</nav>
+		</header>
+
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 current-video mx-auto">
+        </div>
+      </div>
+    </div>
+
+    <div class="container video-list">
+      <div class="row forecast">
+      </div>
+    </div>
+
+
+  
+<!--- Handlebars Templates -->
+    <script id="current-template" type="text/x-handlebars-template">
+        <div class="weather-head">
+          <h3 id="location" class="text-center display-4">{{ city }}</h3>
+          <p class="text-center temp">{{ temperature }}&#176;</p>
+          <p class="text-center current-conditions mx-auto">{{ conditions }}</p>
+        </div>
+    </script>
+
+    <script id="list-template" type="text/x-handlebars-template">
+      <div class="text-center col-sm daily">
+        <h4>{{ dayOfWeek }}</h4>
+        <i id="icons" class="wi {{ icon }}"></i>
+        <h1>{{ temperature }}&#176;</h1>
+        <p>{{ conditions }}</p>
+      </div>
+		</script>
+		
+	<!--- Bootstrap files -->
+	<script src="models/VideoModel.js"></script>
+	<script src="collections/VideoCollection.js"></script>
+	<script src="models/AppModel.js"></script>
+	<script src="views/AppView.js"></script>
+	<script src="views/CurrentView.js"></script>
+	<script src="views/ListView.js"></script>
+	<script src="main.js"></script>  
+
+  </body>
+</html>

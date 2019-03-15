@@ -1,0 +1,25 @@
+{
+  "name": "backbone-youtube",
+  "version": "1.0.0",
+  "description": "Eval Week 4",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marielklem/backbone-youtube.git"
+  },
+  "author": "Mariel Klem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marielklem/backbone-youtube/issues"
+  },
+  "homepage": "https://github.com/marielklem/backbone-youtube#readme",
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "bootstrap": "^4.3.1",
+    "handlebars": "^4.1.0",
+    "jquery": "^3.3.1"
+  }
+}
