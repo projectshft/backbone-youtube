@@ -22,6 +22,16 @@
       <div class="col-md-4 video-list"></div>
     </div>    
   </div>
+
+  <script id='current-video-template' type='text/template'>
+    <div>
+      <iframe src='https://www.youtube.com/embed/{{ id }}'></iframe>
+    </div>
+    <div class='card-body video-info'>
+      <h5 class='card-title'><strong>{{ title }}</strong></h5>
+      <p class='card-text'>{{ desc }}</p>
+    </div>
+  </script>
   
   <script id='video-list-template' type='text/template'>
     <a href='#' data-id='{{ id }}'>
