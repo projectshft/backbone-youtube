@@ -13,20 +13,27 @@
   <h1 class="text-center">Backbone YouTube</h1>
   <div class="container">
     <div class="row">  
-      <div class="col-md-12 search-bar">
-        <input id="search" type="text" placeholder="Search">              
+      <div class="col-md-12 search-bar text-center">
+        <input id="search" type="text" placeholder="Search">           
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-8 current-video"></div>
+    <div class="row video-section">
+      <div class="col-md-8 current-video-area"></div>
       <div class="col-md-4 video-list"></div>
     </div>    
-  </div>
-         
+  </div>     
           
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/underscore/underscore-min.js"></script>
-  <script src="node_modules/backbone/backbone-min.js"></script>
-  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>  
+  <script src='node_modules/jquery/dist/jquery.min.js'></script>
+  <script src='node_modules/underscore/underscore-min.js'></script>
+  <script src='node_modules/backbone/backbone-min.js'></script>
+  <script src='node_modules/handlebars/dist/handlebars.min.js'></script>
+  <script src='Models/VideoModel.js'></script>
+  <script src='Models/AppModel.js'></script>
+  <script src='Collections/VideoCollection.js'></script>
+  <script src='Views/AppView.js'></script>
+  <script src='Views/CurrentVideoView.js'></script>
+  <script src='Views/VideoListView.js'></script>
+  <script src='main.js'></script>
+  
 </body>
 </html>
