@@ -21,7 +21,14 @@
       <div class="col-md-8 current-video-area"></div>
       <div class="col-md-4 video-list"></div>
     </div>    
-  </div>     
+  </div>
+  
+  <script id='video-list-template' type='text/template'>
+    <a href='#' data-id='{{ id }}'>
+      <img src='{{ thumbnail }}'>
+      <p>{{ title }}</p>
+    </a>
+  </script> 
           
   <script src='node_modules/jquery/dist/jquery.min.js'></script>
   <script src='node_modules/underscore/underscore-min.js'></script>
