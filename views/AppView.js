@@ -8,28 +8,28 @@ var AppView = Backbone.View.extend({
 
 	//initalize- listen to model
 	initialize: function () {
-		this.renderList();
-		this.listenTo(this.model.get('videos'), 'add', this.renderCurrent);
+		this.renderVideos();
+
+		this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 		
   },
 
 	//search API and add result to App Model
 	findVideos: function () {
-		this.model.get('videos').addVideo(
-			this.$('#video-search').val()
-		)
+		query = this.$('#video-search').val(),
+		this.model.get('videos').fetchVideo(query)
 	},
 
 	//render current
-	renderCurrent: function(video) {
-		var currentView = new CurrentVideoView({ model: video});
+	renderVideo: function(video) {
+		var currentView = new VideoListView({ model: video});
 		this.$('.current-video').append(currentView.render().el)
 	},
 
 	//render all
-	renderList: function() {
+	renderVideos: function() {
 		this.model.get('videos').each(function(m) {
-			this.renderCurrent(m);
+			this.renderVideo(m);
 		}, this)
 	}
 });
