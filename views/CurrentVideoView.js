@@ -1,5 +1,12 @@
 var CurrentVideoView = Backbone.View.extend({
-	className: 'current',
+  className: 'current',
+
+  template: Handlebars.compile($('#current-template').html()),
+
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
 
 	//Handlebars template for HTML
 

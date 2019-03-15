@@ -23,55 +23,64 @@
 					<i class="fas fa-tv"></i><strong> Mariel</strong>Tube</a>
 				<div class="flex-grow-1 d-flex">
 					<form class="form-inline flex-nowrap mx-0 mx-lg-auto rounded p-1">
-						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">Search</button>
+						<input class="form-control mr-sm-2" type="search" id="video-search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success search-submit" type="submit">Search</button>
 					</form>
 				</div>
 				</nav>
 		</header>
 
-
-
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 current-video mx-auto">
+      <div class="container">
+        <div class="row">
+            <div class="current-video">
         </div>
       </div>
-    </div>
 
-    <div class="container video-list">
-      <div class="row forecast">
+      <div class="container video-list">
+        <div class="row">
+            <a href="#">
+              <img border="0" src="https://i.ytimg.com/vi/hY7m5jjJ9mM/default.jpg" width="100" height="100">
+            </a>
+            <p>Charlie Bit me</p>
+        </div>
       </div>
-    </div>
+
+
+
+
 
 
   
 <!--- Handlebars Templates -->
-    <script id="current-template" type="text/x-handlebars-template">
-        <div class="weather-head">
-          <h3 id="location" class="text-center display-4">{{ city }}</h3>
-          <p class="text-center temp">{{ temperature }}&#176;</p>
-          <p class="text-center current-conditions mx-auto">{{ conditions }}</p>
-        </div>
-    </script>
+  <script id="current-template" type="text/x-handlebars-template">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ videoId }}" allowfullscreen></iframe>
+    </div>
+    <div class="row description">
+      <h1>{{ title }}</h1>
+      <p>{{ description }} </p>
+    </div>
+  </script>
 
-    <script id="list-template" type="text/x-handlebars-template">
-      <div class="text-center col-sm daily">
-        <h4>{{ dayOfWeek }}</h4>
-        <i id="icons" class="wi {{ icon }}"></i>
-        <h1>{{ temperature }}&#176;</h1>
-        <p>{{ conditions }}</p>
+  <script id="list-template" type="text/x-handlebars-template">
+    <div class="container video-list">
+      <div class="row upcoming">
+
+        <a href="#">
+          <img border="0" src="{{thumbnail}}" width="100" height="100">
+        </a>
+        <p>{{ title }}</p>
       </div>
-		</script>
+    </div>
+  </script>
+
 		
-	<!--- Bootstrap files -->
 	<script src="models/VideoModel.js"></script>
 	<script src="collections/VideoCollection.js"></script>
 	<script src="models/AppModel.js"></script>
 	<script src="views/AppView.js"></script>
-	<script src="views/CurrentView.js"></script>
-	<script src="views/ListView.js"></script>
+	<script src="views/CurrentVideoView.js"></script>
+	<script src="views/VideoListView.js"></script>
 	<script src="main.js"></script>  
 
   </body>
