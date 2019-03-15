@@ -2,11 +2,11 @@
    that HTML */
 
 const VideoListView = Backbone.View.extend({
-  className: 'video',
+  className: 'video-list-entry',
   
   template: Handlebars.compile($('#video-list-template').html()),
 
-  render() {
+  render: function() {
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
