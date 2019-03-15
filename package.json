@@ -1,0 +1,25 @@
+{
+  "name": "backbone-youtube",
+  "version": "1.0.0",
+  "description": "YouTube app built with backbone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doss2k/backbone-youtube.git"
+  },
+  "author": "Jason Doss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doss2k/backbone-youtube/issues"
+  },
+  "homepage": "https://github.com/doss2k/backbone-youtube#readme",
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "bootstrap": "^4.3.1",
+    "handlebars": "^4.1.0",
+    "jquery": "^3.3.1"
+  }
+}
