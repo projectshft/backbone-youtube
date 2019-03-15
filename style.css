@@ -1,7 +1,34 @@
 .search-form {
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .form-rounded {
     border-radius: 1rem;
+}
+
+.current-video-description {
+    background-color: #ddd;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 3rem;
+}
+.video-list {
+    margin-bottom: 1rem;
+    /* margin-left: 0px; */
+    background-color: #ddd;
+}
+
+@media (min-width: 768px) {
+    .video-list {
+        margin-left: 5px;
     }
+}
+.smaller-video {
+    padding: 1.25rem;
+}
+
+.video-title, .video-description {
+    padding-top: 3.5rem;
+}
