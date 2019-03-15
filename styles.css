@@ -1,4 +1,9 @@
 #search {
-  width: 100%;
+  width: 60%;
   margin-top: 20px;
+  padding-left: 7px;
+}
+
+.video-section {
+  margin-top: 50px;
 }
