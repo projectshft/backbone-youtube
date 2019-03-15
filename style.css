@@ -14,14 +14,14 @@
     padding-left: 1rem;
     padding-bottom: 3rem;
 }
-.video-list {
+.video-list-section {
     margin-bottom: 1rem;
     /* margin-left: 0px; */
     background-color: #ddd;
 }
 
 @media (min-width: 768px) {
-    .video-list {
+    .video-list-section {
         margin-left: 5px;
     }
 }
