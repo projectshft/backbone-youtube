@@ -13,16 +13,15 @@ const VideosCollection = Backbone.Collection.extend({
     this.fetch();
   },
   // Parse the data to retrieve only the needed data for the VideoModel
-  parse: function (response) {    
-   return response.items.map(function(item) {
+  parse: function (response) {
+    return response.items.map(function (item) {
       return {
         videoId: item.id.videoId,
-        title: item.snippet.title,
+        title: item.snippet.title.substring(0, 50) + "...",
         description: item.snippet.description,
         thumbnail_url: item.snippet.thumbnails.default.url
       }
-    }, this.model)
+    }, this)
   }
-
 });
 
