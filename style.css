@@ -1,0 +1,8 @@
+body {
+  background: url(https://ak8.picdn.net/shutterstock/videos/4659008/thumb/1.jpg)
+    /*url(https://download.videvo.net/videvo_files/video/premium/video0027/thumbnails/film_strip00_small.jpg) */
+    center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}

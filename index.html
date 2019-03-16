@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PS-Backbone-YouTube</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Style links-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+
+    <!--JS Dependencies-->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  </head>
+
+  <body>
+    <!-- <nav></nav> -->
+
+    <div id="search-bar">
+      <input class="search" type="text" placeholder="Enter Search" />
+    </div>
+
+    <div class="container" id="video-box">
+      <div class="row">
+        <div id="feature-video-player"></div>
+        <div id="video-list"></div>
+      </div>
+    </div>
+
+    <!-- HANDLEBARS TEMPLATES (here or below JS files???) -->
+    <script id="feature-template" type="text/x-handlebars-template">
+      <div class="player-container">
+          <iframe></iframe>
+      </div>
+    </script>
+
+    <script id="list-template" type="text/x-handlebars-template"></script>
+
+    <!-- SCRIPT TAGS FOR JS FILES  -->
+    <script src="models/FeaturePlayerModel.js"></script>
+    <script src="models/ListModel.js"></script>
+    <!-- Combine the two above into one VideoModel, immediately below?-->
+    <script src="models/VideoModel.js"></script>
+    <script src="collection/VideosCollection.js"></script>
+
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+
+    <script src="views/FeaturePlayerView.js"></script>
+    <script src="views/ListView.js"></script>
+
+    <script src="Views/PlayerView.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Handlebars Templates (here or above?) -->
+  </body>
+</html>
