@@ -1,0 +1,40 @@
+body {
+  background-color: #f0f0f0 !important;
+  word-wrap: break-word;
+}
+
+header {
+  margin: 5px;
+}
+
+.back {
+  color: rgb(225, 0, 0);
+}
+
+.tube {
+  background-color: red;
+  border-radius: 22px;
+  color: white;
+  font-weight: 200;
+}
+.search-form {
+  max-width: 600px;
+}
+
+.featured-video {
+  border: solid red 1px;
+  max-height: 700px;
+  padding: 0 0 0 1px;
+}
+
+.thumbnail-view {
+  height: 120px;
+  border: solid red 1px;
+  padding: 15px 10px 15px 15px;
+}
+
+.thumbnail-pic {
+  width: 120px;
+  height: 90px;
+  border: solid red 1px;
+}
