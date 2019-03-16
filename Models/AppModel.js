@@ -1,4 +1,4 @@
-// Create default values for an App Model and default search string to being App
+// Create default values for an App Model and default query string for when App first loads
 
 const AppModel = Backbone.Model.extend({
 
@@ -6,13 +6,7 @@ const AppModel = Backbone.Model.extend({
     return {
       videos: new VideoCollection(),
       current_video: null, 
-      query: 'Marshmello'
+      query: 'Baby Shark Remix'
     };
-  },
-
-  // On start will immediately search for default search string so page doesn't start empty
-
-  // initialize() {
-  //   this.get('videos').fetchVideos(this.get('query'));
-  // }
+  }
 });
