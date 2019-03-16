@@ -8,7 +8,7 @@ var CurrentVideoView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model, 'destroy', this.remove);
+    // this.listenTo(this.model, 'destroy', this.remove);
   },
 
   render: function () {

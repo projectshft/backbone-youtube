@@ -8,8 +8,4 @@ var AppModel = Backbone.Model.extend({
     }
   },
 
-
-  showVideos: function () {
-
-  }
 });

@@ -2,13 +2,17 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'keypress #search-bar': 'fetchVideos'
+    'keypress #search-bar': 'fetchVideos',
+    'click #video-list-img': 'changeCurrentVideo'
   },
 
   initialize: function () {
     this.$input = this.$('#search-bar');
     this.$currentVideo = this.$('.current-video__container');
+    this.$videoList = this.$('.video-list__container');
+
     this.listenTo(this.model.get('videos'), 'reset', this.renderFirstVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
   },
 
   fetchVideos: function (e) {
@@ -16,7 +20,12 @@ var AppView = Backbone.View.extend({
       // Update VideosCollection url and re-retch data
       console.log(this.$input.val());
       this.model.get('videos').fetchVideos(this.$input.val());
+      this.renderVideos();
     }
+  },
+
+  changeCurrentVideo: function () {
+
   },
 
   renderFirstVideo: function () {
@@ -26,9 +35,16 @@ var AppView = Backbone.View.extend({
     this.$currentVideo.append(videoView.render().el);
   },
 
-  renderVideos: function (videoModels) {
-    // console.log(this.model.get('videos'))
-    console.log(videoModels)
-  }
+  renderVideo: function (videoModel) {
+    var videoListView = new VideoListView({ model: videoModel });
+    this.$videoList.append(videoListView.render().el);
+  },
+
+  renderVideos: function () {
+    this.$videoList.empty();
+    this.model.get('videos').each(function (model) {
+      this.renderVideo(model);
+    }, this);
+  },
 
 });

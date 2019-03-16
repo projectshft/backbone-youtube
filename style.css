@@ -1,3 +1,11 @@
 .search-form {
   padding-top: 2rem;
 }
+
+.current-video__container {
+  padding-top: 2rem;
+}
+
+#video-list-img {
+  cursor: pointer;
+}
