@@ -4,7 +4,6 @@ var VideoModel = Backbone.Model.extend({
   defaults: function() {
     return {
       videoID: '',
-      videoURL: `'https://www.youtube.com/watch?v=${this.videoID}'`,
       title: '',
       description: '',
       thumbnail: ''

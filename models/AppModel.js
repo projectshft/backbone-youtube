@@ -4,6 +4,10 @@ var AppModel = Backbone.Model.extend({
   defaults: function(){
     return {
       videos: new VideosCollection(), //new instance of the VideosCollection
+
+      //query: null,
+
+      //probably down here set the daults... (according the jason)
     };
   }
 
