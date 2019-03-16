@@ -9,3 +9,7 @@
 #video-list-img {
   cursor: pointer;
 }
+
+.error {
+  display: none;
+}

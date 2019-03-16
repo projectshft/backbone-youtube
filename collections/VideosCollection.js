@@ -14,7 +14,7 @@ var VideosCollection = Backbone.Collection.extend({
   },
 
   parse: function (response) {
-    var res = response.items.map(function (video) {
+    var formattedResponse = response.items.map(function (video) {
       return {
         title: video.snippet.title,
         description: video.snippet.description,
@@ -23,6 +23,6 @@ var VideosCollection = Backbone.Collection.extend({
       }
     });
 
-    return res;
+    return formattedResponse;
   }
 });

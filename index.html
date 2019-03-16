@@ -22,7 +22,10 @@
           <input class="form-control" id="search-bar" type="text" placeholder="Search" aria-label="Search">
         </div>
       </div>
-      <div class="row">
+      <div class="row video">
+        <div class="error">
+          <h1>Sorry your search did match any results</h1>
+        </div>
         <div class="col-md-8">
           <!-- contains the current video -->
           <div class="current-video__container"></div>
@@ -49,7 +52,7 @@
       <img id="video-list-img" src="{{ thumbnail }}" data-id={{id}}>
       <h4>{{ title }}</h4>
     </div>
-</script>
+  </script>
 </body>
 <script src="models/VideoModel.js"></script>
 <script src="views/VideoListView.js"></script>
