@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YouTube Project</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    </head>
+
+    <body>
+        <div id="search">
+        <input type="text" placeholder="Search Video">
+    </div>
+
+    <br>
+
+    <section>
+        <div id="vidPlayer"></div>
+
+        <div id="vidData"></div>
+    </section>
+
+
+    <script id="player-template" type="text/x-handlebars-template">
+        <div>{{video player}}</div>
+        <div>
+            {{video title}}
+            {{video description}}
+        </div>
+    </script>
+
+    <script id="list-template" type="text/x-handlebars-template">
+        <section id="videoList">
+            <h3> Related Videos</h3>
+            <div class="list-group">
+                <a href="#" class="active-item">
+                    {{thumbnail 1}} {{title 1}}
+                </a>
+                <a href="#" class="list-item2">{{thumbnail 2}} {{title 2}}</a>
+                <a href="#" class="list-item3">{{thumbnail 3}} {{title 3}}</a>
+                <a href="#" class="list-item4">{{thumbnail 4}} {{title 4}}</a>
+                <a href="#" class="list-item5">{{thumbnail 5}} {{title 5}}</a>
+            </div>
+        </section>
+    </script>
+
+
+
+    <script src="main.js"></script>
+    </body>
+
+</html>
