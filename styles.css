@@ -1,0 +1,8 @@
+.videoList {
+align-content: left;
+}
+
+.sideVideoList {
+align-content: right;
+float: right;
+}
