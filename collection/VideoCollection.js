@@ -2,7 +2,7 @@ var VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
   url: function(searchTerm) {
     console.log("search term: ", searchTerm);
-    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+ searchTerm +'&type=video&key=AIzaSyA0k1YOcWPg-ankR3RMiAsMbN04fVzncOE'
+    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+ searchTerm +'&type=video&key='
   },
 
   parse: function(data) {
