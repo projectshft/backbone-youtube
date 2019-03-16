@@ -22,19 +22,20 @@ header {
 }
 
 .featured-video {
-  border: solid red 1px;
   max-height: 700px;
   padding: 0 0 0 1px;
 }
 
 .thumbnail-view {
   height: 120px;
-  border: solid red 1px;
   padding: 15px 10px 15px 15px;
+}
+
+.thumbnail-view:hover {
+  background-color: #e1e1e1;
 }
 
 .thumbnail-pic {
   width: 120px;
   height: 90px;
-  border: solid red 1px;
 }

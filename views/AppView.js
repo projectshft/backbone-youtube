@@ -14,6 +14,9 @@ const AppView = Backbone.View.extend({
     this.listenTo(this.model, "change:featured_video", this.renderFeaturedVideo);
     // This ends up hearing an "add" event for each item in the collection, so no need to iterate through the collection
     this.listenTo(this.model.get("videos"), "add", this.renderThumbnail);
+    // 'update' fires once during the creation of the collection, so perfect for this function
+    this.listenTo(this.model.get("videos"), "update", this.setInitialFeaturedVideo);
+    
   },
 
   getSearchQuery: function () {
@@ -28,7 +31,10 @@ const AppView = Backbone.View.extend({
   },
   // Need a function to set the first video in the collection as the initial featured video
   setInitialFeaturedVideo: function () {
-    
+    const initialFeaturedVideo = this.model.get("videos").at(0).get("videoId");
+    this.model.setFeaturedVideo(initialFeaturedVideo); 
+    console.log(initialFeaturedVideo);
+       
   },
   // When a thumbnail is clicked, it invokes a function which should capture the data-id attribute from the video being clicked on, and then call setFeatureVideo and pass the id value 
   changeFeaturedVideo: function (event) {
