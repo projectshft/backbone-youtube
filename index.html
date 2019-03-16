@@ -66,7 +66,7 @@
         <iframe class=smaller-video
             width="250" 
             height="160" 
-            src="https://www.youtube.com/embed/{{ id }}" 
+            src="https://i.ytimg.com/vi/{{ id }}/default.jpg"
             frameborder="0" 
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
@@ -74,6 +74,12 @@
         <div class="video-title">{{ video title }}</div>
     </script>
 
+    <script src="models/VideoModel.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
+    <script src="views/VideoListView.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

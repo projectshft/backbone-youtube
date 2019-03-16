@@ -1,19 +1,26 @@
 /* EVAL 4 
 
 Youtube API key: AIzaSyBg4MPAVQKAhUcWR6hpfHkV2CMq-t0Pges
-https://www.googleapis.com/youtube/v3/search?part=id&q=giraffes&type=video&key=AIzaSyBg4MPAVQKAhUcWR6hpfHkV2CMq-t0Pges
+https://developers.google.com/apis-explorer/?hl=en_US#p/youtube/v3/youtube.search.list?part=snippet&maxResults=5&q=giraffes&type=video&videoDefinition=high&_h=2&
+
+looking at the view and saying all the decisions that the view are making, where are they coming from in the model
+the view isn't making stuff up
+
+edge case:
+javascript if the input is empty, just return
+if string is gibberish, show "results not found"
 
 hierarchy:
 VIEWS
     *AppView (model: AppModel)
-        -CurrentVideoView (model: CurrentVideoModel)
-        -VideoListView (model(s): VideoListModel)
+        -CurrentVideoView (model: VideoModel)
+        -VideoListView (model: VideoModel)
 
 MODELS
     *AppModel
         -VideosCollection
-            -CurrentVideoModel
-            -VideoListModel(s)
+            -VideoModel
+
 
 USER STORY 1: A user should be able to search something in the search bar, and get a list of videos back, 
 with one showing up in the main screen.
@@ -29,4 +36,4 @@ USER STORY 4: When the user first loads the page, there should be a default sear
 var appModel = new AppModel();
 
 //create a new instance of appView with a key of model and a value of the new appModel instance
-var appView = new appView({ model : appModel });
+var appView = new AppView({ model : appModel });
