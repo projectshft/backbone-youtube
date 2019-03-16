@@ -1,5 +1,5 @@
 var appModel = new AppModel();
 
-var appView = newAppview({ mode: appModel });
+var appView = newAppView({ mode: appModel });
 
 appModel.get('videos').fetch({ reset: true });
