@@ -7,7 +7,7 @@ const VideoCollection = Backbone.Collection.extend({
      Only returns videos and also attaches the API Key. */
   
   fetchVideos: function (query) {
-    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=AIzaSyAaExaRBOtyvu4QxGvJ8mMAwrnEVz_6KsQ`;
+    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${query}&type=video&key=AIzaSyAaExaRBOtyvu4QxGvJ8mMAwrnEVz_6KsQ`;
     this.fetch({reset: true});
   },
 
