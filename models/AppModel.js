@@ -7,6 +7,11 @@ const AppModel = Backbone.Model.extend({
       featured_video: null
     }
   },
+  // do an initial fetch so the screen isn't blank on load or refresh
+  initialize: function () {
+    this.get("videos").fetch();
+  },
+
 // Need a function to set the featured_video attribute based on the videoId that's passed in
   setFeaturedVideo: function(id) {
     const featuredVideo = this.get("videos").findWhere({videoId: id});

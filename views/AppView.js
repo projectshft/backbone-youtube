@@ -4,9 +4,10 @@ const AppView = Backbone.View.extend({
 
   events: {
     // When the 'search' button is clicked, grab the value in the input box
-    "click #search-button" : "getSearchQuery",
+    "click #search-button": "getSearchQueryOnClick",
+    "keypress #search-input": "getSearchQueryOnEnter",
     // When a thumbnail is clicked, change the featured video
-    "click .thumbnail-view" : "changeFeaturedVideo"
+    "click .thumbnail-view": "changeFeaturedVideo"
   },
 
   initialize: function () {
@@ -16,25 +17,36 @@ const AppView = Backbone.View.extend({
     this.listenTo(this.model.get("videos"), "add", this.renderThumbnail);
     // 'update' fires once during the creation of the collection, so perfect for this function
     this.listenTo(this.model.get("videos"), "update", this.setInitialFeaturedVideo);
-    
   },
 
-  getSearchQuery: function () {
+  getSearchQueryOnClick: function () {
     const searchQuery = $("#search-input").val();
-    this.model.get("videos").fetchVideoData(searchQuery);
-    this.$(".thumbnails-container").empty();
+    if (searchQuery) {
+      this.model.get("videos").fetchVideoData(searchQuery);
+      this.$(".thumbnails-container").empty();
+    }
+    $("#search-input").val("");
+  },
+
+  getSearchQueryOnEnter: function (e) {
+    if (e.key === "Enter") {
+      const searchQuery = $("#search-input").val();
+      if (searchQuery) {
+        this.model.get("videos").fetchVideoData(searchQuery);
+        this.$(".thumbnails-container").empty();
+      }
+      $("#search-input").val("");
+    }
   },
   // Create render methods for each individual thumbnail view
   renderThumbnail: function (video) {
-    const thumbnailView = new ThumbnailView({model: video});
+    const thumbnailView = new ThumbnailView({ model: video });
     this.$(".thumbnails-container").append(thumbnailView.render().el)
   },
   // Need a function to set the first video in the collection as the initial featured video
   setInitialFeaturedVideo: function () {
     const initialFeaturedVideo = this.model.get("videos").at(0).get("videoId");
-    this.model.setFeaturedVideo(initialFeaturedVideo); 
-    console.log(initialFeaturedVideo);
-       
+    this.model.setFeaturedVideo(initialFeaturedVideo);
   },
   // When a thumbnail is clicked, it invokes a function which should capture the data-id attribute from the video being clicked on, and then call setFeatureVideo and pass the id value 
   changeFeaturedVideo: function (event) {

@@ -1,7 +1,9 @@
 const VideosCollection = Backbone.Collection.extend({
+  // Set initial query value so when we start the program it isn't blank
+  query: "backbone js",
 
   url: function () {
-    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${this.query}&type=video&key=AIzaSyC7Wz1WhWyeAlxGsF-3mWBbadshGAnhEXg`;
+    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${this.query}&type=video&key=AIzaSyAjLDAJWR29rKGXbStuPwNVCvcQMWza_MU`;
   },
 
   model: VideoModel,
@@ -24,4 +26,3 @@ const VideosCollection = Backbone.Collection.extend({
     }, this)
   }
 });
-
