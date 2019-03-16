@@ -3,7 +3,7 @@ var VideosCollection = Backbone.Collection.extend({
   searchQuery: 'messi',
 
   url: function () {
-    var API_KEY = 'AIzaSyC5DI0nYbYxAW4SBQRJ_M3kmUtfqbCuaSE';
+    var API_KEY = 'AIzaSyCqQlZuTXimvUPBonzTn4MXjQNJouPJQcc';
     return `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${this.searchQuery}&type=video&key=${API_KEY}`;
   },
 

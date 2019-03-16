@@ -4,8 +4,16 @@ var AppModel = Backbone.Model.extend({
     return {
       // initialize videos collection
       videos: new VideosCollection(),
-      current_video: null,
     }
   },
+
+  getFirstVideo: function () {
+    return this.get('videos').first();
+  },
+
+  findVideoById: function (videoId) {
+    return this.get('videos').findWhere({ id: videoId });
+  }
+
 
 });

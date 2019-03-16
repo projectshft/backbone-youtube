@@ -18,20 +18,27 @@ var AppView = Backbone.View.extend({
   fetchVideos: function (e) {
     if (e.which === 13 && this.$input.val()) {
       // Update VideosCollection url and re-retch data
-      console.log(this.$input.val());
       this.model.get('videos').fetchVideos(this.$input.val());
       this.renderVideos();
     }
   },
 
-  changeCurrentVideo: function () {
-
+  changeCurrentVideo: function (e) {
+    // find video id and use it to find the model,
+    // then update the current video view
+    var videoId = $(e.target).data().id;
+    var modelFound = this.model.findVideoById(videoId);
+    this.renderFirstVideo(false, modelFound);
   },
 
-  renderFirstVideo: function () {
+  renderFirstVideo: function (initialRender = true, videoModel) {
     this.$currentVideo.empty();
-    var firstModel = this.model.get('videos').first();
-    var videoView = new CurrentVideoView({ model: firstModel });
+    var videoView;
+    if (initialRender) {
+      videoView = new CurrentVideoView({ model: this.model.getFirstVideo() });
+    } else {
+      videoView = new CurrentVideoView({ model: videoModel });
+    }
     this.$currentVideo.append(videoView.render().el);
   },
 
