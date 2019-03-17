@@ -11,14 +11,21 @@ const VideoCollection = Backbone.Collection.extend({
     this.fetch({reset: true});
   },
 
-  // Takes the response from the YouTube API, maps over each result and parses out the information we need for the model
+  /* Takes the response from the YouTube API, if there are any search results it maps over 
+     each result and parses out the information we need for the model. If there are no search results
+     it alerts the user and sets the page back to the default query */
 
   parse: function (response) {
-    return response.items.map(video => ({
-      id: video.id.videoId,
-      title: video.snippet.title,
-      description: video.snippet.description,
-      thumbnail: video.snippet.thumbnails.default.url
-    }));
+    if(response.items[0]) {
+      return response.items.map(video => ({
+        id: video.id.videoId,
+        title: video.snippet.title,
+        description: video.snippet.description,
+        thumbnail: video.snippet.thumbnails.medium.url
+      }));
+    } else {
+      alert('Your search returned zero results');
+      location.reload();
+    }
   }
 });
