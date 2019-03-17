@@ -3,7 +3,7 @@ const VideosCollection = Backbone.Collection.extend({
   query: "backbone js",
 
   url: function () {
-    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${this.query}&type=video&key=AIzaSyAjLDAJWR29rKGXbStuPwNVCvcQMWza_MU`;
+    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${this.query}&type=video&key=AIzaSyC7Wz1WhWyeAlxGsF-3mWBbadshGAnhEXg`;
   },
 
   model: VideoModel,
@@ -16,13 +16,15 @@ const VideosCollection = Backbone.Collection.extend({
   },
   // Parse the data to retrieve only the needed data for the VideoModel
   parse: function (response) {
-    return response.items.map(function (item) {
-      return {
-        videoId: item.id.videoId,
-        title: item.snippet.title.substring(0, 45) + "...",
-        description: item.snippet.description,
-        thumbnail_url: item.snippet.thumbnails.default.url
-      }
-    }, this)
+    if (response.items) {
+      return response.items.map(function (item) {
+        return {
+          videoId: item.id.videoId,
+          title: item.snippet.title.substring(0, 45) + "...",
+          description: item.snippet.description,
+          thumbnail_url: item.snippet.thumbnails.default.url
+        }
+      }, this)
+    }
   }
 });

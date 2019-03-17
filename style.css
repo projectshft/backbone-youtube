@@ -8,7 +8,8 @@ header {
 }
 
 .container {
-  max-width: 90%;
+  width: 90%;
+  max-width: 1280px;
 }
 
 .back {
@@ -37,9 +38,14 @@ header {
 
 .thumbnail-view:hover {
   background-color: #e1e1e1;
+  transition-duration: .5s;
 }
 
 .thumbnail-pic {
   width: 120px;
   height: 90px;
+}
+
+.error {
+  display: none;
 }

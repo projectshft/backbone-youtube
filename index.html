@@ -18,7 +18,7 @@
 
   <div class="container">
 
-    <div class="row m-3">
+    <div class="row m-5">
       <div class="input-group col-md-8 m-auto">
         <div class="input-group-prepend">
           <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
@@ -29,7 +29,10 @@
 
     <div class="row">
 
-      <div class="featured-video col-lg-8 mb-2"></div> <!-- featured vid goes here -->
+      <div class="featured-video col-lg-8 mb-2">
+        <!-- featured vid goes here -->
+      </div> 
+      <h1 class="error">There seems to be a problem. Try a different search term or refresh the page.</h1>
 
       <div class="thumbnails-container col-lg-4"></div> <!-- thumbnail views go here -->
 
@@ -38,7 +41,7 @@
   </div> <!-- end container -->
 
 
-<!-- Handlebars Templates -->
+  <!-- Handlebars Templates -->
   <script id="featured-video-template" type="text/x-handlebars-template">
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item"
