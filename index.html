@@ -26,8 +26,7 @@
 
     <header> 
         <h1>video player</h1>
-    
-          
+         
         <!-- search bar bootstrap -->
         <nav class="navbar navbar-light bg-light">
             <form class="form-inline">
@@ -42,7 +41,7 @@
         <!-- current video descripion -->
         <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" src="" allowfullscreen></iframe>
-            <!-- https://www.youtube.com/embed/zpOULjyy-n8?rel=0 -->
+            <!-- src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"-->
         </div>
     </section>
   </div>
@@ -53,18 +52,13 @@
     <aside class="float-md-left" id="video-list">
 
         <!-- list of videos -->
-        <div class="card-1" style="width: 18rem;">      
-        </div>
-        <div class="card-2" style="width: 18rem;">      
+        <div class="card-1" style="width: 24rem;">      
         </div>
         
     </aside>
   </div>
 
 </div> <!-- class="row" -->
-
-
- 
 
   
 
@@ -77,16 +71,22 @@
 
     <script id="video-template" type="text/x-handlebars-template">
         <div class="content-container">
-          <span class="video-title">Title: {{title}}</span>
-          <hr>
-          <span class="video-description">Description: {{description}}</span>
-        </div>
+            <hr>
+            <div class="img-container">
+                <img class="video-thumbnails-img" src="{{thumbnails}}">
+            </div>
+            
+            <span class="video-title">{{title}}</span>
+            <br>
+            <span class="video-description text-muted"><em>   {{description}}</em></span>    
+            <hr>
     </script>
 
-    <script src="models/AppModel.js"></script>
-    <script src="models/VideoModel.js"></script>
-    <script src="views/AppView.js"></script>
+    
+    <script src="models/VideoModel.js"></script> 
     <script src="collections/VideosCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
     <script src="main.js"></script>
     
 </body>
