@@ -1,33 +1,10 @@
-.videoList {
-    float: left;
-    align-content: center;
-    text-align: center;
-    font-size: 35px;
-}
-
-.sideVideoList {
-    float: right
-}
-
-.searchBar {
-    align-content: center;
-    text-align: center;
+.input-group {
     margin-bottom: 30px;
 }
-
-.videoBar {
-    display: flex;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    margin-bottom: 5px;
-    font-size: large;
-    text-align: center;
+.activeTitle {
+    font-weight: bold;
 }
 
-.title {
-    text-align: center;
+.activeDescription {
+    font-size: small;
 }

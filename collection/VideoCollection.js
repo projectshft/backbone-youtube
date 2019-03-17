@@ -1,10 +1,8 @@
 var VideoCollection = Backbone.Collection.extend({
-  model: VideoModel,
-  url: function(searchTerm) {
-    //console.log("search term: ", searchTerm);
-    return "asdf"//'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+ searchTerm +'&type=video&key='
+  url: function() {
+    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+ appModel.get("searchInput") +'&type=video&key='
   },
-  
+
   parse: function(data) {
     return data.items.map(function (b, index) {
       return Object.assign({
@@ -16,6 +14,6 @@ var VideoCollection = Backbone.Collection.extend({
         id: b.id.videoId
       });
     }, this);
-  },
+  }
 
 });
