@@ -1,5 +1,10 @@
+a, a:hover {
+  text-decoration: none;
+  color: black;
+}
+
 #search {
-  width: 60%;
+  width: 50%;
   margin-top: 20px;
   padding-left: 7px;
 }
@@ -7,3 +12,18 @@
 .video-section {
   margin-top: 50px;
 }
+
+.video-list-entry, .card-body {
+  border: solid black 1px;
+  background: #eee;
+  margin-bottom: 7px;
+}
+
+.video-list-entry:hover {
+  cursor: pointer;
+ }
+
+ .video-thumbnail {
+   height: 145px;
+   width: 260px;
+ }
