@@ -8,8 +8,31 @@
 
 #video-list-img {
   cursor: pointer;
+  width: 165px !important;
+  height: 95px !important;
 }
 
 .error {
+  padding-top: 10rem;
   display: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.video-description {
+  padding-top: 2rem;
+}
+
+.video-list__container {
+  padding-top: 2rem;
+}
+
+.video-list {
+  font-size: 5rem !important;
+  padding-bottom: .2rem;
+}
+
+.video-list-title {
+  font-size: .9rem;
+  font-weight: 400;
 }

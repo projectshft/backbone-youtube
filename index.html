@@ -18,19 +18,22 @@
   <div class="container">
     <div class="search-form">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-xl-12">
           <input class="form-control" id="search-bar" type="text" placeholder="Search" aria-label="Search">
         </div>
       </div>
       <div class="row video">
-        <div class="error">
-          <h1>Sorry your search did match any results</h1>
+        <div class="error col-md-12">
+          <div>
+            <h2>No results found</h2>
+            <p>Try different keywords</p>
+          </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8">
           <!-- contains the current video -->
           <div class="current-video__container"></div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4">
           <!-- will contain the thumbnail videos -->
           <div class="video-list__container"></div>
         </div>
@@ -42,15 +45,16 @@
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ id }}?rel=0" allowfullscreen></iframe>
     </div>
-    <div>
+    <div class="video-description">
       <h1>{{ title }}</h1>
+      <hr>
       <p>{{ description }}</p>
     </div>
   </script>
   <script id="video-list-template" type="text/x-handlebars-template">
-    <div>
-      <img id="video-list-img" src="{{ thumbnail }}" data-id={{id}}>
-      <h4>{{ title }}</h4>
+    <div class="video-list d-flex flex-row">
+      <img id="video-list-img" src="{{ thumbnail }}" data-id={{id}} style="width:165px; height: 95px;">
+      <h6 class="video-list-title">{{ title }}</h6>
     </div>
   </script>
 </body>

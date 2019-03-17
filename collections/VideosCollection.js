@@ -1,9 +1,9 @@
 var VideosCollection = Backbone.Collection.extend({
   model: VideoModel,
-  searchQuery: 'messi',
+  searchQuery: 'neymar',
 
   url: function () {
-    var API_KEY = 'AIzaSyCqQlZuTXimvUPBonzTn4MXjQNJouPJQcc';
+    var API_KEY = 'AIzaSyBX3-vatGIHQnsKOgYyoPgvlokdh8feslI';
     return `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${this.searchQuery}&type=video&key=${API_KEY}`;
   },
 
