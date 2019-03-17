@@ -2,16 +2,18 @@ var AppModel = Backbone.Model.extend({
 	defaults: function () {
 		return {
 			videos: new VideoCollection(),
-			current_video: null,
-			selected: false
+			currentVideo: null,
+
 		}
 	},
 
-	//clear previous video and update to selected video
-	// selectedVideo: function(id) {
-	// 	allVideos = this.get('videos');
-	// 	var currentVideo= this.findWhere({ id: id})
-	// 	this.set('current_video', currentVideo )
-	// 	this.set('selected', true)
-	// } 
+	updateSelected: function (id) {
+		//get all models in collection
+		var allVideos = this.get('videos')
+		//select which model is the selected one
+		var selectedVideo = allVideos.findWhere({ videoId: id });
+		//set selected video as currentVideo
+		this.set('currentVideo', selectedVideo)
+		
+	},
 });

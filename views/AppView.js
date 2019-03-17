@@ -12,10 +12,9 @@ var AppView = Backbone.View.extend({
 		this.renderVideos();
 	
 		//listen for a reset in the model
-		this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-		//listen for a change in the selected video
-		this.listenTo(this.model, 'change:selected', this.renderCurrent)
-		
+		this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
+		// //listen for a change in the selected video
+		this.listenTo(this.model, 'change:currentVideo', this.renderCurrent)
   },
 
 	//search API and add result to App Model
@@ -27,7 +26,7 @@ var AppView = Backbone.View.extend({
 	//render each video
 	renderVideo: function(video) {
 		var listView = new VideoListView({ model: video});
-		this.$('.video-list').append(listView.render().el)
+		this.$('.video-list').append(listView.render().el);
 	},
 
 	//render all
@@ -38,21 +37,24 @@ var AppView = Backbone.View.extend({
 		this.model.get('videos').each(function(m) {
 			this.renderVideo(m);
 		}, this)
+		this.renderfirstCurrent()
 	},
 
-	//update model when thumbnail is clicked
-	// updateCurrent: function (e) {
-	// 	console.log('Clicked')
-	// 	var selectedVideoId = $(e.currentTarget).data().id;
-	// 	console.log(selectedVideoId)
+	//render first result on initial load
+	renderfirstCurrent: function() {
+		var listView = new CurrentVideoView({ model: this.model.get('videos').models[0]});
+		this.$('.current-video').append(listView.render().el)
+	},
 
-	// 	// this.model.updateSelected(selectedVideoId);
-	// },
+	updateCurrent: function(e) {
+		var clickedVideoId = $(e.currentTarget).data().id;
+		this.model.updateSelected(clickedVideoId)
+	},
 
-	//update view with new selected video
-	renderCurrent: function () {
-		var currentView = new CurrentVideoView()
-		this.$('.current-video').html(currentView.render().el)
+	renderCurrent: function() {
+		this.model.get('currentVideo')
+		current = new CurrentVideoView({ model: this.model.get('currentVideo') });
+		this.$('.current-video').html(current.render().el)
 	}
 
 });
