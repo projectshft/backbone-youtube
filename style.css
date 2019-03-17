@@ -6,3 +6,13 @@ body {
   background-size: cover;
   height: 100%;
 }
+
+.input-group {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+li {
+  color: gainsboro;
+}
