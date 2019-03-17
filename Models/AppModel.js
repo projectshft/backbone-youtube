@@ -2,11 +2,11 @@
 
 const AppModel = Backbone.Model.extend({
 
-  defaults: function() {
+  defaults: function () {
     return {
       videos: new VideoCollection(),
       current_video: null, 
-      query: 'Baby Shark Remix'
+      query: 'Baby Shark Trap Remix'
     };
   }
 });
