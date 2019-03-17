@@ -5,8 +5,7 @@ var VideosCollection = Backbone.Collection.extend({
     fetchVideos: function(query) {
 
       this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=' +query+ '&key=AIzaSyBEG4ujnxDsiPYGHbN2S1hgQ-JSpWLOmdI';
-      console.log('collection fetch URL: ', this.url);
-   
+
       this.fetch({reset: true});
     },
 
@@ -32,7 +31,6 @@ var VideosCollection = Backbone.Collection.extend({
 
   });
 
-  //'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' +query+ '&key=AIzaSyBEG4ujnxDsiPYGHbN2S1hgQ-JSpWLOmdI';
 
 
 

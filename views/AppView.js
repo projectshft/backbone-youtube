@@ -12,17 +12,18 @@ var AppView = Backbone.View.extend({
       this.$searchInput = this.$('#search-input');
 
       this.listenTo(this.model.get('videos'), 'reset', this.render);
+      this.listenTo(this.model.get('videos'), 'reset', this.play);
      
     },
 
         // Grabs the query from the search, tells the Collection to fetch videos.
         // Upon Collection successfully returning the video models,
-        // renders the first returned video
+        
   
     fetchVideo: function() {
 
           const query = this.$searchInput.val();
-          console.log(query);
+
           this.model.get('videos').fetchVideos(query);
     },
 
@@ -35,15 +36,35 @@ var AppView = Backbone.View.extend({
         const description = v.get('description');
         const thumbnails = v.get('thumbnails');
   
-        var source = $('#video-template').html(); // Render to page with handlebars template
-        var template = Handlebars.compile(source)
-        var newHTML = template({title, description, thumbnails});
+        const source = $('#video-template').html(); // Render to page with handlebars template
+        const template = Handlebars.compile(source)
+        const newHTML = template({title, description, thumbnails});
         this.$('.card-1').append(newHTML);
 
         return this;
 
       });
     },
+
+    play: function() { // renders the first returned video
+      console.log('Inside play function...');
+
+      const first = this.model.get('videos').first(); 
+      const firstId = first.get('videoId');
+  
+      const firstUrl = 'https://www.youtube.com/embed/' +firstId+ '?rel=0';
+        
+      const firstTitle = first.get('title');
+      const firstDescription = first.get('description');
+
+      const source = $('#play-template').html();
+      const template = Handlebars.compile(source)
+      const newHTML = template({firstUrl, firstTitle, firstDescription});
+      this.$('.video').append(newHTML);
+
+      return this;
+      
+    }
 
    
   });
