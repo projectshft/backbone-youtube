@@ -5,7 +5,7 @@ const VideoListView = Backbone.View.extend({
   className: 'video-list-entry',
   attributes: function() {
     return {
-      'data-id': this.model.id
+      'data-id': this.model.id  // Allows for clicking of entire video list box
     };
   },
   
