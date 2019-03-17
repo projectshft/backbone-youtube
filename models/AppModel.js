@@ -7,13 +7,12 @@ var AppModel = Backbone.Model.extend({
     }
   },
 
-  getFirstVideo: function () {
+  getFirstModel: function () {
     return this.get('videos').first();
   },
 
-  findVideoById: function (videoId) {
+  findModelById: function (videoId) {
     return this.get('videos').findWhere({ id: videoId });
   }
-
 
 });

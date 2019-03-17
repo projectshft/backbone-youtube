@@ -27,7 +27,7 @@ var AppView = Backbone.View.extend({
     // find video id and use it to find the model,
     // then update the current video view
     var videoId = $(e.target).data().id;
-    var modelFound = this.model.findVideoById(videoId);
+    var modelFound = this.model.findModelById(videoId);
     this.renderFirstVideo(false, modelFound);
   },
 
@@ -35,7 +35,7 @@ var AppView = Backbone.View.extend({
     this.$currentVideo.empty();
     var videoView;
     if (initialRender) {
-      videoView = new CurrentVideoView({ model: this.model.getFirstVideo() });
+      videoView = new CurrentVideoView({ model: this.model.getFirstModel() });
     } else {
       videoView = new CurrentVideoView({ model: videoModel });
     }
