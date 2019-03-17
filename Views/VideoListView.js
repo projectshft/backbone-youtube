@@ -3,6 +3,11 @@
 
 const VideoListView = Backbone.View.extend({
   className: 'video-list-entry',
+  attributes: function() {
+    return {
+      'data-id': this.model.id
+    };
+  },
   
   template: Handlebars.compile($('#video-list-template').html()),
 
