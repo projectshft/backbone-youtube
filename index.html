@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <title>VIDEO PLAYER</title>
+</head>
+
+
+<body>
+
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<div class="row">
+  <div class="col-12 col-md-8">
+
+    <header> 
+        <h1>video player</h1>
+    
+          
+        <!-- search bar bootstrap -->
+        <nav class="navbar navbar-light bg-light">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" id="search-input" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 submit-search" type="button">Search</button>
+            </form>
+        </nav>
+    </header> 
+           
+    <section class="video">
+        <!-- current video (first video in collection) -->
+        <!-- current video descripion -->
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="" allowfullscreen></iframe>
+            <!-- https://www.youtube.com/embed/zpOULjyy-n8?rel=0 -->
+        </div>
+    </section>
+  </div>
+
+
+
+  <div class="col-6 col-md-4">
+    <aside class="float-md-left" id="video-list">
+
+        <!-- list of videos -->
+        <div class="card-1" style="width: 18rem;">      
+        </div>
+        <div class="card-2" style="width: 18rem;">      
+        </div>
+        
+    </aside>
+  </div>
+
+</div> <!-- class="row" -->
+
+
+ 
+
+  
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">made with love by balancingACT copyright 2019</span>
+        </div>
+    </footer>
+
+
+    <script id="video-template" type="text/x-handlebars-template">
+        <div class="content-container">
+          <span class="video-title">Title: {{title}}</span>
+          <hr>
+          <span class="video-description">Description: {{description}}</span>
+        </div>
+    </script>
+
+    <script src="models/AppModel.js"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="main.js"></script>
+    
+</body>
+</html>
