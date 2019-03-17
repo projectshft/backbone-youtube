@@ -9,16 +9,18 @@ var AppView = Backbone.View.extend({
 
 	//initalize- listen to model
 	initialize: function () {
-		this.renderVideos();
+		// default search for when user first loads page
+		this.model.get('videos').fetchVideo("Potter Puppet Pals")
 	
 		//listen for a reset in the model
-		this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
+		this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 		// //listen for a change in the selected video
 		this.listenTo(this.model, 'change:currentVideo', this.renderCurrent)
   },
 
 	//search API and add result to App Model
-	findVideos: function () {
+	findVideos: function (e) {
+		e.preventDefault();
 		query = this.$('#video-search').val(),
 		this.model.get('videos').fetchVideo(query)
 	},
@@ -31,7 +33,7 @@ var AppView = Backbone.View.extend({
 
 	//render all
 	renderVideos: function() {
-		//delete all current videos
+		// delete all current videos
 		this.$('.video-list').empty();
 		
 		this.model.get('videos').each(function(m) {
@@ -43,7 +45,7 @@ var AppView = Backbone.View.extend({
 	//render first result on initial load
 	renderfirstCurrent: function() {
 		var listView = new CurrentVideoView({ model: this.model.get('videos').models[0]});
-		this.$('.current-video').append(listView.render().el)
+		this.$('.current-video').html(listView.render().el)
 	},
 
 	updateCurrent: function(e) {
@@ -52,6 +54,7 @@ var AppView = Backbone.View.extend({
 	},
 
 	renderCurrent: function() {
+
 		this.model.get('currentVideo')
 		current = new CurrentVideoView({ model: this.model.get('currentVideo') });
 		this.$('.current-video').html(current.render().el)

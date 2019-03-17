@@ -1,13 +1,13 @@
-var VideoListView = Backbone.View.extend({
-	className: 'list',
+var CurrentVideoView = Backbone.View.extend({
+  className: 'current',
 
-  //template for Handlebars
-  template: Handlebars.compile($('#list-template').html()),
+  //Handlebars template for HTML
+  template: Handlebars.compile($('#current-template').html()),
 
-  //render template
+  //render Template
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
     return this;
-  },
-});
+  }
 
+});
