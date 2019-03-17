@@ -16,46 +16,62 @@
 }
 
 .current-video-col {
-  height: 800px;
-  border: 1px dotted blue;
+  height: 503px;
+  margin: 0px 9px 0px 9px;
 }
 
-.recommended-videos-col {
-  height: 800px;
-  border: 1px dotted red;
-}
-
-.current-video-col {
-  height: 530px;
-  background-color: orange;
+.recommended-list-col {
+  height: auto;
+  max-height: 503px;
 }
 
 .current-video-description-col {
-  height: 400px;
-  background-color: green;
+  height: auto;
+  margin: 0px 9px 20px 9px;
+}
+
+.current-video-title-div {
+  padding: 20px 0px 20px 0px;
+  line-height: 1.2;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.current-video-description-div {
+  line-height: 1.2;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  padding-top: 6px;
+  color: #2d2d2d;
 }
 
 .recommended-card-row {
-  background-color: green;
   height: 94px;
   width: 100%;
   margin: 0px 0px 8px 0px;
+  overflow: hidden;
 }
 
 .recommended-card-thumbnail {
-  width: 168px;
+  width: 167px;
   height: 94px;
-  border: 1px solid black;
 }
 
-.test {
-  height: 40px;
-  background-color: yellow;
+.recommended-title-col {
+  height: auto;
   float: left;
   overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.2;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 .recommended-card-container {
   padding: 0px;
+}
+
+.recommended-thumbnail {
+  max-height: 100%;
 }

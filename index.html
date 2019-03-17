@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/underscore/underscore-min.js"></script>
@@ -29,19 +30,30 @@
         </div>
       </div>
     </div>
-
+    
     <div class="page-container container-fluid">
       <div class="row page-row">
         <div class="col-lg-8">
           <div class="row current-video-row">
             <div class="col-12">
               <div class="current-video-col">
+
+                  <iframe height="100%" width="100%" src="https://www.youtube.com/embed/3rG-H9356f4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
               </div>
             </div>
           </div>
           <div class="row current-video-description-row">
             <div class="col-12">
               <div class="current-video-description-col">
+
+                  <div class="current-video-title-div">
+                      This song is very Awesome and it's by Adele but it could maybe also be by OTHER folks!
+                  </div>
+                  <div class="current-video-description-div">
+                      This here's a lil didy about jack and diane, two murican kids growin up in the hartland year I don't care about them there typose cause Im here Jack and Diane!
+                  </div>
+
               </div>
             </div>
           </div>
@@ -53,11 +65,9 @@
               <div class="container-fluid recommended-card-container d-flex">
                 <div class="row recommended-card-row">
                   <div class="recommended-card-thumbnail">
-
+                    <img class="recommended-thumbnail" src="https://i.ytimg.com/vi/5nCcE-jABSo/mqdefault.jpg">
                   </div>
-                  <div class="test col">
-                    this is a testy testy testy test
-                  </div>
+                  <div class="recommended-title-col col">This song is very Awesome and it's by Adele but it could maybe also be by OTHER folks!</div>
                 </div>
               </div>
             </div>
@@ -67,20 +77,34 @@
       </div>
     </div>
 
+    <script id="current-video-template" type="text/x-handlebars-template">
+       <iframe height="100%" width="100%" src="https://www.youtube.com/embed/{{videoID}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </script>
+
+    <script id="current-video-description-template" type="text/x-handlebars-template">
+      <div class="current-video-title-div">
+        {{title}}
+      </div>
+      <div class="current-video-description-div">
+        {{description}}
+      </div>
+    </script>
+
     <script id="recommended-video-template" type="text/x-handlebars-template">
       <div class="row recommended-list-row">
           <div class="col-12">
             <div class="container-fluid recommended-card-container d-flex">
               <div class="row recommended-card-row">
-                <div class="recommended-card-thumbnail"></div>
-                <div class="test col">{{title}}</div>
+                <div class="recommended-card-thumbnail">
+                    <img class="recommended-thumbnail" src="https://i.ytimg.com/vi/{{videoID}}/mqdefault.jpg">
+                </div>
+                <div class="recommended-title-col col">{{title}}</div>
               </div>
             </div>
           </div>
         </div>
     </script>
 
-    <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
