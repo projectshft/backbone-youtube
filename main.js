@@ -1,3 +1,5 @@
-var appModel = new appModel();
+var appModel = new AppModel();
 
-var appView = new appView({ model:appModel});
+var appView = new AppView({ model:appModel});
+
+appModel.get('videoList').fetch({ reset: true });

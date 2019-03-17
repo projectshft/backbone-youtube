@@ -1,6 +1,6 @@
 var VideoModel = Backbone.Model.extend({
 //need to assign a specific id to each video Model
-    id: '_id'
+    id: '_id',
 
     defaults: function () {
         return {
@@ -11,7 +11,12 @@ var VideoModel = Backbone.Model.extend({
         }
     },
 
-    parse: function(){
-      
-    }
+    parse: function(video){
+      return{
+        title: video.snippet.title,
+        vidId: video.id.videoID,
+        img: video.snippet.thumbnails.default.url,
+        vidInfo: video.snippit.vidInfo
+      }
+    },
 });

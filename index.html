@@ -8,7 +8,7 @@
     <title>Youtube Project</title>
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -35,7 +35,7 @@
             <div class="col-sm-4 videoList">
                 <h3>Related Videos</h3>
                 <p> Choose Video Below to Play</p>
-                <ul class="related-videos list-unstyled"></ul>
+                <ul class="vidList list-unstyled"></ul>
             </div>
         </div>
     </div>
@@ -51,8 +51,8 @@
 
 
     <script id="list-template" type="text/x-handlebars-template">
-        <a href="#" class="view-Video" data-id="{{videoId}}">
-            <img id="thumbnail" src="{{image}}">
+        <a href="#" class="viewVideo" data-id="{{vidId}}">
+            <img id="thumbnail" src="{{img}}">
             <h6 class="list-item title"><b>{{title}}</b></h6>
             <p class="list-item description">{{description}}</p>
         </a>
