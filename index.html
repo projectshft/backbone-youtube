@@ -4,41 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link  rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <title>Doss2k Backbone YouTube</title>
 </head>
 
 <body>
   <h1 class="text-center">Backbone YouTube</h1>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">  
       <div class="col-md-12 search-bar text-center">
         <input id="search" type="text" placeholder="Search">           
       </div>
     </div>
     <div class="row video-section">
-      <div class="col-md-8 current-video-area"></div>
+      <div class="col-md-2"></div>
+      <div class="col-md-6 current-video-area"></div>
       <div class="col-md-4 video-list"></div>
     </div>    
   </div>
 
+  <!-- Handlebar Scripts -->
+
   <script id='current-video-template' type='text/template'>
-    <div class='embed-responsive embed-responsive-16by9'>
-      <iframe src='https://www.youtube.com/embed/{{ id }}'></iframe>
+    <div class='embed-responsive embed-responsive-16by9 card'>
+      <iframe src='https://www.youtube.com/embed/{{ id }}' allowfullscreen='true'></iframe>
     </div>
     <div class='card-body video-info'>
       <h5 class='card-title'><strong>{{ title }}</strong></h5>
-      <p class='card-text'>{{ desc }}</p>
+      <p class='card-text'>{{ description }}</p>
     </div>
   </script>
   
   <script id='video-list-template' type='text/template'>
     <a href='#' data-id='{{ id }}'>
-      <img src='{{ thumbnail }}'>
-      <p>{{ title }}</p>
+      <img class='video-thumbnail' src='{{ thumbnail }}' data-id='{{ id }}'>
+      <p data-id='{{ id }}'>{{ title }}</p>
     </a>
   </script> 
+
+  <!-- Libraries and files -->
           
   <script src='node_modules/jquery/dist/jquery.min.js'></script>
   <script src='node_modules/underscore/underscore-min.js'></script>
