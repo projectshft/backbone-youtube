@@ -2,13 +2,15 @@ var AppView = Backbone.View.extend({
 el: $('body'),
 
  events: {
-  'click .btn' : 'createVideoRequest'
+  'click .btn' : 'createVideoRequest',
+  'click .videoBarItem' : 'toggleVideoSelection'
  },
 
 initialize: function() {
   this.$videoList = this.$('.videoList');
   this.$sideVideoList = this.$('.sideVideoList');
   this.listenTo(this.model.get("videos"), 'add', this.renderVideo);
+  this.listenTo(this.model.get("videos"), 'change:currentVideo', this.renderVideo);
 },
 
 createVideoRequest: function() {
@@ -27,17 +29,12 @@ renderVideo: function(video) {
   }
 },
 
-// renderSideBar: function(video) {
-//   var sideBarView = new SideBarView({model: video});
-//   this.$sideVideoList.append(sideBarView.render().el);
-// },
-
-toggleVideoSelection: function() {
-  //placeholder for function to handle clicking sidebar videos
-},
-
-testFunc: function() {
-  console.log("this test: ",this.model);
-}
+toggleVideoSelection: function(e) {
+  console.log($(e.currentTarget).data().id);
+  console.log();
+  //find current .video, delete element, set currentVideo = false
+  //select clicked module, set currentVideo = true, delete 
+  //invoke renderVideo
+  }
 
 });
