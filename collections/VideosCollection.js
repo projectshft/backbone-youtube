@@ -19,7 +19,7 @@ const VideosCollection = Backbone.Collection.extend({
     return response.items.map(function (item) {
       return {
         videoId: item.id.videoId,
-        title: item.snippet.title.substring(0, 50) + "...",
+        title: item.snippet.title.substring(0, 45) + "...",
         description: item.snippet.description,
         thumbnail_url: item.snippet.thumbnails.default.url
       }

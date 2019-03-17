@@ -26,6 +26,7 @@ const AppView = Backbone.View.extend({
       this.$(".thumbnails-container").empty();
     }
     $("#search-input").val("");
+    $("#search-input").focus();
   },
 
   getSearchQueryOnEnter: function (e) {
@@ -36,6 +37,7 @@ const AppView = Backbone.View.extend({
         this.$(".thumbnails-container").empty();
       }
       $("#search-input").val("");
+      $("#search-input").focus();
     }
   },
   // Create render methods for each individual thumbnail view
