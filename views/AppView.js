@@ -21,33 +21,39 @@ var AppView = Backbone.View.extend({
     console.log($('.current-video-description-col').html());
     //listen to changes in this model's videos key, if there is a change invoke a render function
     this.listenTo(this.model.get('videos'), 'reset', this.renderPage);
+
+    this.model.get('videos').fetchData('2009 World Series Highlights');
   },
   //define notifyAppModelOfQueryChange, in response to the search click event
   notifyAppModelOfQueryChangeOnEnter: function(e){
-    if (e.which === 13) {
+    if (e.which === 13 && this.$searchInput.val() != '') {
       var query = this.$searchInput.val();
       this.model.get('videos').fetchData(query);
       this.$searchInput.blur();
+    } else if (e.which === 13 && this.$searchInput.val() === ''){
+      alert('You must enter a search parameter.');
     };
   },
 
   notifyAppModelOfQueryChange: function(){
-    var query = this.$searchInput.val();
-    //invoke function in collection that will change the url based on the passed in query.
-    this.model.get('videos').fetchData(query);
+    if (this.$searchInput.val() != '') {
+      var query = this.$searchInput.val();
+      //invoke function in collection that will change the url based on the passed in query.
+      this.model.get('videos').fetchData(query);
+    } else alert('You must enter a search parameter.');
   },
   //define renderPage, in response to initialize's change listener
   renderPage: function() {
     this.$recommendedListCol.empty();
     this.$currentVideoCol.empty();
     this.$currentVideoDescriptionCol.empty();
-    var recommendedArray = this.model.attributes.videos.models.splice(1,5);
-    var topVideoIndex = this.model.attributes.videos.models[0];
-    recommendedArray.forEach(function(index){
+
+    this.model.recommendedArray().forEach(function(index){
       this.$recommendedListCol.append(this.templateR(index.toJSON()));
     }, this)
-    this.$currentVideoCol.html(this.templateCV(topVideoIndex.toJSON()));
-    this.$currentVideoDescriptionCol.html(this.templateCVD(topVideoIndex.toJSON()));
+
+    this.$currentVideoCol.html(this.templateCV(this.model.topVideoIndex().toJSON()));
+    this.$currentVideoDescriptionCol.html(this.templateCVD(this.model.topVideoIndex().toJSON()));
   }
 });
 

@@ -9,7 +9,13 @@ var AppModel = Backbone.Model.extend({
 
       //probably down here set the daults... (according the jason)
     };
+  },
+
+  recommendedArray: function(){
+    return this.attributes.videos.models.splice(1,5);
+  },
+
+  topVideoIndex: function(){
+    return this.attributes.videos.models[0];
   }
-
-
 });

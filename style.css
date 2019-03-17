@@ -61,6 +61,7 @@
 
 .recommended-title-col {
   height: auto;
+  max-height: 58px;
   float: left;
   overflow: hidden;
   line-height: 1.2;
