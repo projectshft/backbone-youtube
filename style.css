@@ -7,6 +7,10 @@ header {
   margin: 5px;
 }
 
+.container {
+  max-width: 90%;
+}
+
 .back {
   color: rgb(225, 0, 0);
 }
