@@ -7,7 +7,9 @@ var AppView = Backbone.View.extend({
   },
   // at start of program we need...
   initialize: function () {
-    this.model.get('')
+    this.model.get('');
+
+    this.$currentVideo = this.$('current-video-section');
 
   },
 
@@ -22,6 +24,8 @@ var AppView = Backbone.View.extend({
 
   renderCurrent: function() {
     this.$('#current-video-template').empty();
+    var currentView = new CurrentView({ model: video });
+    this.$currentVideo.append(currentView.render().el);
 
     // display current
   },
