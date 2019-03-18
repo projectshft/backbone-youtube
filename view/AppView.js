@@ -7,11 +7,13 @@ el: $('body'),
  },
 
 initialize: function() {
-  this.$videoList = this.$('.videoList'); //Dom element to attach main video to
-  this.$sideVideoList = this.$('.sideVideoList'); //Dom element to attach thumbnails to
-  this.listenTo(this.model.get("videos"), 'add', this.renderVideo); //Triggers rendering of videos on search
-  this.listenTo(this.model.get("videos"), 'change:currentVideo', this.updateViews); //Triggers sequence of rendering functions when model data is changed for currentVideo
-  this.listenTo(this.model.get("videos"), 'remove', this.clearViews);
+  this.$videoList = this.$('.videoList'); //Dom element to attach main video to.
+  this.$sideVideoList = this.$('.sideVideoList'); //Dom element to attach thumbnails to.
+  this.listenTo(this.model.get("videos"), 'add', this.renderVideo); //Triggers rendering of videos on search.
+  this.listenTo(this.model.get("videos"), 'change:currentVideo', this.updateViews); //Triggers sequence of rendering functions when model data is changed for currentVideo.
+  this.listenTo(this.model.get("videos"), 'remove', this.clearViews);  
+  this.$('#videoSearch-input').attr("value", "Backbone.js") //This is for the initial load search input.
+  this.createVideoRequest();
 },
 
 createVideoRequest: function() { //Invokes fetch w/ user input
@@ -20,7 +22,7 @@ createVideoRequest: function() { //Invokes fetch w/ user input
   appModel.get("videos").fetch();
 },
 
-renderVideo: function(video) { //Handles creation of views based on currentVideo value
+renderVideo: function(video) { //Handles creation of views based on currentVideo value.
   if (video.get("currentVideo"))
   {
     var videoView = new VideoView({model: video});
@@ -31,7 +33,7 @@ renderVideo: function(video) { //Handles creation of views based on currentVideo
   }
 },
 
-toggleVideoSelection: function(e) { //Starts the process of updating the model after a thumbnail is clicked
+toggleVideoSelection: function(e) { //Starts the process of updating the model after a thumbnail is clicked.
   var clickedVideoId = $(e.currentTarget).data().id;
   this.model.updateCurrentVideo(clickedVideoId);
 },

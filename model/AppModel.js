@@ -1,7 +1,7 @@
 var AppModel = Backbone.Model.extend({
   defaults: function() {
     return {
-    searchInput: "",
+    searchInput: "Backbone.js",
     videos: new VideoCollection()
     }
   },
