@@ -1,8 +1,8 @@
-// Creates a default framework for the VideoModel
+// Creates default values for the VideoModel
 
 const VideoModel = Backbone.Model.extend({
 
-  defaults: function() {
+  defaults: function () {
     return {
       id: '',
       title: '',

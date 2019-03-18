@@ -3,7 +3,7 @@
 const VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
 
-  /* Generates the URL to pass into the YouTube API based on the query value with a max of 10 results.
+  /* Generates the URL to pass into the YouTube API based on the query value with a max of 8 results.
      Only returns videos and also attaches the API Key. */
   
   fetchVideos: function (query) {
@@ -24,7 +24,7 @@ const VideoCollection = Backbone.Collection.extend({
         thumbnail: video.snippet.thumbnails.medium.url
       }));
     } else {
-      alert('Your search returned zero results');
+      alert('Your search returned zero results. Please try again.');
       location.reload();
     }
   }

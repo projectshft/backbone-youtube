@@ -3,7 +3,7 @@
 
 const VideoListView = Backbone.View.extend({
   className: 'video-list-entry',
-  attributes: function() {
+  attributes: function () {
     return {
       'data-id': this.model.id  // Allows for clicking of entire video list box
     };
@@ -11,7 +11,7 @@ const VideoListView = Backbone.View.extend({
   
   template: Handlebars.compile($('#video-list-template').html()),
 
-  render: function() {
+  render: function () {
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }

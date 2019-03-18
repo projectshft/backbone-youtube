@@ -1,4 +1,4 @@
-/* Controls rendering of the full page view along with handling event listeners and what is displayed on the 
+/* Controls rendering of the full page along with handling event listeners and what is displayed on the 
    page at any given time */
 
 const AppView = Backbone.View.extend({
@@ -11,11 +11,11 @@ const AppView = Backbone.View.extend({
     'click .video-list-entry': 'switchCurrentVideo'
   },
 
-  /* Creates listeners for the current video to change and for when a new search is performed 
-     that tells the view what new things to render */
+  /* Performs a search for default query value when page first loads.  Creates listeners for the current 
+     video to change and for when a new search is performed that tells the view what new things to render */
 
   initialize: function () {
-    // this.model.get('videos').fetchVideos(this.model.get('query'));
+    this.model.get('videos').fetchVideos(this.model.get('query'));
     this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo);
     this.listenTo(this.model.get('videos'), 'reset', function () {
       this.renderCurrentVideo();
@@ -48,15 +48,15 @@ const AppView = Backbone.View.extend({
   },
 
   /* Empties out the current side video list then loops through the current collection of models, has 
-     the video list view render each list entry, then appends that entry to the page */
+     the video list view render each list entry,; then appends that entry to the page */
 
   renderVideoList: function () {
     this.$('.video-list').empty();
-    for(let i = 1; i < this.model.get('videos').models.length; i++) {
-      let video = this.model.get('videos').models[i];
-      let videoListView = new VideoListView({model: video});
+    const videoList = this.model.get('videos').models;
+    videoList.forEach(video => {
+      const videoListView = new VideoListView({model: video});
       this.$('.video-list').append(videoListView.render().el);
-    }
+    });
   },
 
   /* When a video in the side video list is clicked the id associated with that video is grabbed,
