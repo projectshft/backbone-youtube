@@ -11,7 +11,7 @@ var appView = Backbone.view.extend({
    this.model.get('videoList').getVideos(this.model.get('query'));
  },
 
- earchVideos: function(e) {
+ searchVideos: function(e) {
     if (e.which === 13) {
       //set a variable to the value of the user's search
       var query = $('#searchBar').val();
