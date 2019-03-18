@@ -15,6 +15,36 @@
 
   </head>
   <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <input id="video-search" type="text" class="col-md-6 m-4" placeholder="What are you in the mood for?">
+
+         <button id='searchButton' type="button" class="btn btn-primary m-4">Search</button>
+      </div>
+
+
+      <div class="row videos-section">
+        <div id="current-video-section">
+        </div>
+
+        <div id="playlist-section">
+        </div>
+      </div>
+
+
+      <script id="current-video-template" type="text/x-handlebars-template">
+        <div id="video-player" class="row justify-content-center">
+          <iframe src="https://www.youtube.com/{{ query }}"></iframe>
+        </div>
+        <div id="video-title" class="row m-2">
+          <h3>{{ videoTitle }}</h3>
+        </div>
+        <div id="video-description" class="row m-2">
+          <p>{{ videoDescription }}</p>
+        </div>
+      </script>
+
+
 
 
 
