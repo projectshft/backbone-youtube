@@ -58,8 +58,8 @@
             </iframe>
         </div>
         <div class="current-video-description row">
-            <div class="video-title">{{ video title }}</div>
-            <div class="video-description">{{ video description }}</div>
+            <div class="video-title">{{ title }}</div>
+            <div class="video-description">{{ description }}</div>
     </script>
 
     <script id="video-list-template" type="text/x-handlebars-template">
@@ -71,15 +71,12 @@
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
         </iframe>
-        <div class="video-title">{{ video title }}</div>
+        <div class="video-title">{{ title }}</div>
     </script>
 
-    <script src="models/VideoModel.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="collections/VideosCollection.js"></script>
-    <script src="views/CurrentVideoView.js"></script>
-    <script src="views/VideoListView.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
