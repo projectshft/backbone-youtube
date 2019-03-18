@@ -1,7 +1,17 @@
+/**********************************************
+ *  Render video list
+ *********************************************/
+
 let ListView = Backbone.View.extend({
-  initialize: function() {
-    // append <ul> to ListView <div> (this.render(); )
-  },
-  render: function() {},
-  template: Handlebars.compile($('#list-template').html())
+  className: 'video', // ???
+
+  template: Handlebars.compile($('#list-template').html()),
+
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
 });
+
+// Apply click event handler when user selects a video in the list. Apply in AppView.

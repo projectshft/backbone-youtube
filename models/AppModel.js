@@ -1,30 +1,44 @@
-let AppModel = Backbone.Model.extend({});
+let AppModel = Backbone.Model.extend({
+  // Set defaults to return new VideosCollection
+  defaults: function() {
+    return {
+      videos: new VideosCollection(),
 
-/***********************************************
-    FROM: beer-review-backbone(master) 
-************************************************/
-// var AppModel = Backbone.Model.extend({
-//   defaults: function () {
-//     return {
-//       beers: new BeersCollection(),
+      current_feature: null
+    };
+  },
 
-//       current_beer: null,
+  // A function to change the current feature video to one on the list, per click event by user (have handler in view; use "remove"?) or at the end of the feature video's playtime (extension 4). "shift" the next one from the top of the list to the feature player???).
 
-//       // either true or false
-//       show_reviews: false
-//     }
-//   },
+  changeFeature: function(vidId) {
+    let videoVault = this.get('videos');
 
-//   showReviews: function (id) {
-//     var allBeers = this.get('beers');
+    // Per Backbone documentation: findWhere directly returns only the first model in the collection that matches the passed attributes.
+    let featureVideo = videoVault.findWhere({ vidId: videoId });
 
-//     var currentBeer = allBeers.findWhere({ id: id });
+    this.set('current_feature', featureVideo);
+  }
+});
 
-//     this.set('current_beer', currentBeer);
-//     this.set('show_reviews', true);
-//   },
+/*********************************
+ * QUESTIONS: API call & search
+ * ****************************** */
+// // API calls are conducted by models.
+// // After the API loads, call a function to enable the search box???
+// function handleAPILoaded() {
+//   $('#search-button').attr('disabled', false);
+// }
 
-//   showBeers: function () {
-//     this.set('show_reviews', false);
-//   }
-// });
+// // Search for a specified string.
+// function search() {
+//   var q = $('#query').val();
+//   var request = gapi.client.youtube.search.list({
+//     q: q,
+//     part: 'snippet'
+//   });
+
+//   request.execute(function(response) {
+//     var str = JSON.stringify(response.result);
+//     $('#search-container').html('<pre>' + str + '</pre>');
+//   });
+// }

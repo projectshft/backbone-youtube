@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 
-    <!--JS Dependencies-->
+    <!--JS dependencies-->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
@@ -22,117 +22,157 @@
   </head>
 
   <body>
-    <div id="app"></div>
-    <!-- 
-      <nav class="navbar">
-        <div class="col-md-6 col-md-offset-3">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="http://placehold.it/150x50?text=Logo" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> -->
+
+    <img class="bg" src="https://cdn.hipwallpaper.com/i/25/91/zFRrai.jpg" />
+    <!-- <nav class="navbar">
+      <img class="logo"
+      src=https://banner2.kisspng.com/20180705/zri/kisspng-backbone-js-javascript-programmer-react-backbone-5b3e1144efdf50.9937521215307943089825.jpg"
+      />
+    </nav> -->
+
+    <div id="app">
+
+    <!-- <nav class="navbar">
+         <div class="col-md-6 col-md-offset-3">
           <div class="search">
             <h5><em>search</em>view goes here</h5>
           </div>
         </div>
-      </nav> 
-    -->
+      </nav> -->
 
     <!-- Search Bar -->
-    <div class="container">
+    <div class="container" id="search-container">
       <div class="row">
-        <div class="col-sm-6 mx-auto">
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control-sm"
-              placeholder="Search for a video"
-            />
-            <span class="input-group-btn">
-              <button class="btn btn-secondary btn-sm" type="button">
-                Go
-              </button>
-            </span>
+        <div class="col-6 align-items-center">
+          <div class="input-group go-search">
+            <div id="search">
+              <input
+                type="text"
+                class="form-control-sm"
+                placeholder="Search for a video"
+              />
+              <span class="input-group-btn">
+                <button class="btn btn-secondary btn-sm" type="button">
+                  Go
+                </button>
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- <div class="col-3"></div> -->
 
-    <div class="container" id="video-box">
-      <div class="row">
-        <div class="col-md-6 align-items-center" id="feature-video-player">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe
-              src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <!-- <iframe
-            id="ytplayer"
-            type="text/html"
-            width="640"
-            height="360"
-            src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-            frameborder="0"
-          ></iframe> -->
+    <!-- Video Area -->
+    <div class="container" id="video-app">
+      <div class="row align-items-center">
+        <div class="col-md-6 nowPlaying">
+          <div id="feature-video-player"></div>
         </div>
-        <div class="col-md-6" id="video-list">
-          <ul class="video-list">
-            <strong
-              ><em>
-                >
-                <li>first video on deck</li>
-                <li>second video on deck</li></em
-              ></strong
-            >
-          </ul>
+      </div>
+      <!--adjust col numbers to push list to the right? right justify? -->
+      <div class="col-md-4 more-videos-from-query">
+        <div id="video-list">
+          <ul class="more-videos list-unstyled"></ul>
         </div>
       </div>
     </div>
-
-    <!-- HANDLEBARS TEMPLATES (here or below JS files???) -->
 
     <!-- Feature Video Player template-->
-    <!-- <script id="feature-template" type="text/x-handlebars-template">
-      <div class="player-container">
-        <div class="embed-responsive embed-responsive-16by9"> -->
-    <!-- type -->
-    <!-- <iframe class="embed-responsive-item" src:"https://www.youtube.com/embed">{{videoId}}</iframe>
-          <p class="video-title">{{title}}</p>
-          <p class="video-description">{{description}}</p>
+    <script id="feature-template" type="text/x-handlebars-template">
+      <div class="youtube-player-container"> <!--media object? cut "media-body"? from class-->
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="feature-player" type="text/html"
+              src="https://www.youtube.com/embed/{{videoId}}"
+            ></iframe>
+        </div>
+        <div>
+        <!-- check mb- mt- pb- pt bootstrap4 for padding  -->
+          <h6 class="title">{{title}}</h6>
+          <p class="description">{{description}}</p>
         </div>
       </div>
-    </script> -->
-
-    <!-- alt Feature Video Player Template (from Youtube) -->
-    <!-- <iframe
-      id="ytplayer"
-      type="text/html"
-      width="640"
-      height="360"
-      src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-      frameborder="0"
-    ></iframe> -->
+    </script>
 
     <!-- Video List template -->
     <script id="list-template" type="text/x-handlebars-template">
-      <li class="video-list-item media">
-        <div class="media-left">
-          <img id="thumbnailImage" src={{image}}>
-          <h6>{{thumbnailTitle}}</h6>
-          <!-- <img class="media-object" src"=snippet.thumbnails.default.url" /> -->
-      <!-- .jpg file here?-->
-        </div>
-        <div class="media-body">
-          <div class="video-list-item-title=">{{snippet.title}}
-          </div>
-          <div class="list-item-detail=">{{}}
-          </div>
-        </div>
-      </li>
+      <div class="media-body">
+            <li class="video-list-item media">
+              <div class="media-left">
+                <!-- Inlude class="media-object" below???-->
+                <a href="#" class="video-selection" data-id="{{videoId}}">
+                  <img id="thumbnailImage" src="{{thumbnail}}"></a>
+                <!--src"=snippet.thumbnails.default.url"-->
+                <p class="list-group-item-heading title"><strong><em>{{title}}</strong></em></p>
+                <p class="list-group-item-text description"><small>{{description}}</small></p>
+              </div>
+            </li>
+        
+      </div>
     </script>
 
-    <!-- SCRIPT TAGS FOR JS FILES  -->
-    <script src="models/FeaturePlayerModel.js"></script>
-    <script src="models/ListModel.js"></script>
+    <!-- <script>
+      function keyWordsearch() {
+        gapi.client.setApiKey('API key here');
+        gapi.client.load('youtube', 'v3', function() {
+          makeRequest();
+        });
+      }
+      function makeRequest() {
+        let q = $('#query').val();
+        let request = gapi.client.youtube.search.list({
+          q: q,
+          part: 'snippet'
+        });
+        request.execute(function(response) {
+          let str = JSON.stringify(response.result);
+          $('#search-container').html('<pre>' + str + '</pre>');
+        });
+      }
+    </script> -->
+
+    <!-- <script src="models/FeaturePlayerModel.js"></script>
+    <script src="models/ListModel.js"></script> -->
     <!-- Combine the two above into one VideoModel, immediately below?-->
     <script src="models/VideoModel.js"></script>
-    <script src="collection/VideosCollection.js"></script>
+    <script src="collections/VideosCollection.js"></script>
 
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
@@ -141,26 +181,5 @@
     <script src="views/ListView.js"></script>
 
     <script src="main.js"></script>
-
-    <!-- Handlebars Templates (here or above?) -->
   </body>
 </html>
-
-<!-- HANDLEBARS TEMPLATES -->
-
-<!-- <script id="feature-template" type="text/x-handlebars-template">
-  <div class="player-container">
-       <iframe id="player" type="text/html" width="480" height="270" src="https://www.youtube.com/embed/{{videoId}}"></iframe>
-       <p class="title">{{title}}</p>
-       <p class="description">{{description}}</p>
-   </div>
-</script>
-
-<script id="list-template" type="text/x-handlebars-template">
-
-  <a href="#" class="view-Video" data-id="{{videoId}}">
-      <img id="thumbnailImage" src="{{image}}">
-      <h6 class="list-group-item-heading title"><b>{{title}}</b></h6>
-      <p class="list-group-item-text description">{{description}}</p>
-  </a>
-</script> -->

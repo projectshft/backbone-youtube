@@ -1,18 +1,79 @@
+nav {
+  background-color: #e68e3d;
+  /* border */
+}
+
 body {
-  background: url(https://ak8.picdn.net/shutterstock/videos/4659008/thumb/1.jpg)
-    /*url(https://download.videvo.net/videvo_files/video/premium/video0027/thumbnails/film_strip00_small.jpg) */
-    center fixed;
+  height: 100%;
+}
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* .container {
+  position: relative;
+  border: 3px solid green;
+} */
+
+/* .vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+} */
+
+/* html {
+  background: url(https://cdn.hipwallpaper.com/i/25/91/zFRrai.jpg) no-repeat
+    center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+
+/* body {
+  background: url(https://cdn.hipwallpaper.com/i/25/91/zFRrai.jpg); */
+/* url(https://cdn.hipwallpaper.com/i/53/61/7352Rd.jpg); */
+/* url(https://cdn.hipwallpaper.com/m/57/23/YpBazC.jpg); */
+
+/* url(https://static1.squarespace.com/static/5462a1afe4b076fac277fa82/t/5508f5b3e4b07e7ce6894b02/1526513202920/sci.jpg?format=1500w); */
+
+/* url(https://ak8.picdn.net/shutterstock/videos/4659008/thumb/1.jpg) */
+/*url(https://download.videvo.net/videvo_files/video/premium/video0027/thumbnails/film_strip00_small.jpg)  */
+
+/* background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-}
+} */
 
 .input-group {
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 li {
-  color: gainsboro;
+  color: rgb(33, 37, 41);
+}
+
+@media screen and (max-width: 1024px) {
+  /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px; /* 50% */
+  }
 }
