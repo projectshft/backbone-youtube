@@ -76,3 +76,11 @@
 .recommended-thumbnail {
   max-height: 100%;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: default;
+}
