@@ -3,55 +3,53 @@ var AppView = Backbone.View.extend({
 
   events: {
     'keypress #search-bar': 'fetchVideos',
-    'click #video-list-img': 'changeCurrentVideo'
+    'click #video-list-img': 'setCurrentVideoModel'
   },
 
   initialize: function () {
     this.$input = this.$('#search-bar');
     this.$currentVideo = this.$('.current-video__container');
     this.$videoList = this.$('.video-list__container');
-
-    this.listenTo(this.model.get('videos'), 'reset', this.renderFirstVideo);
-    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+    // Render video list view initially and listen for changes when fetching 
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideoListView);
+    // listen for changes when the currentVideo changes
+    this.listenTo(this.model, 'change:currentVideo', this.renderCurrentVideoView);
   },
 
+  /** Grab user input and fetch videos */
   fetchVideos: function (e) {
     if (e.which === 13 && this.$input.val()) {
-      // Update VideosCollection url and re-retch data
       this.model.get('videos').fetchVideos(this.$input.val());
-      this.renderVideos();
+      this.renderVideoListView();
+      this.$input.val('');
     }
   },
 
-  changeCurrentVideo: function (e) {
-    // find video id and use it to find the model,
-    // then update the current video view
+  /** Render the main video to whatever the currentVideo model is set to */
+  renderCurrentVideoView: function () {
+    this.$currentVideo.empty();
+    var currentVideoView = new CurrentVideoView({ model: this.model.get('currentVideo') });
+    this.$currentVideo.append(currentVideoView.render().el);
+  },
+
+  /** Set the currentVideo to what the user clicked */
+  setCurrentVideoModel: function (e) {
+    // console.log($(e.target.data().id))
     var videoId = $(e.target).data().id;
     var modelFound = this.model.findModelById(videoId);
-    this.renderFirstVideo(false, modelFound);
+    this.model.set('currentVideo', modelFound);
   },
 
-  renderFirstVideo: function (initialRender = true, videoModel) {
-    this.$currentVideo.empty();
-    var videoView;
-    if (initialRender) {
-      videoView = new CurrentVideoView({ model: this.model.getFirstModel() });
-    } else {
-      videoView = new CurrentVideoView({ model: videoModel });
-    }
-    this.$currentVideo.append(videoView.render().el);
-  },
-
-  renderVideo: function (videoModel) {
-    var videoListView = new VideoListView({ model: videoModel });
-    this.$videoList.append(videoListView.render().el);
-  },
-
-  renderVideos: function () {
+  /** Loop through videos collections and set each view*/
+  renderVideoListView: function () {
     this.$videoList.empty();
-    this.model.get('videos').each(function (model) {
-      this.renderVideo(model);
+    this.model.get('videos').each(function (videoModel) {
+      var videoListView = new VideoListView({ model: videoModel });
+      this.$videoList.append(videoListView.render().el);
     }, this);
+    // set the currentVideo to the first model 
+    var firstModel = this.model.get('videos').first();
+    this.model.set('currentVideo', firstModel);
   },
 
 });
