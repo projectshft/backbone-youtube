@@ -3,7 +3,7 @@ const VideosCollection = Backbone.Collection.extend({
   query: "backbone js",
 
   url: function () {
-    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${this.query}&type=video&key=AIzaSyC7Wz1WhWyeAlxGsF-3mWBbadshGAnhEXg`;
+    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${this.query}&type=video&key=AIzaSyC7Wz1WhWyeAlxGsF-3mWBbadshGAnhEXg`;
   },
 
   model: VideoModel,
@@ -20,7 +20,7 @@ const VideosCollection = Backbone.Collection.extend({
       return response.items.map(function (item) {
         return {
           videoId: item.id.videoId,
-          title: item.snippet.title.substring(0, 45) + "...",
+          title: item.snippet.title,
           description: item.snippet.description,
           thumbnail_url: item.snippet.thumbnails.default.url
         }

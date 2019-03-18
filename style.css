@@ -9,7 +9,7 @@ header {
 
 .container {
   width: 90%;
-  max-width: 1280px;
+  max-width: 1440px;
 }
 
 .back {
@@ -17,28 +17,37 @@ header {
 }
 
 .tube {
-  background-color: red;
+  background-color: rgb(225, 0, 0);
   border-radius: 22px;
   color: white;
   font-weight: 200;
 }
+
 .search-form {
   max-width: 600px;
 }
 
-.featured-video {
-  max-height: 700px;
-  padding: 0 0 0 1px;
+.thumbnails-container {
+  max-height: 55vh;
+  overflow-y: scroll;
 }
 
 .thumbnail-view {
-  height: 120px;
-  padding: 15px 10px 15px 15px;
+  height: 123px;
+  padding: 15px 5px 15px 15px;
+  transition-duration: .3s
+}
+
+.thumbnail-title {
+  height: 100%;
+  overflow: hidden; 
+  line-height: 1.45;
 }
 
 .thumbnail-view:hover {
   background-color: #e1e1e1;
-  transition-duration: .5s;
+  cursor: pointer;
+  transition-duration: .3s;
 }
 
 .thumbnail-pic {

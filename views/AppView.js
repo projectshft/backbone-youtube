@@ -47,8 +47,8 @@ const AppView = Backbone.View.extend({
     this.$(".thumbnails-container").append(thumbnailView.render().el);
   },
   // Need a function to set the first video in the collection as the initial featured video
-  setInitialFeaturedVideo: function () {   
-    if(this.model.get("videos").at(0)) {
+  setInitialFeaturedVideo: function () {
+    if (this.model.get("videos").at(0)) {
       $(".featured-video").show();
       $(".error").hide();
       const initialFeaturedVideo = this.model.get("videos").at(0).get("videoId");

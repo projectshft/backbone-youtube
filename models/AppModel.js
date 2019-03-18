@@ -12,9 +12,9 @@ const AppModel = Backbone.Model.extend({
     this.get("videos").fetch();
   },
 
-// Need a function to set the featured_video attribute based on the videoId that's passed in
-  setFeaturedVideo: function(id) {
-    const featuredVideo = this.get("videos").findWhere({videoId: id});
+  // Need a function to set the featured_video attribute based on the videoId that's passed in
+  setFeaturedVideo: function (id) {
+    const featuredVideo = this.get("videos").findWhere({ videoId: id });
     this.set("featured_video", featuredVideo);
   },
 });

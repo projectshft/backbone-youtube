@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>BackBoneTube</title>
-  <link rel="shortcut icon" href="favicon/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="shortcut icon" href="favicon/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -28,25 +28,21 @@
     </div>
 
     <div class="row">
+      <div class="featured-video col-lg-8 mb-2"></div> <!-- featured vid goes here -->
 
-      <div class="featured-video col-lg-8 mb-2">
-        <!-- featured vid goes here -->
-      </div> 
       <h1 class="error">There seems to be a problem. Try a different search term or refresh the page.</h1>
 
       <div class="thumbnails-container col-lg-4"></div> <!-- thumbnail views go here -->
-
     </div>
 
   </div> <!-- end container -->
-
 
   <!-- Handlebars Templates -->
   <script id="featured-video-template" type="text/x-handlebars-template">
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item"
-        src="https://www.youtube.com/embed/{{videoId}}"
-        allowfullscreen>
+        src="https://www.youtube.com/embed/{{videoId}}?autoplay=1&mute=0"
+        allow="autoplay" allowfullscreen>
       </iframe>
     </div>
       <div class="video-info mt-2 ml-3">
