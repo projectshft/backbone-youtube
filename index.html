@@ -24,7 +24,7 @@
 <div class="row">
   <div class="col-12 col-md-8">
 
-    <header> 
+    <header>
         <!-- search bar bootstrap -->
         <nav class="navbar navbar-light bg-dark">
             <form class="form-inline">
@@ -32,12 +32,12 @@
                 <button class="btn btn-outline-secondary btn-sm my-2 my-sm-0 submit-search" type="button">Search</button>
             </form>
         </nav>
-    </header> 
-           
+    </header>
+
     <section class="video">
         <!-- current video (first video in collection) -->
         <!-- current video descripion -->
-        
+
     </section>
   </div>
 
@@ -45,19 +45,13 @@
     <aside class="float-md-left" id="video-list">
 
         <!-- list of videos -->
-        <div class="card-1" style="width: 24rem;">      
+        <div class="card-1" style="width: 24rem;">
         </div>
-        
+
     </aside>
   </div>
 
 </div> <!-- class="row" -->
-
-    <footer class="footer">
-        <div class="container">
-            <span class="text-muted">made with love by balancingACT copyright 2019</span>
-        </div>
-    </footer>
 
 
     <script id="video-template" type="text/x-handlebars-template">
@@ -66,10 +60,10 @@
             <div class="img-container">
                 <img class="video-thumbnails" src="{{thumbnails}}">
             </div>
-            
+
             <span class="video-title">{{title}}</span>
             <br>
-            <span class="video-description text-muted"><em>{{description}}</em></span>    
+            <span class="video-description text-muted"><em>{{description}}</em></span>
             <hr>
     </script>
 
@@ -80,15 +74,15 @@
         <hr>
         <span class="video-title">{{firstTitle}}</span>
             <br>
-        <span class="video-description text-muted"><em>{{firstDescription}}</em></span> 
+        <span class="video-description text-muted"><em>{{firstDescription}}</em></span>
     </script>
 
-    
-    <script src="models/VideoModel.js"></script> 
+
+    <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
-    
+
 </body>
 </html>

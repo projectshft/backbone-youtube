@@ -13,27 +13,22 @@ var VideosCollection = Backbone.Collection.extend({
 
     parse: function(response) {
 
-      //console.log('array of items', items);
+        // If search is a long string of gibberish
+        // Look for error in response from API, alert error to user
+      if (response.items.length == 0) //console.log(response);
+      {
+        alert('Enter a valid search term')
+      }
 
       return response.items.map(function (items){
-       
+
         return{
           title: items.snippet.title,
           description: items.snippet.description,
           thumbnails: items.snippet.thumbnails.default.url,
           videoId: items.id.videoId
-        }         
-          
-        }) 
-     
+        }
+      })
     }
-     
 
   });
-
-
-
-
-
-
-  
