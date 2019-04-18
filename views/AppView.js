@@ -55,32 +55,19 @@ var AppView = Backbone.View.extend({
       }
     }
   },
-  // renderVideos : function() {
-  //     this.$videosListSection.append(this.model.get('videos').render().el);
-  //     console.log($videosListSection)
-  // },
+  //render all videos
+  renderVideos: function() {
+    //empty the element of any videos
+    this.$el.empty()
+    this.model.get('videos').each(function(video) {
+      this.renderVideo(video)
+    }, this)
+  },
 
-  render: function() {
-    // this.$el.empty();
-
-    this.$currentVideoSection.append(this.model.get('videos').el)
-    console.log(
-      'the current video section now looks like:',
-      this.$currentVideoSection
-    )
-    this.$el.html(this.template1(this.model.get('videos').models[0].attributes))
-
-    for (var i = 0; i < this.model.get('videos').length - 1; i--) {
-      this.$videosListSection.append(this.model.get('videos').el)
-      console.log(
-        'the videos list section now looks like:',
-        this.$videosListSection
-      )
-      this.$el.html(
-        this.template1(this.model.attributes.videos.models[i].attributes)
-      )
-    }
-
-    return this
+  //render video
+  renderVideo: function(video) {
+    //make an new instance of the videoList view
+    var videoListView = new videoListView({ model: video })
+    this.$videosListSection.append(listView.render().el)
   }
 })
