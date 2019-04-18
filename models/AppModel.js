@@ -5,8 +5,10 @@ var AppModel = Backbone.Model.extend({
   defaults: function() {
     return {
       videos: new VideosCollection(),
-      query: ''
+      query: 'giraffes'
     }
+  },
+  initialize() {
+    this.get('videos').fetchAPIData(this.get('query'))
   }
 })
-;``

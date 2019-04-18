@@ -1,82 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <title>Backbone-Youtube</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="search-form">
-                    <div class="form-group">
-                        <input
-                            type="text"
-                            class="form-control form-rounded"
-                            id="search-query"
-                            placeholder="&#xf002; search"
-                            style="font-family:Arial, FontAwesome" autofocus
-                        />
-                    </div>
-                </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="search-form">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control form-rounded"
+                id="search-query"
+                placeholder="&#xf002; search"
+                style="font-family:Arial, FontAwesome"
+                autofocus
+              />
             </div>
+          </div>
         </div>
-        <div class="search-results-container">
-            <div class="videos row">
-                <div class="col-md-7">
-                    <div class="current-video-section row">
-                        
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="video-list-section row">
-
-                    </div>
-                </div>
-            </div>
-
+      </div>
+      <div class="search-results-container">
+        <div class="videos row">
+          <div class="col-md-7">
+            <div class="current-video-section row"></div>
+          </div>
+          <div class="col-md-5">
+            <div class="video-list-section row"></div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script id="current-video-template" type="text/x-handlebars-template">
-            <iframe class="current-video"
-                width="725" 
-                height="470" 
-                src="https://www.youtube.com/embed/{{ id }}" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <div class="current-video-description row">
-            <div class="video-title">{{ title }}</div>
-            <div class="video-description">{{ description }}</div>
+          <iframe class="current-video"
+              width="725"
+              height="470"
+              src="https://www.youtube.com/embed/{{ id }}"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+          </iframe>
+      </div>
+      <div class="current-video-description row">
+          <div class="video-title">{{ title }}</div>
+          <div class="video-description">{{ description }}</div>
     </script>
 
     <script id="video-list-template" type="text/x-handlebars-template">
-        <iframe class=smaller-video
-            width="250" 
-            height="160" 
-            src="https://i.ytimg.com/vi/{{ id }}/default.jpg"
-            frameborder="0" 
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-        <div class="video-title">{{ title }}</div>
+      <iframe class=smaller-video
+          width="250"
+          height="160"
+          src="https://i.ytimg.com/vi/{{ id }}/default.jpg"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+      </iframe>
+      <div class="video-title">{{ title }}</div>
     </script>
 
     <script src="models/AppModel.js"></script>
+    <script src="views/VideoListView.js"></script>
     <script src="views/AppView.js"></script>
+    <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

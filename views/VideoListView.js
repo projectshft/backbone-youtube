@@ -3,7 +3,7 @@ var VideoListView = Backbone.View.extend({
   className: 'videoList',
 
   //using JQuery's .html method to select our template and convert it to an HTML string in our JavaScript. Handlebars' compile function returns a new function that we will use to fill our HTML in with our JSON data
-  template: Handlebars.compile($('video-list-template').html()),
+  template: Handlebars.compile($('#video-list-template').html()),
 
   render: function() {
     // $el is a cached JQuery object for the view's element (a div container we've given the class name of '.videoList'). We use JQuery's .html() method to write new HTML. Inside the parenthesis we reference this object's template key which is a function. We pass this object's model into that function as an argument AFTER converting it to JSON.

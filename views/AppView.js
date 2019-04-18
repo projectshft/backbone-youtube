@@ -18,10 +18,9 @@ var AppView = Backbone.View.extend({
 
     this.$videosListSection = this.$('.video-list-section')
 
-    this.$currentVideoSection = this.$('.current-video-section')
+    // this.$currentVideoSection = this.$('.current-video-section')
 
-    this.template1 = Handlebars.compile(this.$currentVideoSection.html())
-    this.template2 = Handlebars.compile(this.$videosListSection.html())
+    // this.template1 = Handlebars.compile(this.$currentVideoSection.html())
 
     this.listenTo(
       // the app view should listen for a reset in the AppModel
@@ -31,15 +30,6 @@ var AppView = Backbone.View.extend({
     )
     //the app vide should listen for a change in the value of the query key on the model
     this.listenTo(this.model, 'change:query', this.searchOnEnter)
-  },
-
-  // for rendering the side videos
-  renderVideos: function() {
-    this.model.get('videos').each(function(v) {
-      var videoView = new SideVideoView({ model: v })
-
-      this.$currentVideoSection.append(videoView.render().el)
-    })
   },
 
   //when the user hits 'Enter', the search commences
@@ -59,6 +49,7 @@ var AppView = Backbone.View.extend({
   //render all videos
   renderVideos: function() {
     //empty the element of any videos
+    // each is a method from underscore so we can invoke right in a collection
     this.$el.empty()
     this.model.get('videos').each(function(video) {
       this.renderVideo(video)
@@ -68,8 +59,8 @@ var AppView = Backbone.View.extend({
   //render video by passing in a video model
   renderVideo: function(video) {
     //make an new instance of the videoList view with a key of model
-    var videoListView = new VideoListView({ model: video })
+    let videoListView = new VideoListView({ model: video })
     //append the side videos to the videoListSection
-    this.$videosListSection.append(listView.render().el)
+    this.$videosListSection.append(videoListView.render().el)
   }
 })
