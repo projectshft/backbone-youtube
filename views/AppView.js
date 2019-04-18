@@ -5,6 +5,7 @@ var AppView = Backbone.View.extend({
 
   //since AppView is the controller, it should be responsible for user events
   events: {
+    //when the user presses enter after search, searchOnEnter is invoked
     'keypress .form-control': 'searchOnEnter'
   },
 
@@ -13,7 +14,7 @@ var AppView = Backbone.View.extend({
     // when page is loaded, giraffe videos are visible until a user makes a new search
     this.model.get('videos').fetchAPIData('giraffe')
 
-    this.$query = this.$('#search-query')
+    $query = this.$('#search-query').val()
 
     this.$videosListSection = this.$('.video-list-section')
 
@@ -28,7 +29,7 @@ var AppView = Backbone.View.extend({
       'reset',
       this.renderVideos
     )
-    //the app vide should listen for a change in the query
+    //the app vide should listen for a change in the value of the query key on the model
     this.listenTo(this.model, 'change:query', this.searchOnEnter)
   },
 
@@ -47,11 +48,11 @@ var AppView = Backbone.View.extend({
       e.preventDefault()
 
       //if the user enters an empty string, an error will be thrown
-      if (this.$query.val().length === 0) {
+      if ($query.length === 0) {
         alert('Enter a valid search term to proceed.')
       } else {
         //otherwise, the query term should be added to our AppModel
-        this.model.get('videos').fetchAPIData(query)
+        this.model.get('videos').fetchAPIData($query)
       }
     }
   },
@@ -64,10 +65,11 @@ var AppView = Backbone.View.extend({
     }, this)
   },
 
-  //render video
+  //render video by passing in a video model
   renderVideo: function(video) {
-    //make an new instance of the videoList view
-    var videoListView = new videoListView({ model: video })
+    //make an new instance of the videoList view with a key of model
+    var videoListView = new VideoListView({ model: video })
+    //append the side videos to the videoListSection
     this.$videosListSection.append(listView.render().el)
   }
 })
