@@ -2,11 +2,11 @@
 then update the view in response to this "model's update"*/
 
 var AppModel = Backbone.Model.extend({
-
-    defaults: function() {
-        return {
-            videos: new VideosCollection(),
-            query: 'giraffes'
-        };
+  defaults: function() {
+    return {
+      videos: new VideosCollection(),
+      query: 'giraffes'
     }
-}); ``
+  }
+})
+;``
