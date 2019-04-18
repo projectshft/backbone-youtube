@@ -32,7 +32,7 @@ USER STORY 4: When the user first loads the page, there should be a default sear
 */
 
 //create a new instance of appModel
-var appModel = new AppModel();
+var appModel = new AppModel()
 
 //create a new instance of appView with a key of model and a value of the new appModel instance
-var appView = new AppView({ model : appModel });
+var appView = new AppView({ model: appModel })
