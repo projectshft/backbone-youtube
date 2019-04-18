@@ -10,7 +10,8 @@ var AppView = Backbone.View.extend({
 
   //initialize in invoked when our AppView is created; it should listen for new search queries
   initialize: function() {
-    this.model.get('videos').fetchAPIData(this.model.get('query'))
+    // when page is loaded, giraffe videos are visible until a user makes a new search
+    this.model.get('videos').fetchAPIData('giraffe')
 
     this.$query = this.$('#search-query')
 
@@ -22,17 +23,12 @@ var AppView = Backbone.View.extend({
     this.template2 = Handlebars.compile(this.$videosListSection.html())
 
     this.listenTo(
+      // the app view should listen for a reset in the AppModel
       this.model.get('videos'),
       'reset',
-      function() {
-        //    this.renderVideos();
-        //    this.renderMainVideo();
-      },
-      this
+      this.renderVideos
     )
-
-    //    this.render();
-
+    //the app vide should listen for a change in the query
     this.listenTo(this.model, 'change:query', this.searchOnEnter)
   },
 
@@ -49,16 +45,14 @@ var AppView = Backbone.View.extend({
   searchOnEnter: function(e) {
     if (e.which === 13) {
       e.preventDefault()
+
+      //if the user enters an empty string, an error will be thrown
       if (this.$query.val().length === 0) {
         alert('Enter a valid search term to proceed.')
       } else {
-        this.model.set('query', this.$query.val())
-        //this.model.get('query');
-        this.model.get('videos').fetchAPIData(this.model.get('query'))
+        //otherwise, the query term should be added to our AppModel
+        this.model.get('videos').fetchAPIData(query)
       }
-      //this.model.get('videos').fetchAPIData();
-
-      //invoke parse after fetch
     }
   },
   // renderVideos : function() {
