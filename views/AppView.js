@@ -7,7 +7,7 @@ var AppView = Backbone.View.extend({
   events: {
     //when the user presses enter after search, searchOnEnter is invoked
     'keypress .form-control': 'searchForVideosOnEnter',
-    'click .smaller-video': 'changeCurrentVideo'
+    'click .smaller-video': 'updateClickedCurrentVideo'
   },
 
   //initialize in invoked when our AppView is created;
@@ -65,24 +65,26 @@ var AppView = Backbone.View.extend({
     this.renderInitialCurrentVideo()
   },
 
-  renderInitialCurrentVideo: function(event) {
+  //render the initial current video as the first in the array when the page is loaded
+  renderInitialCurrentVideo: function() {
     let initial = new CurrentVideoView({
-      model: this.model.get('videos').model[0]
+      model: this.model.get('videos').models[0]
     })
-    this.$currentVideoSection.html(videoListView.render().el)
+    this.$currentVideoSection.html(initial.render().el)
   },
 
-  //render currentVideo when user clicks on a specific video in the VideoList (or render the first video on initial search)
+  //update the currentVideo id key on the model when a specific video is clicked
+  updateClickedCurrentVideo: function(event) {
+    let clickedCurrentVideo = $(event.currentTarget).data().id
+    this.model.changeClickedVideo(clickedCurrentVideo)
+  },
+
+  //render currentVideo based on the value of the currentVideo key on the model
   renderCurrentVideo: function() {
     this.model.get('currentVideo')
     let currentVideoView = new CurrentVideoView({
       model: this.model.get('currentVideo')
     })
     this.$currentVideoSection.html(currentVideoView.render().el)
-  },
-
-  updateClickedCurrentVideo: function(event) {
-    let clickedCurrentVideo = $(e.currentTarget).data().id,
-    this.model.changeClickedVideo(clickedCurrentVideo)
   }
 })
