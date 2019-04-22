@@ -40,10 +40,10 @@
       </div>
       <div class="search-results-container">
         <div class="videos row">
-          <div class="col-md-7">
+          <div class="col-md-8">
             <div class="current-video-section row"></div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-4">
             <div class="video-list-section row"></div>
           </div>
         </div>
@@ -61,7 +61,10 @@
           </iframe>
       </div>
       <div class="current-video-description row">
-          <div class="video-title"><strong>{{ title }}</strong></div>
+          <div class="col-12">
+              <div class="video-title"><strong>{{ title }}</strong></div>
+          </div>
+
           <div class="video-description">{{ description }}</div>
     </script>
 
@@ -72,7 +75,7 @@
                   <div class="col-6">
                       <img src="{{thumbnail}}" width="200" height="140">
                   </div>
-                  <div class="col-6">
+                  <div class="col-5 offset-1">
                         <p class="video-list-title"><strong>{{ title }}</strong></p>
                   </div>
               </div>
