@@ -12,13 +12,12 @@ var AppView = Backbone.View.extend({
 
   //initialize in invoked when our AppView is created;
   initialize: function() {
-    $query = this.$('#search-query').val()
-
     this.$videosListSection = this.$('.video-list-section')
 
     this.$currentVideoSection = this.$('.current-video-section')
 
-    // this.template1 = Handlebars.compile(this.$currentVideoSection.html())
+    //when the page is loaded, giraffes should be the default search
+    this.model.get('videos').fetchAPIData('giraffes')
 
     this.listenTo(
       // the app view should listen for a reset in the AppModel
@@ -26,20 +25,19 @@ var AppView = Backbone.View.extend({
       'reset',
       this.renderVideoList
     )
-    //the app vide should listen for a change in the value of the query key on the model
-    this.listenTo(this.model, 'change:query', this.searchForVideosOnEnter)
 
     //the app view should listen for a change inthe value of the currentVideo key on the model
     this.listenTo(this.model, 'change:currentVideo', this.renderCurrentVideo)
   },
 
   //when the user hits 'Enter', the search commences
-  searchForVideosOnEnter: function(e) {
-    if (e.which === 13) {
-      e.preventDefault()
+  searchForVideosOnEnter: function(event) {
+    if (event.which === 13) {
+      event.preventDefault()
 
+      $query = this.$('#search-query').val()
       //if the user enters an empty string, an error will be thrown
-      if ($query.length === 0) {
+      if ($query.length == 0) {
         alert('Enter a valid search term to proceed.')
       } else {
         //otherwise, the query term should be added to our AppModel

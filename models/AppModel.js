@@ -10,16 +10,12 @@ var AppModel = Backbone.Model.extend({
       currentVideo: null
     }
   },
-  //on initial load, giraffe is used as the query to fetch videos
-  initialize() {
-    this.get('videos').fetchAPIData(this.get('query'))
-  },
   changeClickedVideo: function(id) {
     //grab all the videos that were returned from the api (as models)
     let searchedVideos = this.get('videos')
 
     //search through all videos returned from API for the id that was clicked
-    let clickedVideo = searchedVideos.findWhere({ videoId: id })
+    let clickedVideo = searchedVideos.findWhere({ id: id })
 
     //set the currentVideo key on the model's default to be that id
     this.set('currentVideo', clickedVideo)
