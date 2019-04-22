@@ -1,36 +1,41 @@
 .search-form {
-    margin-top: 40px;
-    margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .form-rounded {
-    border-radius: 1rem;
+  border-radius: 1rem;
 }
 
 .current-video-description {
-    background-color: #ddd;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    padding-bottom: 3rem;
+  background-color: #ddd;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-right: 1.5rem;
+  padding-right: 1.5rem;
 }
 .video-list-section {
-    margin-bottom: 1rem;
-    /* margin-left: 0px; */
-    background-color: #ddd;
+  /* margin-bottom: 0.5rem; */
+  margin-left: 1rem;
+  background-color: #ddd;
 }
 
 @media (min-width: 768px) {
-    .video-list-section {
-        margin-bottom: 1rem;
-        margin-left: 5px;
-        background-color: #ddd;
-    }
+  .video-list-section {
+    margin-bottom: 1rem;
+    margin-left: 5px;
+    background-color: #ddd;
+  }
 }
 .smaller-video {
-    padding: 1.25rem;
+  padding-bottom: 0.5rem;
 }
 
-.video-title, .video-description {
-    padding-top: 3.5rem;
+.video-title,
+.video-description {
+  padding-top: 3.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
 }
