@@ -62,13 +62,27 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').each(function(v) {
       this.renderVideo(v)
     }, this)
+    this.renderInitialCurrentVideo()
+  },
+
+  renderInitialCurrentVideo: function(event) {
+    let initial = new CurrentVideoView({
+      model: this.model.get('videos').model[0]
+    })
+    this.$currentVideoSection.html(videoListView.render().el)
   },
 
   //render currentVideo when user clicks on a specific video in the VideoList (or render the first video on initial search)
   renderCurrentVideo: function() {
+    this.model.get('currentVideo')
     let currentVideoView = new CurrentVideoView({
-      model: this.model.get('currentVideo') || this.model.get('videos').model[0]
+      model: this.model.get('currentVideo')
     })
     this.$currentVideoSection.html(currentVideoView.render().el)
+  },
+
+  updateClickedCurrentVideo: function(event) {
+    let clickedCurrentVideo = $(e.currentTarget).data().id,
+    this.model.changeClickedVideo(clickedCurrentVideo)
   }
 })
