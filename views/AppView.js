@@ -6,7 +6,8 @@ var AppView = Backbone.View.extend({
   //since AppView is the controller, it should be responsible for user events
   events: {
     //when the user presses enter after search, searchOnEnter is invoked
-    'keypress .form-control': 'searchForVideosOnEnter'
+    'keypress .form-control': 'searchForVideosOnEnter',
+    'click .smaller-video': 'changeCurrentVideo'
   },
 
   //initialize in invoked when our AppView is created;
@@ -15,7 +16,7 @@ var AppView = Backbone.View.extend({
 
     this.$videosListSection = this.$('.video-list-section')
 
-    // this.$currentVideoSection = this.$('.current-video-section')
+    this.$currentVideoSection = this.$('.current-video-section')
 
     // this.template1 = Handlebars.compile(this.$currentVideoSection.html())
 
@@ -23,10 +24,13 @@ var AppView = Backbone.View.extend({
       // the app view should listen for a reset in the AppModel
       this.model.get('videos'),
       'reset',
-      this.renderVideos
+      this.renderVideoList
     )
     //the app vide should listen for a change in the value of the query key on the model
     this.listenTo(this.model, 'change:query', this.searchForVideosOnEnter)
+
+    //the app view should listen for a change inthe value of the currentVideo key on the model
+    this.listenTo(this.model, 'change:currentVideo', this.renderCurrentVideo)
   },
 
   //when the user hits 'Enter', the search commences
@@ -51,12 +55,20 @@ var AppView = Backbone.View.extend({
     this.$videosListSection.append(videoListView.render().el)
   },
   //render all videos
-  renderVideos: function() {
+  renderVideoList: function() {
     //empty the element of any videos
     // each is a method from underscore so we can invoke right in a collection
     this.$videosListSection.empty()
     this.model.get('videos').each(function(v) {
       this.renderVideo(v)
     }, this)
+  },
+
+  //render currentVideo when user clicks on a specific video in the VideoList (or render the first video on initial search)
+  renderCurrentVideo: function() {
+    let currentVideoView = new CurrentVideoView({
+      model: this.model.get('currentVideo') || this.model.get('videos').model[0]
+    })
+    this.$currentVideoSection.html(currentVideoView.render().el)
   }
 })

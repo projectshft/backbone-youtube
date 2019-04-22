@@ -6,7 +6,8 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
       //create default search when the user loads the page
-      query: 'giraffes'
+      query: 'giraffes',
+      currentVideo: null
     }
   },
   initialize() {
