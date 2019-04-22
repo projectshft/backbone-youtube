@@ -80,7 +80,7 @@ var AppView = Backbone.View.extend({
   //render currentVideo based on the value of the currentVideo key on the model
   renderCurrentVideo: function() {
     this.model.get('currentVideo')
-    let currentVideoView = new CurrentVideoView({
+    currentVideoView = new CurrentVideoView({
       model: this.model.get('currentVideo')
     })
     this.$currentVideoSection.html(currentVideoView.render().el)
