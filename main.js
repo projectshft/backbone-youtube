@@ -3,8 +3,8 @@
   API-Key: AIzaSyBhEipxN2X8twvxFy7Uck1ehRxzzyjZQXY
  * ***********************************************/
 
-let appModel = new AppModel();
+const appModel = new AppModel();
 
-let appView = new AppView({ model: appModel });
+const appView = new AppView({ model: appModel });
 
 appModel.get('videos').fetch({ reset: true });

@@ -1,176 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PS-Backbone-YouTube</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!--Style links-->
+    <!-- Google Fonts: Montserrat & Muli -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat|Muli"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 4.3.1 -->
     <link
       rel="stylesheet"
-      type="text/css"
-      href="node_modules/bootstrap/dist/css/bootstrap.css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 
-    <!--JS dependencies-->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/underscore/underscore-min.js"></script>
-    <script src="node_modules/backbone/backbone-min.js"></script>
-    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
   </head>
 
   <body>
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="http://placehold.it/150x50?text=Logo" alt="" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
-
-    <img class="bg" src="https://cdn.hipwallpaper.com/i/25/91/zFRrai.jpg" />
-    <!-- <nav class="navbar">
-      <img class="logo"
-      src=https://banner2.kisspng.com/20180705/zri/kisspng-backbone-js-javascript-programmer-react-backbone-5b3e1144efdf50.9937521215307943089825.jpg"
-      />
-    </nav> -->
-
-    <div id="app">
-
-    <!-- <nav class="navbar">
-         <div class="col-md-6 col-md-offset-3">
-          <div class="search">
-            <h5><em>search</em>view goes here</h5>
+    <nav class="navbar navbar-fixed-top">
+      <!-- <nav class="navbar navbar-expand-xs navbar-dark bg-light"> -->
+      <a class="navbar-brand" href="#"
+        ><img
+          src="https://upload.wikimedia.org/wikipedia/commons/2/20/Backbone.js_logo.svg"
+          alt="Backbone.js logo.svg"
+          height="39"
+          width="220"
+      /></a>
+      <form class="navbar-form form-inline justify-content-between">
+        <div class="form-group">
+          <div id="search">
+            <input
+              type="text"
+              class="form-control-sm"
+              id="search-bar"
+              placeholder="Search for videos"
+            />
+            <button class="btn btn-secondary btn-sm" type="button">
+              Go
+            </button>
           </div>
         </div>
-      </nav> -->
+      </form>
+    </nav>
 
-    <!-- Search Bar -->
-    <div class="container" id="search-container">
-      <div class="row">
-        <div class="col-6 align-items-center">
-          <div class="input-group go-search">
-            <div id="search">
-              <input
-                type="text"
-                class="form-control-sm"
-                placeholder="Search for a video"
-              />
-              <span class="input-group-btn">
-                <button class="btn btn-secondary btn-sm" type="button">
-                  Go
-                </button>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="col-3"></div> -->
-
-    <!-- Video Area -->
     <div class="container" id="video-app">
-      <div class="row align-items-center">
-        <div class="col-md-6 nowPlaying">
+      <div class="row">
+        <div class="col-sm-8 nowPlaying">
+          <h3>Currently Playing</h3>
           <div id="feature-video-player"></div>
         </div>
-      </div>
-      <!--adjust col numbers to push list to the right? right justify? -->
-      <div class="col-md-4 more-videos-from-query">
-        <div id="video-list">
+        <div class="col-sm-4 relatedVideoList">
+          <h3>Related Videos</h3>
+          <h6 class="click-instructions">
+            <strong>Click to play another video.</strong>
+          </h6>
           <ul class="more-videos list-unstyled"></ul>
         </div>
       </div>
     </div>
 
-    <!-- Feature Video Player template-->
+    <!-- HANDELBARS TEMPLATES -->
     <script id="feature-template" type="text/x-handlebars-template">
-      <div class="youtube-player-container"> <!--media object? cut "media-body"? from class-->
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe id="feature-player" type="text/html"
-              src="https://www.youtube.com/embed/{{videoId}}"
-            ></iframe>
-        </div>
-        <div>
-        <!-- check mb- mt- pb- pt bootstrap4 for padding  -->
-          <h6 class="title">{{title}}</h6>
+      <div class="yt-player-container back-block rounded">
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe id="feature-video-player" type="text/html"
+                src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen="true"></iframe>
+          </div>
+          <!-- <iframe id="feature-video-player" type="text/html" width="480" height="270" src="https://www.youtube.com/embed/{{videoId}}"></iframe> -->
+          <h5 class="title"><strong>{{title}}</strong></h5>
           <p class="description">{{description}}</p>
-        </div>
       </div>
     </script>
 
-    <!-- Video List template -->
     <script id="list-template" type="text/x-handlebars-template">
-      <div class="media-body">
-            <li class="video-list-item media">
-              <div class="media-left">
-                <!-- Inlude class="media-object" below???-->
-                <a href="#" class="video-selection" data-id="{{videoId}}">
-                  <img id="thumbnailImage" src="{{thumbnail}}"></a>
-                <!--src"=snippet.thumbnails.default.url"-->
-                <p class="list-group-item-heading title"><strong><em>{{title}}</strong></em></p>
-                <p class="list-group-item-text description"><small>{{description}}</small></p>
-              </div>
-            </li>
-        
+      <div class="container back-block rounded">
+        <a href="#" class="video-selection" data-id="{{videoId}}">
+            <img id="thumbnailImage" src="{{thumbnail}}">
+            <h6 class="list-group-item-heading title"><strong>{{title}}</strong></h6></a>
+            <p class="list-group-item-text description">{{description}}</p>
       </div>
     </script>
 
-    <!-- <script>
-      function keyWordsearch() {
-        gapi.client.setApiKey('API key here');
-        gapi.client.load('youtube', 'v3', function() {
-          makeRequest();
-        });
-      }
-      function makeRequest() {
-        let q = $('#query').val();
-        let request = gapi.client.youtube.search.list({
-          q: q,
-          part: 'snippet'
-        });
-        request.execute(function(response) {
-          let str = JSON.stringify(response.result);
-          $('#search-container').html('<pre>' + str + '</pre>');
-        });
-      }
-    </script> -->
-
-    <!-- <script src="models/FeaturePlayerModel.js"></script>
-    <script src="models/ListModel.js"></script> -->
-    <!-- Combine the two above into one VideoModel, immediately below?-->
+    <!-- SCRIPT TAGS FOR JS FILES  -->
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
 
@@ -179,6 +103,8 @@
 
     <script src="views/FeaturePlayerView.js"></script>
     <script src="views/ListView.js"></script>
+
+    <!-- <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script> -->
 
     <script src="main.js"></script>
   </body>

@@ -2,7 +2,7 @@
  *  Render video list
  *********************************************/
 
-let ListView = Backbone.View.extend({
+const ListView = Backbone.View.extend({
   className: 'video', // ???
 
   template: Handlebars.compile($('#list-template').html()),

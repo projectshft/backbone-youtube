@@ -1,41 +1,50 @@
-let VideosCollection = Backbone.Collection.extend({
+const VideosCollection = Backbone.Collection.extend({
   model: VideoModel,
 
-  searchKeywords: 'Reggie Watts',
+  // query: Reggie Watts,
 
   url:
-    'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyBhEipxN2X8twvxFy7Uck1ehRxzzyjZQXY',
-  //
-  /*************************************************
- * From Alicia
- * leave the url as an empty string when you initialize the collection, 
-  write a separate function to fetch the videos each time the user clicks the search button. 
-  That fetching function could update the URL dynamically, and then you could call it from the AppView.
- * **********************************************/
-  // or '/videos'? I prefer the latter, but Alica's advice.
-  // use rootUrl?
+    'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyC1DH9BN1VRBoNennrDZXAVqLGr_1xz7_8',
 
-  // initialize: function() {
-  //
-  // },
-
-  // search: query => {
-  //   this.fetch({
-  //     data: {
-  //       part: 'snippet',
-  //       key: 'ytAPI_key',
-  //       q: query,
-  //       maxResuts: 5,
-  //       type: 'video'
-  //     }
-  //   });
-  // },
-  // updateUrl: function() {
-  //
-  // },
+  /**************
+   * getVideos
+   **************/
+  getVideos: function(query) {
+    // Set url for fetch request to youTube API endpoint
+    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyC1DH9BN1VRBoNennrDZXAVqLGr_1xz7_8&q=${query}`;
+    console.log('Url with query is: ', this.url);
+    this.fetch({ reset: true });
+  },
 
   // ACTUAL
-  parse: response => {
-    return response.items;
+  //   parse: response => {
+  //     let items = response.items;
+  //     return items;
+  //   }
+  // });
+
+  parse: function(response) {
+    return response.items.map(function(item) {
+      return {
+        videoId: item.id.videoId,
+        title: item.snippet.title,
+        description: item.snippet.description,
+        thumbnail: item.snippet.thumbnails.default.url
+      };
+    });
   }
 });
+
+// parse: function(response) {
+//   // Create array of objects by looping through the original JSON data
+//   let result = response.items.map(function(data) {
+//     return {
+//       title: data.snippet.title,
+//       desc: data.snippet.description,
+//       thumbnail: data.snippet.thumbnails.default.url,
+//       videoId: data.id.videoId
+//     };
+//   });
+//   return result;
+// }
+// });

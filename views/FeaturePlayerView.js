@@ -9,6 +9,7 @@ let FeaturePlayerView = Backbone.View.extend({
   className: 'videoPlayer',
 
   el: $('.nowPlaying'),
+  // el: $('.feature-video-player'),
 
   template: Handlebars.compile($('#feature-template').html()),
 

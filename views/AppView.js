@@ -2,12 +2,12 @@
  * Render App View (global, top-of-hierchy)
  * ******************************************/
 
-let AppView = Backbone.View.extend({
+const AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    // 'click .btn': 'goSearch',
-    'keypress .search': 'updateOnEnter',
+    'click .btn': 'searchVideos',
+    'keypress #search-bar': 'searchVideos',
     'click .video-selection': 'renderSelectedVideo'
   },
 
@@ -21,41 +21,61 @@ let AppView = Backbone.View.extend({
       this.renderFeaturePlayerView
     );
 
-    this.listenTo(this.model, 'change:searchKeywords', this.updateUrl);
-
     this.listenTo(
       this.model.get('videos'),
       'reset',
       this.renderVideoList,
       this.renderFeaturePlayerView
     );
-
-    this.renderVideoList();
-
-    //shift???
   },
+  // this.renderVideoList();
 
-  // doSearch: function(e) {
-  //   e.preventDefault();
-  //   //See Notes
-  //   // collect value from search field and trigger search; clear search field
+  // initialize: function() {
+  //   this.model.get('videos').getVideos(this.model.get('query'));
+  //   this.listenTo(
+  //     this.model,
+  //     'change:feature_video',
+  //     this.renderFeaturePlayerView
+  //   );
+  //   this.listenTo(this.model.get('videos'), 'reset', function() {
+  //     this.renderFeaturePlayerView();
+  //     this.renderVideoList();
+  //   });
   // },
 
-  renderSelectedVideo: function(selected) {
-    let selectedVideo = $(selected.currentTarget).data().id;
+  renderSelectedVideo: function(e) {
+    let selectedVideo = $(e.currentTarget).data().id;
+    console.log('selectedVideo = ', selectedVideo);
     this.model.changeFeature(selectedVideo);
+    // this.model.set('feature_video', selectedVideo);
   },
 
-  //   // updateUrl: function () {
-  //
-  // }
+  searchVideos: function(e) {
+    if (e.which === 13 || e.type === 'click') {
+      // Set a variable to the value of the user's search
+      let query = $('#search-bar').val();
+      if (query === '') {
+        // Error handling to account for an empty search query
+        alert('Please enter a search word or phrase.');
+      } else {
+        // Set the query attribute
+        this.model.set('query', query);
+        this.model.get('videos').getVideos(this.model.get('query'));
+      }
+      this.$('#search-bar').val('');
+      // query == '';
+    }
+  },
 
   renderVideo: function(VideoModel) {
+    // this.$moreVideos.remove();
     let listView = new ListView({ model: VideoModel });
-    this.$moreVideos.append(listView.render().el);
+    this.$moreVideos.append(listView.render().el); // $moreVideos???
   },
 
   renderVideoList: function() {
+    this.$el.find('.more-videos').empty();
+    // this.$('.more-videos').empty();
     this.model.get('videos').each(function(m) {
       // "m" from Beer-Reviews code
       this.renderVideo(m);
@@ -63,15 +83,18 @@ let AppView = Backbone.View.extend({
   },
 
   renderFeaturePlayerView: function() {
-    if (this.featurePlayerView) {
-      this.featurePlayerView.remove();
-    }
+    // if (this.featurePlayerView) {
+    //   this.featurePlayerView.remove();
+    // }
     this.featurePlayerView = new FeaturePlayerView({
-      model: this.model.get('current_feature')
+      // let featurePlayerView = new FeaturePlayerView({
+      model: this.model.get('feature_video')
+      // model:
+      //   this.model.get('feature_video') || this.model.get('videos').models[0]
     });
 
     // this.featurePlayerView = this videoList.shift;
-    this.$('.youtube-player').append(this.featurePlayerView.render().el);
+    this.$('.yt-player-container').append(this.featurePlayerView.render().el);
   }
 });
 
