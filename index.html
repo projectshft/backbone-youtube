@@ -32,7 +32,7 @@
   <body>
     <nav class="navbar navbar-fixed-top">
       <!-- <nav class="navbar navbar-expand-xs navbar-dark bg-light"> -->
-      <a class="navbar-brand" href="#"
+      <a class="navbar-brand" href="https://backbonejs.org/" target="_blank"
         ><img
           src="https://upload.wikimedia.org/wikipedia/commons/2/20/Backbone.js_logo.svg"
           alt="Backbone.js logo.svg"
@@ -48,7 +48,7 @@
               id="search-bar"
               placeholder="Search for videos"
             />
-            <button class="btn btn-secondary btn-sm" type="button">
+            <button class="btn btn-primary btn-sm" type="button">
               Go
             </button>
           </div>
@@ -58,15 +58,15 @@
 
     <div class="container" id="video-app">
       <div class="row">
-        <div class="col-sm-8 nowPlaying">
-          <h3>Currently Playing</h3>
-          <div id="feature-video-player"></div>
+        <div class="col-sm-8" id="feature-video-player">
+          <!-- <h4>Currently Playing</h4> -->
+          <div class="nowPlaying"></div>
         </div>
         <div class="col-sm-4 relatedVideoList">
-          <h3>Related Videos</h3>
-          <h6 class="click-instructions">
+          <strong><h4>Related Videos</h4></strong>
+          <!-- <h6 class="click-instructions">
             <strong>Click to play another video.</strong>
-          </h6>
+          </h6> -->
           <ul class="more-videos list-unstyled"></ul>
         </div>
       </div>

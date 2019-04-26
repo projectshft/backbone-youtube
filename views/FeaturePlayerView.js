@@ -19,3 +19,4 @@ let FeaturePlayerView = Backbone.View.extend({
     return this;
   }
 });
+_;

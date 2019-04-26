@@ -4,8 +4,8 @@ const AppModel = Backbone.Model.extend({
     return {
       // initialize videos
       videos: new VideosCollection(),
-      feature_video: null
-      // query: 'Reggie Watts'
+      feature_video: null,
+      query: 'Reggie Watts'
     };
   },
 
@@ -15,18 +15,7 @@ const AppModel = Backbone.Model.extend({
 
     // Per Backbone documentation: findWhere directly returns only the first model in the collection that matches the passed attributes.
     let featureVideo = videoVault.findWhere({ videoId: videoId });
-    console.log('featureVideo =', featureVideo);
+    // console.log('featureVideo =', featureVideo);
     this.set('feature_video', featureVideo);
   }
 });
-
-// setCurrentVideo: function(id) {
-//   var allVideos = this.get('videos');
-//   allVideos.forEach(function(index) {
-//     index.set('feature_video', false);
-//   });
-//   var currentVideo = allVideos.findWhere({ videoId: id });
-//   currentVideo.set('current_video', true);
-//   console.log(currentVideo);
-// }
-// });

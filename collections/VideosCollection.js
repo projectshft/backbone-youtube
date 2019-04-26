@@ -1,8 +1,6 @@
 const VideosCollection = Backbone.Collection.extend({
   model: VideoModel,
 
-  // query: Reggie Watts,
-
   url:
     'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyC1DH9BN1VRBoNennrDZXAVqLGr_1xz7_8',
 
@@ -16,13 +14,6 @@ const VideosCollection = Backbone.Collection.extend({
     this.fetch({ reset: true });
   },
 
-  // ACTUAL
-  //   parse: response => {
-  //     let items = response.items;
-  //     return items;
-  //   }
-  // });
-
   parse: function(response) {
     return response.items.map(function(item) {
       return {
@@ -34,17 +25,3 @@ const VideosCollection = Backbone.Collection.extend({
     });
   }
 });
-
-// parse: function(response) {
-//   // Create array of objects by looping through the original JSON data
-//   let result = response.items.map(function(data) {
-//     return {
-//       title: data.snippet.title,
-//       desc: data.snippet.description,
-//       thumbnail: data.snippet.thumbnails.default.url,
-//       videoId: data.id.videoId
-//     };
-//   });
-//   return result;
-// }
-// });

@@ -8,11 +8,13 @@ const AppView = Backbone.View.extend({
   events: {
     'click .btn': 'searchVideos',
     'keypress #search-bar': 'searchVideos',
-    'click .video-selection': 'renderSelectedVideo'
+    'click .video-selection': 'updateFeatureVideo'
   },
 
   initialize: function() {
-    this.$moreVideos = this.$('.more-videos');
+    this.$moreVideos = $('.more-videos');
+    // this.$ytPlayerContainer = $('.yt-player-container');
+    this.$nowPlaying = $('.nowPlaying');
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
 
     this.listenTo(
@@ -28,22 +30,8 @@ const AppView = Backbone.View.extend({
       this.renderFeaturePlayerView
     );
   },
-  // this.renderVideoList();
 
-  // initialize: function() {
-  //   this.model.get('videos').getVideos(this.model.get('query'));
-  //   this.listenTo(
-  //     this.model,
-  //     'change:feature_video',
-  //     this.renderFeaturePlayerView
-  //   );
-  //   this.listenTo(this.model.get('videos'), 'reset', function() {
-  //     this.renderFeaturePlayerView();
-  //     this.renderVideoList();
-  //   });
-  // },
-
-  renderSelectedVideo: function(e) {
+  updateFeatureVideo: function(e) {
     let selectedVideo = $(e.currentTarget).data().id;
     console.log('selectedVideo = ', selectedVideo);
     this.model.changeFeature(selectedVideo);
@@ -68,9 +56,8 @@ const AppView = Backbone.View.extend({
   },
 
   renderVideo: function(VideoModel) {
-    // this.$moreVideos.remove();
     let listView = new ListView({ model: VideoModel });
-    this.$moreVideos.append(listView.render().el); // $moreVideos???
+    this.$moreVideos.append(listView.render().el);
   },
 
   renderVideoList: function() {
@@ -83,10 +70,14 @@ const AppView = Backbone.View.extend({
   },
 
   renderFeaturePlayerView: function() {
+    // $('.yt-player-container').empty();
+    // this.$el.find('.yt-player-container').empty();
+    this.$el.find('.nowPlaying').empty();
     // if (this.featurePlayerView) {
     //   this.featurePlayerView.remove();
     // }
-    this.featurePlayerView = new FeaturePlayerView({
+    // $
+    let featurePlayerView = new FeaturePlayerView({
       // let featurePlayerView = new FeaturePlayerView({
       model: this.model.get('feature_video')
       // model:
@@ -94,48 +85,10 @@ const AppView = Backbone.View.extend({
     });
 
     // this.featurePlayerView = this videoList.shift;
-    this.$('.yt-player-container').append(this.featurePlayerView.render().el);
+
+    // $('.yt-player-container').append(featurePlayerView.render().el);
+    // this.$ytPlayerContainer.append(featurePlayerViewView.render().el);
+    this.$nowPlaying.append(featurePlayerView.render().el);
+    $nowPlaying.append(featurePlayerView.render().el);
   }
 });
-
-/************************************
- *  FROM TUTORIAL
- * **************************** */
-
-// // VIEW
-// var ourView = Backbone.View.extend({
-
-//     // Listen for click event
-//     events : {
-//         "click" : "clickHandler"
-//     },
-
-//     initialize : function() {
-
-//         // Bind click event
-//         this.on('click', this.clickHandler);
-//     },
-
-//     // The view render
-//     render: function() {
-//         this.$el.html("<div id='square' />");
-//     },
-
-//     // The click handler
-//     clickHandler : function(event) {
-
-//         // Verify click is being handled
-//         console.log('click handled');
-//     }
-// });
-
-// // Initiate view
-// var view = new ourView();
-
-// // Append to view to document body
-// view.$el.appendTo(document.body);
-
-// // FIRE
-// view.render();
-
-// </script>
