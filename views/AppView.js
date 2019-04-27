@@ -12,8 +12,8 @@ const AppView = Backbone.View.extend({
   },
 
   initialize: function() {
+    this.model.get('videos').getVideos(this.model.get('query'));
     this.$moreVideos = $('.more-videos');
-    // this.$ytPlayerContainer = $('.yt-player-container');
     this.$nowPlaying = $('.nowPlaying');
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
 
@@ -31,10 +31,15 @@ const AppView = Backbone.View.extend({
     );
   },
 
+  // setFeatureVideo: function() {
+  //    set feature_video equal to videos[0] so it will render first video in the list to the feature player (upon page load and upon search returns from the search-bar input)
+  //   }
+  // },
+
   updateFeatureVideo: function(e) {
     let selectedVideo = $(e.currentTarget).data().id;
-    console.log('selectedVideo = ', selectedVideo);
-    this.model.changeFeature(selectedVideo);
+    // console.log('selectedVideo = ', selectedVideo);
+    this.model.changeFeatureVideo(selectedVideo);
     // this.model.set('feature_video', selectedVideo);
   },
 
@@ -51,7 +56,6 @@ const AppView = Backbone.View.extend({
         this.model.get('videos').getVideos(this.model.get('query'));
       }
       this.$('#search-bar').val('');
-      // query == '';
     }
   },
 
@@ -61,34 +65,19 @@ const AppView = Backbone.View.extend({
   },
 
   renderVideoList: function() {
+    // Empty the list view before loading a new list to it
     this.$el.find('.more-videos').empty();
-    // this.$('.more-videos').empty();
     this.model.get('videos').each(function(m) {
-      // "m" from Beer-Reviews code
       this.renderVideo(m);
     }, this);
   },
 
   renderFeaturePlayerView: function() {
-    // $('.yt-player-container').empty();
-    // this.$el.find('.yt-player-container').empty();
+    // Empty feature player before loading a new feature to it
     this.$el.find('.nowPlaying').empty();
-    // if (this.featurePlayerView) {
-    //   this.featurePlayerView.remove();
-    // }
-    // $
     let featurePlayerView = new FeaturePlayerView({
-      // let featurePlayerView = new FeaturePlayerView({
       model: this.model.get('feature_video')
-      // model:
-      //   this.model.get('feature_video') || this.model.get('videos').models[0]
     });
-
-    // this.featurePlayerView = this videoList.shift;
-
-    // $('.yt-player-container').append(featurePlayerView.render().el);
-    // this.$ytPlayerContainer.append(featurePlayerViewView.render().el);
     this.$nowPlaying.append(featurePlayerView.render().el);
-    $nowPlaying.append(featurePlayerView.render().el);
   }
 });

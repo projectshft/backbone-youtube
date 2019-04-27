@@ -3,7 +3,7 @@
  *********************************************/
 
 const ListView = Backbone.View.extend({
-  className: 'video', // ???
+  className: 'video',
 
   template: Handlebars.compile($('#list-template').html()),
 
@@ -13,5 +13,3 @@ const ListView = Backbone.View.extend({
     return this;
   }
 });
-
-// Apply click event handler when user selects a video in the list. Apply in AppView.

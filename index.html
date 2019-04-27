@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PS-Backbone-YouTube</title>
 
-    <!-- Google Fonts: Montserrat & Muli -->
+    <!-- Google Fonts: Montserrat -->
     <link
-      href="https://fonts.googleapis.com/css?family=Montserrat|Muli"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
       rel="stylesheet"
     />
 
@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="style.css" />
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
@@ -31,7 +30,6 @@
 
   <body>
     <nav class="navbar navbar-fixed-top">
-      <!-- <nav class="navbar navbar-expand-xs navbar-dark bg-light"> -->
       <a class="navbar-brand" href="https://backbonejs.org/" target="_blank"
         ><img
           src="https://upload.wikimedia.org/wikipedia/commons/2/20/Backbone.js_logo.svg"
@@ -58,15 +56,11 @@
 
     <div class="container" id="video-app">
       <div class="row">
-        <div class="col-sm-8" id="feature-video-player">
-          <!-- <h4>Currently Playing</h4> -->
+        <div class="col-sm-8" id="feature">
           <div class="nowPlaying"></div>
         </div>
         <div class="col-sm-4 relatedVideoList">
-          <strong><h4>Related Videos</h4></strong>
-          <!-- <h6 class="click-instructions">
-            <strong>Click to play another video.</strong>
-          </h6> -->
+          <strong><h4>Click a video to play</h4></strong>
           <ul class="more-videos list-unstyled"></ul>
         </div>
       </div>
@@ -79,9 +73,8 @@
               <iframe id="feature-video-player" type="text/html"
                 src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen="true"></iframe>
           </div>
-          <!-- <iframe id="feature-video-player" type="text/html" width="480" height="270" src="https://www.youtube.com/embed/{{videoId}}"></iframe> -->
-          <h5 class="title"><strong>{{title}}</strong></h5>
-          <p class="description">{{description}}</p>
+          <h5 class="title"><strong> {{title}}</strong></h5>
+          <p class="description feature-desc">{{description}}</p>
       </div>
     </script>
 
@@ -94,7 +87,7 @@
       </div>
     </script>
 
-    <!-- SCRIPT TAGS FOR JS FILES  -->
+    <!-- SCRIPTS FOR JS FILES  -->
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
 
@@ -103,8 +96,6 @@
 
     <script src="views/FeaturePlayerView.js"></script>
     <script src="views/ListView.js"></script>
-
-    <!-- <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script> -->
 
     <script src="main.js"></script>
   </body>

@@ -6,10 +6,9 @@
  * PROBLEMS WITH THIS!!! IT WAS WORKING EARLIER WITH RESPONSIVE DESIGN
  *********************************************/
 let FeaturePlayerView = Backbone.View.extend({
-  className: 'videoPlayer',
+  className: 'featuredVideo',
 
   el: $('.nowPlaying'),
-  // el: $('.feature-video-player'),
 
   template: Handlebars.compile($('#feature-template').html()),
 
@@ -19,4 +18,3 @@ let FeaturePlayerView = Backbone.View.extend({
     return this;
   }
 });
-_;
