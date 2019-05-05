@@ -1,25 +1,26 @@
-var VideoCollection = Backbone.Collection.extend({
+const VideosCollection = Backbone.Collection.extend({
+  // need example query for default
+  query: "unc football",
 
-  model: VideoModel,
-
-  getVideos: function(query) {
-
-    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyA3J9kaPqKWfTOk6buExB0aZGcgvSxSEh4&q=${query}`;
-
-    this.fetch({ reset: true });
+  url: function () {
+    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${this.query}&type=video&key=AIzaSyA3J9kaPqKWfTOk6buExB0aZGcgvSxSEh4`
   },
-
-  //override the parse function to access the desired data
-  parse: function (response) {
-    //use the map array helper function to create an array of objects by looping through the original JSON data
-    var result = response.items.map(function(data) {
-      return {
-        title: data.snippet.title,
-        desc: data.snippet.description,
-        thumbnail: data.snippet.thumbnails.default.url,
-        videoId: data.id.videoId
+  model: VideoModel,
+  fetchVideoData: function (query) {
+      this.query = query;
+      this.fetch();
+    },
+    // need to parse the video model data
+    parse: function (response) {
+      if (response.items) {
+        return response.items.map(function (item) {
+          return {
+            videoId: item.id.videoId,
+            title: item.snippet.title,
+            description: item.snippet.description,
+            thumbnail_url: item.snippet.thumbnails.default.url
+          }
+        }, this)
       }
-    })
-    return result;
-  }
-});
+    }
+  });
