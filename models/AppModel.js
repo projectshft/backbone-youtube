@@ -12,7 +12,7 @@ const AppModel = Backbone.Model.extend({
   },
 
   //function for playing video based on the videoId
-    setPlayingVideo: function (id) {
+  setPlayingVideo: function (id) {
     const playingVideo = this.get("videos").findWhere({ videoId: id });
     this.set("playing_video", playingVideo);
   },

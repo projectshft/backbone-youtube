@@ -1,3 +1,47 @@
-div {
-    border: 4px solid black;
+body {
+  background-color: #f0f0f0 !important;
+  word-wrap: break-word;
+}
+
+header {
+  margin: 5px;
+}
+
+.container {
+  width: 80%;
+  max-width: 1300px;
+}
+
+.thumbnails-container {
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.thumbnail-view {
+  height: 123px;
+  padding: 15px 5px 15px 15px;
+  transition-duration: .3s
+}
+.thumbnail-pic {
+  width: 110px;
+  height: 80px;
+}
+
+.thumbnail-title {
+  height: 100%;
+  overflow: hidden;
+  line-height: 1.45;
+}
+.search-form {
+  max-width: 650px;
+}
+
+.thumbnail-view:hover {
+  background-color: #e1e1e1;
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+.error {
+  display: none;
 }

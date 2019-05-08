@@ -2,69 +2,71 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Youtube Project</title>
-
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-
-
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="node_modules/underscore/underscore-min.js"></script>
-    <script src="node_modules/backbone/backbone-min.js"></script>
-    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="search">
-        <input class="search" id="searchBar" type="text" placeholder="Search Video">
+  <header>
+    <h1>Backbone Project</span></h1>
+  </header>
+
+  <div class="container">
+
+    <div class="row m-5">
+      <div class="input-group col-md-8 m-auto">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+        </div>
+        <input type="text" class="form-control" id="search-input" placeholder="Search for a video" autofocus>
+      </div>
     </div>
 
-    <br>
+    <div class="row">
+      <div class="featured-video col-lg-8 mb-2"></div>
 
-    <div class="container" id="vidApp">
-        <div class="row">
-            <div class="col-sm-8 vidPlaying">
-                <h3>Current Video</h3>
-                <div id="player"></div>
-            </div>
-            <div class="col-sm-4 videoList">
-                <h3>Related Videos</h3>
-                <p> Choose Video Below to Play</p>
-                <ul class="related-videos list-unstyled"></ul>
-            </div>
-        </div>
+      <h1 class="error">Try a new search.</h1>
+
+      <div class="thumbnails-container col-lg-4"></div>
     </div>
 
+  </div>
 
+  <!-- Handlebars Templates -->
+  <script id="playing-video-template" type="text/x-handlebars-template">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item"
+        src="https://www.youtube.com/embed/{{videoId}}?autoplay=1&mute=0"
+        allow="autoplay" allowfullscreen>
+      </iframe>
+    </div>
+      <div class="video-info mt-2 ml-3">
+        <h4>{{ title }}</h4>
+        <p>{{ description }}</p>
+      </div>
+  </script>
 
-    <script id="player-template" type="text/x-handlebars-template">
-        <div class="player-container">
-            <p class="title">{{title}}</p>
-            <p class="description">{{description}}</p>
-        </div>
-    </script>
+  <script id="thumbnail-view-template" type="text/x-handlebars-template">
+    <div class="thumbnail-view mb-2" data-id="{{videoId}}">
+      <div class="thumbnail-pic float-left mr-2"><img src="{{thumbnail_url}}"></div>
+      <p class="thumbnail-title">{{ title }}</p>
+    </div>
+  </script>
 
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/underscore/underscore.js"></script>
+  <script src="node_modules/backbone/backbone.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.js"></script>
 
-    <script id="list-template" type="text/x-handlebars-template">
-        <a href="#" class="view-Video" data-id="{{videoId}}">
-            <img id="thumbnail" src="{{image}}">
-            <h6 class="list-item title"><b>{{title}}</b></h6>
-            <p class="list-item description">{{description}}</p>
-        </a>
-    </script>
-
-       <script src="collection/VideoCollection.js"></script>
-       <script src="models/VideoModel.js"></script>
-       <script src="models/AppModel.js"></script>
-       <script src="views/AppView.js"></script>
-       <script src="views/VideoView.js"></script>
-       <script src="views/ListView.js"></script>
-    <script src="main.js"></script>
+  <script src="./models/VideoModel.js"></script>
+  <script src="./collections/VideosCollection.js"></script>
+  <script src="./models/AppModel.js"></script>
+  <script src="./views/AppView.js"></script>
+  <script src="./views/ThumbnailView.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

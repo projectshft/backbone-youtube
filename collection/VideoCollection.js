@@ -3,7 +3,7 @@ const VideosCollection = Backbone.Collection.extend({
   query: "unc football",
 
   url: function () {
-    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${this.query}&type=video&key=AIzaSyA3J9kaPqKWfTOk6buExB0aZGcgvSxSEh4`
+    return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${this.query}&type=video&key=AIzaSyAEHp6nFgV39M7WWJsbyU3BK3QC7y0q5dQ`
   },
   model: VideoModel,
   fetchVideoData: function (query) {
