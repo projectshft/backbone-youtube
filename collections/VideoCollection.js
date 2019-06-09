@@ -8,7 +8,6 @@ var VideoCollection = Backbone.Collection.extend({
     // console.log("search videos ", query)
   },
   url: '', 
-  // data needed... title, desc, videoID, thumbnail
   parse: function(response) {
     return response.items.map(function(data) {
       return {
