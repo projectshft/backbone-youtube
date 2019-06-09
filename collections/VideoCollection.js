@@ -1,22 +1,21 @@
-
-
 var VideoCollection = Backbone.Collection.extend({
-
+  
   model: VideoModel,
   // API key = AIzaSyAIAfyCgGS_8VFCFTlPESDfVbz2sTzwCwM
-  fetch: function(query){
-    this.url = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyAIAfyCgGS_8VFCFTlPESDfVbz2sTzwCwM=" + query;
+  searchVideos: function(query){
+    this.url = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=" +query+ "&key=AIzaSyAwj8d3y9DVmjoxgZMKDLctKBtSdmHoYQE"
     this.fetch({reset:true})
+    // console.log("search videos ", query)
   },
-
+  url: '', 
   // data needed... title, desc, videoID, thumbnail
   parse: function(response) {
     return response.items.map(function(data) {
       return {
-        videoTitle: data.snippet.title,
-        videoDescription: data.snippet.description,
-        videoID: data.id.videoId,
-        thumbnail: data.snippet.thumbnails.default.url
+        title: data.snippet.title,
+        description: data.snippet.description,
+        videoId: data.id.videoId,
+        thumbnails: data.snippet.thumbnails.default.url
       };
     }
 

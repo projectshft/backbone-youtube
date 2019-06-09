@@ -2,37 +2,47 @@ var AppView = Backbone.View.extend({
   el: $('body'),
   // events to listen for
   events: {
-    'keypress #video-search': 'seachVideo'
-  //  'click #searchButton': 'searchVideo'
+    'click .searchButton': 'searchVideo'
   },
-  // at start of program we need...
   initialize: function () {
-    this.model.get('');
-
-    this.$currentVideo = this.$('current-video-section');
+    this.model.get('videos').searchVideos(this.model.get('query'));
+    this.$videoSearch = this.$('#video-search');
+    this.listenTo(this.model.get('videos'), 'reset', this.renderCurrent);
 
   },
-
+//video-search 
 
   searchVideo: function(e) {
-    if (e.which === 13 && this.$input.val()) {
-      this.model.set('query', this.$input.val());
-      this.model.get('videos').fetch(this.model.get('query'));
-      this.$input.val('');
-    }
+    const query = this.$videoSearch.val();
+    //condition ? exprIfTrue : exprIfFalse 
+
+    this.model.get('videos').searchVideos(query)
+
   },
 
   renderCurrent: function() {
-    this.$('#current-video-template').empty();
-    var currentView = new CurrentView({ model: video });
-    this.$currentVideo.append(currentView.render().el);
+
+
+    $('.video').empty(); 
+
+    const first = this.model.get('videos').first(); 
+    const Id = first.get('videoId');
+
+    const Url = 'https://www.youtube.com/embed/' +firstId; 
+
+    const Title = first.get('title');
+    const Description = first.get('description');
+
+    const source = $('#current-video-template').html(); 
+    const template = Handlebars.compile(source)
+    const newTemplate = template({Url, Title, Description});
+
+    this.$('.video').append(newTemplate); 
+
+    return this;
 
     // display current
   },
-
-  renderList: function() {
-
-  }
 
 
 

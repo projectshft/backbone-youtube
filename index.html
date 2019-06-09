@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href."style.css">
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/underscore/underscore-min.js"></script>
@@ -17,31 +16,24 @@
   <body>
     <div class="container">
       <div class="row justify-content-center">
-        <input id="video-search" type="text" class="col-md-6 m-4" placeholder="What are you in the mood for?">
+        <input id="video-search" class="video-search" type="text" class="col-md-6 m-4" placeholder="What are you in the mood for?">
 
-         <button id='searchButton' type="button" class="btn btn-primary m-4">Search</button>
+         <button class='searchButton' type="button" class="btn btn-primary m-4">Search</button>
       </div>
 
+    <section class="video">
 
-      <div class="row videos-section">
-        <div id="current-video-section">
-        </div>
-
-        <div id="playlist-section">
-        </div>
-      </div>
+    </section>
 
 
       <script id="current-video-template" type="text/x-handlebars-template">
-        <div id="video-player" class="row justify-content-center">
-          <iframe src="https://www.youtube.com/{{ query }}"></iframe>
-        </div>
-        <div id="video-title" class="row m-2">
-          <h3>{{ videoTitle }}</h3>
-        </div>
-        <div id="video-description" class="row m-2">
-          <p>{{ videoDescription }}</p>
-        </div>
+        <div class="embed">{{Id}}
+          <iframe src="{{Url}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <hr>
+      <span class="video-title">{{Title}}</span>
+          <br>
+      <span class="video-description text-muted"><em>{{Description}}</em></span>
       </script>
 
 
