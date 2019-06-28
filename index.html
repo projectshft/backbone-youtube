@@ -1,0 +1,46 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Sean's YouTube Search</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control search-input" placeholder="Enter Search Term" aria-label="Enter YouTube Search Term"
+            aria-describedby="search-button" required>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="search-button">Search Videos</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 offset-md-1 current-video"></div>
+          <div class="col-md-3 offset-md-1 video-queue"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideoCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/CurrentVideoView.js"></script>
+  <script src="views/VideoQueueView.js"></script>
+  <script src="views/VideoCardView.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
