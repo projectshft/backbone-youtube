@@ -17,7 +17,7 @@ var VideosCollection = Backbone.Collection.extend({
         id: video_snippet.id.videoId,
         title: video_snippet.snippet.title,
         description: video_snippet.snippet.description,
-        embedUrl: 'https://www.youtube.com/embed/' + video_snippet.id.videoId,
+        embedUrl: 'https://www.youtube.com/embed/' + video_snippet.id.videoId + '?&autoplay=1&origin=https://www.projectshift.io/',
         thumbnailUrl: video_snippet.snippet.thumbnails.default.url,
         currentVideo: false,
         played: false,

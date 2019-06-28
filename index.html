@@ -38,7 +38,7 @@
     <div class="content-container">
       <!-- src="https://www.youtube.com/embed/xU3iCjnlqx8" width="640" height="360" -->
       <iframe width="580" height="300" src="{{embedUrl}}" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        gesture="media" allow="accelerometer; autoplay; encrypted-media;" allowfullscreen></iframe>
     </div>
     <div class='description-container'>
       <p>{{title}}</p>
@@ -49,7 +49,7 @@
 
   <script id="video-card-template" type="text/x-handlebars-template">
 
-    <div class="card flex-row flex-wrap">
+    <div class="card flex-row flex-wrap" data-id={{id}}>
       <div class="card-header border-0">
         <img src="{{thumbnailUrl}}" alt="">
       </div>
