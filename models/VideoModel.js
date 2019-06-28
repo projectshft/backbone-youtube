@@ -5,8 +5,9 @@ VideoModel = Backbone.Model.extend({
     description: '',
     embedUrl: '',
     thumbnailUrl: '',
+    currentVideo: false,
     played: false,
-    playing: true
+    playing: false
 
   }
 });

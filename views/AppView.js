@@ -11,24 +11,34 @@ var AppView = Backbone.View.extend({
     this.$currentVideo = this.$('.current-video');
     this.$videoQueue = this.$('.video-queue');
 
-    // this.listenTo(this.model, 'change:current_video', this.renderDetailView);
+    this.model.setUrl();
+    this.listenTo(this.model.get('videos'), 'reset', this.setInitialCurrentVideo);
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideoQueue);
-
-    // this.renderVideo();
+    this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo);
+    // this.renderCurrentVideo();
   },
 
-  setCurrentVideo: function(){
+  setInitialCurrentVideo(){
+    this.model.set('currentVideo',this.model.get('videos').models[0]);
+    console.log(this.model.get('currentVideo'));
+    this.model.get('currentVideo').set('currentVideo', true);
+    this.renderCurrentVideo();
+  },
+
+  setCurrentVideo: function(video){
     if(this.model.currentVideo){
-      
+      this.model.set('currentVideo', video);
     }
+
+    this.renderCurrentVideo();
   },
 
-  renderCurrentVideo: function (video) {
+  renderCurrentVideo: function () {
     var currentVideoView = new CurrentVideoView({
-      model: video
+      model: this.model.get('currentVideo')
     });
 
-    $currentVideo.append(currentVideoView.render().el);
+    this.$('.current-video').append(currentVideoView.render().el);
   },
 
   renderVideoCard: function(video){
@@ -40,8 +50,10 @@ var AppView = Backbone.View.extend({
 
   renderVideoQueue: function () {
     this.model.get('videos').each(function (m) {
+    if (!m.get('currentVideo')) {
       this.renderVideoCard(m);
-    }, this);
+    }
+  }, this);
   }
   
 });

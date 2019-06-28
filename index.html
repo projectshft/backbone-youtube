@@ -26,8 +26,8 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6 offset-md-1 current-video"></div>
-          <div class="col-md-3 offset-md-1 video-queue"></div>
+          <div class="col-md-6 current-video"></div>
+          <div class="col-md-3 offset-md-2 video-queue"></div>
         </div>
       </div>
     </div>
@@ -36,8 +36,8 @@
   <script id="current-video-template" type="text/x-handlebars-template">
     
     <div class="content-container">
-      <!-- src="https://www.youtube.com/embed/xU3iCjnlqx8" -->
-      <iframe width="640" height="360" src="{{embedUrl}}" frameborder="0"
+      <!-- src="https://www.youtube.com/embed/xU3iCjnlqx8" width="640" height="360" -->
+      <iframe width="580" height="300" src="{{embedUrl}}" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class='description-container'>

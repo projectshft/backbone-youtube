@@ -1,5 +1,5 @@
 var VideosCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyC9oT5w8cbYBUkRfg2_1uJZb2YsipMyVJY',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=surfing&key=AIzaSyC9oT5w8cbYBUkRfg2_1uJZb2YsipMyVJY',
   model: VideoModel,
   initialize: function(){
 
@@ -14,8 +14,9 @@ var VideosCollection = Backbone.Collection.extend({
         description: video_snippet.snippet.description,
         embedUrl: 'https://www.youtube.com/embed/' + video_snippet.id.videoId,
         thumbnailUrl: video_snippet.snippet.thumbnails.default.url,
+        currentVideo: false,
         played: false,
-        playing: true
+        playing: false
       }
       // console.log(newSnippet);
       // return newSnippet;
