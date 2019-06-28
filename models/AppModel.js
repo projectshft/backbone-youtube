@@ -4,6 +4,6 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
       current_video: null
-    },
-  }
+    }
+  },
 })

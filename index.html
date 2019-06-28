@@ -23,8 +23,11 @@
       </div>
 
       <script id="video-template" type="text/x-handlebars-template">
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v={{video-id}}"></iframe>
+        </div>
       </script>
-<script type='text/javascript' src='config.js'></script>
+      <script type='text/javascript' src='config.js'></script>
       <script src="models/VideoModel.js"></script>
       <script src="collections/VideosCollection.js"></script>
       <script src="models/AppModel.js"></script>
