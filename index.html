@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Project Youtube</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      <input type="text" class="form-control" id="userInput" placeholder="search">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2 search-button">Search</button>
+  </form>
+  <div class="container">
+    <div class="row">
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+      </div>
+      <div>
+        test
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="collections/VidCollection.js"></script>
+  <script src="models/MainVidModel.js"></script>
+  <script src="models/DetailsModel.js"></script>
+  <script src="models/VidModel.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/VidView.js"></script>
+  <script src="views/DetailsView.js"></script>
+  <script src="views/MainVidView.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
