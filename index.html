@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-8 offset-md-2">
+      <div class="col-md-10 offset-md-1">
         <div class="input-group mb-3">
           <input type="text" class="form-control search-input" placeholder="Enter Search Term" aria-label="Enter YouTube Search Term"
             aria-describedby="search-button" required>
@@ -33,12 +33,41 @@
     </div>
   </div>
 
+  <script id="current-video-template" type="text/x-handlebars-template">
+    
+    <div class="content-container">
+      <!-- src="https://www.youtube.com/embed/xU3iCjnlqx8" -->
+      <iframe width="640" height="360" src="{{embedUrl}}" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class='description-container'>
+      <p>{{title}}</p>
+      <p>{{description}}</p>
+    </div>
+    
+  </script>
+
+  <script id="video-card-template" type="text/x-handlebars-template">
+
+    <div class="card flex-row flex-wrap">
+      <div class="card-header border-0">
+        <img src="{{thumbnailUrl}}" alt="">
+      </div>
+      <div class="card-block px-2">
+        <h6 class="card-title">{{title}}</h6>
+      </div>
+    </div>
+    
+  </script>
+
+  
+
   <script src="models/VideoModel.js"></script>
-  <script src="collections/VideoCollection.js"></script>
+  <script src="collections/VideosCollection.js"></script>
   <script src="models/AppModel.js"></script>
   <script src="views/AppView.js"></script>
   <script src="views/CurrentVideoView.js"></script>
-  <script src="views/VideoQueueView.js"></script>
+  <!-- <script src="views/VideoQueueView.js"></script> -->
   <script src="views/VideoCardView.js"></script>
   <script src="main.js"></script>
 </body>

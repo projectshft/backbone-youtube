@@ -1,10 +1,10 @@
 VideoModel = Backbone.Model.extend({
-  idAttribute: '_id',
+  idAttribute: 'id',
   defaults: {
     title: '',
     description: '',
-    sourceUrl: '',
-    previewImageUrl: '',
+    embedUrl: '',
+    thumbnailUrl: '',
     played: false,
     playing: true
 
