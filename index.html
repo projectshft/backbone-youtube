@@ -6,6 +6,7 @@
   <title>YouTube</title>
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://kit.fontawesome.com/d720288362.js"></script>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/underscore/underscore-min.js"></script>
   <script src="node_modules/backbone/backbone-min.js"></script>
@@ -13,6 +14,22 @@
 </head>
 
 <body>
+  <div class="container static-content">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 search-bar-area">
+        <div class="input-group mb-5">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="search-addon"><i class="fas fa-search"></i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Search Keywords">
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+
+  </div>
+
 
   <script src="Video/VideoModel.js"></script>
   <script src="Videos/VideosCollection.js"></script>
