@@ -2,11 +2,19 @@
 // const my_oauth = '747385519840-818000uhjd0sq32krt5jfl4dka24nrnj.apps.googleusercontent.com';
 
 AppModel = Backbone.Model.extend({
+  initialize: function(){
+    this.setUrl(this.get('currentQuery'));
+  },
+
   defaults: function(){
     return {
       videos: new VideosCollection(),
       currentVideo: null,
       currentQuery: 'Queen'
     }
+  },
+
+  setUrl(searchString){
+    this.get('videos').updateUrl(searchString);
   }
 });
