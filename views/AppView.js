@@ -7,6 +7,7 @@ var AppView = Backbone.View.extend({
     },
 
     initialize: function () {
+        this.$searchInput = this.$('#search-input');
         this.listenTo(this.model.get('videos'), 'reset', this.renderPage);
     }, 
 
@@ -15,6 +16,8 @@ var AppView = Backbone.View.extend({
     }, 
 
     createVideos: function () {
-        console.log("create videos");
+        var query = this.$searchInput.val(); 
+        console.log(query);
+        this.$searchInput.val(''); 
     }
 });
