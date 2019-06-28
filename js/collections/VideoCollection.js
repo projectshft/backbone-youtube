@@ -3,7 +3,7 @@
  */
 
 var VideoCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?maxResults=10&part=snippet&fields=items(id(videoId),snippet(title,description,thumbnails(default(url))))&q=skateboarding%20dog&type=video&key=AIzaSyA5ua2d9-GqR3Gb0yrrJn7mQFJSjlW0UAA',
+  url: '',
   model: VideoModel,
 
   parse: function(response) {

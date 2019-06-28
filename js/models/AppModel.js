@@ -11,5 +11,14 @@ var AppModel = Backbone.Model.extend({
       main_video: null,
       search: ''
     }
+  },
+
+  //listener on search - when it updates, change get request url
+  initialize: function() {
+    this.listenTo(this, 'change:search', this.updateSearchUrl)
+  },
+
+  updateSearchUrl: function() {debugger;
+    this.get('videos').url = YT_API_URL_BASE + `${this.get('search')}`;
   }
 });
