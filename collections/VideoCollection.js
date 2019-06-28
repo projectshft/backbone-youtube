@@ -1,5 +1,5 @@
 var VideoCollection = Backbone.Collection.extend({
-    url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=cats&type=video&key=AIzaSyCPPmlPfkv3U89LcDYIMstVbhT0ZN7MNPg',
+    url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=cats&type=video&key=AIzaSyCPPmlPfkv3U89LcDYIMstVbhT0ZN7MNPg',
 
     model: VideoModel, 
 
@@ -13,6 +13,9 @@ var VideoCollection = Backbone.Collection.extend({
     }, 
 
     parse: function(response) {
+        var videoArray = response.items; 
+        console.log(videoArray); 
+        console.log(response);
         return response; 
     }
 }); 
