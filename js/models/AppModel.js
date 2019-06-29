@@ -20,6 +20,6 @@ var AppModel = Backbone.Model.extend({
   },
 
   updateSearchUrl: function() {debugger;
-    this.get('videos').url = YT_API_URL_BASE + `${this.get('search')}`;
+    this.get('videos').url = sensitiveInfo.getAPIBaseUrl() + `${this.get('search')}`;
   }
 });
