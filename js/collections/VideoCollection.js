@@ -15,5 +15,11 @@ var VideoCollection = Backbone.Collection.extend({
         thumbnailURL: item.snippet.thumbnails.default.url
       }
     });
+  },
+
+  getVideos: function(searchString) {
+    console.log('Getting videos');
+    this.url = sensitiveInfo.getAPIBaseUrl() + `${searchString}`;
+    this.fetch({ reset: true });
   }
 });

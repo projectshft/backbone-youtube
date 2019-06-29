@@ -9,7 +9,7 @@ const sensitiveInfo = SensitiveInfo();
 var appModel = new AppModel();
 
 //create appview
+var appView = new AppView({ model: appModel });
 
 //initial fetch so we don't have an empty page on first load
 appModel.set('search', 'cute dog videos');
-appModel.get('videos').fetch({ reset: true });

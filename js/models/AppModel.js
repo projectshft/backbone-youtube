@@ -15,14 +15,14 @@ var AppModel = Backbone.Model.extend({
 
   //listener on search - when it updates, change get request url
   initialize: function() {
-    this.listenTo(this, 'change:search', this.updateSearchUrl);
+    this.listenTo(this, 'change:search', this.updateSearchUrlAndSendGetRequest);
     //reset event is triggered when fetch finishes - set first search result as main_video
     this.listenTo(this.get('videos'), 'reset', this.setMainVideo)
   },
 
-  updateSearchUrl: function() {
+  updateSearchUrlAndSendGetRequest: function() {
     console.log(`Updating url on videos collection with new search "${this.get('search')}"`);
-    this.get('videos').url = sensitiveInfo.getAPIBaseUrl() + `${this.get('search')}`;
+    this.get('videos').getVideos(this.get('search'));
   },
 
   setMainVideo: function(id) {
@@ -35,5 +35,11 @@ var AppModel = Backbone.Model.extend({
     }
     //else
     this.set('main_video', this.get('videos').get(id));
+  },
+
+  searchForVideos: function(newSearchString) {
+    console.log(`Searching for "${newSearchString}"`);
+    this.set('search', newSearchString);
+    //this.get('videos').fetch({ reset: true });
   }
 });
