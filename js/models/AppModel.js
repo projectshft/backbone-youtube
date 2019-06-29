@@ -15,7 +15,8 @@ var AppModel = Backbone.Model.extend({
 
   //listener on search - when it updates, change get request url
   initialize: function() {
-    this.listenTo(this, 'change:search', this.updateSearchUrl)
+    this.listenTo(this, 'change:search', this.updateSearchUrl);
+    //reset event is triggered when fetch finishes - set first search result as main_video
   },
 
   updateSearchUrl: function() {debugger;
