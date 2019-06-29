@@ -33,9 +33,26 @@
     <div class="row">
       <div class="col-md-8 currently-playing">
       </div>
+      <div class="col-md-4 waiting-videos"></div>
     </div>
   </div>
 
+  <script id="waiting-video-template" type="text/x-handlebars-template">
+    <div class="container">
+      <div class="row" data-id={{id.videoId}}>
+        <div class="card col-12">
+
+          <img class="card-image-left-center" src="{{snippet.thumbnails.default.url}}" width="{{snippet.thumbnails.default.width}}" height="{{snippet.thumbnails.default.height}}">
+
+          <div class="card-body">
+          <h5 class="card-text">{{snippet.title}}</h5>
+        </div>
+        </div>
+      </div>
+
+
+    </div>
+  </script>
   <script id="current-video-template" type="text/x-handlebars-template">
     <div class="currently-playing">
     <iframe class="currently-playing-video-frame" width="725" height="400"
@@ -51,12 +68,13 @@
   </div>
 </script>
   <script src="Video/VideoModel.js"></script>
+  <script src="Video/PlayingVideoView.js"></script>
+  <script src="Video/WaitingVideoView.js"></script>
   <script src="App/AppView.js"></script>
   <script src="Videos/VideosCollection.js"></script>
   <script src="App/AppModel.js"></script>
 
-  <script src="Video/PlayingVideoView.js"></script>
-  <script src="Video/WaitingVideoView.js"></script>
+
   <script type="text/javascript" src="main.js">
 
   </script>

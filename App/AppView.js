@@ -21,9 +21,17 @@ var AppView = Backbone.View.extend({
 
 //render currently playing video upon change in collection
 renderVideo: function(){
-  console.log('stepped into renderVideo')
-  //set first playing video to first video returned by API call
-  playingVideoView = new PlayingVideoView({model: this.model.get('videos').models[0]})
-  this.$('.currently-playing').append(playingVideoView.render().el)
+  //loop through collection
+for(var i = 0; i<this.model.get('videos').length; i++){
+  //set currently playing video view to display first model
+  if(i === 0){
+    var playingVideoView = new PlayingVideoView({model: this.model.get('videos').models[0]})
+    this.$('.currently-playing').append(playingVideoView.render().el)
+    //loop through remaining 4 models and populate to page with waiting video views
+  } else {
+    var waitingVideoView = new WaitingVideoView({model: this.model.get('videos').models[i]})
+    this.$('.waiting-videos').append(waitingVideoView.renderQueue().el)
+  }
+  }
 },
 });
