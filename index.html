@@ -27,10 +27,21 @@
       </div>
       <div class="col-md-2"></div>
     </div>
-
   </div>
 
+  <div class="container dynamic-views">
+    <div class="row">
+      <div class="col-md-8 currently-playing">
+      </div>
+    </div>
+  </div>
 
+<script id="current-video-template" type="text/x-handlebars-template">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="{{}}"></iframe>
+  </div>
+  <div class="current-title"><h1>{{snippet.title}}</h1></div>
+</script>
   <script src="Video/VideoModel.js"></script>
   <script src="App/AppView.js"></script>
   <script src="Videos/VideosCollection.js"></script>

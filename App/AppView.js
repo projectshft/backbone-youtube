@@ -1,22 +1,22 @@
 var AppView = Backbone.View.extend({
+  //already exists on the page, so setting DOM element to body
   el: $('body'),
 
+//needs to listen for user events on the view
   events:{
+    //on enter, call search function
     'keypress .search-input': 'searchVideo'
   },
 
+  //when page loaded, do the following things
   initialize: function(){
-    key = 'key=AIzaSyCdDRCypZuJwOxJAMN8uICfhhUEooF_eWs';
-    // var query = this.$('.search-input').val();
+    //fetch API data with pre-loaded search
+    // this.model.get('videos')
+
+    //listen for additions to the collection and render page
+    this.listenTo(this.model.get('videos'), 'add', this.renderVideos)
   },
-  searchVideo: function(e){
-    var query = this.$('.search-input').val();
-    if(e.which ===13 && query.length > 0){
+// searchVideo, don't allow empty submit
 
-      console.log(this.model);
-    // this.videos.set({url: 'https://www.googleapis.com/youtube/v3/search?part=snippet'+ query + key}),
-    // this.videos.fetch({reset: true});
-  };
-},
-
+//render video upon change in collection
 });

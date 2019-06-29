@@ -1,6 +1,6 @@
 var AppModel = Backbone.Model.extend({
-//app model kicks off creation of videos collection
-  default: function(){
+
+  defaults: function(){
     return{
       videos: new VideosCollection()
     }
