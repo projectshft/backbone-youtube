@@ -7,5 +7,17 @@ var VidCollection = Backbone.Collection.extend({
     this.fetch({reset: true});
   },
 
+  // gets response from API and parses the info needed for VidModel.
+
+  parse: function(response){
+    if(response.items[0]){
+      return response.items.map(vid => ({
+          thumbnail: vid.snippet.thumbnails.medium.url,
+          title: vid.snippet.title,
+          id: vid.id.videoID,
+          description: vid.snippet.description
+      }));
+    }
+  }
 
 });
