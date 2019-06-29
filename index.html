@@ -48,23 +48,16 @@
         </div>
         <div class="col-md-4">
                 <div class="videos-container">
+                    list view
                         <div class="video-list">
-                            <div class="video">
-                                <div class="img-container">
-                                        <img src="https://i.ytimg.com/vi/hY7m5jjJ9mM/default.jpg">
-                                </div>
-                                <div class="content-container">
-                                    <a class="view-video" href="#" data-id="vid-0">
-                                    <p class="video-title">Cats</p></a>
-                                </div>
-                            </div>
+                            
                         </div>
                 </div>
         </div>
       </div>
     </div>
 
-    <script>
+    <!-- <script>
             // 2. This code loads the IFrame Player API code asynchronously.
             var tag = document.createElement('script');
       
@@ -105,14 +98,14 @@
             function stopVideo() {
               player.stopVideo();
             }
-          </script>
+          </script> -->
 
     <script id="list-video-template" type="text/x-handlebars-template">
         <div class="img-container">
-          <img src="{{image_url}}">
+          <img src="{{thumbnail}}">
         </div>
         <div class="content-container">
-          <a class="view-video" href="#" data-id={{_id}}>
+          <a class="view-video" href="#" data-id={{videoId}}>
           <p class="video-title">{{title}}</p></a>
         </div>
       </script>
@@ -120,6 +113,7 @@
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideoCollection.js"></script>
     <script src="models/AppModel.js"></script>
+    <script src="views/ListVideoView.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
   </body>

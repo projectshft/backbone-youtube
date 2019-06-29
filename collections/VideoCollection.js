@@ -4,7 +4,7 @@ var VideoCollection = Backbone.Collection.extend({
     model: VideoModel, 
 
     addVideo: function(title, description, videoId, thumbnail) {
-        this.create({
+        this.add({
             title: title, 
             description: description, 
             videoId: videoId, 
@@ -16,6 +16,16 @@ var VideoCollection = Backbone.Collection.extend({
         var videoArray = response.items; 
         console.log(videoArray); 
         console.log(response);
-        return response; 
+
+        //return response.items; 
+        return response.items.map(function(b) {
+            console.log(b.snippet.title,b.snippet.description,b.id.videoId,b.snippet.thumbnails.default.url);
+            return { 
+                title: b.snippet.title, 
+                description: b.snippet.description,
+                videoId: b.id.videoId,
+                thumbnail: b.snippet.thumbnails.default.url 
+            };
+        });
     }
 }); 
