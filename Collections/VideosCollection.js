@@ -20,7 +20,7 @@ var VideosCollection = Backbone.Collection.extend({
     var videoThumbnail = obj.snippet.thumbnails.default.url;
     //creating a videoModel for each video returned from the API
     videoModel = new VideoModel({
-      id: videoId,
+        id: videoId,
          title: videoTitle,
          description: videoDescription,
          thumbnail: videoThumbnail

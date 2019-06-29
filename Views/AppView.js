@@ -1,6 +1,6 @@
 var AppView = Backbone.View.extend({
 
-el: $('.main-body'),
+el: $('body'),
 
 template: Handlebars.compile($('#main-video-template').html()),
 
@@ -27,7 +27,11 @@ createOnEnter: function (e) {
 },
 
 renderMain: function() {
-  console.log('test render')
+
+// console.log(this.model.get('videos').models[0].attributes;
+  this.$el.html(this.template(this.model.get('videos').models[0].attributes));
+  //
+  // return this;
 }
 
 
