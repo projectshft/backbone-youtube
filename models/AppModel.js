@@ -14,6 +14,12 @@ var AppModel = Backbone.Model.extend({
         this.get('videos').url = this.get('current_URL'); 
     },
 
+    setSearchUrl : function (query) {
+        var newUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=' + query + '&type=video&key=AIzaSyCPPmlPfkv3U89LcDYIMstVbhT0ZN7MNPg';
+        this.set('current_URL', newUrl);
+        this.get('videos').url = this.get('current_URL'); 
+    },
+
     showMainVideo: function (id) {
         console.log("show main video: ", id); 
     },
