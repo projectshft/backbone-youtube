@@ -17,9 +17,22 @@ var AppModel = Backbone.Model.extend({
   initialize: function() {
     this.listenTo(this, 'change:search', this.updateSearchUrl);
     //reset event is triggered when fetch finishes - set first search result as main_video
+    this.listenTo(this.get('videos'), 'reset', this.setMainVideo)
   },
 
-  updateSearchUrl: function() {debugger;
+  updateSearchUrl: function() {
+    console.log(`Updating url on videos collection with new search "${this.get('search')}"`);
     this.get('videos').url = sensitiveInfo.getAPIBaseUrl() + `${this.get('search')}`;
+  },
+
+  setMainVideo: function(id) {
+    //when called from reset event, there will be no passed in id
+    //on view click events, pass in video id, will be string like "PgD56JEUWFA"
+    if (typeof id !== 'string') {
+      console.log('Setting first video in collection as main video');
+      this.set('main_video', this.get('videos').at(0));
+      return;
+    }
+    //else
   }
 });
