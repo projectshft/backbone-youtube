@@ -29,7 +29,23 @@
 
   <section id="sidebar-videos"></section>
 
+  <!-- Handlebars templates -->
+  <script id="main-video-template" type="text/x-handlebars-template">
+    <div class="container">
+      <div class="row">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="row">
+        <h1>{{title}}</h1>
+        <p>{{description}}</p>
+      </div>
+    </div>
+  </script>
+  
   <script src="sensitiveInfo.js"></script>
+  <script src="js/views/MainVideoView.js"></script>
   <script src="js/views/AppView.js"></script>
   <script src="js/models/VideoModel.js"></script>
   <script src="js/collections/VideoCollection.js"></script>

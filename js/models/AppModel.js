@@ -40,6 +40,5 @@ var AppModel = Backbone.Model.extend({
   searchForVideos: function(newSearchString) {
     console.log(`Searching for "${newSearchString}"`);
     this.set('search', newSearchString);
-    //this.get('videos').fetch({ reset: true });
   }
 });
