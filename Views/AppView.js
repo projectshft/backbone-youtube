@@ -7,6 +7,10 @@ events: {
   'keypress .search-bar': 'createOnEnter'
 },
 
+// initialize: {
+//   this
+// },
+
 createOnEnter: function (e) {
   //checking to see if keypress event was the enter bar and that input was inserted into the search bar
   if (e.keyCode == 13 && this.$('.search-bar').val()) {
