@@ -10,6 +10,12 @@ var VideosCollection = Backbone.Collection.extend({
   parse: function(response){
     return response.items;
   },
+//initialized with access to variables for convenience
+  initialize: function(){
+    key = '&key=AIzaSyCdDRCypZuJwOxJAMN8uICfhhUEooF_eWs';
+
+    baseUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='
+  },
 
 //initial API call when page is loaded(called from AppView)
 initialSearch: function(){
@@ -18,6 +24,11 @@ initialSearch: function(){
 },
 //reset should alert AppView of change so view can be rendered
 
+//will need to set url on the collection
+fetchData: function(search){
+  this.url = baseUrl + search + '&type=video'+ key;
+  this.fetch({reset:true});
+}
 
 
 });

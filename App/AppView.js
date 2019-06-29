@@ -17,10 +17,26 @@ var AppView = Backbone.View.extend({
   },
 //
 
-// searchVideo, don't allow empty submit
+// searchVideo, control for empty search criteria here before API call
+searchVideo: function(e){
+  if (e.which===13) {
+    if($('.search-input').val().length === 0){
+      alert('Please enter search criteria');
+    }else{
+      var search = $('.search-input').val();
+      this.model.get('videos').fetchData(search);
+    }
+  }
+
+},
+
 
 //render currently playing video upon change in collection
 renderVideo: function(){
+//clear current DOM nodes
+this.$('.currently-playing').empty();
+this.$('.waiting-videos').empty();
+
   //loop through collection
 for(var i = 0; i<this.model.get('videos').length; i++){
   //set currently playing video view to display first model
