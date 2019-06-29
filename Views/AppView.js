@@ -10,7 +10,7 @@ events: {
 },
 
 initialize: function() {
-  this.listenTo(this.model.get('videos'), 'add', this.renderMain);
+  this.listenTo(this.model.get('videos'), 'reset', this.renderMain);
 },
 
 createOnEnter: function (e) {
@@ -26,12 +26,26 @@ createOnEnter: function (e) {
   }
 },
 
-renderMain: function() {
+renderAll: function (video) {
+  console.log(video)
+  if (video = this.model.get('videos').models[0]) {
+    // console.log('frist video')
+    this.$el.html(this.template(this.model.get('videos').models[0].attributes));
+    return this;
+  } else {
+    // console.log('other video')
+    var videoView = new VideoView({ model: video })
+    $('.related-videos-container').append(videoView.render().el)
+    //make video template and then add each video to the co;umn viewmaking a new video view
+  }
+},
 
-// console.log(this.model.get('videos').models[0].attributes;
-  this.$el.html(this.template(this.model.get('videos').models[0].attributes));
-  //
-  // return this;
+renderMain: function() {
+console.log(this.model.get('videos'))
+// this.model.get('videos').each(function (video) {
+//   this.renderAll(video)
+// }, this)
+
 }
 
 

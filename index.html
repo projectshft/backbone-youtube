@@ -34,20 +34,19 @@
 
 
 <script id = 'column-videos-template' type = 'text/x-handlebars-template'>
-  <div class = 'row'> {{video}} </div>
-  <div class = 'row'> {{video}} </div>
-  <div class = 'row'> {{video}} </div>
-  <div class = 'row'> {{video}} </div>
+  <div class = 'row'> <img src = {{thumbnail}}> </div>
+  <p> {{ title }} </p>
 </script>
 
 <script id = 'main-video-template' type = 'text.x-handlebars-template'>
   <div class = 'video-main'>
     <iframe id="ytplayer" type="text/html" width="640" height="360"
-  src="https://www.youtube.com/embed/{{ this.id }}"
+  src="https://www.youtube.com/embed/{{ id }}"
   frameborder="0"></iframe>
   </div>
-  <div class = 'video description'> {{this.title}}
+  <div class = 'video-title'> {{title}}
   </div>
+  <div class = 'video-description'> {{description}}
 </script>
 <script src= 'Models/AppModel.js'></script>
 <script src='Models/VideoModel.js'></script>
