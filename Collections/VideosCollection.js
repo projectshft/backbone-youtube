@@ -7,13 +7,13 @@ var VideosCollection = Backbone.Collection.extend({
 
 //Inserting the user's searchQuery in the api's query parameter
   addUrl: function(searchQuery) {
-    console.log(searchQuery);
     this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&part=player&q='+searchQuery.replace(' ', '%20')+'&type=video&key=AIzaSyCaGKLUbvq7ts-AAudIgcx5s9PiPnmEQko'
   },
 
+
 //when fetch is called we get back only specific data that are desired(id, title, description, thumbnail)
   parse: function (response) {
-  response.items.map(function(obj) {
+  response.items.map(function (obj) {
     var videoId = obj.id.videoId;
     var videoTitle = obj.snippet.title;
     var videoDescription = obj.snippet.description;
@@ -26,7 +26,8 @@ var VideosCollection = Backbone.Collection.extend({
          thumbnail: videoThumbnail
     })
     //adding each video to the appModels collection of videos
-    appModel.get('videos').models.push(videoModel);
-},
-
+    appModel.get('videos').add(videoModel);
 })
+}
+
+});
