@@ -5,41 +5,53 @@
   <meta charset="utf-8">
   <title>Project Youtube</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/underscore/underscore-min.js"></script>
-  <script src="node_modules/backbone/backbone-min.js"></script>
-  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
 </head>
 
 <body>
-  <form class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-      <input type="text" class="form-control" id="userInput" placeholder="search">
-    </div>
-    <button type="submit" class="btn btn-primary mb-2 search-button">Search</button>
-  </form>
-  <div class="container">
+  <h1 class="text-center">Project Youtube</h1>
+  <div class="container-fluid">
     <div class="row">
-      <div class="embed-responsive embed-responsive-21by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+      <div class="col-md-12 search-bar text-center">
+        <input type="text" id="search" placeholder="search">
       </div>
-      <div>
-        test
-      </div>
+    </div>
+    <div class="row vid-section">
+      <div class="col-md-2"></div>
+      <div class="col-md-6 main-vid-section"></div>
+      <div class="col-md-4 vid-list"></div>
     </div>
   </div>
 
 
+  <script id="main-vid-template" type="text/x-handlebars-template">
+    <div class="embed-responsive embed-responsive-16by9 card">
+      <iframe src="https://www.youtube.com/embed/{{ id }}" allowfullscreeen="true"></iframe>
+    </div>
+    <div class="card-body vid-details">
+      <h5 class="card-title">{{ title }}</h5>
+      <p class="card-text"> {{ description }}</p>
+    </div>
+  </script>
 
+  <script id="vid-list-template" type="text/x-handlebars-template">
+    <a href="#" data-id="{{ id }}">
+      <img src="{{ thumbnail }}" class="vid-thumbnail" data-id="{{ id }}">
+      <p data-id="{{ id }}">{{ title }}</p>
+    </a>
+  </script>
+
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="collections/VidCollection.js"></script>
-  <script src="models/MainVidModel.js"></script>
-  <script src="models/DetailsModel.js"></script>
   <script src="models/VidModel.js"></script>
   <script src="models/AppModel.js"></script>
   <script src="views/AppView.js"></script>
   <script src="views/VidView.js"></script>
-  <script src="views/DetailsView.js"></script>
   <script src="views/MainVidView.js"></script>
+  <script src="views/VidListView.js"></script>
   <script src="main.js"></script>
 </body>
 
