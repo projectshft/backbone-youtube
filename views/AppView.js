@@ -27,12 +27,12 @@ var AppView = Backbone.View.extend({
         console.log(query);
         this.$searchInput.val(''); 
 
-        this.model.get('videos').addVideo(
-            'cat video',
-            'cute cats playing',
-            'hY7m5jjJ9mM',
-            'https://i.ytimg.com/vi/hY7m5jjJ9mM/default.jpg'
-        );
+        // this.model.get('videos').addVideo(
+        //     'cat video',
+        //     'cute cats playing',
+        //     'hY7m5jjJ9mM',
+        //     'https://i.ytimg.com/vi/hY7m5jjJ9mM/default.jpg'
+        // );
 
     },
 

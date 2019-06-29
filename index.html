@@ -48,7 +48,6 @@
         </div>
         <div class="col-md-4">
                 <div class="videos-container">
-                    list view
                         <div class="video-list">
                             
                         </div>
@@ -101,13 +100,14 @@
           </script> -->
 
     <script id="list-video-template" type="text/x-handlebars-template">
-        <div class="img-container">
+        <a class="view-video" href="#" data-id={{videoId}}>
+            <div class="img-container">
           <img src="{{thumbnail}}">
         </div>
         <div class="content-container">
-          <a class="view-video" href="#" data-id={{videoId}}>
-          <p class="video-title">{{title}}</p></a>
-        </div>
+          
+          <p class="video-title">{{title}}</p>
+        </div></a>
       </script>
 
     <script src="models/VideoModel.js"></script>
