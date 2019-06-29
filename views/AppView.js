@@ -13,6 +13,7 @@ var AppView = Backbone.View.extend({
 
         this.listenTo(this.model.get('videos'), 'add', this.renderListVideo);
         this.listenTo(this.model.get('videos'), 'reset', this.renderPage);
+        this.listenTo(this.model.get('videos'), 'reset', this.renderListVideos);
 
         this.renderListVideos; 
     }, 
