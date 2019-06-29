@@ -61,7 +61,13 @@
       <div class="row">
         <div class="col-md-8">
             main view
-            <div id="player"></div>
+            <div class="video-main embed-responsive embed-responsive-16by9">
+
+                </div>
+
+                    <!-- <iframe class="embed-responsive-item" id="player" type="text/html" 
+                    src="https://www.youtube.com/embed/hY7m5jjJ9mM" frameborder="0">
+                    </iframe> -->
         </div>
         <div class="col-md-4">
                 <div class="videos-container">
@@ -127,10 +133,18 @@
         </div></a>
       </script>
 
+      <script id="main-video-template" type="text/x-handlebars-template">
+        <iframe class="embed-responsive-item" id="player" type="text/html" 
+            src="https://www.youtube.com/embed/{{videoId}}" frameborder="0">
+        </iframe>
+    </script>
+
+    <script src="https://apis.google.com/js/api.js"></script>
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideoCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/ListVideoView.js"></script>
+    <script src="views/MainVideoView.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
   </body>
