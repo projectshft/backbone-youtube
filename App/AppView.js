@@ -10,15 +10,20 @@ var AppView = Backbone.View.extend({
 
   //when page loaded, do the following things
   initialize: function(){
-    //fetch API data with pre-loaded search
 
-    this.model.get('videos').initialSearch;
+    this.model.get('videos').initialSearch();
     //listen for additions to the collection and render page
-    this.listenTo(this.model.get('videos'), 'add', this.renderVideos)
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideo)
   },
 //
 
 // searchVideo, don't allow empty submit
 
-//render video upon change in collection
+//render currently playing video upon change in collection
+renderVideo: function(){
+  console.log('stepped into renderVideo')
+  //set first playing video to first video returned by API call
+  playingVideoView = new PlayingVideoView({model: this.model.get('videos').models[0]})
+  this.$('.currently-playing').append(playingVideoView.render().el)
+},
 });
