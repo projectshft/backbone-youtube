@@ -27,12 +27,13 @@ var AppModel = Backbone.Model.extend({
 
   setMainVideo: function(id) {
     //when called from reset event, there will be no passed in id
-    //on view click events, pass in video id, will be string like "PgD56JEUWFA"
+    //on view click events, pass in backbone collection cid, will be string like "c6"
     if (typeof id !== 'string') {
       console.log('Setting first video in collection as main video');
       this.set('main_video', this.get('videos').at(0));
       return;
     }
     //else
+    this.set('main_video', this.get('videos').get(id));
   }
 });
