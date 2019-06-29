@@ -7,9 +7,10 @@ events: {
   'keypress .search-bar': 'createOnEnter'
 },
 
-// initialize: {
-//   this
-// },
+initialize: {
+  this.listenTo(this.model, 'add' this.renderVideos)
+},
+
 
 createOnEnter: function (e) {
   //checking to see if keypress event was the enter bar and that input was inserted into the search bar
