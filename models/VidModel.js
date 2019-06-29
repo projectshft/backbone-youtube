@@ -1,8 +1,10 @@
 var VidModel = Backbone.Model.extend({
   defaults: function(){
     return {
-      thumbnail: thumbnail,
-      title: title
+      thumbnail: '',
+      title: '',
+      id: '',
+      description: ''
     };
   },
 });
