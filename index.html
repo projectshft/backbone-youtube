@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <!-- <script src="node_modules/popper.js/dist/popper.min.js"></script> -->
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Youtube</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1>Youtube App</h1>
+      <form class="search-form">
+        <div class="input-group mb-1">
+          <input type="text" id="search-query" class="form-control" placeholder="Search Youtube">
+          <button class="btn btn-outline-secondary" id="search-button" type="button">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+            </div>
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-md">
+      <div id="main-video">
+        <h1>Video Goes Here</h1>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2rscLn6YBk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </iframe>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md">
+      <div id="main-video-info">
+        <h1>Video Description Goes Here</h1>
+        <h3>Video Description should be below the iframe of the video. </h3> 
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md">
+      <div id="video-list">
+        <h1>List of queued Videos</h1>
+        <iframe width="1560" height="315" src="https://www.youtube.com/embed/2rscLn6YBk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="Models/AppModel.js"></script>
+  <script src="Models/VideoModel.js"></script>
+  <script src="Collections/VideosCollection.js"></script>
+  <script src="Views/AppView.js"></script>
+  <script src="Views/VideoView.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
