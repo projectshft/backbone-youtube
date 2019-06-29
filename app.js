@@ -12,4 +12,4 @@ var appModel = new AppModel();
 var appView = new AppView({ model: appModel });
 
 //initial fetch so we don't have an empty page on first load
-appModel.set('search', 'cute dog videos');
+appModel.searchForVideos('cute dog videos');
