@@ -12,27 +12,27 @@ var AppView = Backbone.View.extend({
     this.$videoQueue = this.$('.video-queue');
 
     this.model.setUrl(this.model.get('currentQuery'));
-    this.listenTo(this.model.get('videos'), 'reset', this.setInitialCurrentVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.setCurrentVideo);
     this.listenTo(this.model.get('videos'), 'reset', this.render);
     this.listenTo(this.model, 'change:currentVideo', this.render);
     this.listenTo(this.model, 'change:currentQuery', this.updateSearch);
   },
 
-  setInitialCurrentVideo(){
-    this.model.set('currentVideo',this.model.get('videos').models[0]);
-    this.model.get('currentVideo').set('currentVideo', true);
-    this.renderCurrentVideo();
-  },
-
   setCurrentVideo: function(e){
-    var newCurrentVideoId = $(e.currentTarget).data().id;
-    this.model.get('currentVideo').set('currentVideo', false);
+    //check for current video assignment
+    var currentVideo;
     var allVideos = this.model.get('videos');
-
-    var currentVideo = allVideos.findWhere({
-      id: newCurrentVideoId
-    });
-    console.log(currentVideo);
+    if(this.model.get('currentVideo')){
+      this.model.get('currentVideo').set('currentVideo', false);
+      var currentVideoId = $(e.currentTarget).data().id;
+      currentVideo = allVideos.findWhere({
+        id: currentVideoId
+      });
+      
+    } else {
+      currentVideo = allVideos.at(0);
+    }
+    
     currentVideo.set('currentVideo', true);
     this.model.set('currentVideo', currentVideo);
   
@@ -40,7 +40,6 @@ var AppView = Backbone.View.extend({
 
   updateQuery(){
     var newQueryString = this.$searchInput.val();
-    console.log(newQueryString);
     this.model.set('currentQuery',newQueryString);
   },
 

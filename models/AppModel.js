@@ -10,7 +10,7 @@ AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
       currentVideo: null,
-      currentQuery: 'Queen'
+      currentQuery: 'Flight of the Conchords'
     }
   },
 
