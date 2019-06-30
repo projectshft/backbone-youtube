@@ -7,8 +7,12 @@ var VideosCollection = Backbone.Collection.extend({
 
 //Inserting the user's searchQuery in the api's query parameter
   addUrl: function(searchQuery) {
-    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&part=player&q='+searchQuery.replace(' ', '%20')+'&type=video&key=AIzaSyCaGKLUbvq7ts-AAudIgcx5s9PiPnmEQko'
+    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&part=player&q='+searchQuery.replace(' ', '%20')+'&type=video&key=AIzaSyDVS4jHXACXxvdEu_ulM3-_jhdU6R8VVR4'
+
+
   },
+
+
 
 
 //when fetch is called we get back only specific data that are desired(id, title, description, thumbnail)
