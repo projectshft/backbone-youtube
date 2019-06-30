@@ -11,7 +11,10 @@ var AppModel = Backbone.Model.extend({
 
   //switch video, triggered by app view and sets playing video attribute
 switchVideo: function(newVid){
-
+  var newVideo = this.get('videos').findWhere({id: newVid});
+  this.set('playingVideo', newVideo);
+  console.log(newVid);
+  console.log(this.get('playingVideo'));
 },
 
 });

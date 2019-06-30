@@ -35,8 +35,9 @@ searchVideo: function(e){
 },
 
 //trigger videoswitch will call function in app model to change currently playing video
-triggerVideoSwitch: function(){
-  var newVideo = $(event.currentTarget).data().id;
+triggerVideoSwitch: function(e){
+  var newVideoId = $(e.currentTarget).data().id;
+  console.log(newVideoId);
   this.model.switchVideo(newVideoId);
 },
 
