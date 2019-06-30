@@ -5,7 +5,8 @@ var AppView = Backbone.View.extend({
 //needs to listen for user events on the view
   events:{
     //on enter, call search function
-    'keypress .search-input': 'searchVideo'
+    'keypress .search-input': 'searchVideo',
+    'click .queued-video': 'triggerVideoSwitch'
   },
 
   //when page loaded, do the following things
@@ -13,13 +14,16 @@ var AppView = Backbone.View.extend({
 
     this.model.get('videos').initialSearch();
     //listen for additions to the collection and render page
-    this.listenTo(this.model.get('videos'), 'reset', this.renderVideo)
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideo);
+
   },
 //
 
 // searchVideo, control for empty search criteria here before API call
 searchVideo: function(e){
+  //if event trigger is enter key
   if (e.which===13) {
+    //nested conditional to check for empty input
     if($('.search-input').val().length === 0){
       alert('Please enter search criteria');
     }else{
@@ -30,6 +34,11 @@ searchVideo: function(e){
 
 },
 
+//trigger videoswitch will call function in app model to change currently playing video
+triggerVideoSwitch: function(){
+  var newVideo = $(event.currentTarget).data().id;
+  this.model.switchVideo(newVideoId);
+},
 
 //render currently playing video upon change in collection
 renderVideo: function(){

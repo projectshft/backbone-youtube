@@ -8,7 +8,14 @@ var VideosCollection = Backbone.Collection.extend({
 
 //parse response upon return from API
   parse: function(response){
-    return response.items;
+    response.items.map(model){
+      return{
+        id: model.id.videoId,
+        title: model.snippet.title,
+        description: model.snippet.description,
+        thumbnail: model.snippet.thumbnail.default.url
+      }
+    };
   },
 //initialized with access to variables for convenience
   initialize: function(){
