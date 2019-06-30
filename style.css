@@ -1,42 +1,64 @@
 body {
-    background-color: #EAEBE7;
+    background-color: #dde0c1; 
 }
 
 .container {
     margin-top: 80px;
 }
 
+.form-control {
+    background-color: #f8f9fa; 
+}
+
 .navbar {
     padding: 0.75rem 0rem 0rem 0rem;
     align-items: center; 
     box-sizing: border-box;
+    color: #e7fe00; 
+    background-color: #333; 
 }
 
-.video img {
-    max-width: 60px;
-    float: left; 
-  }
-  
+.btn-outline-light {
+    color: #e7fe00; 
+    border-color: #e7fe00; 
+}
+
+.navbar-brand {
+    padding: 0rem 0rem 1rem 0rem; 
+    color: #EAEBE7;
+}
+
+ .video img { 
+    max-width: 100%; 
+ }
+
   .video .img-container {
     display: inline-block;
-    /* float: left; */
+      
   }
   
   .video .content-container {
     display: inline-block;
+    vertical-align: top;
     margin-left: 10px;
-  }
+    max-width: 50%;
+    text-overflow: hidden;
+}
+
   
   .video .video-title {
-    font-weight: bold;
-    font-size: 14px;
+    /* font-weight: bold; */
+    font-size: 12px;
   }
   
   .video {
-    box-shadow: 2px 2px 2px #B3B3B3;
-    background-color: #fff;
+    box-shadow: 2px 2px 2px #3b3b3b61; 
+    background-color: #3b3b3b2e; 
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 15px;
-    /* display: block;  */
+  }
+
+  .show {
+    display: block;
   }
