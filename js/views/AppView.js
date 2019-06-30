@@ -4,6 +4,7 @@ var AppView = Backbone.View.extend({
   el: $('body'),
   events: {
     'click .search-button': 'newSearch',
+    'keypress .search-input': 'checkForEnter',
     'click .view-video': 'changeMainVideo'
   },
   initialize: function() {
@@ -18,7 +19,6 @@ var AppView = Backbone.View.extend({
   renderPage: function() {
     //get main video model first since both render functions need to know what model to use/skip
     var mainVideoModel = this.model.get('main_video');
-    debugger;
     this.renderMainVideo(mainVideoModel);
     //render rest of videos in sidebar, excluding main video
     this.renderSideVideos(mainVideoModel);
@@ -52,5 +52,9 @@ var AppView = Backbone.View.extend({
     console.log(`User selected video with id "${clickedVideoId}"`);
 
     this.model.setMainVideo(clickedVideoId);
+  },
+  checkForEnter: function(e) {
+    if (e.keyCode === 13)
+      this.newSearch();
   }
 });
