@@ -39,6 +39,7 @@ var AppView = Backbone.View.extend({
         this.model.setSearchUrl(query);
         //this.model.get('videos').reset(); 
         this.model.get('videos').fetch({reset: true});
+        //this.model.set('current_video', this.model.get('videos').at(0)); 
 
         this.$searchInput.val('');
 

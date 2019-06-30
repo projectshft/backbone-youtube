@@ -23,6 +23,7 @@ var AppModel = Backbone.Model.extend({
         var newUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=' + query + '&type=video&key=AIzaSyD5dy-5GDx7outd6JdIGjjRFJxmkKKBmrw';
         this.set('current_URL', newUrl);
         this.get('videos').url = this.get('current_URL'); 
+        this.set('current_video', null);
     },
 
     makeClickedVideoMain: function (id) {
