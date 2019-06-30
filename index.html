@@ -16,8 +16,8 @@
 <body>
   <div class="container static-content">
     <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8 search-bar-area">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8 search-bar-area">
         <div class="input-group mb-5">
           <div class="input-group-prepend">
             <span class="input-group-text" id="search-addon"><i class="fas fa-search"></i></span>
@@ -31,35 +31,31 @@
 
   <div class="container dynamic-views">
     <div class="row">
-      <div class="col-md-8 currently-playing">
+      <div class="col-sm-8 currently-playing">
       </div>
-      <div class="col-md-4 waiting-videos"></div>
+      <div class="col-sm-4 waiting-videos"></div>
     </div>
   </div>
 
   <script id="waiting-video-template" type="text/x-handlebars-template">
     <div class="container">
       <div class="row">
-        <div class="card col-12 queued-video" data-id={{id}}>
+        <div class="card col-sm-12 queued-video" data-id={{id}}>
 
-          <img class="card-image-left" src="{{thumbnail}}" width="150" height="110">
-
-          <div class="card-body">
-          <h5 class="card-text">{{title}}</h5>
-        </div>
+          <img class="card-image-left col-6 align-self-start" src="{{thumbnail}}" width="150" height="110">
+          <h5 class="card-text col align-self-end">{{title}}</h5>
         </div>
       </div>
-
-
     </div>
   </script>
+
   <script id="current-video-template" type="text/x-handlebars-template">
     <div class="currently-playing">
     <iframe class="currently-playing-video-frame" width="725" height="400"
-            src="https://www.youtube.com/embed/{{id.videoId}}"
+            src="https://www.youtube.com/embed/{{id}}"
             frameborder="0" allowfullscreen>
     </iframe>
-</div>
+    </div>
   <div class="card">
     <div class="card-body current-video-info">
       <h3>{{title}}</h3>
@@ -73,11 +69,7 @@
   <script src="App/AppView.js"></script>
   <script src="Videos/VideosCollection.js"></script>
   <script src="App/AppModel.js"></script>
-
-
-  <script type="text/javascript" src="main.js">
-
-  </script>
+  <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>
