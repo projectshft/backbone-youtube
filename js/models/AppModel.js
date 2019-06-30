@@ -20,9 +20,9 @@ var AppModel = Backbone.Model.extend({
     this.listenTo(this.get('videos'), 'reset', this.setMainVideo)
   },
 
-  updateSearchUrlAndSendGetRequest: function() {
+  updateSearchUrlAndSendGetRequest: function() {debugger;
     console.log(`Updating url on videos collection with new search "${this.get('search')}"`);
-    this.get('videos').getVideos(this.get('search'));
+    this.get('videos').getVideos(this.get('search')); 
   },
 
   setMainVideo: function(id) {

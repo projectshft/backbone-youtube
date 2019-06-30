@@ -8,7 +8,7 @@ var AppView = Backbone.View.extend({
     'click .view-video': 'changeMainVideo'
   },
   initialize: function() {
-    this.$searchInput = this.$('#search-input');
+    this.$searchInput = this.$('.search-input');
     this.$mainVideo = this.$('#main-video');
     this.$sideVideos = this.$('#sidebar-videos');
 
