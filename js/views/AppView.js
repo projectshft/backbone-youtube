@@ -48,9 +48,7 @@ var AppView = Backbone.View.extend({
   },
   changeMainVideo: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
-
     console.log(`User selected video with id "${clickedVideoId}"`);
-
     this.model.setMainVideo(clickedVideoId);
   },
   checkForEnter: function(e) {

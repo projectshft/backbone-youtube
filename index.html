@@ -25,9 +25,13 @@
     </div>
   </section>
 
-  <section id="main-video"></section>
+  <div class="container-fluid">
+    <div class="row">
+        <section id="main-video" class="col-md-8"></section>
+        <section id="sidebar-videos" class="container-fluid col-md-4"></section>
+    </div>
+  </div>
 
-  <section id="sidebar-videos"></section>
 
   <!-- Handlebars templates -->
   <script id="main-video-template" type="text/x-handlebars-template">
@@ -45,14 +49,12 @@
   </script>
 
   <script id="side-video-template" type="text/x-handlebars-template">
-    <div class="container">
-      <div class="row">
-        <div class="media view-video" data-id={{videoId}}>
-          <img class="align-self-center mr-3" src="{{thumbnailURL}}" alt="Generic placeholder image">
-          <div class="media-body">
-            <a class="mt-0" href="#">{{title}}</a>
-            <p>{{description}}</p>
-          </div>
+    <div class="row">
+      <div class="media view-video" data-id={{videoId}}>
+        <img class="align-self-center mr-3" src="{{thumbnailURL}}" alt="Generic placeholder image">
+        <div class="media-body">
+          <a class="mt-0" href="#">{{title}}</a>
+          <p>{{description}}</p>
         </div>
       </div>
     </div>
