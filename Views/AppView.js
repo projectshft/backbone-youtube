@@ -9,18 +9,18 @@ template: Handlebars.compile($('#main-video-template').html()),
 events: {
   //checks for keypress events when user is on search bar. If a keypress happens createOnEnter function is ran
   'keypress .search-bar': 'createOnEnter',
+  'click .row': 'renderMain'
 
 },
 
-clickedIT: function () {
-  console.log(this.model);
-},
+
 
 initialize: function() {
   //need to see if you make basic defualts (this.id = 'egae') so video is there when page loads
 //this is my attempt(it works)
   this.$el.html(this.template(this.model.get('videos').models[0].attributes))
   for (var i = 1; i < this.model.get('videos').models.length; i++ ) {
+    // this.$el.html(this.template(this.model.get('videos').models[i].attributes))
   var videoView = new VideoView( { model: this.model.get('videos').models[i] } );
   this.$el.append(videoView.render().el)
 }
@@ -57,6 +57,8 @@ createOnEnter: function (e) {
   }
 },
 
+templateSide: Handlebars.compile($('#column-videos-template').html()),
+
 
 // renderAll: function (video) {
 //   console.log(video)
@@ -79,9 +81,13 @@ renderMain: function() {
       console.log('rendering main video')
       this.$el.html(this.template(this.model.get('videos').models[i].attributes));
     } else {
-
-      var videoView = new VideoView( { model: this.model.get('videos').models[i].attributes } );
-      $('.related-videos-container').append(videoView.render().el)
+      console.log('side video')
+      // var videoView = new VideoView({model: VideoModel})
+        // this.$el.append(videoView.render().el)
+      // this.$el.html(this.templateSide(this.model.get('videos').models[i].attributes))
+      // this.model.get('videos').models[i].attributes
+      var videoViewsidebar = new VideoView( { model: this.model.get('videos').models[i].attributes } );
+      this.$el.append(this.templateSide(this.model.get('videos').models[i].attributes))
     }
   }
 
