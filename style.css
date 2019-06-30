@@ -1,0 +1,13 @@
+/* I think the 100vh prevents the scroll bar from showing up automatically */
+body {
+  height: 100vh;
+}
+
+.view-video {
+  height: 100px;
+  overflow: hidden;
+}
+
+.view-video img {
+  cursor: pointer;
+}
