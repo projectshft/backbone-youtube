@@ -16,6 +16,9 @@ var AppView = Backbone.View.extend({
     //listen for additions to the collection and render page
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideo);
 
+    //listen for change in currently playing attribute on App Model to trigger render
+    this.listenTo(this.model, 'change', this.switchVideoViews);
+
   },
 //
 
@@ -37,8 +40,13 @@ searchVideo: function(e){
 //trigger videoswitch will call function in app model to change currently playing video
 triggerVideoSwitch: function(e){
   var newVideoId = $(e.currentTarget).data().id;
-  console.log(newVideoId);
   this.model.switchVideo(newVideoId);
+},
+
+switchVideoViews: function(){
+  this.$('.currently-playing').empty();
+  playingVideoView = new PlayingVideoView({model: this.model.get('playingVideo')})
+  this.$('.currently-playing').append(playingVideoView.render().el)
 },
 
 //render currently playing video upon change in collection

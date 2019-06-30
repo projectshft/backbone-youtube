@@ -26,7 +26,7 @@ var VideosCollection = Backbone.Collection.extend({
 
 //initial API call when page is loaded(called from AppView)
 initialSearch: function(){
-  this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet%20&q=backbone+tutorial%20&type=video%20&key=AIzaSyCdDRCypZuJwOxJAMN8uICfhhUEooF_eWs'
+  this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&%20&q=backbone+tutorial%20&type=video%20&key=AIzaSyCdDRCypZuJwOxJAMN8uICfhhUEooF_eWs'
   this.fetch({reset:true});
 },
 //reset should alert AppView of change so view can be rendered
