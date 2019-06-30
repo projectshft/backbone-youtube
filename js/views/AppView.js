@@ -20,7 +20,7 @@ var AppView = Backbone.View.extend({
     debugger;
     this.renderMainVideo(mainVideoModel);
     //render rest of videos in sidebar, excluding main video
-    this.renderVideos(mainVideoModel);
+    this.renderSideVideos(mainVideoModel);
   },
   renderMainVideo: function(video) {
     console.log('Rendering main video');
@@ -30,12 +30,16 @@ var AppView = Backbone.View.extend({
     //append the views render
     this.$mainVideo.append(mainView.render().el);
   },
-  renderVideos: function(videoToOmit) {
+  renderSideVideos: function(videoToOmit) {
+    console.log('Rendering side videos');
+    this.$sideVideos.empty();
     this.model.get('videos').each( function(video) {
-      
-        console.log('hey');
-        if (video === videoToOmit)
-          console.log('whoah buddy');
+      if (video === videoToOmit) {
+        console.log('Video is already main video, skipping');
+        return;
+      }
+      var sideVideoView = new SideVideoView({ model: video });
+      this.$sideVideos.append(sideVideoView.render().el);
     }, this);
   },
   newSearch: function() {
