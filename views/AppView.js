@@ -3,7 +3,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     'click #search-button': 'updateQuery',
-    'click .card': 'setCurrentVideo'
+    'click .card': 'updateCurrentVideo'
   },
 
   initialize: function () {
@@ -12,42 +12,34 @@ var AppView = Backbone.View.extend({
     this.$videoQueue = this.$('.video-queue');
 
     this.model.setUrl(this.model.get('currentQuery'));
-    this.listenTo(this.model.get('videos'), 'reset', this.setCurrentVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.updateCurrentVideo);
     this.listenTo(this.model.get('videos'), 'reset', this.render);
     this.listenTo(this.model, 'change:currentVideo', this.render);
     this.listenTo(this.model, 'change:currentQuery', this.updateSearch);
   },
 
-  setCurrentVideo: function(e){
+  updateCurrentVideo: function(e){
     //check for current video assignment
-    var currentVideo;
-    var allVideos = this.model.get('videos');
     if(this.model.get('currentVideo')){
-      this.model.get('currentVideo').set('currentVideo', false);
-      var currentVideoId = $(e.currentTarget).data().id;
-      currentVideo = allVideos.findWhere({
-        id: currentVideoId
-      });
-      
+      this.model.setCurrentVideo($(e.currentTarget).data().id);
     } else {
-      currentVideo = allVideos.at(0);
+      this.model.setCurrentVideo('0');
     }
-    
-    currentVideo.set('currentVideo', true);
-    this.model.set('currentVideo', currentVideo);
   
   },
 
-  updateQuery(){
+  updateQuery: function(){
     var newQueryString = this.$searchInput.val();
-    this.model.set('currentQuery',newQueryString);
+    if (newQueryString !== '' && newQueryString !== this.model.get('currentQuery')){
+      this.model.updateCurrentQuery(newQueryString);
+    } else {
+      alert('It looks like there isn\'t anything in the search bar, please try a new search!');
+    }
+    
   },
 
-  updateSearch(){
-    this.model.setUrl(this.model.get('currentQuery'));
-    this.model.get('videos').fetch({
-      reset: true
-    });
+  updateSearch: function(){
+    this.model.searchYoutube();
   },
 
   renderCurrentVideo: function () {
