@@ -25,7 +25,13 @@ var AppModel = Backbone.Model.extend({
         this.get('videos').url = this.get('current_URL'); 
     },
 
-    showMainVideo: function (id) {
+    makeClickedVideoMain: function (id) {
+
+        var allVideos = this.get('videos');
+      
+        var currentVideo = allVideos.findWhere({ videoId: id });
+      
+        this.set('current_video', currentVideo);
         console.log("show main video: ", id);
     },
 

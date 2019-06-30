@@ -3,8 +3,8 @@ var AppView = Backbone.View.extend({
     el: $('body'),
 
     events: {
-        'click .search-videos': 'searchVideos'
-        //'click .video': 'changeMainVideo'
+        'click .search-videos': 'searchVideos', 
+        'click .view-video': 'viewVideo'
     },
 
     initialize: function () {
@@ -16,15 +16,20 @@ var AppView = Backbone.View.extend({
         this.listenTo(this.model.get('videos'), 'reset', this.renderPage);
         this.listenTo(this.model.get('videos'), 'reset', this.renderListVideos);
         this.listenTo(this.model, 'change:current_URL', this.renderListVideos);
-        //this.listenTo(this.model.get('videos'), 'reset', this.renderMainVideo);
-        //this.listenTo(this.model, 'change:current_URL', this.renderMainVideo);
+        this.listenTo(this.model.get('videos'), 'reset', this.renderMainVideo);
+        this.listenTo(this.model, 'change:current_URL', this.renderMainVideo);
+        this.listenTo(this.model, 'change:current_video', this.renderMainVideo);
 
-        //this.listView = null;
         this.renderListVideos;
     },
 
     renderPage: function () {
         console.log("render page");
+    },
+
+    viewVideo: function (e) {
+        var clickedVideoId = $(e.currentTarget).data().id;
+        this.model.makeClickedVideoMain(clickedVideoId);
     },
 
     searchVideos: function () {
@@ -35,27 +40,21 @@ var AppView = Backbone.View.extend({
         //this.model.get('videos').reset(); 
         this.model.get('videos').fetch({reset: true});
 
-        //var self = this;
-        //this.model.fetch().done(function(){
-        //    self.render();
-        //});
         this.$searchInput.val('');
-
-        // this.model.get('videos').addVideo(
-        //     'cat video',
-        //     'cute cats playing',
-        //     'hY7m5jjJ9mM',
-        //     'https://i.ytimg.com/vi/hY7m5jjJ9mM/default.jpg'
-        // );
 
     },
 
-    // renderMainVideo: function () {
-    //     console.log("render main video (AV)");
-    //     var mainModel = this.model.get('videos').at(0);
-    //     var mainVideoView = new MainVideoView({ model: mainModel });
-    //     this.$videoMain.html(mainVideoView.render().el);
-    // },
+    renderMainVideo: function () {
+        console.log("render main video (AV)");
+        var mainModel; 
+        if (!this.model.get('current_video')) {
+            mainModel = this.model.get('videos').at(0);
+        } else {
+            mainModel = this.model.get('current_video');
+        }
+        var mainVideoView = new MainVideoView({ model: mainModel });
+        this.$videoMain.html(mainVideoView.render().el);
+    },
 
     renderListVideo: function (video) {
         console.log("render list video");
