@@ -3,7 +3,7 @@ var AppView = Backbone.View.extend({
     el: $('body'),
 
     events: {
-        'click .search-videos': 'searchVideos', 
+        'click .search-videos': 'searchVideos',
         'click .view-video': 'viewVideo'
     },
 
@@ -38,7 +38,7 @@ var AppView = Backbone.View.extend({
         debugger;
         this.model.setSearchUrl(query);
         //this.model.get('videos').reset(); 
-        this.model.get('videos').fetch({reset: true});
+        this.model.get('videos').fetch({ reset: true });
         //this.model.set('current_video', this.model.get('videos').at(0)); 
 
         this.$searchInput.val('');
@@ -47,7 +47,7 @@ var AppView = Backbone.View.extend({
 
     renderMainVideo: function () {
         console.log("render main video (AV)");
-        var mainModel; 
+        var mainModel;
         if (!this.model.get('current_video')) {
             mainModel = this.model.get('videos').at(0);
         } else {
