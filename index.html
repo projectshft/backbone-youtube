@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="node_modules/bootstrap/dist/css/bootstrap.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
-    />
+
+<head>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -17,32 +11,34 @@
     <script src="node_modules/backbone/backbone-min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <title>Backbone Youtube</title>
-  </head>
-  <body>
-        <nav class="navbar fixed-top navbar-dark bg-dark justify-content-center">
-                <a class="navbar-brand">Backbone YouTube</a>
-                <form class="form-inline align-middle">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search-input">
-                  <button class="btn btn-outline-light my-2 my-sm-0 search-videos" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-              </nav>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-dark bg-dark justify-content-center">
+        <a class="navbar-brand">Backbone YouTube</a>
+        <form class="form-inline align-middle">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-input">
+            <button class="btn btn-outline-light my-2 my-sm-0 search-videos" type="button"><i
+                    class="fa fa-search"></i></button>
+        </form>
+    </nav>
 
     <div class="container">
-        
-      <div class="row">
-        <div class="col-sm-8" id="left">
-            <div class="video-main">
 
+        <div class="row">
+            <div class="col-sm-8" id="left">
+                <div class="video-main">
+
+                </div>
             </div>
-        </div>
-        <div class="col-sm-4" id="right">
-            <div class="videos-container">
-                <div class="video-list">
-                            
+            <div class="col-sm-4" id="right">
+                <div class="videos-container">
+                    <div class="video-list">
+
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
 
     <script id="list-video-template" type="text/x-handlebars-template">
@@ -54,7 +50,7 @@
         </div>
       </script>
 
-      <script id="main-video-template" type="text/x-handlebars-template">
+    <script id="main-video-template" type="text/x-handlebars-template">
         <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" id="main-player"  
                 src="https://www.youtube.com/embed/{{videoId}}" frameborder="0">
@@ -66,7 +62,7 @@
         </div>
     </script>
 
-    <script src="https://apis.google.com/js/api.js"></script>
+    <!-- <script src="https://apis.google.com/js/api.js"></script> -->
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideoCollection.js"></script>
     <script src="models/AppModel.js"></script>
@@ -74,5 +70,6 @@
     <script src="views/MainVideoView.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
-  </body>
+</body>
+
 </html>

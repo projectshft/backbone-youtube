@@ -1,7 +1,7 @@
 var ListVideoView = Backbone.View.extend({
     className: 'video',
 
-    template: Handlebars.compile($('#list-video-template').html()), 
+    template: Handlebars.compile($('#list-video-template').html()),
 
     events: {
         'click .video': 'makeMainVideo'
@@ -15,11 +15,11 @@ var ListVideoView = Backbone.View.extend({
         console.log("make this main video"); //, this.model.get('videoId')); 
     },
 
-    render: function() {
-        console.log("render this"); 
+    render: function () {
+        console.log("render this");
         //debugger;
         this.$el.html(this.template(this.model.toJSON()));
-  
+
         return this;
     }
 }); 
