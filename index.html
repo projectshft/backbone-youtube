@@ -28,17 +28,14 @@
               </nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-            </div>
-        </div>
+        
       <div class="row">
-        <div class="col-md-8">
-            <div class="video-main embed-responsive embed-responsive-16by9">
+        <div class="col-sm-8" id="left">
+            <div class="video-main">
 
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-4" id="right">
             <div class="videos-container">
                 <div class="video-list">
                             
@@ -58,9 +55,15 @@
       </script>
 
       <script id="main-video-template" type="text/x-handlebars-template">
-        <iframe class="embed-responsive-item" id="main-player"  
-            src="https://www.youtube.com/embed/{{videoId}}" frameborder="0">
-        </iframe>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" id="main-player"  
+                src="https://www.youtube.com/embed/{{videoId}}" frameborder="0">
+            </iframe>
+        </div>
+        <div class="main-video-content"> 
+            <div class="main-video-title"> {{title}} </div>
+            <div class="main-video-description"> {{description}} </div>
+        </div>
     </script>
 
     <script src="https://apis.google.com/js/api.js"></script>
