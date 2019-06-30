@@ -5,13 +5,18 @@ var AppModel = Backbone.Model.extend({
 
       current_video: null,
 
-      search: 'what'
+      searchQuery: ''
     }
   },
 
-  search: function () {
-    this.set({search: $('#search-input').val()});
-    console.log(this.get('search'));
-  }
+  searchVideos: function () {
+    this.set({searchQuery: $('#search-input').val()});
+    this.updateUrl();
+  },
+
+  updateUrl: function () {
+    this.get('videos').url = this.get('videos').defaultUrl + this.get('searchQuery')
+    this.get('videos').fetchVideos()
+  },
 
 });

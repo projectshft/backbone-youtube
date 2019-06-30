@@ -1,7 +1,7 @@
 var VideosCollection = Backbone.Collection.extend({
-  url: `ttps://www.googleapis.com/youtube/v3/
-  search?maxResults=10&part=snippet
-  &fields=items(id(videoId),snippet(title,description,thumbnails(default(url))))&type=video&key=AIzaSyCZJr48wGNGhUN7Ki8HLbYO4jN2AwqG0l8&q=`,
+  url: '',
+
+  defaultUrl: `https://www.googleapis.com/youtube/v3/search?maxResults=10&part=snippet&fields=items(id(videoId),snippet(title,description,thumbnails(default(url))))&type=video&key=AIzaSyCZJr48wGNGhUN7Ki8HLbYO4jN2AwqG0l8&q=`,
 
   model: VideoModel,
 
@@ -12,8 +12,20 @@ var VideosCollection = Backbone.Collection.extend({
   },
 
   parse: function (response) {
-    console.log('we made it to parse')
+
+    response.items.forEach(function(item) {
+      var searchResultObject = {};
+      searchResultObject.id = item.id.videoId;
+      searchResultObject.title = item.snippet.title;
+      searchResultObject.description = item.snippet.description;
+      searchResultObject.thumbnail = item.snippet.thumbnails.default.url;
+
+      appModel.get('videos').add(searchResultObject)
+    })
+    console.log(appModel.get('videos').toJSON())
   },
 
-  query: 'funny dogs'
+  fetchVideos: function () {
+    this.fetch({ reset:true })
+  }
 });

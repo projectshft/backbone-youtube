@@ -2,15 +2,11 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .search-button': "searchVideos",
+    'click .search-button': "triggerSearchVideos",
   },
 
-  initialize: function() {
-    this.$searchInput = this.$('search-input')
-  },
-
-  searchVideos: function() {
-    this.model.search()
+  triggerSearchVideos: function() {
+    this.model.searchVideos()
     $('#search-input').val("")
   },
 })
