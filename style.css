@@ -1,6 +1,6 @@
 /* I think the 100vh prevents the scroll bar from showing up automatically */
 body {
-  height: 100vh;
+  height: 30vh;
 }
 
 .view-video {
@@ -10,4 +10,8 @@ body {
 
 .view-video img {
   cursor: pointer;
+}
+
+#sidebar-videos {
+  overflow: auto;
 }

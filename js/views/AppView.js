@@ -45,6 +45,7 @@ var AppView = Backbone.View.extend({
   },
   newSearch: function() {
     this.model.searchForVideos(this.$searchInput.val());
+    this.$searchInput.val('');
   },
   changeMainVideo: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
