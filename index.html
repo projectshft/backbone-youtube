@@ -1,5 +1,6 @@
 <!-- <!DOCTYPE html> -->
 <html>
+
 <head>
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -10,33 +11,37 @@
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
   <title>Backbone-Youtube</title>
 </head>
+
 <body>
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
-      <div class="input-group">
-      <input class="form-control py-2" type="search" value="search" id="example-search-input">
-      <span class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">
-            <i class="fa fa-search"></i>
-        </button>
-      </span>
+        <div class="input-group">
+          <input class="form-control py-2" type="search" placeholder="search" id="search-input">
+          <span class="input-group-append">
+            <button class="btn btn-outline-secondary search-button" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
       </div>
-</div>
-  </div>
-  <div class="row">
-  <div class="col-8"></div>
-  <div class="col-4"></div>
-</div>
-  </div>
-  <script id="video-now-template" type="text/x-handlebars-template"></script>
-  <script id="video-queue-template" type="text/x-handlebars-template"></script>
-<script src="collections/VideosCollection.js"></script>
-<script src="models/AppModel.js"></script>
-<script src="models/VideoModel.js"></script>
-<script src="views/AppView.js"</script>
-  <script src="views/VideoNowView.js"></script>
-  <script src="views/VideoQueueView.js"></script>
-  <script src="main.js"></script>
+    </div>
+    <div class="row">
+      <div class="col-md-8">col8
+        <!-- <iframe id="player" type="text/html"
+    src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+    frameborder="0"></iframe></div> -->
+        <div class="col-md-4">col4</div>
+      </div>
+    </div>
+    <script id="video-now-template" type="text/x-handlebars-template"></script>
+    <script id="video-queue-template" type="text/x-handlebars-template"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="views/AppView.js" </script> <script src="views/VideoNowView.js"></script>
+    <script src="views/VideoQueueView.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
