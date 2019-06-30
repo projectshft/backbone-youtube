@@ -34,7 +34,8 @@ var AppModel = Backbone.Model.extend({
       return;
     }
     //else
-    this.set('main_video', this.get('videos').get(id));
+    console.log(`Setting main video to video with id "${id}"`);
+    this.set('main_video', this.get('videos').findWhere({ videoId: id }));
   },
 
   searchForVideos: function(newSearchString) {

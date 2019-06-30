@@ -3,7 +3,8 @@
 var AppView = Backbone.View.extend({
   el: $('body'),
   events: {
-    'click .search-button': 'newSearch'
+    'click .search-button': 'newSearch',
+    'click .view-video': 'changeMainVideo'
   },
   initialize: function() {
     this.$searchInput = this.$('#search-input');
@@ -44,5 +45,12 @@ var AppView = Backbone.View.extend({
   },
   newSearch: function() {
     this.model.searchForVideos(this.$searchInput.val());
+  },
+  changeMainVideo: function(e) {
+    var clickedVideoId = $(e.currentTarget).data().id;
+
+    console.log(`User selected video with id "${clickedVideoId}"`);
+
+    this.model.setMainVideo(clickedVideoId);
   }
 });

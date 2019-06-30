@@ -47,10 +47,10 @@
   <script id="side-video-template" type="text/x-handlebars-template">
     <div class="container">
       <div class="row">
-        <div class="media">
+        <div class="media view-video" data-id={{videoId}}>
           <img class="align-self-center mr-3" src="{{thumbnailURL}}" alt="Generic placeholder image">
           <div class="media-body">
-            <h5 class="mt-0">{{title}}</h5>
+            <a class="mt-0" href="#">{{title}}</a>
             <p>{{description}}</p>
           </div>
         </div>
