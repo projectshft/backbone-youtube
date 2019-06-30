@@ -3,10 +3,14 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
 
-      current_video: null,
+      current_video_id: null,
 
       searchQuery: ''
     }
+  },
+
+  initalize: function () {
+    this.listenTo(this, 'change:videos', this.loadVideos)
   },
 
   searchVideos: function () {

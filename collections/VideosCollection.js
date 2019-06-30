@@ -24,7 +24,6 @@ var VideosCollection = Backbone.Collection.extend({
       searchResults.push(searchResultObject);
     })
     appModel.get('videos').reset(searchResults)
-    
   },
 
   fetchVideos: function () {
