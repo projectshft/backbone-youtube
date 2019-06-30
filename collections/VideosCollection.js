@@ -12,6 +12,7 @@ var VideosCollection = Backbone.Collection.extend({
   },
 
   parse: function (response) {
+    var searchResults = [];
 
     response.items.forEach(function(item) {
       var searchResultObject = {};
@@ -20,9 +21,10 @@ var VideosCollection = Backbone.Collection.extend({
       searchResultObject.description = item.snippet.description;
       searchResultObject.thumbnail = item.snippet.thumbnails.default.url;
 
-      appModel.get('videos').add(searchResultObject)
+      searchResults.push(searchResultObject);
     })
-    console.log(appModel.get('videos').toJSON())
+    appModel.get('videos').reset(searchResults)
+    
   },
 
   fetchVideos: function () {
