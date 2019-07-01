@@ -1,0 +1,26 @@
+I need to build a Youtube App with the following functionality.
+  A user should be able to search something in the search bar, and get a list of videos back, with one showing up in the main screen.
+    Put in a searchbar with an id which I can listen to and use a fetch operation to grab the photos.
+  When a user clicks a video in the list on the right, the main video should change to that video.
+    Need to figure out how to update the view by changing the array value so that the side videos load into the primary video? 
+    Need two seperate functions to load the main video and side videos. 
+  Each time a user clicks a different video, the title and description beneath the main video should update as well.
+    Tie the mainvideo function to array value 0. Put first 4 videos beneath the main video. 
+  When the user first loads the page, there should be a default search with videos loaded so the page is not blank.
+    Placeholders or just choose defaults in Backbone to populate default videos. 
+
+I need to use the Rules of Data Flow and use backbone. I also must integrate the YT data API. 
+I need one Collection (VideosCollection). 2 Models (Video Model and App Model). 2 Views (App View and Model View) Main Js to tie everything togeth along with all the NPM stuff. 
+ 
+ 
+Step 1. HTML and NPM Setup
+Step 2. Setup Models, Collections, and Views and Tie them together
+Step 3. Integrate the API and create listener events and initalize events. 
+Step 4. Profit
+
+
+
+Things have to use:
+  parse
+  el
+  Backbone extend method

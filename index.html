@@ -20,30 +20,21 @@
       <form class="search-form">
         <div class="input-group mb-1">
           <input type="text" id="search-query" class="form-control" placeholder="Search Youtube">
-          <button class="btn btn-outline-secondary" id="search-button" type="button">Search</button>
+          <button class="btn btn-outline-secondary" id="search-youtube" type="button">Search</button>
         </div>
       </form>
     </div>
   </div>
-  <div class="row">
-        <div class="col-lg-6 mx-auto">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-            </div>
+  <script id="main-video-template"type="text/x-handlebars-template">
+    <div class="row">
+      <div class="col-md">
+        <div id="main-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/2rscLn6YBk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-    </div>
-  <div class="row">
-    <div class="col-md">
-      <div id="main-video">
-        <h1>Video Goes Here</h1>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/2rscLn6YBk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </iframe>
       </div>
     </div>
-  </div>
+  </script>
+  <script id="main-video-description" type="text/x-handlebars-template">
   <div class="row">
     <div class="col-md">
       <div id="main-video-info">
@@ -52,6 +43,7 @@
       </div>
     </div>
   </div>
+  </script>
   <div class="row">
     <div class="col-md">
       <div id="video-list">
