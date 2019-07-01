@@ -56,11 +56,10 @@ renderMain: function() {
       this.$el.html(this.template(videosCollection[i].attributes));
     } else {
 
-      var videoViewsidebar = new VideoView( { model: videosCollection[i].attributes } );
-      this.$el.append(this.templateSide(videosCollection[i].attributes))
+      var videoViewsidebar = new VideoView( { model: videosCollection[i]} );
+      this.$el.append(videoViewsidebar.render().el)
     }
   }
-
 
 }
 
