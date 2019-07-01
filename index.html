@@ -25,7 +25,7 @@
 
   <script id="main-vid-template" type="text/x-handlebars-template">
     <div class="embed-responsive embed-responsive-16by9 card">
-      <iframe src="https://www.youtube.com/embed/{{ id }}" allowfullscreeen="true"></iframe>
+      <iframe width="420" height="315" src='https://www.youtube.com/embed/{{ id }}'></iframe>
     </div>
     <div class="card-body vid-details">
       <h5 class="card-title">{{ title }}</h5>
@@ -34,9 +34,9 @@
   </script>
 
   <script id="vid-list-template" type="text/x-handlebars-template">
-    <a href="#" data-id="{{ id }}">
-      <img src="{{ thumbnail }}" class="vid-thumbnail" data-id="{{ id }}">
-      <p data-id="{{ id }}">{{ title }}</p>
+    <a href="#" data-id='{{ id }}'>
+      <img src="{{ thumbnail }}" class="vid-thumbnail" data-id='{{ id }}'>
+      <p data-id='{{ id }}'>{{ title }}</p>
     </a>
   </script>
 
@@ -45,11 +45,10 @@
   <script src="node_modules/underscore/underscore-min.js"></script>
   <script src="node_modules/backbone/backbone-min.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script src="collections/VidCollection.js"></script>
   <script src="models/VidModel.js"></script>
   <script src="models/AppModel.js"></script>
+  <script src="collections/VidCollection.js"></script>
   <script src="views/AppView.js"></script>
-  <script src="views/VidView.js"></script>
   <script src="views/MainVidView.js"></script>
   <script src="views/VidListView.js"></script>
   <script src="main.js"></script>

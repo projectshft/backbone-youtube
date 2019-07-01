@@ -3,7 +3,7 @@ var VidCollection = Backbone.Collection.extend({
 
   // puts the search input from the user into a URL for the API. only returns 6 videos
   fetchVids: function(searchQuery){
-    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${searchQuery}&topicId=%2Fm%2F05z1_&type=video&key=AIzaSyDlV5WhGmdnkwPaMadx9_CX7QJpLCauAfE`
+    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${searchQuery}&type=video&key=AIzaSyDlV5WhGmdnkwPaMadx9_CX7QJpLCauAfE`
     this.fetch({reset: true});
   },
 
@@ -12,11 +12,14 @@ var VidCollection = Backbone.Collection.extend({
   parse: function(response){
     if(response.items[0]){
       return response.items.map(vid => ({
-          thumbnail: vid.snippet.thumbnails.medium.url,
-          title: vid.snippet.title,
-          id: vid.id.videoID,
-          description: vid.snippet.description
+        id: vid.id.videoId,
+        title: vid.snippet.title,
+        thumbnail: vid.snippet.thumbnails.medium.url,
+        description: vid.snippet.description
       }));
+    } else {
+      alert('No results, Try a different search.');
+      location.reload();
     }
   }
 

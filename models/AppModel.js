@@ -3,7 +3,8 @@ var AppModel = Backbone.Model.extend({
     return {
       vids: new VidCollection(),
       main_vid: null,
-      searchQuery: 'fishing'
+      // set default search to show when page loads
+      searchQuery: 'lacroix reviews'
     };
   },
 
