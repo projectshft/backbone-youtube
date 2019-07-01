@@ -17,6 +17,7 @@ var AppView = Backbone.View.extend({
 
     this.$mainVideo = this.$('#main-video-container');
 
+    //Need to listen for the model to sync before I can set the current video
     this.listenTo(this.model.get('videos'), 'sync', this.changeVideo);
     this.listenTo(this.model, 'change:current_video', this.renderVideo);
   },
@@ -35,8 +36,9 @@ var AppView = Backbone.View.extend({
     this.model.currentVideoSet();
   },
 
+  //Main function to render both the Main Video View and the Video List View
   renderVideo: function() {
-    
+    this.renderMainVideo(this.model.get('current_video'));
   },
 
   //Render function for the main video that will be embedded in the page
@@ -44,5 +46,6 @@ var AppView = Backbone.View.extend({
     var mainVideoView = new MainVideoView({
       model: video
     });
+    this.$mainVideo.append(mainVideoView.render().el);
   }
 })

@@ -8,6 +8,8 @@ var AppModel = Backbone.Model.extend({
     }
   },
 
+  //Function for setting the current video, should only change on enter being pressed
+  //in the search bar or a video being clicked on the video list view
   currentVideoSet: function() {
     var allVideos = this.get('videos');
     var currentVideo = allVideos.models[0];

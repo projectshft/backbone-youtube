@@ -3,7 +3,7 @@
 var VideoModel = Backbone.Model.extend({
   defaults: {
     title: '',
-    videoid: '',
+    video_id: '',
     description: '',
     img_url: ''
   }
