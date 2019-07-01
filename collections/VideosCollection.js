@@ -12,7 +12,7 @@ var VideosCollection = Backbone.Collection.extend({
   parse: function (response) {
     return response.items
     .map(function (video_snippet) {
-      console.log(video_snippet);
+      
       return {
         id: video_snippet.id.videoId,
         title: decodeURIComponent(video_snippet.snippet.title),
@@ -23,8 +23,6 @@ var VideosCollection = Backbone.Collection.extend({
         played: false,
         playing: false
       }
-      // console.log(newSnippet);
-      // return newSnippet;
     });
   }
 });
