@@ -2,22 +2,11 @@ var VideoCollection = Backbone.Collection.extend({
 
     model: VideoModel,
 
-    addVideo: function (title, description, videoId, thumbnail) {
-        this.add({
-            title: title,
-            description: description,
-            videoId: videoId,
-            thumbnail: thumbnail
-        }, { wait: true });
-    },
-
     parse: function (response) {
-        var videoArray = response.items;
-        console.log(videoArray);
-        console.log(response);
 
+        // Get relevant information from items (videos) array in JSON response with map method 
+        // (using "decode" to convert html entities to symbols). 
         return response.items.map(function (b) {
-            console.log(b.snippet.title, b.snippet.description, b.id.videoId, b.snippet.thumbnails.default.url);
             return {
                 title: he.decode(b.snippet.title),
                 description: he.decode(b.snippet.description),
