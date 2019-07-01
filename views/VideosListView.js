@@ -1,5 +1,5 @@
 //View that will contain the videos list
-var MainVideoView = Backbone.View.extend({
+var VideosListView = Backbone.View.extend({
   template: Handlebars.compile($('#video-list-template').html()),
 
   render: function() {

@@ -17,26 +17,29 @@
           <div class="form-group">
             <input type="text" class="form-control" id="video-input" placeholder="Search" />
           </div>
-          <div class="col-md-7 offset-md-1" id="main-video-container"></div>
-          <div class="col-md-3 offset-md-1" id="video-list-container"></div>
+        <div class="col-md-8" id="main-video-container"></div>
         </div>
+        <div class="col-md-2" id="video-list-container"></div>
       </div>
+    </div>
 
-      <script id="main-video-template" type="text/x-handlebars-template">
-          <iframe width="650" height="400" src="https://www.youtube.com/embed/{{video_id}}"></iframe>
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <iframe width="600" height="400" src="https://www.youtube.com/embed/{{video_id}}"></iframe>
+      <p> {{title}} </p>
+      <p> {{description}} </p>
       </script>
-      <script id="video-list-template" type="text/x-handlebars-template">
-        <div class="video-item">
-          <img src="{{img_url}}">
+    <script id="video-list-template" type="text/x-handlebars-template">
+      <div class="video-item">
+          <img id="{{title}}" src="{{img_url}}"> <span>{{title}}</span>
         </div>
       </script>
-      <script type='text/javascript' src='config.js'></script>
-      <script src="models/VideoModel.js"></script>
-      <script src="collections/VideosCollection.js"></script>
-      <script src="models/AppModel.js"></script>
-      <script src="views/AppView.js"></script>
-      <script src="views/VideosListView.js"></script>
-      <script src="views/MainVideoView.js"></script>
-      <script src="main.js"></script>
+    <script type='text/javascript' src='config.js'></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/VideosListView.js"></script>
+    <script src="views/MainVideoView.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
