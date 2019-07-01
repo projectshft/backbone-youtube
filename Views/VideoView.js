@@ -1,82 +1,34 @@
 var VideoView = Backbone.View.extend({
+className: 'col-xs-2',
 
 events: {
-  'click .row': 'clicked'
+  //when user clicks a sidebar video the clickedSideVideo funcion is run
+  'click .related-video': 'clickedSideVideo',
 },
   model: VideoModel,
 
-// initialize: function() {
-//     this.listenTo(appModel.get('videos'),'add', this.tester )
-//   },
-
-  tester: function () {
-    console.log('tester');
-  },
-
   template: Handlebars.compile($('#column-videos-template').html()),
 
-  clicked: function() {
-
+  clickedSideVideo: function() {
+    //store the clicked on video and the first video of the array in variables
     var clickedVideo = this.model;
     var mainVideo = appModel.get('videos').models[0];
+    //loop through the collection of videos and if video 'i' is the same as the clicked on video store the value of i
     for (var i = 0; i < appModel.get('videos').models.length ; i++) {
       if (clickedVideo.cid == appModel.get('videos').models[i].cid ) {
         var clickedVideoPosition = i;
       }
   }
-  // $('div').empty();
-
+  //swapping index places of the first video in the area and the clicked on video's spot in the array
   appModel.get('videos').models[0] = clickedVideo;
   appModel.get('videos').models[clickedVideoPosition] = mainVideo;
 
-
-  for (var i = 1; i < appModel.get('videos').models.length - 1; i++ ) {
-    // if (appModel.get('videos').models[i] == appModel.get('videos').models[0]) {
-    //
-    //   this.$el.html(this.template(appModel.get('videos').models[i].attributes));
-    // } else {
-      // console.log('rendering side videos')
-      var videoView = new VideoView( { model: appModel.get('videos').models[i] } );
-
-      this.$el.append(videoView.render().el)
-    // }
-  }
-
-
+//re-render the videos
+//I had to make a reference to the appViews function because I had difficulty haven't it render any other way
+  appView.renderMain();
 
   },
 
-
-  // renderAgain = function() {
-  //   console.log('test render')
-  //   for (var i = 0; i < appModel.get('videos').models.length; i++ ) {
-  //     if (appModel.get('videos').models[i] == appModel.get('videos').models[0]) {
-  //       console.log(appView.el)
-  //       appView.el.html(this.template(appModel.get('videos').models[i].attributes));
-  //     } else {
-  //
-  //       var videoView = new VideoView( { model: appModel.get('videos').models[i].attributes } );
-  //       $('.related-videos-container').append(videoView.render().el)
-  //     }
-  //   }
-  //
-  // }
-  // renderAgain();
-
-  // renderAgain: function() {
-  //   console.log('test render')
-  //   for (var i = 0; i < appModel.get('videos').models.length; i++ ) {
-  //     if (appModel.get('videos').models[i] == appModel.get('videos').models[0]) {
-  //       console.log('rendering main video')
-  //       this.$el.html(this.template(appModel.get('videos').models[i].attributes));
-  //     } else {
-  //
-  //       var videoView = new VideoView( { model: appModel.get('videos').models[i].attributes } );
-  //       $('.related-videos-container').append(videoView.render().el)
-  //     }
-  //   }
-  //
-  // },
 
 
   render: function () {
@@ -87,4 +39,3 @@ events: {
     return this;
   }
 });
-// this.model.get('videos').models[i].attributes

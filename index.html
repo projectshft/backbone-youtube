@@ -13,36 +13,17 @@
   <title>Backbone-Youtube</title>
 </head>
 <body>
-  <section class = 'main-content'>
-  <div class='container main-body'>
-    <div class='row'>
-      <div class='form-group'>
+  <section class = 'main-content container'>
 
-        <input type='text' class='form-control search-bar' placeholder='Search' autofocus>
-      </div>
-    </div>
-    </div>
-
-
-  <ol>
-  </ol>
-  <div id-'mainContent' class='row'>
-
-
-  </div>
-<ul>
-</ul>
-  <div id = 'sidebarContent' class = 'container'>
-    Videos Column
-
-  </div>
 </section>
 
 
 
 <script id = 'column-videos-template' type = 'text/x-handlebars-template'>
-  <div class = 'row'> <img src = {{thumbnail}}> </div>
+    <!-- <div class = 'col-md-3 related-video'> -->
+   <img class = 'related-video'   src = {{thumbnail}}> </div>
   <p> {{ title }} </p>
+<!-- </div> -->
 </script>
 
 <script id = 'main-video-template' type = 'text.x-handlebars-template'>
@@ -50,14 +31,17 @@
 
   <input type='text' class='form-control search-bar' placeholder='Search' autofocus>
 </div>
-  <div class = 'video-main col-md-8'>
-    <iframe id="ytplayer" type="text/html" width="640" height="360"
+  <div class = 'video-main col-md-6'>
+    <iframe id="ytplayer" type="text/html" width="800" height="360"
   src="https://www.youtube.com/embed/{{ id }}"
   frameborder="0"></iframe>
-
-  <p class = ' sidebar-descriptors video-title'> {{title}}
+  <div class = 'video-descriptors'>
+  <p class = 'video-title'> {{title}}
   </p>
-  <p class = 'sidebar-descriptors video-description'> {{description}} </p>
+  <p class = 'video-description'> {{description}} </p>
+  </div>
+  </div>
+  <div id- 'add-here'>
   </div>
 </script>
 <script src= 'Models/AppModel.js'></script>

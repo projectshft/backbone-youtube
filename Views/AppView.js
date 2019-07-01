@@ -3,100 +3,66 @@ var AppView = Backbone.View.extend({
 el:'.main-content',
 
 
-
+//set up a handlebars template
 template: Handlebars.compile($('#main-video-template').html()),
 
 events: {
   //checks for keypress events when user is on search bar. If a keypress happens createOnEnter function is ran
-  'keypress .search-bar': 'createOnEnter',
-  'click .row': 'renderMain'
+  'keypress .search-bar': 'searchOnEnter',
+
+
 
 },
 
 
 
 initialize: function() {
-  //need to see if you make basic defualts (this.id = 'egae') so video is there when page loads
-//this is my attempt(it works)
-  this.$el.html(this.template(this.model.get('videos').models[0].attributes))
-  for (var i = 1; i < this.model.get('videos').models.length; i++ ) {
-    // this.$el.html(this.template(this.model.get('videos').models[i].attributes))
-  var videoView = new VideoView( { model: this.model.get('videos').models[i] } );
+  var videosCollection = this.model.get('videos').models;
+  //before a search is performed a list of videos is displayed on the screen
+  this.$el.html(this.template(videosCollection[0].attributes))
+  for (var i = 1; i < videosCollection.length; i++ ) {
+  var videoView = new VideoView( { model: videosCollection[i] } );
   this.$el.append(videoView.render().el)
 }
-
-
+//listen for a fetch call to the api, which retrieves video data
   this.listenTo(this.model.get('videos'), 'reset', this.renderMain);
-
 },
 
 
-createOnEnter: function (e) {
+searchOnEnter: function (e) {
 
   //checking to see if keypress event was the enter bar and that input was inserted into the search bar
   if (e.keyCode == 13 && this.$('.search-bar').val()) {
-    console.log('testing search bar')
     //storing user input from search bar in searchQuery variable
     var searchQuery = this.$('.search-bar').val();
 
     //accessing the models 'videos' collection and then running a function which appends the search query to the api URL
     this.model.get('videos').addUrl(searchQuery);
 
-    for (var i = 0; i < this.model.get('videos').models.length; i++ ) {
-      if (this.model.get('videos').models[i] == this.model.get('videos').models[0]) {
-        this.$el.html(this.template(this.model.get('videos').models[i].attributes));
-      } else {
-        console.log('rendering side videos')
-        var videoView = new VideoView( { model: this.model.get('videos').models[i] } );
-        this.$el.append(videoView.render().el)
-      }
-    }
-
     //fetching the desired data from the API
     this.model.get('videos').fetch({ reset: true });
   }
 },
-
+//creating a handlebars template for the sidebar videos
 templateSide: Handlebars.compile($('#column-videos-template').html()),
 
-
-// renderAll: function (video) {
-//   console.log(video)
-//   if (video = this.model.get('videos').models[0]) {
-//     console.log('frist video')
-//     this.$el.html(this.template(this.model.get('videos').models[0].attributes));
-//     return this;
-//   } else {
-//     console.log('other video')
-//     var videoView = new VideoView({ model: video })
-//     $('.related-videos-container').append(videoView.render().el)
-//     //make video template and then add each video to the co;umn viewmaking a new video view
-//   }
-// },
-//make a for loop that goes through all of the models and if its 0 add it to the main and if its one of the others make a new view out of it and add it to the side
+//make a for loop that goes through all of the models and if its at index 0 make it the main video and if its one of the others make a new view out of it and add it to the side
 renderMain: function() {
-  console.log('test render')
-  for (var i = 0; i < this.model.get('videos').models.length; i++ ) {
-    if (this.model.get('videos').models[i] == this.model.get('videos').models[0]) {
-      console.log('rendering main video')
-      this.$el.html(this.template(this.model.get('videos').models[i].attributes));
+  var videoIndexZero = this.model.get('videos').models[0];
+  var videosCollection = this.model.get('videos').models;
+
+  for (var i = 0; i < videosCollection.length; i++ ) {
+    if (videosCollection[i] == videoIndexZero) {
+      this.$el.html(this.template(videosCollection[i].attributes));
     } else {
-      console.log('side video')
-      // var videoView = new VideoView({model: VideoModel})
-        // this.$el.append(videoView.render().el)
-      // this.$el.html(this.templateSide(this.model.get('videos').models[i].attributes))
-      // this.model.get('videos').models[i].attributes
-      var videoViewsidebar = new VideoView( { model: this.model.get('videos').models[i].attributes } );
-      this.$el.append(this.templateSide(this.model.get('videos').models[i].attributes))
+
+      var videoViewsidebar = new VideoView( { model: videosCollection[i].attributes } );
+      this.$el.append(this.templateSide(videosCollection[i].attributes))
     }
   }
+
 
 }
 
 
 });
-
-// console.log(this.model.get('videos').models[0])
-// this.model.get('videos').each(function (video) {
-//   this.renderAll(video)
-// }, this)
