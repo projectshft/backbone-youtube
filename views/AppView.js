@@ -39,7 +39,7 @@ var AppView = Backbone.View.extend({
 
         // NOTE: must handle edge case here (i.e., no search results -> fetch returning empty collection). 
         this.model.get('videos').fetch({ reset: true });
-        
+
         this.$searchInput.val('');
     },
 

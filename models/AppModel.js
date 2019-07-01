@@ -28,6 +28,5 @@ var AppModel = Backbone.Model.extend({
         var allVideos = this.get('videos');
         var currentVideo = allVideos.findWhere({ videoId: id });
         this.set('current_video', currentVideo);
-        console.log("show main video: ", id);
     }
 });
