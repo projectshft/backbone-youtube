@@ -24,3 +24,15 @@ Things have to use:
   parse
   el
   Backbone extend method
+
+
+ Finish rendersidevideoview 
+ finish rendermainvideoview
+ integerate the api. Get rid of hardcoded query.
+
+  Get the query from the appview searchbar and shove it into the api query in VideosCollection and then call fetch. Call fetch in collection on the click event. 
+
+That should wrap the updating the videos on search from the API
+
+
+

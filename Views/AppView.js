@@ -16,9 +16,16 @@ var AppView = Backbone.View.extend({
   initialize: function () {
     this.$searchQuery = this.$('#search-query');
     this.$videoList = this.$('.video-list');
+    this.listenTo(this.model.get('videos'), 'reset', function() {
+      this.renderSideVideos()
+      this.renderMainVideo()
+    },this);
+
 
 //this.model.get('videos') attaches this view to the AppModel. We will have to create renderResults. 
     this.listenTo(this.model.get('videos'), 'click', this.renderResults);
+
+
 
 //Need to create renderVideos
     this.renderMainVideo();
@@ -28,15 +35,18 @@ var AppView = Backbone.View.extend({
 
   },
 
-  renderVideo: function (video) {
+  renderSideVideo: function (video) {
     var videoView = new VideoView({ model: video });
     this.$videoList.append(videoView.render().el);
   },
 
-  renderVideos: function () {
+  renderSideVideos: function () {
     this.model.get('videos').each(function (m) {
       this.renderVideo(m);
     }, this);
   },
 
 });
+
+
+//Finish off the main video 
