@@ -12,20 +12,22 @@ var AppView = Backbone.View.extend({
     this.$videoQueue = this.$('.video-queue');
 
     this.model.setUrl(this.model.get('currentQuery'));
-    this.listenTo(this.model.get('videos'), 'reset', this.updateCurrentVideo);
-    this.listenTo(this.model.get('videos'), 'reset', this.render);
+    this.listenTo(this.model.get('videos'), 'reset', function(){
+      this.updateInitialCurrentVideo();
+      this.render();
+    });
     this.listenTo(this.model, 'change:currentVideo', this.render);
     this.listenTo(this.model, 'change:currentQuery', this.updateSearch);
   },
 
+  updateInitialCurrentVideo: function(){
+    this.model.setCurrentVideo('0');
+  },
+
   updateCurrentVideo: function(e){
     //check for current video assignment
-    if(this.model.get('currentVideo')){
-      this.model.setCurrentVideo($(e.currentTarget).data().id);
-    } else {
-      this.model.setCurrentVideo('0');
-    }
-  
+    this.model.setCurrentVideo($(e.currentTarget).data().id);
+
   },
 
   updateQuery: function(){
