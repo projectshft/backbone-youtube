@@ -5,6 +5,8 @@ events: {
   //when user clicks a sidebar video the clickedSideVideo funcion is run
   'click .related-video': 'clickedSideVideo',
 },
+
+
   model: VideoModel,
 
   template: Handlebars.compile($('#column-videos-template').html()),
@@ -25,7 +27,7 @@ events: {
 
 //re-render the videos
 //I had to make a reference to the appViews function because I had difficulty haven't it render any other way
-  appView.renderMain();
+  appView.renderVideos();
 
   },
 

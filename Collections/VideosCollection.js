@@ -6,7 +6,7 @@ var VideosCollection = Backbone.Collection.extend({
   model: VideoModel,
 
 //Inserting the user's searchQuery in the api's query parameter
-  addUrl: function(searchQuery) {
+  fetchVideos: function(searchQuery) {
     this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&part=player&q='+searchQuery.replace(' ', '%20')+'&type=video&key=AIzaSyDVS4jHXACXxvdEu_ulM3-_jhdU6R8VVR4'
     this.fetch({ reset: true });
 
@@ -32,6 +32,7 @@ var VideosCollection = Backbone.Collection.extend({
     //adding each video to the appModels collection of videos
     appModel.get('videos').add(videoModel);
 })
+    appView.renderVideos();
 }
 
 });
