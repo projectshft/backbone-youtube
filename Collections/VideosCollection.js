@@ -8,6 +8,7 @@ var VideosCollection = Backbone.Collection.extend({
 //Inserting the user's searchQuery in the api's query parameter
   fetchVideos: function(searchQuery) {
     this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&part=player&q='+searchQuery.replace(' ', '%20')+'&type=video&key=AIzaSyDVS4jHXACXxvdEu_ulM3-_jhdU6R8VVR4'
+    //fetch the desired video from the youtube api
     this.fetch({ reset: true });
 
   },
