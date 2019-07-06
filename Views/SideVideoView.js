@@ -1,5 +1,5 @@
-var VideoView = Backbone.View.extend({
-className: 'col-xs-2',
+var SideVideoView = Backbone.View.extend({
+
 
 events: {
   //when user clicks a sidebar video the clickedSideVideo funcion is run

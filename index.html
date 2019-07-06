@@ -12,25 +12,26 @@
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
   <title>Backbone-Youtube</title>
 </head>
-<body>
+<body class = 'root'>
   <section class = 'main-content container'>
+    <div class='form-group'>
+    <input type='text' class='form-control search-bar' placeholder='Search' autofocus>
+  </div>
+
 
 </section>
 
 
 
 <script id = 'column-videos-template' type = 'text/x-handlebars-template'>
-    <!-- <div class = 'col-md-3 related-video'> -->
+    <div class = 'container'>
    <img class = 'related-video'   src = {{thumbnail}}> </div>
   <p> {{ title }} </p>
-<!-- </div> -->
+</div>
 </script>
 
 <script id = 'main-video-template' type = 'text.x-handlebars-template'>
-<div class='form-group'>
 
-  <input type='text' class='form-control search-bar' placeholder='Search' autofocus>
-</div>
   <div class = 'video-main col-md-6'>
     <iframe id="ytplayer" type="text/html" width="800" height="360"
   src="https://www.youtube.com/embed/{{ id }}"
@@ -48,7 +49,8 @@
 <script src='Models/VideoModel.js'></script>
 <script src='Collections/VideosCollection.js'></script>
 <script src='Views/AppView.js'></script>
-<script src='Views/VideoView.js'></script>
+<script src='Views/SideVideoView.js'></script>
+<script src = 'Views/MainVideoView.js'></script>
 <script src="main.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 var AppView = Backbone.View.extend({
 
-el:'.main-content',
+el:'.root',
 
 
 //set up a handlebars template
@@ -17,15 +17,20 @@ events: {
 
 
 initialize: function() {
-  var videosCollection = this.model.get('videos').models;
+  // var videosCollection = this.model.get('videos').models;
   //before a search is performed a list of videos is displayed on the screen
-  this.$el.html(this.template(videosCollection[0].attributes))
-  for (var i = 1; i < videosCollection.length; i++ ) {
-  var videoView = new VideoView( { model: videosCollection[i] } );
-  this.$el.append(videoView.render().el)
-}
+//   this.$el.html(this.template(videosCollection[0].attributes))
+//   for (var i = 1; i < videosCollection.length; i++ ) {
+//   var videoView = new SideVideoView( { model: videosCollection[i] } );
+//   this.$el.append(videoView.render().el)
+// }
 //listen for a fetch call to the api, which retrieves video data
   this.listenTo(this.model.get('videos'), 'reset', this.renderMain);
+
+  this.model.get('videos').addUrl('dogs');
+
+  // this.listenTo
+
 },
 
 
@@ -40,7 +45,7 @@ searchOnEnter: function (e) {
     this.model.get('videos').addUrl(searchQuery);
 
     //fetching the desired data from the API
-    this.model.get('videos').fetch({ reset: true });
+    // this.model.get('videos').fetch({ reset: true });
   }
 },
 //creating a handlebars template for the sidebar videos
@@ -56,7 +61,7 @@ renderMain: function() {
       this.$el.html(this.template(videosCollection[i].attributes));
     } else {
 
-      var videoViewsidebar = new VideoView( { model: videosCollection[i]} );
+      var videoViewsidebar = new SideVideoView( { model: videosCollection[i]} );
       this.$el.append(videoViewsidebar.render().el)
     }
   }

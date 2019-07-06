@@ -1,9 +1,3 @@
 var appModel = new AppModel();
-appModel.get('videos').add([
-  {'id': 'hAJNa3ZxzFU', 'title': 'North Carolina completes season sweep vs. Duke | College Basketball Highlights', 'description': 'The North Carolina Tar Heels beat the Duke Blue Devils 79-70 behind a 21-point performance from freshman Coby White. Kenny Williams adds 18 points on UNCs senior night. RJ Barrett leads Duke with 26 points while Cam Reddish adds 23 points in the loss. Marques Bolden goes down in the 1st half with a left leg injury leaving Duke shorthanded.', 'thumbnail': 'http://img.youtube.com/vi/hAJNa3ZxzFU/default.jpg'},
-  {'id': 'eFa3zdRX58I', 'title': 'Michael Jordan Hits Head On Backboard Blocking Shot at Duke', 'description': 'Michael Jordan hits his head on the backboard while attempting to block a shot during the UNC vs Duke game on March 5, 1983.', 'thumbnail': 'http://img.youtube.com/vi/eFa3zdRX58I/default.jpg'},
-  {'id': 'LEn2MiEDcZU', 'title': 'Wallace and Stackhouse - Onslaught of 8 Dunks at Duke 1995', 'description': 'Collection of famous dunks from two of the greatest: Rasheed Wallace and Jerry Stackhouse. The Heels win in Double OT in this famous Duke/UNC battle.', 'thumbnail': 'http://img.youtube.com/vi/LEn2MiEDcZU/default.jpg'},
-  {'id': 'vhgYXcpGB5k', 'title': 'Carolina Basketball Danny Green Dunks on Paulus at Duke 2008', 'description': 'Danny Green dunks over Greg Paulus during the Tar Heels win at Duke in 2008.', 'thumbnail': 'http://img.youtube.com/vi/vhgYXcpGB5k/default.jpg'},
-  {'id': 'PQHtZflLbr0', 'title': 'Carolina Basketball: Ty Lawsons Emotional Reaction vs. Duke', 'description': 'Ty Lawson gives a great reaction into the camera after finishing a high off the glass lay-up during a win at Duke during the 06-07 season.', 'thumbnail': 'http://img.youtube.com/vi/PQHtZflLbr0/default.jpg'}
-]);
+
 var appView = new AppView( { model: appModel } );
