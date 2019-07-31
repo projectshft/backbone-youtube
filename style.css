@@ -1,0 +1,23 @@
+.unique-border {
+    border: 5px ridge rgb(89, 72, 56);
+    background-color: white;
+    word-break: break-word;  
+}
+
+body {
+    background-image: url("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/a6b1ce72-61a9-4a3f-8308-ae610369b210/full-bg.jpg");
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: century-gothic;
+
+}
+
+#search-input {
+    font-family: century-gothic;
+}

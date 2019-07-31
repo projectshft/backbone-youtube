@@ -14,10 +14,10 @@
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-8 offset-md-2">
         <div class="input-group">
-          <input class="form-control py-2" type="search" placeholder="search" id="search-input">
+          <input class="form-control py-2" type="search" placeholder="Search" id="search-input">
           <span class="input-group-append">
             <button class="btn btn-outline-secondary search-button" type="button">
               <i class="fa fa-search"></i>
@@ -26,22 +26,50 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-8 video-now-player">col8</div>
-        <!-- <iframe id="player" type="text/html"
-    src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
-    frameborder="0"></iframe></div> -->
-        <div class="col-md-4 video-queue-list">col4</div>
+    <div class="row mt-4">
+      <div class="col-lg-8 video-now-player">
+      </div>
+      <div class="col-lg-4 video-queue-list"></div>
     </div>
-    </div>
-    <script id="video-now-template" type="text/x-handlebars-template"></script>
-    <script id="video-queue-template" type="text/x-handlebars-template"></script>
-    <script src="models/VideoModel.js"></script>
-    <script src="models/AppModel.js"></script>
-    <script src="collections/VideosCollection.js"></script>
-    <script src="views/AppView.js" </script> <script src="views/VideoNowView.js"></script>
-    <script src="views/VideoQueueView.js"></script>
-    <script src="main.js"></script>
-</body>
+  </div>
 
+
+<script id="video-player-template" type="text/x-handlebars-template">
+  <div>
+  <div class="unique-border">
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{id}}?autoplay=1" allow="autoplay"></iframe>
+  </div>
+  
+  <div class="unique-border rounded mt-3 mb-3 p-3">
+    <h3><strong><u>Title:</u></strong> {{title}}</h3>
+    <p><h5><strong><u>Description:</u></strong></h5> {{description}}</p>
+  </div>
+</div>
+</script>
+
+
+<script id="video-queue-template" type="text/x-handlebars-template">
+  <div class="media mb-4 unique-border p-2">
+    <img class="mr-4" src="{{thumbnail}}">
+    <div class="media-body">
+      <div>
+          <a href="#" class="queue" id="{{id}}"><strong>{{title}}</strong></a>
+      </div>
+      <div>
+          {{description}}
+      </div>
+    </div>
+  </div>
+</script>
+
+
+<script src="models/VideoModel.js"></script>
+<script src="models/AppModel.js"></script>
+<script src="collections/VideosCollection.js"></script>
+<script src="views/VideoPlayView.js"></script>
+<script src="views/AppView.js"></script>
+<script src="views/VideoQueueView.js"></script>
+<script src="main.js"></script>
+
+</body>
 </html>
