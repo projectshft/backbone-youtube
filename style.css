@@ -6,6 +6,11 @@
 
 }
 
+input {
+  margin-bottom:
+  10px;
+}
+
 .video-title {
   font-size: 20px;
   font-weight: bold;
@@ -17,4 +22,10 @@
 
 .main-content-container {
   display: flex;
+}
+
+li {
+  margin-left: 700px;
+  margin-top: -475px;
+  margin-bottom: 475px;
 }
