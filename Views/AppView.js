@@ -12,8 +12,7 @@ var AppView = Backbone.View.extend({
 
   //listen for a fetch call to the api, which retrieves video data
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-  //set a default search query to be set when the page is first loaded
-    this.model.get('videos').fetchVideos('dogs');
+    
   },
 
   searchOnEnter: function (e) {
