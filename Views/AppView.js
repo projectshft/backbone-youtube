@@ -11,7 +11,7 @@ var AppView = Backbone.View.extend({
   initialize: function() {
 
   //listen for a fetch call to the api, which retrieves video data
-    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+    // this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
     
   },
 
@@ -21,8 +21,9 @@ var AppView = Backbone.View.extend({
     if (e.keyCode == 13 && this.$('.search-bar').val()) {
       //storing user input from search bar in searchQuery variable
       var searchQuery = this.$('.search-bar').val();
-      //accessing the models 'videos' collection and then running a function which appends the search query to the api URL and fetches the desired videos
-      this.model.get('videos').fetchVideos(searchQuery);
+
+      //update the models search property 
+      this.model.setSearch(searchQuery);
     }
   },
 

@@ -2,8 +2,7 @@ var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideosCollection(),
-      initialVideo: '',
-      search: 'test'
+      search: 'dog'
     }
   },
  
@@ -11,15 +10,15 @@ var AppModel = Backbone.Model.extend({
   initialize: function() {
     //set a default search query to be set when the page is first loaded
     this.get('videos').fetchVideos('dogs');
-    console.log(this.get('search'))
-    this.listenTo(this.defaults.search, 'change', this.setSearch(this.defaults.search));
+    //when a change is made to the search make a new fetch
+    // this.listenTo(this.get('search'), 'change: search',this.get('videos').fetchVideos(this.get('search')));
   },
 
   setSearch: function (searchQuery) {
-    console.log(this.get('videos').fetchVideos)
-    this.attributes.search = searchQuery;
-    //get videos collection and call its fetch video function
+    //set the search to the searchQuery
+    this.set({'search': searchQuery}) 
 
+    this.get('videos').fetchVideos(this.get('search'));
   },
 
 
