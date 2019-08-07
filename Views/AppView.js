@@ -8,13 +8,6 @@ var AppView = Backbone.View.extend({
     'keypress .search-bar': 'searchOnEnter',
   },
 
-  initialize: function() {
-
-  //listen for a fetch call to the api, which retrieves video data
-    // this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-    
-  },
-
   searchOnEnter: function (e) {
 
     //checking to see if keypress event was the enter bar and that input was inserted into the search bar
@@ -28,8 +21,11 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideos: function() {
+    // //set mainvideo as first video in array
+    // this.model.setMainVideo(this.model.get('videos').models[0]);
+
     //setting the first video in the collections array to the main video
-    var mainVideo = new MainVideoView ( {model: this.model.get('videos').models[0]} );
+    var mainVideo = new MainVideoView ( {model: this.model.get('mainVideo')} );
     this.$el.html(mainVideo.render().el)
     //looping through the rest of the videos and populating the sidebar view with them
     for(var i = 1; i < this.model.get('videos').models.length; i++) {

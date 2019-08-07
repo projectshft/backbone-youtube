@@ -36,6 +36,8 @@ var VideosCollection = Backbone.Collection.extend({
     //adding each video to the appModels collection of videos
     appModel.get('videos').add(videoModel);
 })
+
+    appModel.setMainVideo(appModel.get('videos').models[0]);
     appView.renderVideos();
 }
 
