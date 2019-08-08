@@ -6,7 +6,7 @@ var VideosCollection = Backbone.Collection.extend({
 
 //Inserting the user's searchQuery in the api's query parameter
   fetchVideos: function(searchQuery) {
-    if (searchQuery == '') {
+    if (searchQuery == undefined) {
       console.log('Search term not entered');
       alert('Please enter search term');
     }

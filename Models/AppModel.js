@@ -15,13 +15,15 @@ var AppModel = Backbone.Model.extend({
     this.listenTo(this, 'change: search', this.fetchVideos);
   },
 
-
+  //use search query to get videos back from API
   fetchVideos: function () {
+    
     this.get('videos').fetchVideos(this.get('search'));
   },
-
+  //when the videos clicked, make the main video appear on the sidebar
   swapMainAndSideVideo: function(clickedVideoPosition, currentMainVideo) {
-    clickedVideoPosition = currentMainVideo;
+    appModel.get('videos').models[clickedVideoPosition] = currentMainVideo;
+
   },
 
 

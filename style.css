@@ -24,8 +24,12 @@ input {
   display: flex;
 }
 
-li {
-  margin-left: 700px;
+/* li {
+  margin-left: 800px;
   margin-top: -475px;
   margin-bottom: 475px;
-}
+} */
+
+/* .form-group {
+  height: 30px;
+} */
