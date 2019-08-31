@@ -19,7 +19,7 @@
       <h1>Youtube App</h1>
       <form class="search-form">
         <div class="input-group mb-1">
-          <input type="text" id="search-query" class="form-control" placeholder="Search Youtube">
+          <input type="text" id="search-query" class="form-control search-input" placeholder="Search Youtube">
           <button class="btn btn-outline-secondary" id="search-youtube" type="button">Search</button>
         </div>
       </form>
@@ -27,20 +27,14 @@
   </div>
   <script id="main-video-template"type="text/x-handlebars-template">
     <div class="row">
-      <div class="col-md">
-        <div id="main-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/2rscLn6YBk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
+      <div class="col-md-6 main-video"></div>
+      <div class="col-md-3 offset-md-2 video-queue"></div>
     </div>
   </script>
   <script id="main-video-description" type="text/x-handlebars-template">
   <div class="row">
     <div class="col-md">
-      <div id="main-video-info">
-        <h1>Video Description Goes Here</h1>
-        <h3>Video Description should be below the iframe of the video. </h3> 
-      </div>
+      <div id="main-video-info"></div>
     </div>
   </div>
   </script>
