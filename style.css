@@ -1,0 +1,26 @@
+#banner {
+    padding: 20px;
+    text-align: center;
+}
+
+#current-youtube-video {
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+#search-bar { 
+    width: 50%;
+    position:relative;  
+    right: -20%;
+    top: 5%;
+}
+
+#davetube {
+    background-color: black
+}
+
+#banner {
+    color: white;
+}
