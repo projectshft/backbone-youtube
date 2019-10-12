@@ -1,5 +1,5 @@
 let VideoCollection = Backbone.Collection.extend({
-  url: `https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=Nobel+physic+prize+2019&type=video&videoDefinition=high&key=AIzaSyCOHlABqzocZoOxz8K2WjccJI31oHfA824`,
+  url: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=Nobel+physic+prize+2019&type=video&videoDefinition=high&key=AIzaSyCOHlABqzocZoOxz8K2WjccJI31oHfA824`,
 
   model: VideoModel,
 

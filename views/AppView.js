@@ -9,11 +9,11 @@ let AppView = Backbone.View.extend({
     debugger;
     this.$searchInput = this.$('#search');
     this.$main = this.$('.main');
+    this.$sidebar = this.$('.video-sidebar');
 
-    console.log('Videos is: ', this.model.get('videos'))
     this.listenTo(this.model, 'change', this.renderVideos);
     this.listenTo(this.model, 'change:keyword', this.getVideos);
-    this.listenTo(this.model, 'change:current_video', this.renderDetailView);
+    this.listenTo(this.model, 'change:mainVideo', this.renderDetailView);
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
     this.renderVideos();
@@ -41,17 +41,31 @@ let AppView = Backbone.View.extend({
     this.model.get('videos').retrieveVideos(collection.attributes.keyword);
   },
 
-  renderVideo: function (video) {
+  renderMainVideo: function (video) {
     debugger;
-    let videoView = new VideoView({ model: video });
-    this.$main.append(videoView.render().el);
+    let videoView = new VideoViewMain({ model: video });
+    this.$main.prepend(videoView.render().el);
+  },
+
+  renderSidebarVideos: function(video) {
+    debugger;
+    let videoView = new VideoViewSidebar({ model: video });
+    this.$sidebar.append(videoView.render().el);
   },
 
   renderVideos: function () {
     debugger;
-    this.model.get('videos').each(function (video) {
-      this.renderVideo(video);
-    }, this);
+    this.renderMainVideo(this.model.get('videos').models[0]);
+
+    for (let i=1; i < this.model.get('videos').length; ++i) {
+      let video = this.model.get('videos').models[i];
+      console.log('element: ', video);
+      this.renderSidebarVideos(video);
+
+    }
+    // this.model.get('videos').each(function (video) {
+    //   this.renderVideo(video);
+    // }, this);
   },
 
   renderDetailView: function () {

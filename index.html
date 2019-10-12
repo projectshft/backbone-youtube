@@ -29,47 +29,36 @@
       </div>
     </div>
 
-    <div class="row main">
-  
-<!--       <aside class="col-md-5 video-sidebar">
-        <div style="background-color: orange">
-          <iframe width="168" height="94" src="https://www.youtube.com/embed/njos57IJf-0" frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <span class="video-sidebar-text">This is the video text</span>
-        </div>
-
-        <div style="background-color: orange">
-          <iframe width="168" height="94" src="https://www.youtube.com/embed/MCQJEahbFSs" frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <span class="video-sidebar-text">This is the video text</span>
-
-        </div>
-        <div style="background-color: orange">
-          <iframe width="168" height="94" src="https://www.youtube.com/embed/MCQJEahbFSs" frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <span class="video-sidebar-text">This is the video text</span>
-
-        </div>
-        <div style="background-color: orange">
-          <iframe width="168" height="94" src="https://www.youtube.com/embed/MCQJEahbFSs" frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <span class="video-sidebar-text">This is the video text</span>
- 
-        </div>
-      </aside>
-    -->
+    <div class="container-fluid container-hight ">
+      <div class="row">
+        <section class="col-md-7 main"></section>
+        <section class="col-md-5 video-sidebar"></section>
+      </div>
     </div>
+
   </div>
 
   <!--Handlebars templates-->
   <script id="video-template" type="text/x-handlebars-template">
-    <div class="col-md-7" style="background-color: blue">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div style="background-color: red">
-        <p>{{title}}</p>
-        <p>{{description}}</p>
+    <div class="container">
+      <div class="row">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span>
+          <p>{{title}}</p>
+          <p>{{description}}</p>
+        </span>
       </div>
+    </div>
+  </script>
+
+  <script id="video-template-sidebar" type="text/x-handlebars-template">
+    <div class="row">
+      <span class="media">
+        <iframe width="168" height="94" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="media-body video-sidebar-text"><h6>{{title}}</h6></span>
+      </span>
     </div>
   </script>
 
