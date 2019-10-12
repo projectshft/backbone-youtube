@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <form>
+          <input class="form-group" type="text" placeholder="search me">
+          <button type="button" class="btn btn-primary">Search!</button>
+        </form>
+        <div id="current-video">
+          <iframe id="ytplayer" type="text/html" width="640" height="360"
+            src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+            frameborder="0"></iframe>
+          <div id="current-details">
+            <div>Video Title</div>
+            <div>Video Description</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div id="other-video-container">
+          <div class="small-video">
+            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
+            <span>This is a YouTube Video</span>
+          </div>
+          <div class="small-video">
+            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
+            <span>This is a YouTube Video</span>
+          </div>
+          <div class="small-video">
+            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
+            <span>This is a YouTube Video</span>
+          </div>
+          <div class="small-video">
+            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
+            <span>This is a YouTube Video</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
