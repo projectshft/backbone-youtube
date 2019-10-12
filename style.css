@@ -1,0 +1,37 @@
+.search {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#search {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 85%;
+}
+
+#search-button {
+  display: inline-block;
+  border: 1px solid;
+  border-color: #ced4da;
+  border-radius: 0.25rem;
+  margin-top: 0px;
+  margin-left: 0px;
+  height: 38px;
+  padding: 0.375rem 0.75rem;
+}
+
+.video-sidebar {
+  display: inline-block;
+  padding-left: 30px;
+}
+
+.video-sidebar-text {
+  padding-top: 40px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  float: right;
+}
+
+
+  

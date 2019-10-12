@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Backbone youtube</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="header">
+          <form class="search">
+            <span>
+              <input type="text" id="search" class="form-control" placeholder="search">
+              <button id="search-button" class="fa fa-search"></button>
+            </span>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row main">
+  
+<!--       <aside class="col-md-5 video-sidebar">
+        <div style="background-color: orange">
+          <iframe width="168" height="94" src="https://www.youtube.com/embed/njos57IJf-0" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <span class="video-sidebar-text">This is the video text</span>
+        </div>
+
+        <div style="background-color: orange">
+          <iframe width="168" height="94" src="https://www.youtube.com/embed/MCQJEahbFSs" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <span class="video-sidebar-text">This is the video text</span>
+
+        </div>
+        <div style="background-color: orange">
+          <iframe width="168" height="94" src="https://www.youtube.com/embed/MCQJEahbFSs" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <span class="video-sidebar-text">This is the video text</span>
+
+        </div>
+        <div style="background-color: orange">
+          <iframe width="168" height="94" src="https://www.youtube.com/embed/MCQJEahbFSs" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <span class="video-sidebar-text">This is the video text</span>
+ 
+        </div>
+      </aside>
+    -->
+    </div>
+  </div>
+
+  <!--Handlebars templates-->
+  <script id="video-template" type="text/x-handlebars-template">
+    <div class="col-md-7" style="background-color: blue">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div style="background-color: red">
+        <p>{{title}}</p>
+        <p>{{description}}</p>
+      </div>
+    </div>
+  </script>
+
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideoCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
