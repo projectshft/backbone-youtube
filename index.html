@@ -7,17 +7,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Document</title>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Definitely Not YouTube</title>
 </head>
 
 <body>
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <form>
-          <input class="form-group" type="text" placeholder="search me">
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="search me">
           <button type="button" class="btn btn-primary">Search!</button>
-        </form>
+        </div>
         <div id="current-video">
           <iframe id="ytplayer" type="text/html" width="640" height="360"
             src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
@@ -50,6 +54,8 @@
       </div>
     </div>
   </div>
+  <script src="utils.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

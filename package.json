@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/Bill-Pill/backbone-youtube#readme",
   "dependencies": {
-    "bootstrap": "^4.3.1"
+    "backbone": "^1.4.0",
+    "bootstrap": "^4.3.1",
+    "handlebars": "^4.4.3",
+    "jquery": "^3.4.1",
+    "underscore": "^1.9.1"
   }
 }
