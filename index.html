@@ -29,10 +29,10 @@
       </div>
     </div>
 
-    <div class="container-fluid container-hight ">
+    <div class="container-fluid container-height ">
       <div class="row">
-        <section class="col-md-7 main"></section>
-        <section class="col-md-5 video-sidebar"></section>
+        <section class="col-md-8 main"></section>
+        <section class="col-md-4 video-sidebar"></section>
       </div>
     </div>
 
@@ -45,7 +45,7 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <span>
-          <p>{{title}}</p>
+          <h5>{{title}}</h5>
           <p>{{description}}</p>
         </span>
       </div>
@@ -55,8 +55,8 @@
   <script id="video-template-sidebar" type="text/x-handlebars-template">
     <div class="row">
       <span class="media">
-        <iframe width="168" height="94" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <img width="168" height="94" src="{{thumbnail}}" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></img>
         <span class="media-body video-sidebar-text"><h6>{{title}}</h6></span>
       </span>
     </div>
