@@ -23,26 +23,12 @@
           <button type="button" id="search-button" class="btn btn-primary">Search!</button>
         </div>
         <div id="current-video">
+
         </div>
       </div>
       <div class="col-md-3">
-        <div id="other-video-container">
-          <div class="small-video">
-            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
-            <span>This is a YouTube Video</span>
-          </div>
-          <div class="small-video">
-            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
-            <span>This is a YouTube Video</span>
-          </div>
-          <div class="small-video">
-            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
-            <span>This is a YouTube Video</span>
-          </div>
-          <div class="small-video">
-            <img class="float-left" src="https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg">
-            <span>This is a YouTube Video</span>
-          </div>
+        <div id="related-video-container">
+
         </div>
       </div>
     </div>
@@ -54,6 +40,10 @@
       <div>{{ title }}</div>
       <div>{{ description }}</div>
     </div>
+  </script>
+  <script id="related-video-template" type="text/x-handlebars-template">
+    <img class="float-left" src="{{ thumbnail }}">
+    <span>{{ title }}</span>
   </script>
   <script src="utils.js"></script>
   <script src="main.js"></script>

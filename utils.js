@@ -17,7 +17,8 @@ const VideoModel = Backbone.Model.extend({
     return {
       id: '',
       title: '',
-      description: ''
+      description: '',
+      thumbnail: ''
     }
   }
 })
@@ -37,7 +38,8 @@ const VideosCollection = Backbone.Collection.extend({
       videoObj = {
         id: item.id.videoId,
         title: item.snippet.title,
-        description: item.snippet.description
+        description: item.snippet.description,
+        thumbnail: item.snippet.thumbnails.default.url
       };
       return videoObj;
     })
@@ -45,6 +47,9 @@ const VideosCollection = Backbone.Collection.extend({
 
   queryVideo: function (searchInput) {
     this.url = `https://www.googleapis.com/youtube/v3/search?q=${searchInput}&part=snippet&type=video&videoEmbeddable=true&key=AIzaSyAXguV_Fvs9UAdppg6a0DcS1XD2QZ_BVhk`
+    this.fetch({
+      reset: true
+    })
   }
 
 })
@@ -62,6 +67,7 @@ const AppView = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', this.renderCurrentVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderRelatedVideos);
   },
 
   events: {
@@ -71,9 +77,6 @@ const AppView = Backbone.View.extend({
   searchVideo: function () {
     const input = this.$('#search-input').val()
     this.model.get('videos').queryVideo(input);
-    this.model.get('videos').fetch({
-      reset: true
-    })
   },
 
   renderCurrentVideo: function () {
@@ -84,13 +87,15 @@ const AppView = Backbone.View.extend({
     this.$('#current-video').empty().append(currentVideoView.render().el)
   },
 
-  // renderVideos: function () {
-  //   debugger;
-  //   this.model.get('videos').each(function (m) {
-  //     this.renderCurrentVideo(m);
-  //   }, this);
-  // }
-
+  renderRelatedVideos: function () {
+    const relatedVideos = this.model.get('videos').rest(1)
+    relatedVideos.forEach(function (relatedVideo) {
+      const relatedVideoView = new RelatedVideoView({
+        model: relatedVideo
+      })
+      this.$('#related-video-container').append(relatedVideoView.render().el)
+    })
+  }
 })
 
 
@@ -103,4 +108,17 @@ const CurrentVideoView = Backbone.View.extend({
 
     return this;
   }
+})
+
+// RELATEDVIDEOVIEW //
+const RelatedVideoView = Backbone.View.extend({
+  className: 'small-video',
+  template: Handlebars.compile($('#related-video-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
+
 })
