@@ -18,9 +18,26 @@
 }
 
 #davetube {
-    background-color: black
+    background-color: black;
 }
 
 #banner {
     color: white;
+}
+
+/* #side-vid {
+    vertical-align: right;
+    float: right;
+    display: block;
+} */
+
+#video-search-button {
+    float: right;
+}
+
+.gallery {
+    display: block;
+    text-align: right;
+    padding-left: 75%;
+    
 }

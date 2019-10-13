@@ -1,31 +1,30 @@
-var videoCollection = Backbone.Collection.extend({
-    url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=+' + 'batman' + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk',
+var VideoCollection = Backbone.Collection.extend({
+    url:  'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + 'batman' + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk',
     model: VideoModel,
 
-    addSearch: function (title, description, thumbsnails, url) {
+        
+    addVideos: function (title, description, thumbsnails, url) {
+        var title = this.$el.find('input').val();
+        var video
+        console.log(addVideos);
         this.create(
             {
-                title: title,
+                title: response.items.snippet[0].title,
                 description: description,
                 thumbnails: thumbnails,
                 url: url
             },
             { wait: true }
         );
+
+    },
     
+
+    parse: function (response) {
+
+        console.log(response);
+        return response
+       
     }
-    
-
-    // parse: function (response) {
-    //     return response.map(function (b) {
-    //         var reviews = this.get('reviews') || new ReviewsCollection();
-
-    //         reviews.set(b.reviews);
-
-    //         b.reviews = reviews;
-
-    //         return Object.assign({ 'id': b._id }, b);
-    //     }, this);
-    // }
 
 });
