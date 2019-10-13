@@ -23,13 +23,6 @@
           <button type="button" id="search-button" class="btn btn-primary">Search!</button>
         </div>
         <div id="current-video">
-          <iframe id="ytplayer" type="text/html" width="640" height="360"
-            src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-            frameborder="0"></iframe>
-          <div id="current-details">
-            <div>Video Title</div>
-            <div>Video Description</div>
-          </div>
         </div>
       </div>
       <div class="col-md-3">
@@ -54,6 +47,14 @@
       </div>
     </div>
   </div>
+  <script id="current-video-template" type="text/x-handlebars-template">
+    <iframe id="ytplayer" type="text/html" width="640" height="360"
+      src="https://www.youtube.com/embed/{{ id }}" frameborder="0"></iframe>
+    <div id="current-details">
+      <div>{{ title }}</div>
+      <div>Video Description</div>
+    </div>
+  </script>
   <script src="utils.js"></script>
   <script src="main.js"></script>
 </body>
