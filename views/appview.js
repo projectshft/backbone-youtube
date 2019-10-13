@@ -10,16 +10,15 @@ var AppView = Backbone.View.extend({
         
         this.listenTo(this.model.get('videos'), 'reset', this.videoSearch);
         this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
-        this.listenTo(this.model.get('videos'), 'change:currentVideo', this.renderVideos);
+        this.listenTo(this.model.get('videos'), 'change:currentVideo', this.videoSearch);
     },
 
     videoSearch: function () {
-        this.model.get('videos').addVideos(
-            this.$searchInput.val(),
-            
+        this.$searchInput.val()
+            console.log(videoSearch)
 
-        );
-        this.$searchInput.val('');
+    
+        // this.$searchInput.val('');
     },
 
     updateOnEnter: function (e) {

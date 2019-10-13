@@ -3,9 +3,8 @@ var AppModel = Backbone.Model.extend({
         return {
             videos: new VideoCollection(),
 
-            current_video: null,
+            defaultVideo: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=batman&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
 
-            side_video: null
         }
     },
 
@@ -14,6 +13,6 @@ var AppModel = Backbone.Model.extend({
 
         // var currentBeer = allBeers.findWhere({ id: id });
 
-        this.set('current_video', currentVideo);
+        this.set('current_video', current_video);
     },
 });
