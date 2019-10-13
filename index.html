@@ -15,48 +15,45 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="header">
-          <form class="search">
-            <span>
-              <input type="text" id="search" class="form-control" placeholder="search">
-              <button id="search-button" class="fa fa-search"></button>
-            </span>
-          </form>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="header">
+              <form class="search">
+                <span>
+                  <input type="text" id="search" class="form-control" placeholder="search">
+                  <button id="search-button" class="fa fa-search"></button>
+                </span>
+              </form>
+            </div>
+          </div>
         </div>
+    
+        <div class="container-fluid container-height ">
+          <div class="row">
+            <section class="col-md-8 main"></section>
+            <section class="col-md-4 video-sidebar"></section>
+          </div>
+        </div>
+    
       </div>
-    </div>
-
-    <div class="container-fluid container-height ">
-      <div class="row">
-        <section class="col-md-8 main"></section>
-        <section class="col-md-4 video-sidebar"></section>
-      </div>
-    </div>
-
-  </div>
 
   <!--Handlebars templates-->
   <script id="video-template" type="text/x-handlebars-template">
-    <div class="container">
       <div class="row">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <span>
           <h5>{{title}}</h5>
-          <p>{{description}}</p>
+          <span width="710">{{description}}</span>
         </span>
       </div>
-    </div>
   </script>
 
   <script id="video-template-sidebar" type="text/x-handlebars-template">
     <div class="row">
       <span class="media">
-        <img width="168" height="94" src="{{thumbnail}}" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></img>
+        <img src="{{thumbnail}}">
         <span class="media-body video-sidebar-text"><h6>{{title}}</h6></span>
       </span>
     </div>

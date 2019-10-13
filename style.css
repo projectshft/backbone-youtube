@@ -23,14 +23,12 @@
 
 .video-sidebar {
   display: inline-block;
-  padding-right: 10px;
+  padding-right: 30px;
 }
 
-.video-sidebar-text {
+ .video-sidebar-text {
   padding-top: 20px;
   padding-left: 10px;
-  box-sizing: border-box;
-  float: right;
 }
 
 h6 {
@@ -40,6 +38,21 @@ h6 {
 img {
   margin-bottom: 20px;
 }
+
+h5 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.container-fluid {
+  padding-left: 7%;
+}
+
+
+
 
 
 
