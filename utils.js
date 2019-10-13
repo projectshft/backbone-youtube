@@ -23,17 +23,20 @@ const VideoModel = Backbone.Model.extend({
   }
 })
 
-
 /////////////////
 // COLLECTIONS //
 /////////////////
 
 // VIDEOSCOLLECTION //
 const VideosCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=drifting&type=video&videoEmbeddable=true&key=AIzaSyAXguV_Fvs9UAdppg6a0DcS1XD2QZ_BVhk',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=drifting&type=video&videoEmbeddable=true&key=AIzaSyCu1okWlNecCAAqGlLnb6MUdaqd8XZVxbU',
   model: VideoModel,
 
   parse: function (response) {
+    if (response.items.length === 0) {
+      alert("Query returned 0 results - please try again")
+      return;
+    }
     return response.items.map(function (item) {
       videoObj = {
         id: item.id.videoId,
@@ -46,20 +49,36 @@ const VideosCollection = Backbone.Collection.extend({
   },
 
   queryVideo: function (searchInput) {
-    this.url = `https://www.googleapis.com/youtube/v3/search?q=${searchInput}&part=snippet&type=video&videoEmbeddable=true&key=AIzaSyAXguV_Fvs9UAdppg6a0DcS1XD2QZ_BVhk`
+    this.url = `https://www.googleapis.com/youtube/v3/search?q=${searchInput}&part=snippet&type=video&videoEmbeddable=true&key=AIzaSyCu1okWlNecCAAqGlLnb6MUdaqd8XZVxbU`
     this.fetch({
       reset: true
     })
+  },
+
+  setNewCurrentVideo: function (clickedVideoID) {
+    const clickedModel = this.findWhere({
+      id: clickedVideoID
+    })
+    this.at(0).set(clickedModel)
+    this.fetchRelatedVideos(clickedVideoID)
+  },
+
+  fetchRelatedVideos: function (relatedToId) {
+    // Remove all but first(current) video model
+    this.rest(1).map(function (v) {
+      v.destroy()
+    })
+
+    this.url = `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${relatedToId}&part=snippet&type=video&videoEmbeddable=true&key=AIzaSyCu1okWlNecCAAqGlLnb6MUdaqd8XZVxbU`
+    this.fetch({
+      remove: false,
+    })
   }
-
 })
-
-
 
 /////////////////
 //    VIEWS    //
 /////////////////
-
 
 // APPVIEW //
 const AppView = Backbone.View.extend({
@@ -68,15 +87,31 @@ const AppView = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', this.renderCurrentVideo);
     this.listenTo(this.model.get('videos'), 'reset', this.renderRelatedVideos);
+    this.listenTo(this.model.get('videos'), 'update', this.renderCurrentVideo);
+    this.listenTo(this.model.get('videos'), 'update', this.renderRelatedVideos);
   },
 
   events: {
-    'click #search-button': 'searchVideo'
+    'click #search-button': 'searchVideo',
+    'click .watch-video': 'watchRelatedVideo'
   },
 
   searchVideo: function () {
     const input = this.$('#search-input').val()
+    if (!input) {
+      alert("Please enter a query!")
+      return;
+    }
     this.model.get('videos').queryVideo(input);
+  },
+
+  watchRelatedVideo: function (e) {
+    const clickedVideoID = $(e.currentTarget).data().id;
+    this.model.get('videos').setNewCurrentVideo(clickedVideoID)
+
+    // this.model.get('videos').queryVideo(clickedVideoID)
+
+    // this.model.get('videos').testRelatedQuery(clickedVideoID)
   },
 
   renderCurrentVideo: function () {
@@ -88,6 +123,8 @@ const AppView = Backbone.View.extend({
   },
 
   renderRelatedVideos: function () {
+    this.$('#related-video-container').empty()
+
     const relatedVideos = this.model.get('videos').rest(1)
     relatedVideos.forEach(function (relatedVideo) {
       const relatedVideoView = new RelatedVideoView({
