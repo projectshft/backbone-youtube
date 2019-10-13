@@ -11,6 +11,7 @@ const AppModel = Backbone.Model.extend({
   }
 })
 
+// VIDEOMODEL //
 const VideoModel = Backbone.Model.extend({
   defaults: function () {
     return {
@@ -28,14 +29,22 @@ const VideoModel = Backbone.Model.extend({
 
 // VIDEOSCOLLECTION //
 const VideosCollection = Backbone.Collection.extend({
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=drifting&type=video&videoEmbeddable=true&key=AIzaSyAXguV_Fvs9UAdppg6a0DcS1XD2QZ_BVhk',
   model: VideoModel,
 
-  addVideo: function (id, title, description) {
-    this.add({
-      id: id,
-      title: title,
-      description: description
+  parse: function (response) {
+    return response.items.map(function (item) {
+      videoObj = {
+        id: item.id.videoId,
+        title: item.snippet.title,
+        description: item.snippet.description
+      };
+      return videoObj;
     })
+  },
+
+  queryVideo: function (searchInput) {
+    this.url = `https://www.googleapis.com/youtube/v3/search?q=${searchInput}&part=snippet&type=video&videoEmbeddable=true&key=AIzaSyAXguV_Fvs9UAdppg6a0DcS1XD2QZ_BVhk`
   }
 
 })
@@ -46,38 +55,44 @@ const VideosCollection = Backbone.Collection.extend({
 //    VIEWS    //
 /////////////////
 
+
 // APPVIEW //
 const AppView = Backbone.View.extend({
   el: $('body'),
 
   initialize: function () {
-    // this.listenTo(this.model.get('videos'), 'add', this.renderCurrentVideo);
-    this.renderVideos();
+    this.listenTo(this.model.get('videos'), 'reset', this.renderCurrentVideo);
   },
 
-  // events: {
-  //   'click #search-button': 'searchVideo'
-  // },
+  events: {
+    'click #search-button': 'searchVideo'
+  },
 
-  // searchVideo: function () {
-  //   this.model.get('videos').addVideo(
-  //   );
-  // },
+  searchVideo: function () {
+    const input = this.$('#search-input').val()
+    this.model.get('videos').queryVideo(input);
+    this.model.get('videos').fetch({
+      reset: true
+    })
+  },
 
-  renderCurrentVideo: function (video) {
+  renderCurrentVideo: function () {
+    const currentVideo = this.model.get('videos').first()
     const currentVideoView = new CurrentVideoView({
-      model: video
+      model: currentVideo
     });
-    this.$('#current-video').append(currentVideoView.render().el)
+    this.$('#current-video').empty().append(currentVideoView.render().el)
   },
 
-  renderVideos: function () {
-    this.model.get('videos').each(function (m) {
-      this.renderCurrentVideo(m);
-    }, this);
-  }
+  // renderVideos: function () {
+  //   debugger;
+  //   this.model.get('videos').each(function (m) {
+  //     this.renderCurrentVideo(m);
+  //   }, this);
+  // }
 
 })
+
 
 // CURRENTVIDEOVIEW //
 const CurrentVideoView = Backbone.View.extend({

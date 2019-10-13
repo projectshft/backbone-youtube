@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-9">
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="search me">
+          <input id="search-input" class="form-control" type="text" placeholder="search me">
           <button type="button" id="search-button" class="btn btn-primary">Search!</button>
         </div>
         <div id="current-video">
@@ -52,7 +52,7 @@
       src="https://www.youtube.com/embed/{{ id }}" frameborder="0"></iframe>
     <div id="current-details">
       <div>{{ title }}</div>
-      <div>Video Description</div>
+      <div>{{ description }}</div>
     </div>
   </script>
   <script src="utils.js"></script>
