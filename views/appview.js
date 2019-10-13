@@ -8,7 +8,8 @@ var AppView = Backbone.View.extend({
     initialize: function () {
         this.$searchInput = this.$('.video-search');
         
-        this.listenTo(this.model.get('videos'), 'reset', this.videoSearch);
+        
+        this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
         this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
         this.listenTo(this.model.get('videos'), 'change:currentVideo', this.videoSearch);
     },

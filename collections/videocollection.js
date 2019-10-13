@@ -25,13 +25,13 @@ var VideoCollection = Backbone.Collection.extend({
     
 
     parse: function (response) {
-        console.log(response);
-        return response.map(function (title, description, thumbnails, id) {
-
-
-            return Object.assign(
-                { 'id': b._id }, b);
-        }, this);
-    }
+        var videos = []
+        for (var i = 0; i < response.items.length; i++) {
+            var item = response.items[i];
+            videos.push({ title: item.snippet.title, description: item.snippet.description, thumbnails: item.snippet.thumbnails.default, id: item.id.videoId})
+        }
+        
+        return videos     
+    },
 
 });
