@@ -28,7 +28,6 @@ let AppView = Backbone.View.extend({
   },
 
   getVideos: function(collection) {
-    debugger;
     this.model.get('videos').retrieveVideos(collection.attributes.keyword);
   },
 
@@ -59,3 +58,5 @@ let AppView = Backbone.View.extend({
   },
 
 });
+
+

@@ -1,3 +1,4 @@
+// Project Shift - backbone-youtube app
 let appModel = new AppModel()
 let appView;
 
