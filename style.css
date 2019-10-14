@@ -1,0 +1,50 @@
+body {
+  background-color: #EAEBE7;
+}
+
+.video img {
+  max-width: 50px;
+}
+
+.video .img-container {
+  display: inline-block;
+}
+
+.video .content-container {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.video .video-name {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.video {
+  box-shadow: 2px 2px 2px #B3B3B3;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+
+.remove, .edit {
+  font-size: 25px;
+  cursor: pointer;
+  float: right;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+
+.videos-container {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
