@@ -16,6 +16,7 @@ var AppView = Backbone.View.extend({
         this.listenTo(this.model, 'change:current_video', this.renderVideoView);
     },
     searchVideos: function () {
+        localStorage.setItem('searchTerm', this.model.get('searchTerm'));
         this.model.searchVideos();
     },
     renderVideos: function () {

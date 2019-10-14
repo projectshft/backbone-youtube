@@ -44,14 +44,15 @@
     <div class="content-container">
         <a class="video-link" href="#" data-id={{videoId}}>
             <p class="video-name video-desc">{{title}}</p>
-        </a><p class="video-desc">Channel</p>
-        <p class="video-desc">100 Views</p>
+        </a><p class="video-desc">{{channelTitle}}</p>
     </div>
 </div>
   </script>
 <script id="single-video-template" type="text/x-handlebars-template">
-    <iframe width="420" height="315" src="https://www.youtube.com/embed/{{videoURL}}">
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/{{videoId}}?autoplay=1">
     </iframe>
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
   </script>
 <script src="models/VideoModel.js"></script>
 <script src="collections/VideosCollection.js"></script>

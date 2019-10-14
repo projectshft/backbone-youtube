@@ -21,7 +21,8 @@ var VideosCollection = Backbone.Collection.extend({
                     videoId: R.pathOr('', ['id', 'videoId'], v),
                     title: R.pathOr('', ['snippet', 'title'], v),
                     description: R.pathOr('', ['snippet', 'description'], v),
-                    thumbnail: R.pathOr('', ['snippet', 'thumbnails', 'default', 'url'], v)
+                    thumbnail: R.pathOr('', ['snippet', 'thumbnails', 'default', 'url'], v),
+                    channelTitle: R.pathOr('', ['snippet', 'channelTitle'], v)
                 }
             })
         }
