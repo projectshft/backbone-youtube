@@ -3,9 +3,17 @@ var VideoModel = Backbone.Model.extend({
     return {
       title: '',
       description: '',
-      id: '',
-      thumbnail: '',
-
+      thumbnailUrl: '',
+      videoUrl: '',
+      mainVideo: false
+    }
+  },
+  parse: function(data) {
+    return {
+      title: data.snippet.title,
+      description: data.snippet.description,
+      thumbnailUrl: data.snippet.thumbnails.high.url,
+      videoUrl: `https://www.youtube.com/embed/${data.id.videoId}`,
     }
   }
-});
+})

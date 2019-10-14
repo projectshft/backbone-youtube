@@ -1,10 +1,11 @@
 var AppModel = Backbone.Model.extend({
-  defaults: function (){
+  defaults: function() {
     return {
       videos: new VideoCollection(),
-      currentVideo: null,
-      // When user loads page, there should be a default search with videos loaded so page is not blank.
-      query: 'screaming goats'
+      //incase of a search with no results, videosFound will be set to false and an error will be shown.
+      searchTerm: null,
+      videosFound: true
+
     }
   }
-})
+});
