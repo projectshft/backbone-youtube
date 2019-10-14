@@ -13,6 +13,6 @@
 
 
 var appModel = new AppModel();
-var appView = new AppView ({
+var appView = new AppView({
   model: appModel
 });

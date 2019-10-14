@@ -4,7 +4,7 @@ var CurrentVideoView = Backbone.View.extend({
     //listen for clicks on thumbnail. when clicked, set mainVideo to true. find previous mainVideo and set to false.
     'click': 'changeMainVideo'
   },
-  
+
   initialize: function() {
     //if mainVideo attribute changes, show or hide thumbnail
     this.listenTo(this.model, 'change:mainVideo', this.toggleHide)
