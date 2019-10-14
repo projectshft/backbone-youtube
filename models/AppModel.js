@@ -8,5 +8,11 @@ var AppModel = Backbone.Model.extend({
     },
     searchVideos: function () {
         this.get('videos').searchVideos(this.get('searchTerm'));
-    }
+    },
+    showVideo: function (id) {
+        var allVideos = this.get('videos');
+
+        var currentVideo = allVideos.findWhere({ videoId: id });
+        this.set('current_video', currentVideo);
+    },
 });

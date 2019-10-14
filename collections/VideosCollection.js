@@ -7,7 +7,7 @@ var VideosCollection = Backbone.Collection.extend({
     },
     searchVideos: function (searchTerm) {
         this._searchTerm = searchTerm;
-        this.fetch();
+        this.fetch({ reset: true });
     },
     parse: function (response) {
         if (response.items) {

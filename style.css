@@ -27,11 +27,41 @@
 iframe {
   width: 100%;
 }
+
+.video .video-list-view{
+  display: block;
+  clear: both; 
+  margin-bottom: 10px;
+  height: 100px;
+}
 .video .img-container {
-  display: inline-block;
+  float: left;
+  overflow: auto;
+  clear: both; 
+  display: block; position: relative; 
+  height: 100%;
 }
 
 .video .content-container {
-  display: inline-block;
-  margin-left: 20px;
+  overflow: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.video .video-name {
+  
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   line-height: 1;        /* fallback */
+   max-height: 1*2;       /* fallback */
+}
+
+.video .video-desc{
+  margin-left: 7px;
+  margin-bottom: 0px;
+
 }

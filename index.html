@@ -29,70 +29,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5 offset-md-2">
-                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                </iframe>
+            <div class="col-md-5 offset-md-2 single-video-view">
             </div>
-            <div class="col-md-3">
-                <div class="video">
-                    <div class="img-container">
-                        <img src="">
-                    </div>
-                    <div class="content-container">
-                        <a class="view-beer" href="#" data-id={{id}}>
-                            <p class="beer-name">Video Name</p>
-                        </a>
-                        <p>Video Description</p>
-                    </div>
-                </div>
-                <div class="video">
-                    <div class="img-container">
-                        <img src="">
-                    </div>
-                    <div class="content-container">
-                        <a class="view-beer" href="#" data-id={{id}}>
-                            <p class="beer-name">Video Name</p>
-                        </a>
-                        <p>Video Description</p>
-                    </div>
-                </div>
-                <div class="video">
-                    <div class="img-container">
-                        <img src="">
-                    </div>
-                    <div class="content-container">
-                        <a class="view-beer" href="#" data-id={{id}}>
-                            <p class="beer-name">Video Name</p>
-                        </a>
-                        <p>Video Description</p>
-                    </div>
-                </div>
-                <div class="video">
-                    <div class="img-container">
-                        <img src="">
-                    </div>
-                    <div class="content-container">
-                        <a class="view-beer" href="#" data-id={{id}}>
-                            <p class="beer-name">Video Name</p>
-                        </a>
-                        <p>Video Description</p>
-                    </div>
-                </div>
-                <div class="video">
-                    <div class="img-container">
-                        <img src="">
-                    </div>
-                    <div class="content-container">
-                        <a class="view-beer" href="#" data-id="">
-                            <p class="beer-name">Video Name</p>
-                        </a>
-                        <p>Video Description</p>
-                    </div>
-                </div>
+            <div class="col-md-3 video-list">
             </div>
         </div>
     </div>
 </body>
+<script id="video-template" type="text/x-handlebars-template">
+    <div class="video-list-view">
+    <div class="img-container">
+        <img src="{{thumbnail}}">
+    </div>
+    <div class="content-container">
+        <a class="video-link" href="#" data-id={{videoId}}>
+            <p class="video-name video-desc">{{title}}</p>
+        </a><p class="video-desc">Channel</p>
+        <p class="video-desc">100 Views</p>
+    </div>
+</div>
+  </script>
+<script id="single-video-template" type="text/x-handlebars-template">
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/{{videoURL}}">
+    </iframe>
+  </script>
 <script src="models/VideoModel.js"></script>
 <script src="collections/VideosCollection.js"></script>
 <script src="models/AppModel.js"></script>
