@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Backbone Youtube</title>
+</head>
+<body>
+    <header>
+            <h1 class="title-center" style="text-align: center">Backbone Youtube</h1>
+    </header>
+    <div class="container">
+        <!-- search bar -->
+        <span><input type="text" id="search-query" class="form-control" placeholder="Search for Videos"></input>
+        <button type="button" class="btn btn-primary search">Search</button></span>
+    </div>
+    <div class="container">
+        <!-- video box -->
+        <iframe id="player" type="text/html" width="640" height="390"
+  src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+  frameborder="0"></iframe>
+    </div>
+    <div class="container">
+        <!-- search results sidebar(right justified) -->
+    </div>
+
+    <script src="Collections/VideoCollection.js"></script>
+    <script src="Models/VideoModel.js"></script>
+    <script src="Models/AppModel.js"></script>
+    <script src="Views/VideoView.js"></script>
+    <script src="Views/SearchView.js"></script>
+    <script src="Views/AppView.js"></script>
+    <script src="youtube.js"></script>
+</body>
+</html>
