@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Tyler's YouTube Backbone</title>
+</head>
+
+<body>
+
+  <h1>Tyler's YouTube (broke my) Backbone</h1>
+  <br>
+
+  <br>
+  <div class="row">
+    <div class="col-8">
+
+      <div>
+        <div class="form-group">
+
+          <label>Search for a Video</label>
+          <input type="text" class="form-control" id="img-input" placeholder="Search for a video">
+        </div>
+        <button class="btn btn-primary search-button" id="search-button">submit</button>
+      </div>
+      <div class="main-video"></div>
+      <br>
+
+
+    </div>
+
+    <div class="col-4">For Your Viewing Pleasure</div>
+    <div class="video-queue">
+    </div>
+  </div>
+
+  <script id="main-template" type="text/x-handlebars-template">
+    <div class="card mb-3">
+    <img class="card-img-top" src="{{video}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <p class="card-text"> {{description}}</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  </script>
+
+  <script id="preview-template" type="text/x-handlebars-template">
+    <div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title"> {{ name }}</h5>
+    <p class="card-text"> {{ image }}</p>
+  </div>
+</div>
+</script>
+
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/MainVidView.js"></script>
+  <script src="views/OtherVidView.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="main.js"></script>
+
+
+</body>
+
+</html>
