@@ -1,3 +1,4 @@
+// App model 
 var AppModel = Backbone.Model.extend({
     defaults: function () {
         return {
@@ -8,7 +9,8 @@ var AppModel = Backbone.Model.extend({
             currentVideo: ''
         }
     },
-    
+
+//function that gets the first video of the api call 
     showCurrentVideo: function () {
         var allVideos = this.get('videos');
         var currentVideo = allVideos[0];
