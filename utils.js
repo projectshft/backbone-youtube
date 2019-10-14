@@ -33,9 +33,9 @@ const VideosCollection = Backbone.Collection.extend({
   model: VideoModel,
 
   parse: function (response) {
+    // Edge case for 0 results
     if (response.items.length === 0) {
       alert("Query returned 0 results - please try again")
-      return;
     }
     return response.items.map(function (item) {
       videoObj = {
@@ -49,26 +49,21 @@ const VideosCollection = Backbone.Collection.extend({
   },
 
   queryVideo: function (searchInput) {
+    this.reset()
     this.url = `https://www.googleapis.com/youtube/v3/search?q=${searchInput}&part=snippet&type=video&videoEmbeddable=true&key=AIzaSyCu1okWlNecCAAqGlLnb6MUdaqd8XZVxbU`
-    this.fetch({
-      reset: true
-    })
+    this.fetch()
   },
 
   setNewCurrentVideo: function (clickedVideoID) {
     const clickedModel = this.findWhere({
       id: clickedVideoID
     })
-    this.at(0).set(clickedModel)
+    this.reset()
+    this.add(clickedModel)
     this.fetchRelatedVideos(clickedVideoID)
   },
 
   fetchRelatedVideos: function (relatedToId) {
-    // Remove all but first(current) video model
-    this.rest(1).map(function (v) {
-      v.destroy()
-    })
-
     this.url = `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${relatedToId}&part=snippet&type=video&videoEmbeddable=true&key=AIzaSyCu1okWlNecCAAqGlLnb6MUdaqd8XZVxbU`
     this.fetch({
       remove: false,
@@ -85,19 +80,25 @@ const AppView = Backbone.View.extend({
   el: $('body'),
 
   initialize: function () {
-    this.listenTo(this.model.get('videos'), 'reset', this.renderCurrentVideo);
-    this.listenTo(this.model.get('videos'), 'reset', this.renderRelatedVideos);
     this.listenTo(this.model.get('videos'), 'update', this.renderCurrentVideo);
     this.listenTo(this.model.get('videos'), 'update', this.renderRelatedVideos);
   },
 
   events: {
     'click #search-button': 'searchVideo',
-    'click .watch-video': 'watchRelatedVideo'
+    'click .watch-video': 'watchRelatedVideo',
+    'keypress #search-input': 'searchOnEnter'
+  },
+
+  searchOnEnter: function (e) {
+    if (e.which === 13) {
+      this.searchVideo()
+    }
   },
 
   searchVideo: function () {
     const input = this.$('#search-input').val()
+    // edge case for empty search
     if (!input) {
       alert("Please enter a query!")
       return;
@@ -109,9 +110,6 @@ const AppView = Backbone.View.extend({
     const clickedVideoID = $(e.currentTarget).data().id;
     this.model.get('videos').setNewCurrentVideo(clickedVideoID)
 
-    // this.model.get('videos').queryVideo(clickedVideoID)
-
-    // this.model.get('videos').testRelatedQuery(clickedVideoID)
   },
 
   renderCurrentVideo: function () {

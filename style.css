@@ -8,6 +8,14 @@ input {
   margin-right: 30px
 }
 
+img {
+  padding-right: 15px;
+}
+
+span {
+  display: flex;
+}
+
 .form-inline {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -15,4 +23,8 @@ input {
 
 .small-video {
   margin-top: 50px;
+}
+
+#current-details div {
+  margin: 20px 20px 0 0;
 }
