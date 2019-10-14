@@ -4,7 +4,7 @@ var VideoCollection = Backbone.Collection.extend({
 
     searchedVideo: function (videoSearch) {
         console.log(searchedVideo);
-        this.url('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + videoSearch + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk')
+        this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + videoSearch + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
     },
 
         
@@ -23,8 +23,8 @@ var VideoCollection = Backbone.Collection.extend({
 
     // },
     
-
     parse: function (response) {
+        console.log(response)
         var videos = []
         for (var i = 0; i < response.items.length; i++) {
             var item = response.items[i];
@@ -32,6 +32,7 @@ var VideoCollection = Backbone.Collection.extend({
         }
         
         return videos     
+        
     },
 
 });

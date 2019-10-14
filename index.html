@@ -12,36 +12,35 @@
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <title>DaveTube</title>
 </head>
+
 <body id="davetube">
-    
 
-<h1 id="banner">DaveTube</h1>
 
-<div class="side-videos"></div>
+    <h1 id="banner">DaveTube</h1>
 
-<form id="search-bar">
-    <div class="form-group">
-        <label for="formGroupExampleInput"></label>
-        <input type="text" class="form-control" id="video-search" placeholder="">
-        <button type="button" class="btn btn-primary" id="video-search-button">Search</button>
-    </div>
-</form>
+    <div class="side-videos"></div>
 
-<iframe id ="current-youtube-video" width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-</iframe>
+    <form id="search-bar">
+        <div class="form-group">
+            <label for="formGroupExampleInput"></label>
+            <input type="text" class="form-control" id="video-search" placeholder="">
+            <button type="submit" class="btn btn-primary" id="video-search-button">Search</button>
+        </div>
+    </form>
 
-<section>
+    <script id="current-video" type="text/x-handlebars-template">
+        <iframe id="current-youtube-video" width="560" height="315" src="{{url}}">
+        </iframe>
+    </script>
 
-    <img src="https://i.ytimg.com/vi/b85iLY-wQXI/mqdefault.jpg" class="gallery" />
 
-    <img src="https://i.ytimg.com/vi/b85iLY-wQXI/mqdefault.jpg" class="gallery" />
+ <script id="side-video" type="text/x-handlebars-template">
+    <section>
 
-    <img src="https://i.ytimg.com/vi/b85iLY-wQXI/mqdefault.jpg" class="gallery" />
+        <img src={{url}} class="gallery" />
 
-    <img src="https://i.ytimg.com/vi/b85iLY-wQXI/mqdefault.jpg" class="gallery" />
-
-</section>
-
+    </section>
+</script>
 
 
 

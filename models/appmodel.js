@@ -3,16 +3,17 @@ var AppModel = Backbone.Model.extend({
         return {
             videos: new VideoCollection(),
 
-            defaultVideo: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=batman&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
+            defaultVideo: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=batman&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk',
 
+            currentVideo: ''
         }
     },
-
-      showCurrentVideo: function (title, description) {
+    
+    showCurrentVideo: function () {
         var allVideos = this.get('videos');
+        var currentVideo = allVideos[0];
 
-        // var currentBeer = allBeers.findWhere({ id: id });
-
-        this.set('current_video', current_video);
-    },
+        this.set('currentVideo', currentVideo);
+    }
+    
 });
