@@ -19,16 +19,6 @@ var AppView = Backbone.View.extend({
 
   template: Handlebars.compile($('#main-video-template').html()),
 
-  renderVideos: function(video) {
-    //set first result's mainVideo attribute to true
-    this.model.get('videos').at(0).set('mainVideo', true)
-    //when new video added, create new view for that video, then append to list
-    var videoView = new CurrentVideoView({
-      model: video
-    });
-    this.$thumbnails.append(videoView.render().el);
-  },
-
   render: function() {
     this.mainVideo = this.model.get('videos').findWhere({
       mainVideo: true
@@ -45,17 +35,34 @@ var AppView = Backbone.View.extend({
     return this;
   },
 
+  renderVideos: function(video) {
+    //set first result's mainVideo attribute to true
+    this.model.get('videos').at(0).set('mainVideo', true)
+    //when new video added, create new view for that video, then append to list
+    var videoView = new CurrentVideoView({
+      model: video
+    });
+    this.$thumbnails.append(videoView.render().el);
+  },
+
+  searchOnEnter: function(e) {
+    this.$input = $('#search').val();
+    if (this.$input && e.keyCode === 13) {
+      // search using input
+      this.search(this.$input);
+    }
+  },
+
   search: function(input) {
     // update search URL and fetch videos
     this.model.set('searchTerm', input);
     this.searchUrl = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyAHIxQiOVT5-aeAYSbPo50xltCAt4B9Hok&part=snippet&type=video&q=${input}`;
     var videos = this.model.get('videos')
-    //empty collection
+    //first, remove all videos previously in collection
     videos.url = this.searchUrl;
     videos.remove(videos.toArray());
     videos.fetch({
       success: function() {
-        //If no videos, set model.videosFound to false
         if (_.isEmpty(appModel.get('videos').toArray())) {
           appModel.set('videosFound', false);
         } else {
@@ -69,10 +76,16 @@ var AppView = Backbone.View.extend({
 
   },
 
-  searchOnEnter: function(e) {
-    this.$input = $('#search').val();
-    if (this.$input && e.keyCode === 13) {
-      // search using input
-      this.search(this.$input);
+  errorTemplate: Handlebars.compile($('#error-template').html()),
+  showError: function() {
+    //listen for change in videosFound. if false, empty videoscontainer and show error
+    if (!this.model.get('videosFound')) {
+      this.$videos.html(this.errorTemplate(this.model.attributes));
     }
   },
+
+  clearSearchBox: function() {
+    $('#search').val('');
+  }
+
+})

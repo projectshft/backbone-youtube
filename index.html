@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>backbone - YouTube</title>
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/underscore/underscore-min.js"></script>
-    <script src="node_modules/backbone/backbone-min.js"></script>
-    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-  </head>
-  <body>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="m-4">
-            <input type="text" class="w-100" id="search" placeholder="Search">
+<head>
+  <meta charset="utf-8">
+  <title>backbone - YouTube</title>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="m-4">
+          <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" id="search" class="form-control" placeholder="Search">
           </div>
         </div>
-
-      </div>
-      <div class="row m-5">
-        <div class="col-md-8" id="videos-container"></div>
-        <div class="col-md-4" id="thumbnails-container"></div>
       </div>
 
     </div>
-    <!-- video template -->
-    <script id="main-video-template" type="text/x-handlebars">
+    <div class="row m-5">
+      <div class="col-md-8" id="videos-container"></div>
+      <div class="col-md-4" id="thumbnails-container"></div>
+    </div>
 
-      <div class="embed-responsive embed-responsive-16by9">
+  </div>
+  <!-- video template -->
+  <script id="main-video-template" type="text/x-handlebars">
+
+    <div class="embed-responsive embed-responsive-16by9">
       <iframe id="ytplayer" type="text/html" class="embed-responsive-item" src={{videoUrl}}></iframe>
     </div>
       <div id="video-info">
@@ -39,21 +44,22 @@
       </div>
     </script>
 
-    <script id="thumbnail-template" type="text/x-handlebars">
-      <div class="col"><img class="img-fluid" src={{thumbnailUrl}}></div>
+  <script id="thumbnail-template" type="text/x-handlebars">
+    <div class="col"><img class="img-fluid" src={{thumbnailUrl}}></div>
       <div class="col"><p class="align-middle">{{title}}</p></div>
     </script>
 
-    <script id="error-template" type="text/x-handlebars">
-      <p class="text-center">There were no results for <strong>{{searchTerm}}</strong>. Please try another search.</p>
+  <script id="error-template" type="text/x-handlebars">
+    <p class="text-center">There were no results for <strong>{{searchTerm}}</strong>. Please try another search.</p>
     </script>
 
-    <script src="Models/AppModel.js"></script>
-    <script src="Models/VideoModel.js"></script>
-    <script src="Collections/VideoCollection.js"></script>
-    <script src="Views/AppView.js"></script>
-    <script src="Views/CurrentVideoView.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+  <script src="Models/AppModel.js"></script>
+  <script src="Models/VideoModel.js"></script>
+  <script src="Collections/VideoCollection.js"></script>
+  <script src="Views/AppView.js"></script>
+  <script src="Views/CurrentVideoView.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 
-  </body>
+</body>
+
 </html>
