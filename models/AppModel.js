@@ -9,6 +9,7 @@ var AppModel = Backbone.Model.extend({
     searchVideos: function () {
         this.get('videos').searchVideos(this.get('searchTerm'));
     },
+    //set active shown video
     showVideo: function (id) {
         var allVideos = this.get('videos');
 

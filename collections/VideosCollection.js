@@ -6,6 +6,7 @@ var VideosCollection = Backbone.Collection.extend({
         return `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&type=video&q=${this._searchTerm}&type=video&key=${this._apiKey}`;
     },
     searchVideos: function (searchTerm) {
+        //set internal search term so that url can build properly on fetch
         this._searchTerm = searchTerm;
         this.fetch({ reset: true });
     },

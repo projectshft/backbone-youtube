@@ -21,9 +21,15 @@ var AppView = Backbone.View.extend({
     },
     renderVideos: function () {
         this.$videoList.empty();
-        this.model.get('videos').each(function (m) {
+        var resultVideos = this.model.get('videos');
+        resultVideos.each(function (m) {
             this.renderVideo(m);
         }, this);
+
+        //auto load the first video if none are loaded (usually only on page load)
+        if (!this.singleVideoView && resultVideos.length > 0) {
+            this.model.showVideo(resultVideos.at(0).get('videoId'));
+        }
     },
     renderVideo: function (video) {
         var searchView = new SearchResultView({ model: video });
