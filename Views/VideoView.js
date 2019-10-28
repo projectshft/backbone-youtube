@@ -9,6 +9,7 @@ var VideoView = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'change:mainVideo', this.renderMainVideo);
+    debugger;
     this.listenTo(this.model, 'change:name', this.render);
   },
 

@@ -26,6 +26,7 @@ var AppView = Backbone.View.extend({
   },
 
   backToVideos: function () {
+    debugger;
     this.model.showVideos();
   },
 

@@ -4,8 +4,13 @@ var VideosCollection = Backbone.Collection.extend({
 
 
   parse: function (response) {
-    return response.map.items}
+    return response.map.items} => {
+      
+      return {
+        title: item.title,
+      };
+debugger;
+      
+
+
 });
-
-
-//I don't think this is correct either, I am referrencing the video model but probably need more here
