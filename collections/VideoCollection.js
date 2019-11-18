@@ -1,5 +1,5 @@
 var VideoCollection = Backbone.Collection.extend({
-  url: '  https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyA7g39h3EESAB4anzZSQxG9z0MsLM-U7c0&q=cool videos',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyA7g39h3EESAB4anzZSQxG9z0MsLM-U7c0&q=cool&type=videos',
   model: VideoModel,
 
 
@@ -18,14 +18,15 @@ var VideoCollection = Backbone.Collection.extend({
       
   },
 
-  searchVideo: function (query) {
-    this.reset()
-    this.url= 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyA7g39h3EESAB4anzZSQxG9z0MsLM-U7c0&q=${query}&type=videos'
-    this.fetch()
+  searchVideo: function (response) {
+    console.log(response),
+    this.url= `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyA7g39h3EESAB4anzZSQxG9z0MsLM-U7c0&q=${response}&type=videos`
+    this.fetch({
+      // reset: true
+    })
   },
 
   playNewVideo: function (onClickThumbnail) {
-    this.reset()
     this.add(this.findwhere({id: onClickThumbnail}))
   }
 })
