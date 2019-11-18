@@ -1,4 +1,4 @@
-var VideosCollection = Backbone.Collection.extend({
+var VideoCollection = Backbone.Collection.extend({
   url: '  https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyA7g39h3EESAB4anzZSQxG9z0MsLM-U7c0&q=cool videos',
   model: VideoModel,
 

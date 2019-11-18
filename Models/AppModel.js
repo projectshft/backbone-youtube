@@ -3,10 +3,6 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideoCollection(),
 
-      current_search: null,
-      
-      // either true or false
-      
     }
   },
 
