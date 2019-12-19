@@ -1,15 +1,17 @@
 // App model 
 var AppModel = Backbone.Model.extend({
     defaults: function () {
-        var searchedVideo = 'batman';
-
         return {
             videos: new VideoCollection(),
 
-            searchedVideo: '',
+            currentSearchTerm: 'batman',
 
             currentVideo: ''
         }
+    },
+
+    getVideos: function () {
+        this.get('videos').searchVideo('currentSearchTerm')
     },
 
     // function that gets the first video of the api call 
@@ -20,16 +22,16 @@ var AppModel = Backbone.Model.extend({
         this.set('currentVideo', currentVideo);
     },
 
-    inputSearch: function () {
-        this.get('videos').searchVideo(this.get('searchedVideo'))
+    setKeyword: function (searchInput) {
+        this.set({ 'currentSearchTerm': searchInput })
+        this.get('videos').searchVideo(this.get('currentSearchTerm'))
     },
 
 
-    renderSearchedVideo: function (searchedVideo) {
-        this.$('#video-search').val();
+    renderSearchedVideo: function (currentSearchTerm) {
 
-        this.set(searchedVideo)
-        console.log('searchedVideo', searchedVideo)
+        this.set('currentSearchTerm', currentSearchTerm)
+        console.log('currentSearchTerm', currentSearchTerm)
     }
 
 });

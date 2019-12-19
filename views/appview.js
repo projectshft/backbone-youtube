@@ -16,27 +16,27 @@ var AppView = Backbone.View.extend({
         this.$currentVideo = this.$('.current-video');
 
 
-        this.listenTo(this.model.get('videos'), 'change:searchedVideo', this.renderVideos)
+        this.listenTo(this.model.get('videos'), 'update:currentSearchTerm', this.renderSearchedVideo)
         this.listenTo(this.model.get('videos'), 'reset', this.renderVideos)
+        this.listenTo(this.model.get('videos'), 'change', this.renderVideos);
+
         this.renderVideos();
     },
 
     //This function takes in a search value 
     videoSearch: function (e) {
-        this.$searchInput = this.$('#video-search');
-        this.model.set('searchedVideo', this.$searchInput.val())
-        if (e.which === 13) {
-            // this.model.get('videos').searchVideo(
-            //     this.$searchInput.val()
-            // )
 
-            this.model.set('searchedVideo', this.$searchInput.val())
-        }else{
-            this.model.set('searchedVideo', this.$searchInput.val())
+        
+        e.preventDefault();
+        
+        var searchInput = this.$('#video-search').val()
+    
+        if (e.which === 13) {
+
+            this.model.setKeyword(searchInput)
+
         }
-       
-        this.model.get('videos').searchVideo(videoSearch);
-        this.$searchInput.val('');
+    
     },
 
 
