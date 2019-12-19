@@ -6,6 +6,10 @@ var VideoCollection = Backbone.Collection.extend({
         return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + `${this.searchedVideo}` + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
     },
 
+    searchVideo: function () {
+        this.searchedVideo = searchedVideo;
+        this.fetch({ reset: true })
+    },
 
 
 

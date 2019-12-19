@@ -21,8 +21,7 @@ var AppModel = Backbone.Model.extend({
     },
 
     inputSearch: function () {
-        this.searchedVideo = 'robin williams',
-            this.fetch({ reset: true });
+        this.get('videos').searchVideo(this.get('searchedVideo'))
     },
 
 
