@@ -4,7 +4,7 @@ var AppModel = Backbone.Model.extend({
         return {
             videos: new VideoCollection(),
 
-            currentSearchTerm: 'batman',
+            currentSearchTerm: '',
 
             currentVideo: ''
         }

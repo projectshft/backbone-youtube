@@ -1,6 +1,6 @@
 //Collection that is received by the api call. Provedes the user the first video when they come to the site 
 var VideoCollection = Backbone.Collection.extend({
-    searchedVideo: '',
+    searchedVideo: 'batman',
     model: VideoModel,
     url: function (searchedVideo) {
         return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + `${this.searchedVideo}` + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
@@ -9,7 +9,7 @@ var VideoCollection = Backbone.Collection.extend({
     searchVideo: function (currentSearchTerm) {
 
         console.log(currentSearchTerm)
-        this.currentSearchTerm = searchedVideo;
+        this.searchedVideo = currentSearchTerm;
         this.fetch({ reset: true })
     },
 

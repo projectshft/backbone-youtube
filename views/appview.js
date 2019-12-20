@@ -31,19 +31,19 @@ var AppView = Backbone.View.extend({
         
         var searchInput = this.$('#video-search').val()
     
-        if (e.which === 13) {
+        // if (e.which === 13) {
 
             this.model.setKeyword(searchInput)
 
-        }
+        // }
     
     },
 
-
+// #current - youtube - video
 
     //This function renders the default video to come up on when a user comes to the site 
     renderVideo: function (video) {
-        this.$('#current-youtube-video').empty();
+        this.$('#current-video').empty();
         var currentVideoView = new CurrentVideoView({ model: video });
         this.$currentVideo.append(currentVideoView.render().el);
     },
