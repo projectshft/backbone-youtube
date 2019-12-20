@@ -7,7 +7,7 @@ var AppView = Backbone.View.extend({
 
     // these are the events that take place that direct functions 
     events: {
-        'click #video-search-button': 'videoSearch'
+        'click #video-search-button': 'videoSearch',
     },
 
     // This is the initialize function that occur
@@ -16,7 +16,7 @@ var AppView = Backbone.View.extend({
         this.$currentVideo = this.$('.current-video');
 
 
-        this.listenTo(this.model.get('videos'), 'update:currentSearchTerm', this.renderSearchedVideo)
+        this.listenTo(this.model.get('videos'), 'change:currentSearchTerm', this.renderSearchedVideo)
         this.listenTo(this.model.get('videos'), 'reset', this.renderVideos)
         this.listenTo(this.model.get('videos'), 'change', this.renderVideos);
 
@@ -25,25 +25,14 @@ var AppView = Backbone.View.extend({
 
     //This function takes in a search value 
     videoSearch: function (e) {
-
-        
         e.preventDefault();
-        
         var searchInput = this.$('#video-search').val()
-    
-        // if (e.which === 13) {
-
-            this.model.setKeyword(searchInput)
-
-        // }
-    
+        this.model.setKeyword(searchInput)
     },
-
-// #current - youtube - video
 
     //This function renders the default video to come up on when a user comes to the site 
     renderVideo: function (video) {
-        this.$('#current-video').empty();
+        this.$('.current-video').empty();
         var currentVideoView = new CurrentVideoView({ model: video });
         this.$currentVideo.append(currentVideoView.render().el);
     },

@@ -10,31 +10,30 @@
   <script src="node_modules/underscore/underscore-min.js"></script>
   <script src="node_modules/backbone/backbone-min.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-  <title>DaveTube</title>
+  <title>Dave-Tube</title>
 </head>
 
 <body id="davetube">
 
 
-  <h1 id="banner">DaveTube</h1>
+  <h1 id="banner">Dave-Tube</h1>
 
-  <div class="side-videos"></div>
 
   <form id="search-bar">
     <div class="form-group">
       <label for="formGroupExampleInput"></label>
       <input type="text" class="form-control" id="video-search" placeholder="">
-      <button type="button" class="btn btn-primary" id="video-search-button">Search</button>
+      <button type="submit" class="btn btn-primary " id="video-search-button">Search</button>
     </div>
   </form>
 
   <div class="current-video"></div>
   <div class="side-videos"></div>
 
-  <script id="current-video" type="text/x-handlebars-template">
-    <div>{{title}}</div>
-    <div>{{description}}</div>
-        <iframe class="mt-5" id="current-youtube-video" width="480" height="360" src="https://www.youtube.com/embed/{{ id }}"></iframe> 
+  <script id="current-video" class="" type="text/x-handlebars-template">
+    <ul class="mt-5">{{title}}</ul>
+    <ul class="mt-5">{{description}}</ul>
+        <iframe class="mb-5 ml-5" id="current-youtube-video embed-responsive-item" width="480" height="360" src="https://www.youtube.com/embed/{{ id }}"></iframe> 
   </script>
 
 
@@ -48,7 +47,7 @@
 
 
 
-  <!-- 
+
   <script id="sidevideo-template" type="text/x-handlebars-template">
     <div class="img-container">
       <img src="{{url}}">
@@ -56,7 +55,7 @@
     <iframe id="current-youtube-video" width="250" height="100" src="https://www.youtube.com/embed/tgbNymZ7vqY">
     </iframe>
    
-  </script> -->
+  </script>
 
 
 

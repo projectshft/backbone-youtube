@@ -3,13 +3,13 @@
     text-align: center;
 }
 
-#current-youtube-video {
+/* #current-youtube-video {
     position: absolute;
     margin: auto;
     top: 50%;
     left: 45%;
     transform: translate(-50%, -50%);
-}
+} */
 #search-bar { 
     width: 50%;
     position:relative;  
