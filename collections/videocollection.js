@@ -2,7 +2,7 @@
 var VideoCollection = Backbone.Collection.extend({
     searchedVideo: 'batman',
     model: VideoModel,
-    url: function (searchedVideo) {
+    url: function () {
         return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + `${this.searchedVideo}` + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
     },
 

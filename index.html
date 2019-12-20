@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -18,31 +18,31 @@
 
   <h1 id="banner">Dave-Tube</h1>
 
-
-  <form id="search-bar">
-    <div class="form-group">
-      <label for="formGroupExampleInput"></label>
-      <input type="text" class="form-control" id="video-search" placeholder="">
-      <button type="submit" class="btn btn-primary " id="video-search-button">Search</button>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <form id="search-bar">
+          <div class="form-group">
+            <label for="formGroupExampleInput"></label>
+            <input type="text" class="form-control" id="video-search" placeholder=""></input>
+        </form>
+        <button type="submit" class="btn btn-primary" id="video-search-button">Search</button>
+      </div>
+      <div class="current-video"></div>
+      <div class="side-videos"></div>
     </div>
-  </form>
+  </div>
 
-  <div class="current-video"></div>
-  <div class="side-videos"></div>
 
   <script id="current-video" class="" type="text/x-handlebars-template">
     <ul class="mt-5">{{title}}</ul>
-    <ul class="mt-5">{{description}}</ul>
         <iframe class="mb-5 ml-5" id="current-youtube-video embed-responsive-item" width="480" height="360" src="https://www.youtube.com/embed/{{ id }}"></iframe> 
+        <ul class="">{{description}}</ul>
   </script>
 
 
   <script id="side-video" type="text/x-handlebars-template">
-    <section>
-
-        <img src={{url}} class="gallery" />
-
-    </section>
+        <img src={{thumbnails}} class="gallery" />
 </script>
 
 
@@ -58,13 +58,6 @@
   </script>
 
 
-
-
-
-
-
-
-  </script>
 
   <script src="models/videomodel.js"></script>
   <script src="collections/videocollection.js"></script>

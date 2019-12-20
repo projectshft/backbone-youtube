@@ -12,9 +12,9 @@
 } */
 #search-bar { 
     width: 50%;
-    position:relative;  
     right: -20%;
     top: 5%;
+    position: relative;
 }
 
 #davetube {

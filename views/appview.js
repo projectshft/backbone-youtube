@@ -7,20 +7,22 @@ var AppView = Backbone.View.extend({
 
     // these are the events that take place that direct functions 
     events: {
-        'click #video-search-button': 'videoSearch',
+        'click #video-search-button': 'videoSearch'
     },
 
     // This is the initialize function that occur
     initialize: function () {
         this.$searchInput = this.$('#video-search');
+
         this.$currentVideo = this.$('.current-video');
+        this.$sideVideos = this.$('.side-videos');
 
 
         this.listenTo(this.model.get('videos'), 'change:currentSearchTerm', this.renderSearchedVideo)
-        this.listenTo(this.model.get('videos'), 'reset', this.renderVideos)
-        this.listenTo(this.model.get('videos'), 'change', this.renderVideos);
+        this.listenTo(this.model.get('videos'), 'reset', this.renderVideo)
+        this.listenTo(this.model.get('videos'), 'change', this.renderVideo);
 
-        this.renderVideos();
+        this.renderVideo();
     },
 
     //This function takes in a search value 
@@ -30,29 +32,35 @@ var AppView = Backbone.View.extend({
         this.model.setKeyword(searchInput)
     },
 
+    renderVideo() {
+        var allVideos = this.model.get('videos')
+        var mainVideo = allVideos[0];
+        var sideVideos = allVideos.slice(1)
+
+        this.renderMainVideo(mainVideo)
+        this.renderSideVideos(sideVideos)
+        console.log('one video',allVideos[0])
+    },
+
     //This function renders the default video to come up on when a user comes to the site 
-    renderVideo: function (video) {
-        this.$('.current-video').empty();
-        var currentVideoView = new CurrentVideoView({ model: video });
+    renderMainVideo: function (mainVideo) {
+        this.$currentVideo.empty();
+        var currentVideoView = new CurrentVideoView({ model: mainVideo });
+
         this.$currentVideo.append(currentVideoView.render().el);
     },
 
-    renderVideos: function () {
-        this.model.get('videos').each(function (m) {
-            this.renderVideo(m);
-        }, this);
+    renderSideVideos: function (sideVideos) {
+        this.$sideVideos.empty();
+        var sideVideoView = new SideVideoView({ model: sideVideos });
+
+        this.$sideVideos.append(sideVideoView.render().el);
+       
+       
+        // this.model.get('videos').each(function (m) {
+        //     this.renderMainVideo(m);
+        // }, this);
     },
 
-    //This is the function that controls the side images on search 
-    renderSideImages: function () {
-        this.$('#current-youtube-video').empty();
-        var sideVideo = [];
-        for (var i = 0; i < sideVideo.length; i++) {
-            var element = array[i];
-
-            var currentVideoView = new CurrentVideoView({ model: this.model.get('defaultVideo') });
-            this.$('#current-youtube-video').append(currentVideoView.render().$el);
-        }
-    },
 
 });
