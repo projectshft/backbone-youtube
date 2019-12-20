@@ -28,7 +28,7 @@ var AppModel = Backbone.Model.extend({
     },
 
 
-    renderSearchedVideo: function (currentSearchTerm) {
+    updateSearchTerm: function (currentSearchTerm) {
 
         this.set('currentSearchTerm', currentSearchTerm)
         console.log('currentSearchTerm', currentSearchTerm)

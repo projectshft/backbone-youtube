@@ -18,11 +18,11 @@ var AppView = Backbone.View.extend({
         this.$sideVideos = this.$('.side-videos');
 
 
-        this.listenTo(this.model.get('videos'), 'change:currentSearchTerm', this.renderSearchedVideo)
+        this.listenTo(this.model.get('videos'), 'change:currentSearchTerm', this.updateSearchTerm)
         this.listenTo(this.model.get('videos'), 'reset', this.renderVideo)
         this.listenTo(this.model.get('videos'), 'change', this.renderVideo);
 
-        this.renderVideo();
+        this.renderVideo;
     },
 
     //This function takes in a search value 
@@ -32,14 +32,20 @@ var AppView = Backbone.View.extend({
         this.model.setKeyword(searchInput)
     },
 
-    renderVideo() {
-        var allVideos = this.model.get('videos')
+    
+    renderVideo: function() {
+        
+        var allVideos = this.model.get('videos').slice()
         var mainVideo = allVideos[0];
         var sideVideos = allVideos.slice(1)
+        
+        console.log('one video',allVideos)
+
+
 
         this.renderMainVideo(mainVideo)
         this.renderSideVideos(sideVideos)
-        console.log('one video',allVideos[0])
+        
     },
 
     //This function renders the default video to come up on when a user comes to the site 
@@ -51,6 +57,7 @@ var AppView = Backbone.View.extend({
     },
 
     renderSideVideos: function (sideVideos) {
+        debugger;
         this.$sideVideos.empty();
         var sideVideoView = new SideVideoView({ model: sideVideos });
 
