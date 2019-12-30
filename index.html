@@ -20,42 +20,61 @@
 
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col-md-12">
         <form id="search-bar">
           <div class="form-group">
             <label for="formGroupExampleInput"></label>
-            <input type="text" class="form-control" id="video-search" placeholder=""></input>
+            <input type="text" class="form-control" id="video-search" placeholder="">
+            <button type="submit" class="btn btn-primary" id="video-search-button" style="float: right">Search</button>
+            </input>
+          </div>
         </form>
-        <button type="submit" class="btn btn-primary" id="video-search-button">Search</button>
       </div>
-      <div class="current-video"></div>
-      <div class="side-videos"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="current-video"></div>
+      </div>
+      <div class="col-md-3">
+        <div class="side-videos ml-5 mt-5"></div>
+      </div>
     </div>
   </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
   <script id="current-video" class="" type="text/x-handlebars-template">
-    <ul class="mt-5">{{title}}</ul>
         <iframe class="mb-5 ml-5" id="current-youtube-video embed-responsive-item" width="480" height="360" src="https://www.youtube.com/embed/{{ id }}"></iframe> 
+        <ul class="mt-5">{{title}}</ul>
         <ul class="">{{description}}</ul>
   </script>
 
 
   <script id="side-video" type="text/x-handlebars-template">
-        <img src={{thumbnails}} class="" />
+    <img src="{{thumbnails.url}}" width="150" height="100" alt="">
 </script>
 
 
 
 
-  <script id="sidevideo-template" type="text/x-handlebars-template">
+  <!-- <script id="sidevideo-template" type="text/x-handlebars-template">
     <div class="img-container">
       <img src="{{url}}">
     </div>
     <iframe id="current-youtube-video" width="250" height="100" src="https://www.youtube.com/embed/tgbNymZ7vqY">
     </iframe>
    
-  </script>
+  </script> -->
 
 
 

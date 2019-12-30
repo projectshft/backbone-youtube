@@ -32,38 +32,46 @@ var AppView = Backbone.View.extend({
         this.model.setKeyword(searchInput)
     },
 
-    
-    renderVideo: function() {
-        
+
+    renderVideo: function () {
+        this.$sideVideos.empty();
+        this.$currentVideo.empty();
+
         var allVideos = this.model.get('videos').slice()
         var mainVideo = allVideos[0];
-        var sideVideos = allVideos.slice(1)
-        
-        console.log('one video',allVideos)
+        // var sideVideos = allVideos.slice(1)
+
+        console.log('all video', allVideos)
 
 
+        for (var i = 1; i < this.model.get('videos').length; ++i) {
+            var sideVideos = this.model.get('videos').models[i];
+            this.renderSideVideos(sideVideos)
+            console.log('side video', sideVideos)
+        }
 
         this.renderMainVideo(mainVideo)
-        this.renderSideVideos(sideVideos)
-        
+
+
     },
 
     //This function renders the default video to come up on when a user comes to the site 
     renderMainVideo: function (mainVideo) {
-        this.$currentVideo.empty();
+
+
         var currentVideoView = new CurrentVideoView({ model: mainVideo });
 
         this.$currentVideo.append(currentVideoView.render().el);
     },
 
     renderSideVideos: function (sideVideos) {
-        debugger;
-        this.$sideVideos.empty();
+
+
         var sideVideoView = new SideVideoView({ model: sideVideos });
 
         this.$sideVideos.append(sideVideoView.render().el);
-       
-       
+
+
         // this.model.get('videos').each(function (m) {
         //     this.renderMainVideo(m);
         // }, this);
