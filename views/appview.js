@@ -10,7 +10,7 @@ var AppView = Backbone.View.extend({
         'click #video-search-button': 'videoSearch'
     },
 
-    // This is the initialize function that occur
+    // On page load we render the default videos from here and also start listening for events 
     initialize: function () {
         this.$searchInput = this.$('#video-search');
 
@@ -27,13 +27,15 @@ var AppView = Backbone.View.extend({
 
     //This function takes in a search value 
     videoSearch: function (e) {
+
         e.preventDefault();
         var searchInput = this.$('#video-search').val()
         this.model.setKeyword(searchInput)
-        document.getElementById("#video-search").reset();
+        this.$('#video-search').trigger('reset');
     },
 
-
+    //This function takes the first video and sends that video to the renderMainVideo function 
+    //It also sends the rest of the videos in the response to the renderSideVideos function 
     renderVideo: function () {
         this.$sideVideos.empty();
         this.$currentVideo.empty();
@@ -53,7 +55,6 @@ var AppView = Backbone.View.extend({
 
         this.renderMainVideo(mainVideo)
 
-
     },
 
     //This function renders the default video to come up on when a user comes to the site 
@@ -65,6 +66,7 @@ var AppView = Backbone.View.extend({
         this.$currentVideo.append(currentVideoView.render().el);
     },
 
+    //This sends the sideVideos to the template in the sideVideoView 
     renderSideVideos: function (sideVideos) {
 
 
@@ -72,10 +74,6 @@ var AppView = Backbone.View.extend({
 
         this.$sideVideos.append(sideVideoView.render().el);
 
-
-        // this.model.get('videos').each(function (m) {
-        //     this.renderMainVideo(m);
-        // }, this);
     },
 
 

@@ -43,38 +43,23 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
   <script id="current-video" class="" type="text/x-handlebars-template">
-        <iframe class="mb-5 ml-5" id="current-youtube-video embed-responsive-item" width="480" height="360" src="https://www.youtube.com/embed/{{ id }}"></iframe> 
-        <ul class="" style="color: blue"><b>{{title}}</b></ul>
-        <ul class="">{{description}}</ul>
+        <iframe class="mb-5 ml-2" id="current-youtube-video embed-responsive-item" width="600" height="360" src="https://www.youtube.com/embed/{{ id }}"></iframe> 
+        <div class="description-block mr-5 mt-4">
+        <ul class="mr-3" style="color: gray"><b>{{title}}</b></ul>
+        <ul class="mr-3" >{{description}}</ul>
+        </div>
   </script>
 
 
   <script id="side-video" type="text/x-handlebars-template">
-    <img src="{{thumbnails.url}}" width="200" height="100" alt="">
-</script>
-
-
-
-
-  <!-- <script id="sidevideo-template" type="text/x-handlebars-template">
-    <div class="img-container">
-      <img src="{{url}}">
+    <a href="#" style="text-decoration: none">
+    <div class="block">
+    <img src="{{thumbnails.url}}" width="150" height="100" alt="">
+    <span class="ml-5" style="color: gray"><b>{{dotdotdot title}}</b></span>
     </div>
-    <iframe id="current-youtube-video" width="250" height="100" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-    </iframe>
-   
-  </script> -->
+    </a>
+</script>
 
 
 

@@ -2,18 +2,10 @@
     margin: 20px;
     text-align: center;
 }
-
-/* #current-youtube-video {
-    position: absolute;
-    margin: auto;
-    top: 50%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-} */
 #search-bar { 
     width: 50%;
-    right: -20%;
-    top: 5%;
+    right: -25%;
+    top: -15%;
     position: relative;
 }
 
@@ -25,28 +17,9 @@
     color: white;
 }
 
-/* #side-vid {
-    vertical-align: right;
-    float: right;
-    display: block;
-} */
-
-/* #video-search-button {
-    float: right;
-} */
-
-/* .gallery {
-    display: block;
-    text-align: right;
-    padding-left: 75%;
-    
-} */
-
 div {
     color: white;
 }
-
-
 
 form {
   position: relative;
@@ -63,4 +36,18 @@ button {
   top: 0;
   right: 0;
   float: right;
+}
+
+.block {
+    width: 450px;
+    border: 3px solid gray;
+    padding: 8px;
+    margin: 25px;
+}
+.description-block {
+    width: 600px;
+    border: 3px solid gray;
+    padding: 10px;
+    margin: 10px;
+    margin-right: 10px;
 }

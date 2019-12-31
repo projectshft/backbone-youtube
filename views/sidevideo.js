@@ -4,41 +4,17 @@ var SideVideoView = Backbone.View.extend({
 
     template: Handlebars.compile($('#side-video').html()),
 
+
     render: function () {
+
+        Handlebars.registerHelper('dotdotdot', function (str) {
+            if (str.length > 25)
+                return str.substring(0, 25) + '...';
+            return str;
+        });
+
         this.$el.html(this.template(this.model.toJSON()));
         return this
     }
 
-
-
-    // render: function () {
-
-    //     this.$el.html(this.template(this.model.map(video => {
-
-    //         video.attributes.thumbnails.url.toJSON()
-    //     })));
-
-    //     console.log('this', this)
-    //     return this
-
-    // }
-
-
-
-
-
-
-    // render: function () {
-    //    
-    //     var videos = [];
-    //     console.log(this.model)
-    //     this.$el.html(this.template(this.model.map(video => {
-    //         videos.push({ url: video.attributes.thumbnails.url })
-    //         console.log('video', videos)
-    //         return this.toJSON()
-    //     })));
-    // console.log('this', this.video)
-    // return this.video
-
-    // }
 })

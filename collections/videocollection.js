@@ -20,7 +20,14 @@ var VideoCollection = Backbone.Collection.extend({
         var videos = []
         for (var i = 0; i < response.items.length; i++) {
             var item = response.items[i];
-            videos.push({ title: item.snippet.title, description: item.snippet.description, thumbnails: item.snippet.thumbnails.high, id: item.id.videoId })
+            videos.push(
+                {
+                    title: item.snippet.title,
+                    description: item.snippet.description,
+                    thumbnails: item.snippet.thumbnails.high,
+                    id: item.id.videoId
+                }
+            )
         }
         console.log('response in videocollection.js', videos)
         return videos
