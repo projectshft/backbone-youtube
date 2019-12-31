@@ -30,6 +30,7 @@ var AppView = Backbone.View.extend({
         e.preventDefault();
         var searchInput = this.$('#video-search').val()
         this.model.setKeyword(searchInput)
+        document.getElementById("#video-search").reset();
     },
 
 

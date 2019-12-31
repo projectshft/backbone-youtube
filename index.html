@@ -25,18 +25,18 @@
           <div class="form-group">
             <label for="formGroupExampleInput"></label>
             <input type="text" class="form-control" id="video-search" placeholder="">
-            <button type="submit" class="btn btn-primary" id="video-search-button" style="float: right">Search</button>
+            <button type="submit" class="btn btn-primary mt-4" id="video-search-button">Search</button>
             </input>
           </div>
         </form>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-9">
-        <div class="current-video"></div>
+      <div class="col-md-7">
+        <div class="current-video mt-3"></div>
       </div>
-      <div class="col-md-3">
-        <div class="side-videos ml-5 mt-5"></div>
+      <div class="col-md-5">
+        <div class="side-videos ml-5 "></div>
       </div>
     </div>
   </div>
@@ -55,13 +55,13 @@
 
   <script id="current-video" class="" type="text/x-handlebars-template">
         <iframe class="mb-5 ml-5" id="current-youtube-video embed-responsive-item" width="480" height="360" src="https://www.youtube.com/embed/{{ id }}"></iframe> 
-        <ul class="mt-5">{{title}}</ul>
+        <ul class="" style="color: blue"><b>{{title}}</b></ul>
         <ul class="">{{description}}</ul>
   </script>
 
 
   <script id="side-video" type="text/x-handlebars-template">
-    <img src="{{thumbnails.url}}" width="150" height="100" alt="">
+    <img src="{{thumbnails.url}}" width="200" height="100" alt="">
 </script>
 
 

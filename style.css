@@ -1,5 +1,5 @@
 #banner {
-    padding: 20px;
+    margin: 20px;
     text-align: center;
 }
 
@@ -31,17 +31,36 @@
     display: block;
 } */
 
-#video-search-button {
+/* #video-search-button {
     float: right;
-}
+} */
 
-.gallery {
+/* .gallery {
     display: block;
     text-align: right;
     padding-left: 75%;
     
-}
+} */
 
 div {
     color: white;
+}
+
+
+
+form {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding-right: 80px;
+}
+
+button {
+  width: 80px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: right;
 }
