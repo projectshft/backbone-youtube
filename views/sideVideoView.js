@@ -1,4 +1,4 @@
-// side videos view for the side imagaes 
+// side video view for the side images 
 var SideVideoView = Backbone.View.extend({
     className: 'side-video',
 

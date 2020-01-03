@@ -4,7 +4,9 @@ var VideoCollection = Backbone.Collection.extend({
     searchedVideo: 'Substitute Teacher - Key & Peele',
     model: VideoModel,
     url: function () {
-        return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + `${this.searchedVideo}` + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
+        var myApiKey = 'AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
+        var otherApiKey = 'AIzaSyCu1okWlNecCAAqGlLnb6MUdaqd8XZVxbU'
+        return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + `${this.searchedVideo}` + '&type=video&key=' + otherApiKey
     },
 
     //when the currentSearchTerm is updated in the model, it 
@@ -40,7 +42,7 @@ var VideoCollection = Backbone.Collection.extend({
     //The currentVideo that is set in the model is passed to this function which
     //re-fetches by the title of the video that was clicked
     updateMainVideoOnClick: function (currentVideo) {
-        this.searchedVideo = currentVideo.attributes.title
+        this.searchedVideo = currentVideo.attributes.id
         console.log('currentVideo in updateMainVideoOnClick', currentVideo)
         this.fetch({ reset: true })
     }
