@@ -1,6 +1,6 @@
 // side videos view for the side imagaes 
 var SideVideoView = Backbone.View.extend({
-    className: 'side-videos',
+    className: 'side-video',
 
     template: Handlebars.compile($('#side-video').html()),
 

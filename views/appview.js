@@ -7,7 +7,8 @@ var AppView = Backbone.View.extend({
 
     // these are the events that take place that direct functions 
     events: {
-        'click #video-search-button': 'videoSearch'
+        'click #video-search-button': 'videoSearch',
+        'click .side-video': 'sideVideoIdClicked'
     },
 
     // On page load we render the default videos from here and also start listening for events 
@@ -31,7 +32,7 @@ var AppView = Backbone.View.extend({
         e.preventDefault();
         var searchInput = this.$('#video-search').val()
         this.model.setKeyword(searchInput)
-        this.$('#video-search').trigger('reset');
+        e.target.form[0].value = ''
     },
 
     //This function takes the first video and sends that video to the renderMainVideo function 
@@ -60,7 +61,6 @@ var AppView = Backbone.View.extend({
     //This function renders the default video to come up on when a user comes to the site 
     renderMainVideo: function (mainVideo) {
 
-
         var currentVideoView = new CurrentVideoView({ model: mainVideo });
 
         this.$currentVideo.append(currentVideoView.render().el);
@@ -69,12 +69,20 @@ var AppView = Backbone.View.extend({
     //This sends the sideVideos to the template in the sideVideoView 
     renderSideVideos: function (sideVideos) {
 
-
         var sideVideoView = new SideVideoView({ model: sideVideos });
 
         this.$sideVideos.append(sideVideoView.render().el);
 
     },
+
+    //When a side thumbnail is clicked, this function takes in the ID of that 
+    //video and updates the currentVideo in the appmodel
+    sideVideoIdClicked: function (e) {
+        console.log('sideVideoIDClicked', e.currentTarget.children[0].id)
+        var targetVideoId = e.currentTarget.children[0].id
+        var clickedVideo = this.model.get('videos').findWhere({ id: targetVideoId })
+        this.model.updateCurrentVideo(clickedVideo)
+    }
 
 
 });

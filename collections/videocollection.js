@@ -1,22 +1,24 @@
-//Collection that is received by the api call. Provedes the user the first video when they come to the site 
+//Collection that is received by the api call. 
+//Provides the user a default video collection on page load 
 var VideoCollection = Backbone.Collection.extend({
-    searchedVideo: 'batman',
+    searchedVideo: 'Substitute Teacher - Key & Peele',
     model: VideoModel,
     url: function () {
         return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=+' + `${this.searchedVideo}` + '&type=video&key=AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
     },
 
+    //when the currentSearchTerm is updated in the model, it 
+    //triggers this function to refetch based on that term
     searchVideo: function (currentSearchTerm) {
-
         console.log(currentSearchTerm)
         this.searchedVideo = currentSearchTerm;
         this.fetch({ reset: true })
     },
 
 
-    // This function parses through the repsonse data for the specific items we need   
+    // This loops through and returns specific items we need from the response 
     parse: function (response) {
-        // console.log('repsonse', response)
+        console.log('repsonse', response)
         var videos = []
         for (var i = 0; i < response.items.length; i++) {
             var item = response.items[i];
@@ -25,7 +27,8 @@ var VideoCollection = Backbone.Collection.extend({
                     title: item.snippet.title,
                     description: item.snippet.description,
                     thumbnails: item.snippet.thumbnails.high,
-                    id: item.id.videoId
+                    id: item.id.videoId,
+                    selected: false
                 }
             )
         }
@@ -33,5 +36,14 @@ var VideoCollection = Backbone.Collection.extend({
         return videos
 
     },
+
+    //The currentVideo that is set in the model is passed to this function which
+    //re-fetches by the title of the video that was clicked
+    updateMainVideoOnClick: function (currentVideo) {
+        this.searchedVideo = currentVideo.attributes.title
+        console.log('currentVideo in updateMainVideoOnClick', currentVideo)
+        this.fetch({ reset: true })
+    }
+
 
 });
