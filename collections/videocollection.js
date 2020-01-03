@@ -1,7 +1,7 @@
 //Collection that is received by the api call. 
 //Provides the user a default video collection on page load 
 var VideoCollection = Backbone.Collection.extend({
-    searchedVideo: 'Substitute Teacher - Key & Peele',
+    searchedVideo: 'Celebrity Jeopardy!: Robin Williams, Catherine Zeta-Jones &amp;',
     model: VideoModel,
     url: function () {
         var myApiKey = 'AIzaSyBnJsYpTzJ19zAX95PRyS0Nr1zz5HTpfpk'
