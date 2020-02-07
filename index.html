@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+<title>BackBone-YouTube</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="header">
+          </div>
+
+        <div class="main-video-container show">
+          <iframe id="ytplayer" type="text/html" width="640" height="360"
+          src="https://www.youtube.com/embed/SB-qEYVdvXA"
+          frameborder="0"></iframe>
+          </div>
+          <div class="form-group">
+            <label>Video Search</label>
+            <br>
+            <input type="text" class="form-control" id="video-name-input" placeholder="Search Videos">
+            <br>
+            <button class="btn btn-primary submit-review">Search</button>
+          </div>
+        </div>
+
+        <div class="video-sidebar-container"></div>
+      </div>
+
+    </div>
+
+  <script id="main-video-template" type="text/x-handlebars-template">
+    <div class="video-container">
+      <iframe id="ytplayer" type="text/html" width="640" height="360"
+      src="https://www.youtube.com/embed/{{id}}" frameborder="0"></iframe>
+    </div>
+    <div class="video-details-container">
+      <a class="video" href="#" data-id={{id}}></a>
+      <p class="video-title">{{title}}</p>
+      <p class="video-description">{{description}}</p>
+    </div>
+  </script>
+
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="views/VideoSidebarView.js"></script>
+  <script src="views/MainVideoView.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
