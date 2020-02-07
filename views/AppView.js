@@ -2,79 +2,58 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    // 'click .submit-beer': 'createBeer',
-    // 'click .view-beer': 'viewBeer',
-    // 'click .back': 'goBackToBeers'
+    'click .submit-search': 'createSearch',
+    'click .thumbnail': 'viewVideo'
   },
 
-  // initialize: function() {
-  //   this.$nameInput = this.$('#name-input');
-  //   this.$styleInput = this.$('#style-input');
-  //   this.$abvInput = this.$('#abv-input');
-  //   this.$imgUrl = this.$('#img-input');
-  //
-  //   this.$beerList = this.$('.beer-list');
-  //   this.detailView = null;
-  //
-  //   this.listenTo(this.model, 'change:current_beer', this.renderDetailView);
-  //
-  //   this.listenTo(this.model.get('beers'), 'add', this.renderBeer);
-  //
-  //   this.listenTo(this.model, 'change:show_reviews', this.renderPage);
-  //
-  //   this.listenTo(this.model.get('beers'), 'reset', this.renderBeers);
-  //
-  //   this.renderBeers();
-  // },
-  //
-  // renderPage: function() {
-  //   this.$('.reviews-container').toggleClass('show', this.model.get('show_reviews'));
-  //   this.$('.beers-container').toggleClass('show', !this.model.get('show_reviews'));
-  // },
-  //
-  // createBeer: function() {
-  //   this.model.get('beers').addBeer(
-  //     this.$nameInput.val(),
-  //     this.$styleInput.val(),
-  //     this.$abvInput.val(),
-  //     this.$imgUrl.val()
-  //   );
-  // },
-  //
-  // renderBeer: function(beer) {
-  //   var beerView = new BeerView({
-  //     model: beer
-  //   });
-  //   this.$('.beer-list').append(beerView.render().el);
-  // },
-  //
-  // renderBeers: function() {
-  //   this.model.get('beers').each(function(m) {
-  //     this.renderBeer(m);
-  //   }, this);
-  // },
-  //
-  // viewBeer: function(e) {
-  //   var clickedBeerId = $(e.currentTarget).data().id;
-  //
-  //   this.model.showReviews(clickedBeerId);
-  // },
-  //
-  // goBackToBeers: function() {
-  //
-  //   this.model.showBeers();
-  // },
-  //
-  // renderDetailView: function() {
-  //   if (this.detailView) {
-  //     this.detailView.remove();
-  //   }
-  //
-  //   this.detailView = new BeerDetailView({
-  //     model: this.model.get('current_beer')
-  //   });
-  //
-  //   this.$('.reviews-container').append(this.detailView.render().el);
-  // }
+  template: Handlebars.compile($('#main-video-template').html()),
+
+  initialize: function() {
+    this.$Input = this.$('#search-input');
+
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+    this.listenTo(this.model, 'change:current_video', this.render);
+
+    this.renderVideos();
+  },
+
+  createSearch: function() {
+    console.log('does this buttonwork?')
+    this.model.get('videos').addVideo(
+      this.$Input.val());
+  },
+
+  viewVideo: function(e) {
+    var clickedVideoId = $(e.currentTarget).data().id;
+
+    this.model.showVideo(clickedVideoId);
+  },
+
+  renderVideo: function(video) {
+    var smallVideoView = new SmallVideoView({
+      model: video
+    });
+    this.$('.small-video-container').append(smallVideoView.render().el);
+    // this.renderMainVideo();
+  },
+
+  renderVideos: function() {
+    this.model.get('videos').each(function(m) {
+      this.renderVideo(m);
+    }, this);
+  },
+
+  renderMainVideo: function(video) {
+    var mainVideoView = new MainVideoView({
+      model: video
+    });
+    this.$('.main-video-container').append(mainVideoView.render().el)
+  },
+
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
 
 });
