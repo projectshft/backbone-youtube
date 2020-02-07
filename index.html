@@ -16,6 +16,21 @@
       </div>
     </form>
 
+    <div class="container">
+      <div class="row video-player"></div>
+      <div class="row sidebar"></div>
+    </div>
+
+    <script id="video-player-template" type="text/x-handlebars-template">
+      <div class="content-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{id}}" frameborder="0" allowfullscreen></iframe>
+        <div class="video-description">
+          <div>{{title}}</div>
+          <div>{{description}}</div>
+        </div>
+      </div>
+    </script>
+
     <script src="node_modules/todomvc-common/base.js"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>

@@ -18,13 +18,13 @@ var VideosCollection = Backbone.Collection.extend({
 
   parse: function(response) {
     return response.items.map(function(item) {
-      var etag = item.etag
+      var id = item.id.videoId
       var title = item.snippet.title
       var thumbnail = item.snippet.thumbnails.default.url
       var description = item.snippet.description
 
       var newVideo = {
-        etag: etag,
+        id: id,
         title: title,
         thumbnail: thumbnail,
         description: description
