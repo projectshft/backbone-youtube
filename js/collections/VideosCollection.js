@@ -1,7 +1,7 @@
 var VideosCollection = Backbone.Collection.extend({
   url: "",
   model: VideoModel,
-  baseUrl: "https://www.googleapis.com/youtube/v3/search?key=AIzaSyD0OQiHtWN-YGis-Evfym5-lcpHbggsr90&part=snippet&type=video&q=",
+  baseUrl: "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDvl1ZHrr71zPfG2fC9fmw6aBX0fJ70kb4&part=snippet&type=video&q=",
 
   newVideosSearch: function(searchTerm) {
     var newUrl = this.baseUrl + searchTerm

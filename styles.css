@@ -1,1 +1,14 @@
+.row {
+  margin: 20px;
+  float: left;
+}
 
+.video-player {
+  float: left;
+  width: 75%;
+}
+
+.sidebar {
+  float: left;
+  width: 25%;
+}
