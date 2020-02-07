@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Backbone Youtube</title>
-    <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+    <link rel="stylesheet" href="./styles.css">
   </head>
 
   <body>
@@ -31,6 +31,13 @@
       </div>
     </script>
 
+    <script id="sidebar-template" type="text/x-handlebars-template">
+      <div id="{{id}}" class="content-container">
+        <img class="sidebar-image" src={{thumbnail}}></img>
+        <div class="sidebar-title">{{title}}</div>
+      </div>
+    </script>
+
     <script src="node_modules/todomvc-common/base.js"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -41,7 +48,7 @@
     <script src="js/collections/VideosCollection.js"></script>
     <script src="js/views/AppView.js"></script>
     <script src="js/views/PlayerView.js"></script>
-    <script src="js/views/SidebareView.js"></script>
+    <script src="js/views/SidebarView.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
