@@ -13,50 +13,69 @@
 </head>
 
 <body>
-  <div class="row container">
-    <div class="col-md-8 container">
-      <div class="input-group">
-        <input class="form-control" id="search-input" placeholder="Search">
-        <span class="input-group-btn">
-          <button class="btn btn-danger submit-video" type="button">Go!</button>
-        </span>
+
+  <div class="container">
+
+<!-- search bar row -->
+    <div class="row searchbar">
+      <div class="col">
+        <div class="input-group">
+          <input class="form-control" id="search-input" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn btn-danger submit-video" type="button">Go!</button>
+          </span>
+        </div>
       </div>
     </div>
-  </div>
+<!-- videos row -->
+    <div class="row videos">
 
-  <div class='container-fluid'>
-    <div class="row videos-container">
-      <div class='large-video'>
+
+      <!-- Large Video Column -->
+      <div class="col large-video">
+        <!-- Large video template should go here -->
       </div>
-      <div class="video-list container col col-4">
+
+
+      <!-- Videos list column -->
+      <div class='col'>
+        <h4 class='up-next'>Click to play the next video...</h4>
+        <div class='video-list'
+        <!-- video list template should go here -->
+        </div>
       </div>
-    </div>
-  </div>
 
 
 
-  <script id="video-template" type="text/x-handlebars-template">
-    <div class="sidebar">
-      <div class="img-container clearfix">
-        <img class='thumbnail pull-left' data-id={{id}} src ={{thumbnail}}>
-      </div>
-      <div class="content-container">
-        <h4 class="video-name" data-id="{{id}}">{{title}}</h4>
-      </div>
-    </div>
-  </script>
+    </div><!-- ends video row -->
 
+  </div><!-- ends container -->
+
+  <!-- Large video template -->
   <script id="video-large-template" type="text/x-handlebars-template">
-    <div class = "col-8">
-      <div class="video-container">
-        <iframe id="ytplayer" type="text/html" width="640" height="360"
-        src="https://www.youtube.com/embed/{{id}}"
-        frameborder="0"></iframe>
+    <div class="video-container">
+      <iframe id="ytplayer" type="text/html" width="640" height="360"
+      src="https://www.youtube.com/embed/{{id}}"
+      frameborder="0"></iframe>
+      <div class='video-info'>
+        <h4 class="video-title">{{title}}</h4>
+        <p class ="description">Description: {{description}}</p>
       </div>
-        <h1 class="video-title">{{title}}</h1>
-        <p class = "discription">{{description}}</p>
-    </div>
-  </script>
+    </script>
+
+
+    <!--  video list  template -->
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="sidebar row">
+        <div class="col img-container">
+          <img class='thumbnail' data-id={{id}} src ={{thumbnail}}>
+        </div>
+        <div class="col title"
+          <h4 class="video-name" data-id="{{id}}">{{title}}</h4>
+        </div>
+      </div>
+    </script>
+
 
   <script src="js/models/videoModel.js"></script>
   <script src="js/collections/videoCollection.js"></script>
@@ -64,6 +83,7 @@
   <script src="js/views/videoView.js"></script>
   <script src="js/views/appview.js"></script>
   <script src="main.js"></script>
+
 </body>
 
 </html>
