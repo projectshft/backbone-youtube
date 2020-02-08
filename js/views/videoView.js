@@ -1,16 +1,14 @@
 var VideoView = Backbone.View.extend({
-  className: 'video',
 
+//sets the handlebars template for the current video playing and the sidebar
   template: Handlebars.compile($('#video-template').html()),
 
   templateLarge: Handlebars.compile($('#video-large-template').html()),
 
-  initialize: function() {
-    console.log('video veiw rendered')
-  },
-
   render: function(video) {
-    if (video === appModel.toJSON().videos.models[0]){
+    //condition statement to make sure current video is formated into the large video templateLarge
+    //other videos formated in video template
+    if (video === current_video){
       this.$el.html(this.templateLarge(this.model.toJSON()))
 
     }else{

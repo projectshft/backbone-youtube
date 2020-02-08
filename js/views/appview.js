@@ -2,47 +2,34 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
+    //set events for when the user hits the search button and voe when the click on a new video
     'click .submit-video': 'searchForVideo',
-    'click .sidebar-video-click': 'createVideo'
+    'click .sidebar': 'switchVideo'
   },
 
   initialize: function() {
 
     this.largeView = null
-
+    //listens for when the videos are reset
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-    this.listenTo(this.model, 'change:current_video', this.renderLargeVideoView);
+    //wanted to try and change function to call this.model.setCurrentVideo()
+    //set the videos and then render.
+    this.listenTo(this.model, 'change:current_video', this.renderVideos);
   },
 
-  renderPage: function() {
-
+  switchVideo: function(e) {
+    //gets id from the video on side bar that was clicked
+    //calls funcion on appModel to reset value of current video
+    var clickedVideoId = $(e.target).data('id')
+    this.model.changeCurrentVideo(clickedVideoId)
   },
 
+//takes search input value and calls function in collection to insert in url
   searchForVideo: function() {
-    console.log('this is the searched value', this.$('#search-input').val())
     this.model.get('videos').updateVideoUrl(this.$('#search-input').val())
   },
-
-  changeLargeVideo: function(e) {
-    var clickedVideoId = $(e.currentTarget).data().id;
-    this.model.showReviews(clickedVideoId);
-    console.log('this is the clickedVideoId')
-  },
-
-
-
-  renderLargeVideoView: function() {
-    //  if (this.detailView) {
-    //    this.detailView.remove();
-    //}
-    this.largeView = new LargeVideoView({
-      model: this.model.get('current_video')
-    });
-
-
-    this.$('.videos-container').append(this.largeView.render().el);
-  },
-
+//creates and renders videos view
+//should I combine these two functions????
   renderVideo: function(video) {
     var videoView = new VideoView({
       model: video
