@@ -7,8 +7,6 @@ let AppView = Backbone.View.extend({
 
 	},
 
-	template: Handlebars.compile($('#player-template').html()),
-
 	initialize: function() {
 
 		this.$videoList = this.$('.video-list');
@@ -19,9 +17,10 @@ let AppView = Backbone.View.extend({
 
 		//this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
 
-		this.listenTo(this.model, 'change:current_video', this.showCurrentVideo);
+		this.listenTo(this.model, 'change:current_video', this.renderVideos);
 
-		this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+		//need to set to current video
+		this.listenTo(this.model.get('videos'), 'reset', this.showCurrentVideo);
 	},
 
 	//search input will be passed to the new url to fetch search data and render the list of videos
@@ -38,6 +37,9 @@ let AppView = Backbone.View.extend({
 		appModel.get('videos').fetch({ reset: true });
 	},
 
+	showCurrentVideo: function() {
+		//this.getFirstVideo();
+	},
 
 	//move the video picked as current to the player section
 	showCurrentVideo: function(e) {
@@ -48,11 +50,11 @@ let AppView = Backbone.View.extend({
 	},
 
 	//display first element in the player section
-	renderPlayer: function(m) {
-		let params= { m: m.toJSON()}
-		console.log(params)
-		this.$el.find('.player').html(this.template(m.params));
-	},
+	// renderPlayer: function(video) {
+	// 	let playerView = new PlayerView({ model: video });
+
+	// 	this.$player.append(playerView.render().el);
+	// },
 
 	renderVideo: function(video) {
 		let videoView = new VideoView({ model: video });
@@ -62,9 +64,7 @@ let AppView = Backbone.View.extend({
 
 	renderVideos: function() {
 		this.model.get('videos').each(function(m) {
-			//console.log(count)
-			if(this.model.current_video) this.renderPlayer(m);
-			else this.renderVideo(m);
+			this.renderVideo(m);
 		}, this);
 	},
 
