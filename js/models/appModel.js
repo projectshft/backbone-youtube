@@ -21,7 +21,8 @@ var AppModel = Backbone.Model.extend({
 //when the initial fetch is called this function will set the current video to
 //the first video in the collection
   setCurrentVideo: function(){
-    console.log(this.toJSON().videos.models[0])
+    var firstVideo = this.toJSON().videos.models[0]
+    this.set('current_video', firstVideo);
   }
 
 })

@@ -11,17 +11,22 @@ var AppView = Backbone.View.extend({
 
     this.largeView = null
     //listens for when the videos are reset
-    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+    this.listenTo(this.model.get('videos'), 'reset', this.setVideo);
     //wanted to try and change function to call this.model.setCurrentVideo()
     //set the videos and then render.
     this.listenTo(this.model, 'change:current_video', this.renderVideos);
   },
+
 
   switchVideo: function(e) {
     //gets id from the video on side bar that was clicked
     //calls funcion on appModel to reset value of current video
     var clickedVideoId = $(e.target).data('id')
     this.model.changeCurrentVideo(clickedVideoId)
+  },
+
+  setVideo:function(){
+    this.model.setCurrentVideo()
   },
 
 //takes search input value and calls function in collection to insert in url
@@ -31,16 +36,15 @@ var AppView = Backbone.View.extend({
 //creates and renders videos view
 //should I combine these two functions????
   renderVideo: function(video) {
-    var videoView = new VideoView({
-      model: video
-    });
-    this.$('.video-list').append(videoView.render(video).el);
+
   },
 
   renderVideos: function() {
-    this.model.get('videos').each(function(m) {
-
-      this.renderVideo(m);
+    this.model.get('videos').each(function(video) {
+      var videoView = new VideoView({
+        model: video
+      });
+      this.$('.video-list').append(videoView.render(video).el);
     }, this);
   }
 });
