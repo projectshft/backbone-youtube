@@ -13,50 +13,48 @@
 </head>
 
 <body>
-
-<div class='container'>
-    <div class="row container">
-      <div class="col-md-8">
-        <div class="input-group">
-          <input type="text" class="form-control" id="search-input" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-danger submit-video" type="button">Go!</button>
-          </span>
-        </div>
+  <div class="row container">
+    <div class="col-md-8 container">
+      <div class="input-group">
+        <input class="form-control" id="search-input" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn btn-danger submit-video" type="button">Go!</button>
+        </span>
       </div>
     </div>
   </div>
-<div class='container-fluid'
-      <div class='row'>
-        <div class="videos-container">
-          <div class='large-video'></div>
-          <div class="video-list"></div>
-        </div>
+
+  <div class='container-fluid'>
+    <div class="row videos-container">
+      <div class='large-video'>
       </div>
-</div>
+      <div class="video-list container col col-4">
+      </div>
+    </div>
+  </div>
+
 
 
   <script id="video-template" type="text/x-handlebars-template">
-    <div class="sidebar col col-3">
-    <div class="img-container">
-    <img class='thumbnail' data-id={{id}} src ={{thumbnail}}>
+    <div class="sidebar">
+      <div class="img-container clearfix">
+        <img class='thumbnail pull-left' data-id={{id}} src ={{thumbnail}}>
       </div>
       <div class="content-container">
-        <p class="video-name" data-id="{{id}}">{{title}}</p>
+        <h4 class="video-name" data-id="{{id}}">{{title}}</h4>
       </div>
-      </div>
-    </script>
+    </div>
+  </script>
 
   <script id="video-large-template" type="text/x-handlebars-template">
-    <div class="video-container col-7">
-      <iframe id="ytplayer" type="text/html" width="640" height="360"
+    <div class = "col-8">
+      <div class="video-container">
+        <iframe id="ytplayer" type="text/html" width="640" height="360"
         src="https://www.youtube.com/embed/{{id}}"
-        frameborder="0">
-      </iframe>
-    </div>
-    <div class="content-container">
-      <p class="video-title">{{title}}</p>
-      <p class = "discription">{{discription}}</p>
+        frameborder="0"></iframe>
+      </div>
+        <h1 class="video-title">{{title}}</h1>
+        <p class = "discription">{{description}}</p>
     </div>
   </script>
 

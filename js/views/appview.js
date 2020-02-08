@@ -34,12 +34,8 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').updateVideoUrl(this.$('#search-input').val())
   },
 //creates and renders videos view
-//should I combine these two functions????
-  renderVideo: function(video) {
-
-  },
-
   renderVideos: function() {
+  
     this.model.get('videos').each(function(video) {
       var videoView = new VideoView({
         model: video

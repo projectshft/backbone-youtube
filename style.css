@@ -1,17 +1,38 @@
-.form-group{
-  display:block
+iframe{
+  width:100%;
+  height:100%;
+}
+
+img, .content-container{
+  width:50%;
+  float:left;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+
 }
 
 .row{
- margin: 20px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+ display:block;
  float:left;
+
 }
 
+.large-video{
+  float: left;
+  display:block;
+}
 .sidebar{
-  float:left;
-  clear:both;
+  vertical-align: auto;
+  display: inline-block;
+  padding: auto;
 }
 
-.content-container{
 
+
+.video-list{
+float: right;
+display: block;
 }

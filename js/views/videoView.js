@@ -4,12 +4,8 @@ var VideoView = Backbone.View.extend({
 
   $el:$(".video-list"),
 
-  initiate:function(){
-    this.listenTo(this.model.get('current_video'), 'reset', this.removeVideos);
-  },
+  initialize:function(){
 
-  removeVideos:function(){
-    this.remove()
   },
 
   template: Handlebars.compile($('#video-template').html()),
@@ -18,11 +14,12 @@ var VideoView = Backbone.View.extend({
 
   render: function(video) {
 
+    console.log('this', this)
     if (video === appModel.toJSON().current_video){
-      console.log('large video view rendered')
       this.$elLarge.html(this.templateLarge(this.model.toJSON()))
 
     }else{
+  //  if (video === )
       this.$el.html(this.template(this.model.toJSON()))
     }
     return this;
