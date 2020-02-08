@@ -1,8 +1,15 @@
+* {
+  font-family: 'Roboto Slab',serif
+}
+*[lang=zh] {
+  font-family: 'Zhi Mang Xing', cursive;
+}
 .row {
   margin: 20px;
   float: left;
 }
 
+/* Allow playable video and sidebar to be displayed side-by-side */
 .video-player {
   float: left;
   width: 75%;
