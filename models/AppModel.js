@@ -7,23 +7,21 @@ var AppModel = Backbone.Model.extend({
 
       url:'',
 
-      // either true or false
-      //show_reviews: false
     };
   },
 
-  //update the url with the new search query
-  searchYouTube: function(inputSearch) {
-    //console.log('from the searchYouTube: ', inputSearch)
-    this.set('url', `https://www.googleapis.com/youtube/v3/search?key=AIzaSyDszqXVIWTFfliJkuimJHDCj2uTcJi6Yn0&part=snippet&type=video&maxResults=5&q=${inputSearch}`);
+  //need to set current_video to the first video on the list
+  getFirstVideo: function() {
+    let curVideo = this.toJSON().videos.models[0];//videos.at(0).toJSON();
+    console.log(curVideo);
+    this.set('current_video', curVideo);
+
   },
 
-  showVideos: function (id) {
-    // make sure our id is a number
-
-    var allVideos = this.get('videos');
-
-    var currentVideo = allVideos.findWhere({ id: id });
+  switchVideo: function (id) {
+    let allVideos = this.get('videos');
+    console.log(id);
+    let currentVideo = allVideos.findWhere({ id: id });
     this.set('current_video', currentVideo);
   },
 

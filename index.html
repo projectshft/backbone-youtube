@@ -27,18 +27,18 @@
     </div>
     <script type="text/template" id="player-template">
       <div class="player">
-         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{id}}" frameborder="0" id="ytplayer" type="text/html"></iframe>
       </div>  
       <div class="video-desc">{{ title }}</div>
       <div class="video-desc">{{ description }}</div>
     </script>
     <script type="text/template" id="video-template">
-      <div class="content-container">
-        <div class="img-container">
-          <img src="{{ thumbnails }}">
+      <div class="videos-container" >
+        <div class="img-container" data-id={{ id }}>
+          <img data-id={{ id }} src="{{ thumbnails }}">
         </div>
-        <p>{{ id }}</p>
-        <p class="video-title">{{ title }}</p>
+        <p class="video-id" >{{ id }}</p>
+        <p class="video-title" data-id={{ id }} >{{ title }}</p>
         <p>{{ description }}</p>
       </div>
     </script>

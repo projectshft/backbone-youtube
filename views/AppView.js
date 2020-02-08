@@ -3,6 +3,7 @@ let AppView = Backbone.View.extend({
 
 	events: {
 			'click #search-button': 'getVideos',
+			'click  .img-container': 'showCurrentVideo',
 
 	},
 
@@ -16,9 +17,9 @@ let AppView = Backbone.View.extend({
 		this.renderVideos();
 		//this.VideoView = null;
 
-		this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+		//this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
 
-		//this.listenTo(this.model, 'change:current_video', this.renderVideos);
+		this.listenTo(this.model, 'change:current_video', this.showCurrentVideo);
 
 		this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 	},
@@ -31,10 +32,21 @@ let AppView = Backbone.View.extend({
 
 		let inputValue = $('#query').val();
 		//console.log('from getVideos input: ', inputValue)
-		this.model.searchYouTube(inputValue);
+		this.model.get('videos').searchYouTube(inputValue);
 
-		this.renderVideos();
+		//this.renderVideos();
+		appModel.get('videos').fetch({ reset: true });
 	},
+
+
+	//move the video picked as current to the player section
+	showCurrentVideo: function(e) {
+		let clickedVideo = $(e.currentTarget).data('id');
+		this.model.switchVideo(clickedVideo);
+		//this.renderPlayer(??);
+
+	},
+
 	//display first element in the player section
 	renderPlayer: function(m) {
 		let params= { m: m.toJSON()}
@@ -49,12 +61,9 @@ let AppView = Backbone.View.extend({
 	},
 
 	renderVideos: function() {
-		//counter added to render player first and list of video with the rest of the videos
-		let count = 0;
 		this.model.get('videos').each(function(m) {
-			count++;
 			//console.log(count)
-			if(count === 1) this.renderPlayer(m);
+			if(this.model.current_video) this.renderPlayer(m);
 			else this.renderVideo(m);
 		}, this);
 	},
