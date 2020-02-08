@@ -3,7 +3,8 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .search': 'searchVideo'
+    'click .search': 'searchVideo',
+    'click .video-sidebar-img': 'viewNewVideo'
   },
 
   initialize: function () {
@@ -14,7 +15,9 @@ var AppView = Backbone.View.extend({
   },
 
   searchVideo: function () {
-    this.model.get('videos').updateUrl(this.$('#video-name-input').val())
+      this.model.get('videos').updateUrl(this.$('#video-name-input').val())
+      this.$('.main-video').empty();
+      this.$('.video').empty();
   },
 
   renderVideo: function (video) {

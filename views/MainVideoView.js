@@ -1,6 +1,6 @@
 var MainVideoView = Backbone.View.extend({
 
-  className: 'video',
+  className: 'main-video',
 
   template: Handlebars.compile($('#main-video-template').html()),
 
