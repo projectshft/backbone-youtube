@@ -1,10 +1,11 @@
 var VideosCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=kittens&key=AIzaSyAMPe4D1oKrDsEQPUj_9szw7qaiNDoweiU',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=&key=AIzaSyAMPe4D1oKrDsEQPUj_9szw7qaiNDoweiU',
 
   model: VideoModel,
 
-  updateURL: function (query) {
+  updateUrl: function (query) {
     this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=AIzaSyAMPe4D1oKrDsEQPUj_9szw7qaiNDoweiU`
+    appModel.get('videos').fetch({ reset: true });
   },
 
   parse: function(response) {
