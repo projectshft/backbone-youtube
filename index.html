@@ -12,12 +12,13 @@
 </head>
 
 <body>
+    <h2>Youtube-Backbone</h2>
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8 justify-contend">
                 <input id="search"></input>
-                <button is="searchButton" class="btn btn-secondary">search</button>
+                <button id="searchButton" class="btn btn-secondary">search</button>
 
             </div>
             <div class="col-2"></div>
@@ -35,9 +36,16 @@
         </div>
     </div>
 
-    <script>
-    
-    </script>
+    <script id="video-template" type="text/x-handlebars">
+  
+        <div class="embed-responsive embed-responsive-16by9">
+        <iframe id="ytplayer" type="text/html" class="embed-responsive-item" src={{videoUrl}}></iframe>
+      </div>
+        <div id="video-info">
+          <p id="video-title">{{title}}</p>
+          <p id="video-description">{{description}}</p>
+        </div>
+      </script>
 
 
     <script src="models/AppModel.js"></script>

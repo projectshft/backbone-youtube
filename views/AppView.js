@@ -1,15 +1,44 @@
 var AppView = Backbone.View.extend({
-    el: $('body'),
+  el: $('body'),
 
-    events: {
-      'click #searchButton': 'search',
-      
-    },
+  events: {
+    'click #searchButton': 'userSearch',
 
-    initialize: function () {
+  },
 
-      this
-    }
+  initialize: function () {
+    this.$videos = $('#videos-container');
+
+  },
+  
+  template: Handlebars.compile($('#videoPlayer').html()),
+
+  userSearch: function () {
+    
+    searchValue = $('#search').val()
+    console.log('click ', searchValue)
+    this.APIcall(searchValue);
+    //clearing search textarea
+    $('#search').val('');
+  },
+
+  APIcall: function (searchValue) {
+  
+    this.apiSearch = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyAzyJqNn4b003qKWLcKdeUYH47sv4lRQHE&part=snippet&type=video&q=${searchValue}`;
+    var videos = this.model.get('videos')
+    videos.url = this.apiSearch;
+    
+    videos.fetch({
+      success: function () {
+        appModel.set('returnedVideos', true);
+      },
+      error: function () {
+        window.alert('call did not return any vidoes. Please try again.')
+      }
+    });
+    
+    console.log(videos)
+  },
 });
 
 
