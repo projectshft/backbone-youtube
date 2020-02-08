@@ -16,8 +16,32 @@
   </head>
 
   <body>
-
-
+    <div id="buttons">
+      <label> <input id="query" type="text"/><button id="search-button">Search</button></label>
+    </div>
+    <div id="search-container">
+    </div>
+    <div class="player">
+    </div>
+    <div class="video-list">
+    </div>
+    <script type="text/template" id="player-template">
+      <div class="player">
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>  
+      <div class="video-desc">{{ title }}</div>
+      <div class="video-desc">{{ description }}</div>
+    </script>
+    <script type="text/template" id="video-template">
+      <div class="content-container">
+        <div class="img-container">
+          <img src="{{ thumbnails }}">
+        </div>
+        <p>{{ id }}</p>
+        <p class="video-title">{{ title }}</p>
+        <p>{{ description }}</p>
+      </div>
+    </script>
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -27,8 +51,7 @@
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
-    <script src="views/PlayerView.js"></script>
-    <script src="views/VideoListView.js"></script>
+    <script src="views/VideoView.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
   </body>
