@@ -18,6 +18,8 @@
   "homepage": "https://github.com/hcline95/backbone-youtube#readme",
   "dependencies": {
     "backbone": "^1.4.0",
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "handlebars": "^4.7.3",
+    "jquery": "^3.4.1"
   }
 }

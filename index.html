@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>YouTube</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+
+        <input type="text" class="form-control" id="search-input" placeholder="search" />
+        <button class="btn btn-primary submit-video">submit</button>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="main-video col-md-7">
+      </div>
+      <div class="sidebar col-md-5">
+        <div class="header">
+          <h1><i class="fa fa-video">
+        </div>
+
+        <div class="videos-container show">
+          <div class="video-list"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="video-template" type="text/x-handlebars-template">
+    <div class="img-container">
+    <img class='thumbnail' src ={{thumbnail}}>
+      </div>
+      <div class="content-container">
+        <a><p class="view-video" href="#" data-id={{id}}>
+        <p class="video-name">{{title}}</p></a>
+      </div>
+    </script>
+
+  <script id="video-large-template" type="text/x-handlebars-template">
+    <div class="video-container">
+        <iframe id="ytplayer" type="text/html" width="640" height="360"
+        src="https://www.youtube.com/embed/{{id}}"
+        frameborder="0"></iframe>
+      </div>
+      <div class="content-container">
+        <p class="video-title">{{title}}</p>
+        <p class = "discription">{{discription}}</p>
+      </div>
+    </script>
+
+  <script src="js/models/videoModel.js"></script>
+  <script src="js/collections/videoCollection.js"></script>
+  <script src="js/models/appModel.js"></script>
+  <script src="js/views/videoView.js"></script>
+  <script src="js/views/largeVideoView.js"></script>
+  <script src="js/views/appview.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
