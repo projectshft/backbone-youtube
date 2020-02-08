@@ -1,16 +1,41 @@
-.input-group{
-  width:80%;
-  margin:20px auto;
+.input-group {
+  width: 80%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.video-title{
+.video-title {
   text-align: center;
+  border-bottom: solid;
+  border-color: red;
 }
 
-.video-info, .sidebar{
-  margin:20px 0;
+.video-info, .sidebar {
+  margin: 20px 0;
 }
 
-.title{
-  width:100%;
+.video-title {
+  padding-bottom: 20px;
+}
+
+.img-container {
+  display: contents;
+}
+
+body {
+  vertical-align: bottom;
+  margin: auto;
+  background-color: #ddd;
+}
+
+.large-video {
+  padding: 10px;
+  background-color: white;
+}
+
+.sidebar {
+  padding: 10px;
+  background-color: white;
 }

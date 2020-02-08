@@ -35,7 +35,7 @@ var AppView = Backbone.View.extend({
   },
 //creates and renders videos view
   renderVideos: function() {
-  
+
     this.model.get('videos').each(function(video) {
       var videoView = new VideoView({
         model: video

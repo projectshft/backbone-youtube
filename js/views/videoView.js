@@ -14,7 +14,6 @@ var VideoView = Backbone.View.extend({
 
   render: function(video) {
 
-    console.log('this', this)
     if (video === appModel.toJSON().current_video){
       this.$elLarge.html(this.templateLarge(this.model.toJSON()))
 
