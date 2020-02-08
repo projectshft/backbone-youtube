@@ -1,0 +1,13 @@
+.form-group{
+  display:block
+}
+
+.row{
+ margin: 20px;
+}
+
+.sidebar{
+  float: right;
+  display: inline-block;
+  clear:both;
+}

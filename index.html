@@ -14,31 +14,28 @@
 
 <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="form-group">
 
-        <input type="text" class="form-control" id="search-input" placeholder="search" />
-        <button class="btn btn-primary submit-video">submit</button>
+    <div class="row container">
+      <div class="col-md-8">
+        <div class="input-group">
+          <input type="text" class="form-control" id="search-input" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn btn-danger submit-video" type="button">Go!</button>
+          </span>
+        </div>
       </div>
     </div>
-    <div class='row'>
-      <div class="main-video col-md-7">
-      </div>
-      <div class="sidebar col-md-5">
-        <div class="header">
-          <h1><i class="fa fa-video">
-        </div>
-
-        <div class="videos-container show">
+    <div class="container-fluid">
+      <div class='row'>
+        <div class="videos-container">
           <div class="video-list"></div>
-
         </div>
       </div>
     </div>
-  </div>
+
 
   <script id="video-template" type="text/x-handlebars-template">
+    <div class="sidebar col col-7">
     <div class="img-container">
     <img class='thumbnail' src ={{thumbnail}}>
       </div>
@@ -46,19 +43,21 @@
         <a><p class="view-video" href="#" data-id={{id}}>
         <p class="video-name">{{title}}</p></a>
       </div>
+      </div>
     </script>
 
   <script id="video-large-template" type="text/x-handlebars-template">
-    <div class="video-container">
-        <iframe id="ytplayer" type="text/html" width="640" height="360"
+    <div class="video-container col-7">
+      <iframe id="ytplayer" type="text/html" width="640" height="360"
         src="https://www.youtube.com/embed/{{id}}"
-        frameborder="0"></iframe>
-      </div>
-      <div class="content-container">
-        <p class="video-title">{{title}}</p>
-        <p class = "discription">{{discription}}</p>
-      </div>
-    </script>
+        frameborder="0">
+      </iframe>
+    </div>
+    <div class="content-container">
+      <p class="video-title">{{title}}</p>
+      <p class = "discription">{{discription}}</p>
+    </div>
+  </script>
 
   <script src="js/models/videoModel.js"></script>
   <script src="js/collections/videoCollection.js"></script>
