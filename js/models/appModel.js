@@ -10,7 +10,7 @@ var AppModel = Backbone.Model.extend({
   },
 //when a user clicks on a video this function is called
 //it will set the current video to the one they clicked on
-    changeCurrentVideo: function (id) {
+  changeCurrentVideo: function (id) {
     // make sure our id is a number
 
     var allVideos = this.get('videos');

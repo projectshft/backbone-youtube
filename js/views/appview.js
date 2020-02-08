@@ -32,10 +32,11 @@ var AppView = Backbone.View.extend({
 //takes search input value and calls function in collection to insert in url
   searchForVideo: function() {
     this.model.get('videos').updateVideoUrl(this.$('#search-input').val())
+
   },
 //creates and renders videos view
   renderVideos: function() {
-
+  this.$('.video-list').empty()
     this.model.get('videos').each(function(video) {
       var videoView = new VideoView({
         model: video
