@@ -3,20 +3,24 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
 
-      current_video: null,
-    };
-  },
-  showMainVideo: function(id) {
+      current_video: null
 
+    };
+},
+
+  showMainVideo: function(id) {
     var allVideos = this.get('videos');
 
     var currentVideo = allVideos.findWhere({
       id: id
     });
 
-    //when the current beer changes update the url to the new url with the id
+//want to change the main view to the video with this id 
     this.set('current_video', currentVideo);
-    this.get('current_video', currentVideo).get('videos').updateVideoId(id);
-  }
 
+    this.get('current_video', currentVideo);
+
+    console.log('current_video')
+
+  }
 });

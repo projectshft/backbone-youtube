@@ -2,58 +2,67 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
+
     'click .submit-search': 'createSearch',
-    'click .thumbnail': 'viewVideo'
+
+    'click .thumbnail': 'viewCurrentVideo'
   },
 
-  template: Handlebars.compile($('#main-video-template').html()),
-
   initialize: function() {
-    this.$Input = this.$('#search-input');
 
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-    this.listenTo(this.model, 'change:current_video', this.render);
 
-    this.renderVideos();
+    // this.listenTo(this.model, 'change:current_video', this.renderMainVideo('current_video'));
+
   },
 
   createSearch: function() {
-    console.log('does this buttonwork?')
-    this.model.get('videos').addVideo(
-      this.$Input.val());
+  //grabs the input value from the search form
+      var query = this.$('#search-input').val();
+      //updates the url based on the search form
+      this.model.get('videos').updateVideoURL(query);
+      //
+      this.model.get('videos').fetch({ reset: true });
   },
 
-  viewVideo: function(e) {
+  viewCurrentVideo: function(e) {
+    console.log('does this button work?')
     var clickedVideoId = $(e.currentTarget).data().id;
 
-    this.model.showVideo(clickedVideoId);
+    this.model.showMainVideo(clickedVideoId);
+
+
   },
 
-  renderVideo: function(video) {
+  renderSmallVideo: function(video) {
     var smallVideoView = new SmallVideoView({
       model: video
     });
     this.$('.small-video-container').append(smallVideoView.render().el);
-    // this.renderMainVideo();
-  },
+    return this
 
-  renderVideos: function() {
-    this.model.get('videos').each(function(m) {
-      this.renderVideo(m);
-    }, this);
   },
 
   renderMainVideo: function(video) {
-    var mainVideoView = new MainVideoView({
+
+    mainVideoView = new MainVideoView({
       model: video
     });
-    this.$('.main-video-container').append(mainVideoView.render().el)
+
+    this.$('.main-video-container').append(mainVideoView.render().el);
   },
 
-  render: function() {
-    this.$el.html(this.template(this.model.toJSON()));
+  renderVideos: function() {
 
-    return this;
+    this.model.get('videos').each(function(m) {
+      this.renderSmallVideo(m);
+    }, this);
+
+      this.renderMainVideo(this.model.get('videos').at(0));
+  },
+
+  changeCurrentVideo: function(){
+
   }
 
 });

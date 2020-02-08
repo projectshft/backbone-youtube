@@ -3,7 +3,7 @@ var VideosCollection = Backbone.Collection.extend({
 
   model: VideoModel,
 
-  updateVideoId: function(query) {
+  updateVideoURL: function(query) {
     this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=AIzaSyD9a8mfFIJuCZwzS57LwDG7OBrL3FX-VlE`
   },
 
