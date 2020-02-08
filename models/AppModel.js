@@ -15,12 +15,11 @@ var AppModel = Backbone.Model.extend({
       id: id
     });
 
-//want to change the main view to the video with this id 
+//want to change the main view to the video with this id
     this.set('current_video', currentVideo);
 
     this.get('current_video', currentVideo);
 
-    console.log('current_video')
 
   }
 });

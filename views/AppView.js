@@ -12,6 +12,7 @@ var AppView = Backbone.View.extend({
 
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
+
     // this.listenTo(this.model, 'change:current_video', this.renderMainVideo('current_video'));
 
   },
@@ -23,6 +24,8 @@ var AppView = Backbone.View.extend({
       this.model.get('videos').updateVideoURL(query);
       //
       this.model.get('videos').fetch({ reset: true });
+      this.$('.main-video').empty();
+      this.$('.video').empty();
   },
 
   viewCurrentVideo: function(e) {
