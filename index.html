@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -7,16 +8,44 @@
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
-  <title></title>
+    <title></title>
 </head>
-<body> 
-    
 
-      <script src="AppModel.js"></script>
-      <script src="PlayerModel.js"></script>
-      <script src="VideosCollections.js"></script>
-      <script src="AppView.js"></script>
-      <script src="PlayerView.js"></script>
-      <script type="text/javascript" src="main.js"></script>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 justify-contend">
+                <input id="search"></input>
+                <button is="searchButton" class="btn btn-secondary">search</button>
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+        </div>
+
+        <div class="row form-row">
+            <div class="col-1"></div>
+            <div id="videoPlayer" class="col-7 justify-contend-center">video player
+
+            </div>
+            <div class="col-4">
+                tumb
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+    </script>
+
+
+    <script src="models/AppModel.js"></script>
+    <script src="models/PlayerModel.js"></script>
+    <script src="colections/VideoCollection.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/PlayerView.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
+
 </html>
