@@ -28,34 +28,18 @@
           </div>
           <div class="row">
               <div class="col-md-5 offset-md-1">
-                <div class="video-list">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bnVUHWCynig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-container">
+                 <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/bnVUHWCynig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
                 </div>
                 <div class="description">
-                    <h5>Video Title:</h5><p>Beyonce - Halo</p>
-                    <h5>Video Description:</h5><p>Yada Yada</p>
+                    <!--<h5>Video Title:</h5><p>Beyonce - Halo</p>-->
+                    <!--<h5>Video Description:</h5><p>Yada Yada</p>-->
                 </div>
               </div>
               <div class="col-md-4 offset-md-1">
-                <div class="video-container">
-                    <div class="video-img"><img class="float-left" src="https://i.ytimg.com/vi/WDZJPJV__bQ/default.jpg"></div>
-                    <div class="video-title-container align-self-center"><p class="video-title">Beyoncé - Formation</p></div>
-                </div>
-                <div class="video-container">
-                        <div class="video-img"><img class="float-left" src="https://i.ytimg.com/vi/WDZJPJV__bQ/default.jpg"></div>
-                        <div class="video-title-container align-self-center"><p class="video-title">Beyoncé - Formation</p></div>
-                </div>
-                <div class="video-container">
-                        <div class="video-img"><img class="float-left" src="https://i.ytimg.com/vi/WDZJPJV__bQ/default.jpg"></div>
-                        <div class="video-title-container align-self-center"><p class="video-title">Beyoncé - Formation</p></div>
-                </div>
-                <div class="video-container">
-                        <div class="video-img"><img class="float-left" src="https://i.ytimg.com/vi/WDZJPJV__bQ/default.jpg"></div>
-                        <div class="video-title-container align-self-center"><p class="video-title">Beyoncé - Formation</p></div>
-                </div>
-                <div class="video-container">
-                        <div class="video-img"><img class="float-left" src="https://i.ytimg.com/vi/WDZJPJV__bQ/default.jpg"></div>
-                        <div class="video-title-container align-self-center"><p class="video-title">Beyoncé - Formation</p></div>
+                <div class="video-list">
+                    <!--<div class="video-img"><img class="float-left" src="https://i.ytimg.com/vi/WDZJPJV__bQ/default.jpg"></div>-->
+                    <!--<div class="video-title-container align-self-center"><p class="video-title">Beyoncé - Formation</p></div>-->
                 </div>
               </div>
           </div>
@@ -63,8 +47,10 @@
     
         <script id="video-template" type="text/x-handlebars-template">
           <div class="video-container">
-            <img src="{{thumbnail_url}}">
-            <p class="video-title">{{title}}</p>
+            <div class="video-img"><img class="left" src="{{thumbnail_url}}"></div>
+            <div class="video-title-container align-self-center"><p class="video-title">{{title}}</p></div>
+            <!--<img src="{{thumbnail_url}}">-->
+            <!--<p class="video-title">{{title}}</p>-->
           </div>
         </script>
         <script id="video-description-template" type="text/x-handlebars-template">

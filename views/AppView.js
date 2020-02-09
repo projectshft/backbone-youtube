@@ -7,7 +7,7 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
       this.$videoList = this.$('.video-list');
-      this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+      this.listenTo(this.model.get('videos'), 'reset', this.renderVideo);
       
   },
     
@@ -17,11 +17,16 @@ var AppView = Backbone.View.extend({
 
   renderVideo: function (video){
       var videoView = new VideoView({ model: video });
+
       this.$videoList.append(videoView.render().el)
   },
   
-  // renderMainVideo: function (){
-  //     var 
-  // }
+  renderVideos: function(){
+    //go through each video, send it to renderVideo
+    //to get it render to the page.
+    this.model.get('videos').each(function(m){
+      this.renderVideo(m)
+    }, this)
+  }
 
 });
