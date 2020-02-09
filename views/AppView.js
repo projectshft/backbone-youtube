@@ -26,7 +26,7 @@ let AppView = Backbone.View.extend({
 
 		let inputValue = $('#query').val();
 		//console.log('from getVideos input: ', inputValue)
-		this.model.get('videos').searchYouTube(inputValue);
+		this.model.get('videos').searchYouTube(inputValue.trim());
 		//get videos to display after the serach
 		appModel.get('videos').fetch({ reset: true });
 
