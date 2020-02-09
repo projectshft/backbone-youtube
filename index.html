@@ -16,10 +16,14 @@
 
   <div class="container">
 
-<!-- search bar row -->
+    <!-- search bar row -->
     <div class="row searchbar">
       <div class="col">
-        <div class="input-group">
+      <!-- error message toggles -->
+        <div class="error d-none row">
+          <p>We are sorry. You're search could not be completed. Please try again later.</p>
+        </div>
+        <div class="input-group row">
           <input class="form-control" id="search-input" placeholder="Search">
           <span class="input-group-btn">
             <button class="btn btn-danger submit-video" type="button">Go!</button>
@@ -27,7 +31,7 @@
         </div>
       </div>
     </div>
-<!-- videos row -->
+    <!-- videos row -->
     <div class="row videos">
 
 
@@ -40,8 +44,7 @@
       <!-- Videos list column -->
       <div class='col'>
         <h4 class='up-next'>Click to play the next video...</h4>
-        <div class='video-list'
-        <!-- video list template should go here -->
+        <div class='video-list' <!-- video list template should go here -->
         </div>
       </div>
 
@@ -64,9 +67,9 @@
     </script>
 
 
-    <!--  video list  template -->
-    <script id="video-template" type="text/x-handlebars-template">
-      <div class="sidebar row">
+  <!--  video list  template -->
+  <script id="video-template" type="text/x-handlebars-template">
+    <div class="sidebar row">
         <div class="col img-container">
           <img class='thumbnail' data-id={{id}} src ={{thumbnail}}>
         </div>

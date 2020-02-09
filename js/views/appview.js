@@ -8,6 +8,8 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function() {
+    //calls fetch when new view is created
+    this.model.get('videos').fetch({ reset: true, error:function(){console.log('error')}});
     //listens for when the videos are reset
     this.listenTo(this.model.get('videos'), 'reset', this.setVideo);
     //wanted to try and change function to call this.model.setCurrentVideo()
@@ -15,10 +17,10 @@ var AppView = Backbone.View.extend({
     this.listenTo(this.model, 'change:current_video', this.renderVideos);
   },
 
-//when the collection resets this function is called
-//calls a function in the appModel to set the value of the current-video to
-//the first video in collection
-  setVideo:function(){
+  //when the collection resets this function is called
+  //calls a function in the appModel to set the value of the current-video to
+  //the first video in collection
+  setVideo: function() {
     this.model.setCurrentVideo()
   },
 
@@ -29,15 +31,17 @@ var AppView = Backbone.View.extend({
     this.model.changeCurrentVideo(clickedVideoId)
   },
 
-//takes search input value and calls function in collection to insert in url
-//then refetch information
+  //takes search input value and calls function in collection to insert in url
+  //then refetches information
   searchForVideo: function() {
+    $('.error').addClass('d-none')
     this.model.get('videos').updateVideoUrl(this.$('#search-input').val())
+    this.model.get('videos').fetch({ reset: true, error:function(){console.log('error')}})
   },
-  
-//creates and renders videos view
+
+  //creates and renders videos view
   renderVideos: function() {
-  this.$('.video-list').empty()
+    this.$('.video-list').empty()
     this.model.get('videos').each(function(video) {
       var videoView = new VideoView({
         model: video
