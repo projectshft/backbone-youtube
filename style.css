@@ -1,0 +1,36 @@
+.col-md-8 {
+  margin-left: 80px;
+}
+
+.col-md-2 {
+  width: 180px;
+  float: right;
+  border: solid;
+  border-width: 3px;
+  margin-top: 47px;
+}
+
+#backbone {
+  font-family: Brush Script MT;
+}
+
+h1 {
+  display: inline-block;
+}
+
+iframe {
+  margin-top: 50px;
+}
+
+.sidebar-container {
+  margin-top: 50px;
+}
+
+.video-details-container {
+  border: solid;
+  border-width: 3px;
+  height: auto;
+  width: 768px;
+  padding: 15px;
+  display: inline-block;;
+}

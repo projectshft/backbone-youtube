@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -10,47 +11,60 @@
   <script src="node_modules/backbone/backbone-min.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
 
-<title>BackBone-YouTube</title>
+  <title>BackBone-YouTube</title>
 </head>
+
 <body>
-  <div class="container col-md-7">
+  <div class="container col-md-9">
     <div class="row">
-        <div class="header">
-          </div>
-          </div>
-          <div class="form-group">
-            <br>
-            <label>Video Search</label>
-            <br>
-            <input type="text" class="form-control" id="video-name-input" placeholder="Search Videos">
-            <br>
-            <button class="btn btn-primary search">Search</button>
-          </div>
+      <div class="header">
+        <br>
+        <div align="left">
+          <h1>YouTube</h1>
+        </div>
+        <div align="right">
+          <h1 id="backbone">with BackBone</h1>
         </div>
 
-    <div class="row">
-      <div class="main-video-container col-md-9 text-center">
-          main video
-      </div>
-      <div class="video-sidebar-container col-md-3 text-center">
-        video sidebar
       </div>
     </div>
+    <div class="form-group">
 
-  <script id="main-video-template" type="text/x-handlebars-template" >
+      <br>
+      <input type="text" class="form-control" id="video-name-input" placeholder="Search Videos">
+      <br>
+      <button class="btn btn-danger search">Search</button>
+      <br>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="main-video-container col-md-8 text-center">
+    </div>
+    <div class="video-sidebar-container col-md-2 text-center">
+    </div>
+  </div>
+
+  <script id="main-video-template" type="text/x-handlebars-template">
     <div class="video-container">
-      <iframe id="ytplayer" type="text/html" width="640" height="360"
+      <iframe id="ytplayer" type="text/html" width="768" height="432"
       src="https://www.youtube.com/embed/{{id}}" frameborder="0"></iframe>
     </div>
     <div class="video-details-container">
-      <h4 class="video-title" data-id="{{id}}">{{title}}</h4>
-      <p class="video-description">{{description}}</p>
+      <br>
+      <h4 class="video-title text-left">{{title}}</h4>
+      <br>
+      <p class="video-description text-left">{{description}}</p>
+      <br>
     </div>
   </script>
 
-  <script id="video-sidebar-template" type="text/x-handlebars-template" >
-      <img class="video-sidebar-img" src="{{thumbnail}}">
-      <p class="video-title">{{title}}</p>
+  <script id="video-sidebar-template" type="text/x-handlebars-template">
+    <div class="sidebar-container">
+        <img class="video-sidebar-img" data-id="{{id}}"src="{{thumbnail}}">
+        <br>
+        <a href=# class="video-title-sidebar" data-id="{{id}}">{{title}}</a>
+    </div>
   </script>
 
   <script src="models/VideoModel.js"></script>
@@ -62,4 +76,5 @@
   <script src="main.js"></script>
 
 </body>
+
 </html>
