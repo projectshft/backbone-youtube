@@ -3,7 +3,6 @@ let AppView = Backbone.View.extend({
 
 	events: {
 			'click #search-button': 'getVideos',
-			//'click  .img-container': 'showVideoToPlay',
 	},
 
 	template: Handlebars.compile($('#player-template').html()),
