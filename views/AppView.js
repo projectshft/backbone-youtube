@@ -10,31 +10,31 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
 
+    //
+    this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo);
+    //
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-
-
-    // this.listenTo(this.model, 'change:current_video', this.renderMainVideo('current_video'));
 
   },
 
   createSearch: function() {
-  //grabs the input value from the search form
-      var query = this.$('#search-input').val();
-      //updates the url based on the search form
-      this.model.get('videos').updateVideoURL(query);
-      //
-      this.model.get('videos').fetch({ reset: true });
-      this.$('.main-video').empty();
-      this.$('.video').empty();
+    //grabs the input value from the search form
+    var query = this.$('#search-input').val();
+    //updates the url based on the search form
+    this.model.get('videos').updateVideoURL(query);
+    
+    this.model.get('videos').fetch({
+      reset: true
+    });
+
+    this.$('.main-video').empty();
+    this.$('.video').empty();
   },
 
   viewCurrentVideo: function(e) {
-    console.log('does this button work?')
     var clickedVideoId = $(e.currentTarget).data().id;
 
     this.model.showMainVideo(clickedVideoId);
-
-
   },
 
   renderSmallVideo: function(video) {
@@ -61,11 +61,20 @@ var AppView = Backbone.View.extend({
       this.renderSmallVideo(m);
     }, this);
 
-      this.renderMainVideo(this.model.get('videos').at(0));
+    this.renderMainVideo(this.model.get('videos').at(0));
+
   },
 
-  changeCurrentVideo: function(){
-
+  //
+  renderCurrentVideo: function() {
+    //
+    this.currentView = new MainVideoView({
+      model: this.model.get('current_video')
+    });
+    this.$('.main-video').empty();
+    this.renderMainVideo(this.model.get('current_video'));
+    this.$('.main-video-containter').append(this.currentView.render().el, this)
   }
+
 
 });

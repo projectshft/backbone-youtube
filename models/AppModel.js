@@ -5,6 +5,8 @@ var AppModel = Backbone.Model.extend({
 
       current_video: null
 
+
+
     };
 },
 
@@ -17,9 +19,6 @@ var AppModel = Backbone.Model.extend({
 
 //want to change the main view to the video with this id
     this.set('current_video', currentVideo);
-
-    this.get('current_video', currentVideo);
-
 
   }
 });

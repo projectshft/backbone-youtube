@@ -1,5 +1,5 @@
 var VideosCollection = Backbone.Collection.extend({
-  url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=kittens&key=AIzaSyD9a8mfFIJuCZwzS57LwDG7OBrL3FX-VlE`,
+  url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=dogs&key=AIzaSyD9a8mfFIJuCZwzS57LwDG7OBrL3FX-VlE`,
 
   model: VideoModel,
 
