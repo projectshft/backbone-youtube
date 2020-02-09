@@ -12,39 +12,39 @@
 </head>
 
 <body>
-    <h2>Youtube-Backbone</h2>
+    <h2 class="text-center font-weight-bold">Youtube-Backbone</h2>
     <div class="container">
         <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8 justify-contend">
-                <input id="search"></input>
-                <button id="searchButton" class="btn btn-secondary">search</button>
-
+            <div class="col-md-6 offset-md-4">
+                <div class="col-8 text-center">
+                    <input id="search" placeholder="search for..."></input>
+                    <button id="searchButton" class="btn btn-danger ">search</button>
+                </div>
             </div>
-            <div class="col-2"></div>
-        </div>
-        </div>
 
-        <div class="row form-row">
-            <div class="col-1"></div>
-            <div id="videoPlayer" class="col-7 justify-contend-center">video player
-
+        </div>
+        <div class="row m-5 p-3 mb-5 bg-white rounded">
+            <div class="col-md-8 " id="videoPlayer">
             </div>
-            <div class="col-4">
-                tumb
+            <div class="col-md-4 shadow p-3 mb-5 bg-white rounded" id="thumbnails">
             </div>
         </div>
     </div>
 
-    <script id="video-template" type="text/x-handlebars">
-  
-        <div class="embed-responsive embed-responsive-16by9">
-        <iframe id="ytplayer" type="text/html" class="embed-responsive-item" src={{videoUrl}}></iframe>
-      </div>
-        <div id="video-info">
-          <p id="video-title">{{title}}</p>
-          <p id="video-description">{{description}}</p>
+
+    <script id="mainTemplate" type="text/x-handlebars">
+        <div class="embed-responsive embed-responsive-16by9 shadow p-3 mb-5 bg-white rounded">
+            <iframe type="text/html" class="embed-responsive-item" src={{videoUrl}}></iframe>
         </div>
+        <div id="video-info" class="shadow p-3 mb-5 bg-white rounded">
+          <p id="video-title" class="text-center font-weight-bold">{{title}}</p>
+          <p id="video-description" class="">{{description}}</p>
+        </div>
+      </script>
+
+    <script id="thumbnailTemplate" type="text/x-handlebars">
+        <div class="col"><img class="img-fluid" src={{thumbnailUrl}}></div>
+        <div class="col"><p class="align-middle font-italic">{{title}}</p></div>
       </script>
 
 
