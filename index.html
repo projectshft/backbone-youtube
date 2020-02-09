@@ -1,11 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- <!DOCTYPE html> -->
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Jay's Backbone Youtube Model</title>
 </head>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 border-bottom">
+      <h3>Jay's Amazing Backbone Youtube Model </h3>
+    </div>
+  </div>
+</div>
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control search-input" placeholder="Enter Search Term" aria-label="Enter YouTube Search Term"
+            aria-describedby="search-button" required>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="search-button">Search Videos</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 current-video"></div>
+          <div class="col-md-3 offset-md-2 video-queue"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="current-video-template" type="text/x-handlebars-template">
     
+    <div class="content-container">
+      <iframe width="580" height="300" src="{{embedUrl}}" frameborder="0"
+        gesture="media" allow="accelerometer; autoplay; encrypted-media;" allowfullscreen></iframe>
+    </div>
+    <div class='description-container'>
+      <p>{{title}}</p>
+      <p>{{description}}</p>
+    </div>
+    
+  </script>
+
+  <script id="video-card-template" type="text/x-handlebars-template">
+
+    <div class="card flex-row flex-wrap" data-id={{id}}>
+      <div class="card-header border-0">
+        <img src="{{thumbnailUrl}}" alt="">
+      </div>
+      <div class="card-block px-2">
+        <h6 class="card-title">{{title}}</h6>
+      </div>
+    </div>
+    
+  </script>
+
+  
+
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/Videocollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/CurrentVideoView.js"></script>
+  <script src="views/VideoCardView.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>
