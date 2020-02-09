@@ -3,7 +3,8 @@ var VideoModel = BackBone.Model.extend({
         return {
             title: '',
             description: '',
-            thumbnail_url: ''
+            thumbnail_url: '',
+            videoId: ''
         }
     }
 })
