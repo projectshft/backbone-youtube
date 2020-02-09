@@ -1,3 +1,4 @@
+//the Video Model 
 var VideoModel = Backbone.Model.extend({
   idAttribute: '_id',
 

@@ -1,6 +1,6 @@
-
-//the Main Video view including rendering Handlebars template
+//the mainVideoView belongs to the videoMode and renders the Handlebars template
 var MainVideoView = Backbone.View.extend({
+  //creates a new element with the class main-video to bind to the el
   className: 'main-video',
 
   template: Handlebars.compile($('#main-video-template').html()),

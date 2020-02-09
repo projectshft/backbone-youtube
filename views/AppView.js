@@ -1,8 +1,9 @@
 //has a model -- needs to render and then it's delegating smallVideoviews and mainVideoViews
 var AppView = Backbone.View.extend({
-//Instead of generating a new element, bind to the existing skeleton of the App already present in the HTML.
+
   el: $('body'),
 
+  //two click events in our AppView searchForVideos & getNewVideoId
   events: {
 
     'click .submit-search': 'searchForVideos',
@@ -10,12 +11,13 @@ var AppView = Backbone.View.extend({
     'click .thumbnail': 'getNewVideoId'
   },
 
+//At initalization, we listen for two events when we reset the collection
+//when the current_video is changed and then render the new Main Video
   initialize: function() {
-    //
-    this.listenTo(this.model, 'change:current_video', this.renderNewVideo);
-    //
+    //which renderVideos (which renders the smallVideos and the mainVideo)
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
+    this.listenTo(this.model, 'change:current_video', this.renderNewMainVideo);
   },
 
   searchForVideos: function() {
@@ -23,19 +25,20 @@ var AppView = Backbone.View.extend({
     var query = this.$('#search-input').val();
     //updates the url based on the search form
     this.model.get('videos').updateVideoURL(query);
-
+    //fetches  a new video collection 
     this.model.get('videos').fetch({
       reset: true
     });
-
+    //empties the HTML so we can append the new video
     this.$('.main-video').empty();
     this.$('.video').empty();
   },
-
+//when you click on a thumbnail of the smallVideos this captures its id by a data-attribute
+//the listenTo function is also called bc the current_video is changed and it renders the new Main Video
   getNewVideoId: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
-
-    this.model.showMainVideo(clickedVideoId);
+//and it calls the showMainVideo function (in the appModel) which sets the current_video to the new video Clicked
+    this.model.setCurrentVideo(clickedVideoId);
   },
 
   renderSmallVideo: function(video) {
@@ -57,7 +60,7 @@ var AppView = Backbone.View.extend({
     this.$('.main-video-container').append(mainVideoView.render().el);
   },
   //
-  renderNewVideo: function() {
+  renderNewMainVideo: function() {
     //
     this.currentView = new MainVideoView({
       model: this.model.get('current_video')
@@ -69,11 +72,11 @@ var AppView = Backbone.View.extend({
 
   //
   renderVideos: function() {
-
+//loops through each small video and renders with the Handlesbars template
     this.model.get('videos').each(function(m) {
       this.renderSmallVideo(m);
     }, this);
-
+//renders the first video in the collection
     this.renderMainVideo(this.model.get('videos').at(0));
 
   }

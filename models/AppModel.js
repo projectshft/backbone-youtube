@@ -10,7 +10,7 @@ var AppModel = Backbone.Model.extend({
 
 //this function takes in the id captures from the video from clicking the thumbnail
 //and sets that video to current_video
-  showMainVideo: function(id) {
+  setCurrentVideo: function(id) {
     var allVideos = this.get('videos');
 
     var currentVideo = allVideos.findWhere({

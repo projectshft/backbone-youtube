@@ -3,6 +3,8 @@ var VideosCollection = Backbone.Collection.extend({
   url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=dogs&key=AIzaSyD9a8mfFIJuCZwzS57LwDG7OBrL3FX-VlE`,
 
   model: VideoModel,
+
+
   //updates the URL when the search input is entered in the form searchForVideos function is called
   updateVideoURL: function(query) {
     this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=AIzaSyD9a8mfFIJuCZwzS57LwDG7OBrL3FX-VlE`
