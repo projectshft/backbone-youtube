@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <div class="container col-md-9">
+  <div class="container col-md-6 offset-md-3">
     <div class="row">
       <div class="header">
         <br>
@@ -25,23 +25,22 @@
         <div align="right">
           <h1 id="backbone">with BackBone</h1>
         </div>
-
       </div>
+     </div>
     </div>
-    <div class="form-group">
-
-      <br>
-      <input type="text" class="form-control" id="video-name-input" placeholder="Search Videos">
-      <br>
-      <button class="btn btn-danger search">Search</button>
-      <br>
-    </div>
-  </div>
+    <form class="search-form col-md-6 offset-md-3">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" id="video-name-input" class="form-control" placeholder="Search Videos"></input>
+          <button type="button" class="btn btn-danger search">Search</button>
+        </div>
+      </div>
+    </form>
 
   <div class="row">
     <div class="main-video-container col-md-8 text-center">
     </div>
-    <div class="video-sidebar-container col-md-2 text-center">
+    <div class="video-sidebar-container col-md-3 text-center">
     </div>
   </div>
 
@@ -61,9 +60,14 @@
 
   <script id="video-sidebar-template" type="text/x-handlebars-template">
     <div class="sidebar-container">
+      <div class="row">
+      <div class="sidebar-img-container">
         <img class="video-sidebar-img" data-id="{{id}}"src="{{thumbnail}}">
         <br>
-        <a href=# class="video-title-sidebar" data-id="{{id}}">{{title}}</a>
+        <a href=# class="video-title-sidebar text-center" data-id="{{id}}">{{title}}</a>
+        <br>
+      </div>
+      </div>
     </div>
   </script>
 

@@ -17,11 +17,14 @@ var AppView = Backbone.View.extend({
   },
 
   searchVideo: function () {
-      this.model.get('videos').updateUrl(this.$('#video-name-input').val())
-      this.$('.main-video').empty();
-      this.$('.video').empty();
-  },
-
+    if(this.$('#video-name-input').val() == '') {
+      alert('Error. Search input cannot be empty.')
+    } else {
+    this.model.get('videos').updateUrl(this.$('#video-name-input').val())
+    this.$('.main-video').empty();
+    this.$('.video').empty();
+  }
+},
   viewVideo: function (e) {
     var clickedVideoId = $(e.currentTarget).data().id;
     this.model.showVideo(clickedVideoId);

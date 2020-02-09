@@ -3,7 +3,7 @@ var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideosCollection(),
-      main_video: false,
+      current_video: null,
     }
   },
   showVideo: function (id) {
