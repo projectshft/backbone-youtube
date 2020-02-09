@@ -19,12 +19,15 @@ var AppView = Backbone.View.extend({
   template: Handlebars.compile($('#mainTemplate').html()),
 
   userSearch: function () {
-    
+    // get search tems and check for empty search field
     searchValue = $('#search').val()
-    console.log('click ', searchValue)
+    if (searchValue.length < 2) {
+      alert ('can not submit empty search.')
+    } else {
     this.APIcall(searchValue);
     //clearing search textarea
-    $('#search').val('');
+    $('#search').val(''); 
+    }
   },
 
   renderVideos: function(video){

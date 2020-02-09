@@ -25,7 +25,7 @@ var VideoView = Backbone.View.extend({
     toggleHide: function () {
         this.$el.toggleClass('d-none');
     },
-
+    // switching main video view
     switchVideo: function () {
         var currentMainVideo = appModel.get('videos').findWhere({
             mainVideo: true
