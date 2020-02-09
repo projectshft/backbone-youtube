@@ -1,5 +1,3 @@
-//Initial Commit Placeholder //
-
 VideoModel = Backbone.Model.extend({
   idAttribute: 'id',
   defaults: {
