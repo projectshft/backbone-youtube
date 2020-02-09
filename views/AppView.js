@@ -3,8 +3,7 @@ let AppView = Backbone.View.extend({
 
 	events: {
 			'click #search-button': 'getVideos',
-			'click  .img-container': 'showVideoToPlay',
-
+			//'click  .img-container': 'showVideoToPlay',
 	},
 
 	template: Handlebars.compile($('#player-template').html()),
@@ -13,17 +12,11 @@ let AppView = Backbone.View.extend({
 
 		this.$videoList = this.$('.video-list');
 		this.$player = this.$('.player');
-		
-		//this.VideoView = null;
 
-		this.renderVideos();
+		//listening on the change of the video to show in player section
+		this.listenTo(this.model.get('videos'), 'change:selectedVideo', this.render);
 
-		//this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
-
-		this.listenTo(this.model, 'change:current_video', this.renderVideos);
-
-		//need to set to current video
-		this.listenTo(this.model.get('videos'), 'reset', this.showCurrentVideo);
+		this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 	},
 
 	//search input will be passed to the new url to fetch search data and render the list of videos
@@ -35,35 +28,31 @@ let AppView = Backbone.View.extend({
 		let inputValue = $('#query').val();
 		//console.log('from getVideos input: ', inputValue)
 		this.model.get('videos').searchYouTube(inputValue);
-
-		//this.renderVideos();
+		//get videos to display after the serach
 		appModel.get('videos').fetch({ reset: true });
 
-		this.clearSearchBox();
+		this.clearSearch();
 	},
 
-	showCurrentVideo: function() {
-		this.model.getFirstVideo();
+	render: function(){
+		//get the first video to display in player section
+		this.selectedVideo = this.model.get('videos').findWhere({selectedVideo: true});
 
-		this.$player.append()
+		//change player section when different video is choosen
+		if(this.selectedVideo){
+		  this.$player.empty();
+		  //put first video in the player container
+		  this.$player.append(this.template(this.selectedVideo.attributes));
+		  //update list of videos
+		  this.model.get('videos');
+		}
+		return this;
 	},
-
-	//move the video picked as current to the player section
-	showVideoToPlay: function(e) {
-		let clickedVideo = $(e.currentTarget).data('id');
-		this.model.switchVideo(clickedVideo);
-		//this.renderPlayer(??);
-
-	},
-
-	//display first element in the player section
-	// renderPlayer: function(video) {
-	// 	let playerView = new PlayerView({ model: video });
-
-	// 	this.$player.append(playerView.render().el);
-	// },
 
 	renderVideo: function(video) {
+		//set the first video in the array to selected to display in player container
+		this.model.get('videos').at(0).set('selectedVideo', true);
+
 		let videoView = new VideoView({ model: video });
 
 		this.$videoList.append(videoView.render().el);
@@ -75,7 +64,7 @@ let AppView = Backbone.View.extend({
 		}, this);
 	},
 
-	clearSearchBox: function(){
+	clearSearch: function(){
 		$('#query').val('');
 	}
 
