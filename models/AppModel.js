@@ -5,11 +5,11 @@ var AppModel = Backbone.Model.extend({
 
       current_video: null
 
-
-
     };
 },
 
+//this function takes in the id captures from the video from clicking the thumbnail
+//and sets that video to current_video
   showMainVideo: function(id) {
     var allVideos = this.get('videos');
 
@@ -17,8 +17,6 @@ var AppModel = Backbone.Model.extend({
       id: id
     });
 
-//want to change the main view to the video with this id
     this.set('current_video', currentVideo);
-
   }
 });

@@ -1,28 +1,29 @@
+//has a model -- needs to render and then it's delegating smallVideoviews and mainVideoViews
 var AppView = Backbone.View.extend({
+//Instead of generating a new element, bind to the existing skeleton of the App already present in the HTML.
   el: $('body'),
 
   events: {
 
-    'click .submit-search': 'createSearch',
+    'click .submit-search': 'searchForVideos',
 
-    'click .thumbnail': 'viewCurrentVideo'
+    'click .thumbnail': 'getNewVideoId'
   },
 
   initialize: function() {
-
     //
-    this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo);
+    this.listenTo(this.model, 'change:current_video', this.renderNewVideo);
     //
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
   },
 
-  createSearch: function() {
+  searchForVideos: function() {
     //grabs the input value from the search form
     var query = this.$('#search-input').val();
     //updates the url based on the search form
     this.model.get('videos').updateVideoURL(query);
-    
+
     this.model.get('videos').fetch({
       reset: true
     });
@@ -31,7 +32,7 @@ var AppView = Backbone.View.extend({
     this.$('.video').empty();
   },
 
-  viewCurrentVideo: function(e) {
+  getNewVideoId: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
 
     this.model.showMainVideo(clickedVideoId);
@@ -46,6 +47,7 @@ var AppView = Backbone.View.extend({
 
   },
 
+  //
   renderMainVideo: function(video) {
 
     mainVideoView = new MainVideoView({
@@ -54,7 +56,18 @@ var AppView = Backbone.View.extend({
 
     this.$('.main-video-container').append(mainVideoView.render().el);
   },
+  //
+  renderNewVideo: function() {
+    //
+    this.currentView = new MainVideoView({
+      model: this.model.get('current_video')
+    });
+    this.$('.main-video').empty();
+    this.renderMainVideo(this.model.get('current_video'));
+    this.$('.main-video-containter').append(this.currentView.render().el, this)
+  },
 
+  //
   renderVideos: function() {
 
     this.model.get('videos').each(function(m) {
@@ -63,18 +76,5 @@ var AppView = Backbone.View.extend({
 
     this.renderMainVideo(this.model.get('videos').at(0));
 
-  },
-
-  //
-  renderCurrentVideo: function() {
-    //
-    this.currentView = new MainVideoView({
-      model: this.model.get('current_video')
-    });
-    this.$('.main-video').empty();
-    this.renderMainVideo(this.model.get('current_video'));
-    this.$('.main-video-containter').append(this.currentView.render().el, this)
   }
-
-
 });
