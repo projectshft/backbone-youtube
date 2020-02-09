@@ -3,17 +3,20 @@ let AppView = Backbone.View.extend({
 
 	events: {
 			'click #search-button': 'getVideos',
-			'click  .img-container': 'showCurrentVideo',
+			'click  .img-container': 'showVideoToPlay',
 
 	},
+
+	template: Handlebars.compile($('#player-template').html()),
 
 	initialize: function() {
 
 		this.$videoList = this.$('.video-list');
 		this.$player = this.$('.player');
 		
-		this.renderVideos();
 		//this.VideoView = null;
+
+		this.renderVideos();
 
 		//this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
 
@@ -35,14 +38,18 @@ let AppView = Backbone.View.extend({
 
 		//this.renderVideos();
 		appModel.get('videos').fetch({ reset: true });
+
+		this.clearSearchBox();
 	},
 
 	showCurrentVideo: function() {
-		//this.getFirstVideo();
+		this.model.getFirstVideo();
+
+		this.$player.append()
 	},
 
 	//move the video picked as current to the player section
-	showCurrentVideo: function(e) {
+	showVideoToPlay: function(e) {
 		let clickedVideo = $(e.currentTarget).data('id');
 		this.model.switchVideo(clickedVideo);
 		//this.renderPlayer(??);
@@ -68,6 +75,9 @@ let AppView = Backbone.View.extend({
 		}, this);
 	},
 
+	clearSearchBox: function(){
+		$('#query').val('');
+	}
 
  })
 

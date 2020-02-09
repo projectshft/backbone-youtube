@@ -10,29 +10,35 @@ body {
 
 .player {
   box-shadow: 2px 2px 2px #B3B3B3;
-  background-color: #fff;
-  border-radius: 5px;
+  margin-left: 40px;
   padding: 10px;
 }
 
 .video-desc {
-	box-shadow: 2px 2px 2px #B3B3B3;
+	border: .1em solid #B3B3B3;
 	padding: 5px;
 }
 
 .videos-container {
   box-shadow: 2px 2px 2px #B3B3B3;
-  background-color: #fff;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .video-list .img-container {
-  display: inline-block;
+  
+}
+img {
+	padding: 5px;
 }
 
 .video-list .videos-container {
   display: inline-block;
   margin-left: 20px;
+}
+
+.video-title {
+	margin-left: 5px;
 }
