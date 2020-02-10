@@ -10,7 +10,7 @@ var VideoCollection = Backbone.Collection.extend({
   },
 
 //parses function to only return desired fields
-  parse: function(response, options) {
+  parse: function(response) {
     return response.items.map(function(video) {
 
       return Object.assign({

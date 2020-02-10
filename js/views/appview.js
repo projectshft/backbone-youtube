@@ -3,7 +3,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     //set events for when the user hits the search button and for when the click on a new video
-    'click .submit-video': 'searchForVideo',
+    'click .submit-video': 'searchForVideos',
     'click .sidebar': 'switchVideo'
   },
 
@@ -33,7 +33,7 @@ var AppView = Backbone.View.extend({
 
   //takes search input value and calls function in collection to insert in url
   //then refetches information
-  searchForVideo: function() {
+  searchForVideos: function() {
     $('.error').addClass('d-none')
     this.model.get('videos').updateVideoUrl(this.$('#search-input').val())
     this.model.get('videos').fetch({ reset: true, error:function(){$('.error').toggleClass('d-none')}})
