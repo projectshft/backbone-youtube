@@ -2,7 +2,7 @@
 var VideoModel = Backbone.Model.extend({
   //default attributes for the VideoModel
   defaults: function() {
-    
+
     return {
       title: '',
       description: '',
