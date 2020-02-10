@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title></title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="header">
+          <h1>YouTube</h1>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="search-input" placeholder="search" />
+      <button class="btn btn-primary submit-search">submit</button>
+    </div>
+
+    <div class="row">
+      <div class="main-video-container col-sm-8 text-center"></div>
+      <div class="small-video-container col-sm-3 text-center"></div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="small-video">
+     <img class="thumbnail" href="#" data-id={{id}} src= {{thumbnail}}></img>
+   </div>
+     <div class="small-title ">{{title}} </div>
+
+  </script>
+
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="video">
+      <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/{{id}}" frameborder="200"></iframe>
+        <div class="video-details">
+          <div><strong>Title:</strong> {{title}}</div>
+          <div><strong>Description:</strong> {{description}}</div>
+      </div>
+    </div>
+  </script>
+   </div>
+    <script src="models/videoModel.js"></script>
+    <script src="collections/videosCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/smallVideoView.js"></script>
+    <script src="views/mainVideoView.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

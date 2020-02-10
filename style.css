@@ -1,0 +1,33 @@
+h1 {
+  text-align: center;
+}
+
+.video-details {
+  border-style: solid;
+  text-align: center;
+  margin-left: 30px;
+}
+
+.small-video-container {
+  text-align: center;
+  float: right;
+
+}
+
+.small-title {
+  font-size: 10pt;
+}
+
+.videos {
+  border-style: solid;
+  margin-bottom: 10px;
+
+}
+
+.main-video-container {
+  margin-left: 50px;
+}
+
+.small-video-container {
+  margin-left: 10px;
+}
