@@ -10,7 +10,7 @@ var VideosCollection = Backbone.Collection.extend({
             alert('Please fill in search before clicking search.')
         }else{
             //if search is not blank url will change for new search.
-            this.url = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDIy1DsWoSFSvbwPhCB2lr1r0A9PWwZLbw&part=snippet&type=video&q=beyonce' + search
+            this.url = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDIy1DsWoSFSvbwPhCB2lr1r0A9PWwZLbw&part=snippet&type=video&q=' + search
         };
     },
 

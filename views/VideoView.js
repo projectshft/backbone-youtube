@@ -4,7 +4,7 @@ var VideoView = Backbone.View.extend({
   template: Handlebars.compile($('#video-template').html()),
   
   events: {
-    'click .video-container': 'clickedOnVideo'
+    'click .suggested-video-container': 'clickedOnVideo'
   },
 
   render: function() {
