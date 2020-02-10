@@ -1,0 +1,15 @@
+h2 {
+    color: crimson;
+    text-shadow: gray;
+    
+}
+#video-title {
+    color: crimson;
+    font-weight: 500;
+}
+#video-description {
+    font-weight: 400;
+}
+#minThumb {
+    font: bolder;
+}
