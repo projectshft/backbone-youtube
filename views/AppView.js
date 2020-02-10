@@ -27,8 +27,6 @@ var AppView = Backbone.View.extend({
     appModel.get('videos').fetch({ reset: true});
   },
   
-
-
   renderSelectedVideo: function(){
     this.selectedVideo = this.model.get('videos').findWhere({ selectedVideo: true });
 

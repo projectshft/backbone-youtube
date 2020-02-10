@@ -4,7 +4,7 @@ var VideoView = Backbone.View.extend({
   template: Handlebars.compile($('#video-template').html()),
   
   events: {
-      'click .video-container': 'clickedOnVideo'
+    'click .video-container': 'clickedOnVideo'
   },
 
   render: function() {
@@ -15,8 +15,8 @@ var VideoView = Backbone.View.extend({
 
   clickedOnVideo: function(e){
     //capturing clicked on video to send to appModel
-    var selectedVideoId = $(e.target).data("id")
+    var selectedVideoId = $(e.target).data("id");
 
-    appModel.changeMainVideoToClickedVideo(selectedVideoId)
+    appModel.changeMainVideoToClickedVideo(selectedVideoId);
   }
 });
