@@ -4,13 +4,13 @@ AppModel = Backbone.Model.extend({
     this.setUrl(this.get('currentQuery'));
   },
 
-  // Set on Initial Page loadup to please the user with Auburn Basketball highlights
+  // Set on Initial Page loadup to please the user with Auburn Football highlights
 
   defaults: function(){
     return {
       videos: new VideosCollection(),
       currentVideo: null,
-      currentQuery: 'Auburn Basketball'
+      currentQuery: 'Auburn Football'
     }
   },
 
