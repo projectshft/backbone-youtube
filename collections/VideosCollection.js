@@ -1,15 +1,26 @@
+// This is a collection of Video Models
+// This is where the data is retrieved from th Youtube API
 var VideosCollection = Backbone.Collection.extend({
 
-    url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyAgOh1wfDiw6ozEKf4L6rTHqRjLn-Kom-s&part=snippet&type=video&q=jayz',
+    url: '',
 
     model: VideoModel,
 
     parse: function (response) {
-        //This returns an array of 5 videos 
+        return response.items.map(function(arrayItem) {
+            return {
+                videoID: arrayItem.id.videoID,
+                title: arrayItem.snippet.title,
+                description: arrayItem.snippet.description,
+                thumbnailURL: item.snippet.thumbnails.default.url,
+            }
+        })
+    },
 
-        console.log(response.items)
-        return response.items
-       
+    findVideo: function(query) {
+        console.log('getting videos');
+        this.url = config.urlFunc() + `${query}`;
+        this.fetch({reset: true});
     }
 
 });
