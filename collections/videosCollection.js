@@ -12,7 +12,8 @@ var VideosCollection = Backbone.Collection.extend({
     this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&key=AIzaSyD9a8mfFIJuCZwzS57LwDG7OBrL3FX-VlE`
   },
 
-  //
+  //parse function allows us to alter the data acquired in the fetch function and assign object values to
+  //the keys in the video model default 
   parse: function(response) {
     return response.items.map(function(video) {
 
