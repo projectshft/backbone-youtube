@@ -20,8 +20,11 @@
     <div class="row searchbar">
       <div class="col">
       <!-- error message toggles -->
-        <div class="error d-none row">
-          <p>We are sorry. You're search could not be completed. Please try again later.</p>
+        <div class="error-message no-video d-none row">
+          <p>We could not find any videos that matched your search. Please try again.</p>
+        </div>
+        <div class="error error-message d-none row">
+          <p>We are sorry, you're search could not be completed. Please try again later.</p>
         </div>
         <div class="input-group row">
           <input class="form-control" id="search-input" placeholder="Search">
