@@ -2,72 +2,87 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
-   
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/underscore/underscore-min.js"></script>
-    <script src="node_modules/backbone/backbone-min.js"></script>
-    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-    
-    <title>Youtube Backbone</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+  <title>Youtube Backbone</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <div class="page-header">
-                <h1>Youtube Backbone</h1>
-                <hr />
-            </div>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-search text-white" aria-hidden="true"></i></span>
-              </div>
-              <input id="video-search" class="form-control" type="text" placeholder="Search" aria-label="Search">
-              <button type="button" class="btn btn-danger search-btn">Search</button>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="page-header">
+          <h1>Youtube Backbone</h1>
+          <hr />
+        </div>
+        <div class="input-group">
+          <input id="video-search" class="form-control" type="text" placeholder="Search" aria-label="Search">
+          <div class="input-group-prepend"></div>
+            <button type="button" class="btn btn-danger search-btn">Search</button>
           </div>
         </div>
-        <div class="row">
-          <div class="video-player col-md-8">
-            <!--  the video player will be appended here -->
-          </div>
-    
-          <ul class="video-que col-md-4">
-            <!-- videos that are in the que will be appended here (The 5 results returned from the API)-->
-          </ul>
-        </div>
+      </div>
+    </div>
+    <div class="container-fluid container-height">
+      <div class="row">
+        <section class="video-player col-md-8">
+          <!--  the video player will be appended here -->
+        </section>
+
+        <section class="video-que col-md-4">
+          <!-- videos that are in the que will be appended here (The 5 results returned from the API)-->
+        </section>
+      </div>
     </div>
 
+  </div>
 
 
-      <!-- TEMPLATE FOR THE CURRENT VIDEO SELECTED FOR PLAYING -->
-    <script id="video-player-template" type="text/x-handlebars-template">
-      <iframe src="{{ iframeURL }}" frameborder="0"></iframe>
+
+  <!-- TEMPLATE FOR THE CURRENT VIDEO SELECTED FOR PLAYING -->
+  <script id="video-player-template" type="text/x-handlebars-template">
+    <iframe src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen></iframe>
       <div class="details">
         <div class="title">{{ title }}</div>
         <div class="description">{{ description }}</div>
       </div>
     </script>
 
-    <!-- JavaScript tags  -->
-    <script type='text/javascript' src='config.js'></script>
+  <!-- template for the  video-que -->
+  <script id="video-que-template" type="text/x-handlebars-template">
+    <div class="row">
+        <div class="media view-video" data-id={{videoId}}>
+          <img class="align-self-center mr-3" src="{{thumbnailURL}}" alt="Generic placeholder image">
+          <div class="media-body">
+            <a class="mt-0" href="#">{{title}}</a>
+            <p>{{description}}</p>
+          </div>
+        </div>
+      </div>
+    </script>
 
-    <script src="models/VideoModel.js"></script>
-    <script src="collections/VideosCollection.js"></script>
-    <script src="models/AppModel.js"></script>
-    <script src="views/AppView.js"></script>
-    <script src="views/CurrentVideoView.js"></script>
-    <script src="views/VideoQueView.js"></script>
-    <script src="./main.js"></script>
+  <!-- JavaScript tags  -->
+  <script type='text/javascript' src='config.js'></script>
+
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/CurrentVideoView.js"></script>
+  <script src="views/VideoQueView.js"></script>
+  <script src="./main.js"></script>
 </body>
 
 </html>
