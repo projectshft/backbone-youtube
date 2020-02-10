@@ -1,6 +1,6 @@
 var VideosCollection = Backbone.Collection.extend({
     //default search
-    url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDIy1DsWoSFSvbwPhCB2lr1r0A9PWwZLbw&part=snippet&type=video&q=lizzo',
+    url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDIy1DsWoSFSvbwPhCB2lr1r0A9PWwZLbw&part=snippet&type=video&q=goatsinpjs',
     model: VideoModel,
 
     //AppView will take search value enter on click

@@ -15,6 +15,7 @@ var AppView = Backbone.View.extend({
     //on desired attribute
     this.listenTo(this.model.get('videos'), 'change:selectedVideo', this.renderSelectedVideo);
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos); 
+    this.listenTo(this.model.get('videos'), 'reset', this.resetSearchBar);
   },
     
   createNewSearch: function () {
@@ -53,5 +54,10 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').each(function(m){
       this.renderVideo(m);
     }, this);
+  },
+
+  resetSearchBar: function(){
+    //after new search gets fetched, search bar will reset
+    this.$('#search-video').val('');
   }
 });
