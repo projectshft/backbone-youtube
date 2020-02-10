@@ -12,61 +12,49 @@
   <title>YouTube Search</title>
 </head>
 <body>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 offset-md-2">
-              <div class="header text-center">
-                <h1>YouTube Search</h1>
-              </div>
-             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="search-video" placeholder="Search">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-primary search">Search</button>
-                    </div>
-            </div>
-            </div>
-          </div>
-          <div class="row">
-              <div class="col-md-5 offset-md-1">
-                <div class="video-container">
-                 <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/bnVUHWCynig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-                </div>
-                <div class="description">
-                    <!--<h5>Video Title:</h5><p>Beyonce - Halo</p>-->
-                    <!--<h5>Video Description:</h5><p>Yada Yada</p>-->
-                </div>
-              </div>
-              <div class="col-md-4 offset-md-1">
-                <div class="video-list">
-                    <!--<div class="video-img"><img class="float-left" src="https://i.ytimg.com/vi/WDZJPJV__bQ/default.jpg"></div>-->
-                    <!--<div class="video-title-container align-self-center"><p class="video-title">Beyoncé - Formation</p></div>-->
-                </div>
-              </div>
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-2">
+        <div class="header text-center">
+          <h1>YouTube Search</h1>
         </div>
-    
-        <script id="video-template" type="text/x-handlebars-template">
-          <div class="video-container">
-            <div class="video-img"><img class="left" src="{{thumbnail_url}}"></div>
-            <div class="video-title-container align-self-center"><p class="video-title">{{title}}</p></div>
-            <!--<img src="{{thumbnail_url}}">-->
-            <!--<p class="video-title">{{title}}</p>-->
+      <div class="input-group mb-3" onclick="event.preventDefault();">
+        <input type="text" class="form-control" id="search-video" placeholder="Search">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-primary search">Search</button>
           </div>
-        </script>
-        <script id="video-description-template" type="text/x-handlebars-template">
-            <div class="video-list">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="description">
-                <h5>Video Title:</h5><p>{{title}}</p>
-                <h5>Video Description:</h5><p>{{description}}</p>
-            </div>
-        </script>
-        <script src="models/VideoModel.js"></script>
-        <script src="collection/VideosCollection.js"></script>
-        <script src="models/AppModel.js"></script>
-        <script src="views/VideoView.js"></script>
-        <script src="views/AppView.js"></script>
-        <script src="main.js"></script>
-      </body>
+      </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5 offset-md-1">
+        <div class='video-player-container'>
+        </div>
+      </div>
+      <div class="col-md-4 offset-md-1">
+        <div class="video-list">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script id="video-template" type="text/x-handlebars-template">
+    <div class="suggested-video-container shadow p-1 mb-2 bg-white rounded" id="{{ videoId }}">
+      <div class="video-img" data-id="{{ videoId }}"><img class="video-img" data-id="{{ videoId }}" src="{{thumbnail_url}}"></div>
+      <div class="video-title-container align-self-center"><p class="video-title font-weight-bold" data-id="{{ videoId }}">{{title}}</p></div>
+    </div>
+  </script>
+  <script id="video-player-template" type="text/x-handlebars-template">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="description shadow p-1 mb-2 bg-white rounded">
+      <h5>Video Title:</h5><p>{{ title }}</p>
+      <h5>Video Description:</h5><p>{{ description }}</p>
+    </div>
+  </script>
+  <script src="models/VideoModel.js"></script>
+  <script src="collection/VideosCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="main.js"></script>
+  </body>
 </html>

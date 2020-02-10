@@ -1,22 +1,21 @@
-var VideoModel = BackBone.Model.extend({
-    defaults: function (){
+var VideoModel = Backbone.Model.extend({
+    defaults: function () {
         return {
             title: '',
             description: '',
             thumbnail_url: '',
-            videoId: ''
+            videoId: '',
+            selectedVideo: false
         }
     },
 
-    //Parse the response.items [{}x5] into indvidual videos
+    //second parse to select the four desired attributes.
     parse: function(videoData){
-        // console.log(videoData)
         return {
             title: videoData.snippet.title,
             description: videoData.snippet.description,
             thumbnail_url: videoData.snippet.thumbnails.default.url,
             videoId: videoData.id.videoId
-
-        }
+        };
     }
-})
+});

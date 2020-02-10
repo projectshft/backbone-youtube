@@ -10,15 +10,20 @@
     margin: 5px;
 }
 
+.suggested-video-container {
+    display: flex;
+    align-items:center;
+    border: 1px solid black;
+}
 
 .video-title-container{
     display: flex;
 }
 
 .description {
-    margin: 1px;
-    border: 1px solid black;
+    margin-top: 5px;
+    border: 2px solid black;
     width: 560px;
     height: 200px;
-
+    padding: 5px;
 }
