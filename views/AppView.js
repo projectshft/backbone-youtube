@@ -4,6 +4,7 @@ var AppView = Backbone.View.extend({
 
     events: {
         'click .search-btn': 'videoLookUp',
+        'click .video-title': 'changeVideo'
        
 
     },
@@ -40,14 +41,13 @@ var AppView = Backbone.View.extend({
     },
 
     renderAll: function() {
+        //We need this id to allow for src of the iframe in the html
         this.renderVideoPlayer(this.model.get('videos').at(0).get('videoId'))
 
-        // this.renderVideoQue()
+        this.renderVideoQue()
     },
 
     renderVideoPlayer: function (videoId) {
-        console.log(videoId)
-        debugger
         var firstVideo = this.model.get('videos').where({videoId: videoId})[0];
 
         var currentVideoView = new CurrentVideoView({model: firstVideo});
@@ -60,7 +60,24 @@ var AppView = Backbone.View.extend({
     },
 
     renderVideoQue: function () {
+        //Clears out the video-que view so that new videos render on the que
+        this.$el.find('.video-que').empty();
 
+        var videos = this.model.get('videos');
+        var playlist = this.$videoQue;
+
+        //loop through each model and append it under video-que class in the index
+        videos.forEach(function(video) {
+            var videoQueView = new VideoQueView({model: video})
+            playlist.append(videoQueView.render().el); 
+        })   
+    },
+
+    changeVideo: function (event) {
+        //Invoke rendervideoplayer with the id grabbed from the data attribute
+        dataAttributeId =  $(event.currentTarget).closest('.view-video').data('data-id');
+        this.modle.set('currentVideo', dataAttributeId)
+        debugger
     }
 
 

@@ -37,11 +37,11 @@
     </div>
     <div class="container-fluid container-height">
       <div class="row">
-        <div class="video-player col-md-8">
+        <div class="video-player col-md-9">
           <!--  the video player will be appended here -->
         </div>
 
-        <div class="video-que col-md-4">
+        <div class="video-que col-md-3">
           <!-- videos that are in the que will be appended here (The 5 results returned from the API)-->
         </div>
       </div>
@@ -68,7 +68,7 @@
         <div class="media view-video" data-id={{videoId}}>
           <img class="align-self-center mr-3" src="{{thumbnailURL}}" alt="Generic placeholder image">
           <div class="media-body">
-            <a class="mt-0" href="#">{{title}}</a>
+            <a class="video-title" href="#">{{title}}</a>
             <p>{{description}}</p>
           </div>
         </div>
