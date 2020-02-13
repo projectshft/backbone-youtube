@@ -7,14 +7,14 @@ var VideosCollection = Backbone.Collection.extend({
     model: VideoModel,
 
     parse: function (response) {
-        console.log( response.items.map(function(arrayItem) {
+        return response.items.map(function(arrayItem) {
             return {
-                videoID: arrayItem.id.videoID,
+                videoId: arrayItem.id.videoId,
                 title: arrayItem.snippet.title,
                 description: arrayItem.snippet.description,
-                thumbnailURL: arrayItem.snippet.thumbnails.default.url,
+                thumbnailURL: arrayItem.snippet.thumbnails.default.url
             }
-        }))
+        })
     },
 
     findVideos: function(query) {

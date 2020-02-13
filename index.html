@@ -37,13 +37,13 @@
     </div>
     <div class="container-fluid container-height">
       <div class="row">
-        <section class="video-player col-md-8">
+        <div class="video-player col-md-8">
           <!--  the video player will be appended here -->
-        </section>
+        </div>
 
-        <section class="video-que col-md-4">
+        <div class="video-que col-md-4">
           <!-- videos that are in the que will be appended here (The 5 results returned from the API)-->
-        </section>
+        </div>
       </div>
     </div>
 
@@ -53,12 +53,14 @@
 
   <!-- TEMPLATE FOR THE CURRENT VIDEO SELECTED FOR PLAYING -->
   <script id="video-player-template" type="text/x-handlebars-template">
-    <iframe src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen></iframe>
+    <div class="conten-container">
+      <iframe type="text/html" width="640" height="360" src="https://www.youtube.com/embed/{{videoId}}" frameborder="200" allowfullscreen></iframe>
       <div class="details">
         <div class="title">{{ title }}</div>
         <div class="description">{{ description }}</div>
       </div>
-    </script>
+    </div>
+  </script>
 
   <!-- template for the  video-que -->
   <script id="video-que-template" type="text/x-handlebars-template">
