@@ -14,9 +14,11 @@ var AppView = Backbone.View.extend({
         this.$searchButton = this.$('.search-btn');
         this.$videoPlayer = this.$('.video-player');
         this.$videoQue = this.$('.video-que');
-
+        
+        //The page is rendered once the VideosCollection is populated
         this.listenTo(this.model.get('videos'), "reset", this.renderAll);
-        // this.listenTo(this.model, 'change:currentVideo', this.renderVideoPlayer);
+        //The CurrentVideoView is re-rendered when the currentVideoId changes
+        this.listenTo(this.model, 'change:currentVideoId', this.renderAll);
         
     },
 
@@ -41,15 +43,14 @@ var AppView = Backbone.View.extend({
     },
 
     renderAll: function() {
+        // this.model.get('currentVideoId')
         //We need this id to allow for src of the iframe in the html
-        this.renderVideoPlayer(this.model.get('videos').at(0).get('videoId'))
-
+        this.renderVideoPlayer(this.model.get('currentVideoId'))
         this.renderVideoQue()
     },
 
     renderVideoPlayer: function (videoId) {
         var firstVideo = this.model.get('videos').where({videoId: videoId})[0];
-
         var currentVideoView = new CurrentVideoView({model: firstVideo});
 
         //Removes the current playable video
@@ -74,10 +75,10 @@ var AppView = Backbone.View.extend({
     },
 
     changeVideo: function (event) {
-        //Invoke rendervideoplayer with the id grabbed from the data attribute
-        dataAttributeId =  $(event.currentTarget).closest('.view-video').data('data-id');
-        this.modle.set('currentVideo', dataAttributeId)
-        debugger
+        //This grabs the video id of the video that was clicked 
+        dataAttributeId =  event.currentTarget.closest('.view-video').getAttribute('data-id');
+        //Replaces the existing currentVideoId on AppModel to the Id grabbed from the click
+        this.model.set('currentVideoId', dataAttributeId)
     }
 
 
