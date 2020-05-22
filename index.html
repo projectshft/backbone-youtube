@@ -1,0 +1,110 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>YouTube</title>
+</head>
+
+<body>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="header">
+          <h1>YouTube</h1>
+        </div>
+
+        <div class="form-group col-md-6 offset-md-3">
+          <input type="text" class="form-control" id="name-input" placeholder="search">
+          <br>
+          <button class="btn btn-primary submit-search">submit</button>
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6 offset-md-2">
+          <div class="main-video">
+            <iframe width="750" height="480" src="https://www.youtube.com/embed/PX4fFUwD7tk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br>
+            <br>
+            <h3>Car Spotting with Doug Demuro</h3>
+            <p>Today you're coming car spotting with Doug DeMuro. We're going to drive around Coronado, California, and I'm going to show you all the cool cars I find -- and ...</p>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="video-list">
+              <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
+              <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="additional videos">
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  <script id="main-video-template" type="text/x-handlebars-template">
+    <iframe width="853" height="480" src="https://www.youtube.com/embed/PX4fFUwD7tk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br>
+    <br>
+    <h3>Car Spotting with Doug Demuro</h3>
+    <p>Today you're coming car spotting with Doug DeMuro. We're going to drive around Coronado, California, and I'm going to show you all the cool cars I find -- and ...</p>
+  </div>
+  </script>
+
+  <script id="beer-detail-template" type="text/x-handlebars-template">
+    <a class="back" href="#">back</a>
+    <div class="img-container">
+      <img class="beer-detail-img" src="{{image_url}}">
+    </div>
+    <div class="content-container">
+      <p class="beer-name">{{name}}</p>
+      <input class="beer-name edit-mode" value="{{name}}">
+      <p>{{style}} - {{abv}}% ABV</p>
+
+  <script id="review-template" type="text/x-handlebars-template">
+    <div class="content-container">
+      <span class="review-name">{{name}} - </span>
+      <span class="reviews-notes">{{text}}</span>
+      <i class="fa fa-times remove"></i>
+    </div>
+  </script>
+
+  <script src="models/MainVideoModel.js"></script>
+  <script src="collections/BeersCollection.js"></script>
+  <script src="collections/ReviewsCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="models/AppView.js"></script>
+  <script src="views/MainVideoView.js"></script>
+  <script src="views/VideoListView.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
