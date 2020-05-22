@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- Javascript -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+  <title>Backbone Youtube</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div id="header" class="col-md-12">
+        <!-- Header -->
+        <header>
+          <h1>Backbone Youtube</h1>
+        </header>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <!-- Search Form -->
+      <div id="search-video" class="col-md-10 offset-md-2"></div>
+
+    </div>
+
+    <div class="row">
+
+      <!-- Current Video Container -->
+      <div id="current-video-container" class="col-md-9"></div>
+
+      <!-- Video List Container -->
+      <div id="list-video-container" class="col-md-3"></div>
+
+
+
+    </div>
+  </div>
+
+
+
+  <!-- Handlebars  -->
+
+  <!-- List View Template -->
+
+  <!-- Current View Template  -->
+
+  <!-- Javascript  -->
+  <script src="models/BeerModel.js"></script>
+  <script src="models/ReviewModel.js"></script>
+  <script src="collections/BeersCollection.js"></script>
+  <script src="collections/ReviewsCollection.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="views/BeerView.js"></script>
+  <script src="views/ReviewView.js"></script>
+  <script src="views/BeerDetailView.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

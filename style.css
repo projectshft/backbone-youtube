@@ -1,0 +1,13 @@
+#current-video-container {
+    box-sizing: border-box;
+    border: 5px solid yellow;
+    height: 500px;
+    padding: 20px;
+}
+
+#list-video-container {
+    box-sizing: border-box;
+    border: 5px solid teal;
+    height: 500px;
+    padding: 20px;
+}
