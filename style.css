@@ -1,0 +1,50 @@
+body {
+  background-color: ghostwhite;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+}
+
+.playing-video {
+  width: 100%;
+  height: 300px;
+  background-color: pink;
+  margin: 20px 0;
+}
+
+.video-info {
+  background-color: white;
+  box-sizing: border-box;
+  padding: 20px 30px;
+}
+
+.video-thumbnail {
+  background-color: white;
+  width: 270px;
+  box-sizing: border-box;
+  padding: 30px;
+  margin: 20px auto;
+}
+
+h3 {
+  display: inline;
+}
+
+@media only screen and (min-width: 800px) {
+  main {
+    width: 750px;
+  }
+
+  #current-video {
+    width: 450px;
+    float: left;
+    clear: both;
+  }
+
+  #video-list {
+    float: left;
+    margin: 0 0 20px 20px;
+  }
+}
