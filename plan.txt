@@ -1,0 +1,11 @@
+1. Determine which views I need and diagram my views according to the wireframe
+2. Determine the models for each view and general functionality of the view
+3. Determine where to keep the collection
+4. Write the html and css for the page 
+5. Test using hardcoded url's, titles, descriptions
+6. Build out code for all models, views, collection
+7. If possible, test postman to practice fetching videos from youtube api with a search term
+8. Try to fill video collection from youtube api, using parse
+9. Test displaying the collection in the video list and current video in the main section
+10. Get the main video to change by clicking a video in the list 
+11. Test changing the collection by entering a new search
