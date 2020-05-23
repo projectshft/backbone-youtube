@@ -5,9 +5,21 @@ var AppView = Backbone.View.extend({
     'click .search': 'searchYouTube'
   },
 
+  initialize: function() {
+    this.listenTo(this.model.get('videos'), 'add', this.renderVideos)
+  },
+
   searchYouTube: function () {
-    console.log('test');
+    this.model.get('videos').addVideo(
+      this.$('#search-query').val()
+    );
+  },
+
+  renderVideos: function(video) {
+    console.log('video');
   }
+
+
 });
 
 
