@@ -1,0 +1,46 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Youtube Clone</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>T3sT</h1>
+      <div class="col-md-6 offset-md-3">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="search">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-primary">search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 offset-md-8 sidebar">
+      </div>
+    </div>
+  </div>
+
+
+  <script id="sidebar-video-template" type="text/x-handlebars-template">
+    <div class="card">
+      <img src="{{thumbnail_url}}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">{{title}}</p>
+        <p class="card-text">{{description}}</p>
+      </div>
+    </div>
+  </script>
+
+  <script src="main.js"></script>
+</body>
+</html>
