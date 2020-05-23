@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group col-md-6 offset-md-3">
-          <input type="text" class="form-control" id="name-input" placeholder="search">
+          <input type="text" class="form-control" id="video-input" placeholder="search">
           <br>
           <button class="btn btn-primary submit-search">submit</button>
         </div>
@@ -64,6 +64,11 @@
                 <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
                 <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
               </div>
+
+              <div class="video">
+                <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
+                <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
+              </div>
               <br>
 
             </div>
@@ -85,29 +90,18 @@
   </div>
   </script>
 
-  <script id="beer-detail-template" type="text/x-handlebars-template">
-    <a class="back" href="#">back</a>
-    <div class="img-container">
-      <img class="beer-detail-img" src="{{image_url}}">
-    </div>
-    <div class="content-container">
-      <p class="beer-name">{{name}}</p>
-      <input class="beer-name edit-mode" value="{{name}}">
-      <p>{{style}} - {{abv}}% ABV</p>
-
-  <script id="review-template" type="text/x-handlebars-template">
-    <div class="content-container">
-      <span class="review-name">{{name}} - </span>
-      <span class="reviews-notes">{{text}}</span>
-      <i class="fa fa-times remove"></i>
+  <script id="video-list-template" type="text/x-handlebars-template">
+    <div class="video">
+      <p>{{title}}</p>
+      <img src="{{thumbnail}}">
     </div>
   </script>
 
-  <script src="models/MainVideoModel.js"></script>
-  <script src="collections/BeersCollection.js"></script>
-  <script src="collections/ReviewsCollection.js"></script>
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <!-- <script src="collections/ReviewsCollection.js"></script> -->
   <script src="models/AppModel.js"></script>
-  <script src="models/AppView.js"></script>
+  <script src="views/AppView.js"></script>
   <script src="views/MainVideoView.js"></script>
   <script src="views/VideoListView.js"></script>
   <script src="views/VideoView.js"></script>
