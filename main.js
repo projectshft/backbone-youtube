@@ -29,8 +29,8 @@ var AppView = Backbone.View.extend({
     this.$mainVideo = this.$('.main-video'); //variable pointing to where main vid will go
     this.$videoList = this.$('#video-list');//points to video collection
     // everytime a search is made I will need to render
-    this.listenTo(this.model, 'change:currentVid', this.addSearch);
-
+    this.listenTo(this.model, 'change:currentVid', this.renderVideo);
+    this.renderVideos();//ensures that hardcoded vids get loaded
   },
 
   searchVideo: function () {
@@ -44,13 +44,20 @@ var AppView = Backbone.View.extend({
   },
 
 
-  addSearch: function (videoModel) {
+  renderVideo: function (videoModel) {
     // console.log('test')//test that function is connected to change in model
     var view = new VideoView ({model: videoModel});
 
     this.$videoList.append(view.render().el)
     console.log('is this working')
   },
+
+
+  renderVideos: function () {
+    this.model.get('videos').each(function (m) {
+      this.renderVideo(m);
+      }, this);
+    }
 
 });
 
@@ -73,6 +80,16 @@ var VideoModel = Backbone.Model.extend({
 var VideoCollection = Backbone.Collection.extend({
   // url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=dog&key=AIzaSyCeEoGSG_koWvcWUt0YzVNqz36gg559X9M',
   model: VideoModel,
+
+  // function used to add videos in manually. will remove
+  addVideo: function (videoId, title, description, thumbnails) {
+    this.add({
+      videoId: videoId,
+      title: title,
+      description: description,
+      thumbnails: thumbnails
+    });
+  }
 
 
   // parse: function (response) {
@@ -108,6 +125,10 @@ var VideoView = Backbone.View.extend({
 
 
 var appModel = new AppModel();
+
+  appModel.get('videos').addVideo("fBYvHHT8fdE", "Cute Puppies", "Cutest Dogs Thanks For Watching", "https://i.ytimg.com/vi/fBYvHHT8fdE/default.jpg");
+  appModel.get('videos').addVideo("wtH-hdOF1uA", "Baby Dogs", "try not to laugh", "https://i.ytimg.com/vi/wtH-hdOF1uA/default.jpg");
+  appModel.get('videos').addVideo("BkD2nN5275c", "Funny Pet Animals Videos", "very cute compilation", "https://i.ytimg.com/vi/BkD2nN5275c/default.jpg");
 
 var appView = new AppView({ model: appModel });
 
