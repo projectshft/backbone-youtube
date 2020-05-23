@@ -22,7 +22,7 @@ var VideoView = Backbone.View.extend({
 
   //this will be called from appView when rendering the current video on the page
   renderCurrent: function () {
-    this.$el.html(this.currentVideoTemplate(this.model.toJSON()));
+    this.$el.html(this.currentVideoTemplate(this.model));
 
     return this;
   }

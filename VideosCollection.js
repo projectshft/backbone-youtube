@@ -2,6 +2,8 @@ var VideosCollection = Backbone.Collection.extend({
   // url: 'https://beer-review-api.herokuapp.com/beers',
   model: VideoModel,
 
+})
+
   // addBeer: function(name, style, abv, image_url) {
   //   this.create(
   //     {
@@ -24,5 +26,4 @@ var VideosCollection = Backbone.Collection.extend({
   
   //     return Object.assign({'id': b._id}, b);
   //   }, this);
-  // }
-});
+  // 

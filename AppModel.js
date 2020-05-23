@@ -1,9 +1,39 @@
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
-      videosCollection: new VideosCollection(),
-
-      current_video: null,
+      videosCollection: new VideosCollection(    [
+        {
+          id: 1,
+          title: 'video 1',
+          description: 'test description',
+          videoURL: "https://www.youtube.com/embed/XSZVMeynt5s"
+        },
+        {
+          id: 2,
+          title: 'video 2',
+          description: 'test description',
+          videoURL: "https://www.youtube.com/embed/XSZVMeynt5s"
+        },
+        {
+          id: 3,
+          title: 'video 3',
+          description: 'test description',
+          videoURL: "https://www.youtube.com/embed/XSZVMeynt5s"
+        },
+        {
+          id: 4,
+          title: 'video 4',
+          description: 'test description',
+          videoURL: "https://www.youtube.com/embed/XSZVMeynt5s"
+        }
+      ]),
+    
+      current_video:  {
+        id: 1,
+        title: 'video 1',
+        description: 'test description',
+        videoURL: "https://www.youtube.com/embed/XSZVMeynt5s"
+      }
 
     }
   },
