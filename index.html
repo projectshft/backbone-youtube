@@ -1,29 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/underscore/underscore-min.js"></script>
-    <script src="node_modules/backbone/backbone-min.js"></script>
-    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Project Youtube</title>
+
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="page-header">
+          <h1>Project Youtube</h1>
+          <hr />
+        </div>
+      </div>
+    </div>
+    <form class="form-inline search-form" onsubmit="event.preventDefault();">
+      <div class="form-row align-items-center mx-auto">
+        <input id="search-input" type="text" class="form-control form-control-md mr-md-2" style="width: 400px"
+          placeholder="Please enter search term here">
+        <label class="sr-only" for="inlineFormInputGroupUsername2">Enter search term</label>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-md-5 offset-md-1 mr-md-2 pt-2" style="border: 1px solid black;text-align: center;">
+        <iframe width="320" height="240" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- <video width="320" height="240" controls>
+          <source src="movie.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video> -->
+        <div id="current-video-info" class="video-info"
+          style="text-align: left;border: 1px solid blue; margin-top: 30px; padding:10px;">
+          <p>Video Title</p>
+          <p>video Description</p>
+        </div>
+      </div>
+      <div id="video-list" class="col-md-5" style="border: 1px solid black;">
+        <div class="video-info  pt-2 pl-2" style="border: 1px solid purple;">
+          <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p>Video Title</p>
+        </div>
+        <div class="video-info pt-2 pl-2" style="border: 1px solid purple;">
+          <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p>Video Title</p>
+        </div>
+        <div class="video-info pt-2 pl-2" style="border: 1px solid purple;">
+          <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p>Video Title</p>
+        </div>
+        <div class="video-info pt-2 pl-2" style="border: 1px solid purple;">
+          <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p>Video Title</p>
+        </div>
+      </div>
+
+    </div>
+
+
+    </container>
+    </main>
 
 
 
 
 
 
-    
-    <script src="AppModel.js"  defer></script>
-    <script src="AppView.js"  defer></script>
-    <script src="VideoView.js"  defer></script>
-    <script src="VideoModel.js"  defer></script>
-    <script src="VideoCollection.js"  defer></script>
-    <script src="main.js"  defer></script>
-  </body>
+
+    <script src="AppModel.js" defer></script>
+    <script src="AppView.js" defer></script>
+    <script src="VideoView.js" defer></script>
+    <script src="VideoModel.js" defer></script>
+    <script src="VideoCollection.js" defer></script>
+    <script src="main.js" defer></script>
+</body>
+
 </html>
