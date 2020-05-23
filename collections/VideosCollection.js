@@ -8,15 +8,15 @@ var VideosCollection = Backbone.Collection.extend({
   //
   // },
 
- //  parse: function (response) {
- //   return response.map(function (video) {
- //     return {
- //       title: '',
- //       description: '',
- //       thumbnail: '',
- //       video: '',
- //     }
- //   });
+  // parse: function (response) {
+  //  return response.map(function (video) {
+  //    return {
+  //      title: '',
+  //      description: '',
+  //      thumbnail: '',
+  //      videoId: '',
+  //    }
+  //  });
  // }
 
 });

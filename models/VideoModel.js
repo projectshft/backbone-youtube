@@ -2,11 +2,12 @@ var VideoModel = Backbone.Model.extend({
   // idAttribute: '_id',
 
   defaults: function () {
-    return {
-      title: '',
-      description: '',
-      thumbnail: '',
-      video: '',
-    }
+
+    // return {
+    //   items.snippet.title: '',
+    //   items.snippet.description: '',
+    //   items.snippet..thumbnails.default: '',
+    //   items.id.videoId: '',
+    // }
   }
 });

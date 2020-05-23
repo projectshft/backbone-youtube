@@ -7,7 +7,7 @@ var VideoView = Backbone.View.extend({
     console.log('this is rendering')
     this.$el.html(this.template(this.model.toJSON()));
 
-    console.log(this)
+    // console.log(this)
     return this;
   }
 
