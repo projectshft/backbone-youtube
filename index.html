@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 
-  <!-- Javascript -->
+  <!-- Scripts: jQuery, Backbone, Underscore, Handlebars -->
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/underscore/underscore-min.js"></script>
   <script src="node_modules/backbone/backbone-min.js"></script>
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div id="header" class="col-md-12">
         <!-- Header -->
@@ -31,21 +31,66 @@
     <div class="row">
 
       <!-- Search Form -->
-      <div id="search-video" class="col-md-10 offset-md-2"></div>
+      <div class="col-md-8 offset-md-2">
+        <input id="search-input" class="form-control" type="text" placeholder="search videos">
+      </div>
 
     </div>
+
 
     <div class="row">
 
+
+
       <!-- Current Video Container -->
-      <div id="current-video-container" class="col-md-9"></div>
+      <div id="current-video-container" class="col-md-8">
+
+        <div id="current-video">
+          <iframe title="The Roast of Michael Scott - The Office US" width="100%" height="100%"
+            src="https://www.youtube.com/embed/OS-utbiLy6o">
+          </iframe>
+        </div>
+        <div id="current-video-info"></div>
+
+      </div>
 
       <!-- Video List Container -->
-      <div id="list-video-container" class="col-md-3"></div>
+      <div id="list-video-container" class="col-md-4">
+
+        <div class="list-video">
+          <img class="img-fluid mx-auto d-block" src="https://i.ytimg.com/vi/NDjNX3nEfYo/mqdefault.jpg">
+
+          <p class="text-truncate">"The Office Cast Reunites for Zoom Wedding: Some Good News with John Krasinski (Ep.
+            7)" </p>
+        </div>
+
+        <div class="list-video">
+          <img class="img-fluid mx-auto d-block" src="https://i.ytimg.com/vi/NDjNX3nEfYo/mqdefault.jpg">
+
+          <p class="text-truncate">"The Office Cast Reunites for Zoom Wedding: Some Good News with John Krasinski (Ep.
+            7)" </p>
+        </div>
+
+        <div class="list-video">
+          <img class="img-fluid mx-auto d-block" src="https://i.ytimg.com/vi/NDjNX3nEfYo/mqdefault.jpg">
+
+          <p class="text-truncate">"The Office Cast Reunites for Zoom Wedding: Some Good News with John Krasinski (Ep.
+            7)" </p>
+        </div>
+
+        <div class="list-video">
+          <img class="img-fluid mx-auto d-block" src="https://i.ytimg.com/vi/NDjNX3nEfYo/mqdefault.jpg">
+
+          <p class="text-truncate">"The Office Cast Reunites for Zoom Wedding: Some Good News with John Krasinski (Ep.
+            7)" </p>
+        </div>
+
+      </div>
 
 
 
     </div>
+
   </div>
 
 
