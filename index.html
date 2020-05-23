@@ -32,50 +32,57 @@
       </div>
     </form>
     <div class="row" style="margin-top: 30px;">
-      <div class="col-md-5 offset-md-1 mr-md-2 pt-2" style="border: 1px solid black;text-align: center;">
-        <iframe width="320" height="240" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
+      <div id="current-video-div" class="col-md-5 offset-md-1 mr-md-2 pt-2">
+        <!-- <iframe width="320" height="240" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <!-- <video width="320" height="240" controls>
-          <source src="movie.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video> -->
-        <div id="current-video-info" class="video-info"
-          style="text-align: left;border: 1px solid blue; margin-top: 30px; padding:10px;">
+        <div id="current-video-info" class="video-info">
           <p>Video Title</p>
-          <p>video Description</p>
+          <p>video Description</p> -->
         </div>
       </div>
-      <div id="video-list" class="col-md-5" style="border: 1px solid black;">
-        <div class="video-info  pt-2 pl-2" style="border: 1px solid purple;">
+      <div id="video-list" class="col-md-5">
+        <!-- <div class="video-info  pt-2 pl-2">
           <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p>Video Title</p>
         </div>
-        <div class="video-info pt-2 pl-2" style="border: 1px solid purple;">
+        <div class="video-info pt-2 pl-2">
           <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p>Video Title</p>
         </div>
-        <div class="video-info pt-2 pl-2" style="border: 1px solid purple;">
+        <div class="video-info pt-2 pl-2">
           <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p>Video Title</p>
         </div>
-        <div class="video-info pt-2 pl-2" style="border: 1px solid purple;">
+        <div class="video-info pt-2 pl-2">
           <iframe width="160" height="120" src="https://www.youtube.com/embed/XSZVMeynt5s" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p>Video Title</p>
-        </div>
+        </div> -->
       </div>
-
     </div>
-
-
     </container>
     </main>
 
 
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <iframe width="320" height="240" src="{{videoURL}}" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div id="current-video-info" class="video-info">
+        <p>{{title}}</p>
+        <p>{{description}}</p>
+      </div>
+    </script>
 
+    <script id="list-video-template" type="text/x-handlebars-template">
+      <div class="video-info  pt-2 pl-2">
+        <iframe width="160" height="120" src="{{videoURL}}" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>{{title}}</p>
+      </div>
+    </script>
 
 
 
