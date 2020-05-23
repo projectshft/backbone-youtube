@@ -19,11 +19,11 @@
   border: 1px solid purple;
 }
 
-#video-list {
+#video-list-div {
   border: 1px solid black;
 }
 
-#video-list p {
+#video-list-div p {
   display: inline;
 }
 
