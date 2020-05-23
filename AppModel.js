@@ -7,9 +7,9 @@ var AppModel = Backbone.Model.extend({
     }
   },
 
-  showCurrentVideo: function (id) {
+  showCurrentVideo: function (videoId) {
     var allVideos = this.get('videos');
-    var currentVideo = allVideos.findWhere({ id: id }); // I need to figure out id
+    var currentVideo = allVideos.findWhere({ videoId: videoId }); // I need to figure out id
     this.set('current_video', currentVideo);
   },
 
