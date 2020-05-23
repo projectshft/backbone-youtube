@@ -72,13 +72,14 @@ var VideoModel = Backbone.Model.extend({
     title: '',
     description: '',
     thumbnails: '',
+    main_vid: false,
     }
   }
 });
 
 //collection of video models
 var VideoCollection = Backbone.Collection.extend({
-  // url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=dog&key=AIzaSyCeEoGSG_koWvcWUt0YzVNqz36gg559X9M',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=dog&key=AIzaSyCeEoGSG_koWvcWUt0YzVNqz36gg559X9M',
   model: VideoModel,
 
   // function used to add videos in manually. will remove
@@ -89,19 +90,19 @@ var VideoCollection = Backbone.Collection.extend({
       description: description,
       thumbnails: thumbnails
     });
-  }
+  },
 
 
-  // parse: function (response) {
-  //     return response.items.map(function (items) {
-  //       return {
-  //         videoId: items.id.videoId,
-  //         title: items.snippet.title,
-  //         description: items.snippet.description,
-  //         thumbnails: items.snippet.thumbnails.default.url
-  //       }
-  //     });
-  //   },
+  parse: function (response) {
+      return response.items.map(function (items) {
+        return {
+          videoId: items.id.videoId,
+          title: items.snippet.title,
+          description: items.snippet.description,
+          thumbnails: items.snippet.thumbnails.default.url
+        }
+      });
+    },
 
     // A function that will change the search item
 
@@ -114,10 +115,18 @@ var VideoView = Backbone.View.extend({
 
   template: Handlebars.compile($('#video-template').html()),
 
+  events: {
+    'click .thumbnail': 'toggleMainVideo'
+  },
+
   render: function () {
     this.$el.html(this.template(this.model.toJSON()));
 
     return this;
+  },
+
+  toggleMainVideo: function () {
+    this.model.set('main_vid', !this.model.get('main_vid'))
   }
 
 });
@@ -126,12 +135,13 @@ var VideoView = Backbone.View.extend({
 
 var appModel = new AppModel();
 
-  appModel.get('videos').addVideo("fBYvHHT8fdE", "Cute Puppies", "Cutest Dogs Thanks For Watching", "https://i.ytimg.com/vi/fBYvHHT8fdE/default.jpg");
-  appModel.get('videos').addVideo("wtH-hdOF1uA", "Baby Dogs", "try not to laugh", "https://i.ytimg.com/vi/wtH-hdOF1uA/default.jpg");
+  appModel.get('videos').addVideo("fBYvHHT8fdE", "Cute wowowowowowPuppies", "Cutest Dogs Thanks For Watching", "https://i.ytimg.com/vi/fBYvHHT8fdE/default.jpg");
+  appModel.get('videos').addVideo("wtH-hdOF1uA", "Baby wowowowowoowwoDogs", "try not to laugh", "https://i.ytimg.com/vi/wtH-hdOF1uA/default.jpg");
   appModel.get('videos').addVideo("BkD2nN5275c", "Funny Pet Animals Videos", "very cute compilation", "https://i.ytimg.com/vi/BkD2nN5275c/default.jpg");
 
 var appView = new AppView({ model: appModel });
 
-var videos = new VideoCollection();
-videos.on('add', function (video) { console.log(video.toJSON()); });
+// var videos = new VideoCollection();
+// videos.on('add', function (video) { console.log(video.toJSON()); });
 // videos.fetch();
+appModel.get('videos').fetch({reset: true})

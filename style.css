@@ -1,18 +1,21 @@
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
 
+img {
+  width: 50%;
+  align-items: center;
+
+}
+
+.thumbnail {
+  align-items: center;
 }
 
 .video {
   align-items: center;
   border: 1px solid black;
-  display: inline-block;
+  /* display: inline-block; */
   text-align: center;
   padding: 2px;
-  margin: 5px;
+  margin: 10px;
 }
 
 .video-description {
@@ -21,6 +24,6 @@ img {
 
 }
 
-.main-container {
-  display: none;
+.side-container {
+  align-items: center;
 }
