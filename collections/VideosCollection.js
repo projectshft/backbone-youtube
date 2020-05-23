@@ -3,5 +3,14 @@ var VideosCollection = Backbone.Collection.extend({
 
   model: VideoModel,
 
-  
+  // parse: function(resource) {
+  //   return resource.items.map(function (item) {
+  // 
+  //
+  //     return Object.assign({
+  //       'title': item.snippet.title,
+  //       'description': item.snippet.description,
+  //       'src': item.snippet.thumbnails.default.url}, item);
+  //   }, this);
+  // }
 });

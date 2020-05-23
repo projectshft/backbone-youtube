@@ -5,6 +5,7 @@ var LittleVideoView = Backbone.View.extend({
   initialize: function() {
   },
 
+  //interacts with AppView rendering functions
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
 
