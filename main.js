@@ -26,9 +26,10 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.$mainSearch = this.$('#main-search');//variable for the main search data
-
+    this.$mainVideo = this.$('.main-video'); //variable pointing to where main vid will go
+    this.$videoList = this.$('#video-list');//points to video collection
     // everytime a search is made I will need to render
-    
+    this.listenTo(this.model, 'change:currentVid', this.addSearch);
 
   },
 
@@ -43,8 +44,12 @@ var AppView = Backbone.View.extend({
   },
 
 
-  renderSearch: function () {
+  addSearch: function (videoModel) {
+    // console.log('test')//test that function is connected to change in model
+    var view = new VideoView ({model: videoModel});
 
+    this.$videoList.append(view.render().el)
+    console.log('is this working')
   },
 
 });
@@ -66,39 +71,41 @@ var VideoModel = Backbone.Model.extend({
 
 //collection of video models
 var VideoCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=dog&key=AIzaSyCeEoGSG_koWvcWUt0YzVNqz36gg559X9M',
+  // url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=dog&key=AIzaSyCeEoGSG_koWvcWUt0YzVNqz36gg559X9M',
   model: VideoModel,
 
-  // addVideo: function (videoId,title,description,thumbnails) {
-  //   this.add({
-  //     videoId: videoId,
-  //     title: title,
-  //     description: description,
-  //     thumbnails: thumbnails
-  //   });
-  // },
 
-
-  parse: function (response) {
-      return response.items.map(function (items) {
-        return {
-          videoId: items.id.videoId,
-          title: items.snippet.title,
-          description: items.snippet.description,
-          thumbnails: items.snippet.thumbnails.default.url
-        }
-      });
-    },
+  // parse: function (response) {
+  //     return response.items.map(function (items) {
+  //       return {
+  //         videoId: items.id.videoId,
+  //         title: items.snippet.title,
+  //         description: items.snippet.description,
+  //         thumbnails: items.snippet.thumbnails.default.url
+  //       }
+  //     });
+  //   },
 
     // A function that will change the search item
 
 });
 
 
-//view for each video
+//adds a video view and appends it to main video section
 var VideoView = Backbone.View.extend({
+  className: 'video',
+
+  template: Handlebars.compile($('#video-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
 
 });
+
+
 
 var appModel = new AppModel();
 
@@ -106,4 +113,4 @@ var appView = new AppView({ model: appModel });
 
 var videos = new VideoCollection();
 videos.on('add', function (video) { console.log(video.toJSON()); });
-videos.fetch();
+// videos.fetch();

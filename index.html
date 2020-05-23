@@ -37,7 +37,7 @@
           <p>Video Description</p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div id="video-list" class="col-md-4">
         <div class="video">
           <img src="https://www.tubefilter.com/wp-content/uploads/2018/08/youtube-logo.jpg"></img>
         </div>
@@ -54,6 +54,16 @@
 
   <!-- I'll need 2 handlebars scripts.
     one for the main video, and another for the list-->
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="side-container">
+        <img src="{{thumbnails}}">
+        <p>{{title}}</p>
+      </div>
+      <div class="main-container">
+        <p>{{description}}</p>
+        <p>{{videoId}}</p>
+      </div>
+    </script>
 
   <script src="main.js"></script>
 </body>
