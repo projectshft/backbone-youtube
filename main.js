@@ -44,3 +44,27 @@ var SidebarVideoView = Backbone.View.extend({
     return this;
   }
 })
+
+var VideoModel = Backbone.Model.extend({
+  defaults: {
+    title: '',
+    description: '',
+    thumbnail_url: ''
+  }
+})
+
+//collection of video models stored in AppModel
+var VideosCollection = Backbone.Collection.extend({
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyAdwREf50Hw10rqrfWHzENQak-lYcMlzQ4',
+  model: VideoModel,
+  //parse function adds only relevant information to each video model
+  parse: function(response) {
+    return response.items.map(function(item) {
+      return {
+        title: item.snippet.title,
+        description: item.snippet.description,
+        thumbnail_url: item.snippet.thumbnails.high.url
+      }
+    }, this);
+  }
+})
