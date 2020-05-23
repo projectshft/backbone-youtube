@@ -26,7 +26,6 @@
         </header>
 
       </div>
-
     </div>
 
     <div class="row">
@@ -38,10 +37,7 @@
 
     </div>
 
-
     <div class="row">
-
-
 
       <!-- Current Video Container -->
       <div id="current-video-container" class="col-md-8"></div>
@@ -49,40 +45,31 @@
       <!-- Video List Container -->
       <div id="list-video-container" class="col-md-4">
 
-
-
-
       </div>
-
-
-
     </div>
-
   </div>
-
-
 
   <!-- Handlebars  -->
 
   <!-- Current View Template  -->
   <script id="current-template" type="text/x-handlebars-template">
-  <div id="current-video">
-    <iframe title="{{title}}" src="https://www.youtube.com/embed/{{id}}" type="text/html" frameborder="0" allowfullscreen></iframe>
-  </div>
-  <div id="current-video-info">
-    <h2>{{title}}</h2>
-    <p>{{description}}</p>
-  </div>
-</script>
+    <div id="current-video-player">
+      <iframe title="{{title}}" src="https://www.youtube.com/embed/{{id}}" type="text/html" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="current-video-info">
+      <h2>{{title}}</h2>
+      <p>{{description}}</p>
+    </div>
+  </script>
 
   <!-- List View Template  -->
   <script id="list-template" type="text/x-handlebars-template">
 
-  <img class="img-fluid mx-auto d-block" src="{{thumbnail_url}}">
+  <img class="img-fluid mx-auto d-block" src="{{thumbnail}}">
 
   <h3 class="text-truncate">{{title}}</h3>
 
-</script>
+  </script>
 
 
 
