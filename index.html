@@ -36,9 +36,9 @@
 
         <!-- container for YouTube Search results -->
     <row class="youtube-results row pt-3">
-      <div class="main-video col-md-8 offset-md-2 pt-5">
+      <div class="main-video col-md-6 pt-5">
       </div>
-      <div class="video-list col-md-8 offset-md-2 pt-5">
+      <div class="video-list col-md-2 offset-md-2 pt-5">
       </div>
     </row>
 
@@ -47,18 +47,25 @@
 
 
   <!-- handlebars scripts -->
-  <!-- <script id="review-template" type="text/x-handlebars-template">
+  <script id="video-template" type="text/x-handlebars-template">
     <div class="content-container">
-      <span class="review-name">{{name}} - </span>
-      <span class="reviews-notes">{{text}}</span>
-      <i class="fa fa-times remove"></i>
+      <iframe width="560" height="315" src="{{ url }}" frameborder="0" allowfullscreen></iframe>
+      </iframe>
     </div>
-  </script> -->
+  </script>
+
+  <script id="video-list-template" type="text/x-handlebars-template">
+    <div class="content-container">
+      <iframe width="560" height="315" src="{{ url }}" frameborder="0" allowfullscreen></iframe>
+      </iframe>
+    </div>
+  </script>
 
   <script src="models/VideoModel.js"></script>
   <script src="collections/videoCollection.js"></script>
   <script src="models/AppModel.js"></script>
   <script src="views/AppView.js"></script>
+  <script src="views/CurrentVideoView.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

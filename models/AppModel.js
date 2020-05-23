@@ -6,5 +6,3 @@ var AppModel = Backbone.Model.extend({
     }
   }
 });
-
-// https://www.youtube.com/watch?v=mLyOj_QD4a4

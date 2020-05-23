@@ -1,5 +1,7 @@
 var VideoModel = Backbone.Model.extend({
-    defaults: {
-      url: '',
+    defaults: function() {
+      return {
+        url: '',
+      }
     }
 });
