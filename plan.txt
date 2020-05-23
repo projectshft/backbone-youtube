@@ -4,8 +4,15 @@
 4. Write the html and css for the page 
 5. Test using hardcoded url's, titles, descriptions
   -create handlebars template for current video/title/description and templates for videos in list, based on the html I have already hardcoded
-6. Build out code for all models, views, collection
-  -first create a mock final current collection and current video to test handlebars
+  -create a test object to test handlebars functionality
+6. Build out code for all models, views, collection based on my handwritten diagram
+  -create a mock final current collection and current video (should be a model)
+7. add a click event, function and listener to each view and test 
+    -that the click and function works
+    -change the function to manipulate our test model/collection
+    -test that the listener for the model/collection works by console logging when a change happens
+    -now test rendering the page when the listener is triggered
+  
 7. If possible, test postman to practice fetching videos from youtube api with a search term
 8. Try to fill video collection from youtube api, using parse
 9. Test displaying the collection in the video list and current video in the main section

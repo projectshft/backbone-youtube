@@ -3,6 +3,8 @@
   text-align: center;
 }
 
+/* Most of this styling is help visualize elements on the page when formatting, remove later */
+
 #current-video-div {
   border: 1px solid black;
   text-align: center;
