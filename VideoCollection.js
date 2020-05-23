@@ -9,12 +9,14 @@ var VideoCollection = Backbone.Collection.extend({
       this.query = options.query;
   },
 
+  // Hardcoded for now
   url: function() {
-    return "https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&type=video&videoDefinition=high&key=AIzaSyAjINmhXdmMZYEUkFpxJ-MVWSH1iHkqlDY&q=" + this.query;
+    return "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=(items(id(videoId),%20snippet(title,%20description,%20thumbnails(default(url)))))&order=viewCount&type=video&videoDefinition=high&key=AIzaSyAjINmhXdmMZYEUkFpxJ-MVWSH1iHkqlDY&q=fingertips%20fire%20they%20might%20be%20giants" // + this.query;
   },
 
-
   parse: function(response) {
+
+
     return response.map(function(item) {
 
 
