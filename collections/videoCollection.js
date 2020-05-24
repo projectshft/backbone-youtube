@@ -1,9 +1,9 @@
 var VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
 
-  addVideo: function (url) {
+  addVideo: function (videoId) {
     this.add({
-      url: url,
+      videoId: videoId,
     });
   },
 

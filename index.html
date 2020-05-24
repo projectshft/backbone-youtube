@@ -49,23 +49,29 @@
   <!-- handlebars scripts -->
   <script id="video-template" type="text/x-handlebars-template">
     <div class="content-container">
-      <iframe width="560" height="315" src="{{ url }}" frameborder="0" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allowfullscreen></iframe>
       </iframe>
     </div>
   </script>
 
   <script id="video-list-template" type="text/x-handlebars-template">
     <div class="content-container">
-      <iframe width="560" height="315" src="{{ url }}" frameborder="0" allowfullscreen></iframe>
-      </iframe>
+      <img class="thumbnail" src="{{ videoThumbnail }}">
+      <p class="video-title">{{title}}</p>
     </div>
   </script>
 
+  <!-- https://www.googleapis.com/youtube/v3/search?part=snippet&q=leeroy%20jenkins&type=video&key=AIzaSyDvgs6yXBYv2o8morAAAj8CFllR337CG6g -->
+
   <script src="models/VideoModel.js"></script>
+  <script src="models/VideoListModel.js"></script>
   <script src="collections/videoCollection.js"></script>
+  <script src="collections/VideoListCollection.js"></script>
   <script src="models/AppModel.js"></script>
   <script src="views/AppView.js"></script>
   <script src="views/CurrentVideoView.js"></script>
+  <script src="views/CurrentListView.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
+

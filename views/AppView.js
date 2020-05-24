@@ -7,8 +7,10 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+    this.listenTo(this.model.get('videoList'), 'add', this.renderVideoList)
 
     this.renderVideos()
+    this.renderVideoLists()
   },
 
   searchYouTube: function () {
@@ -20,6 +22,10 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').addVideo(
       this.$('#search-query').val()
     );
+
+    this.model.get('videoList').addVideoList(
+      this.$('#search-query').val()
+    )
 
   },
 
@@ -34,6 +40,20 @@ var AppView = Backbone.View.extend({
   renderVideos: function () {
     this.model.get('videos').each(function (m) {
       this.renderVideo(m);
+    }, this);
+  },
+
+  renderVideoList: function(videoList) {
+    
+    var currentVideoListView = new VideoListView({model: videoList});
+    this.$('.video-list').append(currentVideoListView.render().el);
+    
+  },
+
+  renderVideoLists: function() {
+    
+    this.model.get('video-list').each(function (m) {
+      this.renderVideoList(m);
     }, this);
   },
 
