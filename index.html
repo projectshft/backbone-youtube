@@ -36,9 +36,9 @@
 
         <!-- container for YouTube Search results -->
     <row class="youtube-results row pt-3">
-      <div class="main-video col-md-6 pt-5">
+      <div class="main-video col-md-8 pt-5">
       </div>
-      <div class="video-list col-md-2 offset-md-2 pt-5">
+      <div class="video-list col-md-4 pt-5 pl-5">
       </div>
     </row>
 
@@ -46,18 +46,26 @@
   </div>
 
 
-  <!-- handlebars scripts -->
+  <!-- handlebars script for main video -->
   <script id="video-template" type="text/x-handlebars-template">
     <div class="content-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allowfullscreen></iframe>
+      <iframe class="w-100" width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allowfullscreen></iframe>
       </iframe>
     </div>
   </script>
 
+  <!-- handlebars script for video list -->
   <script id="video-list-template" type="text/x-handlebars-template">
-    <div class="content-container">
-      <img class="thumbnail" src="{{ videoThumbnail }}">
-      <p class="video-title">{{title}}</p>
+    <div class="content-container row pb-2">
+      <div class="col-md-5 pl-2">
+        <img class="thumbnail" src="{{ videoThumbnail }}">
+      </div>
+      <div class="col-md-5 text-center">
+        <p class="video-title">{{ title }}</p>
+      </div>
+    </div>   
+        
+
     </div>
   </script>
 
@@ -71,6 +79,7 @@
   <script src="views/AppView.js"></script>
   <script src="views/CurrentVideoView.js"></script>
   <script src="views/CurrentListView.js"></script>
+  <script src="views/VideoListView.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

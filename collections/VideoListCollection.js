@@ -7,6 +7,7 @@ var VideoListCollection = Backbone.Collection.extend({
       videoThumbnail: videoThumbnail,
       title: title,
       description: description
+
     });
   },
 

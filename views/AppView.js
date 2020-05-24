@@ -6,9 +6,11 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function() {
+    //listening for additions to main video model and video list model
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
     this.listenTo(this.model.get('videoList'), 'add', this.renderVideoList)
 
+    //rendering main video and video list upon creation of AppView
     this.renderVideos()
     this.renderVideoLists()
   },
@@ -19,10 +21,12 @@ var AppView = Backbone.View.extend({
       return alert('Enter in text for a YouTube search.')
     }
     
+    //adding main video from search input to videoCollection
     this.model.get('videos').addVideo(
       this.$('#search-query').val()
     );
-
+    
+    //adding list of videos from search input  to VideoListCollection
     this.model.get('videoList').addVideoList(
       this.$('#search-query').val()
     )
@@ -37,6 +41,7 @@ var AppView = Backbone.View.extend({
     this.$('.main-video').append(currentVideoView.render().el);
   },
 
+  //looping through all videos in videoCollection
   renderVideos: function () {
     this.model.get('videos').each(function (m) {
       this.renderVideo(m);
@@ -50,11 +55,13 @@ var AppView = Backbone.View.extend({
     
   },
 
+  //rendering all video models in VideoListCollection
   renderVideoLists: function() {
     
-    this.model.get('video-list').each(function (m) {
+    this.model.get('videoList').each(function (m) {
       this.renderVideoList(m);
     }, this);
+
   },
 
 });
