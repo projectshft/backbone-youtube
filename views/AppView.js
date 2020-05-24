@@ -48,6 +48,7 @@ var AppView = Backbone.View.extend({
     }, this);
   },
 
+  
   renderVideoList: function(videoList) {
     
     var currentVideoListView = new VideoListView({model: videoList});
