@@ -16,7 +16,7 @@ var VideoCollection = Backbone.Collection.extend({
         console.log("this: ", this)
         return response.items.map(function (video) {
                 return {
-                    id: video.id.videoId,
+                    videoId: video.id.videoId,
                     title: video.snippet.title,
                     info: video.snippet.description,
                     thumbnail: video.snippet.thumbnails.medium.url,

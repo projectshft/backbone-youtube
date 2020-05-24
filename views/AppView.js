@@ -75,9 +75,14 @@ var AppView = Backbone.View.extend({
 
         //get video collection, current video, and clicked video
         var videoList = this.model.get('videos');
+        console.log("video list", videoList);
+
         var currentVideo = videoList.findWhere({ current: true });
-        var clickedVideoId = $(e.currentTarget.model);
-        console.log(clickedVideoId);
+        console.log("current video", currentVideo);
+
+        var clickedVideoId = $(e.currentTarget);
+        console.log("clicked vid id:", clickedVideoId);
+
         var clickedVideo = videoList.findWhere({ id: clickedVideoId });
 
         //change current video's "current" status to false
