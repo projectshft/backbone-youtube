@@ -36,7 +36,15 @@ var AppModel = Backbone.Model.extend({
     // we'll take the first setnence of the error to alert, then indicate to go to console for more info.
     shortenedError = xhr.responseJSON.error.message.split(".")[0];
 
-    alert(shortenedError + ". More information in developer console.");
+    //user & developer friendly error alert
+    alert(
+      "There is an error in getting the data. Here's why: '" +
+        shortenedError +
+        "'. More information in developer console."
+    );
+
+    // throw the detailed error in console for further investigation by dev
     console.log(xhr.responseJSON.error.message);
+    console.log("The full error is ", xhr.responseJSON.error);
   },
 });
