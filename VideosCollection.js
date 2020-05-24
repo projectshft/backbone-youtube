@@ -10,7 +10,8 @@ var VideosCollection = Backbone.Collection.extend({
    'type' is set to video so we only get video back and not playlists or channels
    'videoEmbeddable is true because we want to filter our response to only videos that we can embed'  */
 
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyAEjf7hDATr-O7ilGfzojLtj3VbsiFw9r8',
+  
 
 
   /* Here we parse the api response into an array (collection) of video models (objects)

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Project Youtube</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -26,14 +26,14 @@
     <form class="form-inline search-form" onsubmit="event.preventDefault();">
       <div class="form-row align-items-center mx-auto">
         <input id="search-input" type="text" class="form-control form-control-md mr-md-2" style="width: 400px"
-          placeholder="Please enter search term here">
+          placeholder="Please enter search term here" required>
         <label class="sr-only" for="inlineFormInputGroupUsername2">Enter search term</label>
         <button id="search-button" type="submit" class="btn btn-primary">Search</button>
       </div>
     </form>
     <div class="row" style="margin-top: 30px;">
 
-      <div id="current-video-div" class="col-md-5 offset-md-1 mr-md-2 pt-2">
+      <div id="current-video-div" class="col-md-5 offset-md-1 mr-md-5 p-2">
       </div>
 
       <div id="video-list-div" class="col-md-5">
@@ -45,19 +45,21 @@
 
 
     <script id="current-video-template" type="text/x-handlebars-template">
-      <iframe width="320" height="240" src="{{videoURL}}" frameborder="0"
+      <iframe width="380" height="285" src="{{videoURL}}" frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div id="current-video-info" class="video-info">
-        <p>{{title}}</p>
-        <p>{{description}}</p>
+      <hr />
+      <div id="current-video-info">
+        <p class="title">{{title}}</p>
+        <p class="description">{{description}}</p>
       </div>
     </script>
 
     <script id="video-list-template" type="text/x-handlebars-template">
-      <div class="video-info pt-2 pl-2">
+      <div class="video-info p-2">
         <a id="{{id}}" class="video-thumbnail"><img src="{{thumbnailURL}}" width="160" height="120"></a> 
         <p>{{title}}</p>
       </div>
+      <hr />
     </script>
 
 

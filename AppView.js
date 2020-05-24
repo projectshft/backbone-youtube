@@ -22,8 +22,8 @@ var AppView = Backbone.View.extend({
 
   //this function will get called when the user clicks submit and the searm term(s) will be grabbed and used in our API call
   getSearchTermForApiCall: function () {
-
-    var newURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=' + this.$searchTerm.val() + '&type=video&videoEmbeddable=true&key=AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g'
+    if (this.$searchTerm.val()) {
+    var newURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=' + this.$searchTerm.val() + '&type=video&videoEmbeddable=true&key=AIzaSyAEjf7hDATr-O7ilGfzojLtj3VbsiFw9r8'
 
     //the newURL will be set on the videos collection (replacing the previous url or the default url)
     this.model.get('videosCollection').url = newURL;
@@ -31,7 +31,7 @@ var AppView = Backbone.View.extend({
     //this will call the youtube api with the new url set above and replace the videos collection
     appModel.get('videosCollection').fetch({ reset: true });
 
-
+    }
   },
 
   //this will change the current_video attribute on the app model and set it to the clicked video
@@ -57,7 +57,7 @@ var AppView = Backbone.View.extend({
     }, this);
 
     this.model.set('current_video', this.model.get('videosCollection').models[0]);
-
+    this.$searchTerm.val('');
   },
 
   //this function will get called when the user clicks a video on the list and we'll create a currentVideoView (which will have a video model that we get from the app model's current_video) and then render that by using another handlebars template and append to the current-video-div

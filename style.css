@@ -1,32 +1,68 @@
+body {
+  font-family: Roboto, Arial, sans-serif;
+}
+
 .page-header {
   margin-top: 30px;
   text-align: center;
+  
 }
+
+#search-input {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.video-info {
+  font-size: 12px;
+}
+
+#current-video-info .title {
+  font-weight: 500;
+}
+
+#current-video-info .description {
+  font-style: italic;
+  font-weight: 300;
+}
+
+#video-list-div p {
+  display: inline-block;
+  width: 50%;
+  margin-left: 10px;
+  vertical-align: middle;
+
+}
+
+#video-list-div img {
+  display: inline-block;
+  
+}
+
 
 /* Most of this styling is help visualize elements on the page when formatting, remove later */
 
 #current-video-div {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   text-align: center;
+  overflow: scroll;
 }
 
 #current-video-info {
   text-align: left;
-  border: 1px solid blue; 
-  margin-top: 30px; 
+ 
+  margin-top: 10px; 
   padding:10px;
 }
 
-.video-info {
+/* .video-info {
   border: 1px solid purple;
-}
+} */
 
-#video-list-div {
+/* #video-list-div {
   border: 1px solid black;
-}
+} */
 
-#video-list-div p {
-  display: inline;
-}
+
 
 
