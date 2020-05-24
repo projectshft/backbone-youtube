@@ -17,7 +17,7 @@ var AppView = Backbone.View.extend({
         this.$searchInput = this.$('#search-input');
 
         //when search is complete, check for current video
-        this.listenTo(this.model.get('videos'), 'sync', this.renderPage);
+        this.listenTo(this.model.get('videos'), 'sync', this.setCurrent);
 
         //when current video is changed, re-render page
         this.listenTo(this.model, 'change:current_video', this.renderPage);
@@ -34,17 +34,19 @@ var AppView = Backbone.View.extend({
 
     renderListVideo: function (video) {
         console.log('rendering video')
+        console.log(video)
         var listView = new ListView({ model: video });
+        console.log("list view: ", listView)
         this.$list.append(listView.render().el);
     },
 
     //create View for list of videos, render with Handlebars template, append to page
-    renderList: function (video) {
+    renderList: function () {
         console.log('rendering list');
 
         //append video collection to page
         this.model.get('videos').each(function (video) {
-            this.renderVideo(video);
+            this.renderListVideo(video);
         }, this);
     },
 

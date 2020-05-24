@@ -1,4 +1,4 @@
-var CurrentView = new Backbone.View.extend({
+var CurrentView = Backbone.View.extend({
     id: "current-video",
 
     template: Handlebars.compile($('#current-template').html()),

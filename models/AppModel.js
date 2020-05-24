@@ -5,9 +5,5 @@ var AppModel = Backbone.Model.extend({
             current_video: null,
             search: null,
         }
-    },
-
-    initialize: function() {
-       
     }
 });
