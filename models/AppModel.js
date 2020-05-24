@@ -20,4 +20,15 @@ var AppModel = Backbone.Model.extend({
     // updates the collection
     this.get("videos").fetch({ reset: true });
   },
+
+  changeMainVideo: function (desiredVideoId) {
+    var currentMainVideo = this.get("videos").findWhere({ main: true });
+    var desiredMainVideo = this.get("videos").findWhere({ id: desiredVideoId });
+    console.log("Before, desiredMainVideo is ", desiredMainVideo);
+
+    currentMainVideo.set("main", false);
+    desiredMainVideo.set("main", true);
+
+    console.log("After, desiredMainVideo is ", desiredMainVideo);
+  },
 });

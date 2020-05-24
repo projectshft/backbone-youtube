@@ -3,6 +3,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     "click #search-button": "searchYouTube",
+    "click .suggested-video-link": "changeMainVideo",
   },
 
   initialize: function () {
@@ -52,8 +53,6 @@ var AppView = Backbone.View.extend({
   renderMainVideo: function () {
     this.$mainVideoBox.empty();
 
-    // saving for later use, but don't want to get ahead of
-
     var allVideos = this.model.get("videos");
     var mainVideoModel = allVideos.findWhere({ main: true });
     console.log("The main video model is ", mainVideoModel);
@@ -61,5 +60,15 @@ var AppView = Backbone.View.extend({
     var mainVideoHandlebars = new MainVideoView({ model: mainVideoModel });
     console.log("The handlebars is ", mainVideoHandlebars);
     this.$mainVideoBox.append(mainVideoHandlebars.render().el);
+  },
+
+  changeMainVideo: function (event) {
+    // send the desired video's info to the AppModel to handle
+    var desiredId = $(event.currentTarget).data().id;
+
+    this.model.changeMainVideo(desiredId);
+
+    // we'll want to re-render the page
+    this.renderPage();
   },
 });
