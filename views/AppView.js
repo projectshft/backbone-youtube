@@ -12,8 +12,10 @@ var AppView = Backbone.View.extend({
   },
 
   searchYouTube: function () {
-    console.log(this.$searchInput.val());
-    // send the value from the search bar to the VideosCollection
+    var searchTerm = this.$searchInput.val();
+
+    // update the model by passing through the search term
+    this.model.updateVideosCollection(searchTerm);
   },
 
   // render main video
