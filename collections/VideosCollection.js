@@ -20,7 +20,7 @@ var VideosCollection = Backbone.Collection.extend({
       return {
         id: video.id.videoId,
         description: video.snippet.description,
-        thumbnail: video.snippet.thumbnails.default,
+        thumbnail_url: video.snippet.thumbnails.medium.url,
         channelTitle: video.snippet.channelTitle,
         title: video.snippet.title,
         publishTime: video.snippet.publishTime,

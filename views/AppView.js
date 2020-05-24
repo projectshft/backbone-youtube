@@ -25,6 +25,27 @@ var AppView = Backbone.View.extend({
 
   renderPage: function () {
     this.renderMainVideo();
+    this.renderAllSuggestedVideos();
+  },
+
+  renderAllSuggestedVideos: function () {
+    this.$suggestedVideos.empty();
+
+    var allVideos = this.model.get("videos");
+    var suggestedVideos = allVideos.where({ main: false });
+    console.log("Suggested videos are ", suggestedVideos);
+
+    // use forEach because #where returns an array
+    suggestedVideos.forEach(function (suggestedVideo) {
+      this.renderSuggestedVideo(suggestedVideo);
+    }, this);
+  },
+
+  renderSuggestedVideo: function (suggestedVideo) {
+    var suggestedVideoView = new SuggestedVideosView({
+      model: suggestedVideo,
+    });
+    this.$suggestedVideos.append(suggestedVideoView.render().el);
   },
 
   // render main video

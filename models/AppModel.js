@@ -15,7 +15,7 @@ var AppModel = Backbone.Model.extend({
     var allVideos = this.get("videos");
 
     // updates the url for the VideosCollection, based on the user's search term
-    allVideos.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchTerm}&type=video&key=AIzaSyDQfKcKKGwULrhZccV7sPY1aKn_GlZ3dHM`;
+    allVideos.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${searchTerm}&type=video&key=AIzaSyDQfKcKKGwULrhZccV7sPY1aKn_GlZ3dHM`;
 
     // updates the collection
     this.get("videos").fetch({ reset: true });

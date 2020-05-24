@@ -1,5 +1,9 @@
 var SuggestedVideosView = Backbone.View.extend({
-  events: {},
+  template: Handlebars.compile($("#suggested-video-template").html()),
 
-  initialize: function () {},
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  },
 });
