@@ -4,9 +4,6 @@ var VideoView = Backbone.View.extend({
   videoListTemplate: Handlebars.compile($('#video-list-template').html()),
   currentVideoTemplate: Handlebars.compile($('#current-video-template').html()),
 
-  events: {
-
-  },
 
   initialize: function () {
     //we're already listening to a change in the current video in the AppView
@@ -22,7 +19,7 @@ var VideoView = Backbone.View.extend({
 
   //this will be called from appView when rendering the current video on the page
   renderCurrent: function () {
-    this.$el.html(this.currentVideoTemplate(this.model));
+    this.$el.html(this.currentVideoTemplate(this.model.toJSON()));
 
     return this;
   }

@@ -2,9 +2,7 @@ var appModel = new AppModel();
 
 var appView = new AppView({ model: appModel });
 
-appView.renderVideosFromCollection()
-appView.renderCurrentVideo()
-//appModel.get('videosCollection').fetch({ reset: true });
+appModel.get('videosCollection').fetch({ reset: true });
 
 
 

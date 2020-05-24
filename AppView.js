@@ -43,9 +43,12 @@ var AppView = Backbone.View.extend({
 
   //this function will be triggered when the videosCollection is reset. It will iterate through the collection and call the renderVideo function above in that process
   renderVideosFromCollection: function () {
+   
     this.model.get('videosCollection').each(function (videoModel) {
       this.renderVideo(videoModel);
     }, this);
+
+    this.model.set('current_video', this.model.get('videosCollection').models[0]);
   },
 
   //this function will get called when the user clicks a video on the list and we'll create a currentVideoView (which will have a video model that we get from the app model's current_video) and then render that by using another handlebars template and append to the current-video-div
