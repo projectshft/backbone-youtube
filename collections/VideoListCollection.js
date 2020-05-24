@@ -1,5 +1,5 @@
 var VideoListCollection = Backbone.Collection.extend({
-  model: VideoListModel,
+  model: VideoModel,
 
   addVideoList: function (videoId, videoThumbnail, title, description) {
     this.add({
