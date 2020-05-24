@@ -2,7 +2,7 @@ var VideoModel = Backbone.Model.extend({
   defaults: {
     id: "",
     channelTitle: "",
-    description: "",
+    description: "No description",
     publishTime: "",
     thumbnail: "",
     title: "",

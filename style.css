@@ -2,16 +2,31 @@
   height: 411px; /* need to add media queries */
 }
 
-#main-video-information {
-  border-bottom: 1px solid silver;
+.main-video-header {
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.channel {
+  font-weight: bold;
+}
+
+#main-video-information h1 {
+  font-size: 20px;
+  line-height: 2.4em;
+  font-weight: bold;
+}
+
+#main-video-information p {
+  font-size: 14px;
+  /* line-height: 2em; */
 }
 
 .suggested-video {
-  border-bottom: 1px solid silver;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .suggested-video:hover {
-  border-bottom: 1px solid rgb(114, 114, 114);
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .suggested-video h4 {
@@ -30,5 +45,5 @@
 
 .suggested-video-link:hover {
   text-decoration: none;
-  color: rgb(0, 0, 0, 0.5);
+  color: #ababab;
 }

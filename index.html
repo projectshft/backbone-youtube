@@ -26,7 +26,7 @@
           <input type="text" id="search-input" class="form-control" placeholder="Enter search term">
           </input>
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+            <button class="btn btn-sm btn-outline-secondary" type="button" id="search-button">Search</button>
           </div>
         </div>
       </div>
@@ -61,8 +61,13 @@
     </div>
 
     <div id="main-video-information">
-      <h1>{{title}}</h1>
-      <p>{{description}}</p>
+      <div class="main-video-header mb-2">
+        <h1>{{title}}</h1>
+        <p class="channel">{{channelTitle}}</p>
+      </div>
+      <div class="video-description">
+        <p>{{description}}</p>
+      </div>
     </div>
   </script>
 
@@ -76,7 +81,15 @@
             class="img-fluid">
         </div>
         <div class="col-7 pl-3">
-          <h4>{{title}}</h2>
+          <h4>
+            {{#if shorterTitle}}
+            {{shorterTitle}}
+            {{/if}}
+            
+            {{#unless shorterTitle}}
+            {{title}}
+            {{/unless}}
+          </h4>
             <p> {{channelTitle}}</p>
         </div>
       </div>
