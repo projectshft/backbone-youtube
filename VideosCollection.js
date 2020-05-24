@@ -18,7 +18,7 @@ var VideosCollection = Backbone.Collection.extend({
    The actual videos we want are in an array in the response called 'items', so that why we're mapping response.items
    The properties of the videoModel are selected based on only the info we need from the response, using the same keys as the handlebars template variables  */
   parse: function(response) {
-    console.log(response);
+    
     return response.items.map(function(item) {
       return {
         id: item.id.videoId,

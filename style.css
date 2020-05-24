@@ -14,7 +14,8 @@ body {
 }
 
 .video-info {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 #current-video-info .title {
@@ -31,7 +32,6 @@ body {
   width: 50%;
   margin-left: 10px;
   vertical-align: middle;
-
 }
 
 #video-list-div img {
@@ -39,11 +39,7 @@ body {
   
 }
 
-
-/* Most of this styling is help visualize elements on the page when formatting, remove later */
-
 #current-video-div {
-  /* border: 1px solid black; */
   text-align: center;
   overflow: scroll;
 }
@@ -54,14 +50,6 @@ body {
   margin-top: 10px; 
   padding:10px;
 }
-
-/* .video-info {
-  border: 1px solid purple;
-} */
-
-/* #video-list-div {
-  border: 1px solid black;
-} */
 
 
 
