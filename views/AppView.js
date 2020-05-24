@@ -4,6 +4,7 @@ var AppView = Backbone.View.extend({
   events: {
     "click #search-button": "searchYouTube",
     "click .suggested-video-link": "changeMainVideo",
+    "keypress #search-input": "searchOnEnter",
   },
 
   initialize: function () {
@@ -33,6 +34,13 @@ var AppView = Backbone.View.extend({
 
     // update the model by passing through the search term
     this.model.updateVideosCollection(searchTerm);
+  },
+
+  searchOnEnter: function (e) {
+    // any time the user hits enter within input, invoke the search
+    if (e.which === 13) {
+      this.searchYouTube();
+    }
   },
 
   renderPage: function () {
