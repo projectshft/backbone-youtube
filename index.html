@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>MiniTube</title>
+</head>
+
+<body>
+  <div class="row-2">
+    <div class="col-md-6 offset-md-3">
+
+      <div class="page-header">
+        <h1><b>APPVIEW</b></h1>
+      </div>
+
+      <form class="post-form">
+
+        <div class="form-group">
+          <input type="text" id="video-search" class="form-control" placeholder="Search"></input>
+          <button type="button" class="btn btn-primary" id="search">Search</button>
+
+          <h4><b>VideoView</b></h4>
+          <div id="commits">
+          </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <script id="main-video-template" type="text/x-handlebars-template">
+    <div class="video-title">
+      <h5>{{ VideoTitle }}° </h5>
+        <div class="video-description">
+          {{ VideoDescription }}
+        </div>
+        <div>
+          <img src=""></img>
+        </div>
+  </script>
+  <script id="video-searchbar-template" type="text/x-handlebars-template">
+    <div class="video-searchbar">
+       <h5>{{ VideoSearchBarTitles }}° </h5>
+         <div>
+          <img src=""></img>
+         </div>
+    </div>
+</script>
+  <script src="main.js" type="text/javascript"></script>
+</body>
+
+</html>
