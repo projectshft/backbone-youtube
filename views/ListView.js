@@ -1,15 +1,11 @@
-var ListView = new Backbone.Model.extend({
+var ListView = new Backbone.View.extend({
     className: "list-video",
-    
-    template: {
 
-    },
+    template: Handlebars.compile($('#list-video').html()),
 
-    events: {
+    render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
 
-    },
-
-    render: function() {
-
+        return this;
     }
 });
