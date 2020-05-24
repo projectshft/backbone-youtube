@@ -7,7 +7,7 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-  //  this.$query-input = this.$('#query-input');
+  //  this.$query-input = this.$('#query-input'); //leaving alone for right now
 
     // this.$videoList = this.$('.video-list');
     //
@@ -24,9 +24,7 @@ var AppView = Backbone.View.extend({
 
   registerSearch: function () {
     alert('test');
-    
     this.model.get('videos').fetch({ reset: true });
-    console.log(this.model.get('videos'));
   },
 
   // renderSideView: function (e) {
