@@ -17,8 +17,8 @@ var AppModel = Backbone.Model.extend({
     // updates the url for the VideosCollection, based on the user's search term
     allVideos.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=${searchTerm}&type=video&key=AIzaSyDQfKcKKGwULrhZccV7sPY1aKn_GlZ3dHM`;
 
-    // updates the collection
-    this.get("videos").fetch({ reset: true });
+    // updates the collection or invokes an error handler if needed
+    this.get("videos").fetch({ error: this.onErrorHandler, reset: true });
   },
 
   changeMainVideo: function (desiredVideoId) {
@@ -30,5 +30,13 @@ var AppModel = Backbone.Model.extend({
     desiredMainVideo.set("main", true);
 
     console.log("After, desiredMainVideo is ", desiredMainVideo);
+  },
+
+  onErrorHandler: function (model, xhr, options) {
+    // we'll take the first setnence of the error to alert, then indicate to go to console for more info.
+    shortenedError = xhr.responseJSON.error.message.split(".")[0];
+
+    alert(shortenedError + ". More information in developer console.");
+    console.log(xhr.responseJSON.error.message);
   },
 });
