@@ -1,7 +1,15 @@
 var AppView = Backbone.View.extend({
   el: $("body"),
 
-  events: {},
+  events: {
+    "click #search-button": "searchYouTube",
+  },
 
-  initialize: function () {},
+  initialize: function () {
+    this.$searchInput = this.$("#search-input");
+  },
+
+  searchYouTube: function () {
+    console.log(this.$searchInput.val());
+  },
 });
