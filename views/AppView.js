@@ -17,7 +17,7 @@ var AppView = Backbone.View.extend({
         this.$searchInput = this.$('#search-input');
 
         //when search is complete, check for current video
-        this.listenTo(this.model.get('videos'), 'reset', this.setCurrent);
+        this.listenTo(this.model.get('videos'), 'sync', this.renderPage);
 
         //when current video is changed, re-render page
         this.listenTo(this.model, 'change:current_video', this.renderPage);
@@ -32,17 +32,32 @@ var AppView = Backbone.View.extend({
         this.searchVideos();
     },
 
+    renderListVideo: function (video) {
+        console.log('rendering video')
+        var listView = new ListView({ model: video });
+        this.$list.append(listView.render().el);
+    },
+
     //create View for list of videos, render with Handlebars template, append to page
     renderList: function (video) {
         console.log('rendering list');
-        var listView = new ListView({ model: video });
-        this.$list.append(listView.render().el);
+
+        //append video collection to page
+        this.model.get('videos').each(function (video) {
+            this.renderVideo(video);
+        }, this);
     },
 
     //create View for current video, render with Handlebars, append to page
     renderCurrent: function (video) {
         console.log('rendering current');
-        var currentView = new CurrentView({ model: video });
+        //get current video
+        var currentVideo = this.model.get('current_video');
+
+        //create current view
+        var currentView = new CurrentView({ model: currentVideo });
+
+        //append current view to page
         this.$current.append(currentView.render().el);
     },
 
@@ -53,13 +68,9 @@ var AppView = Backbone.View.extend({
         this.$current.empty();
         this.$list.empty();
 
-        //append current video to current view
-        this.renderCurrent(this.model.get('current_video'));
-
-        //append collection to list view
-        this.model.get('videos').each(function (video) {
-            this.renderList(video);
-        }, this);
+        //render current video and list videos to page
+        // this.renderCurrent();
+        this.renderList();
     },
 
     //swap current status of clicked video and current video
@@ -91,7 +102,7 @@ var AppView = Backbone.View.extend({
 
         //find current video in collection
         var newCurrentVideo = videoList.findWhere({ current: true });
-    
+
         //move clicked video from list to current
         videoList.remove(newCurrentVideo, { silent: true }); //wait to re-render
         videoList.set('current_video', newCurrentVideo); //change event re-renders page
@@ -116,7 +127,7 @@ var AppView = Backbone.View.extend({
         //find search term and video collection
         var search = this.model.get('search');
         var videoList = this.model.get('videos');
-        
+
         //send search phrase to fetch videos for collection
         videoList.fetchVideos(search);
     }
@@ -124,4 +135,3 @@ var AppView = Backbone.View.extend({
 
 
 
-  
