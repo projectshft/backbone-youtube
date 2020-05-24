@@ -4,13 +4,23 @@ var AppView = Backbone.View.extend({
   initialize: function() {
     // when videos get added, render them and set current video
     this.listenTo(this.model.get('videos'), 'add', this.renderVideos)
-    this.listenTo(this.model.get('videos'), 'add', this.setCurrentVideo);
+    this.listenTo(this.model.get('videos'), 'add', this.setCurrentVideo)
 
+  },
+
+  renderCurrentVideo: function() {
+    // empty currentVideo container each time so the video only appears once
+    this.$('#current-video').empty()
+    // use the currentlyPlaying object as the model for the new view
+    this.currentVideo = new CurrentlyPlayingView({ model: this.model.get('currentlyPlaying')});
+    // put currentVideo completed html from template into currentVideo container
+    this.$('#current-video').append(this.currentVideo.render().el)
   },
 
   setCurrentVideo: function() {
     // set current video to be the first in the collection
     this.model.set('currentlyPlaying', this.model.get('videos').models[0])
+    this.renderCurrentVideo();
   },
 
   renderVideo: function(video) {
