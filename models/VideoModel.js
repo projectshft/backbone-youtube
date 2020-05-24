@@ -5,6 +5,7 @@ var VideoModel = Backbone.Model.extend({
     description: "",
     publishTime: "",
     thumbnail: "",
+    title: "",
     main: false,
   },
 });

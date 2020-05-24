@@ -16,11 +16,13 @@ var VideosCollection = Backbone.Collection.extend({
         var main = true;
       }
 
+      // these objects will be used by handlebars to render video on page
       return {
         id: video.id.videoId,
         description: video.snippet.description,
         thumbnail: video.snippet.thumbnails.default,
         channelTitle: video.snippet.channelTitle,
+        title: video.snippet.title,
         publishTime: video.snippet.publishTime,
         main: main,
       };
