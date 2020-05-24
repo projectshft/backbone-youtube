@@ -14,7 +14,21 @@
     -now test rendering the page when the listener is triggered
   
 7. If possible, test postman to practice fetching videos from youtube api with a search term
+  -Instead I used google api's built in tester
 8. Try to fill video collection from youtube api, using parse
 9. Test displaying the collection in the video list and current video in the main section
 10. Get the main video to change by clicking a video in the list 
+    -Figure out how to get the model's attributes (like an id) and then change the current video in the app model 
 11. Test changing the collection by entering a new search
+    -when the search button is clicked, the app model will grab the value, update the collection's url and then perform the api request on the new url
+    -check that the fetch will replace the collection
+    -clear the videos on the page before rendering the new collection
+12. Add catch after fetch to log errors appropriately
+13. Test multiword searches
+13.5 Handle search click with no input
+14. Test out other search parameters/filters in the url if needed
+15. Fixup the css (title placements in list, fonts, see if I can get shorter titles/ cleaner descriptions)
+16. Add a page loader icon
+17. Work on extensions
+
+

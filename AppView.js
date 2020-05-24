@@ -6,9 +6,8 @@ var AppView = Backbone.View.extend({
     'click #search-button': 'getSearchTermForApiCall',
 
     //this should change the current video set on the app model to the video that is clicked
-    //will clicking on the iframe work? I may need to change the target
     'click .video-thumbnail': 'changeCurrentVideoOnAppModel'
-    
+
   },
 
   initialize: function () {
@@ -21,15 +20,15 @@ var AppView = Backbone.View.extend({
     this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo);
   },
 
-  //this function will get called when the user clicks submit and the searm term(s) will be grabbed and be used in our API call
+  //this function will get called when the user clicks submit and the searm term(s) will be grabbed and used in our API call
   getSearchTermForApiCall: function () {
-    console.log(`The search input is ${this.$searchTerm.val()}`);
-    var searchTerm = this.$searchTerm.val()
-   
-    var newURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=' + searchTerm + '&type=video&videoEmbeddable=true&key=AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g'
+
+    var newURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=' + this.$searchTerm.val() + '&type=video&videoEmbeddable=true&key=AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g'
+
+    //the newURL will be set on the videos collection (replacing the previous url or the default url)
     this.model.get('videosCollection').url = newURL;
 
-    //this.videosCollection = new VideosCollection(searchTerm);
+    //this will call the youtube api with the new url set above and replace the videos collection
     appModel.get('videosCollection').fetch({ reset: true });
 
 
@@ -37,11 +36,11 @@ var AppView = Backbone.View.extend({
 
   //this will change the current_video attribute on the app model and set it to the clicked video
   changeCurrentVideoOnAppModel: function (event) {
-    
+
     //we're setting the id of the thumbnail image element in the handlebars template, so we can access the id (which is the video model's id), to then change the current_video attribute on the app model to the one that is clicked
     var clickedVideoId = $(event.currentTarget).attr('id');
     this.model.changeAppModelCurrentVideo(clickedVideoId);
-    
+
   },
 
   //this is called in the process of rendering a new page from the renderVideosFromCollection function. We will create a new videoview for each video model and append it to the video list div on the page
@@ -58,18 +57,18 @@ var AppView = Backbone.View.extend({
     }, this);
 
     this.model.set('current_video', this.model.get('videosCollection').models[0]);
- 
+
   },
 
   //this function will get called when the user clicks a video on the list and we'll create a currentVideoView (which will have a video model that we get from the app model's current_video) and then render that by using another handlebars template and append to the current-video-div
   renderCurrentVideo: function () {
     this.$('#current-video-div').empty();
-    var currentVideoView = new VideoView({model: this.model.get('current_video')});
+    var currentVideoView = new VideoView({ model: this.model.get('current_video') });
     this.$('#current-video-div').append(currentVideoView.renderCurrent().el);
   }
 
 })
 
-  
- 
+
+
 
