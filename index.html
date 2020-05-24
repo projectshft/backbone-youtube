@@ -1,6 +1,12 @@
 <!-- <!DOCTYPE html> -->
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -12,13 +18,103 @@
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-    <title>BeerList</title>
+    <title>Project YouTube: Pierre</title>
   </head>
   <body>
+    <div class="container-md">
+      
+      <!-- Search row-->
+      <div class="row justify-content-center mt-4 mb-4">
+        <div class="col-sm"></div>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <input type="text" id="search-input" class="form-control" placeholder="Search">
+            </input>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm"></div>
+      </div>
+
+      <!-- content begins-->
+      <div class="row">
+        <!-- offset -->
+        
+        
+        <!-- main video view-->
+        <div class="col-lg-8 pb-3">
+          <div id="main-content">
+            <div id="main-video">
+              <p>Main video will go here</p>
+            </div>
+            
+            <div id="main-video-information">
+              <h1>Video Title</h1>
+              <p>Video description</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- suggested videos view-->
+        <div class="col-lg-4">
+          <div id="suggested-videos">
+            
+              
+              <div class="row no-gutters suggested-video mb-2 pb-2 justify-content-start">
+                <div class="col-5 video-thumbnail">
+                    <img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg" class="img-fluid"> 
+                </div>
+                <div class="col-7 pl-3">
+                  <h4>Suggested Video</h2>
+                  <p> Creator on YouTube</p>
+                  <p># of views</p>
+                </div>
+              </div>
+
+              <div class="row no-gutters suggested-video mb-2 pb-2 justify-content-start">
+                <div class="col-5 video-thumbnail">
+                    <img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg" class="img-fluid"> 
+                </div>
+                <div class="col-7 pl-3">
+                  <h4>Suggested Video</h2>
+                  <p> Creator on YouTube</p>
+                  <p># of views</p>
+                </div>
+              </div>
+
+              <div class="row no-gutters suggested-video mb-2 pb-2 justify-content-start">
+                <div class="col-5 video-thumbnail">
+                    <img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg" class="img-fluid"> 
+                </div>
+                <div class="col-7 pl-3">
+                  <h4>Suggested Video</h2>
+                  <p> Creator on YouTube</p>
+                  <p># of views</p>
+                </div>
+              </div>
+
+              <div class="row no-gutters suggested-video mb-2 pb-2 justify-content-start">
+                <div class="col-5 video-thumbnail">
+                    <img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg" class="img-fluid"> 
+                </div>
+                <div class="col-7 pl-3">
+                  <h4>Suggested Video</h2>
+                  <p> Creator on YouTube</p>
+                  <p># of views</p>
+                </div>
+              </div>
+
+            
+            
+          </div>  
+        </div>
+      </div>
+    </div>
+
     <script src="models/VideoModel.js"></script>
-
     <script src="collections/VideosCollection.js"></script>
-
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="views/SuggestedVideoView.js"></script>
