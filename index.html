@@ -41,15 +41,7 @@
       <!-- main video view-->
       <div class="col-lg-8 pb-3">
         <div id="main-content">
-          <div id="main-video">
-            <iframe id="ytplayer" type="text/html" width="100%" height="100%"
-              src="https://www.youtube.com/embed/7YcW25PHnAA?&origin=http://example.com" frameborder="0"></iframe>
-          </div>
-
-          <div id="main-video-information">
-            <h1>Video Title</h1>
-            <p>Video description</p>
-          </div>
+          <!-- handlebars inserts here-->
         </div>
       </div>
 
@@ -116,6 +108,18 @@
       </div>
     </div>
   </div>
+
+  <script id="main-video-template" type="text/x-handlebars-template">
+    <div id="main-video">
+      <iframe id="ytplayer" type="text/html" width="100%" height="100%"
+        src="https://www.youtube.com/embed/{{videoId}}" frameborder="0"></iframe>
+    </div>
+
+    <div id="main-video-information">
+      <h1>Video Title</h1>
+      <p>Video description</p>
+    </div>
+  </script>
 
   <script src="models/VideoModel.js"></script>
   <script src="collections/VideosCollection.js"></script>
