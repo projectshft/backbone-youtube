@@ -4,6 +4,7 @@ var VideoModel = Backbone.Model.extend({
       title: '',
       description: '',
       imageURL: '',
+      videoID: 'hwLo7aU1Aas'
     }
   }
 });

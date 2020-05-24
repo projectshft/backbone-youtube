@@ -2,6 +2,10 @@ body {
   background-color: ghostwhite;
 }
 
+.video-thumbnail {
+  cursor: pointer;
+}
+
 form {
   width: 80%;
   margin: auto;

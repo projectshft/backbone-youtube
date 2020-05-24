@@ -1,12 +1,22 @@
 var AppView = Backbone.View.extend({
   el: $('body'),
 
+  events: {
+    'click .video-thumbnail': 'updateCurrentVideo'
+  },
+
   initialize: function() {
     // when videos get added, render them and set current video
     this.listenTo(this.model.get('videos'), 'add', this.renderVideos)
     this.listenTo(this.model.get('videos'), 'add', this.setCurrentVideo)
 
   },
+
+  updateCurrentVideo: function(eventButton) {
+      var clickedVideo = $(eventButton.currentTarget).find('h3').text()
+      this.model.resetCurrentVideo(clickedVideo)
+      this.renderCurrentVideo();
+    },
 
   renderCurrentVideo: function() {
     // empty currentVideo container each time so the video only appears once
