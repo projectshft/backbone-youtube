@@ -2,16 +2,16 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .search': 'findVideos',
+    'click .search': 'registerSearch',
     // 'click .view-video': 'setMainVideo',
   },
 
   initialize: function () {
-    this.$query-input = this.$('#query-input');
+  //  this.$query-input = this.$('#query-input');
 
     // this.$videoList = this.$('.video-list');
     //
-    // this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+    // this.listenTo(this.model.get('videos'), 'fetch', this.renderVideo);
     // this.listenTo(this.model, 'hide_video_in_side_view', this.renderSideView);
     //
     // this.listenTo(this.model, 'change:main_video', this.renderMainDisplay);
@@ -20,13 +20,13 @@ var AppView = Backbone.View.extend({
     // this.renderBeers();
   },
 
-  findVideos: function () {
-    this.model.get('beers').addBeer(
-      this.$nameInput.val(),
-      this.$styleInput.val(),
-      this.$abvInput.val(),
-      this.$imgUrl.val()
-    );
+  // consider using haschanged????
+
+  registerSearch: function () {
+    alert('test');
+    
+    this.model.get('videos').fetch({ reset: true });
+    console.log(this.model.get('videos'));
   },
 
   // renderSideView: function (e) {
