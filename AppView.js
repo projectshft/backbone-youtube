@@ -20,16 +20,11 @@ var AppView = Backbone.View.extend({
     this.listenTo(this.model, 'change:current_video', this.renderCurrentVideo);
   },
 
-  //this function will get called when the user clicks submit and the searm term(s) will be grabbed and used in our API call
+  //this function will get called when the user clicks the search button and the search term(s) will be grabbed and used to update our collection's url
   getSearchTermForApiCall: function () {
     if (this.$searchTerm.val()) {
-    var newURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=' + this.$searchTerm.val() + '&type=video&videoEmbeddable=true&key=AIzaSyAEjf7hDATr-O7ilGfzojLtj3VbsiFw9r8'
 
-    //the newURL will be set on the videos collection (replacing the previous url or the default url)
-    this.model.get('videosCollection').url = newURL;
-
-    //this will call the youtube api with the new url set above and replace the videos collection
-    appModel.get('videosCollection').fetch({ reset: true });
+      this.model.updateURLWithNewSearchTerm(this.$searchTerm.val());
 
     }
   },
