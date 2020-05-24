@@ -11,5 +11,6 @@ var AppView = Backbone.View.extend({
 
   searchYouTube: function () {
     console.log(this.$searchInput.val());
+    // send the value from the search bar to the VideosCollection
   },
 });
