@@ -23,13 +23,13 @@ var AppView = Backbone.View.extend({
         this.listenTo(this.model.get('videos'), 'change', this.renderPage);
 
         //when search term is updated, send new search
-        this.listenTo(this.model, 'change:search', this.model.searchVideos);
+        this.listenTo(this.model, 'change:search', this.searchVideos);
 
         //when videos added to collection, append to list view
         // this.listenTo(this.model, 'add:videos', this.setCurrent);
 
         //call searchvideos on load with default search
-        this.model.searchVideos();
+        this.searchVideos();
     },
 
     //append video from collection to list view
@@ -72,15 +72,19 @@ var AppView = Backbone.View.extend({
     //swap current status of clicked video and current video
     changeStatus: function (e) {
         console.log('changing status');
-        //get video collection
+
+        //get video collection, current video, and clicked video
         var videoList = this.model.get('videos');
+        var currentVideo = videoList.findWhere({ current: true });
+        var clickedVideoId = $(e.currentTarget.model);
+        console.log(clickedVideoId);
+        var clickedVideo = videoList.findWhere({ id: clickedVideoId });
 
         //change current video's "current" status to false
-        videoList.where({ current: true }).set('current', false);
+        currentVideo.set('current', false);
 
         //change clicked video's "current" status to true
-        var clickedVideoId = $(e.currentTarget).data().id;
-        this.model.get('videos').where({ id: clickedVideoId }).set('current', true);
+        clickedVideo.set('current', true);
     },
 
     //set current video status on new search
@@ -124,12 +128,28 @@ var AppView = Backbone.View.extend({
         console.log('updating search');
         //check if keypress is enter key & there is text in search input
         if (e.which === 13 && this.$searchInput.val()) {
+            console.log('enter key pressed')
             //get search input
             var search = this.$searchInput.val();
 
             //update search value on app model
-            this.model.get('videos').set('search', search);
+            this.model.set('search', search);
         }
+    },
+
+    //take search term and pass it to fetchVideos
+    searchVideos: function () {
+        console.log("this", this)
+        console.log('searching videos');
+        
+        var videoList = this.model.get('videos');
+        var newUrl = this.model.get('url') + this.model.get('search');
+        
+        //set url on video collection to url with updated search term
+        videoList.url = newUrl;
+
+        //send search phrase to fetch videos for collection
+        videoList.fetchVideos();
     }
 });
 
