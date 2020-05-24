@@ -20,6 +20,14 @@ var AppView = Backbone.View.extend({
   searchYouTube: function () {
     var searchTerm = this.$searchInput.val();
 
+    // check for empty strings as an edge case
+    if (searchTerm === "") {
+      alert(
+        "The search input was an empty string, so the app didn't search. More info in developer console."
+      );
+      throw new Error("The search input was empty");
+    }
+
     // update the model by passing through the search term
     this.model.updateVideosCollection(searchTerm);
   },
