@@ -1,0 +1,13 @@
+.video-title {
+  text-overflow: ellipsis;
+}
+
+.video-group {
+  border: solid black;
+  background-color: rgba(184, 184, 184, 0.879);
+}
+
+.video-description {
+  border: solid black;
+  background-color: rgba(184, 184, 184, 0.879);
+}

@@ -52,15 +52,20 @@
       <iframe class="w-100" width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allowfullscreen></iframe>
       </iframe>
     </div>
+    <div class="video-description">
+      <h4 class="text-center p-2 mt-1">Title: {{ title }}</h4>
+      <h5 class="text-center p-2 mt-1">Description: {{ description }}</h5>
+    </div>
+
   </script>
 
   <!-- handlebars script for video list -->
   <script id="video-list-template" type="text/x-handlebars-template">
-    <div class="content-container row pb-2">
+    <div class="video-group content-container row mb-2">
       <div class="col-md-5 pl-2">
-        <img class="thumbnail" src="{{ videoThumbnail }}">
+        <img class="thumbnail w-100 pt-2" src="{{ videoThumbnail }}">
       </div>
-      <div class="col-md-5 text-center">
+      <div class="col-md-5 text-left pt-2">
         <p class="video-title">{{ title }}</p>
       </div>
     </div>   
@@ -78,7 +83,7 @@
   <script src="views/AppView.js"></script>
   <script src="views/CurrentVideoView.js"></script>
   <script src="views/CurrentListView.js"></script>
-  <script src="views/VideoListView.js"></script>
+  <script src="views/VideoListViewItem.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
