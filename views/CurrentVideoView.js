@@ -1,7 +1,7 @@
 var CurrentVideoView = Backbone.View.extend({
   class: 'primary-video',
 
-  
+  //handlebars template for main video
   template: Handlebars.compile($('#video-template').html()),
 
 
