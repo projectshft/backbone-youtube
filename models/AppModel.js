@@ -6,6 +6,14 @@ var AppModel = Backbone.Model.extend({
   },
 
   updateVideosCollection: function (searchTerm) {
+    // we want a default search if none is passed by AppView
+    console.log("searchTerm is ", searchTerm);
+    if (typeof searchTerm === "undefined") {
+      searchTerm = "dogs";
+    }
+
+    console.log("searchTerm is ", searchTerm);
+    
     // want to grab the collection of videos to update it
     var allVideos = this.get("videos");
 
