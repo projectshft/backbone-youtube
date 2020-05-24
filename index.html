@@ -65,8 +65,10 @@
         <h1>{{title}}</h1>
         <p class="channel">{{channelTitle}}</p>
       </div>
-      <div class="video-description">
-        <p>{{description}}</p>
+      {{#if description}}
+        <div class="video-description">
+          <p>{{description}}</p>
+      {{/if}}
       </div>
     </div>
   </script>

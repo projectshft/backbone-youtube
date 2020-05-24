@@ -1,8 +1,9 @@
 #main-video {
-  height: 411px; /* need to add media queries */
+  height: 411px;
 }
 
-.main-video-header {
+.main-video-header,
+.video-description {
   border-bottom: 1px solid #dfdfdf;
 }
 
@@ -18,7 +19,6 @@
 
 #main-video-information p {
   font-size: 14px;
-  /* line-height: 2em; */
 }
 
 .suggested-video {
