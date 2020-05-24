@@ -28,7 +28,7 @@
         <input id="search-input" type="text" class="form-control form-control-md mr-md-2" style="width: 400px"
           placeholder="Please enter search term here">
         <label class="sr-only" for="inlineFormInputGroupUsername2">Enter search term</label>
-        <button id="submit-button" type="submit" class="btn btn-primary">Search</button>
+        <button id="search-button" type="submit" class="btn btn-primary">Search</button>
       </div>
     </form>
     <div class="row" style="margin-top: 30px;">
@@ -78,8 +78,7 @@
 
     <script id="video-list-template" type="text/x-handlebars-template">
       <div class="video-info pt-2 pl-2">
-        <iframe width="160" height="120" src="{{videoURL}}" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a id="{{id}}" class="video-thumbnail"><img src="{{thumbnailURL}}" width="160" height="120"></a> 
         <p>{{title}}</p>
       </div>
     </script>

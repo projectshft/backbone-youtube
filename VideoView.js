@@ -5,10 +5,6 @@ var VideoView = Backbone.View.extend({
   currentVideoTemplate: Handlebars.compile($('#current-video-template').html()),
 
 
-  initialize: function () {
-    //we're already listening to a change in the current video in the AppView
-  },
-
   //this will repeatedly be called from appView when rendering the list of videos
   render: function () {
     this.$el.html(this.videoListTemplate(this.model.toJSON()));

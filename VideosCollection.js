@@ -1,9 +1,10 @@
 var VideosCollection = Backbone.Collection.extend({
-  // my api key: AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=cosmetics&type=video&videoEmbeddable=true&key=AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g',
-
-
+  
   model: VideoModel,
+
+  // my api key: AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyDEKhHoXpSZBx-Gyukvza7t2E5ZRZqfr5g',
+
 
   parse: function(response) {
     console.log(response);
@@ -12,7 +13,8 @@ var VideosCollection = Backbone.Collection.extend({
         id: item.id.videoId,
         title: item.snippet.title,
         description: item.snippet.description,
-        videoURL: 'https://www.youtube.com/embed/' + item.id.videoId
+        videoURL: 'https://www.youtube.com/embed/' + item.id.videoId,
+        thumbnailURL: item.snippet.thumbnails.default.url
       }
     });
   }
