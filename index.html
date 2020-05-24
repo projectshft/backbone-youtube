@@ -21,56 +21,55 @@
         <form class="form d-inline ">
           <div class="input-group mt-3 mb-3">
             <div class="input-group-prepend">
-              <button class="btn btn-outline-success" type="button">
+              <button class="btn btn-outline-success search" type="button">
                 <i class="fa fa-search"></i>
               </button>
             </div>
-            <input class="input-group form-control ml-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="input-group form-control ml-sm-2" id="query-input" type="search" placeholder="Search" aria-label="Search">
           </div>
         </form>
       </div>
     </div>
   </div>
 
-  <div class="container display">
+  <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-1">
-        <div class="embed-responsive  embed-responsive-16by9 border border-success rounded">
-          <iframe class="embed-responsive-item" id="ytplayer" type="text/html" src="https://www.youtube.com/embed/UVXZBA6tJPA?autoplay=1&origin=http://example.com" allowfullscreen></iframe>
-        </div>
-        <div class="main-info border border-success rounded p-3 my-4">
-          <h4> This is the Title of the Video</h4>
-          <p> This is the Description of the Video. Copyright etc. 2020</p>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="container side-info border border-success rounded mb-3 p-3 d-flex">
-          <img src="https://i.ytimg.com/vi/UVXZBA6tJPA/default.jpg" class="img-fluid img-thumbnail" alt="Responsive image">
-            <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
-              <h6>This is the Title of the Video. It's a really long title. Like, really long, trying to break this thing</h6>
-          </div>
-        </div>
-        <div class="container side-info border border-success rounded mb-3 p-3 d-flex">
-          <img src="https://i.ytimg.com/vi/UVXZBA6tJPA/default.jpg" class="img-fluid img-thumbnail" alt="Responsive image">
-            <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
-              <h6>This is the Title of the Video. It's a really long title. Like, really long, trying to break this thing</h6>
-          </div>
-        </div>
-        <div class="container side-info border border-success rounded mb-3 p-3 d-flex">
-          <img src="https://i.ytimg.com/vi/UVXZBA6tJPA/default.jpg" class="img-fluid img-thumbnail" alt="Responsive image">
-            <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
-              <h6>This is the Title of the Video. It's a really long title. Like, really long, trying to break this thing</h6>
-          </div>
-        </div>
-        <div class="container side-info border border-success rounded mb-3 p-3 d-flex">
-          <img src="https://i.ytimg.com/vi/UVXZBA6tJPA/default.jpg" class="img-fluid img-thumbnail" alt="Responsive image">
-            <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
-              <h6>This is the Title of the Video. It's a really long title. Like, really long, trying to break this thing</h6>
-          </div>
+        <div class="main-video">
+          <!-- append main display here -->
         </div>
       </div>
     </div>
+
+    <div class="col-md-5 side-info">
+      <div class="beer-list">
+        <!-- append side-info here -->
+      </div>
+
+    </div>
   </div>
+  </div>
+
+  <script id="video-main-template" type="text/x-handlebars-template">
+    <div class="embed-responsive embed-responsive-16by9 border border-success rounded">
+    <iframe class="embed-responsive-item" id="ytplayer" type="text/html" src="{{url}}" allowfullscreen></iframe>
+  </div>
+  <div class="main-info border border-success rounded p-3 my-4">
+    <h4>{{title}}</h4>
+    <p>{{description}}</p>
+  </div>
+</script>
+
+  <script id="video-side-template" type="text/x-handlebars-template">
+    <div class="container border border-success rounded mb-3 p-3 d-flex">
+  <div class="view-video">
+  <img src="{{thumbnail}}" class="img-fluid img-thumbnail" alt="Responsive image">
+    <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
+      <h6>{{title}}</h6>
+  </div>
+</div>
+</div>
+</script>
 
 
   <script src="VideoModel.js"></script>
