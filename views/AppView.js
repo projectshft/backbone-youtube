@@ -28,12 +28,16 @@ var AppView = Backbone.View.extend({
       throw new Error("The search input was empty");
     }
 
+    // empty the search bar
+    this.$searchInput.val("");
+
     // update the model by passing through the search term
     this.model.updateVideosCollection(searchTerm);
   },
 
   renderPage: function () {
     this.renderMainVideo();
+
     this.renderAllSuggestedVideos();
   },
 
