@@ -1,4 +1,3 @@
-var appModel = new AppModel();
+var appModel = new AppModel( {search: "The Office" } );
 
 var appView = new AppView({ model: appModel });
-

@@ -3,7 +3,7 @@ var VideoModel = Backbone.Model.extend({
         return {
           id: "",
           title: "",
-          description: "",
+          info: "",
           thumbnail: "",
           current: false
         }

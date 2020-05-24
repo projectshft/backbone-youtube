@@ -1,11 +1,11 @@
-var CurrentView = Backbone.Model.extend({
+var CurrentView = new Backbone.View.extend({
     id: "current-video",
 
-    template: {
+    template: Handlebars.compile($('#current-template').html()),
 
-    },
+    render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
 
-    render: function() {
-
+        return this;
     }
 });
