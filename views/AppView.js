@@ -23,13 +23,17 @@ var AppView = Backbone.View.extend({
 
   setMainVideo: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
-    this.model.setCurrentVideoIndex(clickedVideoId);
+    this.model.setCurrentVideo(clickedVideoId);
   },
 
   // View functions
   toggleCurrent: function() {
-    this.$('.reviews-container').toggleClass('show', this.model.get('show_reviews'));
-    this.$('.beers-container').toggleClass('show', !this.model.get('show_reviews'));
+    var test = this.model.get('videos').at(this.model.get('current_video_index')).id;
+
+    console.log(test);
+
+    // this.$('#{videoID-main at.(this.model.get('current'))}').show(); // this.model.get('show_reviews'));
+    // this.$('#{videoID-side at.(this.model.get('current'))}').hide() // !this.model.get('show_reviews'));
   },
 
   renderSideVideo: function(video) {
@@ -55,6 +59,7 @@ var AppView = Backbone.View.extend({
         this.renderSideVideo(m);
     }, this);
 
+    this.toggleCurrent();
   }
 
 

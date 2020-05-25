@@ -49,17 +49,19 @@
   </div>
 
   <script id="video-main-template" type="text/x-handlebars-template">
-    <div class="embed-responsive embed-responsive-16by9 border border-success rounded main-view" href="#" id="{{videoId}}" data-id="{{videoId}}">
+    <div class="main-view">
+    <div class="embed-responsive embed-responsive-16by9 border border-success rounded" href="#" id="{{videoId}}-main" data-id="{{videoId}}">
     <iframe class="embed-responsive-item" id="ytplayer" type="text/html" src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen></iframe>
   </div>
   <div class="main-info border border-success rounded p-3 my-4">
     <h5>{{title}}</h5>
     <p>{{description}}</p>
   </div>
+</div>
 </script>
 
   <script id="video-side-template" type="text/x-handlebars-template">
-    <div class="container d-flex mb-3 p-3 border border-success rounded side-view" href="#" id="{{videoId}}" data-id="{{videoId}}">
+    <div class="container d-flex mb-3 p-3 border border-success rounded side-view" href="#" id="{{videoId}}-side" data-id="{{videoId}}">
       <img src="{{thumbnail}}" class="img-fluid img-thumbnail" alt="Responsive image">
       <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
         <h6>{{title}}</h6>
