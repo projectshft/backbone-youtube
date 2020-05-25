@@ -34,7 +34,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-1 player">
+      <div class="col-md-6 offset-md-1 display-pane">
           <!-- append main display here -->
 
       </div>
@@ -49,7 +49,7 @@
   </div>
 
   <script id="video-main-template" type="text/x-handlebars-template">
-    <div class="embed-responsive embed-responsive-16by9 border border-success rounded">
+    <div class="embed-responsive embed-responsive-16by9 border border-success rounded main-view" href="#" data-id="{{videoId}}">
     <iframe class="embed-responsive-item" id="ytplayer" type="text/html" src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen></iframe>
   </div>
   <div class="main-info border border-success rounded p-3 my-4">
@@ -59,7 +59,7 @@
 </script>
 
   <script id="video-side-template" type="text/x-handlebars-template">
-    <div class="container border border-success rounded mb-3 p-3 d-flex view-video" href="#" data-id="{{videoId}}">
+    <div class="container d-flex mb-3 p-3 border border-success rounded side-view" href="#" data-id="{{videoId}}">
       <img src="{{thumbnail}}" class="img-fluid img-thumbnail" alt="Responsive image">
       <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
         <h6>{{title}}</h6>

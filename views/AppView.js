@@ -4,14 +4,14 @@ var AppView = Backbone.View.extend({
 
   events: {
     'click .search': 'submitSearch',
-    'click .view-video': 'setMainVideo'
+    'click .side-view': 'setMainVideo'
   },
 
   initialize: function() {
     this.$input = this.$('#query-input'); //leaving alone for right now
 
-    this.listenTo(this.model.get('videos'), 'reset', this.renderView);
-    this.listenTo(this.model, 'change:current_video_index', this.renderView);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderViews);
+    this.listenTo(this.model, 'change:current_video_index', this.toggleDisplay);
 
   },
 
@@ -23,36 +23,41 @@ var AppView = Backbone.View.extend({
 
   setMainVideo: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
-
     this.model.setCurrentVideo(clickedVideoId);
   },
 
   // View functions
+  toggleCurrent: function() {
+// this.$('data-id matches videoId of model at(current_video_index)').toggle('show')
+    this.$('.main-view').toggleClass('show', this.model.get('show_reviews'));
+    this.$('.side-view').toggleClass('show', !this.model.get('show_reviews'));
+  },
+
   renderSideVideo: function(video) {
+
     var videoSideView = new VideoSideView({ model: video} );
     this.$('.video-list').append(videoSideView.render().el);
   },
 
   renderPlayer: function(video) {
-    this.$('.player').empty();
+
     var videoSideView = new VideoMainView({ model: video});
-    this.$('.player').append(videoSideView.render().el);
+    this.$('.display-pane').append(videoSideView.render().el);
   },
 
   // Every time the user clicks, re-render the entire thing.
   // Inefficient but easy
-  renderView: function() {
-    var indexOfVideo = 0;
-    this.model.get('videos').each(function(m) {
+  renderViews: function() {
+    this.$('.display-pane').empty();
+    this.$('.video-list').empty();
 
-      if (indexOfVideo === this.model.get('current_video_index')) {
-        this.renderPlayer(this.model.get('videos').at(indexOfVideo));
-      } else {
+    this.model.get('videos').each(function(m) {
+        this.renderPlayer(m);
         this.renderSideVideo(m);
-    }
-      indexOfVideo++;
     }, this);
-  },
+
+    toggleDisplay();
+  }
 
 
 });
