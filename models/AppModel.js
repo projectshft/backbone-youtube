@@ -3,15 +3,26 @@ var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideosCollection(),
-      current_video_index: 0,
+      current_video: null
     }
   },
 
-  setCurrentVideo: function (videoId) {
+  initialize: function () {
+    this.listenTo(this.get('videos'), 'reset', this.setCurrentVideo);
+  },
+
+  setCurrentVideo: function(videoId) {
     var allVideos = this.get('videos');
-    var currentVideo = allVideos.indexOf(allVideos.findWhere({ videoId: videoId })); // I need to figure out id
-    this.set('current_video_index', currentVideo);
-    alert(this.get('current_video_index'));
+    var currentVideo;
+
+    if (videoId === "") {
+      currentVideo = allVideos.at(0);
+    } else {
+      currentVideo = allVideos.findWhere({ videoId: videoId });
+    }
+
+    this.set('current_video', currentVideo);
+    alert(this.get('current_video'));
   },
 
 });

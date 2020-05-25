@@ -27,10 +27,10 @@ var AppView = Backbone.View.extend({
   },
 
   // View functions
-  toggleCurrent: function() {
+  toggleDisplay: function() {
 // this.$('data-id matches videoId of model at(current_video_index)').toggle('show')
-    this.$('.main-view').toggleClass('show', this.model.get('show_reviews'));
-    this.$('.side-view').toggleClass('show', !this.model.get('show_reviews'));
+    this.$('#main-view').toggleClass('show', this.model.get('show_reviews'));
+    this.$('#side-view').toggleClass('show', !this.model.get('show_reviews'));
   },
 
   renderSideVideo: function(video) {
@@ -56,7 +56,7 @@ var AppView = Backbone.View.extend({
         this.renderSideVideo(m);
     }, this);
 
-    toggleDisplay();
+    this.toggleDisplay();
   }
 
 
