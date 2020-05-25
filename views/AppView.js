@@ -4,9 +4,6 @@ var AppView = Backbone.View.extend({
     events: {
         //when new search input is entered, send new search request
         'keypress #search-input': 'updateSearch',
-
-        //change "current" status of video models when list item is clicked
-        // 'click .list-video': 'changeStatus'
     },
 
     initialize: function () {
@@ -16,11 +13,11 @@ var AppView = Backbone.View.extend({
         this.$list = this.$('#list-video-container');
         this.$searchInput = this.$('#search-input');
 
-        //when search is complete, check for current video
+        //when search is complete, set current video
         this.listenTo(this.model.get('videos'), 'sync', this.setCurrent);
 
         //when current video is changed, re-render page
-        this.listenTo(this.model.get('videos'), 'change', this.renderPage);
+        this.listenTo(this.model, 'change:current_video', this.renderPage);
 
         //when search term is updated, send new search
         this.listenTo(this.model, 'change:search', this.searchVideos);
@@ -29,7 +26,7 @@ var AppView = Backbone.View.extend({
         // this.listenTo(this.model, 'add:videos', this.setCurrent);
 
         //call searchvideos on load with default search
-        this.searchVideos();
+        this.model.searchVideos();
     },
 
     //append video from collection to list view
@@ -69,19 +66,13 @@ var AppView = Backbone.View.extend({
         }, this);
     },
 
-
     //set current video status on new search
     setCurrent: function () {
         console.log('setting current');
         //get video collection
         var videoList = this.model.get('videos');
-
-        //check if current video exists
-        if (videoList.findWhere({ current: true }) === undefined) {
-            console.log('current is undefined')
-            //set first item in collection to current
-            videoList.at(0).set('current', true);
-        }
+        //set first item in collection to current
+        videoList.at(0).set('current', true); //sets off updateCurrent even then renders page
     },
 
     //change model's search property when new search is entered
@@ -95,55 +86,6 @@ var AppView = Backbone.View.extend({
 
             //update search value on app model
             this.model.set('search', search);
-        }
-    },
-
-    //take search term and pass it to fetchVideos
-    searchVideos: function () {
-        console.log("this", this)
-        console.log('searching videos');
-
-        var videoList = this.model.get('videos');
-        var newUrl = this.model.get('url') + this.model.get('search');
-
-        //set url on video collection to url with updated search term
-        videoList.url = newUrl;
-
-        //send search phrase to fetch videos for collection
-        videoList.fetchVideos();
-    },
-
-    //swap current status of clicked video and current video
-    changeStatus: function (e) {
-        console.log('changing status');
-
-        //get video collection, current video, and clicked video
-        var videoList = this.model.get('videos');
-        console.log("video list", videoList);
-
-        var currentVideo = videoList.findWhere({ current: true });
-        console.log("current video", currentVideo);
-
-        console.log("this:", this);
-        console.log(e.target, e.currentTarget, $(e.target), $(e.currentTarget))
-        var clickedVideoId = $(e.currentTarget)
-        console.log("clicked vid id:", clickedVideoId);
-
-        clickedVideoId.setToCurrent();
-
-        var clickedVideo = videoList.findWhere({ videoId: clickedVideoId });
-
-        //check if videos were targeted correctly
-        if (clickedVideo && currentVideo) {
-            //change current video's "current" status to false
-            currentVideo.set('current', false);
-
-            //change clicked video's "current" status to true
-            clickedVideo.set('current', true);
-
-        } else {
-            //log error if video(s) are undefined
-            alert("Error: Cannot find video")
         }
     }
 });

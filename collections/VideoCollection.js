@@ -8,9 +8,11 @@ var VideoCollection = Backbone.Collection.extend({
         var self = this;
         //replace current results with search results
         this.fetch({
-            reset: true, //reset collection
+            //reset collection
+            reset: true, 
 
-            wait: true, //wait until fetch is complete before adding models to collection
+            //wait until fetch is complete before adding models to collection
+            wait: true, 
 
             //log status on success
             success: function () {
@@ -35,7 +37,6 @@ var VideoCollection = Backbone.Collection.extend({
                 title: video.snippet.title,
                 info: video.snippet.description,
                 thumbnail: video.snippet.thumbnails.medium.url,
-                current: false
             }
         }, this);
     }
