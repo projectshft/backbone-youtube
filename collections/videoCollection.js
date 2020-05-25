@@ -1,5 +1,5 @@
 var VideoCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=leeroy%20jenkins&type=video&key=AIzaSyDvgs6yXBYv2o8morAAAj8CFllR337CG6g',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=leeroy%20jenkins&type=video&key=AIzaSyCXEKB0jRvSYo_YL9WUOYWsn8-VXWg7JUQ',
   model: VideoModel,
 
   //add video to the video collection when called
@@ -9,7 +9,7 @@ var VideoCollection = Backbone.Collection.extend({
       videoThumbnail: videoThumbnail,
       title: title,
       description: description
-    });
+    }, { wait: true });
   },
 
   //parsing data from YouTube api and only grabbing the first video on the list for the main video

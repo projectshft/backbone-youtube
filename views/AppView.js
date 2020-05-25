@@ -6,13 +6,17 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function() {
+    //listening for additions to main video model and video list model during initial fetch
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideo);
+    this.listenTo(this.model.get('videoList'), 'reset', this.renderVideoList);
+
     //listening for additions to main video model and video list model
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
-    this.listenTo(this.model.get('videoList'), 'add', this.renderVideoList)
+    this.listenTo(this.model.get('videoList'), 'add', this.renderVideoList);
 
-    //rendering main video and video list upon creation of AppView
-    this.renderVideos()
-    this.renderVideoLists()
+    //rendering main video and video list views upon creation of models
+    this.renderVideos();
+    this.renderVideoLists();
   },
 
   searchYouTube: function () {
