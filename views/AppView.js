@@ -19,8 +19,7 @@ var AppView = Backbone.View.extend({
         //when current video is changed, re-render page
         this.listenTo(this.model, 'change:current_video', this.renderPage);
 
-        //when search term is updated, send new search
-        this.listenTo(this.model, 'change:search', this.searchVideos);
+
 
         //when videos added to collection, append to list view
         // this.listenTo(this.model, 'add:videos', this.setCurrent);
@@ -71,8 +70,13 @@ var AppView = Backbone.View.extend({
         console.log('setting current');
         //get video collection
         var videoList = this.model.get('videos');
-        //set first item in collection to current
-        videoList.at(0).set('current', true); //sets off updateCurrent even then renders page
+
+        //check if results were returned
+        if (videoList.length !== 0) {
+            //set first item in collection to current
+            videoList.at(0).set('current', true); //sets off updateCurrent even then renders page
+        }
+
     },
 
     //change model's search property when new search is entered
@@ -86,6 +90,9 @@ var AppView = Backbone.View.extend({
 
             //update search value on app model
             this.model.set('search', search);
+
+            //clear search input
+            this.$searchInput.val('');
         }
     }
 });

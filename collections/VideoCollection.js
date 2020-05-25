@@ -9,10 +9,10 @@ var VideoCollection = Backbone.Collection.extend({
         //replace current results with search results
         this.fetch({
             //reset collection
-            reset: true, 
+            reset: true,
 
             //wait until fetch is complete before adding models to collection
-            wait: true, 
+            wait: true,
 
             //log status on success
             success: function () {
@@ -29,15 +29,24 @@ var VideoCollection = Backbone.Collection.extend({
     //set attributes on results
     parse: function (response) {
         console.log('parsing response');
-        
-        //set attributes on results to add to collection
-        return response.items.map(function (video) {
-            return {
-                videoId: video.id.videoId,
-                title: video.snippet.title,
-                info: video.snippet.description,
-                thumbnail: video.snippet.thumbnails.medium.url,
-            }
-        }, this);
+
+        //check if any results were returned
+        console.log(response)
+        if (response.pageInfo.totalResults === 0) {
+            //alert error if response doesn't return results
+            return alert("No results found. Try another search");
+        } else {
+            //set attributes on results to add to collection
+            return response.items.map(function (video) {
+                return {
+                    videoId: video.id.videoId,
+                    title: video.snippet.title,
+                    info: video.snippet.description,
+                    thumbnail: video.snippet.thumbnails.medium.url,
+                }
+            }, this);
+        }
+
+
     }
 });

@@ -8,8 +8,12 @@ var AppModel = Backbone.Model.extend({
         }
     },
 
-    initialize: function() {
+    initialize: function () {
+        //when current status is changed on a video, update current video property
         this.listenTo(this.get('videos'), 'change:current', this.updateCurrent);
+
+        //when search term is updated, send new search
+        this.listenTo(this, 'change:search', this.searchVideos);
     },
 
     //take search term and pass it to fetchVideos
@@ -27,7 +31,7 @@ var AppModel = Backbone.Model.extend({
         videoList.fetchVideos();
     },
 
-    updateCurrent: function(newCurrentVideo) {
+    updateCurrent: function (newCurrentVideo) {
         console.log('updating current')
 
         var videoList = this.get('videos');
@@ -36,7 +40,7 @@ var AppModel = Backbone.Model.extend({
             //check if video is recently changed video
             if (video !== newCurrentVideo && video.get('current') === true) {
                 //change old "current" video status to false
-                video.set('current', false, {silent: true}); //prevent change event
+                video.set('current', false, { silent: true }); //prevent change event
             }
         }, this);
 
