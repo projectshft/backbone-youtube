@@ -11,7 +11,7 @@ var AppView = Backbone.View.extend({
     this.$input = this.$('#query-input'); //leaving alone for right now
 
     this.listenTo(this.model.get('videos'), 'reset', this.renderViews);
-    this.listenTo(this.model, 'change:current_video_index', this.toggleCurrent);
+    this.listenTo(this.model, 'change:current_video_index', this.renderViews);
 
   },
 
@@ -23,17 +23,19 @@ var AppView = Backbone.View.extend({
 
   setMainVideo: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
-    this.model.setCurrentVideo(clickedVideoId);
+    this.model.setCurrentVideoIndex(clickedVideoId);
   },
 
   // View functions
   toggleCurrent: function() {
-    var test = this.model.get('videos').at(this.model.get('current_video_index')).id;
+    var currentVideoId = this.model.get('videos').at(this.model.get('current_video_index')).id;
+    var referenceToMain = "#" + currentVideoId + "-main";
+    var referenceToSide = "#" + currentVideoId + "-side";
+    console.log(referenceToMain);
+    console.log(referenceToSide);
 
-    console.log(test);
-
-    // this.$('#{videoID-main at.(this.model.get('current'))}').show(); // this.model.get('show_reviews'));
-    // this.$('#{videoID-side at.(this.model.get('current'))}').hide() // !this.model.get('show_reviews'));
+    this.$('#UVXZBA6tJPA-main').show(); // this.model.get('show_reviews'));
+    this.$('#UVXZBA6tJPA-side').hide(); // !this.model.get('show_reviews'));
   },
 
   renderSideVideo: function(video) {
@@ -54,13 +56,17 @@ var AppView = Backbone.View.extend({
     this.$('.display-pane').empty();
     this.$('.video-list').empty();
 
+    var indexOfVideo = 0;
     this.model.get('videos').each(function(m) {
-        this.renderPlayer(m);
+      if (indexOfVideo === this.model.get('current_video_index')) {
+        this.renderPlayer(this.model.get('videos').at(indexOfVideo));
+      } else {
         this.renderSideVideo(m);
+      }
+      indexOfVideo++;
     }, this);
-
-    this.toggleCurrent();
   }
+
 
 
 });
