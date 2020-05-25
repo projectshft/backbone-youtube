@@ -80,16 +80,23 @@ var AppView = Backbone.View.extend({
         var currentVideo = videoList.findWhere({ current: true });
         console.log("current video", currentVideo);
 
-        var clickedVideoId = $(e.currentTarget);
+        var clickedVideoId = $(e.currentTarget).data().id;
         console.log("clicked vid id:", clickedVideoId);
 
         var clickedVideo = videoList.findWhere({ id: clickedVideoId });
 
-        //change current video's "current" status to false
-        currentVideo.set('current', false);
+        //check if videos were targeted correctly
+        if (clickedVideo && currentVideo) {
+            //change current video's "current" status to false
+            currentVideo.set('current', false);
 
-        //change clicked video's "current" status to true
-        clickedVideo.set('current', true);
+            //change clicked video's "current" status to true
+            clickedVideo.set('current', true);
+            
+        } else {
+            //log error if video(s) are undefined
+            alert("Error: Cannot find video")
+        }
     },
 
     //set current video status on new search
@@ -146,10 +153,10 @@ var AppView = Backbone.View.extend({
     searchVideos: function () {
         console.log("this", this)
         console.log('searching videos');
-        
+
         var videoList = this.model.get('videos');
         var newUrl = this.model.get('url') + this.model.get('search');
-        
+
         //set url on video collection to url with updated search term
         videoList.url = newUrl;
 
