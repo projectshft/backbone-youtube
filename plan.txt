@@ -30,5 +30,6 @@
 15. Fixup the css (title placements in list, fonts, see if I can get shorter titles/ cleaner descriptions)
 16. Add a page loader icon
 17. Work on extensions
+18. Add spellchecker to vscode and manually check code and comment grammar
 
 
