@@ -1,64 +1,109 @@
-body {
-    background-color: gray;
-    padding: 2%;
-}
+/* General Styling  */
+    body {
+        padding: 2%;
+        background: url("images/background-light-spots.jpg") no-repeat center center fixed;
+        background-size: cover;
+        background-color: #F9F1CE;
+        color: #FFF1B4;
+    }
 
-h1,
-h2,
-h3 {
-    text-align: center;
-}
+    p {
+        text-align: center;
+        margin: 5px 0 0;
+        font-size: 22px;
+        font-family: 'Handlee', sans-serif;
+        /* color: #3CD8D8; */
+    }
 
-p {
-    text-align: justify;
-}
+/* Headers */
+    h1,
+    h2,
+    h3 {
+        text-align: center;
+        padding: .5em;
+    }
 
-h2 {
-    font-size: 3vw;
-}
+    h1,
+    h2 {
+        font-family: 'Itim', sans-serif;
+    }
 
-h3 {
-    font-size: 2vw;
-}
+    h2,
+    h3 {
+        color: #FCF27C;
+    }
 
-#search-input {
-    margin: 20px;
-}
+    h1 {
+        background: rgba(35, 6, 0, .3);
+        font-size: 60px;
+        border-radius: .2em;
+        color: #46D2D2;
+    }
 
-#current-video-container {
-    box-sizing: border-box;
-    border: 5px solid white;
-    padding: 20px;
-    background-color: yellow;
-}
+    h2 {
+        font-size: 4vw;
+    }
 
-#list-video-container {
-    box-sizing: border-box;
-    border: 5px solid white;
-    padding: 20px;
-    overflow: auto;
-    background-color: teal
-}
+    h3 {
+        font-size: 20px;
+        border-radius: 0 0 5px 5px;
+    }
 
-.list-video {
-    box-sizing: border-box;
-    border: 3px solid white;
-    margin: 5px auto;
-    background-color: turquoise;
-    width: 100%
-}
+/* Search Bar */
+    #search-input {
+        margin: 35px auto;
+    }
 
-#current-video-player {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
-}
+/* Current Video  */
+    #current-video-container {
+        box-sizing: border-box;
+        padding: 20px;  
+        background-color: rgba(255, 241, 180, .2);
+        border-radius: 10px;
+    }
 
-#current-video-player iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+    #current-video {
+        padding: 5px;
+    }
+
+    #current-video-player {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        border: 7px solid rgba(35, 6, 0, .3);
+        border-radius: 5px 5px 0 0;
+    }
+
+    #current-video-player iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #current-video-info {
+        padding: 10px;
+        border-radius: 0 0 7px 7px;
+        background: rgba(35, 6, 0, .3);
+    }
+
+/* List Video */
+    #list-video-container {
+        box-sizing: border-box;
+        padding: 20px;
+        overflow: auto;
+        height: 70vh;
+        background-color: rgba(255, 241, 180, .2);
+        border-radius: 7px;
+    }
+
+    .list-video {
+        box-sizing: border-box;
+        margin: 1.5em auto;
+        width: 100%;
+        background-color: rgba(35, 6, 0, .3);
+        padding: 5px;
+        border-radius: 5px;
+    }

@@ -25,7 +25,7 @@ var AppView = Backbone.View.extend({
         // this.listenTo(this.model, 'add:videos', this.setCurrent);
 
         //call searchvideos on load with default search
-        this.model.searchVideos();
+        // this.model.searchVideos();
     },
 
     //append video from collection to list view
@@ -76,7 +76,6 @@ var AppView = Backbone.View.extend({
             //set first item in collection to current
             videoList.at(0).set('current', true); //sets off updateCurrent even then renders page
         }
-
     },
 
     //change model's search property when new search is entered
