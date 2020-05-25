@@ -5,6 +5,11 @@ var AppModel = Backbone.Model.extend({
       current_video_model: null,
       videos: new VideosCollection()
     }
+  },
+  fetchNewVideos: function(searchTerm) {
+    var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + searchTerm + '&type=video&key=AIzaSyChaaV8WZehiaxwY3hxoyEe5yuLTQX2O9M';
+    this.get('videos').url = url;
+    this.get('videos').fetch({ reset: true });
   }
 })
 
@@ -20,7 +25,13 @@ var AppView = Backbone.View.extend({
   },
 
   events: {
-    'click .card': 'loadNewMainVideo'
+    'click .card': 'loadNewMainVideo',
+    'click .btn': 'search'
+  },
+
+  search: function() {
+    var searchTerm = $('.form-control').val();
+    this.model.fetchNewVideos(searchTerm)
   },
 
   loadNewMainVideo: function(e) {
@@ -47,6 +58,7 @@ var AppView = Backbone.View.extend({
   },
 
   renderMainVideo: function() {
+    $('.main-video-container').empty();
     var mainVideoView = new MainVideoView({ model: this.model.current_video_model});
     $('.main-video-container').append(mainVideoView.render().el);
   },
