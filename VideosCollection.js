@@ -15,7 +15,7 @@ var VideosCollection = Backbone.Collection.extend({
    > 'videoEmbeddable is true because we want to filter our response to only videos
      that we can embed'  */
 
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyAEjf7hDATr-O7ilGfzojLtj3VbsiFw9r',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyAEjf7hDATr-O7ilGfzojLtj3VbsiFw9r8',
   
 
 
