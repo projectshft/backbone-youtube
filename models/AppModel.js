@@ -13,5 +13,10 @@ var AppModel = Backbone.Model.extend({
   resetCurrentVideo: function(title) {
     var currentVideo = this.get('videos').findWhere({title: title});
     this.set('currentlyPlaying', currentVideo);
+  },
+
+  changeSearchTerm: function(searchTerm) {
+    this.set('searchTerm', searchTerm);
+    this.get('videos').setURL(searchTerm)
   }
 });

@@ -2,7 +2,8 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .video-thumbnail': 'updateCurrentVideo'
+    'click .video-thumbnail': 'updateCurrentVideo',
+    'keyup #search-input': 'setSearchTerm'
   },
 
   initialize: function() {
@@ -12,11 +13,29 @@ var AppView = Backbone.View.extend({
 
   },
 
+  setSearchTerm: function(eventTarget) {
+    var searchInput = $('#search-input').val()
+
+    // disable the submit function so return button doesn't refresh page
+    $(function() {
+    $("form").submit(function() { return false; });
+  });
+    // make sure search bar isn't empty
+    if (searchInput != '') {
+      // on return button, perfrom the search
+      if (eventTarget.which === 13) {
+        this.model.changeSearchTerm(searchInput);
+      }
+    }
+
+
+  },
+
   updateCurrentVideo: function(eventButton) {
-      var clickedVideo = $(eventButton.currentTarget).find('h3').text()
+      var clickedVideo = $(eventButton.currentTarget).find('p').text()
       this.model.resetCurrentVideo(clickedVideo)
       this.renderCurrentVideo();
-    },
+  },
 
   renderCurrentVideo: function() {
     // empty currentVideo container each time so the video only appears once
