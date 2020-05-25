@@ -1,10 +1,9 @@
-var VideoCollection = Backbone.Collection.extend({
+var VideosCollection = Backbone.Collection.extend({
 
   model: VideoModel,
 
-  initialize: function(options) {
-    if (options.query)
-      this.query = options.query;
+  initialize: function() {
+    this.fetch();
   },
 
   // Hardcoded for now
@@ -14,19 +13,13 @@ var VideoCollection = Backbone.Collection.extend({
 
     // Getting all the relevant attributes from each item in the Object
     // returned by the API
-    console.log(response);
     return response.items.map(function(item) {
-
-      var transformedItem = Object.assign({
+      return Object.assign({
         'videoId': item.id.videoId,
         'title': item.snippet.title,
         'description': item.snippet.description,
         'thumbnail': item.snippet.thumbnails.default.url
       });
-
-      console.log(transformedItem);
-
-      return transformedItem;
 
     }, this);
 

@@ -2,7 +2,7 @@ var AppModel = Backbone.Model.extend({
 
   defaults: function () {
     return {
-      videos: new VideoCollection("number three they might be giants")
+      videos: new VideosCollection()
       // current_video: null,
       // hide_current_video_in_side_view: false
     }

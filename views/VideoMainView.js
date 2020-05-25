@@ -1,4 +1,4 @@
-// var VideoViewMain = Backbone.View.extend({
+// var VideoMainView = Backbone.View.extend({
 //   className: 'video',
 //
 //   template: Handlebars.compile($('#video-main-template').html()),
