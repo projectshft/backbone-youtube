@@ -24,10 +24,16 @@ var AppView = Backbone.View.extend({
     this.$input.val(''); // clearing after the fetch()
   },
 
-  renderSideView: function (video) {
+  renderSideVideo: function (video) {
     var videoSideView = new VideoSideView({model: video});
     this.$('.video-list').append(videoSideView.render().el);
   },
+
+  renderSideView: function () {
+  this.model.get('videos').each(function (m) {
+    this.renderSideVideo(m);
+  }, this);
+}
 
   // renderSideView: function (e) {
   //   var clickedVideoId = $(e.currentTarget).data().id; // where is this comming from?
