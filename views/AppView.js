@@ -11,7 +11,7 @@ var AppView = Backbone.View.extend({
     this.$input = this.$('#query-input'); //leaving alone for right now
 
     this.listenTo(this.model.get('videos'), 'reset', this.renderViews);
-    this.listenTo(this.model, 'change:current_video_index', this.toggleDisplay);
+    this.listenTo(this.model, 'change:current_video_index', this.toggleCurrent);
 
   },
 
@@ -23,14 +23,13 @@ var AppView = Backbone.View.extend({
 
   setMainVideo: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
-    this.model.setCurrentVideo(clickedVideoId);
+    this.model.setCurrentVideoIndex(clickedVideoId);
   },
 
   // View functions
-  toggleDisplay: function() {
-// this.$('data-id matches videoId of model at(current_video_index)').toggle('show')
-    this.$('#main-view').toggleClass('show', this.model.get('show_reviews'));
-    this.$('#side-view').toggleClass('show', !this.model.get('show_reviews'));
+  toggleCurrent: function() {
+    this.$('.reviews-container').toggleClass('show', this.model.get('show_reviews'));
+    this.$('.beers-container').toggleClass('show', !this.model.get('show_reviews'));
   },
 
   renderSideVideo: function(video) {
@@ -56,7 +55,6 @@ var AppView = Backbone.View.extend({
         this.renderSideVideo(m);
     }, this);
 
-    this.toggleDisplay();
   }
 
 
