@@ -2,11 +2,11 @@ var AppView = Backbone.View.extend({
     el: $('body'),
 
     events: {
-        //change "current" status of video models when list item is clicked
-        'click .list-video': 'changeStatus',
-
         //when new search input is entered, send new search request
-        'keypress #search-input': 'updateSearch'
+        'keypress #search-input': 'updateSearch',
+
+        //change "current" status of video models when list item is clicked
+        // 'click .list-video': 'changeStatus'
     },
 
     initialize: function () {
@@ -69,35 +69,6 @@ var AppView = Backbone.View.extend({
         }, this);
     },
 
-    //swap current status of clicked video and current video
-    changeStatus: function (e) {
-        console.log('changing status');
-
-        //get video collection, current video, and clicked video
-        var videoList = this.model.get('videos');
-        console.log("video list", videoList);
-
-        var currentVideo = videoList.findWhere({ current: true });
-        console.log("current video", currentVideo);
-
-        var clickedVideoId = $(e.currentTarget).data().id;
-        console.log("clicked vid id:", clickedVideoId);
-
-        var clickedVideo = videoList.findWhere({ id: clickedVideoId });
-
-        //check if videos were targeted correctly
-        if (clickedVideo && currentVideo) {
-            //change current video's "current" status to false
-            currentVideo.set('current', false);
-
-            //change clicked video's "current" status to true
-            clickedVideo.set('current', true);
-            
-        } else {
-            //log error if video(s) are undefined
-            alert("Error: Cannot find video")
-        }
-    },
 
     //set current video status on new search
     setCurrent: function () {
@@ -112,28 +83,6 @@ var AppView = Backbone.View.extend({
             videoList.at(0).set('current', true);
         }
     },
-
-    /*
-    setCurrent: function () {
-        console.log('setting current')
-        //find video collection and current video
-        var videoList = this.model.get('videos');
-        var currentVideo = this.model.get('current_video');
-
-        //check if current video is set
-        if (currentVideo === false) {
-            //move current video to videos (list)
-            videoList.push(currentVideo, { silent: true }); //wait to re-render
-        }
-
-        //find current video in collection
-        var newCurrentVideo = videoList.findWhere({ current: true });
-
-        //move clicked video from list to current
-        videoList.remove(newCurrentVideo, { silent: true }); //wait to re-render
-        videoList.set('current_video', newCurrentVideo); //change event re-renders page
-    },
-    */
 
     //change model's search property when new search is entered
     updateSearch: function (e) {
@@ -162,6 +111,40 @@ var AppView = Backbone.View.extend({
 
         //send search phrase to fetch videos for collection
         videoList.fetchVideos();
+    },
+
+    //swap current status of clicked video and current video
+    changeStatus: function (e) {
+        console.log('changing status');
+
+        //get video collection, current video, and clicked video
+        var videoList = this.model.get('videos');
+        console.log("video list", videoList);
+
+        var currentVideo = videoList.findWhere({ current: true });
+        console.log("current video", currentVideo);
+
+        console.log("this:", this);
+        console.log(e.target, e.currentTarget, $(e.target), $(e.currentTarget))
+        var clickedVideoId = $(e.currentTarget)
+        console.log("clicked vid id:", clickedVideoId);
+
+        clickedVideoId.setToCurrent();
+
+        var clickedVideo = videoList.findWhere({ videoId: clickedVideoId });
+
+        //check if videos were targeted correctly
+        if (clickedVideo && currentVideo) {
+            //change current video's "current" status to false
+            currentVideo.set('current', false);
+
+            //change clicked video's "current" status to true
+            clickedVideo.set('current', true);
+
+        } else {
+            //log error if video(s) are undefined
+            alert("Error: Cannot find video")
+        }
     }
 });
 
