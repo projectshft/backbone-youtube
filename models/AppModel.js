@@ -2,19 +2,16 @@ var AppModel = Backbone.Model.extend({
 
   defaults: function () {
     return {
-      videos: new VideosCollection()
-      // current_video: null,
-      // hide_current_video_in_side_view: false
+      videos: new VideosCollection(),
+      current_video_index: 0,
     }
   },
 
-
-  // showCurrentVideo: function (videoId) {
-  //   var allVideos = this.get('videos');
-  //   var currentVideo = allVideos.findWhere({ videoId: videoId }); // I need to figure out id
-  //
-  //   this.set('current_video', mainVideo);
-  //   this.set('hide_video_in_side_view', true); // make sure we use display: hide in AppView
-  // },
+  setCurrentVideo: function (videoId) {
+    var allVideos = this.get('videos');
+    var currentVideo = allVideos.indexOf(allVideos.findWhere({ videoId: videoId })); // I need to figure out id
+    this.set('current_video_index', currentVideo);
+    alert(this.get('current_video_index'));
+  },
 
 });
