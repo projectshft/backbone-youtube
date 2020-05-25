@@ -13,10 +13,8 @@ var ListView = Backbone.View.extend({
         return this;
     },
 
-    //set video to current when clicked
+    //change list video's "current" status when clicked
     setToCurrent: function () {
-        console.log("setting to current");
-        this.model.set('current', true);
-        console.log(this.model)
+        this.model.set('current', true); //sets off event to update current video
     }
 });

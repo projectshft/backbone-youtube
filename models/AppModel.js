@@ -2,9 +2,10 @@ var AppModel = Backbone.Model.extend({
     defaults: function () {
         return {
             videos: new VideoCollection(),
-            url: "https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&type=video&videoDefinition=high&videoEmbeddable=true&regionCode=us&key=AIzaSyCnbQYVfgMKrKtYq16mIjBs6aPE5xzwWjg&q=",
+            url: "https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&type=video&videoDefinition=high&videoEmbeddable=true&regionCode=us&key=",
             search: null,
-            current_video: null
+            current_video: null,
+            apiKey: "AIzaSyCnbQYVfgMKrKtYq16mIjBs6aPE5xzwWjg"
         }
     },
 
@@ -18,11 +19,9 @@ var AppModel = Backbone.Model.extend({
 
     //take search term and pass it to fetchVideos
     searchVideos: function () {
-        console.log("this", this)
-        console.log('searching videos');
-
+        //get collection and api url
         var videoList = this.get('videos');
-        var newUrl = this.get('url') + this.get('search');
+        var newUrl = this.get('url') + this.get('apiKey') + "&q=" + this.get('search');
 
         //set url on video collection to url with updated search term
         videoList.url = newUrl;
@@ -31,20 +30,22 @@ var AppModel = Backbone.Model.extend({
         videoList.fetchVideos();
     },
 
+    //update which video is stored as current video 
     updateCurrent: function (newCurrentVideo) {
-        console.log('updating current')
-
+        //get (previous) current video and video collection
+        var currentVideo = this.get('current_video');
         var videoList = this.get('videos');
 
-        videoList.each(function (video) {
-            //check if video is recently changed video
-            if (video !== newCurrentVideo && video.get('current') === true) {
-                //change old "current" video status to false
-                video.set('current', false, { silent: true }); //prevent change event
-            }
-        }, this);
+        //check if there was a current video
+        if (currentVideo) {
+            //change "current" status to false
+            currentVideo.set('current', false, { silent: true }); //prevent new update event
+        }
 
-        //store selected video as current video
-        this.set('current_video', newCurrentVideo); //sets off event to re-render page    
+        //find new current video
+        var newCurrentVideo = videoList.findWhere({ current: true });
+
+        //replace old current video (if any) with new current video
+        this.set('current_video', newCurrentVideo); //sets off event to re-render page 
     }
 });
