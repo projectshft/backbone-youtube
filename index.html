@@ -14,26 +14,27 @@
 </head>
 
 <body>
-  <div class="row-2">
-    <div class="col-md-6 offset-md-3">
+  <div class="container">
+    <div class="row-2">
+      <div class="col-md-6 offset-md-3">
 
-      <div class="page-header">
-        <h1><b>APPVIEW</b></h1>
+        <div class="page-header">
+          <h1><b>APPVIEW</b></h1>
+        </div>
+
+        <div class="video-list"></div>
+
+        <form class="post-form">
+
+          <div class="form-group">
+            <input type="text" id="video-search-input" class="form-control" placeholder="Search"></input>
+            <button type="button" class="btn btn-primary video-search" id="search">Search</button>
+
+        </form>
+
       </div>
-
-      <form class="post-form">
-
-        <div class="form-group">
-          <input type="text" id="video-search-text" class="form-control" placeholder="Search"></input>
-          <button type="button" class="btn btn-primary video-search" id="search">Search</button>
-
-          <h4><b>VideoView</b></h4>
-          <div id="commits">
-          </div>
-
-      </form>
-
     </div>
+  </div>
   </div>
 
   <script id="main-video-template" type="text/x-handlebars-template">
@@ -55,7 +56,7 @@
     </div>
 </script>
   <script src="models/VideoModel.js"></script>
-  <!-- <script src="collections/VideosCollection.js"></script> -->
+  <script src="collections/VideosCollection.js"></script>
   <script src="models/AppModel.js"></script>
   <script src="views/VideoView.js"></script>
   <script src="views/AppView.js"></script>
