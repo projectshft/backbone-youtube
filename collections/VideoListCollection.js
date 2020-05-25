@@ -12,14 +12,17 @@ var VideoListCollection = Backbone.Collection.extend({
     });
   },
 
-  //parsing data from youtube api and only grabbing the first video on the list
+  //parsing data from YouTube API
   parse: function (response) {
+    return response.items.map(function (video) {
       return {
-        videoId: response.items[0].id.videoId,
-        videoThumbnail: response.items[0].snippet.thumbnails.default.url,
-        title: response.items[0].snippet.title,
-        description: response.items[0].snippet.description
+        videoId: video.id.videoId,
+        videoThumbnail: video.snippet.thumbnails.default.url,
+        title: video.snippet.title,
+        description: video.snippet.description
       }
+    });
+
   },
 
 })

@@ -39,6 +39,7 @@ var AppView = Backbone.View.extend({
     var currentVideoView = new CurrentVideoView({ model: video });
     
     this.$('.main-video').append(currentVideoView.render().el);
+
   },
 
   //looping through all videos in videoCollection
