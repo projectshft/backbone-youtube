@@ -19,13 +19,8 @@ var AppView = Backbone.View.extend({
         //when current video is changed, re-render page
         this.listenTo(this.model, 'change:current_video', this.renderPage);
 
-
-
-        //when videos added to collection, append to list view
-        // this.listenTo(this.model, 'add:videos', this.setCurrent);
-
         //call searchvideos on load with default search
-        // this.model.searchVideos();
+        this.model.searchVideos();
     },
 
     //append video from collection to list view
@@ -73,8 +68,16 @@ var AppView = Backbone.View.extend({
 
         //check if results were returned
         if (videoList.length !== 0) {
-            //set first item in collection to current
+            //check if there is a current item
+            var currentVideo = videoList.findWhere({current: true});
+
+            if (!currentVideo) {
+                //set first item in collection to current
             videoList.at(0).set('current', true); //sets off updateCurrent even then renders page
+            } else {
+                //render page without updating current if only adding videos to list
+                this.renderPage();
+            }     
         }
     },
 
@@ -95,6 +98,3 @@ var AppView = Backbone.View.extend({
         }
     }
 });
-
-
-

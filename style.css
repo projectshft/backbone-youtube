@@ -3,7 +3,7 @@
         padding: 2%;
         background: url("images/background-light-spots.jpg") no-repeat center center fixed;
         background-size: cover;
-        background-color: #F9F1CE;
+        background-color: #af5600;
         color: #FFF1B4;
     }
 
@@ -11,8 +11,6 @@
         text-align: center;
         margin: 5px 0 0;
         font-size: 22px;
-        font-family: 'Handlee', sans-serif;
-        /* color: #3CD8D8; */
     }
 
 /* Headers */
@@ -25,7 +23,7 @@
 
     h1,
     h2 {
-        font-family: 'Itim', sans-serif;
+        font-family: 'Chelsea Market', sans-serif;
     }
 
     h2,
@@ -41,12 +39,17 @@
     }
 
     h2 {
-        font-size: 4vw;
+        font-size: 3vw;
     }
 
     h3 {
         font-size: 20px;
         border-radius: 0 0 5px 5px;
+    }
+
+    h3,
+    p {
+        font-family: 'Itim', sans-serif;
     }
 
 /* Search Bar */
