@@ -30,9 +30,9 @@
       <div class="col-md-8">
         <div class="main-video video">
           <!-- this will be where the main video is located. it will be toggled -->
-          <iframe id="ytplayer" type="text/html" width="640" height="360"
+          <!-- <iframe id="ytplayer" type="text/html" width="640" height="360"
             src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-            frameborder="0"></iframe>
+            frameborder="0"></iframe> -->
 
         <div class="video-description">
           <p>Video Title</p>
@@ -52,9 +52,10 @@
   <!-- I'll need 2 handlebars scripts.
     one for the main video, and another for the list-->
     <script id="video-template" type="text/x-handlebars-template">
+      <div class="test"></div>
       <div class="side-container">
         <div class="thumbnail">
-          <img src="{{thumbnails}}">
+          <img class="view-vid" src="{{thumbnails}}">
           <p>{{title}}</p>
         </div>
       </div>

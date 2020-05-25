@@ -1,29 +1,34 @@
 
-img {
-  width: 50%;
-  align-items: center;
+.video-name {
+  font-weight: bold;
+  font-size: 15px;
+}
 
+
+.video {
+  box-sizing: border-box;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
 .thumbnail {
-  align-items: center;
+  float: left;
 }
 
-.video {
-  align-items: center;
+.video-details {
+  /* padding-top: 5%; */
+  padding-left: 20%;
+  margin-left: 15%;
+  height: 90px;
+
+}
+
+.main-details {
   border: 1px solid black;
-  /* display: inline-block; */
-  text-align: center;
-  padding: 2px;
-  margin: 10px;
+  margin-top: 7px;
 }
 
-.video-description {
+.video-content {
   border: 1px solid black;
-  margin: 5px;
-
-}
-
-.side-container {
-  align-items: center;
 }
