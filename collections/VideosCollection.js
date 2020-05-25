@@ -14,7 +14,7 @@ var VideosCollection = Backbone.Collection.extend({
         var main = true;
       }
 
-      // in case a title is really long, we want to truncate it
+      // if a title is really long, we want to truncate it
       if (videoData.snippet.title.length > 70) {
         var shorterTitle = videoData.snippet.title.slice(0, 70) + "...";
       }
