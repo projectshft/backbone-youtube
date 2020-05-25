@@ -62,12 +62,13 @@
 
     <div id="main-video-information">
       <div class="main-video-header mb-2">
-        <h1>{{title}}</h1>
-        <p class="channel">{{channelTitle}}</p>
+        <!-- use triple {} to unescape html encoding -->
+        <h1>{{{title}}}</h1>
+        <p class="channel">{{{channelTitle}}}</p>
       </div>
       {{#if description}}
         <div class="video-description">
-          <p>{{description}}</p>
+          <p>{{{description}}}</p>
       {{/if}}
       </div>
     </div>
@@ -85,11 +86,11 @@
         <div class="col-7 pl-3">
           <h4>
             {{#if shorterTitle}}
-            {{shorterTitle}}
+            {{{shorterTitle}}}
             {{/if}}
             
             {{#unless shorterTitle}}
-            {{title}}
+            {{{title}}}
             {{/unless}}
           </h4>
             <p> {{channelTitle}}</p>

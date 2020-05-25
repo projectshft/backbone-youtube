@@ -13,9 +13,6 @@ var AppView = Backbone.View.extend({
     this.$suggestedVideos = this.$("#suggested-videos");
 
     this.listenTo(this.model.get("videos"), "reset", this.renderPage);
-
-    // we want the page to load with default search term
-    // this.renderPage();
   },
 
   searchYouTube: function () {
@@ -65,8 +62,8 @@ var AppView = Backbone.View.extend({
   renderSuggestedVideo: function (suggestedVideo) {
     // in case a title is really long, we want to truncate it
 
-    if (suggestedVideo.get("title").length > 80) {
-      var shorterTitle = suggestedVideo.get("title").slice(0, 80) + "...";
+    if (suggestedVideo.get("title").length > 70) {
+      var shorterTitle = suggestedVideo.get("title").slice(0, 70) + "...";
       suggestedVideo.set("shorterTitle", shorterTitle);
     }
 
