@@ -7,6 +7,8 @@ var appView = new AppView({ model: appModel });
 
 /* This will get the video's collection (with its default url) and call the youtube
    api on page load  */
-appModel.get('videosCollection').fetch({ reset: true });
+appModel.get('videosCollection').fetch({ reset: true }).catch(function(error) {
+  console.log(error.status.toString() + ' ' + error.statusText);
+});
 
 

@@ -43,7 +43,7 @@ var AppView = Backbone.View.extend({
        clicked  */
     var clickedVideoId = $(event.currentTarget).attr('id');
 
-    this.model.changeAppModelCurrentVideo(clickedVideoId);
+    this.model.changeCurrentVideo(clickedVideoId);
 
   },
 

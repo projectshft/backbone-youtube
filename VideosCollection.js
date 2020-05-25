@@ -15,7 +15,7 @@ var VideosCollection = Backbone.Collection.extend({
    > 'videoEmbeddable is true because we want to filter our response to only videos
      that we can embed'  */
 
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyAEjf7hDATr-O7ilGfzojLtj3VbsiFw9r8',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyAEjf7hDATr-O7ilGfzojLtj3VbsiFw9r',
   
 
 
@@ -37,6 +37,55 @@ var VideosCollection = Backbone.Collection.extend({
     });
   }
 })
+
+/*var ScheduleCollection = Backbone.Collection.extend({
+
+    getResults: function () {
+
+        var self = this;
+
+        this.fetch({
+            reset: true,
+            success: function (collection, response, options) {
+                // you can pass additional options to the event you trigger here as well
+                self.trigger('successOnFetch');
+            },
+            error: function (collection, response, options) {
+                // you can pass additional options to the event you trigger here as well
+                self.trigger('errorOnFetch');
+            }
+        });
+    }
+ };
+
+var ScheduleView = Backbone.View.extend({
+
+    initialize: function () {
+
+        this.listenTo(this.collection, 'successOnFetch', this.handleSuccess);
+        this.listenTo(this.collection, 'errorOnFetch', this.handleError);
+    },
+
+    handleSuccess: function (options) {
+        // options will be any options you passed when triggering the custom event
+    },
+
+    handleError: function (options) {
+        // options will be any options you passed when triggering the custom event
+    }
+};
+
+var scheduleCollection = new ScheduleCollection();
+var scheduleView = new ScheduleView({ collection: scheduleCollection });
+scheduleCollection.getResults();
+
+*/
+
+
+
+
+
+
 
 
 

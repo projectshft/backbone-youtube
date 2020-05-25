@@ -4,14 +4,13 @@ var AppModel = Backbone.Model.extend({
       videosCollection: new VideosCollection(), 
       
       current_video: null
-
     }
   },
 
   /* This will be called from app view when a video from the list is clicked. That
      video's id will be passed in and used to set the appModel's current video to
      the clicked video  */
-  changeAppModelCurrentVideo: function (id) {
+  changeCurrentVideo: function (id) {
     var currentVideosCollection = this.get('videosCollection');
 
     var currentVideo = currentVideosCollection.findWhere({ id: id });
