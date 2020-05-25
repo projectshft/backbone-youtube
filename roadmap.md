@@ -30,6 +30,19 @@ __Each time a user clicks a different video, the title and description beneath t
 __When the user first loads the page, there should be a default search with videos loaded so the page is not blank.
 
 
+
+API KEY================================================================================================================================
+
+AIzaSyDFf_6NTONo5rmGPHmJGMnpLqkXzS8tm7g
+
+
+Default page view shows top 5 most popular videos. Most popular video will show in the main window and the others will show in the search pane.
+https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&maxResults=5&regionCode=US&key=AIzaSyDFf_6NTONo5rmGPHmJGMnpLqkXzS8tm7g
+
+Example search string with 5 max results. "&q=" signifies the search query.
+https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q={{INSERT-SEARCH-STRING-HERE}}&key=[YOUR_API_KEY]
+
+
 Requirements===========================================================================================================================
 
 __Use Backbone!
