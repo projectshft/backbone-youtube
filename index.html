@@ -5,6 +5,7 @@
 
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/underscore/underscore-min.js"></script>
@@ -18,6 +19,94 @@
 
 <body>
 
-</body>
+    <div class="container-fluid">
+      <div class="row align-items-start">
+        <br>
+        <br>
+      </div>
+    </div>
+
+
+
+  <!-- Begin Search Input -->
+
+
+    <div class="container-fluid">
+
+      <form class="video-search">
+
+          <div class="video-input-group content-justify-center col-md-8 offset-2">
+
+            <div class="input-group-text bg-transparent border-1">
+              <i class="fa fa-search"></i>
+              <input class="form-control input-lg border-left-0 border-0" type="search" value="Search" id="video-search-input"></input>
+            </div>
+              <br>
+              <br>
+            </form>
+
+          </div>
+      </div>
+
+  <!-- End Search Input -->
+
+
+
+
+  <!-- Begin Left Video Pane -->
+
+      <!-- Begin Main Video Window -->
+      <!-- Need to create a Handlebars template to append initial video search here -->
+      <!-- Inserting Test Video for now.... -->
+
+      <div class="container-fluid">
+        <div class="row offset-1">
+          <div class="video-main-window">
+            <iframe width="640" height="480" src="https://www.youtube.com/embed/C0DPdy98e4c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <!-- End Main Video Window -->
+
+
+
+            <!-- Begin Main Video Info Pane -->
+
+              <!-- Need to create a Handlebars template to append initial video info here -->
+
+            <div class="video-information col-md-6 border-4px">
+              <div>
+                VIDEO TITLE
+                <br />
+                VIDEO TEXT
+              </div>
+            </div>
+          </div>
+
+      <!-- End Main Video Info Pane -->
+
+  <!-- End Left Video Pane -->
+
+
+
+  <!-- Begin Right Video Pane -->
+
+      <!-- Need to create a Handlebars to append to this area -->
+
+      <!-- Inserting Test Videos for now.... -->
+
+
+          <div class="col-md-3 offset-1">
+            <iframe width="300" height="200" src="https://www.youtube.com/embed/C0DPdy98e4c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="300" height="200" src="https://www.youtube.com/embed/C0DPdy98e4c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="300" height="200" src="https://www.youtube.com/embed/C0DPdy98e4c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="300" height="200" src="https://www.youtube.com/embed/C0DPdy98e4c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+    </div>
+
+  <!-- End Right Video Pane -->
+
+
+
+  </body>
 
 </html>
