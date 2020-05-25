@@ -14,15 +14,21 @@ var VideosCollection = Backbone.Collection.extend({
         var main = true;
       }
 
+      // in case a title is really long, we want to truncate it
+      if (videoData.snippet.title.length > 70) {
+        var shorterTitle = videoData.snippet.title.slice(0, 70) + "...";
+      }
+
       // these objects will be used by handlebars to render video on page
       // using #unescape to convert HTML character codes to their correct representation
       return {
         id: videoData.id.videoId,
-        description: _.unescape(videoData.snippet.description),
+        description: videoData.snippet.description,
         thumbnail_url: videoData.snippet.thumbnails.medium.url,
-        channelTitle: _.unescape(videoData.snippet.channelTitle),
-        title: _.unescape(videoData.snippet.title),
+        channelTitle: videoData.snippet.channelTitle,
+        title: videoData.snippet.title,
         main: main,
+        shorterTitle: shorterTitle || null,
       };
     }, this);
   },
