@@ -12,7 +12,7 @@ var AppView = Backbone.View.extend({
 
     // this.$videoList = this.$('.video-list');
     //
-    this.listenTo(this.model.get('videos'), 'initialize', this.renderSideView);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderSideView);
     // this.listenTo(this.model, 'hide_video_in_side_view', this.renderSideView);
     // this.listenTo(this.model, 'change:main_video', this.renderMainDisplay);
   },
@@ -25,8 +25,8 @@ var AppView = Backbone.View.extend({
   },
 
   renderSideView: function (video) {
-    var videoViewSide = new VideoSideView({model: video});
-    this.$('.video-list').append(videoViewSide.render().el);
+    var videoSideView = new VideoSideView({model: video});
+    this.$('.video-list').append(videoSideView.render().el);
   },
 
   // renderSideView: function (e) {
