@@ -4,7 +4,6 @@ var AppView = Backbone.View.extend({
 
   events: {
     'click .search-button': 'submitSearch',
-    'keypress .search-bar': 'submitSearchKeypress',
     'click .side-view': 'setMainVideo'
   },
 
@@ -32,12 +31,6 @@ var AppView = Backbone.View.extend({
         input = input.replace(/'/g, ''); // removing single quotes
         this.model.fetchNewVideoCollection(input);
         this.$input.val('');
-      }
-    },
-
-    submitSearchKeypress: function(e) {
-      if (e.which === 13) {
-        this.submitSearch();
       }
     },
 
