@@ -8,7 +8,7 @@ var VideosCollection = Backbone.Collection.extend({
   },
 
   url: function() {
-    return "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=(items(id(videoId),%20snippet(title,%20description,%20thumbnails(default(url)))))&type=video&videoDefinition=high&key=AIzaSyBgqzJ4G-25DjR9dMXpWYz07hlCxDrtpwM&q=" + this.query;
+    return "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=(items(id(videoId),%20snippet(title,%20description,%20thumbnails(default(url)))))&type=video&videoDefinition=high&key=AIzaSyA8bJOW1EiG4b0QCPxHGRbXX2oqL4tABck&q=" + this.query;
   },
 
 
