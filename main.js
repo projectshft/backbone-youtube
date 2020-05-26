@@ -38,12 +38,14 @@ var AppView = Backbone.View.extend({
   search: function() {
     //fetches searchTerm from searchbar input
     var searchTerm = $('.form-control').val();
-    this.model.set('mainVideoModel', null);
-    //this.model.mainVideoModel = null;
-    //console.log(this.model.mainVideoModel);
-    //console.log(this.model.get('mainVideoModel'));
-    this.mainVideoView = null;
-    this.model.fetchNewVideos(searchTerm)
+    //if statement to validate input
+    if (!searchTerm) {
+      alert("Search cannot be empty!");
+    } else {
+      this.model.set('mainVideoModel', null);
+      this.mainVideoView = null;
+      this.model.fetchNewVideos(searchTerm)
+    }
   },
 
   //creates a SidebarVideoView from a video model, appending it to the sidebar
