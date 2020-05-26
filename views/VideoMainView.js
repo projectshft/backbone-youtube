@@ -9,12 +9,4 @@ var VideoMainView = Backbone.View.extend({
     return this;
   }
 
-  // initialize: function () {
-  //   this.listenTo(this.model, 'change:current_video', this.displayVideo);
-  // },
-
-  // displayVideo: function () {
-  //   //
-  // }
-
 })
