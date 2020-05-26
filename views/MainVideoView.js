@@ -1,4 +1,4 @@
-
+// view responsible for the main video
 var MainVideoView = Backbone.View.extend({
   className: 'main-video-inner',
 

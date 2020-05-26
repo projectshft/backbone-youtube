@@ -1,5 +1,4 @@
-
-//adds a video view and appends it to main video section
+//View responsible for the individual videos in video collection
 var VideoView = Backbone.View.extend({
   className: 'video',
 
