@@ -1,15 +1,17 @@
+var API_KEY = 'AIzaSyCE-KSue_A5ZAeyQxG6tV_YZykHyMBTnUQ'
+
 var AppModel = Backbone.Model.extend({
   defaults: function() {
     return {
-      //current_video represents video being shown on main display
-      current_video_model: null,
+      //mainVideoModel represents model for video being shown on main display
+      mainVideoModel: null,
       videos: new VideosCollection()
     }
   },
 
   //updates VideoCollection url and sends API request with searchTerm (input from searchbar)
   fetchNewVideos: function(searchTerm) {
-    var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + searchTerm + '&type=video&key=AIzaSyChaaV8WZehiaxwY3hxoyEe5yuLTQX2O9M';
+    var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + searchTerm + '&type=video&key=' + API_KEY;
     //setting VideosCollection url to include searchTerm
     this.get('videos').url = url;
     this.get('videos').fetch({
@@ -22,7 +24,8 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   initialize: function() {
-    this.current_video_view = null;
+    //represents vew for main video
+    this.mainVideoView = null;
     this.listenTo(this.model.get('videos'), 'reset', this.renderMainVideo);
   },
 
@@ -35,6 +38,11 @@ var AppView = Backbone.View.extend({
   search: function() {
     //fetches searchTerm from searchbar input
     var searchTerm = $('.form-control').val();
+    this.model.set('mainVideoModel', null);
+    //this.model.mainVideoModel = null;
+    //console.log(this.model.mainVideoModel);
+    //console.log(this.model.get('mainVideoModel'));
+    this.mainVideoView = null;
     this.model.fetchNewVideos(searchTerm)
   },
 
@@ -48,22 +56,22 @@ var AppView = Backbone.View.extend({
 
   //renders main video from click event, when the page is initialized, or when a new search is made
   renderMainVideo: function(e) {
-    //if statement to load first video as main video when page is loaded
+    //if statement to load first video as main video when page is loaded or new search is made
     // otherwise, loads clicked video from sidebar
-    if (!this.model.current_video_model) {
-      this.model.current_video_model = this.model.get('videos').shift(0);
+    if (!this.model.get('mainVideoModel')) {
+      this.model.mainVideoModel = this.model.get('videos').shift(0);
     } else {
       // modelID is the ID for each model (as well as the videoID for Youtube)
       var modelID = $(e.currentTarget).data().id;
       //clicked sidebar video is removed form sidebar, and moved to main video
-      this.model.current_video_model = this.model.get('videos').remove(modelID);
+      this.model.mainVideoModel = this.model.get('videos').remove(modelID);
     }
     //empties main-video-container before loading new main video
     $('.main-video-container').empty();
-    this.current_video_view = new MainVideoView({
-      model: this.model.current_video_model
+    this.mainVideoView = new MainVideoView({
+      model: this.model.mainVideoModel
     });
-    $('.main-video-container').append(this.current_video_view.render().el);
+    $('.main-video-container').append(this.mainVideoView.render().el);
     //renders sidebar videos after to prevent main video from showing in the sidebar
     this.renderSidebarVideos();
   },
@@ -77,6 +85,7 @@ var AppView = Backbone.View.extend({
     }, this);
   }
 });
+
 //view for each sidebar video
 var SidebarVideoView = Backbone.View.extend({
   className: "sidebar-card",
@@ -87,6 +96,7 @@ var SidebarVideoView = Backbone.View.extend({
     return this;
   }
 });
+
 //view for main video,
 var MainVideoView = Backbone.View.extend({
   className: "main-video",
@@ -109,7 +119,7 @@ var VideoModel = Backbone.Model.extend({
 
 //collection of video models stored in AppModel
 var VideosCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&type=video&key=AIzaSyChaaV8WZehiaxwY3hxoyEe5yuLTQX2O9M',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&type=video&key=' + API_KEY,
   model: VideoModel,
   //parse function adds only relevant information to each video model
   parse: function(response) {
