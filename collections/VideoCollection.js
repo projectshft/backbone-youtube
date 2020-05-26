@@ -34,7 +34,7 @@ var VideoCollection = Backbone.Collection.extend({
                     videoId: video.id.videoId,
                     title: video.snippet.title,
                     info: video.snippet.description,
-                    thumbnail: video.snippet.thumbnails.medium.url,
+                    thumbnail: video.snippet.thumbnails.high.url,
                 }
             }, this);
         }

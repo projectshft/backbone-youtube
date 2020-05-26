@@ -63,10 +63,13 @@
         padding: 20px;  
         background-color: rgba(255, 241, 180, .2);
         border-radius: 10px;
+        margin: 0 auto 20px;
     }
 
     #current-video {
-        padding: 5px;
+        padding: 7px;
+        background: rgba(35, 6, 0, .5);
+        border-radius: 7px
     }
 
     #current-video-player {
@@ -74,8 +77,7 @@
         width: 100%;
         padding-bottom: 56.25%;
         height: 0;
-        border: 7px solid rgba(35, 6, 0, .5);
-        border-radius: 5px 5px 0 0;
+        border: 2px solid rgba(255, 241, 180, .2);
     }
 
     #current-video-player iframe {
@@ -88,8 +90,6 @@
 
     #current-video-info {
         padding: 10px;
-        border-radius: 0 0 7px 7px;
-        background: rgba(35, 6, 0, .5);
     }
 
 /* List Video */
@@ -104,9 +104,13 @@
 
     .list-video {
         box-sizing: border-box;
-        margin: 1.5em auto;
+        margin: 0 auto 25px;
         width: 100%;
         background-color: rgba(35, 6, 0, .5);
-        padding: 5px;
+        padding: 7px;
         border-radius: 5px;
+    }
+
+    .list-video img {
+        border: 2px solid rgba(255, 241, 180, .2);
     }

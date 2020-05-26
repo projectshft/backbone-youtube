@@ -2,7 +2,7 @@ var AppView = Backbone.View.extend({
     el: $('body'),
 
     events: {
-        //when new search input is entered, send new search request
+        //when new search input is entered, change search term on model
         'keypress #search-input': 'updateSearch',
     },
 
@@ -69,7 +69,7 @@ var AppView = Backbone.View.extend({
             if (!currentVideo) {
                 //set first item in collection to current
                 videoList.at(0).set('current', true); //sets off updateCurrent event then renders page
-                
+
             } else {
                 //render page without updating current if only adding videos to list
                 this.renderPage();
@@ -77,10 +77,10 @@ var AppView = Backbone.View.extend({
         }
     },
 
-    //change model's search property when new search is entered
-    updateSearch: function (e) {
+    //change model's search property when new search input is entered
+    updateSearch: function (event) {
         //check if keypress is enter key & there is text in search input
-        if (e.which === 13 && this.$searchInput.val()) {
+        if (event.which === 13 && this.$searchInput.val()) {
 
             //get search input
             var search = this.$searchInput.val();
