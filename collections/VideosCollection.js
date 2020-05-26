@@ -13,7 +13,7 @@ var VideosCollection = Backbone.Collection.extend({
   // Using YouTube's API parameters to only get videoId, title, description,
   // and thumbnail.
   url: function() {
-    return "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=(items(id(videoId),%20snippet(title,%20description,%20thumbnails(default(url)))))&type=video&videoDefinition=high&key=AIzaSyA8bJOW1EiG4b0QCPxHGRbXX2oqL4tABck&q=" + this.query;
+    return "https://www.googleapis.com/youtube/v3/search?part=snippet&fields=(items(id(videoId),%20snippet(title,%20description,%20thumbnails(default(url)))))&type=video&videoDefinition=high&key=AIzaSyBALeMeE8708tn9G-Sq1DdYiDfxu1gGS5M&q=" + this.query;
   },
 
 
