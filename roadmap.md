@@ -36,10 +36,12 @@ API KEY=========================================================================
 AIzaSyDFf_6NTONo5rmGPHmJGMnpLqkXzS8tm7g
 
 
+See developers.google.com/youtube/v3/code_samples/code_snippets to quickly sort through search parameters.
+
 Default page view shows top 5 most popular videos. Most popular video will show in the main window and the others will show in the search pane.
 https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&maxResults=5&regionCode=US&key=AIzaSyDFf_6NTONo5rmGPHmJGMnpLqkXzS8tm7g
 
-Example search string with 5 max results. "&q=" signifies the search query.
+Example search string with 5 max results. "q=" signifies the search query.
 https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q={{INSERT-SEARCH-STRING-HERE}}&key=[YOUR_API_KEY]
 
 
