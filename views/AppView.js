@@ -6,12 +6,14 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.$videoSearchInput = this.$('#$videoSearchInput');
+    this.$videoSearchInput = this.$('#videoSearchInput');
+
+    this.$videoMainWindow = this.$('#videoMainWindow')
   },
 
   renderVideo: function (video) {
     var videoView = new MainVideoView({ model: video});
-    this.$videoList.append(videoView.render().el);
+    this.$videoMainWindow.append(videoView.render().el);
   },
 
   renderVideos: function () {
