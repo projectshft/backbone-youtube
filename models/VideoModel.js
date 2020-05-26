@@ -5,7 +5,7 @@ var VideoModel = Backbone.Model.extend({
 
   //using static link for now to test model
 
-  urlRoot: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=surfing&key=AIzaSyDFf_6NTONo5rmGPHmJGMnpLqkXzS8tm7g',
+  urlRoot: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + {{search-term}} + '&key=AIzaSyDFf_6NTONo5rmGPHmJGMnpLqkXzS8tm7g',
 
 
 // Creating default attributes to be used in each model instance
