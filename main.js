@@ -1,13 +1,30 @@
+var appModel = new AppModel();
+
+var appView = new AppView({ model: appModel });
+
+var search = appModel.get('search');
+
+var videos = new VideosCollection({search: search});
+
+// videos.set('url', videos.url(appModel.get('search')));
+// console.log(videos.url(appModel.get('search')))
+//
+// appModel.get('videos').fetch({ reset: true });
+// videos.on('add', function (video) { console.log(video.toJSON()); });
+// videos.fetch();
+
 //global model containing search criteria, the current video and the video collection
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       search: '',
 
-      currentVid: null,
-      // each video will have a hidden handlebars view that toggles on and off depending on what the user selects
+      videos: new VideoCollection(),
 
-      videos: new VideoCollection()
+      current_video: null,
+      // each video will have a hidden handlebars view that toggles on and off depending on what the user selects
+      main_video: false
+
     }
   },
 
@@ -24,37 +41,42 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .btn': 'setSearch',//when the main button is clicked, the searchVideo function is initiated
-    'click .view-vid': 'setMainVid'
+    'click .thumbnail': 'viewVid',
+    'click .btn': 'setSearch'
   },
 
   initialize: function () {
     this.$mainSearch = this.$('#main-search');//variable for the main search data
-    this.$mainVideo = this.$('.main-video'); //variable pointing to where main vid will go
     this.$videoList = this.$('#video-list');//points to video collection
     // everytime a search is made I will need to render
-    this.listenTo(this.model.get('video'), 'reset', this.renderVideos);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
     this.listenTo(this.model, 'change:search', this.searchVideo);
+    this.listenTo(this.model, 'change:current_video', this.renderMainVideo);
     this.renderVideos();//ensures that hardcoded vids get loaded
   },
 
   setSearch: function () {
     // console.log('test');
     // console.log(this.$mainSearch.val())//tests that the search input and button are connected
-    var searchVal = this.$mainSearch.val()
-    this.model.set('search', searchVal);//sets the models currentVid attribute with the user input
+    this.$mainSearch = this.$('#main-search').val();
+    this.model.set('search', this.$mainSearch)
+    console.log (this.$mainSearch)
+  },
 
-    console.log(this.model.get('search'))//tests that the model is being set with the input val
+  viewVid: function (e) {
+    //points to the id associated with clicked video
+    var clickedVideoId = $(e.currentTarget).data().id;
+    this.model.showMain(clickedVideoId);
   },
 
 
-  renderVideo: function (videoModel) {
+  renderVideo: function (video) {
     // console.log('test')//test that function is connected to change in model
     // function that appends new video views to the HTML
-    var view = new VideoView ({model: videoModel});
+    var videoView = new VideoView ({model: video});
 
-    this.$videoList.append(view.render().el)
+    this.$videoList.append(videoView.render().el);
     console.log('test')
   },
 
