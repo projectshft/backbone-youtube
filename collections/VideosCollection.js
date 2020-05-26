@@ -9,12 +9,14 @@ var VideosCollection = Backbone.Collection.extend({
   // },
 
   parse: function (response) {
-   return response.map(function (video) {
+    // console.log(response.items)
+   return response.items.map(function (video) {
+     // console.log(video)
      return {
-       title: '',
-       description: '',
-       thumbnail: '',
-       videoId: '',
+       title: video.snippet.title,
+       description: video.snippet.description,
+       thumbnail: video.snippet.thumbnails.default.url,
+       videoId: video.id.videoId,
      }
    });
  }
