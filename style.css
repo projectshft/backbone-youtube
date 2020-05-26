@@ -114,3 +114,13 @@
     .list-video img {
         border: 2px solid rgba(255, 241, 180, .2);
     }
+
+/* Loading Spinner */
+    #loading-spinner {
+        text-align: center;
+        margin: 10px auto 30px;
+    }
+
+    .hide {
+        display: none;
+    }

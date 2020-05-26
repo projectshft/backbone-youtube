@@ -11,6 +11,7 @@ var AppView = Backbone.View.extend({
         this.$current = this.$('#current-video-container');
         this.$list = this.$('#list-video-container');
         this.$searchInput = this.$('#search-input');
+        this.$loading = this.$('#loading-spinner');
 
         //when search is complete, set current video
         this.listenTo(this.model.get('videos'), 'sync', this.setCurrent);
@@ -75,6 +76,8 @@ var AppView = Backbone.View.extend({
                 this.renderPage();
             }
         }
+        //hide loading spinner
+        this.$loading.addClass('hide');
     },
 
     //change model's search property when new search input is entered
@@ -88,6 +91,9 @@ var AppView = Backbone.View.extend({
             alert("Invalid: Search field cannot be empty");
 
         } else if (event.which === 13 && search) {
+            //show loading spinner
+            this.$loading.removeClass('hide');
+
             //update search value on app model
             this.model.set('search', search); //sets off event to search videos
 
