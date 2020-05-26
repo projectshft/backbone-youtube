@@ -3,7 +3,8 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .search': 'submitSearch',
+    'click .search-button': 'submitSearch',
+    'keypress .search-bar': 'submitSearchKeypress',
     'click .side-view': 'setMainVideo'
   },
 
@@ -24,14 +25,21 @@ var AppView = Backbone.View.extend({
 
   // Controller functions ///////////////////////////////////////////////////
 
-  //
-  submitSearch: function() {
-    var input = this.$input.val();
-    input = input.replace(/'/g, ''); // removing single quotes
-    this.model.fetchNewVideoCollection(input);
-    this.$input.val('');
-  },
 
+  submitSearch: function() {
+      if (this.$input.val()) {
+        var input = this.$input.val();
+        input = input.replace(/'/g, ''); // removing single quotes
+        this.model.fetchNewVideoCollection(input);
+        this.$input.val('');
+      }
+    },
+
+    submitSearchKeypress: function(e) {
+      if (e.which === 13) {
+        this.submitSearch();
+      }
+    },
 
   setMainVideo: function(e) {
     var clickedVideoId = $(e.currentTarget).data().id;
