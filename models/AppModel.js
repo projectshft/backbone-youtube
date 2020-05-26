@@ -4,7 +4,7 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection({query: "number three they might be giants"}),
       current_video_index: 0,
-      new_fetch: 0
+      finished_reset: true
     }
   },
 
@@ -20,18 +20,27 @@ var AppModel = Backbone.Model.extend({
   },
 
   // Creates new VideosCollection based on user input,
-  // fetches data from the API, and resets the current_video_index to 0.
-  resetQueryOnCollection: function(query) {
+  // fetches data from the API. When the promise resolves,
+  // set finished_reset to false, signalling to appView to re-render.
+  // Then, reset current_video_index to 0, and give finished_reset
+  // a value of true once again.
+
+  // It's pretty hacky. Also, catch is here, but not doing much -
+  // I've tried typing up nonsense and inputting, but no error
+  // is logging to the console.
+  fetchNewVideoCollection: function(query) {
 
     this.set('videos', new VideosCollection({query: query}));
     const promise = this.get('videos').fetch({reset: true});
-    promise.done(() => this.resetCurrentVideoIndex());
-  },
 
-  resetCurrentVideoIndex: function() {
-    alert ("reset was called ")
-    this.set('new_fetch', this.get('new_fetch') + 1);
-    this.set('current_video_index', 0);
+    promise.then(
+      () => {
+      this.set('finished_reset', false);
+      this.set('current_video_index', 0);
+      this.set('finished_reset', true);
+    }).catch(
+      () => console.log('We couldn\'t find that.')
+    );
   }
 
 

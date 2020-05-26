@@ -13,11 +13,11 @@ var AppView = Backbone.View.extend({
     // While the function called for each listener is thes same,
     // each listner is distinct.
     // The first gets the initial rendering of the video collections,
-    // the second (not working) should re-render after a new fetch,
+    // the second will re-render after a new fetch,
     // the third re-renders a page based on what video in the side view
     // is selected
     this.listenTo(this.model.get('videos'), 'reset', this.renderViews);
-    this.listenTo(this.model, 'change:new_fetch', this.renderViews);
+    this.listenTo(this.model, 'change:finished_reset', this.renderViews);
     this.listenTo(this.model, 'change:current_video_index', this.renderViews);
 
   },
@@ -28,7 +28,7 @@ var AppView = Backbone.View.extend({
   submitSearch: function() {
     var input = this.$input.val();
     input = input.replace(/'/g, ''); // removing single quotes
-    this.model.resetQueryOnCollection(input);
+    this.model.fetchNewVideoCollection(input);
     this.$input.val('');
   },
 
