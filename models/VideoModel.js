@@ -4,10 +4,10 @@ var VideoModel = Backbone.Model.extend({
   defaults: function () {
 
     // return {
-    //   items.snippet.title: '',
-    //   items.snippet.description: '',
-    //   items.snippet..thumbnails.default: '',
-    //   items.id.videoId: '',
+    //   title: '',
+    //   description: '',
+    //   default: '',
+    //   videoId: '',
     // }
   }
 });

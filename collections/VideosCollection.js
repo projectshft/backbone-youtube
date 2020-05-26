@@ -1,5 +1,5 @@
 var VideosCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyB7jFifvq0RkhIMm-Ni2YaimcO9BNTwU24&type=video&q=doug%20demuro',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyDs1nGBAG1-yrRO0hD1WDXC8fwJOw_Qanw&type=video&q=doug%20demuro',
 
   model: VideoModel,
 
@@ -8,15 +8,15 @@ var VideosCollection = Backbone.Collection.extend({
   //
   // },
 
-  // parse: function (response) {
-  //  return response.map(function (video) {
-  //    return {
-  //      title: '',
-  //      description: '',
-  //      thumbnail: '',
-  //      videoId: '',
-  //    }
-  //  });
- // }
+  parse: function (response) {
+   return response.map(function (video) {
+     return {
+       title: '',
+       description: '',
+       thumbnail: '',
+       videoId: '',
+     }
+   });
+ }
 
 });

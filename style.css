@@ -2,9 +2,18 @@
   text-align: center;
 }
 
+.main-video {
+
+}
+
 .video img {
   width: 160px;
-  height: 90px
+  height: 90px;
+
+}
+
+iframe {
+  object-fit: fill;
 }
 
 .video p {
@@ -17,5 +26,6 @@
   border-color: black;
   border-radius: 5px;
   padding: 2PX;
-  margin: 5px
+  margin: 5px;
+  
 }

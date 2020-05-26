@@ -15,8 +15,6 @@ appModel.get('videos').fetch({ reset: true });
 
 
 
-
-
 // function searchByKeyword() {
 //   var results = YouTube.Search.list('id,snippet', {q: 'dogs', maxResults: 5});
 //   for(var i in results.items) {

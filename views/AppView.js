@@ -9,13 +9,27 @@ var AppView = Backbone.View.extend({
 
     // this.renderVideos();
 
+    this.listenTo(this.model.get('videos'), 'reset', this.renderMainVideo);
+
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+  },
+
+  renderMainVideo: function (vid) {
+    // console.log(this)
+
+    var mainYoutubeVideo = this.model.get('videos').models[0].attributes.items[0]
+    // console.log(mainYoutubeVideo)
+
+    var mainVideoView = new MainVideoView({ model: vid });
+
+    this.$('.main-video').append(mainVideoView.render().el);
   },
 
   renderVideos: function () {
     var youtubeVideos = this.model.get('videos').models[0].attributes.items
-    console.log(youtubeVideos)
+    // console.log(youtubeVideos)
     youtubeVideos.forEach(function (m) {
+      // console.log(m)
       this.renderVideo(m);
     }, this);
   },
