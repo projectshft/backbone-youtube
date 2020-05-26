@@ -41,8 +41,7 @@
 
 
       <div class="col-md-5 side-info video-list">
-
-
+          <!-- append side videos here -->
       </div>
     </div>
   </div>
@@ -50,7 +49,7 @@
 
   <script id="video-main-template" type="text/x-handlebars-template">
     <div class="main-view">
-    <div class="embed-responsive embed-responsive-16by9 border border-success rounded" href="#" id="{{videoId}}-main" data-id="{{videoId}}">
+    <div class="embed-responsive embed-responsive-16by9 border border-success rounded" href="#" data-id="{{videoId}}">
     <iframe class="embed-responsive-item" id="ytplayer" type="text/html" src="https://www.youtube.com/embed/{{videoId}}" allowfullscreen></iframe>
   </div>
   <div class="main-info border border-success rounded p-3 my-4">
@@ -61,7 +60,7 @@
 </script>
 
   <script id="video-side-template" type="text/x-handlebars-template">
-    <div class="container d-flex mb-3 p-3 border border-success rounded side-view" href="#" id="{{videoId}}-side" data-id="{{videoId}}">
+    <div class="container d-flex mb-3 p-3 border border-success rounded side-view" href="#" data-id="{{videoId}}">
       <img src="{{thumbnail}}" class="img-fluid img-thumbnail" alt="Responsive image">
       <div class="text-wrap flex-fill pl-3 my-auto" style="width: 5rem;">
         <h6>{{title}}</h6>

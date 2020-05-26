@@ -8,8 +8,8 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.$input = this.$('#query-input'); //leaving alone for right now
-
+    this.$input = this.$('#query-input');
+    
     this.listenTo(this.model.get('videos'), 'reset', this.renderViews);
     this.listenTo(this.model, 'change:current_video_index', this.renderViews);
 
@@ -17,8 +17,9 @@ var AppView = Backbone.View.extend({
 
   // Controller functions
   submitSearch: function() {
-    alert(this.$input.val()); // use this.$input.val()
-    this.$input.val(''); // clearing after the fetch()
+    var input = this.$input.val();
+    this.model.resetQueryOnCollection(input);
+    this.$input.val('');
   },
 
   setMainVideo: function(e) {
@@ -27,17 +28,6 @@ var AppView = Backbone.View.extend({
   },
 
   // View functions
-  toggleCurrent: function() {
-    var currentVideoId = this.model.get('videos').at(this.model.get('current_video_index')).id;
-    var referenceToMain = "#" + currentVideoId + "-main";
-    var referenceToSide = "#" + currentVideoId + "-side";
-    console.log(referenceToMain);
-    console.log(referenceToSide);
-
-    this.$('#UVXZBA6tJPA-main').show(); // this.model.get('show_reviews'));
-    this.$('#UVXZBA6tJPA-side').hide(); // !this.model.get('show_reviews'));
-  },
-
   renderSideVideo: function(video) {
 
     var videoSideView = new VideoSideView({ model: video} );
@@ -50,12 +40,14 @@ var AppView = Backbone.View.extend({
     this.$('.display-pane').append(videoSideView.render().el);
   },
 
-  // Every time the user clicks, re-render the entire thing.
-  // Inefficient but easy
+  // Every time the user clicks, empty and re-render.
   renderViews: function() {
     this.$('.display-pane').empty();
     this.$('.video-list').empty();
 
+    // For each model in the collection, check its index against
+    // the index of the current video. If a model matches, render that
+    // as the main player.
     var indexOfVideo = 0;
     this.model.get('videos').each(function(m) {
       if (indexOfVideo === this.model.get('current_video_index')) {
@@ -66,7 +58,6 @@ var AppView = Backbone.View.extend({
       indexOfVideo++;
     }, this);
   }
-
 
 
 });
