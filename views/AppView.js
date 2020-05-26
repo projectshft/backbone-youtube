@@ -79,12 +79,15 @@ var AppView = Backbone.View.extend({
 
     //change model's search property when new search input is entered
     updateSearch: function (event) {
+        //get search input
+        var search = this.$searchInput.val()
+
         //check if keypress is enter key & there is text in search input
-        if (event.which === 13 && this.$searchInput.val()) {
+        if (event.which === 13 && !search) {
+            //show error if no search was entered
+            alert("Invalid: Search field cannot be empty");
 
-            //get search input
-            var search = this.$searchInput.val();
-
+        } else if (event.which === 13 && search) {
             //update search value on app model
             this.model.set('search', search); //sets off event to search videos
 
