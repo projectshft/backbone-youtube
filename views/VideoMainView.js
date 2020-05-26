@@ -3,6 +3,7 @@ var VideoMainView = Backbone.View.extend({
 
   template: Handlebars.compile($('#video-main-template').html()),
 
+  // JSON is replacing single quotes with &#39; - Needs to be fixed.
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
 

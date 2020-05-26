@@ -4,6 +4,7 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection({query: "number three they might be giants"}),
       current_video_index: 0,
+      new_fetch: 0
     }
   },
 
@@ -13,7 +14,7 @@ var AppModel = Backbone.Model.extend({
   // sets current_video_index equal to that model's index.
   setCurrentVideoIndex: function(videoId) {
     var allVideos = this.get('videos');
-    var currentVideo = allVideos.indexOf(allVideos.findWhere({ videoId: videoId }));
+    var currentVideo = allVideos.indexOf(allVideos.findWhere({videoId: videoId }));
     this.set('current_video_index', currentVideo);
 
   },
@@ -23,9 +24,17 @@ var AppModel = Backbone.Model.extend({
   resetQueryOnCollection: function(query) {
 
     this.set('videos', new VideosCollection({query: query}));
-    this.get('videos').fetch({reset: true });
-    this.set('current_video_index', 0);
+    const promise = this.get('videos').fetch({reset: true});
+    promise.done(() => this.resetCurrentVideoIndex());
   },
+
+  resetCurrentVideoIndex: function() {
+    alert ("reset was called ")
+    this.set('new_fetch', this.get('new_fetch') + 1);
+    this.set('current_video_index', 0);
+  }
+
+
 
 
 });
