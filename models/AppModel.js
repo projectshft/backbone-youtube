@@ -2,8 +2,9 @@ var AppModel = Backbone.Model.extend({
   
   defaults: function () {
     return {
-      videos: new VideoCollection(),
-      videoList: new VideoListCollection()
+      videos: new VideoModel(),
+      videoList: new VideoListCollection(),
+      searchTerm: ''
     }
   }
 });

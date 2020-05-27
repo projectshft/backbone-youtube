@@ -2,19 +2,10 @@ var VideoListCollection = Backbone.Collection.extend({
   url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=leeroy%20jenkins&type=video&key=AIzaSyCXEKB0jRvSYo_YL9WUOYWsn8-VXWg7JUQ',
   model: VideoModel,
 
-  addVideoList: function (videoId, videoThumbnail, title, description) {
-    this.add({
-      videoId: videoId,
-      videoThumbnail: videoThumbnail,
-      title: title,
-      description: description
-
-    }, { wait: true });
-  },
-
   //parsing data from YouTube API
   parse: function (response) {
     return response.items.map(function (video) {
+      debugger;
       return {
         videoId: video.id.videoId,
         videoThumbnail: video.snippet.thumbnails.default.url,
@@ -22,7 +13,6 @@ var VideoListCollection = Backbone.Collection.extend({
         description: video.snippet.description
       }
     });
-
   },
 
 })

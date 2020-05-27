@@ -10,5 +10,5 @@ var appModel = new AppModel();
 //create new instance of AppView for main web page
 var appView = new AppView({ model: appModel });
 
-appModel.get('videos').fetch({ reset: true });
+//appModel.get('videos').fetch({ reset: true });
 appModel.get('videoList').fetch({ reset: true });
