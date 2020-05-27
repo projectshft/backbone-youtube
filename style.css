@@ -13,3 +13,7 @@
   border: solid black;
   background-color: rgba(184, 184, 184, 0.879);
 }
+
+.youtube-image {
+  max-width: 10%;
+}
