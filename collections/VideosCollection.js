@@ -3,10 +3,6 @@ var VideosCollection = Backbone.Collection.extend({
 
   model: VideoModel,
 
-  // getSearch: function () {
-  //
-  //
-  // },
 
   parse: function (response) {
     // console.log(response.items)
@@ -19,6 +15,12 @@ var VideosCollection = Backbone.Collection.extend({
        videoId: video.id.videoId,
      }
    });
- }
+ },
+
+   getSearch: function(searchInput) {
+      this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyDs1nGBAG1-yrRO0hD1WDXC8fwJOw_Qanw&type=video&q=${searchInput}`
+      // console.log(this.url)
+      this.fetch({ reset: true });
+    }
 
 });

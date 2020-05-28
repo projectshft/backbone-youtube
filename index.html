@@ -10,7 +10,7 @@
   <script src="node_modules/underscore/underscore-min.js"></script>
   <script src="node_modules/backbone/backbone-min.js"></script>
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-  <title>YouTube</title>
+  <title>Mini YouTube</title>
 </head>
 
 <body>
@@ -32,11 +32,7 @@
       <div class="row">
         <div class="col-md-6 offset-md-1">
           <div class="main-video">
-            <iframe width="750" height="480" src="https://www.youtube.com/embed/PX4fFUwD7tk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <br>
-            <br>
-            <h3>Car Spotting with Doug Demuro</h3>
-            <p>Today you're coming car spotting with Doug DeMuro. We're going to drive around Coronado, California, and I'm going to show you all the cool cars I find -- and ...</p>
+
           </div>
 
         </div>
@@ -45,30 +41,7 @@
 
           <div class="col-md-12">
             <div class="video-list">
-              <div class="video">
-                <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
-                <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
-              </div>
-
-              <div class="video">
-                <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
-                <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
-              </div>
-
-              <div class="video">
-                <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
-                <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
-              </div>
-
-              <div class="video">
-                <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
-                <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
-              </div>
-
-              <div class="video">
-                <p>The Chevy HHR SS Panel Is One of the Weirdest Modern Cars</p>
-                <img src="https://i.ytimg.com/vi/BxFhNIgouMA/mqdefault.jpg">
-              </div>
+              
               <br>
 
             </div>
@@ -82,18 +55,18 @@
 
 
   <script id="main-video-template" type="text/x-handlebars-template">
-    <!-- <iframe width="750" height="480" src="https://www.youtube.com/embed/fCZxfieqe6o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="750" height="480" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <br>
     <br>
-    <h3>I am title</h3>
-    <p>herre is the description</p>
-  </div> -->
+    <h3>{{title}}</h3>
+    <p>{{description}}</p>
+  </div>
   </script>
 
   <script id="video-list-template" type="text/x-handlebars-template">
     <div class="video">
-      <p>Here&#39;s Why the BMW i3 Absolutely Isn&#39;t Worth $50,000</p>
-      <img src="https://i.ytimg.com/vi/yLfRPT5sEEI/default.jpg">
+      <p>{{title}}</p>
+      <img src="{{thumbnail}}">
     </div>
   </script>
 
