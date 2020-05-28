@@ -2,22 +2,35 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .search': 'searchYouTube'
+    'click .search': 'updateSearchQuery'
   },
 
   initialize: function() {
     //listening for additions to video list collection during initial fetch
-    //rendering the videos upon retrieval of 
-    this.listenTo(this.model.get('videoList'), 'sync', this.renderVideoLists);
-    this.listenTo(this.model.get('videoList'), 'sync', this.renderVideo);
+    //rendering the videos upon retrieval of API data
+    this.listenTo(this.model.get('videoList'), 'reset', this.renderVideoLists);
+    this.listenTo(this.model.get('videoList'), 'reset', this.renderVideo);
+
+    this.listenTo(this.model, 'change:userSearchQuery', this.searchYouTube);
 
   },
 
-  searchYouTube: function () {
+  updateSearchQuery: function () {
     //check if user submitted an empty data value and return error if so
-    if (this.$('#search-query').val() === '') {
+    //first store the searchQuery in a variable for reuse
+    var userSearch = this.$('#search-query').val();
+    //send user an error message if the search is empty
+    if (userSearch === '') {
       return alert('Enter in text for a YouTube search.')
     }
+    //update the AppModel with the user's search input
+    this.model.set('userSearchQuery', userSearch)
+    
+  },
+
+  searchYouTube: function () {
+    //call function to update the URL GET request and fetch data again
+    this.model.updateReviewsURL();
 
   },
 
@@ -27,7 +40,7 @@ var AppView = Backbone.View.extend({
     var currentVideoView = new CurrentVideoView({ model: (this.model.get('videoList')).first() });
     //appending the view to handlebars in index.html
     this.$('.main-video').append(currentVideoView.render().el);
-    debugger;
+
   },
 
   //rendering all video models in VideoListCollection
@@ -40,7 +53,7 @@ var AppView = Backbone.View.extend({
       this.$('.video-list').append(currentVideoListView.render().el);
       
     }, this);
-    debugger;
+
   },
 
 });
