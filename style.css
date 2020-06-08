@@ -35,4 +35,10 @@ iframe {
   padding: 2PX;
   margin: 5px;
   cursor: pointer;
+  clear: both;
+}
+
+.video-list {
+  clear: both;
+  padding: 25%;
 }
