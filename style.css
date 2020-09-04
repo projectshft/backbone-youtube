@@ -5,3 +5,23 @@ body {
 #basic-addon1 {
   background-color: white;
 }
+
+.video-search-field {
+  padding-bottom: 30px;
+}
+
+/* .row-1 {
+  padding: 0px;
+  margin: 0px;
+} */
+
+.column-1 {
+  padding: 0px;
+  margin: 0px;
+  width: 500px;
+}
+
+.column-2 {
+  padding: 0px;
+  margin: 0px; 
+}
