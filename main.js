@@ -22,7 +22,7 @@ var VideoModel = Backbone.Model.extend({
 var VideosCollection = Backbone.Collection.extend({
   //need a URL attribute that can be updated  // url: 'https://beer-review-api.herokuapp.com/beers',
 
-  url: '',
+  url: https://www.googleapis.com/youtube/v3/search?part=snippet&q=leafy+seadragon&key=AIzaSyAP_76scBmXPFjlzlMlaFCRsbigHBofhmM,
   model: VideoModel,
 
   searchVideo: function () {
@@ -103,3 +103,7 @@ var AppView = Backbone.View.extend({
 
 var appModel = new AppModel();
 var appView = new AppView({ model: appModel });
+
+
+// YouTube API key: AIzaSyAP_76scBmXPFjlzlMlaFCRsbigHBofhmM
+// https://www.googleapis.com/youtube/v3/search?part=snippet&q=leafy+seadragon&key=AIzaSyAP_76scBmXPFjlzlMlaFCRsbigHBofhmM
