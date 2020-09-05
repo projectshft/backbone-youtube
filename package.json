@@ -1,0 +1,29 @@
+{
+  "name": "backbone-youtube",
+  "version": "1.0.0",
+  "description": "PS Eval Week 4",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjfoley23/backbone-youtube.git"
+  },
+  "keywords": [
+    "backbone",
+    "mvc"
+  ],
+  "author": "pjfoley23",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pjfoley23/backbone-youtube/issues"
+  },
+  "homepage": "https://github.com/pjfoley23/backbone-youtube#readme",
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "bootstrap": "^4.5.2",
+    "handlebars": "^4.7.6",
+    "jquery": "^3.5.1"
+  }
+}
