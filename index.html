@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>YouTube Mini</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="form-group">
+          <div class="form-group  clearfix">
+            <label for="video-search">search for videos</label>
+            <input type="text" style="width: 85%;" class="form-control float-left" id="video-search"
+              placeholder="search">
+            <button class="btn btn-primary submit float-right">submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5 offset-md-2">
+        <div class="main-stage"><iframe width="620" height="325" src="https://www.youtube.com/embed/yuphcpY5a5A"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe></div>
+        <div class="main-desc border mt-md-4" style="width:620px;">
+          <p><b>Title:</b> Words about this title</p>
+          <p><b>Description:</b> Words about this description</p>
+        </div>
+      </div>
+      <div class="col-md-3 offset-md-2">
+        <div class="sidebar-vids">
+          <table style="height: 92px;" class="border shadow clearfix overflow-hidden">
+            <tbody>
+              <tr>
+                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
+                </td>
+                <td>
+                  <h5>This is the name of the video</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
+            <tbody>
+              <tr>
+                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
+                </td>
+                <td>
+                  <h5>This is the name of the video</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
+            <tbody>
+              <tr>
+                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
+                </td>
+                <td>
+                  <h5>This is the name of the video</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
+            <tbody>
+              <tr>
+                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
+                </td>
+                <td>
+                  <h5>This is the name of the video</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="main-stage-template" type="text/x-handlebars-template">
+    <iframe width="620" height="325" src="https://www.youtube.com/embed/{{videoId}}"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+  </script>
+
+  <script id="main-desc-template" type="text/x-handlebars-template">
+    <p><b>Title:</b> {{videoTitle}}</p>
+    <p><b>Description:</b> {{videoDesc}}</p>
+  </script>
+
+  <script id="sidebar-vids-template" type="text/x-handlebars-template">
+    <!-- Note, first block should not have top margin added -->
+          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
+            <tbody>
+              <tr>
+                <td class="align-middle"><img src="{{thumbnail}}" class="float-left">
+                </td>
+                <td>
+                  <h5>{{videoTitle}}</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  </script>
+
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
