@@ -21,90 +21,67 @@ var VideoModel = Backbone.Model.extend({
 
 var VideosCollection = Backbone.Collection.extend({
   //need a URL attribute that can be updated  // url: 'https://beer-review-api.herokuapp.com/beers',
-
-  url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=leafy+seadragon&key=AIzaSyAP_76scBmXPFjlzlMlaFCRsbigHBofhmM",
-  model: VideoModel,
-
-  searchVideo: function () {
-    console.log('searching videos!');
-    //plan: use search terms to update collection's url
-    //send to a fetch function
-    //parse results
+  defaults: {
+    url: '',
+    model: VideoModel,
   },
 
-  // addVideo: function (title, description, id, thumbnail) {
-  //   this.create({
-  //     title: title,
-  //     description: description,
-  //     id: id,
-  //     thumbnail: thumbnail
-  //   }, { wait: true });
-  // }
+  createUrl: function ($searchInputVal) {
+    //plan: use search terms to update collection's url
 
-  // parse: function (response) {
-  //   return response.map(function (b) {
-  //     var reviews = this.get('reviews') || new ReviewsCollection();
+    console.log('creating URL!');
+    var searchTerm = $searchInputVal.trim().split(' ').join('+');
+    console.log(searchTerm);
+    var newUrl =
+      'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' +
+      searchTerm +
+      '&key=AIzaSyAP_76scBmXPFjlzlMlaFCRsbigHBofhmM';
+    return newUrl;
+  },
 
-  //     reviews.set(b.reviews);
-
-  //     b.reviews = reviews;
-
-  //     return Object.assign({'id': b._id}, b);
-  //   }, this);
-  // }
+  parse: function (response) {
+    console.log(parsing!);
+    console.log(response);
+  },
 });
+
+var newVideos = new VideosCollection({ 'url': newUrl });
+newVideos.on('add', function (modelThatsAdded) { console.log(modelThatsAdded.toJSON()); });
+newVideos.fetch();
+
+
 
 var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
     'keyup .video-search-field': 'fetchOnEnter', //create collection of videos
-    // 'click .view-video': 'viewVideo', //click event on thumbnail
   },
 
-  initialize: function () {
-    // this.listenTo(this.model.get('videos'), 'add', this.renderVideos); //render both Main and Thumbnail views when collection changes
-    // this.listenTo(this.model, 'change:main_video', this.renderMainView); //and re-render the thumbnail view
-    // this.renderVideos();
-  },
+  initialize: function () {},
 
   fetchOnEnter: function (event) {
     console.log('in fetchOnEnter!');
-    //If 'enter' key pressed in search box, goto searchVideo function
-    //in VideosCollection
+    //If 'enter' key pressed in search box, goto searchVideo function in VideosCollection
     if (event.which === 13) {
       // console.log('confirmed enter key');
-      // console.log($('#search-input').val());
-      this.model.get('videos').searchVideo(); //send search parameters here
+      var $searchInputVal = $('#search-input').val();
+      this.model.get('videos').createUrl($searchInputVal); //send search parameters here
     }
-  },
-
-  viewVideo: function (e) {
-    // var clickedVideoId = $(e.currentTarget).data().id;
-
-    // this.model.showReviews(clickedBeerId);
-  },
-
-  renderVideo: function (video) {
-    // var videoView = new Video({ model: beer }); //Video MainView or Thumbnail view?
-    // this.$videoList.append(videoView.render().el);
-  },
-
-  renderVideos: function () {
-    // this.model.get('videos').each(function (m) {
-    //   this.renderVideo(m); //render video Main or Thumbnail?
-    // }, this);
   },
 });
 
-// var VideoMainView = Backbone.View.extend({});
+var VideoMainView = Backbone.View.extend({
+  // className: 'video-view',
+  // template: Handlebars.compile($('#video-main-template').html()),
+});
 
-// var VideoThumbnailView = Backbone.View.extend({});
+var VideoThumbnailView = Backbone.View.extend({
+  // className: 'thumbnail-view',
+  // template: Handlebars.compile($('#video-thumbnail-template').html()),
+});
 
 var appModel = new AppModel();
 var appView = new AppView({ model: appModel });
 
-
-// YouTube API key: AIzaSyAP_76scBmXPFjlzlMlaFCRsbigHBofhmM
-// https://www.googleapis.com/youtube/v3/search?part=snippet&q=leafy+seadragon&type=video&key=AIzaSyAP_76scBmXPFjlzlMlaFCRsbigHBofhmM
 //https://www.youtube.com/watch?v=NsGK7cUdelM
