@@ -8,4 +8,4 @@ var VideoModel = Backbone.Model.extend({
   },
 });
 
-// var videoModel = new VideoModel();
+var videoModel = new VideoModel();

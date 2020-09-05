@@ -54,6 +54,9 @@ console.log(appModel.get('current_video'));
 console.log('trying to get attributes');
 
 var appView = new AppView({ model: appModel });
+var videoMainView = new VideoMainView({ model: videoModel });
+var videoThumbnailView = new VideoThumbnailView({ model: videoModel });
+
 
 // var newVideosSearched = new VideosCollection();
 // newVideosSearched.on('add', function (modelThatsAdded) { console.log(modelThatsAdded.toJSON()); });

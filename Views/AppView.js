@@ -7,6 +7,8 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.$input = this.$('#search-input');
+    this.$mainVideoContainer = this.$('.main-video-container');
+    this.$thumbnailVideoContainer = this.$('.thumbnail-video-container');
     this.renderThumbnailVideos();
     this.listenTo(
       this.model,
@@ -18,10 +20,21 @@ var AppView = Backbone.View.extend({
   },
 
   renderThumbnailVideos: function () {
+    console.log('enteringthumbnails');
+    //the thumbnails to render will be returned by the
+    //renderMainVideo function
     var thumbnailsToRender = this.renderMainVideo();
-    console.log('rendering thumbnails! for this array:');
     console.log(thumbnailsToRender);
-    console.log('hello??');
+    if (this.videoThumbnailView) {
+      this.videoThumbnailView.remove();
+    }
+     videoThumbnailView = new VideoThumbnailView({
+      model: thumbnailsToRender,
+    });
+
+    this.$thumbnailVideoContainer.append(
+      this.videoThumbnailView.render(thumbnailsToRender).el);
+
     // if (this.videoThumbnailView) {
     //   this.videoThumbnailView.remove();
     // }
@@ -38,15 +51,15 @@ var AppView = Backbone.View.extend({
     }
 
     //create a new Main View instance with only the current video
-    this.videoMainView = new VideoMainView({
-      model: this.model.get('current_video'),
-    });
     var currentVideoObject = this.model.get('current_video');
+    this.videoMainView = new VideoMainView({
+      model: currentVideoObject,
+    });
     var allVideos = this.model;
     var allVideosArray = allVideos.attributes.videosCollection.models;
 
     //send the current video to the Main View to be rendered
-    this.$('.main-video-container').append(
+    this.$mainVideoContainer.append(
       this.videoMainView.render(currentVideoObject).el
     );
     //send the current video to the Collection to find thumbnails

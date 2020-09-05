@@ -4,7 +4,6 @@ var VideoThumbnailView = Backbone.View.extend({
 
   render: function () {
     console.log('rendering!');
-    console.log(this.model);
 
 
     // for (let i = 0; i < fiveDaysOfWeather.length; i++) {

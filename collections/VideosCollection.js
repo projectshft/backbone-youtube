@@ -18,16 +18,18 @@ var VideosCollection = Backbone.Collection.extend({
   findThumbnails: function (
     currentVideoObject,
     allVideosArray,
-    thumbnailsArray
-  ) {
+    thumbnailsArray)
+   {
     // console.log('infindThumbnails');
     var currentVideoID = currentVideoObject[0].id;
     //push all videos that are not current (do not have same ID) to thumbnails
     for (var i = 0; i < allVideosArray.length; i++) {
       if (allVideosArray[i].attributes.id !== currentVideoID) {
-        thumbnailsArray.push(allVideosArray[i]);
+        thumbnailsArray.push(allVideosArray[i].attributes);
       }
     }
+    console.log('hey!!')
+    console.log(thumbnailsArray);
     return thumbnailsArray;
   },
 });
