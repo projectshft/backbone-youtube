@@ -2,9 +2,11 @@ var VideoMainView = Backbone.View.extend({
   // className: 'video-view',
   template: Handlebars.compile($('#video-main-template').html()),
 
-  render: function () {
+  render: function (currentVideo) {
+    console.log("rendering Current!");
+    console.log(currentVideo[0]);
     this.$el.html(
-      this.template(appModel.get('videosCollection').at(0).toJSON())
+      this.template(currentVideo[0])
     );
 
     return this;
@@ -19,3 +21,6 @@ var VideoMainView = Backbone.View.extend({
 // // console.log(this.model.toJSON());
 // console.log('wat was that?')
 // console.log(this.model);
+
+
+// appModel.get('videosCollection').at(0).toJSON()

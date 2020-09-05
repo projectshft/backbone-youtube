@@ -15,15 +15,22 @@ var VideosCollection = Backbone.Collection.extend({
     return newUrl;
   },
 
-  findThumbnails: function (currentVideoObject) {
-    console.log('infindThumbnails');
-    console.log(currentVideoObject);
+  findThumbnails: function (
+    currentVideoObject,
+    allVideosArray,
+    thumbnailsArray
+  ) {
+    // console.log('infindThumbnails');
+    var currentVideoID = currentVideoObject[0].id;
+    //push all videos that are not current (do not have same ID) to thumbnails
+    for (var i = 0; i < allVideosArray.length; i++) {
+      if (allVideosArray[i].attributes.id !== currentVideoID) {
+        thumbnailsArray.push(allVideosArray[i]);
+      }
+    }
+    return thumbnailsArray;
   },
 });
-
-// console.log(appModel.get('current_video'));
-// console.log('trying to get attributes in collection');
-
 // parse: function (response) {
 //   console.log('in parse function!');
 
