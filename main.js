@@ -1,6 +1,10 @@
 // create an AppModel var 
 var AppModel = Backbone.Model.extend({
-
+    defaults: function () {
+        return {
+            videos: new VideosCollection()
+        }
+    }
 });
 
 //create an AppView var
@@ -20,7 +24,16 @@ var AppView = Backbone.View.extend({
 
 //create a VideosCollection var
 var VideosCollection = Backbone.Collection.extend({
-    model: VideoModel
+    model: VideoModel,
+
+    addVideo: function (thumbnail, title, description, Id) {
+        this.add({
+            thumbnail: thumbnail,
+            title: title,
+            description: description,
+            Id: Id
+        })
+    }
 
 });
 
@@ -30,5 +43,5 @@ var VideoModel = Backbone.Model.extend({
 });
 
 
-
+// initializes a view
 var appView = new AppView();
