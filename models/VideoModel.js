@@ -1,3 +1,5 @@
+console.log('InVideoModel');
+
 var VideoModel = Backbone.Model.extend({
   defaults: {
     title: '',
@@ -8,4 +10,5 @@ var VideoModel = Backbone.Model.extend({
   },
 });
 
-var videoModel = new VideoModel();
+
+console.log('leaving videomodel')

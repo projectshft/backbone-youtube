@@ -34,18 +34,6 @@
 
 
       <div class="col-md-4 column-two thumbnail-video-container">
-        <div class="media thumbnail">
-          <img   src="https://i.ytimg.com/vi/dYXBip9bZME/default.jpg"></img>
-        </div>
-        <div class="media thumbnail">
-          <img  src="https://i.ytimg.com/vi/--QOJZmNG_E/default.jpg"></img>
-        </div>
-        <div class="media thumbnail">
-          <img  src="https://i.ytimg.com/vi/LLE6Jx-Vd5k/default.jpg"></img>
-        </div>
-        <div class="media thumbnail">
-          <img   src="https://i.ytimg.com/vi/a04ij4gxi0Q/default.jpg"></img>
-        </div>
       </div>
     </div>
      
@@ -61,14 +49,9 @@
 
     <script id="video-thumbnail-template" type="x-handlebars-template">
       <div class="media thumbnail">
-        <img src="https://i.ytimg.com/vi/dYXBip9bZME/default.jpg"></img>
+        <img src={{ thumbnail }}></img>
       </div>
-    </script>
-
-
-
-
-    
+    </script>    
 
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>

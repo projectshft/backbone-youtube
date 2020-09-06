@@ -1,19 +1,19 @@
+console.log('inVideoThumbnailView');
+
 var VideoThumbnailView = Backbone.View.extend({
-  // className: 'thumbnail-view',
-  template: Handlebars.compile($('#video-thumbnail-template').html()),
+  el: '.thumbnail-video-container',
 
-  render: function () {
-    console.log('rendering!');
+  // template: Handlebars.compile($('#video-thumbnail-template').html()),
 
-
-    // for (let i = 0; i < fiveDaysOfWeather.length; i++) {
-    //   const weatherHTML = template(fiveDaysOfWeather[i]);
-    //   $('#fiveDayWeatherData').append(weatherHTML);
-
-    this.$el.html(
-      this.template()
-    );
-
-    return this;
+  render: function (thumbnailArray) {
+    const source = $('#video-thumbnail-template').html();
+    const template = Handlebars.compile(source);
+    for (let i = 0; i < thumbnailArray.length; i++) {
+      const thumbnailHTML = template(thumbnailArray[i]);
+      $('.thumbnail-video-container').append(thumbnailHTML);
+      // this.$el.html(this.template(this.model.toJSON()));
+      // return this;
+    }
   },
 });
+console.log('leaving VideoThumbnailView');

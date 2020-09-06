@@ -1,8 +1,7 @@
-var appModel = new AppModel();
+console.log('In main.js');
 
-// console.log('started and created appModel');
-// console.log(appModel.get('videosCollection'));
-// console.log('that was videos collection');
+
+var appModel = new AppModel();
 
 //Add some default videos to the collection to show on page load
 appModel.get('videosCollection').add([
@@ -49,17 +48,8 @@ appModel.get('videosCollection').add([
     youtubeEmbedUrl: 'https://www.youtube.com/embed/a04ij4gxi0Q',
   },
 ]);
-
-console.log(appModel.get('current_video'));
-console.log('trying to get attributes');
-
 var appView = new AppView({ model: appModel });
-var videoMainView = new VideoMainView({ model: videoModel });
-var videoThumbnailView = new VideoThumbnailView({ model: videoModel });
 
 
-// var newVideosSearched = new VideosCollection();
-// newVideosSearched.on('add', function (modelThatsAdded) { console.log(modelThatsAdded.toJSON()); });
-// newVideosSearched.fetch();
 
 //https://www.youtube.com/watch?v=NsGK7cUdelM

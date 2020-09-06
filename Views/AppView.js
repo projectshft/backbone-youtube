@@ -1,3 +1,5 @@
+console.log('inAppView');
+
 var AppView = Backbone.View.extend({
   el: $('body'),
 
@@ -9,60 +11,49 @@ var AppView = Backbone.View.extend({
     this.$input = this.$('#search-input');
     this.$mainVideoContainer = this.$('.main-video-container');
     this.$thumbnailVideoContainer = this.$('.thumbnail-video-container');
+    this.gotoParse();
     this.renderThumbnailVideos();
     this.listenTo(
       this.model,
       'change:current_video',
       this.renderThumbnailVideos
     );
-    // this.renderThumbnailVideos();
-    // this.listenTo(this.model, 'change:current_video', this.renderMainVideo);
+  },
+
+  gotoParse: function () {
+    appModel.get('videosCollection').parse();
   },
 
   renderThumbnailVideos: function () {
-    console.log('enteringthumbnails');
+    console.log('entering renderthumbnails');
     //the thumbnails to render will be returned by the
     //renderMainVideo function
     var thumbnailsToRender = this.renderMainVideo();
-    console.log(thumbnailsToRender);
-    if (this.videoThumbnailView) {
-      this.videoThumbnailView.remove();
-    }
-     videoThumbnailView = new VideoThumbnailView({
-      model: thumbnailsToRender,
-    });
-
-    this.$thumbnailVideoContainer.append(
-      this.videoThumbnailView.render(thumbnailsToRender).el);
-
-    // if (this.videoThumbnailView) {
-    //   this.videoThumbnailView.remove();
-    // }
-
-    // this.videoThumbnailView = new videoThumbnailView({ model: videos });
-    // this.$('.thumbnail-video-container').append(this.videoThumbnailView.render().el);
+    //create a new thumbnailView
+    this.videoThumbnailView = new VideoThumbnailView();
+    //send the thumbnails to the thumbnailView to render
+    this.videoThumbnailView.render(thumbnailsToRender);
   },
 
   renderMainVideo: function (video) {
-    //if a video is being displayed, clear it out
     var thumbnailsArray = [];
+    //if a video is being displayed, clear it out
     if (this.videoMainView) {
       this.videoMainView.remove();
     }
-
     //create a new Main View instance with only the current video
     var currentVideoObject = this.model.get('current_video');
     this.videoMainView = new VideoMainView({
       model: currentVideoObject,
     });
-    var allVideos = this.model;
-    var allVideosArray = allVideos.attributes.videosCollection.models;
-
     //send the current video to the Main View to be rendered
     this.$mainVideoContainer.append(
       this.videoMainView.render(currentVideoObject).el
-    );
-    //send the current video to the Collection to find thumbnails
+    );    
+    //create an array of the 5 videos drilled down to relevant attributes
+    var allVideos = this.model;
+    var allVideosArray = allVideos.attributes.videosCollection.models;
+    //send the current video to the Collection to pull out thumbnails
     appModel
       .get('videosCollection')
       .findThumbnails(currentVideoObject, allVideosArray, thumbnailsArray);
@@ -73,9 +64,6 @@ var AppView = Backbone.View.extend({
     console.log('in fetchOnEnter!');
     //If 'enter' key pressed in search box, goto searchVideo function in VideosCollection
     if (event.which === 13) {
-      // console.log('confirmed enter key');
-      // console.log(this.$input.val());
-      // console.log(appModel.get('videosCollection'));
       appModel.get('videosCollection').createUrl(this.$input.val());
     }
   },
@@ -86,3 +74,4 @@ var AppView = Backbone.View.extend({
     this.model.showNewVideo(clickedVideoId);
   },
 });
+console.log('leaving AppView');

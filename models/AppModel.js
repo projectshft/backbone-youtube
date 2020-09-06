@@ -1,3 +1,6 @@
+
+console.log('InAppModel');
+
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
@@ -24,6 +27,6 @@ var AppModel = Backbone.Model.extend({
   //   console.log('hello!');
   // },
 });
+console.log('leaving ApMmodel')
 
-console.log('InAppModel');
 
