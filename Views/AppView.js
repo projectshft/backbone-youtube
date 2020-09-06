@@ -8,24 +8,24 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.$videoList = this.$('.video-list');
+    this.$mainVideo = this.$('.main-video-container');
 
     this.listenTo(this.model, 'change:current_video', this.renderMainView);
 
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+
     this.renderVideos();
     this.renderMainView();
+
   },
 
   renderMainView: function () {
-    // if (this.videoMainView) {
-    //   this.videoMainView.remove();
-    // }
-    console.log('in render main')
-    console.log(this.model.get('current_video'))
-    this.videoMainView = new VideoMainView({
-      model: this.model.get('current_video'),
-    });
-    this.$('.main-video-container').append(this.videoMainView.render().el);
+    if (this.videoMainView) {
+      this.videoMainView.remove();
+    }
+
+    this.videoMainView = new VideoMainView({ model: this.model.get('current_video')});
+    this.$mainVideo.append(this.videoMainView.render().el);
   },
 
   //first part of rendering the thumbnail list
@@ -42,14 +42,9 @@ var AppView = Backbone.View.extend({
   },
 
   viewVideo: function (e) {
-    var clickedVideoId = $(e.currentTarget).data().id;
-    this.model.showVideo(clickedVideoId);
-  },
-
-  showVideo: function (id) {
-    var allVideos = this.get('videos');
-    var currentVideo = allVideos.findWhere({ id: id });
-    this.set('current_video', currentVideo);
+    console.log('clicked')
+    var clickedVideoThumbnail = $(e.currentTarget)[0].currentSrc;
+    this.model.showVideo(clickedVideoThumbnail);
   },
 
   fetchOnEnter: function (event) {

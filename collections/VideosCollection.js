@@ -12,7 +12,7 @@ var VideosCollection = Backbone.Collection.extend({
       youtubeEmbedUrl: youtubeEmbedUrl,
     });
   },
-  
+
   createUrl: function (searchTerm) {
     var searchTermTrimmed = searchTerm.trim().split(' ').join('+');
     var newUrl =
