@@ -10,19 +10,21 @@ var VideosCollection = Backbone.Collection.extend({
             thumbnail: thumbnail,
             video_url: video_url,
         }, {wait: true});
+        console.log(this)    ////need to prevent default somehow
     },
 
     parse: function(response) {
-        return response.map(function(item) {
-            console.log(item)
-            // var id = this.get('id');
+        //console.log(response)
+        // return response.map(function(item) {
+        //     console.log(item)
+        //     // var id = this.get('id');
 
-            // id.set(item.id);                    //////Need to check this
+        //     // id.set(item.id);                    //////Need to check this
 
-            // item.id = id;
+        //     // item.id = id;
 
-            // return Object.assign({'id': item.id}, item);
-        }, this);
+        //     // return Object.assign({'id': item.id}, item);
+        // }, this);
     }
 
 })
