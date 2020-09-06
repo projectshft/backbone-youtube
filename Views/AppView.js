@@ -5,6 +5,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     'keyup .video-search-field': 'fetchOnEnter',
+    // 'click img': 'changeVideo',
   },
 
   initialize: function () {
@@ -65,13 +66,16 @@ var AppView = Backbone.View.extend({
     //If 'enter' key pressed in search box, goto searchVideo function in VideosCollection
     if (event.which === 13) {
       appModel.get('videosCollection').createUrl(this.$input.val());
-    }
+      this.$input.val('');
+    };
   },
 
-  viewVideo: function (e) {
-    var clickedVideoId = $(e.currentTarget).data().id;
 
-    this.model.showNewVideo(clickedVideoId);
-  },
+
+  // viewVideo: function (e) {
+  //   var clickedVideoId = $(e.currentTarget).data().id;
+
+  //   this.model.showNewVideo(clickedVideoId);
+  // },
 });
 console.log('leaving AppView');

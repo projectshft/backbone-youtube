@@ -34,197 +34,193 @@ var VideosCollection = Backbone.Collection.extend({
   },
 
   parse: function () {
-
-    console.log('in second parse funtion');
-    console.log(this);
-    console.log('trying to get this.get(videosCollection)')
-
+    console.log('in parse funtion');
     var response = [
       {
         kind: 'youtube#searchListResponse',
-        etag: 'mJ8708yCF6BUEzX5lSATVlxdK-I',
+        etag: 'draC5DJuPYpHt3egeR_mCjjlLfQ',
         nextPageToken: 'CAUQAA',
         regionCode: 'US',
         pageInfo: {
-          totalResults: 49936,
+          totalResults: 119837,
           resultsPerPage: 5,
         },
         items: [
           {
             kind: 'youtube#searchResult',
-            etag: '6lxaZIN0_rPyhF4lqMHJTLvAgVI',
+            etag: '9vfAypwnSeWpC882ZthABZy-K90',
             id: {
               kind: 'youtube#video',
-              videoId: 'NsGK7cUdelM',
+              videoId: 'YFFGtxw1BYw',
             },
             snippet: {
-              publishedAt: '2019-01-15T19:00:05Z',
-              channelId: 'UCvVWg9g4zQeoYdBsLbGypBQ',
-              title: 'Facts: The Leafy Seadragon',
+              publishedAt: '2015-03-11T16:38:06Z',
+              channelId: 'UCv-GKfqJyNxA1h1lOGcBmiQ',
+              title: 'Kayaking Thru Florida Mangrove Tunnels',
               description:
-                "Quick facts about this well camouflaged fish! The leafy seadragon (Phycodurus eques, Glauert's seadragon). Leafy seadragon facts! Subscribe: ...",
+                "In today's vlog, Jesse and I kayak to an island and through mangrove tunnels. Thanks to Sail Honeymoon Island Rentals for the kayaks.",
               thumbnails: {
                 default: {
-                  url: 'https://i.ytimg.com/vi/NsGK7cUdelM/default.jpg',
+                  url: 'https://i.ytimg.com/vi/YFFGtxw1BYw/default.jpg',
                   width: 120,
                   height: 90,
                 },
                 medium: {
-                  url: 'https://i.ytimg.com/vi/NsGK7cUdelM/mqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/YFFGtxw1BYw/mqdefault.jpg',
                   width: 320,
                   height: 180,
                 },
                 high: {
-                  url: 'https://i.ytimg.com/vi/NsGK7cUdelM/hqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/YFFGtxw1BYw/hqdefault.jpg',
                   width: 480,
                   height: 360,
                 },
               },
-              channelTitle: 'Deep Marine Scenes',
+              channelTitle: 'BixbyFilms',
               liveBroadcastContent: 'none',
-              publishTime: '2019-01-15T19:00:05Z',
+              publishTime: '2015-03-11T16:38:06Z',
             },
           },
           {
             kind: 'youtube#searchResult',
-            etag: 'hPBM9Tgnj8lJp0_YkscoQUI7zE8',
+            etag: 'CupyGoCO07IGdv8Mr_vfAR4WfKY',
             id: {
               kind: 'youtube#video',
-              videoId: 'dYXBip9bZME',
+              videoId: 'sOxwpDi7fcA',
             },
             snippet: {
-              publishedAt: '2020-03-14T12:00:09Z',
-              channelId: 'UC9cGX5x0_EXkdfmWlvPbu3g',
+              publishedAt: '2019-07-14T10:01:28Z',
+              channelId: 'UCgD5ehWXngIgAoKmZwHvKdw',
+              title: 'Kayaking at the Eastern Mangroves Park in Abu Dhabi',
+              description:
+                "Did you know there's a underwater forest in Abu Dhabi? Go kayaking at Anantara Eastern Mangroves to explore this natural wonder...",
+              thumbnails: {
+                default: {
+                  url: 'https://i.ytimg.com/vi/sOxwpDi7fcA/default.jpg',
+                  width: 120,
+                  height: 90,
+                },
+                medium: {
+                  url: 'https://i.ytimg.com/vi/sOxwpDi7fcA/mqdefault.jpg',
+                  width: 320,
+                  height: 180,
+                },
+                high: {
+                  url: 'https://i.ytimg.com/vi/sOxwpDi7fcA/hqdefault.jpg',
+                  width: 480,
+                  height: 360,
+                },
+              },
+              channelTitle: 'insydo',
+              liveBroadcastContent: 'none',
+              publishTime: '2019-07-14T10:01:28Z',
+            },
+          },
+          {
+            kind: 'youtube#searchResult',
+            etag: 'iedy7rzWw9RaFX1vFU1XOA_33W8',
+            id: {
+              kind: 'youtube#video',
+              videoId: 'ECT47agurwY',
+            },
+            snippet: {
+              publishedAt: '2018-11-08T14:40:02Z',
+              channelId: 'UCorP3yfmodvg8xJEaQormsA',
               title:
-                'The Leafy Sea Dragon Is A Mythical Looking Creature! | Weird Creatures With Nick Baker',
+                'Crocodile, kayaking in the mangroves, Lower Matecumbe Key, FL',
               description:
-                'Nick is in South Australia searching for the leafy sea dragon, a mythical-looking relative of the seahorse. Subscribe to Discovery UK for more great clips: ...',
+                "Paddling with an 8' crocodile while in the mangrove tunnels of Lower Matecumbe Key, FL.",
               thumbnails: {
                 default: {
-                  url: 'https://i.ytimg.com/vi/dYXBip9bZME/default.jpg',
+                  url: 'https://i.ytimg.com/vi/ECT47agurwY/default.jpg',
                   width: 120,
                   height: 90,
                 },
                 medium: {
-                  url: 'https://i.ytimg.com/vi/dYXBip9bZME/mqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/ECT47agurwY/mqdefault.jpg',
                   width: 320,
                   height: 180,
                 },
                 high: {
-                  url: 'https://i.ytimg.com/vi/dYXBip9bZME/hqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/ECT47agurwY/hqdefault.jpg',
                   width: 480,
                   height: 360,
                 },
               },
-              channelTitle: 'Discovery UK',
+              channelTitle: 'Joe Brennan',
               liveBroadcastContent: 'none',
-              publishTime: '2020-03-14T12:00:09Z',
+              publishTime: '2018-11-08T14:40:02Z',
             },
           },
           {
             kind: 'youtube#searchResult',
-            etag: 'WaRJ2JtCPDV7peULb7XBHjw9LPU',
+            etag: 'vNf_nEsBWqBiJpnomwMq-2nA2iA',
             id: {
               kind: 'youtube#video',
-              videoId: '--QOJZmNG_E',
+              videoId: 'kTQY6FyDZmU',
             },
             snippet: {
-              publishedAt: '2018-11-04T14:58:34Z',
-              channelId: 'UCFH-Qa1s6rQRTrQjFg8N84Q',
+              publishedAt: '2020-03-20T20:40:00Z',
+              channelId: 'UCd3-gAXU6zhX2RWFrb0eSYw',
               title:
-                'Leafy Seadragons of South Australia | JONATHAN BIRD&#39;S BLUE WORLD',
+                'Exploring Backwater Mangroves On New Kayak - Old Town 106 Powered By Minn Kota',
               description:
-                'In an epic expedition down under, the Bird family goes on a search for the most exquisite seahorse in the world--the Leafy Seadragon! Just south of Adelaide in ...',
+                'In this video I went exploring backwater mangroves searching for big fish! I plan to come back to this place to do some backwater mangrove exploring again ...',
               thumbnails: {
                 default: {
-                  url: 'https://i.ytimg.com/vi/--QOJZmNG_E/default.jpg',
+                  url: 'https://i.ytimg.com/vi/kTQY6FyDZmU/default.jpg',
                   width: 120,
                   height: 90,
                 },
                 medium: {
-                  url: 'https://i.ytimg.com/vi/--QOJZmNG_E/mqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/kTQY6FyDZmU/mqdefault.jpg',
                   width: 320,
                   height: 180,
                 },
                 high: {
-                  url: 'https://i.ytimg.com/vi/--QOJZmNG_E/hqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/kTQY6FyDZmU/hqdefault.jpg',
                   width: 480,
                   height: 360,
                 },
               },
-              channelTitle: 'BlueWorldTV',
+              channelTitle: 'Fishing With YakPak',
               liveBroadcastContent: 'none',
-              publishTime: '2018-11-04T14:58:34Z',
+              publishTime: '2020-03-20T20:40:00Z',
             },
           },
           {
             kind: 'youtube#searchResult',
-            etag: '53bbUdYwuyEfDcyT5Ji-uKss-LA',
+            etag: 'K0BqJBavyZ5btq4wuuq1kJAgxg8',
             id: {
               kind: 'youtube#video',
-              videoId: 'LLE6Jx-Vd5k',
+              videoId: 'UB8wuzmr1Ds',
             },
             snippet: {
-              publishedAt: '2016-08-14T04:44:45Z',
-              channelId: 'UChaOxWd1jeaQTkjdq0rmFgQ',
-              title: 'Octonauts The Leafy Sea Dragons',
+              publishedAt: '2017-01-05T16:52:14Z',
+              channelId: 'UCmxCGomTdydQ4o8CEqsR_uw',
+              title: 'Kayaking in Krabi mangrove forest with a monkeys',
               description:
-                'Octonauts and the Leafy Sea Dragon - Storyline: Some leafy sea dragons accidentally get into the Octopod and the Octonauts will have to . The Octonauts and ...',
+                'The last day in Krabi, Thailand we spent kayaking in mangrove forest. Few monkeys come to say hello! Hope you enjoyed Krabi trip. Later on I will upload some ...',
               thumbnails: {
                 default: {
-                  url: 'https://i.ytimg.com/vi/LLE6Jx-Vd5k/default.jpg',
+                  url: 'https://i.ytimg.com/vi/UB8wuzmr1Ds/default.jpg',
                   width: 120,
                   height: 90,
                 },
                 medium: {
-                  url: 'https://i.ytimg.com/vi/LLE6Jx-Vd5k/mqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/UB8wuzmr1Ds/mqdefault.jpg',
                   width: 320,
                   height: 180,
                 },
                 high: {
-                  url: 'https://i.ytimg.com/vi/LLE6Jx-Vd5k/hqdefault.jpg',
+                  url: 'https://i.ytimg.com/vi/UB8wuzmr1Ds/hqdefault.jpg',
                   width: 480,
                   height: 360,
                 },
               },
-              channelTitle: 'Jeff Moss',
+              channelTitle: 'Mantas Jarusevicius',
               liveBroadcastContent: 'none',
-              publishTime: '2016-08-14T04:44:45Z',
-            },
-          },
-          {
-            kind: 'youtube#searchResult',
-            etag: 'DQPPJxqwyFa5LPtUOKuMeoYyOLY',
-            id: {
-              kind: 'youtube#video',
-              videoId: 'a04ij4gxi0Q',
-            },
-            snippet: {
-              publishedAt: '2016-07-06T06:00:02Z',
-              channelId: 'UCXLLQkbYE-G9jYrra7R4Qsw',
-              title: 'Octonauts: Creature Reports - Leafy Sea Dragon',
-              description:
-                "Want to join our next mission? Click here to Subscribe: http://goo.gl/DzwvWv The Octonauts are an adventure team who explore the world's oceans, rescue the ...",
-              thumbnails: {
-                default: {
-                  url: 'https://i.ytimg.com/vi/a04ij4gxi0Q/default.jpg',
-                  width: 120,
-                  height: 90,
-                },
-                medium: {
-                  url: 'https://i.ytimg.com/vi/a04ij4gxi0Q/mqdefault.jpg',
-                  width: 320,
-                  height: 180,
-                },
-                high: {
-                  url: 'https://i.ytimg.com/vi/a04ij4gxi0Q/hqdefault.jpg',
-                  width: 480,
-                  height: 360,
-                },
-              },
-              channelTitle: 'Octonauts',
-              liveBroadcastContent: 'none',
-              publishTime: '2016-07-06T06:00:02Z',
+              publishTime: '2017-01-05T16:52:14Z',
             },
           },
         ],
@@ -232,9 +228,11 @@ var VideosCollection = Backbone.Collection.extend({
     ];
 
     return response.map(function (b) {
-      var newVideos = appModel.get('videosCollection') || new VideosCollection();
-      newVideos.set(b.newVideos);
-      b.newVideos = newVideos;
+      var videosCollection =
+        appModel.get('videosCollection') || new VideosCollection();
+      videosCollection.set(b.videosCollection);
+      b.videosCollection = videosCollection;
+
       return Object.assign(
         {
           title: b.items[0].snippet.title,
@@ -251,10 +249,6 @@ var VideosCollection = Backbone.Collection.extend({
 });
 
 console.log('leaving videos collection');
-
-//   });
-
-// });
 
 // var newVideosSearched = new VideosCollection();
 // newVideosSearched.on('add', function (modelThatsAdded) { console.log(modelThatsAdded.toJSON()); });

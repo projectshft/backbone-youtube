@@ -6,9 +6,7 @@ var VideoMainView = Backbone.View.extend({
 
   render: function (currentVideo) {
     console.log('rendering Current!');
-    console.log(currentVideo[0]);
     this.$el.html(this.template(currentVideo[0]));
-
     return this;
   },
 });
