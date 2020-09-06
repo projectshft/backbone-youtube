@@ -15,7 +15,6 @@
         <div class= "container">
             <div class= "row">
                 <div class="col-sm-6 offset-3 my-1">
-                    <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -34,6 +33,23 @@
     </form>
 
     <!-- templates -->
+    <!-- Main video template -->
+    <div class= "container">
+        <div class= "row">
+            <div class="col-sm-6 offset-2">
+                <script id="main-video-template" type="text/x-handlebars-template">
+                    <iframe width="560" height="315" src="{{video_url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side Video templates -->
+    <div class= "container">
+        <div class= "row">
+
+        </div>
+    </div>
 
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
