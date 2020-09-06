@@ -45,16 +45,25 @@ var VideoModel = Backbone.Model.extend({
 // can set first response to onStage? 
 
 var VideoCollection = Backbone.Collection.extend({
-  url: function(searchTerms) {
+  url: function (searchTerms) {
     searchTerms = encodeURI(searchTerms);
-    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+searchTerms+"type=video&key="+API_KEY;
+    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms + "type=video&key=" + API_KEY;
     console.log(theResponse);
     return theResponse;
-  }
+  },
   model: VideoModel,
 
   parse: function (response) {
+    console.log(response);
+    console.log('parsing');
+    return { //TODO how to iterate through this .map()?
 
+      videoId: response.items[0].id.videoId,
+      title: response.items[0].snippet.title,
+      description: response.items[0].snippet.description,
+      thumb_url: response.items[0].snippet.thumbnails.default.url,
+      on_stage: false
+    }
   }
 
 });
@@ -63,7 +72,22 @@ var VideoCollection = Backbone.Collection.extend({
 // initialize: fill with default content?  listen for video model click?
 // renderApp: fill .main-stage and trigger sidebarView?
 // think about what this displays
+var AppView = Backbone.View.extend ({
+  // el: $('body'), // unsure if this buys me anything
 
+  events: {
+    'click .submit': 'performSearch'
+  },
+
+  initialize: function () {
+    
+    //this.listenTo()  changes in video model clicks
+    this.searchTerms = "Amiga retro";
+    this.performSearch();
+
+
+  }
+});
 // VideoView create
 // className: video
 // template: sidebar-vids-template
@@ -90,3 +114,7 @@ var VideoCollection = Backbone.Collection.extend({
 // new AppView from AppModel
 // populate defaults?
 // define API key var
+
+var appModel = new AppModel();
+var appView = new AppView({ model: appModel });
+appModel.get('videos').fetch({ reset: true });
