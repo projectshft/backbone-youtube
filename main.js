@@ -31,8 +31,10 @@ var VideosView = Backbone.View.extend ({
 
 //create a VideosCollection var
 var VideosCollection = Backbone.Collection.extend({
+    //connect the Youtube API to ur collection
+    url: `https://www.googleapis.com/youtube/v3search?key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=dogs`,
     model: VideoModel,
-    url: ``,
+    
 
     addVideo: function (thumbnail, title, description, Id) {
         this.add({
