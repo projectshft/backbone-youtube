@@ -17,7 +17,8 @@ var AppView = Backbone.View.extend({
     // create a function that will search for YT videos when enter is pressed
     createVideo: function (e) {
         if (e.keyCode === 13) {
-            console.log('test')
+            let query = $('input').val();
+            console.log(query);
         }        
     }
 })
@@ -32,8 +33,14 @@ var VideosView = Backbone.View.extend ({
 //create a VideosCollection var
 var VideosCollection = Backbone.Collection.extend({
     //connect the Youtube API to ur collection
-    url: `https://www.googleapis.com/youtube/v3/search?key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=dogs`,
+    // url: `https://www.googleapis.com/youtube/v3/search?key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=${query}`,
     model: VideoModel,
+
+    //data to parse for the 5 videos
+    //data.items[i].snippet.title
+    //data.items[i].snippet.description
+    //data.items[i].videoId
+    //data.items[i].thumbnails.default.url
     
 
     addVideo: function (thumbnail, title, description, Id) {
@@ -49,9 +56,16 @@ var VideosCollection = Backbone.Collection.extend({
 
 //create a VideoModel var
 var VideoModel = Backbone.Model.extend({
+    defaults: {
+        thumbnail: '',
+        title: ''
+
+    }
 
 });
 
 
 // initializes a view
 var appView = new AppView();
+
+
