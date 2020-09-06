@@ -27,11 +27,9 @@
     </div>
 
     <div class="row">
-      <div class="col-md-8 column-one main-video-container">
-      </div>
+      <div class="col-md-8 column-one main-video-container"></div>
 
-      <div id=thumbnail-video-container class="col-md-4 column-two thumbnail-video-container">
-      </div>
+      <div class="col-md-4 column-two video-list"></div>
     </div>
      
     <script id="video-main-template" type="x-handlebars-template">
@@ -48,13 +46,14 @@
       <div class="media thumbnail">
         <img src={{ thumbnail }}></img>
       </div>
+      
     </script>    
 
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
-    <script src="views/VideoThumbnailView.js"></script>
+    <script src="views/VideoView.js"></script>
     <script src="views/VideoMainView.js"></script>
     <script src="main.js"></script>
   </body>
