@@ -17,20 +17,44 @@ var VideosCollection = Backbone.Collection.extend({
     return newUrl;
   },
 
-  findThumbnails: function (
-    currentVideoObject,
-    allVideosArray,
-    thumbnailsArray
-  ) {
+  findThumbnails: function (thumbnailsArray) {
     //grab the ID of the current video to compare to other videos' IDs
-    var currentVideoID = currentVideoObject[0].id;
+    // console.log('incollection to find thumbnails.logging current video thumbnail');
+    // console.log(appModel.get('current_video')[0].thumbnail);
+    var thumbnailOfCurrentVideo = appModel.get('current_video')[0].thumbnail;
+    var allVideosArray = this.models;
+
     //push all videos that do not have same ID as current video to thumbnails array
     for (var i = 0; i < allVideosArray.length; i++) {
-      if (allVideosArray[i].attributes.id !== currentVideoID) {
+      if (allVideosArray[i].attributes.thumbnail !== thumbnailOfCurrentVideo) {
         thumbnailsArray.push(allVideosArray[i].attributes);
       }
     }
+    // console.log(thumbnailsArray);
     return thumbnailsArray;
+  },
+
+  showNewVideo: function (clickedVideoThumbnail) {
+    console.log('in collections showNewVideo');
+    var allModels = this.models;
+    console.log(clickedVideoThumbnail);
+    console.log('that was clickedthumbnail');
+
+    for (var i = 0; i < allModels.length; i++) {
+      // console.log(i);
+      // console.log(allModels[i].attributes.thumbnail);
+      // console.log(clickedVideoThumbnail);
+      if (allModels[i].attributes.thumbnail == clickedVideoThumbnail) {
+        var arrayForNewCurrentVideo = [];
+        arrayForNewCurrentVideo.push(allModels[i].attributes);
+        // console.log('the new array for current video');
+        // console.log(arrayForNewCurrentVideo);
+        appModel.set({ current_video: arrayForNewCurrentVideo });
+      }
+      // } else {
+      //   console.log('not a match!');
+      // }
+    }
   },
 
   parse: function () {

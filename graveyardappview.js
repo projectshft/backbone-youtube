@@ -49,24 +49,24 @@ var AppView = Backbone.View.extend({
   renderThumbnailVideos: function () {
     console.log('entering renderthumbnails');
     console.log(appModel.get('current_video'));
+    var thumbnailsArray = [];
 
     if (this.videoThumbnailView) {
       this.videoThumbnailView.remove();
     }
 
-    this.videoThumbnailView = new VideoThumbnailView();
-    this.model.get('videosCollection').each(function (m) {
-      this.renderThumbnail(m);
-    }, this);
+    //create a new thumbnailView
+    this.videoThumbnailView = new VideoThumbnailView({ className: '.col-md-4 column-two thumbnail-video-container' });
+    console.log('is there a new thumbnail view?');
+    console.log(this.videoThumbnailView);
+    console.log(this.videoThumbnailView.$el)
 
+    //go to collection to find the thumbnails
+    appModel.get('videosCollection').findThumbnails(thumbnailsArray);
+
+    // send the thumbnails to the thumbnailView to render
+    this.videoThumbnailView.render(thumbnailsArray);
   },
-  renderThumbnail: function () {
-    
-    var videoThumbnailView = new VideoThumbnailView();
-    this.$thumbnailVideoContainer.append(videoThumbnailView.render().el);
-    
-
-   },
 
   fetchOnEnter: function (event) {
     console.log('in fetchOnEnter!');

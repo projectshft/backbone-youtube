@@ -1,31 +1,29 @@
 console.log('inVideoThumbnailView');
 
 var VideoThumbnailView = Backbone.View.extend({
-  el: '.thumbnail-video-container',
-  class: '.thumbnail',
+  el: '#thumbnail-video-container',
+  className: '.thumbnail',
 
-  // template: Handlebars.compile($('#video-thumbnail-template').html()),
+  template: Handlebars.compile($('#video-thumbnail-template').html()),
 
   events: {
     'click img': 'changeVideo',
   },
 
-  render: function (thumbnailArray) {
-    const source = $('#video-thumbnail-template').html();
-    const template = Handlebars.compile(source);
-    for (let i = 0; i < thumbnailArray.length; i++) {
-      const thumbnailHTML = template(thumbnailArray[i]);
-      $('.thumbnail-video-container').append(thumbnailHTML);
-      // this.$el.html(this.template(this.model.toJSON()));
-      // return this;
-    }
+  render: function () {
+    console.log('inthumbnails trying to render')
+    this.model = appModel.get('videosCollection');
+    console.log(this.model)
+    this.$el.html(this.template(this.model));
+
+    console.log(this);
   },
 
   changeVideo: function (e) {
-    console.log('clicked thumbnail!');
+    console.log('clicked!');
     var clickedVideoThumbnail = $(e.currentTarget)[0].currentSrc;
-    console.log(clickedVideoThumbnail);
-    // this.model.showNewVideo(clickedVideoId);
+    appModel.get('videosCollection').showNewVideo(clickedVideoThumbnail);
   },
 });
+
 console.log('leaving VideoThumbnailView');
