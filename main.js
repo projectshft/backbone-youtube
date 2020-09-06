@@ -5,12 +5,14 @@
 
 // AppModel create
 // defaults: create a video list collection. specify main stage video
-// 
+// setMainVideo: get VideoId of selected video
+
 // VideoModel create
-// defaults title description videoId thumbnail onstage/true/false
-//
+// defaults: title description videoId thumbnail onstage/true/false
+// idAttribute??  videoId???
+
 // Video Collection create
-// URL https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=dogwaffle&safeSearch=moderate&videoType=any&access_token=AIzaSyBcGykn4L8KYnJzrg6o-adli3S3kHVwEtU&key=[YOUR_API_KEY]
+// URL is a function to replace https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=amiga%20retro&key=[YOUR_API_KEY]
 // model based on VideoModel
 // parse: snippet.title snippet.description id.videoId snippet.thumbnails.???.default.url
 // can set first response to onStage? 
@@ -31,16 +33,19 @@
 // StageView create
 // className: stage
 // template: main-stage-template
+// initialize: listen to videoModel change: onstage; refresh render
 
 // DetailsView create
 // className: details
 // template: main-details-template
+// initialize: listen to videoModel change: onstage, trigger render
 // 
 // Sidebar create?
 // iterate through [1-4] of results and render boxes of videos
-// 
+// listen for onstage change, hide if true
 
 // kickoff logic
 // new AppModel()
 // new AppView from AppModel
 // populate defaults?
+// define API key var
