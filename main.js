@@ -1,4 +1,4 @@
-// create an AppModel var 
+// create an AppModel var, includes the main video
 var AppModel = Backbone.Model.extend({
     defaults: function () {
         return {
@@ -7,10 +7,10 @@ var AppModel = Backbone.Model.extend({
     }
 });
 
-//create an AppView var
+//create an AppView var to display the main video
 var AppView = Backbone.View.extend({
     el: $('body'),
-
+// needs title, description and the id for the iframe
     events: {
         'keypress input' : 'createVideo'
     },
@@ -22,16 +22,24 @@ var AppView = Backbone.View.extend({
     }
 })
 
+// create a videos view for the side videos display
+var VideosView = Backbone.View.extend ({
+
+    //needs title and imageURL
+
+});
+
 //create a VideosCollection var
 var VideosCollection = Backbone.Collection.extend({
     model: VideoModel,
+    url: ``,
 
     addVideo: function (thumbnail, title, description, Id) {
         this.add({
-            thumbnail: thumbnail,
             title: title,
             description: description,
-            Id: Id
+            Id: Id,
+            thumbnail: thumbnail
         })
     }
 
