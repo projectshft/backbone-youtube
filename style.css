@@ -1,3 +1,20 @@
-input {
-    margin-top: 5%
+.searchbar, .main-video {
+    margin-top: 5%;
+    width: 560;
+}
+
+.title-description, .video {
+    border: 1px solid black;
+    display: block;
+    padding: 5%;
+    margin-top: 5%;
+    
+}
+
+.video-data {
+    display: inline-block;
+}
+
+img {
+    width: 25%;
 }
