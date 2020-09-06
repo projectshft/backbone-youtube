@@ -3,13 +3,40 @@
 // templates:  main-stage-template  sidebar-vids-template  main-desc-template
 // handlebar madlibs: {{videoId}} {{videoTitle}}{{videoDesc}}{{thumbnail}}
 
+var API_KEY = 'AIzaSyBcGykn4L8KYnJzrg6o-adli3S3kHVwEtU';
 // AppModel create
 // defaults: create a video list collection. specify main stage video
-// setMainVideo: get VideoId of selected video
+// setStageVideo: get VideoId of selected video
+var AppModel = Backbone.Model.extend({
+  defaults: function () {
+    return {
+      videos: new VideoCollection(),
+      on_stage: null,
+    }
+  },
+
+  // setStageVideo: function (videoId) {
+  //   this.set('on_stage', selectedVideo);
+  // }
+
+});
 
 // VideoModel create
 // defaults: title description videoId thumbnail onstage/true/false
 // idAttribute??  videoId???
+
+var VideoModel = Backbone.Model.extend({
+  idAttribute: 'videoId',
+
+  defaults: function () {
+    return {
+      title: '',
+      description: '',
+      thumb_url: '',
+      on_stage: false
+    }
+  }
+});
 
 // Video Collection create
 // URL is a function to replace https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=amiga%20retro&key=[YOUR_API_KEY]
@@ -17,6 +44,20 @@
 // parse: snippet.title snippet.description id.videoId snippet.thumbnails.???.default.url
 // can set first response to onStage? 
 
+var VideoCollection = Backbone.Collection.extend({
+  url: function(searchTerms) {
+    searchTerms = encodeURI(searchTerms);
+    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+searchTerms+"type=video&key="+API_KEY;
+    console.log(theResponse);
+    return theResponse;
+  }
+  model: VideoModel,
+
+  parse: function (response) {
+
+  }
+
+});
 // AppView create
 // events: submit search  (select sidebar video in sidebar videos?) (do enterkey?)
 // initialize: fill with default content?  listen for video model click?
