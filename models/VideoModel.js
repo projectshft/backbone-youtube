@@ -2,7 +2,7 @@ var VideoModel = Backbone.Model.extend({
   defaults: {
     title: '',
     description: '',
-    id: '',
+    videoId: '',
     thumbnail: '',
     youtubeEmbedUrl: '',
   },

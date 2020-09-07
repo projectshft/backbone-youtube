@@ -9,14 +9,14 @@ var AppView = Backbone.View.extend({
   initialize: function () {
     this.$videoList = this.$('.video-list');
     this.$mainVideo = this.$('.main-video-container');
+    this.$input = this.$('#search-input');
 
     this.listenTo(this.model, 'change:current_video', this.renderMainView);
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+    //when videos are returned from fetch and reset event fires, render the thumbnails
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
     this.renderVideos();
-    this.renderMainView();
-
   },
 
   renderMainView: function () {
@@ -24,6 +24,11 @@ var AppView = Backbone.View.extend({
       this.videoMainView.remove();
     }
 
+    //Terrible separation of concerns, but desperate attempt to show a main 
+    //video on load.
+    if (!this.model.get('current_video')) {
+      this.model.showVideo("https://i.ytimg.com/vi/dYXBip9bZME/default.jpg");
+    }
     this.videoMainView = new VideoMainView({ model: this.model.get('current_video')});
     this.$mainVideo.append(this.videoMainView.render().el);
   },
@@ -39,6 +44,7 @@ var AppView = Backbone.View.extend({
   renderVideo: function (video) {
     var videoView = new VideoView({ model: video });
     this.$videoList.append(videoView.render().el);
+    this.renderMainView();
   },
 
   viewVideo: function (e) {
@@ -51,8 +57,11 @@ var AppView = Backbone.View.extend({
     console.log('in fetchOnEnter!');
     //If 'enter' key pressed in search box, goto searchVideo function in VideosCollection
     if (event.which === 13) {
-      appModel.get('videosCollection').createUrl(this.$input.val());
+      appModel.get('videos').url(this.$input.val());
       this.$input.val('');
+      console.log('backinfetchonenter');
+      appModel.get('videos').fetch({ reset: true });
+
     }
   },
 });
