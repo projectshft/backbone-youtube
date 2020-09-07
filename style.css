@@ -3,16 +3,22 @@
     width: 560;
 }
 
-.title-description, .video {
+.title-description {
     border: 1px solid black;
     display: block;
     padding: 5%;
     margin-top: 5%;
     
 }
-
+.videos-template {
+    display:inline-block;
+}
 .video-data {
-    display: inline-block;
+    width: 100%;
+    padding: 5%;
+    margin-top: 5%;
+    border: 1px solid black;
+    margin-left: 5%;
 }
 
 img {

@@ -25,7 +25,7 @@
   </div>
   <div class='container'>
     <div class="row view">
-      <div class="col-md-7">
+      <div class="col-md-6">
         <div class='main-video'>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/8GKmkD1pUG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class='title-description'>
@@ -38,45 +38,15 @@
             </div>
         </div>
       </div>
-      <div class='col-md-3'>
-        <div class='video'>
-          <div class='video-data'>
-            <img src='https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG.jpg'>
-          video title
-          </div>      
-        </div>
-        <div class='video'>
-          <div class='video-data'>
-            <img src='https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG.jpg'>
-          video title
-          </div>  
-        </div>
-        <div class='video'>
-          <div class='video-data'>
-            <img src='https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG.jpg'>
-          video title
-          </div>  
-        </div>
-        <div class='video'>
-          <div class='video-data'>
-            <img src='https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG.jpg'>
-          video title
-          </div>  
-        </div>
-        <div class='video'>
-          <div class='video-data'>
-            <img src='https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG.jpg'>
-          video title
-          </div>  
-        </div>
+      <div class='col-md-4'>
+        <div class='videos'></div>
       </div>
     </div>
   </div>
 
   <script id="videos-template" type="text/x-handlebars-template">
-    <div class=" class='video-data'">
-      <img src="{{thumbnail}}">
-      <p class="video-title">{{title}}</p>
+    <div class='video-data'">
+      <p class="video-title"><img src={{thumbnail}}>   {{title}}</p>
     </div>
   </script>
   <script src="main.js"></script>
