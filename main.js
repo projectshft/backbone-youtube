@@ -16,6 +16,7 @@ appModel.showVideo('https://i.ytimg.com/vi/--QOJZmNG_E/default.jpg');
 
 var appView = new AppView({ model: appModel });
 
+appModel.get('videos').fetch({ reset: true });
 
 
 //https://www.youtube.com/watch?v=NsGK7cUdelM

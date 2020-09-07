@@ -11,8 +11,8 @@ var AppView = Backbone.View.extend({
     this.$mainVideo = this.$('.main-video-container');
 
     this.listenTo(this.model, 'change:current_video', this.renderMainView);
-
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
     this.renderVideos();
     this.renderMainView();
