@@ -47,45 +47,35 @@ var VideoModel = Backbone.Model.extend({
 // can set first response to onStage? 
 
 var VideoCollection = Backbone.Collection.extend({
-  /* url: function () {
+  url: function () {
     console.log('->VideoCollection fetch searchTerms: ', searchTerms);
     searchTerms = encodeURI(searchTerms);
-    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms+ "type=video&key=" + API_KEY;
-    console.log(theResponse);
-    return theResponse;
-  }, */
-
-  url: function () {
-    console.log('->VideoCollection fetch searchTerms: ', $.param());
-    searchTerms = encodeURI(searchTerms);
-    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + q + "type=video&key=" + API_KEY;
+    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms+ "&type=video&key=" + API_KEY;
+    searchTerms = '';
     console.log(theResponse);
     return theResponse;
   },
 
   model: VideoModel,
 // likely all this is skippable and can be put into the appView
-  doSearch: function (query) {
+ /*  doSearch: function (query) {
     // query = {
     //   'query': query,
     // };
     console.log('->VideoCollection doSearch() with: ', query);
-    // this.fetch({ data: $.param({query: searchTerms}), reset: true });
-    // this.fetch({data:query}, {reset:true});
+
     this.fetch({data: {q: query}});
-    // this.fetch(query);
+
   },
+ */
 
   parse: function (response) {
     console.log('->VideoCollection response ',response);
     //strip off unneeded data then map() to what we do need
     response = response.items;
-    console.log(response);
+  
     console.log('parsing');
-/*     console.log(response[0].id.videoId);
-    console.log(response[0].snippet.title);
-    console.log(response[0].snippet.description);
-    console.log(response[0].snippet.thumbnails.default.url); */
+
     
     return response.map(function (entry, index) { 
       var onStage = false;
@@ -121,12 +111,12 @@ var AppView = Backbone.View.extend ({
 
   initialize: function () {
     
-    this.listenTo(this.model.get('videos'), 'add', this.renderVideoEntry);
+    // this.listenTo(this.model.get('videos'), 'add', this.renderVideoEntry);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideoList);
     this.$sidebarVids = this.$('.sidebar-vids');
     this.$videoSearch = this.$('#video-search');
-    this.searchTerms = "Amiga retro";
-    // this.performSearch();
-    // this.renderVideoList();
+    this.performSearch();
+    this.renderVideoList();
 
   },
   renderVideoList: function () {
@@ -143,13 +133,20 @@ var AppView = Backbone.View.extend ({
   },
 
   performSearch: function () {
-    console.log('performSearch() with ', this.$videoSearch.val()),
+    console.log('performSearch() with ', this.$videoSearch.val());
+    console.log('versus global ',  searchTerms);
     // send search terms to collection and fetch?
-    this.model.get('videos').doSearch(
-      // this.searchTerms  // temp test value or default
-      this.$videoSearch.val()
-    );
-    // appModel.get('videos').fetch({ reset: true });
+    // this.model.get('videos').doSearch( // trying for dataflow
+    // clean up edge cases (don't waste searches) and send default search
+    // for first run
+      if (this.$videoSearch ==='' && searchTerms === ''){
+        return;
+      } else if (searchTerms === '') {
+        searchTerms = this.$videoSearch.val();
+        appModel.get('videos').fetch({ reset: true });
+      } else {  // default for first run
+        appModel.get('videos').fetch({ reset: true });
+      }
   },
 
   renderOnStage: function () {
