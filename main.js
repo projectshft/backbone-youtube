@@ -119,13 +119,14 @@ var AppView = Backbone.View.extend ({
     this.renderVideoList();
 
   },
+  // models created from collection fetch. now create views
   renderVideoList: function () {
     console.log('renderVideoList()');
-    this.model.get('videos').each(function (vid) {
+    this.model.get('videos').each(function (vid) { // TODO skip onStage true
       this.renderVideoEntry(vid);
     }, this);
     },
-  
+  // create and render views of video listings
   renderVideoEntry: function (video) {
     console.log('renderVideoEntry()');
     var videoView = new VideoView({ model: video});
@@ -161,23 +162,51 @@ var AppView = Backbone.View.extend ({
 // inits  ???
 // render this??
 var VideoView = Backbone.View.extend({
-  className: 'video',
+  className: 'video-listing',
   template: Handlebars.compile($('#sidebar-vids-template').html()),
   events: {
-    'click .video': 'setOnStage'
+    'click .video-listing': 'setOnStage'
   },
   initalize: function () {
     this.listenTo(this.model, 'on_stage', this.remove); // probably needs to be a class hide
   },
+  setOnStage: function () {
+    console.log('selected a vid for OnStage');
+    this.model.set('on_stage, true');
+    //TODO set other models on_stage to false.
+  },
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
 
-})
-
-
+});
 
 // StageView create
 // className: stage
 // template: main-stage-template
 // initialize: listen to videoModel change: onstage; refresh render
+var StageView = Backbone.View.extend({
+  className: 'stage',
+  template: Handlebars.compile($('#main-stage-template').html()),
+  events: {
+
+  },
+  initialize: function () {
+    this.listenTo(this.model.get('videos'), 'change:on_stage', this.changeStageVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.changeStageVideo);
+  },
+  changeStageVideo: function () {
+    console.log('changing stage video');
+    this.model.get('videos').each(function (vid) { // find first onStage true
+      if (vid.get('on_stage')) {
+        // test in sidebar first
+      }
+      
+    }, this);
+  }
+})
+
 
 // DetailsView create
 // className: details
