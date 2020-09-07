@@ -55,15 +55,40 @@ var VideoCollection = Backbone.Collection.extend({
 
   parse: function (response) {
     console.log(response);
+    //strip off unneeded data then map() to what we do need
+    response = response.items;
+    console.log(response);
     console.log('parsing');
-    return { //TODO how to iterate through this .map()?
-
-      videoId: response.items[0].id.videoId,
-      title: response.items[0].snippet.title,
-      description: response.items[0].snippet.description,
-      thumb_url: response.items[0].snippet.thumbnails.default.url,
-      on_stage: false
-    }
+    console.log(response[0].id.videoId);
+    console.log(response[0].snippet.title);
+    console.log(response[0].snippet.description);
+    console.log(response[0].snippet.thumbnails.default.url);
+    
+    return response.map(function (entry, index) { 
+      var onStage = false;
+      // put first entry on stage. other 4 stay in list
+      if (!index) {OnStage = true}; 
+      console.log(Object.assign({
+        videoId: entry.id.videoId, 
+        title: entry.snippet.title,
+        description: entry.snippet.description,
+        thumb_url: entry.snippet.thumbnails.default.url,
+        on_stage: OnStage}));
+      return Object.assign({
+        videoId: entry.id.videoId, 
+        title: entry.snippet.title,
+        description: entry.snippet.description,
+        thumb_url: entry.snippet.thumbnails.default.url,
+        on_stage: OnStage});
+      
+    /*   videoId: entry.id.videoId,
+      title: entry.snippet.title,
+      description: entry.snippet.description,
+      thumb_url: entry.snippet.thumbnails.default.url,
+      // if (!index) {on_stage: true},
+      // if (index) {on_stage: false}
+      on_stage: false */
+    }, this);
   }
 
 });
@@ -73,7 +98,7 @@ var VideoCollection = Backbone.Collection.extend({
 // renderApp: fill .main-stage and trigger sidebarView?
 // think about what this displays
 var AppView = Backbone.View.extend ({
-  // el: $('body'), // unsure if this buys me anything
+  el: $('body'), // unsure if this buys me anything
 
   events: {
     'click .submit': 'performSearch'
@@ -82,10 +107,26 @@ var AppView = Backbone.View.extend ({
   initialize: function () {
     
     //this.listenTo()  changes in video model clicks
+
+    this.$sidebarVids = this.$('.sidebar-vids');
     this.searchTerms = "Amiga retro";
-    this.performSearch();
+    this.performSearch(this.searchTerms);
+    this.renderVideoList();
 
+  },
+  renderVideoList: function () {
+    this.model.get('videos').each(function (vid) {
+      this.renderVideoEntry(vid);
+    }, this);
+    },
+  
+  renderVideoEntry: function (video) {
+    var videoView = new VideoView({ model: video});
+    this.$sidebarVids.append(videoView.render().el);
+  },
 
+  performSearch: function (searchTerms) {
+    appModel.get('videos').fetch({ reset: true });
   }
 });
 // VideoView create
@@ -93,7 +134,20 @@ var AppView = Backbone.View.extend ({
 // template: sidebar-vids-template
 // events click
 // inits  ???
-// render this
+// render this??
+var VideoView = Backbone.View.extend({
+  className: 'video',
+  template: Handlebars.compile($('#sidebar-vids-template').html()),
+  events: {
+    'click .video': 'setOnStage'
+  },
+  initalize: function () {
+    this.listenTo(this.model, 'on_stage', this.remove); // probably needs to be a class hide
+  },
+
+})
+
+
 
 // StageView create
 // className: stage
@@ -117,4 +171,4 @@ var AppView = Backbone.View.extend ({
 
 var appModel = new AppModel();
 var appView = new AppView({ model: appModel });
-appModel.get('videos').fetch({ reset: true });
+// appModel.get('videos').fetch({ reset: true });
