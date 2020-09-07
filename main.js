@@ -47,22 +47,33 @@ var VideoModel = Backbone.Model.extend({
 // can set first response to onStage? 
 
 var VideoCollection = Backbone.Collection.extend({
-  url: function () {
-    console.log('->VideoCollection searchTerms: ', searchTerms);
+  /* url: function () {
+    console.log('->VideoCollection fetch searchTerms: ', searchTerms);
     searchTerms = encodeURI(searchTerms);
     var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms+ "type=video&key=" + API_KEY;
     console.log(theResponse);
     return theResponse;
-  },
-  model: VideoModel,
+  }, */
 
-  doSearch: function (searchTerms) {
-    searchTerms = {
-      'query': searchTerms,
-    };
-    console.log('->VideoCollection doSearch() with: ', searchTerms);
+  url: function () {
+    console.log('->VideoCollection fetch searchTerms: ', $.param());
+    searchTerms = encodeURI(searchTerms);
+    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + q + "type=video&key=" + API_KEY;
+    console.log(theResponse);
+    return theResponse;
+  },
+
+  model: VideoModel,
+// likely all this is skippable and can be put into the appView
+  doSearch: function (query) {
+    // query = {
+    //   'query': query,
+    // };
+    console.log('->VideoCollection doSearch() with: ', query);
     // this.fetch({ data: $.param({query: searchTerms}), reset: true });
-    this.fetch({data:searchTerms}, {reset:true});
+    // this.fetch({data:query}, {reset:true});
+    this.fetch({data: {q: query}});
+    // this.fetch(query);
   },
 
   parse: function (response) {
@@ -110,13 +121,12 @@ var AppView = Backbone.View.extend ({
 
   initialize: function () {
     
-    this.listenTo()  //changes in video model clicks
     this.listenTo(this.model.get('videos'), 'add', this.renderVideoEntry);
     this.$sidebarVids = this.$('.sidebar-vids');
     this.$videoSearch = this.$('#video-search');
     this.searchTerms = "Amiga retro";
-    this.performSearch();
-    this.renderVideoList();
+    // this.performSearch();
+    // this.renderVideoList();
 
   },
   renderVideoList: function () {
@@ -136,8 +146,8 @@ var AppView = Backbone.View.extend ({
     console.log('performSearch() with ', this.$videoSearch.val()),
     // send search terms to collection and fetch?
     this.model.get('videos').doSearch(
-      this.searchTerms  // temp test value or default
-      // this.$videoSearch.val()
+      // this.searchTerms  // temp test value or default
+      this.$videoSearch.val()
     );
     // appModel.get('videos').fetch({ reset: true });
   },
