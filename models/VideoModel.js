@@ -7,5 +7,3 @@ var VideoModel = Backbone.Model.extend({
     youtubeEmbedUrl: '',
   },
 });
-
-
