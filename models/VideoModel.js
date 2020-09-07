@@ -1,5 +1,5 @@
 var VideoModel = Backbone.Model.extend({
-    //idAttribute: 'id',
+    //idAttribute: '_id',
     
     defaults: function () {
         return {
@@ -9,7 +9,6 @@ var VideoModel = Backbone.Model.extend({
             videoId: ''
         }
     }
-    
-})
+});
 
 // console.log(VideoModel.toJSON())
