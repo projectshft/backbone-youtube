@@ -1,33 +1,43 @@
 var VideosCollection = Backbone.Collection.extend({
-    url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyAxMNbDRLIbzI-s1zAqPGCnPYddrW7s1p8`,
+    url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=surfing&key=AIzaSyAxMNbDRLIbzI-s1zAqPGCnPYddrW7s1p8`,
     model: VideoModel,
 
-    addVideo: function(id, title, description, thumbnail, video_url) {
-        this.create({
-            id: id,
+    addVideo: function(search) {
+        //console.log(this.model)
+        this.fetch({
             title: title,
             description: description,
             thumbnail: thumbnail,
-            video_url: video_url,
-        }, {wait: true});
-        console.log(this)    ////need to prevent default somehow
+            videoId: videoId,
+        }, {wait: true});   
     },
 
     parse: function(response) {
-        //console.log(response)
-        // return response.map(function(item) {
-        //     console.log(item)
-        //     // var id = this.get('id');
+        //console.log(response.items)
+        return response.items.map(function(item) {
+            if (item.id.videoId) {
+                var id = item.id.videoId
+            } else {
+                var id = item.id.channelId;
+            };
 
-        //     // id.set(item.id);                    //////Need to check this
+            if (item.snippet.description) {
+                var description = item.snippet.description;
+            } else {
+                var description = 'No Description Available';
+            };
 
-        //     // item.id = id;
-
-        //     // return Object.assign({'id': item.id}, item);
-        // }, this);
+            var title = item.snippet.title; 
+            var thumbnail = item.snippet.thumbnails.default;
+            //console.log()
+            return Object.assign({title: title, description: description, thumbnail: thumbnail, videoId: id}, item);
+        }, this);
+        
     }
 
 })
 
 // videosCollection = new VideosCollection();
 // console.log(videosCollection);
+
+  /////Look at video ID and how to use it to dynamically add the videos

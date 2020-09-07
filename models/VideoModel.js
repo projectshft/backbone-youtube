@@ -1,15 +1,15 @@
 var VideoModel = Backbone.Model.extend({
-    idAttribute: 'id',
+    //idAttribute: 'id',
     
     defaults: function () {
         return {
-            id: '',
             title: '',
             description: '',
             thumbnail: '',
-            video_url: ''
+            videoId: ''
         }
     }
+    
 })
 
 // console.log(VideoModel.toJSON())

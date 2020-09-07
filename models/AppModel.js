@@ -3,7 +3,7 @@ var AppModel = Backbone.Model.extend({
         return {
             videos: new VideosCollection(),
 
-            current_video: null,        ////This needs to be changed to the first video to play
+            //current_video: null,        ////This needs to be changed to the first video to play
         }
     }
 });

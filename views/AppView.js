@@ -8,14 +8,17 @@ var AppView = Backbone.View.extend({
 
     initialize: function() {
         this.$searchInput = this.$('#search-input');
+        this.$searchValue = this.$('#search-input').val();
 
     },
 
     submitSearch: function () {
         // VideosCollection.addVideo(query)
        
-        let search = $('#search-input').val();
-        console.log(search);
+        var search = this.$('#search-input').val();
+        //console.log(search)
+       
+        this.model.get('videos').addVideo(search)     //parameters here need to be this.$inputs etccc)
     }
     // write initialize function here make sure to include listenTo's for adding videos and render function
 
