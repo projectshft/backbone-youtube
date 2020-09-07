@@ -7,28 +7,26 @@ var AppView = Backbone.View.extend({
     },
 
     initialize: function() {
-        this.$searchInput = this.$('#search-input');
-        this.$searchValue = this.$('#search-input').val();
+        //make sure to include listenTo's for adding videos and render function
+
+        // this.$searchInput = this.$('#search-input');
+        this.$mainvideo = this.$('#main-video')
+        var $search = this.$('#search-input').val();
+        var videosCollection = new VideosCollection()
+        videosCollection.changeUrl($search);
         
-        
-        // video.title = '';
-        // video.description = '';
-        // video.thumbnail = '';
-        // video.videoId = '';
-        //console.log(video.videoId)
-        //console.log(this.model.get('models'))
     },
 
-    submitSearch: function () {
-        // VideosCollection.addVideo(query)
+    submitSearch: function () {       
+        //var video = this
+        // console.log(videosCollection)
        
-        //var search = this.$('#search-input').val();
         var modelsArray = this.model.attributes.videos.models;
-        var video = this
-        //console.log(this)
-        
+
+        initialize();
+        //console.log(modelsArray)
         for (let i = 0; i < modelsArray.length; i++) {
-            console.log(video)
+           console.log(this)
             video.title = this.model.attributes.videos.models[i].attributes.title;
             video.description = this.model.attributes.videos.models[i].attributes.description;
             video.thumbnail = this.model.attributes.videos.models[i].attributes.thumbnail;
@@ -44,14 +42,24 @@ var AppView = Backbone.View.extend({
 
       
         //console.log(this.model)    //parameters here need to be this.$inputs etccc)
-    }
-    // write initialize function here make sure to include listenTo's for adding videos and render function
+    },
+   
 
-    //write renderPage function
+    renderPage: function () {
+
+    },
+    
 
     // write viewVideo function
+    viewVideo: function () {
+
+    },
 
     //write renderVideo function
+    renderMainVideo: function (video) {
+        var mainVideoView = new MainVideoView({model: video});
+        this.$mainvideo.append(mainVideoView.render().el);
+    }
 })
 
 // var appView = new AppView();
