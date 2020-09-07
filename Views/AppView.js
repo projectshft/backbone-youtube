@@ -21,6 +21,9 @@ var AppView = Backbone.View.extend({
   },
 
   //first part of rendering the thumbnail list
+  //TOFIX: render only 4 thumbnails instead of 5. Attempts to shunt 
+  //'current' and 'thumbnail' videos into separate arrays succeeded
+  //but switching active videos on thunbnail click became tangled.
   renderVideos: function () {
     //Grab the videos collection, loop through it and send each 
     //video to be rendered

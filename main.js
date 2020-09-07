@@ -1,7 +1,7 @@
 var appModel = new AppModel();
 
 //Default videos are added to the collection to show on page load 
-//if API not functional. Comment out lines 6-16 and uncomment line 21
+//if API not functional. Comment out lines 6-16 and uncomment line 22
 //to try the API search.
 appModel.get('videos').addVideo('Facts: The Leafy Seadragon', "Quick facts about this well camouflaged fish! The leafy seadragon (Phycodurus eques, Glauert's seadragon). Leafy seadragon facts! Subscribe: ...", 'NsGK7cUdelM', 'https://i.ytimg.com/vi/NsGK7cUdelM/default.jpg', 'https://www.youtube.com/embed/NsGK7cUdelM');
 
