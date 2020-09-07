@@ -1,9 +1,12 @@
 //create a VideoModel var
 var VideoModel = Backbone.Model.extend({
-    defaults: {
+    defaults: function() {
+        return {
+        title: '',
+        description: '',
         thumbnail: '',
-        title: ''
-
+        videoId: ''
+        }
     }
 
 });
@@ -18,6 +21,10 @@ var VideosCollection = Backbone.Collection.extend({
 
     url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=auburntigers',        
 
+    parse: function (response) {
+        return response.map();
+
+    }
     // initialize: function (){
     //     this.url();
     // }
@@ -33,7 +40,9 @@ var VideosCollection = Backbone.Collection.extend({
 var AppModel = Backbone.Model.extend({
     defaults: function () {
         return {
-                videos: new VideosCollection()       
+                videos: new VideosCollection(),
+                
+                searchParameter: null,
         }
     }
     
@@ -71,6 +80,8 @@ var AppView = Backbone.View.extend({
 
     initialize: function() {
         this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+        // create a listener to render new videos when the search parameter is changed
+        this.listenTo(this.model, 'change:searchParamater', this.renderVideos);
         this.renderVideos();
     }, 
     //create a render video function that creates a new videos view and appends the data to the DOM
@@ -94,4 +105,3 @@ appModel.get('videos').fetch({ reset: true });
 
 var appView = new AppView({ model: appModel });
 
-console.log(appModel.get('videos').url);
