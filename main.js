@@ -2,8 +2,10 @@
 // classes: .main-stage .sidebar-vids
 // templates:  main-stage-template  sidebar-vids-template  main-desc-template
 // handlebar madlibs: {{videoId}} {{videoTitle}}{{videoDesc}}{{thumbnail}}
-
+// TODO search terms not passing to collection
+// TODO draw all the things
 var API_KEY = 'AIzaSyBcGykn4L8KYnJzrg6o-adli3S3kHVwEtU';
+var searchTerms = 'Amiga Retro';
 // AppModel create
 // defaults: create a video list collection. specify main stage video
 // setStageVideo: get VideoId of selected video
@@ -26,7 +28,7 @@ var AppModel = Backbone.Model.extend({
 // idAttribute??  videoId???
 
 var VideoModel = Backbone.Model.extend({
-  idAttribute: 'videoId',
+  idAttribute: 'videoId',  // dunno about this
 
   defaults: function () {
     return {
@@ -46,6 +48,7 @@ var VideoModel = Backbone.Model.extend({
 
 var VideoCollection = Backbone.Collection.extend({
   url: function (searchTerms) {
+    console.log('->VideoCollection searchTerms: ', searchTerms);
     searchTerms = encodeURI(searchTerms);
     var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms + "type=video&key=" + API_KEY;
     console.log(theResponse);
@@ -59,35 +62,27 @@ var VideoCollection = Backbone.Collection.extend({
     response = response.items;
     console.log(response);
     console.log('parsing');
-    console.log(response[0].id.videoId);
+/*     console.log(response[0].id.videoId);
     console.log(response[0].snippet.title);
     console.log(response[0].snippet.description);
-    console.log(response[0].snippet.thumbnails.default.url);
+    console.log(response[0].snippet.thumbnails.default.url); */
     
     return response.map(function (entry, index) { 
       var onStage = false;
       // put first entry on stage. other 4 stay in list
-      if (!index) {OnStage = true}; 
+      if (!index) {onStage = true}; 
       console.log(Object.assign({
         videoId: entry.id.videoId, 
         title: entry.snippet.title,
         description: entry.snippet.description,
         thumb_url: entry.snippet.thumbnails.default.url,
-        on_stage: OnStage}));
+        on_stage: onStage}));
       return Object.assign({
         videoId: entry.id.videoId, 
         title: entry.snippet.title,
         description: entry.snippet.description,
         thumb_url: entry.snippet.thumbnails.default.url,
-        on_stage: OnStage});
-      
-    /*   videoId: entry.id.videoId,
-      title: entry.snippet.title,
-      description: entry.snippet.description,
-      thumb_url: entry.snippet.thumbnails.default.url,
-      // if (!index) {on_stage: true},
-      // if (index) {on_stage: false}
-      on_stage: false */
+        on_stage: onStage});
     }, this);
   }
 
@@ -106,11 +101,11 @@ var AppView = Backbone.View.extend ({
 
   initialize: function () {
     
-    //this.listenTo()  changes in video model clicks
+    this.listenTo()  //changes in video model clicks
 
     this.$sidebarVids = this.$('.sidebar-vids');
     this.searchTerms = "Amiga retro";
-    this.performSearch(this.searchTerms);
+    this.performSearch();
     this.renderVideoList();
 
   },
@@ -125,8 +120,14 @@ var AppView = Backbone.View.extend ({
     this.$sidebarVids.append(videoView.render().el);
   },
 
-  performSearch: function (searchTerms) {
+  performSearch: function () {
+    // this.model.get()  // do I need to set an attr of the search term?
+    var searchTerms = this.$('#video-search');
     appModel.get('videos').fetch({ reset: true });
+  },
+
+  renderOnStage: function () {
+    // when VideoModel changes to "on_stage true" render this
   }
 });
 // VideoView create
@@ -171,4 +172,4 @@ var VideoView = Backbone.View.extend({
 
 var appModel = new AppModel();
 var appView = new AppView({ model: appModel });
-// appModel.get('videos').fetch({ reset: true });
+//appModel.get('videos').fetch({ reset: true });
