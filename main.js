@@ -47,17 +47,26 @@ var VideoModel = Backbone.Model.extend({
 // can set first response to onStage? 
 
 var VideoCollection = Backbone.Collection.extend({
-  url: function (searchTerms) {
+  url: function () {
     console.log('->VideoCollection searchTerms: ', searchTerms);
     searchTerms = encodeURI(searchTerms);
-    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms + "type=video&key=" + API_KEY;
+    var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms+ "type=video&key=" + API_KEY;
     console.log(theResponse);
     return theResponse;
   },
   model: VideoModel,
 
+  doSearch: function (searchTerms) {
+    searchTerms = {
+      'query': searchTerms,
+    };
+    console.log('->VideoCollection doSearch() with: ', searchTerms);
+    // this.fetch({ data: $.param({query: searchTerms}), reset: true });
+    this.fetch({data:searchTerms}, {reset:true});
+  },
+
   parse: function (response) {
-    console.log(response);
+    console.log('->VideoCollection response ',response);
     //strip off unneeded data then map() to what we do need
     response = response.items;
     console.log(response);
@@ -102,31 +111,39 @@ var AppView = Backbone.View.extend ({
   initialize: function () {
     
     this.listenTo()  //changes in video model clicks
-
+    this.listenTo(this.model.get('videos'), 'add', this.renderVideoEntry);
     this.$sidebarVids = this.$('.sidebar-vids');
+    this.$videoSearch = this.$('#video-search');
     this.searchTerms = "Amiga retro";
     this.performSearch();
     this.renderVideoList();
 
   },
   renderVideoList: function () {
+    console.log('renderVideoList()');
     this.model.get('videos').each(function (vid) {
       this.renderVideoEntry(vid);
     }, this);
     },
   
   renderVideoEntry: function (video) {
+    console.log('renderVideoEntry()');
     var videoView = new VideoView({ model: video});
     this.$sidebarVids.append(videoView.render().el);
   },
 
   performSearch: function () {
-    // this.model.get()  // do I need to set an attr of the search term?
-    var searchTerms = this.$('#video-search');
-    appModel.get('videos').fetch({ reset: true });
+    console.log('performSearch() with ', this.$videoSearch.val()),
+    // send search terms to collection and fetch?
+    this.model.get('videos').doSearch(
+      this.searchTerms  // temp test value or default
+      // this.$videoSearch.val()
+    );
+    // appModel.get('videos').fetch({ reset: true });
   },
 
   renderOnStage: function () {
+    console.log('renderOnStage()');
     // when VideoModel changes to "on_stage true" render this
   }
 });
