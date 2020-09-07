@@ -37,26 +37,51 @@
     <div class= "container">
         <div class= "row">
             <div class="col-sm-6 offset-2">
-                <div id= "main-video"></div>
+                    <span id="player">    
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/gaf8zHp-iaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </span>
+                <!--  -->
                 <script id="main-video-template" type="text/x-handlebars-template">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </script>
+                <div>
+                    <h2>Video Title</h2>
+                    <h4>Description</h4>
+                </div>
             </div>
+            <span id="side-view-videos">
+                <ul style="list-style-type:none;">
+                    <li><iframe width="250" height="130" src="https://www.youtube.com/embed/vSBcrmx4aFw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span>Video Title</span></li>
+                    <li><iframe width="250" height="130" src="https://www.youtube.com/embed/W69ioOnwMvo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span>Video Title</span></li>
+                    <li><iframe width="250" height="130" src="https://www.youtube.com/embed/shHnSj3A_d0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span>Video Title</span></li>
+                    <li><iframe width="250" height="130" src="https://www.youtube.com/embed/AzJPhQdTRQQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span>Video Title</span></li>
+                    <li><iframe width="250" height="130" src="https://www.youtube.com/embed/GdzrrWA8e7A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><span>Video Title</span></li>
+                </ul>
+            </span>
+           
         </div>
     </div>
-
+   
+    
     <!-- Side Video templates -->
     <div class= "container">
         <div class= "row">
-
+            <!-- <div>
+                <ul style="list-style-type:none;">
+                    <li>hello</li>
+                </ul>
+            </div> -->
+            <script id="side-video-template" type="text/x-handlebars-template">
+                
+            </script>
         </div>
     </div>
 
-    <script src="models/VideoModel.js"></script>
+    <!-- <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="views/MainVideoView.js"></script>
     <script src="views/SideVideoView.js"></script>
-    <script src="main.js"></script>
+    <script src="main.js"></script> -->
 </body>
