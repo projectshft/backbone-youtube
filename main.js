@@ -43,6 +43,17 @@ var AppModel = Backbone.Model.extend({
     
 });
 
+// create a main vid
+var MainView = Backbone.View.extend({
+    id: '',
+
+    template: Handlebars.compile($('#main-video-template').html()),
+
+    render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    }
+})
 // create a videos view for the side videos display
 var VideosView = Backbone.View.extend ({
     className: 'video',
@@ -79,6 +90,15 @@ var AppView = Backbone.View.extend({
         this.listenTo(this.model, 'change:searchParamater', this.renderVideos);
         this.renderVideos();
     }, 
+
+    //create a render main functoin that renders the main video and appends the data to the DOM
+    renderMain: function () {
+        var mainView = new MainView({ model: video});
+        this.$('.main-video').append(mainView.render().el)
+
+
+    },
+    
     //create a render video function that creates a new videos view and appends the data to the DOM
     renderVideo: function (video) {
         var videosView = new VideosView({ model: video });

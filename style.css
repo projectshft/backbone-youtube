@@ -1,19 +1,21 @@
-.searchbar, .main-video {
+.searchbar, #main-video {
     margin-top: 5%;
     width: 560;
 }
 
 
-.title-description {
+#main-video-info {
     border: 1px solid black;
     display: block;
     padding: 5%;
     margin-top: 5%;
     
 }
+
 .videos-template {
     display:inline-block;
 }
+
 .video-data {
     width: 100%;
     padding: 5%;
