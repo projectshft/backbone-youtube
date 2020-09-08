@@ -17,18 +17,17 @@ var VideosCollection = Backbone.Collection.extend({
     //connect the Youtube API to our collection
    
     url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=auburntigers',
-        
-    // parse: function (response) {
-    //     return response.map();
-
-    // },
-
-    //data to parse for the 5 videos
-    //data.items[i].snippet.title
-    //data.items[i].snippet.description
-    //data.items[i].videoId
-    //data.items[i].thumbnails.default.url
-
+    // create parse function to only return the attributes we want for our video model
+    parse: function (response) {
+        return response.items.map(function (vid) {
+            return {
+                title: vid.snippet.title,
+                description: vid.snippet.defaults,
+                thumbnail: vid.snippet.thumbnails.default.url,
+                videoId: vid.id.videoId
+            }
+        }, this);
+    },
 });
 
 // create an AppModel var, includes the main video
@@ -91,14 +90,13 @@ var AppView = Backbone.View.extend({
         this.renderVideos();
     }, 
 
-    //create a render main functoin that renders the main video and appends the data to the DOM
+    //create a render main function that renders the main video and appends the data to the DOM
     renderMain: function () {
         var mainView = new MainView({ model: video});
         this.$('.main-video').append(mainView.render().el)
 
-
     },
-    
+
     //create a render video function that creates a new videos view and appends the data to the DOM
     renderVideo: function (video) {
         var videosView = new VideosView({ model: video });
