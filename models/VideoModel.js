@@ -11,4 +11,5 @@ var VideoModel = Backbone.Model.extend({
     }
 });
 
-// console.log(VideoModel.toJSON())
+// var videoModel = new VideoModel
+// console.log(videoModel)

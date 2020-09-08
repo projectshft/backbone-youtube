@@ -3,9 +3,7 @@ var VideosCollection = Backbone.Collection.extend({
     model: VideoModel,
 
     parse: function(response) {
-        //console.log(response)
         return response.items.map(function(item) {
-            console.log(item)
             if (item.id.videoId) {
                 var id = item.id.videoId
             } else {
@@ -20,25 +18,16 @@ var VideosCollection = Backbone.Collection.extend({
 
             var title = item.snippet.title; 
             var thumbnail = item.snippet.thumbnails.default;
-            Object.assign({title: title, description: description, thumbnail: thumbnail, videoId: id}, item);
+
+            var modelsHere = Object.assign({title: title, description: description, thumbnail: thumbnail, videoId: id}, item);
+            return this.models.push(modelsHere)
         }, this);
     },
 
-    addVideo: function(title, description, thumbnail, videoId) {
-        //console.log(this.models)
-
-        // this.models.push({                       //////this sorta works
-        //     title: title,
-        //     description: description,
-        //     thumbnail: thumbnail,
-        //     videoId: videoId
-        // });
-    },
-
-    changeUrl: function(search) {
-        // this.__proto__.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${search}&key=AIzaSyAxMNbDRLIbzI-s1zAqPGCnPYddrW7s1p8`
+    // changeUrl: function(search) {
+    //     // this.__proto__.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${search}&key=AIzaSyAxMNbDRLIbzI-s1zAqPGCnPYddrW7s1p8`
         
-    }
+    // }
 })
 
 // videosCollection = new VideosCollection({parse: true});

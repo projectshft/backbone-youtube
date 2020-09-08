@@ -8,36 +8,32 @@ var AppView = Backbone.View.extend({
 
     initialize: function() {
         //make sure to include listenTo's for adding videos and render function
-
-        // this.$searchInput = this.$('#search-input');
         this.$mainvideo = this.$('#main-video')
-        var $search = this.$('#search-input').val();
-        var videosCollection = new VideosCollection()
-        videosCollection.changeUrl($search);
         
     },
 
     submitSearch: function () {       
-        //var video = this
-        // console.log(videosCollection)
-       
+        this.$search = this.$('#search-input').val();
+        // console.log(this.$search)
         var modelsArray = this.model.attributes.videos.models;
-
-        initialize();
+        //console.log(modelsArray.length)
+    
         //console.log(modelsArray)
-        for (let i = 0; i < modelsArray.length; i++) {
-           console.log(this)
-            video.title = this.model.attributes.videos.models[i].attributes.title;
-            video.description = this.model.attributes.videos.models[i].attributes.description;
-            video.thumbnail = this.model.attributes.videos.models[i].attributes.thumbnail;
-            video.videoId = this.model.attributes.videos.models[i].attributes.videoId;
+        for (let i = 5; i < modelsArray.length; i++) {
+            console.log(this)
+            this.title = this.model.attributes.videos.models[i].attributes.title;
+            console.log(this.title)
+            // this.description = this.model.attributes.videos.models[i].attributes.description;
+            // this.thumbnail = this.model.attributes.videos.models[i].attributes.thumbnail;
+            // this.videoId = this.model.attributes.videos.models[i].attributes.videoId;
            
-            this.model.get('videos').addVideo(
-                video.title, 
-                video.description,
-                video.thumbnail,
-                video.videoId
-            ); 
+            //console.log(this.title)
+            // this.model.get('videos').addVideo(
+            //     video.title, 
+            //     video.description,
+            //     video.thumbnail,
+            //     video.videoId
+            // ); 
         }
 
       
