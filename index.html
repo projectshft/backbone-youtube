@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -23,62 +23,16 @@
     </div>
     <div class="row">
       <div class="col-md-6 offset-md-1">
-         <div class="main-stage">
-           <!--<iframe width="620" height="325" src="https://www.youtube.com/embed/yuphcpY5a5A"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe> -->
-          </div>
+        <div class="main-stage">
+          <!-- container for player -->
+        </div>
         <div class="main-desc border mt-md-4" style="width:620px;">
-          <!-- <p><b>Title:</b> Words about this title</p>
-          <p><b>Description:</b> Words about this description</p> -->
+          <!-- container for details box -->
         </div>
       </div>
       <div class="col-md-4 offset-md-1">
         <div class="sidebar-vids">
-     <!--      <table style="height: 92px;" class="border shadow clearfix overflow-hidden">
-            <tbody>
-              <tr>
-                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
-                </td>
-                <td>
-                  <h5>This is the name of the video</h5>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
-            <tbody>
-              <tr>
-                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
-                </td>
-                <td>
-                  <h5>This is the name of the video</h5>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
-            <tbody>
-              <tr>
-                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
-                </td>
-                <td>
-                  <h5>This is the name of the video</h5>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
-            <tbody>
-              <tr>
-                <td class="align-middle"><img src="https://i.ytimg.com/vi/VdHLOww3PrA/default.jpg" class="float-left">
-                </td>
-                <td>
-                  <h5>This is the name of the video</h5>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
+          <!-- container for video listings -->
         </div>
       </div>
     </div>
@@ -96,18 +50,18 @@
   </script>
 
   <script id="sidebar-vids-template" type="text/x-handlebars-template">
-    <!-- Note, first block should not have top margin added -->
-          <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
-            <tbody>
-              <tr>
-                <td class="align-middle"><img src="{{thumb_url}}" class="float-left">
-                </td>
-                <td class="w-100">
-                  <h5>{{title}}</h5>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- TODO first block should not have top margin added -->
+    <table style="height: 92px;" class="border shadow clearfix overflow-hidden mt-md-2">
+      <tbody>
+        <tr>
+          <td class="align-middle"><img src="{{thumb_url}}" class="float-left">
+          </td>
+          <td class="w-100">
+            <h5>{{title}}</h5>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </script>
 
 
@@ -117,7 +71,6 @@
   <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
 
   <script src="main.js"></script>
-  <!-- <script src="apiTest.js"></script> -->
 </body>
 
 </html>
