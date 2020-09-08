@@ -44,11 +44,11 @@ var AppModel = Backbone.Model.extend({
 
 // create a main vid
 var MainView = Backbone.View.extend({
-    id: '',
+    id: '#main-video',
 
     template: Handlebars.compile($('#main-video-template').html()),
 
-    render: function () {
+    render: function() {
         this.$el.html(this.template(this.model.toJSON()));
         return this;
     }
@@ -88,10 +88,11 @@ var AppView = Backbone.View.extend({
         // create a listener to render new videos when the search parameter is changed
         this.listenTo(this.model, 'change:searchParamater', this.renderVideos);
         this.renderVideos();
+        // this.renderMain();
     }, 
 
     //create a render main function that renders the main video and appends the data to the DOM
-    renderMain: function () {
+    renderMain: function (video) {
         var mainView = new MainView({ model: video});
         this.$('.main-video').append(mainView.render().el)
 
