@@ -15,19 +15,14 @@ var VideoModel = Backbone.Model.extend({
 var VideosCollection = Backbone.Collection.extend({
     model: VideoModel,
     //connect the Youtube API to our collection
-    // default : {
-    //     searchParameter: this.$('input').val()
+   
+    url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=auburntigers',
+        
+    // parse: function (response) {
+    //     return response.map();
+
     // },
 
-    url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=auburntigers',        
-
-    parse: function (response) {
-        return response.map();
-
-    }
-    // initialize: function (){
-    //     this.url();
-    // }
     //data to parse for the 5 videos
     //data.items[i].snippet.title
     //data.items[i].snippet.description
@@ -100,8 +95,9 @@ var AppView = Backbone.View.extend({
 
 // initializes a view and model
 var appModel = new AppModel;
-//hardcode in some side videos to understand the flow of the HTML
-appModel.get('videos').fetch({ reset: true });
 
 var appView = new AppView({ model: appModel });
+
+appModel.get('videos').fetch({ reset: true });
+
 

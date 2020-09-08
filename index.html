@@ -27,7 +27,7 @@
     <div class="row view">
       <div class="col-md-6">
         <div class='main-video'>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/8GKmkD1pUG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/8GKmkD1pUG0" frameborder="0"></iframe>
             <div class='title-description'>
               <div class='title'>
                 title
@@ -43,6 +43,16 @@
       </div>
     </div>
   </div>
+
+  <script id="main-video-template" type="text/x-handlebars-template">
+    <div id="main-video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" ></iframe>
+    </div>
+    <div id="main-video-info">
+      <h2>{{title}}</h2>
+      <p>{{description}}</p>
+    </div>
+  </script>
 
   <script id="videos-template" type="text/x-handlebars-template">
     <div class='video-data'">
