@@ -145,15 +145,13 @@ var AppView = Backbone.View.extend ({
   },
 
   renderMainStage: function (video) {
+    var stageView = new StageView({ model: video });
     console.log('renderMainStage() in appView');
     $('.main-stage').empty();
     console.log('this is now ', this);
-    // this.model.get('videos').each(function (vid){
-      // console.log('vid is now ', vid);
-      // console.log('and this is now ', this);
-      var main=this.model.get('videos').findWhere({on_stage:true});
-      console.log('main is ',main);  
-      main.$mainStage.append(StageView.render().el);
+    var main=this.model.get('videos').findWhere({on_stage:true});
+    console.log('main is ',main);  
+    main.$mainStage.append(stageView.render().el);
 
    /*    if (vid.get('on_stage')) {
         var stageView = new VideoView({ model: video});
@@ -239,11 +237,12 @@ var StageView = Backbone.View.extend({
   template: Handlebars.compile($('#main-stage-template').html()),
 
   /* initialize: function () {
-    // this.listenTo(this.model.get('videos'), 'change:on_stage', this.changeStageVideo);
-    // this.listenTo(this.model.get('videos'), 'reset', this.changeStageVideo);
+    this.listenTo(this.model.get('videos'), 'change:on_stage', this.changeStageVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.changeStageVideo);
   },
   changeStageVideo: function () {
     console.log('changing stage video');
+    //replace with findwhere
     this.model.get('videos').each(function (vid) { // find first onStage true
       if (vid.model.get('on_stage')) {
         console.log('found featured video');
@@ -252,6 +251,7 @@ var StageView = Backbone.View.extend({
   }, */
   render: function () {
     console.log('render main stage');
+    console.log('mv render this is ', this);
     this.$el.html(this.template(this.model.toJSON()));
     return this;
   }
