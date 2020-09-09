@@ -87,7 +87,9 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .submit': 'performSearch'
+    'click .submit': 'performSearch',
+    'keyup #video-search' : 'checkSubmit'
+
   },
 
   initialize: function () {
@@ -138,7 +140,7 @@ var AppView = Backbone.View.extend({
     });
     console.log('main is ', main);
     // TODO seems like the perfect plan, but won't work. Needs binding?!?
-    main.$mainStage.append(stageView.render().el);
+    // main.$mainStage.append(stageView.render().el);
   },
 
   renderDetailsView: function (video) {
@@ -146,6 +148,13 @@ var AppView = Backbone.View.extend({
     /*     console.log('renderDetailsView in appView');
         var detailsView = new DetailsView({ model: video});
         this.$mainDesc.append(detailsView.render().el); */
+  },
+
+  checkSubmit: function(e){
+    console.log($('#video-search').val());
+    if(e.keyCode == 13){
+      this.performSearch()
+    }
   },
 
   performSearch: function () {
