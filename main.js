@@ -231,7 +231,7 @@ var AppView = Backbone.View.extend({
     // className: stage
     // template: #main-stage-template
     // initialize: listen to videoModel change: onstage; refresh render
-
+    // TODO MOVE TO APP VIEW??
     var StageView = Backbone.View.extend({
       className: 'stage',
 
