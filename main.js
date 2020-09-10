@@ -15,8 +15,12 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideoCollection(),
       on_stage: null,
+      hold_searchTerms: null // move searchTerms here I think
     }
   },
+
+  // initialize a search term change 
+  // form a URL builing function - find where to call it
 });
 
 // VideoModel create
@@ -33,6 +37,7 @@ var VideoModel = Backbone.Model.extend({
       on_stage: false
     }
   }
+  // move Parse: here?
 });
 
 // Video Collection create
@@ -103,14 +108,16 @@ var AppView = Backbone.View.extend({
 
         // start app display default search
         this.$videoSearch.val(searchTerms);
-        this.performSearch();
-        this.renderVideoList();
+        this.performSearch();  // to model?
+        this.renderVideoList();  // to model?
+        this.renderMainStage(); // to model?
         // when new search inits, re-render video list and main stage
         this.listenTo(this.model.get('videos'), 'reset', this.renderVideoList);
-        this.listenTo(this.model.get('videos'), 'reset', this.renderMainStage);
+        // DANGER this.listenTo(this.model.get('videos'), 'reset', this.renderMainStage);
         //TODO when mainStage is working
         // this.listenTo(this.model.get('videos'), 'reset', this.renderDetailsView);
       },
+
       // models created from collection fetch. now create views
 
       renderVideoList: function () {
@@ -139,19 +146,20 @@ var AppView = Backbone.View.extend({
         this.$mainStage.empty();
         this.model.get('videos').each(function (vid) {
               if (vid.get('on_stage')) {
-                this.renderMainStage(vid);
+                console.log('find me my stage');
+                // this.renderMainStage(vid);
               }}, this);
           },
 
 
-          checkSubmit: function (e) {
+          checkSubmit: function (e) {   // to model?
             console.log($('#video-search').val());
             if (e.keyCode == 13) {
               this.performSearch()
             }
           },
 
-          performSearch: function () {
+          performSearch: function () {  // to model?
             console.log('performSearch() with ', this.$videoSearch.val());
             console.log('versus global ', searchTerms);
             // send search terms to collection (via global) and fetch
@@ -185,24 +193,26 @@ var AppView = Backbone.View.extend({
 
     var VideoView = Backbone.View.extend({
       className: 'video-listing',
+      
       template: Handlebars.compile($('#sidebar-vids-template').html()),
+     
       events: {
         'click .video-listing': 'setOnStage'
       },
 
       initalize: function () {
         console.log('videoView inits');
-        this.listenTo(this.model, 'on_stage', this.switchMain); // needs to toggle class visibilty (.d-none)
+        this.listenTo(this.model, 'change:on_stage', this.switchMain); // needs to toggle class visibilty (.d-none)
       },
 
       setOnStage: function () {
         console.log('selected a vid for OnStage');
         this.model.set('on_stage, true');
-        //TODO set other models on_stage to false.
+        //TODO set other models on_stage to false.  just !-ify them all?
       },
 
       switchMain: function () {
-        //TODO
+        //TODO  move to appView?
       },
 
       render: function () {
@@ -228,6 +238,7 @@ var AppView = Backbone.View.extend({
       template: Handlebars.compile($('#main-stage-template').html()),
 
       /* initialize: function () {
+        TODO perhaps this is where we kick off this render???
         this.listenTo(this.model.get('videos'), 'change:on_stage', this.changeStageVideo);
         this.listenTo(this.model.get('videos'), 'reset', this.changeStageVideo);
       },
