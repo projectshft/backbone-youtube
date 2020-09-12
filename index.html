@@ -23,12 +23,12 @@
     </div>
     <div class="row">
       <div class="col-md-6 offset-md-1">
-        <div class="main-stage embed-responsive embed-responsive-16by9">
+        <div class="main-stage w-auto h-100" >
           <!-- container for player -->
         </div>
-        <div class="main-desc border mt-md-4" style="width:620px; min-height: 5em;">
-          <!-- container for details box -->
-        </div>
+        <!-- <div class="remove-me main-desc border mt-md-4" style="width:620px; min-height: 5em;">
+          container for details box
+         </div> -->
       </div>
       <div class="col-md-4 offset-md-1">
         <div class="sidebar-vids">
@@ -39,10 +39,10 @@
   </div>
 
   <script id="main-stage-template" type="text/x-handlebars-template">
-    <iframe width="620" height="325" src="https://www.youtube.com/embed/{{videoId}}"
+    <iframe width="620" height="360" src="https://www.youtube.com/embed/{{videoId}}"
     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen></iframe></div>
-  <div class="main-desc border mt-md-4" style="width:620px; min-height: 5em;">
+    allowfullscreen></iframe>
+  <div class="main-desc border mt-md-6" style="width:620px; min-height: 5em;">
     <p><b>Title:</b> {{title}}</p>
     <p><b>Description:</b> {{description}}</p>
     </div>

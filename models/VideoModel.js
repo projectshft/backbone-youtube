@@ -12,5 +12,4 @@ var VideoModel = Backbone.Model.extend({
       on_stage: false
     }
   }
-  // move Parse: here?
 });

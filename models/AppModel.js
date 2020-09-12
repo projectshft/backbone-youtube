@@ -6,12 +6,8 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideoCollection(),
       on_stage: null,
-      hold_searchTerms: null // move searchTerms here I think
+      search_terms: null // move searchTerms here I think
     }
   },
 
-
 });
-
-// initialize a search term change 
-// form a URL builing function - find where to call it

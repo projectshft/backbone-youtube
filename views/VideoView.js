@@ -2,29 +2,14 @@
   // className: video-listing
   // template: sidebar-vids-template
   // TODO events click - not working
-
+// add a "stage render" here? template and render funcs?
   var VideoView = Backbone.View.extend({
     className: 'video-listing',
 
     template: Handlebars.compile($('#sidebar-vids-template').html()),
-
+    
     events: {
       'click .video-listing': 'setOnStage'
-    },
-
-    initalize: function () {
-      console.log('videoView inits');
-      this.listenTo(this.model, 'change:on_stage', this.switchMain); // needs to toggle class visibilty (.d-none)
-    },
-
-    setOnStage: function () {
-      console.log('selected a vid for OnStage');
-      this.model.set('on_stage, true');
-      //TODO set other models on_stage to false.  just !-ify them all?
-    },
-
-    switchMain: function () {
-      //TODO  move to appView?
     },
 
     render: function () {
@@ -35,6 +20,22 @@
       }
       this.$el.html(this.template(this.model.toJSON()));
       return this;
+    },
+
+    initalize: function () {
+      // console.log('videoView inits');
+      this.listenTo(this.model.get('on_stage'), 'change', appView.renderMainStage()); // needs to toggle class visibilty (.d-none)
+    },
+
+    setOnStage: function () {
+     console.log('selected a vid for OnStage');
+      // not working
+    },
+
+    switchMain: function () {
+      //TODO  move to appView?
     }
+
+    
 
   });

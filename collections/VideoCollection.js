@@ -3,20 +3,25 @@
 // model based on VideoModel
 // parse: snippet.title snippet.description id.videoId snippet.thumbnails.???.default.url
 // set first response to on_stage = true
+
 var API_KEY = 'AIzaSyASOw5XMi4dPRhAs6V4b53svoyNA2FiKks';
-// searchTerms global due to fetch() being difficult to pass args to
-var searchTerms = 'Beck Loser';
+
+var fallbackSearchTerms = 'sipping from cups';
 
 var VideoCollection = Backbone.Collection.extend({
   url: function () {
-    console.log('->VideoCollection fetch searchTerms: ', searchTerms);
-    searchTerms = encodeURI(searchTerms);
+    console.log('->VideoCollection fetch searchTerms: ', appModel.get('search_terms'));
+    var searchTerms = encodeURI(appModel.get('search_terms'));
     var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms + "&type=video&key=" + API_KEY;
-    searchTerms = '';
-    console.log(theResponse);
-    return theResponse;
+   // console.log(theResponse);
+    return theResponse; 
+    // TODO add fail case
   },
-
+  
+  badFetch: function () {
+    alert('Problem loading videos at the moment. Try again later');
+  },
+  
   model: VideoModel,
 
   parse: function (response) {

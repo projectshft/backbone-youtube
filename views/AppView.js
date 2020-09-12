@@ -7,9 +7,9 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .submit': 'performSearch',
+    // 'click .submit': 'performSearch',   // obsoleted
+    // 'click .video-listing': 'setOnStage', // trying to get this to work (move to video?)
     'keyup #video-search': 'checkSubmit'
-
   },
 
   initialize: function () {
@@ -18,16 +18,24 @@ var AppView = Backbone.View.extend({
     this.$sidebarVids = this.$('.sidebar-vids');
     this.$videoSearch = this.$('#video-search');
     this.$mainStage = this.$('.main-stage');
+    this.$removeMe = this.$('.remove-me');
     this.$mainDesc = this.$('.main-desc');
 
 
     // start app display default search
-    this.$videoSearch.val(searchTerms);
-    this.performSearch(); // to model?
-    this.renderVideoList(); // to model?
-    this.renderMainStage(); // to model?
+    this.$videoSearch.val(fallbackSearchTerms);
+
+    // Start up app with a default search to populate screen
+    // note to self: seems appropriate funcs for view
+    this.setSearch();
+    this.goSearch();
+    this.renderVideoList();
+    // this.renderMainStage();
+
     // when new search inits, re-render video list and main stage
+    // TODO listen to change in SearchTerms
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideoList);
+    this.listenTo(this.model, 'change', this.goSearch);
     // DANGER this.listenTo(this.model.get('videos'), 'reset', this.renderMainStage);
     //TODO when mainStage is working
     // this.listenTo(this.model.get('videos'), 'reset', this.renderDetailsView);
@@ -40,6 +48,10 @@ var AppView = Backbone.View.extend({
     this.$sidebarVids.empty();
     this.model.get('videos').each(function (vid) {
       this.renderVideoEntry(vid);
+      if (vid.get('on_stage')) {
+        console.log('find me my stage');
+        this.renderOnStage(vid);
+      }
     }, this);
   },
 
@@ -53,51 +65,60 @@ var AppView = Backbone.View.extend({
     this.$sidebarVids.append(videoView.render().el);
   },
 
-  renderMainStage: function () {
-    // var stageView = new StageView({  // wrong plavec
-    //   model: video
-    // });
-    console.log('renderMainStage() in appView');
+  renderOnStage: function (video) {
+    console.log('renderOnStage()');
     this.$mainStage.empty();
-    this.model.get('videos').each(function (vid) {
-      if (vid.get('on_stage')) {
-        console.log('find me my stage');
-        // this.renderMainStage(vid);
-      }
-    }, this);
+    this.$removeMe.empty();
+    var stageView = new StageView({
+      model: video
+    });
+    this.$mainStage.append(stageView.render().el);
+    // when VideoModel changes to "on_stage true" refresh
+    console.log('RenderOnStage video is: ', video);
   },
-
 
   checkSubmit: function (e) { // to model?
     console.log($('#video-search').val());
     if (e.keyCode == 13) {
-      this.performSearch()
+      this.setSearch()
     }
   },
 
-  performSearch: function () { // to model?
-    console.log('performSearch() with ', this.$videoSearch.val());
-    console.log('versus global ', searchTerms);
-    // send search terms to collection (via global) and fetch
-    // this.model.get('videos').doSearch( // trying for dataflow but no-go
+  setSearch: function () {
+    console.log('setSearch() with ', this.$videoSearch.val());
     // clean up edge cases (don't waste searches) OR send default search
     // for first run
-    if (this.$videoSearch === '' && searchTerms === '') {
-      return;
-    } else if (searchTerms === '') {
-      searchTerms = this.$videoSearch.val();
-      appModel.get('videos').fetch({
-        reset: true
-      });
+    if (this.$videoSearch === '' && this.model.get('search_terms') === '') {
+      return; // don't do a blank search
+    } else if (this.$videoSearch === this.model.get('search_terms')) {
+      return; // don't do a duplicate search
+    } else if (this.model.get('search_terms') === '') {
+      this.model.set('search_terms', fallbackSearchTerms);
     } else { // default for first run
-      appModel.get('videos').fetch({
-        reset: true
-      });
+      this.model.set('search_terms', this.$videoSearch.val());
+      console.log('Appmodels search_terms attr ', this.model.get('search_terms'));
     }
   },
 
-  renderOnStage: function () {
-    console.log('renderOnStage()');
-    // when VideoModel changes to "on_stage true" refresh
+  goSearch: function () {
+    appModel.get('videos').fetch({
+      reset: true,
+      // error: videos.badFetch 
+    })
+  },
+
+  //not able to trigger this
+  setOnStage: function (test) {
+    console.log('SetOnStage() in AppView');
+    console.log('this.model ', test);
+    this.model.set('on_stage, true');
+    var compare = this.model.id;
+    console.log('wanting to get id: ', compare);
+    this.model.get('videos').each(function (vid) {
+      console.log(vid);
+    }, this);
+    //TODO set other models on_stage to false.
   }
+
+
 });
