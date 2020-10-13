@@ -7,16 +7,6 @@
    className: 'stage',
 
    template: Handlebars.compile($('#main-stage-template').html()),
-/*
-   changeStageVideo: function () {
-     console.log('changing stage video');
-     //replace with findwhere
-     this.model.get('videos').each(function (vid) { // find first onStage true
-       if (vid.model.get('on_stage')) {
-         console.log('found featured video');
-       }
-       }, this);
-   }, */
 
    render: function () {
      console.log('render main stage');

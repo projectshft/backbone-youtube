@@ -1,8 +1,7 @@
   // VideoView
   // className: video-listing
   // template: sidebar-vids-template
-  // TODO events click - not working
-// add a "stage render" here? template and render funcs?
+
   var VideoView = Backbone.View.extend({
     className: 'video-listing',
 
@@ -36,8 +35,5 @@
 
     switchMain: function () {
       //TODO  move to appView?
-    }
-
-    
-
+    }    
   });

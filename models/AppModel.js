@@ -6,7 +6,7 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideoCollection(),
       on_stage: null,
-      search_terms: null // move searchTerms here I think
+      search_terms: null 
     }
   },
 

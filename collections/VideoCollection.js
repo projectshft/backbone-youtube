@@ -2,7 +2,7 @@
 // URL is a function to replace https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=amiga%20retro&key=[YOUR_API_KEY]
 // model based on VideoModel
 // parse: snippet.title snippet.description id.videoId snippet.thumbnails.???.default.url
-// set first response to on_stage = true
+// set first response to on_stage = true; puts featured video in main spot
 
 var API_KEY = 'AIzaSyASOw5XMi4dPRhAs6V4b53svoyNA2FiKks';
 
@@ -15,7 +15,6 @@ var VideoCollection = Backbone.Collection.extend({
     var theResponse = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + searchTerms + "&type=video&key=" + API_KEY;
    // console.log(theResponse);
     return theResponse; 
-    // TODO add fail case
   },
   
   badFetch: function () {
