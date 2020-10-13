@@ -16,6 +16,7 @@
       // hide the current video because it's on the main stage
       if (this.model.get('on_stage')) {
         console.log('detected on_stage');
+        console.log(this.model.toJSON());
         this.$el.html(this.template(this.model.toJSON())).addClass('d-none');
       }
       this.$el.html(this.template(this.model.toJSON()));
@@ -27,7 +28,8 @@
       this.listenTo(this.model.get('on_stage'), 'change', appView.renderMainStage()); // needs to toggle class visibilty (.d-none)
     },
 
-    setOnStage: function () {
+    setOnStage: function (e) {
+      console.log('was event sent to me?', e);
      console.log('selected a vid for OnStage');
       // not working
     },

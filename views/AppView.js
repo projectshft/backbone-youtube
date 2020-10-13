@@ -8,7 +8,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     // 'click .submit': 'performSearch',   // obsoleted
-    // 'click .video-listing': 'setOnStage', // trying to get this to work (move to video?)
+    'click .video-listing': 'setOnStage', // trying to get this to work (move to video?)
     'keyup #video-search': 'checkSubmit'
   },
 
@@ -108,15 +108,33 @@ var AppView = Backbone.View.extend({
   },
 
   //not able to trigger this
-  setOnStage: function (test) {
+  setOnStage: function (e) {
     console.log('SetOnStage() in AppView');
-    console.log('this.model ', test);
+    console.log('this.model ', this.model);
+    var clickedVideoId = $(e.currentTarget).find('table').data().id;
+    console.log('->extracted data', clickedVideoId);
     this.model.set('on_stage, true');
-    var compare = this.model.id;
-    console.log('wanting to get id: ', compare);
+
+    // look for videoID match and set on_stage to true, otherwise false
+
+    console.log('rendering new video-list');
+    this.$sidebarVids.empty();
     this.model.get('videos').each(function (vid) {
-      console.log(vid);
+      this.renderVideoEntry(vid);
+      if (vid.get('videoId')===clickedVideoId) {
+        vid.set('on_stage', true);
+      } else {
+        vid.set('on_stage', false);
+      }
+      if (vid.get('on_stage')) {
+        console.log('find me my stage');
+        this.renderOnStage(vid);
+      }
     }, this);
+
+    // this.model.get('videos').each(function (vid) {
+    //   console.log(vid);
+    // }, this);
     //TODO set other models on_stage to false.
   }
 

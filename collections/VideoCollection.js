@@ -6,7 +6,7 @@
 
 var API_KEY = 'AIzaSyASOw5XMi4dPRhAs6V4b53svoyNA2FiKks';
 
-var fallbackSearchTerms = 'sipping from cups';
+var fallbackSearchTerms = 'Rodrigo y Gabriela';
 
 var VideoCollection = Backbone.Collection.extend({
   url: function () {
