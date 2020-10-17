@@ -41,7 +41,7 @@ var AppModel = Backbone.Model.extend({
         return {
                 videos: new VideosCollection(),
                 //holds the search input
-                searchParameter: null
+                searchParameter: 'auburntigers'
         }
     },
     
@@ -115,6 +115,8 @@ var AppView = Backbone.View.extend({
     },
 
     renderVideos: function () {
+        // empties out the videos before each search 
+        this.$('.videos').empty();
         this.model.get('videos').each(function (m) {
             this.renderVideo(m);
         }, this);
