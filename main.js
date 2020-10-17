@@ -5,7 +5,7 @@ var VideoModel = Backbone.Model.extend({
         title: '',
         description: '',
         thumbnail: '',
-        videoId: ''
+        videoId: '87o0OhaoLHo'
         }
     }
 
@@ -15,7 +15,7 @@ var VideoModel = Backbone.Model.extend({
 var VideosCollection = Backbone.Collection.extend({
     model: VideoModel,
     //connect the Youtube API to our collection
-   
+
     url: `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBCFVX7-Ic64kujaRXZD5boR3tDaaS9-C4&type=video&part=snippet&maxResults=5&q=auburntigers`,
     // create parse function to only return the attributes we want for our video model
     parse: function (response) {
@@ -41,10 +41,12 @@ var AppModel = Backbone.Model.extend({
         return {
                 videos: new VideosCollection(),
                 //holds the search input
-                searchParameter: 'auburntigers'
+                searchParameter: null,
+                //holds current video
+                currentVideo: null
         }
     },
-    
+
     changeSearchParameter: function(searchParameter){
         this.set('searchParameter', searchParameter);
         this.get('videos').changeSearch(searchParameter)
@@ -88,8 +90,10 @@ var AppView = Backbone.View.extend({
     createVideo: function (e) {
         var searchParameter = this.$('input').val();
         if (e.keyCode === 13 && searchParameter != '') {
-            this.model.changeSearchParameter(searchParameter);      
-        }        
+            this.model.changeSearchParameter(searchParameter);
+        } else if (e.keyCode === 13) {
+            alert('Enter a search term')
+        }
     },
 
     initialize: function() {
@@ -98,11 +102,15 @@ var AppView = Backbone.View.extend({
         this.listenTo(this.model, 'change:searchParameter', this.renderVideos);
         this.renderVideos();
         // this.renderMain();
-    }, 
+    },
 
     //create a render main function that renders the main video and appends the data to the DOM
     renderMain: function (video) {
         var mainView = new MainView({ model: video});
+        // empty out main video before rerender to prevent duplicates
+        this.$('.main-video').empty();
+        // set the 0 index as the current video
+        this.model.set('currentVideo', this.model.get('videos').models[0])
         this.$('.main-video').append(mainView.render().el)
 
     },
@@ -111,11 +119,11 @@ var AppView = Backbone.View.extend({
     renderVideo: function (video) {
         var videosView = new VideosView({ model: video });
         this.$('.videos').append(videosView.render().el);
-        
+
     },
 
     renderVideos: function () {
-        // empties out the videos before each search 
+        // empties out the videos before each search
         this.$('.videos').empty();
         this.model.get('videos').each(function (m) {
             this.renderVideo(m);
