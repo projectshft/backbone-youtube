@@ -10,21 +10,28 @@ var AppModel = Backbone.Model.extend({
     this.listenTo(this.get("videos"), "update", this.setCurrentVideo)
   },
 
-  setCurrentVideo: function (newVideos) {
-    this.set("currentVideo", newVideos.models[0]);
+  //Sets the current Video attribute. This method could either be called from a new search taking place or from the user clicking one of the videos on the side bar
+  setCurrentVideo: function (input) {
+    //If this method is called from the user clicking a video on the sidebar then input will a string of the video's id. Otherwise if the method is called from a new search taking place then input will be the new videoCollections
+    if(typeof input === 'string') {
+      this.set("currentVideo", this.get("videos").where({id: input})[0])
+    } else {
+      this.set("currentVideo", input.models[0]);
+    }
+    
   },
 
   //Loads data to test rather than fetching data from server
   loadData: function(data) {
     //Run data through the video collections parser
     data = this.get("videos").parse(data);
-    //Run each array through the video model parser
+
+    //Run each object through the video model parser
     var newVideoModel = new VideoModel();
-    debugger;
     data = data.map(function (obj) {
       return newVideoModel.parse(obj);
     })
-    debugger;
+
     this.get("videos").add(data);
   }
   

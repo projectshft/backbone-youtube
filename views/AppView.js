@@ -3,6 +3,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     "click .submit-search": "handleSearchButtonClick",
+    "click .media": "handleVideoListClick"
   },
 
   initialize: function () {
@@ -14,6 +15,12 @@ var AppView = Backbone.View.extend({
   handleSearchButtonClick: function () {
     var searchTerm = this.$(".search-input").val();
     this.model.get("videos").searchVideos(searchTerm);
+  },
+
+  //Upon user clicking on video from the video list, tells the model to change the current video
+  handleVideoListClick: function (e) {
+    var clickedVideoId = $(e.currentTarget).data("id")
+    this.model.setCurrentVideo(clickedVideoId);
   },
 
   //Displays the list of five videos to the side.
