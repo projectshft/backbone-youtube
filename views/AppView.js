@@ -11,10 +11,10 @@ var AppView = Backbone.View.extend({
     this.listenTo(this.model, "change:currentVideo", this.renderCurrentVideo)
   },
 
-  //On search button click, sends the inputted search term to the Videos Collection to fetch data for
+  //On search button click, sends the inputted search term to the App Model to update search term and begin new search
   handleSearchButtonClick: function () {
     var searchTerm = this.$(".search-input").val();
-    this.model.get("videos").searchVideos(searchTerm);
+    this.model.updateSearchTerm(searchTerm);
   },
 
   //Upon user clicking on video from the video list, tells the model to change the current video

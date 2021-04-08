@@ -3,11 +3,20 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
       currentVideo: null,
+      currentSearchTerm: 'cats',
     }
   },
 
   initialize: function () {
     this.listenTo(this.get("videos"), "update", this.setCurrentVideo)
+    //When line below is uncommented, completes an initial search so that the page will not be empty when user loads the page
+    // this.get("videos").searchVideos(this.get("currentSearchTerm"))
+  },
+
+  //Update the current search term and call on the videos collection to search for new videos with that search term
+  updateSearchTerm: function (searchTerm) {
+    this.set("currentSearchTerm", searchTerm)
+    this.get("videos").searchVideos(this.get("currentSearchTerm"))
   },
 
   //Sets the current Video attribute. This method could either be called from a new search taking place or from the user clicking one of the videos on the side bar
