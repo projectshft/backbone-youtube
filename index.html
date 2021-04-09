@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Backbone-Youtube</title>
+  </head>
+  <body>
+    <div class="container title-area">
+      <div class="row">
+        <div class="col-md-8 offset-md-2 pt-4">
+          <div class="header text-center">
+            <h1>Project YouTube</h1>
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid text-center search-area">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="input-group mb-3 pt-2">
+            <input
+              type="text"
+              class="search-form form-control font-italic"
+              placeholder="Please enter search term here"
+            />
+            <div>
+              <button
+                class="btn btn-primary ml-2 search-video"
+                type="button"
+                id="search"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid pt-4 main-area">
+      <div class="row justify-content-center">
+        <div class="col-4 mr-5">
+          <div class="video-area"></div>
+        </div>
+        <div class="col-4">
+          <div class="sidebar-area"></div>
+        </div>
+      </div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="text-center">
+        <iframe
+          width="426"
+          height="240"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <hr />
+      <h6>
+        {{title}}
+        <br />
+      </h6>
+      <p>
+        {{description}}
+      </p>
+    </script>
+
+    <script id="sidebar-template" type="text/x-handlebars-template">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <iframe
+              width="170"
+              height="96"
+              src="https://www.youtube.com/embed/{{videoId}}"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="col align-self-center">
+            <a href="#" class="title-link" data-id="{{videoId}}">
+              {{title}}
+            </a>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="views/SidebarView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
