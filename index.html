@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>ParsityTube</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-sm-4 offset-md-4">
+        <h1>ParsityTube</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 offset-md-3">
+        <input type="text" id="search-bar">
+        <button class="btn btn-primary search-button">Search</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 offset-md-2 main-video-container">
+        <h1>main player here</h1>
+      </div>
+      <div class="col-sm-2 offset-md-1 video-list-container">
+        <h1>list of other videos here</h1>
+      </div>
+    </div>
+    
+    <div class="row"></div>
+
+    <script id="big-video-template" type="text/x-handlebars-template">
+      <div class = "video-container" data-id={{id}}>
+        <iframe width="560" height="560" src="https://www.youtube.com/embed/xvH7LtlRfWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </script>
+
+    <script id="little-video-template" type="text/x-handlebars-template">
+      <div class = "video-container" data-id={{id}}>
+        <iframe width="220" height="220" src="https://www.youtube.com/embed/{{video_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </script>
+    
+    <script src=models/VideoModel.js></script>
+    <script src=collections/VideosCollection.js></script>
+    <script src=models/AppModel.js></script>
+    <script src="views/PlayerView.js"></script>
+    <script src="views/ListView.js"></script>
+    <script src=views/AppView.js></script>
+    <script src="core.js"></script>
+  </body>
+</html>
