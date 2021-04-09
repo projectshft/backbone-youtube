@@ -6,7 +6,7 @@ var AppView = Backbone.View.extend({
     'click .title-link' : 'handleLinkClick'
   },
 
-  handleSearchClick: function() {
+  handleSearchClick: function () {
     var searchTermInput = this.$('.search-form').val();
     this.model.set('searchTerm', searchTermInput);
   },
