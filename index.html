@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <title>Project YouTube</title>
+</head>
+
+<body>
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2">
+        <div class='page-header'>
+          <h1>Project YouTube</h1>
+          <hr />
+        </div>
+
+        <form class="search-form">
+          <div class="form-group">
+            <input type="text" class="form-control" id="search-query" placeholder="Search"></input>
+          </div>
+          <div class="col text-center">
+            <button type="button" class="btn btn-primary search">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+
+        <div class="flex-container">
+          <div class="flex-child main-videos">
+            <div>Main</div>
+          </div>
+
+          <div class="flex-child video-list show">
+            <div class="video-screen"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script id="video-template" type="text/x-handlebars-template">
+    <div class="video-container">
+      <a class="view-video" href="#" data-id={{id}}>
+      <img src="{{ video_url }}">
+    </a>
+    </div>
+    <div class="content-container">
+      <p class="video-name">{{ name }}</p>
+      </div>
+  </script>
+
+  <script id="main-video-template" type="text/x-handlebars-template">
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="content-container">
+      <p class="video-name">{{ name }}</p>
+      <p class="video-description">{{ description }}</p>
+      </div>
+  </script>
+
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+  <script src="./node_modules/underscore/underscore.js"></script>
+  <script src="./node_modules/backbone/backbone.js"></script>
+  <script src="models/VideoModel.js"></script>
+  <script src="views/VideoView.js"></script>
+  <script src="views/MainVideoView.js"></script>
+  <script src="collections/VideoCollection.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="models/AppModel.js"></script>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
