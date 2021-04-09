@@ -9,3 +9,7 @@ iframe {
 .media {
   cursor: pointer;
 }
+
+.previously-viewed {
+  opacity: 0.5;
+}

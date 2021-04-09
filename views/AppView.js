@@ -3,12 +3,15 @@ var AppView = Backbone.View.extend({
 
   events: {
     "click .submit-search": "handleSearchButtonClick",
-    "click .media": "handleVideoListClick"
+    "click .media": "handleVideoListClick",
   },
 
   initialize: function () {
     this.listenTo(this.model.get("videos"), "update", this.renderVideoList)
     this.listenTo(this.model, "change:currentVideo", this.renderCurrentVideo)
+    //Check if at bottom of the page
+
+    // $(window).on('scroll', this.checkIfAtBottomOfPage(this))
   },
 
   //On search button click, sends the inputted search term to the App Model to update search term and begin new search
@@ -43,7 +46,22 @@ var AppView = Backbone.View.extend({
     //Create a new view for the currentVideo model
     var currentVideoView = new CurrentVideoView({model: this.model.get("currentVideo")});
     this.$(".current-video").append(currentVideoView.render().el);
+  },
+
+  //Load 5 new videos upon user scrolling to the bottom of the page
+  //TODO: Youtube Api only allows a max of 50 videos in a search. Update so that it won't try to load anymore once the videos collection has a length of 50.
+  checkIfAtBottomOfPage: function (context) {
+    return function (event) {
+      if($(window).scrollTop() + $(window).height() + 10 >= $(document).height()) {
+        var searchTerm = context.model.get("currentSearchTerm");
+        var newNumberOfResultsToDisplay = context.model.get("videos").length + 5;
+        context.model.get("videos").searchVideos(searchTerm, newNumberOfResultsToDisplay)
+      }
+    }
 
   }
+
+  
+
 
 });

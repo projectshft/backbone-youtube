@@ -2,6 +2,9 @@ var appModel = new AppModel();
 
 var appView = new AppView({model: appModel});
 
+var router = new AppRouter();
+Backbone.history.start();
+
 var sampleData = {
   "kind": "youtube#searchListResponse",
   "etag": "jrLgj0XGHegO7nztkfHkqGu_dmo",

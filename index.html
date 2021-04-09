@@ -69,24 +69,29 @@
     </script>
 
     <script id="video-template" type="text/x-handlebars-template">
-      <div class="video">
+      <div class="video {{#if previouslyViewed}}previously-viewed{{/if}}">
         <div class="media" data-id="{{id}}">
           <img src="{{thumbnailUrl}}" class="mr-3" alt="..." />
           <div class="media-body">
             <h5 class="mt-0 mb-1">
               {{title}}
             </h5>
+            {{#if previouslyViewed}}
+              <p>
+                You've previously watched
+              </p>
+            {{/if}}
           </div>
         </div>
         <hr />
       </div>
     </script>
-
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/VideoView.js"></script>
     <script src="views/CurrentVideoView.js"></script>
+    <script src="router/AppRouter.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
   </body>
