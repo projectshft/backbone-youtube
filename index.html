@@ -59,15 +59,17 @@
     </div>
 
     <script id="video-template" type="text/x-handlebars-template">
-      <iframe
-        width="426"
-        height="240"
-        src="https://www.youtube.com/embed/{{videoId}}"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      <div class="text-center">
+        <iframe
+          width="426"
+          height="240"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
       <hr />
       <h6>
         {{title}}
