@@ -13,6 +13,7 @@ var AppView = Backbone.View.extend({
     this.listenTo(this.model, 'change:show_video', this.renderPage);
     this.listenTo(this.model, 'change:current_video', this.renderMainVideo);
     this.$searchInput = this.$('#search-query');
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
     this.renderVideos();
   },
 
@@ -25,7 +26,7 @@ var AppView = Backbone.View.extend({
 
   handleSearch: function () {
     var search = this.$searchInput.val();
-    this.model.get('faces').add({
+    this.model.get('videos').add({
       keyword: search
     })
   },
