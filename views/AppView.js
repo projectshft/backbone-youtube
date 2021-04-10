@@ -28,6 +28,8 @@ var AppView = Backbone.View.extend({
     $('.main-video-container').empty();
 
     this.vidCollection.each((video) =>{
+      video.linter('title');
+      video.linter('description');
       var playerView = new PlayerView({model : video});
       this.$('.main-video-container').append(playerView.render().el);
     })
@@ -43,6 +45,15 @@ var AppView = Backbone.View.extend({
   },
 
   assignMainPlayer() {
-    this.vidCollection.at(0).set('mainPlayer', true);
+    if(this.vidCollection.at(0)){
+      this.vidCollection.at(0).set('mainPlayer', true);
+      return
+    }
+    this.renderError();
+  },
+
+  renderError(){
+      var errorView = new ErrorView({model : this.model});
+      this.$('.main-video-container').append(errorView.render().el);
   }
 });

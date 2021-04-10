@@ -24,5 +24,5 @@ var ThumbnailView = Backbone.View.extend({
 
   toggleDisplay() {
     this.$el.toggleClass('d-none');
-    }
+  }
 });

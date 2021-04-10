@@ -51,10 +51,18 @@
         <h6>{{title}}</h6>
       </div>
     </script>
+
+    <script id="error-template" type="text/x-handlebars-template">
+      <div class = "error-container">
+        <iframe src="https://giphy.com/embed/YFGKHP2mKdpZly5sQu" width="700" height="560" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thosewhocant-trutv-those-who-cant-twc301-YFGKHP2mKdpZly5sQu">via GIPHY</a></p>
+        <h5>Sorry, your search for <strong>"{{current_query}}"</strong> didn't return any results. Try again!</h5>
+      </div>
+    </script>
     
     <script src=models/VideoModel.js></script>
     <script src=collections/VideosCollection.js></script>
     <script src=models/AppModel.js></script>
+    <script src="views/ErrorView.js"></script>
     <script src="views/PlayerView.js"></script>
     <script src="views/ThumbnailView.js"></script>
     <script src=views/AppView.js></script>

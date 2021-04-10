@@ -18,5 +18,12 @@ var VideoModel = Backbone.Model.extend({
          return
        }
     })
+  },
+
+  linter(attr) {
+    var unlint = this.get(attr);
+    unlint = unlint.replace(/&#39;/g, '\'');
+    unlint = unlint.replace(/&amp;/g, '&');
+    this.set(attr, unlint);
   }
 })
