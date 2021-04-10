@@ -20,6 +20,7 @@ var VideoModel = Backbone.Model.extend({
     })
   },
 
+  //Pulls out the ugly codes for apostrophes and ampersands and replaces them with normal text
   linter(attr) {
     var unlint = this.get(attr);
     unlint = unlint.replace(/&#39;/g, '\'');

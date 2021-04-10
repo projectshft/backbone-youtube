@@ -2,6 +2,11 @@ input {
   width: 70%;
 }
 
+iframe {
+  margin: 0 auto;
+  display: block;
+}
+
 .row {
   margin: 3%;
 }

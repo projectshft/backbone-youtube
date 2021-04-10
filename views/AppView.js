@@ -24,6 +24,8 @@ var AppView = Backbone.View.extend({
     if (e.which === 13) {this.updateCurrentQuery()}
   },
 
+  //I was torn on whether to keep renderThumbnail() and renderPlayer() separate or to combine them, it looked odd both ways. Let me know what you think!
+
   renderPlayer() {
     $('.main-video-container').empty();
 
@@ -45,10 +47,14 @@ var AppView = Backbone.View.extend({
   },
 
   assignMainPlayer() {
+    //assigns the first model's 'mainPlayer' attribute to true
+
     if(this.vidCollection.at(0)){
       this.vidCollection.at(0).set('mainPlayer', true);
       return
     }
+
+    //guard clause stops function, unless VideosCollection is empty. If it is, rendererror() appends error template where mainPlayer would have been
     this.renderError();
   },
 
