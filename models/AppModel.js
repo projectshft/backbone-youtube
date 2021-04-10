@@ -1,5 +1,5 @@
 var AppModel = Backbone.Model.extend({
-  defaults: function () {
+  defaults() {
     return {
       videos: new VideosCollection(),
 
@@ -9,7 +9,7 @@ var AppModel = Backbone.Model.extend({
     }
   },
 
-  changeCurrentQuery: function (query){
+  changeCurrentQuery(query){
     this.set('current_query', query);
     this.get('videos').newSearch(query);
   }

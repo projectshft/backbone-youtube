@@ -6,30 +6,43 @@ var AppView = Backbone.View.extend({
     'keypress #search-bar': 'enterHandler'
   },
 
-  initialize: function (){
-    //this.listenTo(this.model.get('videos').url, 'change', this.render);
-    this.render();
+  initialize(){
+    this.vidCollection = this.model.get('videos');
+
+    this.listenTo(this.vidCollection, 'reset', this.renderPlayer);
+    this.listenTo(this.vidCollection, 'reset', this.renderThumbnail);
+    this.listenTo(this.vidCollection, 'reset', this.assignMainPlayer);
   },
 
-  updateCurrentQuery: function () {
+  updateCurrentQuery() {
     var query = this.$('#search-bar').val();
     this.model.changeCurrentQuery(query);
     this.$('#search-bar').val('')
   },
 
-  enterHandler: function (e) {
+  enterHandler(e) {
     if (e.which === 13) {this.updateCurrentQuery()}
   },
 
-  pageLoadRender: function () {
-    
+  renderPlayer() {
+    $('.main-video-container').empty();
+
+    this.vidCollection.each((video) =>{
+      var playerView = new PlayerView({model : video});
+      this.$('.main-video-container').append(playerView.render().el);
+    })
   },
 
-  render: function () {
-    console.log(this.model.get('videos'))
-    //var playerView = new PlayerView({ model: video });
-    //console.log(playerView.model)
-    // the 'append' below works, tried it with hard code
-    //this.$('.main-video-container').append(playerView.render().el);
+  renderThumbnail() {
+    $('.thumbnail-container').empty();
+
+    this.vidCollection.each((video) =>{
+      var thumbnailView = new ThumbnailView({model : video});
+      this.$('.thumbnail-column').append(thumbnailView.render().el);
+    })
+  },
+
+  assignMainPlayer() {
+    this.vidCollection.at(0).set('mainPlayer', true);
   }
 });

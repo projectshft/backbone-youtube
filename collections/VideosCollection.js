@@ -1,16 +1,25 @@
 var VideosCollection = Backbone.Collection.extend({
   
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=obama&type=video&videoEmbeddable=true&key=AIzaSyDSTlxlIl5f7wwXbpkN2Zo9R5wS_1Jb940',
+  // url: '#',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=obama&type=video&videoEmbeddable=true&key=AIzaSyDSTlxlIl5f7wwXbpkN2Zo9R5wS_1Jb940',
   
   model: VideoModel,
 
-  newSearch: function (newQuery) {
-    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=' + newQuery +'&type=video&videoEmbeddable=true&key=AIzaSyDSTlxlIl5f7wwXbpkN2Zo9R5wS_1Jb940';
+  newSearch(newQuery) {
+    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + newQuery +'&type=video&videoEmbeddable=true&key=AIzaSyDSTlxlIl5f7wwXbpkN2Zo9R5wS_1Jb940';
+    this.fetch({reset: true});
   },
 
-  parse: function (response) {
+  parse(response) {
     return response.items.map((video)=>{
-      return {youTubeId: video.id.videoId};
+      return {
+        id: video.id.videoId,
+        thumbnailUrl: video.snippet.thumbnails.medium.url,
+        title: video.snippet.title,
+        channel: video.snippet.channelTitle,
+        description: video.snippet.description
+      };
     })
   }
+
 });

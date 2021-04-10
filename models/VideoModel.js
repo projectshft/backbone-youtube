@@ -1,8 +1,22 @@
 var VideoModel = Backbone.Model.extend({
-  defaults: function () {
+  defaults() {
     return {
       id: null,
-      youTubeId: null
+      channel: null,
+      title: null,
+      thumbnailUrl: null,
+      description: null,
+      mainPlayer: false
     }
+  },
+
+  toggleMainDisplay(newCurrentVideoId) {
+    this.collection.each((video) =>{
+      video.set('mainPlayer', false);
+       if (video.get('id') === newCurrentVideoId){
+         video.set('mainPlayer', true);
+         return
+       }
+    })
   }
 })
