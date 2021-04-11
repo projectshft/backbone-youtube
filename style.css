@@ -1,0 +1,15 @@
+iframe {
+  width: 100%;
+}
+
+.video img {
+  width: 50%;
+}
+
+.media {
+  cursor: pointer;
+}
+
+.previously-viewed {
+  opacity: 0.5;
+}

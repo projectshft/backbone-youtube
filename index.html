@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="node_modules/he/he.js"></script>
+    <script src="node_modules/underscore/underscore.js"></script>
+    <script src="node_modules/backbone/backbone.js"></script>
+    <title>Youtube Project</title>
+  </head>
+  <body>
+    <div class="container app">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-header text-center mt-3">
+            <h1>Josh's Youtube Project</h1>
+            <hr />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="input-group mb-3 search-video">
+            <input
+              type="text"
+              class="form-control search-input"
+              placeholder="Please enter search term here"
+            />
+            <span class="input-group-btn ml-3" id="basic-addon2">
+              <button class="btn btn-primary submit-search">Search</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 offset-md-1 current-video"></div>
+        <div class="col-md-5">
+          <div class="video-list"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 offset-md-6 text-center end-of-results d-none">
+          <h3>End of Search Results</h3>
+        </div>
+      </div>
+    </div>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <div>
+        <iframe
+          height="300"
+          src="{{videoUrl}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <hr />
+        <h4>
+          {{title}}
+        </h4>
+        <p>
+          {{description}}
+        </p>
+      </div>
+    </script>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="video {{#if previouslyViewed}}previously-viewed{{/if}}">
+        <div class="media" data-id="{{id}}">
+          <img src="{{thumbnailUrl}}" class="mr-3" alt="..." />
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">
+              {{title}}
+            </h5>
+            {{#if previouslyViewed}}
+              <p>
+                You've previously watched
+              </p>
+            {{/if}}
+          </div>
+        </div>
+        <hr />
+      </div>
+    </script>
+
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
+    <script src="router/AppRouter.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
