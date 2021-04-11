@@ -15,9 +15,12 @@ var AppView = Backbone.View.extend({
   },
 
   updateCurrentQuery() {
-    var query = this.$('#search-bar').val();
-    this.model.changeCurrentQuery(query);
-    this.$('#search-bar').val('')
+    if (this.$('#search-bar').val() != ''){
+      var query = this.$('#search-bar').val();
+      this.model.changeCurrentQuery(query);
+      this.$('#search-bar').val('');
+    }
+    
   },
 
   enterHandler(e) {
