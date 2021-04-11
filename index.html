@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Backbone YouTube</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="header">
+            <h1>Project Youtube</h1>
+            <hr />
+          </div>
+          <form class="search-form">
+            <div class="form-inline">
+              <input type="text" id="search-query" class="form-control" placeholder="Enter Search Term Here">
+              </input>
+              <button type="button" class="btn btn-primary search">Search</button>
+            </div>
+          </form>
+          <div class="videos row col-md-4">
+          </div>
+          <div class="playlist row col-md-2">
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="videos container">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/{{vidId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h5>{{ title }}</h5>
+        <p>{{ description }}</p>
+        <hr>
+      </div>      
+    </script>
+
+    <script id="playlist-template" type="text/x-handlebars-template">
+      <div class="playlist container">
+        <div>{{ title }}</div>
+        <img src="{{thumbnailUrl}}" alt="">
+        <hr>
+      </div>
+    </script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
