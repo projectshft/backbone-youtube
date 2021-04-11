@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="node_modules/he/he.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
     <script src="node_modules/backbone/backbone.js"></script>
     <title>Youtube Project</title>
@@ -44,6 +45,11 @@
         <div class="col-md-5 offset-md-1 current-video"></div>
         <div class="col-md-5">
           <div class="video-list"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 offset-md-6 text-center end-of-results d-none">
+          <h3>End of Search Results</h3>
         </div>
       </div>
     </div>
@@ -86,6 +92,7 @@
         <hr />
       </div>
     </script>
+
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>

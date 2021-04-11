@@ -4,20 +4,28 @@ var AppView = Backbone.View.extend({
   events: {
     "click .submit-search": "handleSearchButtonClick",
     "click .media": "handleVideoListClick",
+    "keyup .search-input": "handleEnterButtonPress",
   },
 
   initialize: function () {
     this.listenTo(this.model.get("videos"), "update", this.renderVideoList)
     this.listenTo(this.model, "change:currentVideo", this.renderCurrentVideo)
-    //Check if at bottom of the page
-
-    // $(window).on('scroll', this.checkIfAtBottomOfPage(this))
+    $(window).on('scroll', this.checkIfAtBottomOfPage(this))
+    this.listenTo(this.model, "change:endOfResults", this.toggleEndOfResultsDiv)
   },
 
   //On search button click, sends the inputted search term to the App Model to update search term and begin new search
   handleSearchButtonClick: function () {
     var searchTerm = this.$(".search-input").val();
+    this.$(".search-input").val('')
     this.model.updateSearchTerm(searchTerm);
+  },
+
+  //On user pressing enter while typing in the search box, the search button will click to begin a search
+  handleEnterButtonPress: function (e) {
+    if(e.keyCode === 13) {
+      $(".submit-search").click();
+    }
   },
 
   //Upon user clicking on video from the video list, tells the model to change the current video
@@ -26,7 +34,7 @@ var AppView = Backbone.View.extend({
     this.model.setCurrentVideo(clickedVideoId);
   },
 
-  //Displays the list of five videos to the side.
+  //Displays the list of videos to the side.
   renderVideoList: function () {
     //Clears out anything currently in the video list
     this.$(".video-list").html('')
@@ -49,7 +57,6 @@ var AppView = Backbone.View.extend({
   },
 
   //Load 5 new videos upon user scrolling to the bottom of the page
-  //TODO: Youtube Api only allows a max of 50 videos in a search. Update so that it won't try to load anymore once the videos collection has a length of 50.
   checkIfAtBottomOfPage: function (context) {
     return function (event) {
       if($(window).scrollTop() + $(window).height() + 10 >= $(document).height()) {
@@ -58,9 +65,12 @@ var AppView = Backbone.View.extend({
         context.model.get("videos").searchVideos(searchTerm, newNumberOfResultsToDisplay)
       }
     }
+  },
 
+  //Toggles the d-none class (bootstrap for display: none) to reveal the div stating "End of Search Results" upon user reaching the max number of 50 videos in the search.
+  toggleEndOfResultsDiv: function () {
+    this.$(".end-of-results").toggleClass('d-none', !this.model.get("endOfResults"))
   }
-
   
 
 

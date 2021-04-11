@@ -15,7 +15,7 @@ var VideoModel = Backbone.Model.extend({
     var hasSeenBefore = localStorage.getItem(videoId) ? true: false;
     return {
       id: videoId,
-      title: response.snippet.title,
+      title: he.decode(response.snippet.title),
       description: response.snippet.description,
       thumbnailUrl: response.snippet.thumbnails.default.url,
       videoUrl: `https://www.youtube.com/embed/${videoId}`,

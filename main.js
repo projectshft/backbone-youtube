@@ -187,5 +187,5 @@ var sampleData = {
     }
   ]
 }
-//When line below is uncommented it loads page with the hard coded sample data (do not have uncommented if the initial search line is uncommented as well???)
-appModel.loadData(sampleData);
+//When line below is uncommented it loads page with the hard coded sample data (In order to work properly, remember to comment out the initial default search in the AppModel initialize function when needed).
+// appModel.loadData(sampleData);
