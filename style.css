@@ -1,0 +1,24 @@
+h1 {
+  margin: 20px auto;
+  text-align: center;
+};
+
+.main-videos {
+  display: block;
+}
+
+.show {
+  display: block;
+} 
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+} 
