@@ -2,10 +2,9 @@ var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideoCollection(),
-
       current_video: null,
-
-      show_video: false
+      show_video: false,
+      searchQuery: 'dogs'
     };
   },
 
@@ -14,10 +13,8 @@ var AppModel = Backbone.Model.extend({
   },
 
   updateCurrentVideo: function (id) {
-    // id = parseInt(id);
     var allVideos = this.get('videos');
     var currentVideo = allVideos.findWhere({ id: id });
     this.set('current_video', currentVideo);
   },
-
 });
