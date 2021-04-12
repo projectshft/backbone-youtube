@@ -1,6 +1,6 @@
 var VideoCollection = Backbone.Collection.extend({
   url: function () {
-    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyAp1Q1wbdCDZGAdXBGDnHlomPLPV2s98tM&q=' + appModel.attributes.searchQuery
+    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyBSrRAvBkcFpsMUPTnM9EmITdLf_gG_9CI&q=' + appModel.attributes.searchQuery
   },
 
   model: VideoModel,

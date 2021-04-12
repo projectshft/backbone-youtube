@@ -38,7 +38,6 @@
       <div class="col-md-8 offset-md-2">
         <div class="flex-container">
           <div class="flex-child main-videos show">
-            <div></div>
           </div>
           <div class="flex-child video-list show">
             <div class="video-screen"></div>
@@ -61,12 +60,12 @@
 
   <script id="main-video-template" type="text/x-handlebars-template">
     <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{id}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{id}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
     </div>
     <hr />
     <div class="content-container">
-      <h5 class="main-video-name">{{ name }}</h5>
-      <h6 class="main-video-description">{{ description }}</h6>
+      <h5> {{ name }}</h5>
+      <h6> {{ description }}</h6>
       </div>
   </script>
 
