@@ -1,0 +1,79 @@
+.example {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+form.example input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 40%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  background: lightslategrey;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  height: 47px;
+}
+
+form.example button:hover {
+  background: blue;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.main-vid {
+  width: 560px;
+  height: 315px;
+  margin-top: 50px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.thumbnail-container img:hover {
+  max-width: 400px;
+  max-height: 220px;
+}
+
+.thumbnail-container img {
+  max-width: 380px;
+  max-height: 200px;
+  cursor: grab;
+}
+
+.thumbnail-container {
+  width: 350px;
+  margin: 0;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  margin-right: 50px;
+  display: block;
+}
+.title {
+  margin-bottom: 20px;
+}
+
+.main-video {
+  float: left;
+  display: block;
+}
+
+.video-container {
+  display: flex;
+}
