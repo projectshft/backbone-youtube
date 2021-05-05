@@ -1,3 +1,4 @@
+
 var apiKey = 'AIzaSyCXJ4dabPUSUUVCbFRMWJP59dgxIU28pOM';
 
 //https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=SEARCH_TERM_HERE&type=video&videoEmbeddable=true&key=YOUR_API_KEY_HERE
@@ -185,16 +186,28 @@ var sampleData = {
   ]
 }
 
+var VideoModel = Backbone.Model.extend({
+  defaults: {
+    videoId: '',
+    title: '',
+    description: '',
+    thumbnails: '',
+  },
+});
 
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideosCollection(),
-      defaultTerm: 'dogs',
-      searchTerm: '',
+      searchTerm: 'dogs',
       currentVideo: null,
       apiKey: 'AIzaSyCXJ4dabPUSUUVCbFRMWJP59dgxIU28pOM'
     };
+  },
+
+  updateSearch (search) {
+    this.set('searchTerm', search); 
+    this.get('videos').makeFetch(this.get('searchTerm'), this.get('apiKey')); 
   },
 
   updateCurrentVideo: function (videoId) {
@@ -205,22 +218,16 @@ var AppModel = Backbone.Model.extend({
   }
 });
 
-var VideoModel = Backbone.Model.extend({
-  defaults: {
-    videoId: '',
-    title: '',
-    description: '',
-    thumbnails: '',
-  },
-});
-
 var VideosCollection = Backbone.Collection.extend({
-  url: function () {
-    var searchTerm = appModel.attributes.searchTerm; 
-    var apiKey = appModel.attributes.apiKey;
-    return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + searchTerm+ '&type=video&videoEmbeddable=true&key=' + apiKey
-  },
+  url:  '',
+
   model: VideoModel,
+
+  makeFetch: function (searchTerm, apiKey) {
+    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + searchTerm + '&type=video&videoEmbeddable=true&key=' + apiKey;
+
+    this.fetch(); 
+  },
   
   parse: function(response) {
     var resVideo = response.items
@@ -270,18 +277,21 @@ var AppView = Backbone.View.extend({
     this.$mainVideo = this.$('.main-video');
     this.$sideBar = this.$('.side-bar');
     
-    this.listenTo(this.model, 'change:searchTerm', this.fetchSearch);
+    //this.listenTo(this.model, 'change:searchTerm', this.fetchSearch);
     this.listenTo(this.model.get('videos'), 'add', this.renderSideBar);
     this.listenTo(this.model, 'change:currentVideo', this.renderMainVideo);
-  },
 
-  defaultSearch: function () {
-    this.model.set('searchTerm', this.model.get('defaultTerm')); //????
+    
+    //this.model.get('videos').fetch();  
+    //console.log(this.model.get('videos')); 
+    //this.model.set('currentVideo', allVideos.at(0));
+    //renderSideBar();
+    //this.renderMainVideo(); 
   },
 
   handleSearchButtonClick: function () {
     //var items = sampleData.items
-    this.model.set('searchTerm', this.$searchTerm.val());
+    this.model.updateSearch(this.$searchTerm.val());
   },
 
   getCurrentVideoId: function (e) {
@@ -289,10 +299,6 @@ var AppView = Backbone.View.extend({
     this.model.updateCurrentVideo(clickedVideoId);
   },
   
-  fetchSearch: function () {
-    this.model.get('videos').fetch(); 
-  },
-
   renderSideBar: function (model) {
     var videoView = new VideoView ({model: model});
     this.$sideBar.append(videoView.render().el);
