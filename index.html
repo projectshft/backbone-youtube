@@ -45,14 +45,10 @@
       <div class="row videos">
         <div class="col-sm-12">
           <div class="row">
-            <div class="col-sm-5 main-video">
-              <hr />
-            </div>
+            <div class="col-sm-5 main-video"></div>
 
             <!--prob need to redo the colulm for this-->
-            <div class="col-sm-5 side-bar">
-              <hr />
-            </div>
+            <div class="col-sm-5 side-bar"></div>
           </div>
         </div>
       </div>
@@ -80,17 +76,21 @@
           {{description}}
         </p>
       </div>
+      <hr />
     </script>
 
     <script id="side-bar-template" type="text/x-handlebars-template">
       <div class="side-bar-container">
-        <img src="{{thumbnails}}" alt="" />
+        <a class="video-thumbnails" href="#" data-id={{videoId}}>
+          <img src="{{thumbnails}}" alt="" />
+        </a>
         <span>
           <h6>
             {{title}}
           </h6>
         </span>
       </div>
+      <hr />
     </script>
 
     <script src="main.js"></script>

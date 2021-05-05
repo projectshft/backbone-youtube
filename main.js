@@ -185,10 +185,7 @@ var sampleData = {
   ]
 }
 
-//Collections
-//APP
-//AppModel
-//AppView
+
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
@@ -200,12 +197,9 @@ var AppModel = Backbone.Model.extend({
     };
   },
 
-  //??????
-  updateCurrentVideo: function (video_id) {
-    video_id = parseInt(video_id);
-
+  updateCurrentVideo: function (videoId) {
     var allVideos = this.get('videos');
-    var currentVideo = allVideos.findWhere({video_id: video_id});
+    var currentVideo = allVideos.findWhere({videoId: videoId});
 
     this.set('currentVideo', currentVideo);
   }
@@ -217,9 +211,7 @@ var VideoModel = Backbone.Model.extend({
     title: '',
     description: '',
     thumbnails: '',
-    id: ''
   },
-
 });
 
 var VideosCollection = Backbone.Collection.extend({
@@ -229,12 +221,6 @@ var VideosCollection = Backbone.Collection.extend({
     return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + searchTerm+ '&type=video&videoEmbeddable=true&key=' + apiKey
   },
   model: VideoModel,
-  /*
-  initialize: function () {
-    this.on('add', function (m) {
-      m.fetch(); 
-    });
-  },*/
   
   parse: function(response) {
     var resVideo = response.items
@@ -250,9 +236,20 @@ var VideosCollection = Backbone.Collection.extend({
 });
 
 var VideoView = Backbone.View.extend({
-  className: 'current',
+  className: 'side-bar-videos',
 
   template: Handlebars.compile($('#side-bar-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON())); 
+    return this; 
+  }
+});
+
+var MainVideoView = Backbone.View.extend({
+  className: 'current-video',
+
+  template: Handlebars.compile($('#main-video-template').html()),
 
   render: function () {
     this.$el.html(this.template(this.model.toJSON())); 
@@ -265,15 +262,17 @@ var AppView = Backbone.View.extend({
 
   events: {
     'click .search-button': 'handleSearchButtonClick',
-    'click .side-bar': 'setCurrentVideo'
+    'click .video-thumbnails': 'getCurrentVideoId'
   },
 
   initialize: function () {
     this.$searchTerm = this.$('#video-search'); 
     this.$mainVideo = this.$('.main-video');
     this.$sideBar = this.$('.side-bar');
+    
     this.listenTo(this.model, 'change:searchTerm', this.fetchSearch);
     this.listenTo(this.model.get('videos'), 'add', this.renderSideBar);
+    this.listenTo(this.model, 'change:currentVideo', this.renderMainVideo);
   },
 
   defaultSearch: function () {
@@ -284,30 +283,27 @@ var AppView = Backbone.View.extend({
     //var items = sampleData.items
     this.model.set('searchTerm', this.$searchTerm.val());
   },
+
+  getCurrentVideoId: function (e) {
+    var clickedVideoId = $(e.currentTarget).data().id;
+    this.model.updateCurrentVideo(clickedVideoId);
+  },
   
   fetchSearch: function () {
     this.model.get('videos').fetch(); 
   },
 
-  setCurrentVideo: function (e) {
-    var clickedVideo = $(e.currentTarget)
-    console.log(clickedVideo)
-    //this.model.updateCurrentVideo(clickedVideo);
-  },
-
   renderSideBar: function (model) {
     var videoView = new VideoView ({model: model});
     this.$sideBar.append(videoView.render().el);
+  },
+
+  renderMainVideo: function (currentVideoModel) {
+    currentVideoModel = this.model.get('currentVideo'); 
+    var mainVideoView = new MainVideoView ({model: currentVideoModel});
+    this.$mainVideo.append(mainVideoView.render().el); 
   }
 });
-
-
-
-
-
-
-
-
 
 
 
