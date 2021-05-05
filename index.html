@@ -24,7 +24,10 @@
             <hr />
           </div>
 
-          <form class="form-inline video-form">
+          <form
+            class="form-inline video-form"
+            onsubmit="event.preventDefault();"
+          >
             <label for="search" class="sr-only">Search Label</label>
             <input
               type="text"
@@ -32,25 +35,22 @@
               id="video-search"
               placeholder="Enter video search"
             />
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary search-button">
+              Submit
+            </button>
           </form>
         </div>
       </div>
 
       <div class="row videos">
-        <div class="col-sm-11">
+        <div class="col-sm-12">
           <div class="row">
             <div class="col-sm-5 main-video">
-              <h2>test</h2>
-              <h3>test title</h3>
-              <h5>test description</h5>
               <hr />
             </div>
+
             <!--prob need to redo the colulm for this-->
             <div class="col-sm-5 side-bar">
-              <h2>test</h2>
-              <hr />
-              <h2>test</h2>
               <hr />
             </div>
           </div>
@@ -60,7 +60,15 @@
 
     <script id="main-video-template" type="text/x-handlebars-template">
       <div class="main-video-container">
-        <video src="{{main_URL}}"></video>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
       <div class="title-container">
         <p>
@@ -76,9 +84,11 @@
 
     <script id="side-bar-template" type="text/x-handlebars-template">
       <div class="side-bar-container">
-        <img src="{{side_URL}}" alt="" />
+        <img src="{{thumbnails}}" alt="" />
         <span>
-          {{title}}
+          <h6>
+            {{title}}
+          </h6>
         </span>
       </div>
     </script>
