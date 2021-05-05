@@ -1,0 +1,23 @@
+.header {
+  text-align: center;
+  margin-top: 5%;
+}
+
+#video-search {
+  width: 70%;
+  margin-right: 2%;
+  margin-left: 10%;
+}
+
+.videos {
+  margin-top: 2%;
+  margin-left: 10%;
+}
+
+.main-video {
+  margin-left: 5%;
+}
+
+.side-bar {
+  margin-left: 4%;
+}
