@@ -1,0 +1,25 @@
+h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+}
+
+#search-query {
+  width: 50vw;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+.main-video-view {
+  background: gray;
+}
+
+.video-thumbnail-view {
+  background: cadetblue;
+}

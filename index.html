@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Backbone YouTube</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Project YouTube</h1>
+        <hr/>
+      </div>
+      
+      <form class="search-form">
+        <div class="form-group">
+          <input type="text" id="search-query" class="form-control" placeholder="Please enter search term here">
+          </input>
+          <button type="button" class="btn btn-primary search">Search</button>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-9 main-video-view">MainVideoView</div>
+        <div class="col-3 video-thumbnail-view">VideoThumbnailView</div>
+      </div>
+    </div>
+
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="video col-md-4">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <h1>{{ title }}</h1>
+          <h4>{{ description }}</h4>
+      </div>
+    </script>
+
+    <script id="video-thumbnail-template" type="text/x-handlebars-template">
+      <div class="thumbnail col-md-2">
+        <img src="{{ url }}" alt="">
+        <h5>{{ title }}</h5>
+      </div>
+    </script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>
