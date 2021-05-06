@@ -12,6 +12,86 @@
     <title>Backbone YouTube</title>
   </head>
   <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <header class="text-center">
+            <h1>Project YouTube</h1>
+            <hr />
+          </header>
+
+          <form>
+            <div class="row">
+              <div class="col-md-6 offset-md-2">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Please enter search term here"
+                />
+              </div>
+              <button
+                type="button"
+                id="search-button"
+                class="btn btn-primary col-md-2"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <div class="main-video embed-responsive"></div>
+            </div>
+
+            <div class="col-md-5 offset-md-1 video-thumbnails"></div>
+          </div>
+
+          <script id="main-video-template" type="text/x-handlebars-template">
+            <iframe
+              class="embed-responsive-item"
+              src="https://www.youtube.com/embed/{{video-id}}"
+              title="YouTube
+            video player"
+              frameborder="0"
+              allow="accelerometer; autoplay;
+            clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            <hr />
+            <p class="title">
+              {{title}}
+            </p>
+            <p class="description">
+              {{description}}
+            </p>
+          </script>
+
+          <script
+            id="video-thumbnails-template"
+            type="text/x-handlebars-template"
+          >
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <img
+                  src="{{thumbnail-url}}"
+                  width="120"
+                  height="90"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="col-md-6">
+                <p class="thumbnail-title align-middle">
+                  {{title}}
+                </p>
+              </div>
+            </div>
+            <hr />
+          </script>
+        </div>
+      </div>
+    </div>
     <script src="/node_modules/jquery/dist/jquery.js"></script>
     <script src="/node_modules/handlebars/dist/handlebars.js"></script>
     <script src="/node_modules/underscore/underscore.js"></script>
