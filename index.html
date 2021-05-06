@@ -27,23 +27,27 @@
       </form>
 
       <div class="row">
-        <div class="col-9 main-video-view">MainVideoView</div>
-        <div class="col-3 video-thumbnail-view">VideoThumbnailView</div>
+        <div class="col-8 main-video-view"></div>
+        <div class="col-4 video-thumbnail-view"></div>
       </div>
     </div>
 
     <script id="main-video-template" type="text/x-handlebars-template">
-      <div class="video col-md-4">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <h1>{{ title }}</h1>
-          <h4>{{ description }}</h4>
+      <div class="video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-info">
+          <h2>{{ title }}</h2>
+          <h5>{{ description }}</h5>
+        </div>
       </div>
     </script>
 
     <script id="video-thumbnail-template" type="text/x-handlebars-template">
-      <div class="thumbnail col-md-2">
-        <img src="{{ url }}" alt="">
-        <h5>{{ title }}</h5>
+      <div class="thumbnail">
+        <img src="{{ imageUrl }}" alt="">
+        <a href="#" data-id="{{ videoId }}" class="thumbnail-click">
+          <p>{{ title }}</p>
+        </a>
       </div>
     </script>
 
