@@ -15,16 +15,12 @@ const AppView = Backbone.View.extend({
   },
   
   initialize: function () {
-    this.model.get('videos').fetch().done(() => {
+    this.model.get('videos').fetch({reset: true});
+
+    this.listenTo(this.model, 'change:featuredVideo', this.renderFeaturedVideo);
+    this.listenTo(this.model.get('videos'), 'reset', function() {
       this.renderThumbnails();
       this.setFeaturedVideo();
-      this.renderFeaturedVideo();
-      
-      this.listenTo(this.model, 'change:featuredVideo', this.renderFeaturedVideo);
-      this.listenTo(this.model.get('videos'), 'reset', function() {
-        this.renderThumbnails();
-        this.setFeaturedVideo();
-      });
     });
   },
   
