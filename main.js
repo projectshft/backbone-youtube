@@ -6,8 +6,6 @@ AppView = Backbone.View.extend({
     'click .thumbnail-click': 'handleThumbnailClick'
   },
 
-  mainVideoViewer: null,
-
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', function() {
       this.renderVideos();
@@ -35,14 +33,12 @@ AppView = Backbone.View.extend({
   },
 
   renderMainVideo: function () {
-    if (this.mainVideoViewer) {
-      this.mainVideoViewer.remove();
-    }
+    this.$('.main-video-view').empty();
 
     var currentVideo = this.model.get('main_video');
-    this.mainVideoViewer = new MainVideoView({ model: currentVideo });
+    var mainVideoViewer = new MainVideoView({ model: currentVideo });
     
-    this.$('.main-video-view').append(this.mainVideoViewer.render().el);
+    this.$('.main-video-view').append(mainVideoViewer.render().el);
   },
 
   renderVideo: function (video) {
@@ -52,7 +48,7 @@ AppView = Backbone.View.extend({
 
   renderVideos: function () {
     this.$('.video-thumbnail-view').empty();
-    
+
     this.model.get('videos').each(function (video) {
       this.renderVideo(video);
     }, this);
