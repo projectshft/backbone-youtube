@@ -18,6 +18,23 @@
   margin-left: 3%;
 }
 
+.description-container {
+  font-size: 15px;
+}
+
 .side-bar {
   margin-left: 4%;
+}
+
+.side-bar img {
+  padding-right: 10px;
+}
+
+.videos div {
+  width: 90%;
+  word-wrap: break-word;
+}
+
+.thumbnail-title {
+  font-size: 12px;
 }

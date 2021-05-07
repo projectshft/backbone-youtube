@@ -1,8 +1,4 @@
-
-var apiKey = 'AIzaSyCXJ4dabPUSUUVCbFRMWJP59dgxIU28pOM';
-var apiKey2 ='AIzaSyDuLOmcG7dtogQ77TibHExIFa9j7yE4TDI'; 
-var apiKey3 = 'AIzaSyD6V5RSwk9iwF5--_1P_1BwM5P_fr9UPac'; 
-
+//var apiKey = 'AIzaSyCXJ4dabPUSUUVCbFRMWJP59dgxIU28pOM';
 var VideoModel = Backbone.Model.extend({
   defaults: {
     videoId: '',
@@ -18,11 +14,10 @@ var AppModel = Backbone.Model.extend({
       videos: new VideosCollection(),
       searchTerm: '',
       currentVideo: null,
-      apiKey: 'AIzaSyD6V5RSwk9iwF5--_1P_1BwM5P_fr9UPac',
+      apiKey: 'AIzaSyCXJ4dabPUSUUVCbFRMWJP59dgxIU28pOM',
     };
   },
 
-  
   initialize: function () {
     this.set('searchTerm', 'alex honnold'); //default
   }, 
@@ -68,7 +63,8 @@ var VideosCollection = Backbone.Collection.extend({
   },
 
   defaultVideo: function () {
-    return this.at(0); 
+    var randomVideo = Math.floor(Math.random() * this.length);
+    return this.at(randomVideo); 
   }
 });
 
@@ -76,10 +72,6 @@ var VideoView = Backbone.View.extend({
   className: 'side-bar-videos',
 
   template: Handlebars.compile($('#side-bar-template').html()),
-
-  initialize: function () {
-    this.$sideBar = this.$('.side-bar')
-  },
 
   render: function () {
     this.$el.html(this.template(this.model.toJSON())); 
@@ -114,14 +106,17 @@ var AppView = Backbone.View.extend({
     
     this.listenTo(this.model, 'change:searchTerm', this.model.updateSearch());
     this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
-    this.listenTo(this.model.get('videos'), 'update', this.renderMainVideo )
+    this.listenTo(this.model.get('videos'), 'update', this.renderMainVideo);
     this.listenTo(this.model, 'change:currentVideo', this.renderCurrentVideo);
   },
 
   handleSearchButtonClick: function () {
-    this.renderPage();
-    this.model.set('searchTerm', this.$searchTerm.val()); 
-    this.model.updateSearch(); 
+    if(this.$searchTerm.val()) {
+      this.$sideBar.html('');
+      this.$mainVideo.html('');
+      this.model.set('searchTerm', this.$searchTerm.val()); 
+      this.model.updateSearch(); 
+    };
   },
 
   getCurrentVideoId: function (e) {
@@ -129,11 +124,6 @@ var AppView = Backbone.View.extend({
     this.model.updateCurrentVideo(clickedVideoId);
   },
 
-  renderPage: function () {
-    this.$sideBar.empty();
-    this.$mainVideo.empty();
-  },
-  
   renderVideos: function (sideBar) { 
     var videoView = new VideoView ({model: sideBar});
     this.$sideBar.append(videoView.render().el);
@@ -146,15 +136,12 @@ var AppView = Backbone.View.extend({
   }, 
 
   renderCurrentVideo: function (currentVideoModel) { 
-    this.$mainVideo.empty();
+    this.$mainVideo.html('');
     currentVideoModel = this.model.get('currentVideo'); 
     var mainVideoView = new MainVideoView ({model: currentVideoModel});
     this.$mainVideo.append(mainVideoView.render().el); 
   },
-
 });
-
-
 
 //instances
 var appModel = new AppModel();
