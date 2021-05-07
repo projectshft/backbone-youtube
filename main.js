@@ -1,30 +1,62 @@
 const AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
-      videos: new VideosCollection()
+      videos: new VideosCollection(),
+      featuredVideo: null
     }
   }
 });
 
 const AppView = Backbone.View.extend({
   el: $('body'),
-
+  
   events: {
-    'click #search-button': 'searchForVideos'
+    'click #search-button': 'searchForVideos',
   },
-
+  
   initialize: function () {
-    
+    this.model.get('videos').fetch().done(() => {
+      this.renderThumbnails();
+      this.setFeaturedVideo();
+      this.renderFeaturedVideo();
+      
+      this.listenTo(this.model, 'change:featuredVideo', this.renderFeaturedVideo);
+      this.listenTo(this.model.get('videos'), 'reset', function() {
+        this.renderThumbnails();
+        this.setFeaturedVideo();
+      });
+    });
   },
-
+  
+  renderFeaturedVideo: function () {
+    const featuredVideo = new VideoView({model: this.model.get('featuredVideo')});
+    
+    this.$('.main-video').empty().append(featuredVideo.render().el);
+  },
+  
+  setFeaturedVideo: function () {
+    const videos = this.model.get('videos')
+    this.model.set('featuredVideo', videos.models[0]);
+  },
+  
   searchForVideos: function () {
-    console.log('clicked search for videos!!!!')
+    const searchTerm = $('.search-term').val();
+    this.model.get('videos').newSearch(searchTerm);
+    $('.search-term').val('');
+    
+    return false;
+  },
+  
+  renderThumbnails: function () {
+    const videos = this.model.get('videos');
+    this.$('.video-thumbnails').empty();
+
+    videos.each(function (video) {
+      const thumbnail = new ThumbnailView({model: video});
+      this.$('.video-thumbnails').append(thumbnail.render().el);
+    })
   }
 });
-
-
-
-
 
 const VideoModel = Backbone.Model.extend({
   defaults: {
@@ -37,17 +69,52 @@ const VideoModel = Backbone.Model.extend({
 
 const VideosCollection = Backbone.Collection.extend({
   model: VideoModel,
-  search: 'news',
-  url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${this.search}&type=video&videoEmbeddable=true&key=AIzaSyDulPdMaK8Q1sFl0KGnuI56grpQdEjH46M`,
+  url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=news-bloopers&type=video&videoEmbeddable=true&key=AIzaSyDulPdMaK8Q1sFl0KGnuI56grpQdEjH46M`,
 
-  parse: function (video) {
-    const title = video
-  };
+  newSearch: function (searchTerm) {
+    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchTerm}&type=video&videoEmbeddable=true&key=AIzaSyDulPdMaK8Q1sFl0KGnuI56grpQdEjH46M`;
+
+    this.fetch({reset: true});
+  },
+
+  parse: function (searchResult) {
+    return searchResult.items.map(video => {
+      return {
+        title: video.snippet.title,
+        description: video.snippet.description,
+        thumbnail_url: video.snippet.thumbnails.default.url,
+        videoId: video.id.videoId
+      }
+    })
+  }
 });
 
-
 const VideoView = Backbone.View.extend({
+  template: Handlebars.compile($('#main-video-template').html()),
+  
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+    
+    return this;
+  }
+});
 
+const ThumbnailView = Backbone.View.extend({
+  events: {
+    'click .thumbnail': 'changeFeaturedVideo'
+  },
+  
+  changeFeaturedVideo: function () {
+    appModel.set('featuredVideo', this.model)
+  },
+  
+  template: Handlebars.compile($('#video-thumbnails-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+    
+    return this;
+  }
 });
 
 const appModel = new AppModel();
