@@ -11,6 +11,7 @@ AppView = Backbone.View.extend({
       this.renderVideos();
       this.updateMainVideo();
     });
+    
     this.listenTo(this.model, 'change:main_video', function () {
       this.renderMainVideo();
     });
@@ -18,18 +19,21 @@ AppView = Backbone.View.extend({
 
   handleSearchClick: function () {
     var searchQuery = this.$('#search-query').val();
-    this.model.set('search_query', searchQuery);
+
+    this.model.updateSearchQuery(searchQuery);
   },
 
   handleThumbnailClick: function (event) {
     var videoId = event.currentTarget.getAttribute('data-id');
     var videoToMain = this.model.get('videos').findWhere({videoId:videoId});
-    this.model.set('main_video', videoToMain);
+
+    this.model.updateMainVideo(videoToMain);
   },
 
   updateMainVideo: function () {
     var mainVideoView = this.model.get('videos').at(0);
-    this.model.set('main_video', mainVideoView);
+
+    this.model.updateMainVideo(mainVideoView);
   },
 
   renderMainVideo: function () {
@@ -43,6 +47,7 @@ AppView = Backbone.View.extend({
 
   renderVideo: function (video) {
     var videoView = new VideoView({ model: video });
+
     this.$('.video-thumbnail-view').append(videoView.render().el);
   },
 
@@ -99,6 +104,14 @@ var AppModel = Backbone.Model.extend({
 
   updateUrl: function() {
     this.get('videos').updateUrl(this.get('search_query'));
+  },
+
+  updateSearchQuery: function (searchQuery) {
+    this.set('search_query', searchQuery);
+  },
+
+  updateMainVideo: function (mainVideo) {
+    this.set('main_video', mainVideo);
   }
 });
 
