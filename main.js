@@ -21,6 +21,8 @@ AppView = Backbone.View.extend({
     var searchQuery = this.$('#search-query').val();
 
     this.model.updateSearchQuery(searchQuery);
+
+    this.$('#search-query').val('');
   },
 
   handleThumbnailClick: function (event) {
