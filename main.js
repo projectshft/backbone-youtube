@@ -11,7 +11,7 @@ AppView = Backbone.View.extend({
       this.renderVideos();
       this.updateMainVideo();
     });
-    
+
     this.listenTo(this.model, 'change:main_video', function () {
       this.renderMainVideo();
     });
@@ -127,12 +127,12 @@ var VideoModel = Backbone.Model.extend({
 });
 
 var VideoCollection = Backbone.Collection.extend({
-  model: VideoModel, 
+  model: VideoModel,
 
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=otters&type=video&videoEmbeddable=true&key=AIzaSyAUJEMAKZlaYKYnPyPo_IsXlpFXgBKmpzU',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=otters&type=video&videoEmbeddable=true&key=AIzaSyCOM9jNQ7zNmFDe7KPa3xoZ1KKCRrOp9oA',
 
   updateUrl: function (appModel) {
-    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + appModel + '&type=video&videoEmbeddable=true&key=AIzaSyAUJEMAKZlaYKYnPyPo_IsXlpFXgBKmpzU';
+    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + appModel + '&type=video&videoEmbeddable=true&key=AIzaSyCOM9jNQ7zNmFDe7KPa3xoZ1KKCRrOp9oA';
 
     this.fetch({ reset: true });
   },
