@@ -3,7 +3,8 @@ AppView = Backbone.View.extend({
 
   events: {
     'click .search': 'handleSearchClick',
-    'click .thumbnail-click': 'handleThumbnailClick'
+    'click .thumbnail-click': 'handleThumbnailClick',
+    'keyup #search-query': 'handleEnterKeyPress'
   },
 
   initialize: function () {
@@ -30,6 +31,12 @@ AppView = Backbone.View.extend({
     var videoToMain = this.model.get('videos').findWhere({videoId:videoId});
 
     this.model.updateMainVideo(videoToMain);
+  },
+
+  handleEnterKeyPress: function (e) {
+    if(e.which === 13 && this.$('#search-query').val()) {
+        this.$('.search').click();
+    }
   },
 
   updateMainVideo: function () {
