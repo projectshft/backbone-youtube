@@ -140,8 +140,8 @@ var VideoCollection = Backbone.Collection.extend({
   parse: function (response) {
     return response.items.map(function (video) {
       return {
-        title: video.snippet.title,
-        description: video.snippet.description,
+        title: $('<textarea />').html(video.snippet.title).text(),
+        description: $('<textarea />').html(video.snippet.description).text(),
         videoId: video.id.videoId,
         imageUrl: video.snippet.thumbnails.default.url
       }
