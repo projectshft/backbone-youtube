@@ -1,0 +1,54 @@
+.page-header h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.video-results {
+  display: flex;
+  justify-content: center;
+  flex-flow: row;
+}
+
+.thumbnail-click {
+  display: flex;
+  flex-direction: row wrap;
+  padding-top: 10px;
+  align-items: center;
+}
+
+.thumbnail img {
+  padding-right: 10px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+}
+
+#search-query {
+  width: 50vw;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 995px) {
+  .video-results {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .video-thumbnail-view {
+    display: flex;
+    flex-direction: row wrap;
+  }
+
+  .thumbnail-click {
+    flex-flow: column wrap;
+  }
+
+  .main-video-view {
+    display: flex;
+  }
+}
