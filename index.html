@@ -43,10 +43,10 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-12">
+      <div class="row app-videos">
+        <div class="col-sm-12 app-videos">
           <div class="row videos">
-            <div class="col-sm-5 main-video"></div>
+            <div class="col-sm-6 main"></div>
             <div class="col-sm-4 side-bar"></div>
           </div>
         </div>
@@ -56,14 +56,16 @@
     <script id="main-video-template" type="text/x-handlebars-template">
       <div class="main-video-container">
         <iframe
+          id="main-video-player"
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/{{videoId}}"
+          src="https://www.youtube.com/embed/{{videoId}}?autoplay=1"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        ></iframe>
+        >
+        </iframe>
       </div>
       <div class="title-container">
         <p>
@@ -81,15 +83,17 @@
     </script>
 
     <script id="side-bar-template" type="text/x-handlebars-template">
-      <div
-        class="side-bar-container d-flex justify-content-end align-items-center"
+      <div class="side-bar-container d-flex justify-content-end align-items-center" {{#if viewed}}viewed{{/if}}
       >
         <a class="video-thumbnails" href="#" data-id={{videoId}}>
           <img src="{{thumbnails}}" alt="" />
         </a>
-        <span class="thumbnail-title">
+        <p class="thumbnail-title">
           {{title}}
-        </span>
+        </>
+        {{#if viewed}}
+          <p class="previously-viewed"> <i><strong>Viewed</strong></i></p>
+        {{/if}}
       </div>
       <hr />
     </script>
