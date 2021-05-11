@@ -4,7 +4,6 @@ var VideoModel = Backbone.Model.extend({
     title: '',
     description: '',
     thumbnails: '',
-    viewed: false
   },
 });
 
@@ -14,13 +13,13 @@ var AppModel = Backbone.Model.extend({
       videos: new VideosCollection(),
       searchTerm: '',
       currentVideo: null,
-      apiKey: 'AIzaSyD6V5RSwk9iwF5--_1P_1BwM5P_fr9UPac',
+      apiKey: 'AIzaSyCXJ4dabPUSUUVCbFRMWJP59dgxIU28pOM',
     };
   },
 
   initialize: function () {
     //default search
-    this.set('searchTerm', 'alex honnold'); 
+    this.set('searchTerm', 'babies laughing at dogs'); 
     this.updateSearch(); 
   }, 
 
@@ -34,12 +33,6 @@ var AppModel = Backbone.Model.extend({
 
     this.set('currentVideo', currentVideo);
   },
-
-  setLocalStorage: function (videoId) {
-     //local storage key value based on videoId and URL
-    var videoURL = 'https://www.youtube.com/embed/' + videoId
-    localStorage.setItem(videoId, videoURL); 
-  }
 });
 
 var VideosCollection = Backbone.Collection.extend({
@@ -57,14 +50,11 @@ var VideosCollection = Backbone.Collection.extend({
     var resVideo = response.items;
 
     return resVideo.map(function (video) {
-      var localId = video.id.videoId; 
       return {
         videoId: video.id.videoId,
         title: video.snippet.title,
         description: video.snippet.description,
-        thumbnails: video.snippet.thumbnails.default.url,
-        //if localId is stored in local storage, url will populate. if not, will be null. if value present, will kick off if condition in handlebars template
-        viewed: localStorage.getItem(localId) 
+        thumbnails: video.snippet.thumbnails.default.url, 
       }
     });
   },
@@ -94,7 +84,7 @@ var MainVideoView = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template(this.model.toJSON())); 
     return this; 
-  }
+  },
 });
 
 var AppView = Backbone.View.extend({
@@ -130,10 +120,6 @@ var AppView = Backbone.View.extend({
     
     //Changes current video 
     this.model.updateCurrentVideo(clickedVideoId);
-
-    //Autoplay of clicked thumbnail video and sets videoId to local storage 
-    //Couldn't figure out how to click the video in the iframe on the default search, so you have to click a thumbnail or make a new search for it to kick off the autoplay. I couldn't figure out the youtube iframe API. Ideally, I would set some sort of condition that a viewed video was either played until the end or for a set length of time. 
-    this.model.setLocalStorage(clickedVideoId); 
   },
 
   renderVideos: function (sideBar) { 
@@ -141,16 +127,17 @@ var AppView = Backbone.View.extend({
     this.$sideBar.append(videoView.render().el);
   },
 
+  
   renderMainVideo: function () {
     var mainVideo = this.model.get('videos').defaultVideo(); 
     var mainVideoView = new MainVideoView ({model: mainVideo});
     this.$mainVideo.append(mainVideoView.render().el); 
   }, 
 
-  renderCurrentVideo: function (currentVideoModel) { 
+  renderCurrentVideo: function () { 
     this.$mainVideo.empty(); 
     //renders main video based on current video in appModel
-    currentVideoModel = this.model.get('currentVideo'); 
+    var currentVideoModel = this.model.get('currentVideo'); 
     var mainVideoView = new MainVideoView ({model: currentVideoModel});
     this.$mainVideo.append(mainVideoView.render().el); 
   },
