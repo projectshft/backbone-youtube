@@ -57,7 +57,13 @@
       type="text/x-handlebars-template"
     >
       <div>
-        Template Text {{ id }}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div>
+        {{ videoTitle }}
+      </div>
+      <div>
+        {{ videoDesc }}
       </div>
     </script>
 
@@ -66,13 +72,10 @@
       id="five-display-template"
       type="text/x-handlebars-template"
     >
-      <ul>
-        <li class="one-of-the-five">
-            <!-- just leave off {{ desc }} this time through-->
-          </div>
-        </li>
-      </ul>
-      <div class="five-display">
+      <div>
+        HOT DAMN - IT'S THE FIVE-DISPLAY!
+        <img  src="{{ videoThumbnail }}">
+        {{ videoTitle }}
       </div>
     </script>
 
