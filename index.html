@@ -53,10 +53,10 @@
 
     <!-- handlebars template for main single video display on the left -->
     <script
-      id="main-display-template"
+      class="main-display-template"
       type="text/x-handlebars-template"
     >
-      <div>
+      <div class='main-spot'>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div>
@@ -72,7 +72,7 @@
       id="five-display-template"
       type="text/x-handlebars-template"
     >
-      <div>
+      <div class='five-spot'>
         HOT DAMN - IT'S THE FIVE-DISPLAY!
         <img  src="{{ videoThumbnail }}">
         {{ videoTitle }}
