@@ -1,41 +1,51 @@
-var searchValue = $('#video-search').val();
-$('.search').on('click', function () {
-  console.log(searchValue)
-});
-
 // MODELS & COLLECTIONS
 
+// model for all video data
 var VideoModel = Backbone.Model.extend({
   defaults: {
     videoId: '',
     title: '',
     description: '',
     thumbnail: '',
-    currentlyPlaying: true
+    currentlyPlaying: false
   },
 
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + this.$('#video-search').val().replace(' ', '-') + '&type=video&videoEmbeddable=true&key=AIzaSyA4DBa5TF_PnRTeye0oJXyhMy_jkEF3KtI',
+  initialize: function () {
+    $('.search').on('click', function() {
+      var searchInput = $('#video-search').val();
+      return searchInput
+      })
+  },
+
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + searchInput + '&type=video&videoEmbeddable=true&key=AIzaSyA4DBa5TF_PnRTeye0oJXyhMy_jkEF3KtI',
 
   parse: function (response) {
-    return {
-      videoId: response.items.id.videoId,
-      title: response.items.snippet.title,
-      description: response.items.snippet.description,
-      thumbnail: response.items.snippet.thumbnails.default.url
+    var videoArray = response.items;
+
+    for (i=0; i<videoArray.length; i++) {
+        console.log ({
+          videoId: videoArray[i].id.videoId,
+          title: videoArray[i].snippet.title,
+          description: videoArray[i].snippet.description,
+          thumbnail: videoArray[i].snippet.thumbnails.default.url
+        })
+      }
     }
-  }
 });
+
+// holds data about the video search results
 
 var VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
 
   initialize: function () {
-    this.on('add', function (model) {
-      model.fetch();
+    $('.search').on('click', function (model) {
+      videoModel.fetch()
     });
   }
 });
 
+//overall model for the entire page/app
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
@@ -49,8 +59,11 @@ var videoModel = new VideoModel();
 
 // VIEWS
 
+// view for main video that is currently playing
 var MainVideoView = Backbone.View.extend({
-  //className: 'main-video',
+  el: $('.app-container'),
+
+  template: Handlebars.compile($('.main-video').html()),
 
   events: {
     'click .search': 'handleSearchClick',
@@ -58,15 +71,14 @@ var MainVideoView = Backbone.View.extend({
   },
 
   handleSearchClick: function () {
-    console.log('Clicked search.')
+    console.log('MainVideoView clicked search.')
+
+
   },
   
-  renderMain: function () {
-
-  }
 });
 
-// View of each listing for the 5 video search results
+// View of listings w/thumbnails for the 5 video search results
 var VideoListingView = Backbone.View.extend({
   className: 'video-listing',
 
