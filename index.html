@@ -46,10 +46,8 @@
     <!-- 2 columns, one with main on the left, five options on right -->
     <div class="container"><div class="row">
       <div class="col main-display">
-        left column
       </div>
       <div class="col five-display">
-        right column
       </div>
     </div>
 
@@ -58,7 +56,8 @@
       id="main-display-template"
       type="text/x-handlebars-template"
     >
-      <div class="main-display">
+      <div>
+        Template Text {{ id }}
       </div>
     </script>
 
@@ -69,7 +68,6 @@
     >
       <ul>
         <li class="one-of-the-five">
-          <div class="main-display">
             <!-- just leave off {{ desc }} this time through-->
           </div>
         </li>

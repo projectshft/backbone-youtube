@@ -1,13 +1,26 @@
 // Videos collection - add API fetch here 
 var VideosCollection = Backbone.Collection.extend({
+  url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=cercle&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE",
 
+  model: VideoModel,
+
+  addVideo: function (name, style, abv, image_url) {
+    this.create(
+      {
+        id: id,
+        videoUrl: videoUrl,
+        videoTitle: videoTitle,
+        videoDesc: videoDesc
+      }
+    );
+  },
 });
 
 // Video model (clicked video)
 var VideoModel = Backbone.Model.extend({
   defaults: function () {
     return {
-      id: "",
+      id: "435",
       videoUrl: "",
       videoTitle: "",
       videoDesc: ""
@@ -37,12 +50,37 @@ var VideoView = Backbone.View.extend({
 
 // App Model - make new Videos collection here and tie it to DOM element
 var AppModel = Backbone.Model.extend({
+  defaults: function () {
+    return {
+      models: new VideosCollection(),
 
+      current_viedo: null,
+    };
+  }
 });
 
 // App View
 var AppView = Backbone.View.extend({
+  el: $("body"),
 
+  events: {
+    "click .search": "newSearch",
+  },
+
+  createBeer: function () {
+    this.model
+      .get("beers")
+      .addBeer(
+        this.$("#name-input").val(),
+        this.$("#style-input").val(),
+        this.$("#abv-input").val(),
+        this.$("#img-input").val()
+      );
+  },
+
+  newSearch: function () {
+    alert("click!"); // this works!
+  },
 });
 
 
