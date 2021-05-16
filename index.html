@@ -44,7 +44,9 @@
     </div>
 
     <!-- 2 columns, one with main on the left, five options on right -->
-    <div class="container"><div class="row">
+    <div class="container">
+      <hr>
+      <div class="row">
       <div class="col main-display">
       </div>
       <div class="col five-display">
@@ -53,7 +55,7 @@
 
     <!-- handlebars template for main single video display on the left -->
     <script
-      class="main-display-template"
+      id="main-display-template"
       type="text/x-handlebars-template"
     >
       <div class='main-spot'>
@@ -73,7 +75,6 @@
       type="text/x-handlebars-template"
     >
       <div class='five-spot'>
-        HOT DAMN - IT'S THE FIVE-DISPLAY!
         <img  src="{{ videoThumbnail }}">
         {{ videoTitle }}
       </div>
