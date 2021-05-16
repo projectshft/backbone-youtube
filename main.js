@@ -11,7 +11,9 @@ var VideoModel = Backbone.Model.extend({
 
 // Videos collection - add API fetch here
 var VideosCollection = Backbone.Collection.extend({
-  url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=cercle&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE",
+  url: function() {
+    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + this.queryVal + "&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE"},
+  // url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=cercle&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE",
 
   model: VideoModel,
 
@@ -34,7 +36,7 @@ var VideosCollection = Backbone.Collection.extend({
 });
 
 var AppModel = Backbone.Model.extend({
-  defaults: function () {
+  defaults: function (queryVal) {
     return {
       videos: new VideosCollection};
   }
@@ -52,6 +54,18 @@ var VideoView = Backbone.View.extend({
   },
 });
 
+var MainVideoView = Backbone.View.extend({
+  className: 'mainVideo',
+
+  template: Handlebars.compile($('#main-display-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
+})
+
 var AppView = Backbone.View.extend({
   el: $("body"),
 
@@ -62,9 +76,11 @@ var AppView = Backbone.View.extend({
   initialize: function () {
     this.$search = this.$('#search');
     this.listenTo(this.model.get('videos'), 'change', this.renderVideo);
+    this.listenTo(this.model.get("videos"), "change", this.renderMainVideo);
 
     this.$mainspot = this.$('.five-spot');
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
+    this.listenTo(this.model.get("videos"), "reset", this.renderMainVideo);
     
     this.renderVideos;
   },
@@ -88,8 +104,15 @@ var AppView = Backbone.View.extend({
       this.renderVideo(v);
     }, this);
   },
+
+  renderMainVideo: function (model) {
+    var mainVideoView = new MainVideoView({ model: model.at(0) });
+
+    this.$(".main-display").append(mainVideoView.render().el);
+  }
 });
 
+var queryVal = 'cercle';
 var appModel = new AppModel();
 var appView = new AppView ({ model: appModel });
 
