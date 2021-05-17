@@ -1,7 +1,19 @@
 var VideoView = Backbone.View.extend({
-  className: 'video',
+  className: 'current_video',
 
-  template: Handlebars.compile($('#current-video-temlate').html()),
+  template: Handlebars.compile($('#current-video-template').html()),
+  
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
+});
+
+var VideosView = Backbone.View.extend({
+  className: 'video_list',
+
+  template: Handlebars.compile($('#video-list-template').html()),
   
   render: function () {
     this.$el.html(this.template(this.model.toJSON()));
@@ -15,8 +27,8 @@ var VideoModel = Backbone.Model.extend({
     return {
       title: '',
       description: '',
-      video_id: '',
-      query: ''
+      videoId: '',
+      image_url: '',
     }
   },
 
@@ -27,7 +39,8 @@ var VideoModel = Backbone.Model.extend({
     return {
       title: response.items[0].snippet.title,
       description: response.items[0].snippet.description,
-      video_id: response.items[0].id.videoID
+      videoId: response.items[0].id.videoID,
+      image_url: response.items[0].snippet.thumbnails.default.url
     }
   }
 });
@@ -59,9 +72,10 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.$searchInput = this.$('#search-query');
-    this.$videos = this.$('videos');
+    this.$video = this.$('video');
+    this.$videos = this.$('.videos');
 
-    this.listenTo(this.model.get('videos'), 'change', this.renderVideo);
+    this.listenTo(this.model.get('video'), 'change', this.renderVideo);
   },
 
   handleSearchClick: function() {
@@ -73,6 +87,14 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideo: function (model) {
+    console.log(model);
+
+    var videoView = new VideoView ({ model: model });
+
+    this.$video.append(videoView.render().el);
+  },
+
+  renderVideos: function (model) {
     console.log(model);
 
     var videoView = new VideoView ({ model: model });

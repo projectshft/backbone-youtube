@@ -39,35 +39,32 @@
       </div>
     </div>
 
-    <script id="iframeTemplate" type="text/html">
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/{{video_id}}"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      ></iframe>
-    </script>
-
     <script id="current-video-template" type="text/x-handlebars-template">
-      <div class="video-container">
-
-      </div>
+      <div class="current-video-container">
+        <script id="iframeTemplate" type="text/html">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/{{video_id}}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          ></iframe>
+        </div>
       <div class="content-container">
-        <h6>{{title}}</h6>
+        <p><strong>{{title}}</strong></p>
         <p>{{description}}</p>
       </div>
     </script>
 
-    <script id="video-list-temlate" type="text/x-handlebars-template">
-      <div class="img-container">
-        <img src="{{image_url}}" />
+    <script id="video-list-template" type="text/x-handlebars-template">
+      <div class="video-list-container">
+        <a class="video-image" href="#" data-id={{videoId}}>
+          <img src="{{image_url}}" alt="" />
+        </a>
       </div>
       <div class="list-content-container">
-        <a class="view-beer" href="#" data-id="{" id }>
-          <p class="beer-name">{{name}}</p></a>
-        <p>{{style}} - {{abv}}% ABV</p>
+        <p><strong>{{title}}</strong></p>
       </div>
     </script>
 
