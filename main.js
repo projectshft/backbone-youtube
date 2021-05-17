@@ -1,5 +1,6 @@
+// This isn't complete, as you'll quickly see. I was wondering if you'd be willing to give me feedback on what I have to see if I'm going in the right direction?
 
-// The main thing I've gotten stuck on is that I'm not sure how (or where) to connect the model with the collection so that the collection updates when the model updates. Also, unsure about how/where to plug in the search query into the URL.
+// The main thing I've gotten stuck on is that I'm not sure how (or where) to connect the model with the collection so that the collection updates when the model updates. Also, unsure about how/where to plug in the search query into the URL (it works if a search term is hard-coded but not using the jquery I currently have plugged in).
 
 // MODELS & COLLECTIONS
 
