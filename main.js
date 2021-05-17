@@ -11,9 +11,7 @@ var VideoModel = Backbone.Model.extend({
 
 // Videos collection - add API fetch here
 var VideosCollection = Backbone.Collection.extend({
-  url: function() {
-    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + this.queryVal + "&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE"},
-  // url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=cercle&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE",
+  url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=cercle&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE",
 
   model: VideoModel,
 
@@ -36,9 +34,10 @@ var VideosCollection = Backbone.Collection.extend({
 });
 
 var AppModel = Backbone.Model.extend({
-  defaults: function (queryVal) {
+  defaults: function () {
     return {
-      videos: new VideosCollection};
+      videos: new VideosCollection,
+    };
   }
 });
 
@@ -71,6 +70,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     "click .search": "newSearch", 
+    "click .five-display": "newMain"
   },
   
   initialize: function () {
@@ -86,10 +86,11 @@ var AppView = Backbone.View.extend({
   },
 
   newSearch: function () {
-    var topic = this.$search.val();
+    var topic = this.$('.topic').val();
 
-    this.model.get('videos').add({
-      topic: topic
+    this.model.set({
+      url:
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + topic + "&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE"
     });
   },
 
@@ -105,14 +106,25 @@ var AppView = Backbone.View.extend({
     }, this);
   },
 
-  renderMainVideo: function (model) {
-    var mainVideoView = new MainVideoView({ model: model.at(0) });
+  renderMainVideo: function (model, vidNum) {
+    if (isNaN(vidNum)) {
+      vidNum = 0;
+    }
+
+    var mainVideoView = new MainVideoView({ model: model.at(vidNum) });
 
     this.$(".main-display").append(mainVideoView.render().el);
+  },
+
+  newMain: function (e) {
+    console.log($(e.currentTarget).attr);
+    
+    newNum = $(e.currentTarget).data().id;
+
+    this.renderMainVideo(this.model, newNum);
   }
 });
 
-var queryVal = 'cercle';
 var appModel = new AppModel();
 var appView = new AppView ({ model: appModel });
 
