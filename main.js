@@ -1,3 +1,6 @@
+
+// The main thing I've gotten stuck on is that I'm not sure how (or where) to connect the model with the collection so that the collection updates when the model updates. Also, unsure about how/where to plug in the search query into the URL.
+
 // MODELS & COLLECTIONS
 
 // model for all video data
@@ -10,30 +13,23 @@ var VideoModel = Backbone.Model.extend({
     currentlyPlaying: false
   },
 
-  initialize: function () {
-    $('.search').on('click', function() {
-      var searchInput = $('#video-search').val();
-      return searchInput
-      })
-  },
-
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + searchInput + '&type=video&videoEmbeddable=true&key=AIzaSyA4DBa5TF_PnRTeye0oJXyhMy_jkEF3KtI',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + $('#video-search').val().replace(' ', '-') + '&type=video&videoEmbeddable=true&key=AIzaSyA4DBa5TF_PnRTeye0oJXyhMy_jkEF3KtI',
 
   parse: function (response) {
     var videoArray = response.items;
 
     for (i=0; i<videoArray.length; i++) {
-        console.log ({
+        console.log({
           videoId: videoArray[i].id.videoId,
           title: videoArray[i].snippet.title,
           description: videoArray[i].snippet.description,
           thumbnail: videoArray[i].snippet.thumbnails.default.url
-        })
-      }
+        });
     }
+  }
 });
 
-// holds data about the video search results
+// holds data from the video search results
 
 var VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
@@ -66,15 +62,23 @@ var MainVideoView = Backbone.View.extend({
   template: Handlebars.compile($('.main-video').html()),
 
   events: {
-    'click .search': 'handleSearchClick',
+    'click .search': 'updateMainVideo',
     'click .video-previews': 'handleVideoClick'
   },
 
-  handleSearchClick: function () {
-    console.log('MainVideoView clicked search.')
-
-
+  updateMainVideo: function () {
+    // updates the main/currently playing video
   },
+
+  handleVideoClick: function () {
+    // changes the clicked video to the main video
+  }
+
+  renderMainVideo: function (model) {
+    var mainVideoView = new MainVideoView({ model: model });
+
+    this.$('.main-video').append(mainVideoView.render().el);
+  }
   
 });
 
@@ -82,9 +86,22 @@ var MainVideoView = Backbone.View.extend({
 var VideoListingView = Backbone.View.extend({
   className: 'video-listing',
 
-  render: function () {
+  template: Handlebars.compile($('.video-listing').html()),
 
+  events: {
+    'click .search': 'updateVideoListing',
+  },
+
+  updateVideoListing: function () {
+    // updates listing of thumbnails when search button is clicked
   }
+
+  renderListing: function (model) {
+    var videoListingView = new VideoListingView({ model: model });
+
+    this.$('.video-listing').append(videoListingView.render().el);
+  }
+
 });
 
 var mainVideoView = new MainVideoView({ model: videoModel });
