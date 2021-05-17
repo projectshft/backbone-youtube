@@ -39,20 +39,23 @@
       </div>
     </div>
 
-    <script id="current-video-temlate" type="text/x-handlebars-template">
+    <script id="iframeTemplate" type="text/html">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/{{video_id}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
+    </script>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
       <div class="video-container">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/{{video_id}}"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        ></iframe>
+
       </div>
       <div class="content-container">
-        <a class="view-video" href="#" data-id="{" id }>
-          <p class="video-name">{{title}}</p></a>
+        <h6>{{title}}</h6>
         <p>{{description}}</p>
       </div>
     </script>

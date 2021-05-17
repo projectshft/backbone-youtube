@@ -1,3 +1,15 @@
+var VideoView = Backbone.View.extend({
+  className: 'video',
+
+  template: Handlebars.compile($('#current-video-temlate').html()),
+  
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  }
+});
+
 var VideoModel = Backbone.Model.extend({
   defaults: function () {
     return {
@@ -47,6 +59,9 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.$searchInput = this.$('#search-query');
+    this.$videos = this.$('videos');
+
+    this.listenTo(this.model.get('videos'), 'change', this.renderVideo);
   },
 
   handleSearchClick: function() {
@@ -55,6 +70,14 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').add({
       query: query
     });
+  },
+
+  renderVideo: function (model) {
+    console.log(model);
+
+    var videoView = new VideoView ({ model: model });
+
+    this.$videos.append(videoView.render().el);
   }
 });
 
