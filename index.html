@@ -74,9 +74,9 @@
       id="five-display-template"
       type="text/x-handlebars-template"
     >
-      <div class='five-spot'>
-        <img  src="{{ videoThumbnail }}">
-        {{ videoTitle }}
+      <div class='five-spot' data-id="{{ videoId }}">
+        <a><img src="{{ videoThumbnail }}" >
+        {{ videoTitle }}</a>
       </div>
     </script>
 

@@ -92,6 +92,8 @@ var AppView = Backbone.View.extend({
       url:
         "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + topic + "&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE"
     });
+
+    // listen to change of model should notice new url and run render functions
   },
 
   renderVideo: function (model) {
@@ -109,7 +111,7 @@ var AppView = Backbone.View.extend({
   renderMainVideo: function (model, vidNum) {
     if (isNaN(vidNum)) {
       vidNum = 0;
-    }
+    } 
 
     var mainVideoView = new MainVideoView({ model: model.at(vidNum) });
 
@@ -117,11 +119,12 @@ var AppView = Backbone.View.extend({
   },
 
   newMain: function (e) {
-    console.log($(e.currentTarget).attr);
-    
-    newNum = $(e.currentTarget).data().id;
+    // why doesn't this selector retrieve anything?
+    newId = $(e.currentTarget).data().id;
+    //console.log($(e.currentTarget))
 
-    this.renderMainVideo(this.model, newNum);
+    //newNum = this.model.findWhere({id: newId})
+    //this.renderMainVideo(this.model, newNum);
   }
 });
 
