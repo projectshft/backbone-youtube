@@ -81,7 +81,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     "click .search": "newSearch", 
-    "click .five-display": "newMain"
+    "click .click-here": "newMain"
   },
   
   initialize: function () {
@@ -115,23 +115,24 @@ var AppView = Backbone.View.extend({
     }, this);
   },
 
-  renderMainVideo: function (model, vidNum) {
-    if (isNaN(vidNum)) {
-      vidNum = 0;
-    } 
-
-    var mainVideoView = new MainVideoView({ model: model.at(vidNum) });
+  renderMainVideo: function (model, vidId) {
+    // if no videos have been clicked, take the first
+    if (!vidId.length) {
+      var mainVideoView = new MainVideoView({ model: model.at(0) });
+    } else {
+      var whereItsAt = this.model.get('videos').findWhere({ videoId: vidId });
+      
+      var mainVideoView = new MainVideoView({ 
+        model: whereItsAt });
+    }
 
     this.$(".main-display").append(mainVideoView.render().el);
   },
 
   newMain: function (e) {
-    // why doesn't this selector retrieve anything?
     newId = $(e.currentTarget).data().id;
-    //console.log($(e.currentTarget))
 
-    //newNum = this.model.findWhere({id: newId})
-    //this.renderMainVideo(this.model, newNum);
+    this.renderMainVideo(this.model, newId);
   }
 });
 
