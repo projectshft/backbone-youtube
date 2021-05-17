@@ -122,6 +122,11 @@ var AppView = Backbone.View.extend({
     } else {
       var whereItsAt = this.model.get('videos').findWhere({ videoId: vidId });
       
+      if (mainVideoView) {
+        this.mainVideoView.remove();
+        console.log('here');
+      }
+
       var mainVideoView = new MainVideoView({ 
         model: whereItsAt });
     }
