@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Yerkie's Youtube</title>
+  </head>
+
+  <body>
+    <div class="container app-container">
+      <div class="row justify-content-center">
+        <div class="col-md-10 offset-md-1">
+          <div class="header">
+            <h1>Yerkie's Youtube</h1>
+            <hr />
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-6 offset-2">
+            <input
+              type="text"
+              id="search-query"
+              class="form-control"
+              placeholder="Enter search keyword here."
+            />
+          </div>
+
+          <div class="col">
+            <button type="button" class="btn btn-primary search">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <div class="current-video-container">
+        <script id="iframeTemplate" type="text/html">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/{{video_id}}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          ></iframe>
+        </div>
+      <div class="content-container">
+        <p><strong>{{title}}</strong></p>
+        <p>{{description}}</p>
+      </div>
+    </script>
+
+    <script id="video-list-template" type="text/x-handlebars-template">
+      <div class="video-list-container">
+        <a class="video-image" href="#" data-id={{videoId}}>
+          <img src="{{image_url}}" alt="" />
+        </a>
+      </div>
+      <div class="list-content-container">
+        <p><strong>{{title}}</strong></p>
+      </div>
+    </script>
+
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="./node_modules/underscore/underscore.js"></script>
+    <script src="./node_modules/backbone/backbone.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
