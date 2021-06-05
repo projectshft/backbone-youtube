@@ -81,7 +81,7 @@ var AppView = Backbone.View.extend({
 
   events: {
     "click .search": "newSearch", 
-    "click .click-here": "newMain"
+    "click .video-select": "newMain"
   },
   
   initialize: function () {
@@ -131,6 +131,7 @@ var AppView = Backbone.View.extend({
         model: whereItsAt });
     }
 
+    // USE CREATE OR SOMETHING ELSE INSTEAD OF APPEND
     this.$(".main-display").append(mainVideoView.render().el);
   },
 
