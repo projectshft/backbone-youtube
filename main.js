@@ -11,18 +11,9 @@ var VideoModel = Backbone.Model.extend({
 
 // Videos collection - add API fetch here
 var VideosCollection = Backbone.Collection.extend({ 
-  url: function (topic) {
-    console.log(topic);
-    if (!topic) {
+  url: function () {
       return "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=cercle&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE";
-    } else {
-      return (
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" +
-        topic +
-        "cercle&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE"
-      );
-    }
-  },
+    },
 
   model: VideoModel,
 
@@ -48,8 +39,19 @@ var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideosCollection(),
+
+      currentVideo: null,
     };
-  }
+  },
+
+  // v2 newMain should merely update the AppModel with a new current_video. Then the AppView can listen for a change on current_video and then call renderMainVideo.
+  updateMainVideo: function (id) {
+    var allVideos = this.get("videos");
+
+    var currentVid = allVideos.findWhere({ videoId: id });
+
+    this.set("currentVideo", currentVid);
+  },
 });
 
 var VideoView = Backbone.View.extend({
@@ -79,6 +81,7 @@ var MainVideoView = Backbone.View.extend({
 var AppView = Backbone.View.extend({
   el: $("body"),
 
+  // v2 changed .click-here to .video-select and updated html accordingly
   events: {
     "click .search": "newSearch", 
     "click .video-select": "newMain"
@@ -86,14 +89,20 @@ var AppView = Backbone.View.extend({
   
   initialize: function () {
     this.$search = this.$('#search');
-    this.listenTo(this.model.get('videos'), 'change', this.renderVideo);
-    this.listenTo(this.model.get("videos"), "change", this.renderMainVideo);
+    // v2 refactor
+    this.listenTo(this.model.get("videos"), "change", function () {
+      this.renderVideo();
+      this.renderMainVideo();
+    });
 
     this.$mainspot = this.$('.five-spot');
-    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
-    this.listenTo(this.model.get("videos"), "reset", this.renderMainVideo);
-    
-    this.renderVideos;
+    // v2 refactor
+    this.listenTo(this.model.get('videos'), 'reset', function () {
+      this.renderVideos();
+      this.renderMainVideo();
+    });
+
+    this.listenTo(this.model, 'change:currentVideo', this.renderMainVideo);
   },
 
   newSearch: function () {
@@ -115,30 +124,26 @@ var AppView = Backbone.View.extend({
     }, this);
   },
 
-  renderMainVideo: function (model, vidId) {
-    // if no videos have been clicked, take the first
-    if (!vidId.length) {
-      var mainVideoView = new MainVideoView({ model: model.at(0) });
-    } else {
-      var whereItsAt = this.model.get('videos').findWhere({ videoId: vidId });
-      
-      if (mainVideoView) {
-        this.mainVideoView.remove();
-        console.log('here');
-      }
-
-      var mainVideoView = new MainVideoView({ 
-        model: whereItsAt });
+  renderMainVideo: function () {
+    if (this.mainVideoView) {
+      this.mainVideoView.remove();
     }
 
-    // USE CREATE OR SOMETHING ELSE INSTEAD OF APPEND
-    this.$(".main-display").append(mainVideoView.render().el);
+    this.mainVideoView = new MainVideoView({
+      model: this.model.get("currentVideo"),
+    });
+
+    console.log(this.mainVideoView);
+
+    this.$(".main-display").html(this.mainVideoView.render().el);
   },
 
   newMain: function (e) {
-    newId = $(e.currentTarget).data().id;
-
-    this.renderMainVideo(this.model, newId);
+    // v2 added var
+    var newId = $(e.currentTarget).data().id;
+  
+    // v2 newMain should merely update the AppModel with a new current_video. Then the AppView can listen for a change on current_video and then call renderMainVideo.
+    this.model.updateMainVideo(newId);
   }
 });
 
