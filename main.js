@@ -49,7 +49,7 @@ var AppModel = Backbone.Model.extend({
     var allVideos = this.get("videos");
 
     var currentVid = allVideos.findWhere({ videoId: id });
-
+    
     this.set("currentVideo", currentVid);
   },
 });
@@ -103,11 +103,14 @@ var AppView = Backbone.View.extend({
     });
 
     this.listenTo(this.model, 'change:currentVideo', this.renderMainVideo);
+
+    this.renderMainVideo;
   },
 
   newSearch: function () {
     var inputTopic = this.$('.topic').val();
 
+    // v2 fix what is set
     this.model.set({topic: inputTopic});
     // listen to change of model should notice new url and run render functions
   },
@@ -133,7 +136,10 @@ var AppView = Backbone.View.extend({
       model: this.model.get("currentVideo"),
     });
 
-    console.log(this.mainVideoView);
+    // v2 added: set the first video to load if prev 3 lines of code pull a null model
+    if(!this.mainVideoView.model){
+      this.model.updateMainVideo("9wbZEPrFd10");
+    }
 
     this.$(".main-display").html(this.mainVideoView.render().el);
   },
