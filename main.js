@@ -58,8 +58,8 @@ var AppModel = Backbone.Model.extend({
   updateUrl: function (topic) {
     var newString =
       "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + topic + "&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE";
-    var topic = this.set("currentUrl", newString);
-    console.log(this);
+    
+    this.set("currentUrl", newString);
   }
 });
 
@@ -122,17 +122,10 @@ var AppView = Backbone.View.extend({
     var inputTopic = this.$('.topic').val();
 
     // v2 fix what is set
-    this.model.updateUrl({topic: inputTopic});
+    this.model.updateUrl(inputTopic);
     // listen to change of model should notice new url and run render functions
 
     // maybe new model from collection using currentUrl?
-
-
-
-
-
-
-    
   },
 
   renderVideo: function (model) {
