@@ -124,6 +124,15 @@ var AppView = Backbone.View.extend({
     // v2 fix what is set
     this.model.updateUrl({topic: inputTopic});
     // listen to change of model should notice new url and run render functions
+
+    // maybe new model from collection using currentUrl?
+
+
+
+
+
+
+    
   },
 
   renderVideo: function (model) {
