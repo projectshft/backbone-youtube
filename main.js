@@ -41,6 +41,8 @@ var AppModel = Backbone.Model.extend({
       videos: new VideosCollection(),
 
       currentVideo: null,
+
+      currentUrl: null,
     };
   },
 
@@ -52,6 +54,13 @@ var AppModel = Backbone.Model.extend({
     
     this.set("currentVideo", currentVid);
   },
+
+  updateUrl: function (topic) {
+    var newString =
+      "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + topic + "&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE";
+    var topic = this.set("currentUrl", newString);
+    console.log(this);
+  }
 });
 
 var VideoView = Backbone.View.extend({
@@ -88,7 +97,7 @@ var AppView = Backbone.View.extend({
   },
   
   initialize: function () {
-    this.$search = this.$('#search');
+    //this.$search = this.$('#search');
     // v2 refactor
     this.listenTo(this.model.get("videos"), "change", function () {
       this.renderVideo();
@@ -103,6 +112,8 @@ var AppView = Backbone.View.extend({
     });
 
     this.listenTo(this.model, 'change:currentVideo', this.renderMainVideo);
+    this.listenTo(this.model, 'change:currentUrl', this.renderMainVideo);
+    this.listenTo(this.model, 'change:currentUrl', this.renderVideos);
 
     this.renderMainVideo;
   },
@@ -111,7 +122,7 @@ var AppView = Backbone.View.extend({
     var inputTopic = this.$('.topic').val();
 
     // v2 fix what is set
-    this.model.set({topic: inputTopic});
+    this.model.updateUrl({topic: inputTopic});
     // listen to change of model should notice new url and run render functions
   },
 
