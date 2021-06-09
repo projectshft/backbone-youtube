@@ -40,11 +40,21 @@ var AppModel = Backbone.Model.extend({
     };
   },
 
+  // v2 move initialize for model from view to model
+  initialize: function () {
+    this.listenTo(this.get('videos'), 'reset', this.updateMainVideo);
+  },
+
   // v2 newMain should merely update the AppModel with a new current_video. Then the AppView can listen for a change on current_video and then call renderMainVideo.
   updateMainVideo: function (id) {
     var allVideos = this.get("videos");
 
-    var currentVid = allVideos.findWhere({ videoId: id });
+    // if none selected (new reset of search or page open/refresh), select the first
+    var CurrentVid = null;
+    if (typeof id !== 'object') {
+      currentVid = allVideos.findWhere({ videoId: id });
+    } else
+      currentVid = allVideos.at(0);
     
     this.set("currentVideo", currentVid);
   },
@@ -128,7 +138,7 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideos: function () {
-    // v2 removed to not keep appending 5 videos on top every time there's a reset 
+    // v2 added .empty() to not keep appending 5 videos on top every time there's a reset 
     this.$('.five-display').empty();
 
     this.model.get('videos').each(function (v) {
@@ -145,11 +155,7 @@ var AppView = Backbone.View.extend({
       model: this.model.get("currentVideo"),
     });
 
-    // v2 added: set the first video to load if prev 3 lines of code pull a null model
-    if(!this.mainVideoView.model){
-      this.model.updateMainVideo("9wbZEPrFd10");
-    }
-
+    // v2 changed append to html
     this.$(".main-display").html(this.mainVideoView.render().el);
   },
 
