@@ -17,11 +17,7 @@ var VideosCollection = Backbone.Collection.extend({
 
   model: VideoModel,
 
-  initialize: function () {
-    this.on("add", function (model) {
-      model.fetch();
-    });
-  },
+  // v2 remove useless initialize
   
   parse: function (response) {
     return response.items.map(function (x) {
@@ -40,9 +36,7 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideosCollection(),
 
-      currentVideo: null,
-
-      currentUrl: null,
+      currentVideo: null
     };
   },
 
@@ -59,7 +53,11 @@ var AppModel = Backbone.Model.extend({
     var newString =
       "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=" + topic + "&type=video&videoEmbeddable=true&key=AIzaSyCjo4u-wcr_ExFNPxiYlWZP3LLr-ythijE";
     
-    this.set("currentUrl", newString);
+    // apply new url to the collection to re-fetch with
+    this.get('videos').url = newString;
+
+    // force fetch with new url
+    this.get('videos').fetch({ reset: true });
   }
 });
 
@@ -112,8 +110,6 @@ var AppView = Backbone.View.extend({
     });
 
     this.listenTo(this.model, 'change:currentVideo', this.renderMainVideo);
-    this.listenTo(this.model, 'change:currentUrl', this.renderMainVideo);
-    this.listenTo(this.model, 'change:currentUrl', this.renderVideos);
 
     this.renderMainVideo;
   },
@@ -123,9 +119,6 @@ var AppView = Backbone.View.extend({
 
     // v2 fix what is set
     this.model.updateUrl(inputTopic);
-    // listen to change of model should notice new url and run render functions
-
-    // maybe new model from collection using currentUrl?
   },
 
   renderVideo: function (model) {
@@ -135,6 +128,9 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideos: function () {
+    // v2 removed to not keep appending 5 videos on top every time there's a reset 
+    this.$('.five-display').empty();
+
     this.model.get('videos').each(function (v) {
       this.renderVideo(v);
     }, this);
