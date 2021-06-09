@@ -1,0 +1,27 @@
+{
+  "name": "beerreviews",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "bootstrap": "^5.0.1",
+    "handlebars": "^4.7.7",
+    "jquery": "^3.6.0",
+    "underscore": "^1.13.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlsoDanPiston/backbone-youtube.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlsoDanPiston/backbone-youtube/issues"
+  },
+  "homepage": "https://github.com/AlsoDanPiston/backbone-youtube#readme",
+  "description": ""
+}
