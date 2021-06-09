@@ -105,23 +105,12 @@ var AppView = Backbone.View.extend({
   },
   
   initialize: function () {
-    //this.$search = this.$('#search');
-    // v2 refactor
-    this.listenTo(this.model.get("videos"), "change", function () {
-      this.renderVideo();
-      this.renderMainVideo();
-    });
+    // v2 remove unused code
 
-    this.$mainspot = this.$('.five-spot');
-    // v2 refactor
-    this.listenTo(this.model.get('videos'), 'reset', function () {
-      this.renderVideos();
-      this.renderMainVideo();
-    });
+    // v2 clean up
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
 
     this.listenTo(this.model, 'change:currentVideo', this.renderMainVideo);
-
-    this.renderMainVideo;
   },
 
   newSearch: function () {
