@@ -19,7 +19,7 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-sm-8 offset-sm-2">
           <div class="header">
             <h1>Project Youtube</h1>
             <hr />
@@ -31,11 +31,12 @@
               <button type="button" class="btn btn-primary search">Search</button>
             </div>
           </form>
-          <div class="videos row col-md-4">
-          </div>
-          <div class="playlist row col-md-2">
-          </div>
-          
+          <div class="row">
+            <div class="videos col-md-5 col-offset-2">
+            </div>
+            <div class="playlist col-md-5">
+            </div>
+        </div>
         </div>
       </div>
     </div>
@@ -50,8 +51,12 @@
     </script>
 
     <script id="playlist-template" type="text/x-handlebars-template">
-      <div class="playlist container">
-        <div>{{ title }}</div>
+      <div class="container">
+        <div>
+          <a class="video-title" data-id="{{videoId}}" href="#">
+            {{ title }}
+          </a>
+        </div>
         <img src="{{thumbnailUrl}}" alt="">
         <hr>
       </div>

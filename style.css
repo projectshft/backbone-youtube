@@ -18,6 +18,10 @@ h1 {
   margin-right: 10px;
 }
 
-.video {
+/* .video {
   text-align: center;
+} */
+
+.playlist {
+  float: right;
 }
