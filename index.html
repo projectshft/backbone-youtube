@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backbone Youtube</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 offset-md-1 page-header">
+          <h1>Project YouTube</h1>
+        </div>
+      </div>
+      <div class="row search-bar">
+        <div class="col-md-8 offset-md-1">
+          <form class="search-form">
+              <input type="text" id="search-query" class="form-control" placeholder="Search videos here!"></input>
+          </form>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-primary search">Search!</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 video"></div>
+        <div class="col-md-4 video-list"></div>
+      </div>
+    </div>
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <iframe width="750" height="375" src="https://www.youtube.com/embed/{{videoId}}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <hr />
+      <p class="title">
+        {{title}}
+      </p>
+      <p class="description">
+        {{description}}
+      </p>
+    </script>
+    <script id="video-thumbnail-template" type="text/x-handlebars-template">
+      <div class="row">
+        <div class="col-md-6 thumbnail">
+          <img src="{{thumbnail}}" width="120" height="90" alt=""/>
+        </div>
+        <div class="col-md-6">
+          <p>{{title}}</p>
+        </div>
+        <hr />
+      </div>
+    </script>
+
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="./node_modules/underscore/underscore-min.js"></script>
+    <script src="./node_modules/backbone/backbone-min.js"></script>
+    <script src="config.js"></script>
+    <script src="models/appModel.js"></script>
+    <script src="models/videoModel.js"></script>
+    <script src="collections/videoCollection.js"></script>
+    <script src="views/appView.js"></script>
+    <script src="views/mainVideoView.js"></script>
+    <script src="views/thumbnailView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
