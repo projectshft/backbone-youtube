@@ -3,11 +3,11 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', this.renderPage)
+    this.listenTo(this.model, 'change:mainVideo', this.renderMainVideo)
   },
 
   events: {
     'click .search': 'search',
-    'click .thumbnail': 'setMainVideo'
   },
 
   search: function () {
@@ -18,9 +18,8 @@ var AppView = Backbone.View.extend({
   renderPage: function () {
     var videos = this.model.get('videos')
     this.model.set('mainVideo', videos.models[0]);
-    var mainVideo = new MainVideoView({model: this.model.get('mainVideo')});
-
-    this.$('.video').empty().append(mainVideo.render().el);
+    
+    this.renderMainVideo();
 
     videos.each(function (video) {
       var thumbnailVideos = new ThumbnailViews({model:video});
@@ -28,7 +27,8 @@ var AppView = Backbone.View.extend({
     })    
   },
 
-  setMainVideo: function () {
-    
+  renderMainVideo: function () {
+    var targetVideo = new MainVideoView({model: this.model.get('mainVideo')});
+    this.$('.video').empty().append(targetVideo.render().el);
   }
 });
