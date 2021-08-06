@@ -2,6 +2,8 @@ var AppView = Backbone.View.extend({
   el: $('.container'),
 
   initialize: function () {
+    this.model.get('videos').fetch({reset: true});
+    
     this.listenTo(this.model.get('videos'), 'reset', this.renderPage)
     this.listenTo(this.model, 'change:mainVideo', this.renderMainVideo)
   },

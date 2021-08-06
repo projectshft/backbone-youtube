@@ -1,5 +1,5 @@
 var VideoCollection = Backbone.Collection.extend({
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=searchQuery&type=video&videoEmbeddable=true&key=',
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=brian-david-gilbert&type=video&videoEmbeddable=true&key=' + apiKey,
 
   model: VideoModel,
 
@@ -15,7 +15,7 @@ var VideoCollection = Backbone.Collection.extend({
   },
   
   searchYoutube: function (searchQuery) {
-    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + searchQuery + '&type=video&videoEmbeddable=true&key=' +apiKey;
+    this.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + searchQuery + '&type=video&videoEmbeddable=true&key=' + apiKey;
     this.fetch({reset: true})
   }
 })
