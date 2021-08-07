@@ -45,6 +45,9 @@
           </form>
         </div>
       </div>
+
+      <div class="mainVideo"></div>
+
       <div class="row five-videos">
         <div class="col-sm-12 five-videos">
           <div class="row videos">
@@ -55,9 +58,47 @@
       </div>
     </div>
 
-    <iframe src="https://www.youtube.com/embed/xjhuhNKz70s">
+    <script id="mainvideo-template" type="text/x-handlebars-template">
+      <!-- <div class="mainVideo"> -->
+      <iframe
+        src="https://www.youtube.com/embed/{{mainVideoInfo.id.videoId}}"
+      ></iframe>
+      <h2>Title: {{mainVideoInfo.snippet.title}}</h2>
+      <h3>Description: {{mainVideoInfo.snippet.description}}</h3>
+      <!-- </div> -->
+    </script>
 
-<!-- <iframe src="https://www.youtube.com/embed/${id}" /> -->
+    <!-- <script id="sidevideo-template" type="text/x-handlebars-template">
+      <div class="sideVideo">
+        <img src="https://www.youtube.com/embed/{{}}" />
+        <div>Summary: {{summary}}</div>
+      </div>
+    </script> -->
+
+    <script id="fivevideo-template" type="text/x-handlebars-template">
+      <div class="sideVideo">
+        <img src="{{items[1].snippet.thumbnails.default.url}}" />
+        <div>Summary: {{items[1].snippet.description}}</div>
+      </div>
+      <div class="sideVideo">
+        <img src="https://www.youtube.com/embed/{{videoID}}" />
+        <div>Summary: {{summary}}</div>
+      </div>
+      <div class="sideVideo">
+        <img src="https://www.youtube.com/embed/{{videoID}}" />
+        <div>Summary: {{summary}}</div>
+      </div>
+      <div class="sideVideo">
+        <img src="https://www.youtube.com/embed/{{videoID}}" />
+        <div>Summary: {{summary}}</div>
+      </div>
+      <div class="sideVideo">
+        <img src="https://www.youtube.com/embed/{{videoID}}" />
+        <div>Summary: {{summary}}</div>
+      </div>
+    </script>
+
+    <!-- <iframe src="https://www.youtube.com/embed/${id}" /> -->
 
     <script src="main.js" async defer></script>
   </body>
