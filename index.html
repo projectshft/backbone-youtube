@@ -45,25 +45,22 @@
 
     <script id="big-video-col-template" type="text/x-handlebars-template">
       <div class="row">
-
+        <p>{{thumbnailUrl}}</p>
+        <img class="big-vid" src="{{thumbnailUrl}}" />
       </div>
     </script>
 
     <script id="small-video-col-template" type="text/x-handlebars-template">
       <div class="row">
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <img class="small-vid" src="{{thumbnailUrl}}" />
+      </div>
     </script>
 
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
-    <script src="views/VideoView.js"></script>
+    <script src="views/BigVideoView.js"></script>
+    <script src="views/SmallVideoView.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
   </body>

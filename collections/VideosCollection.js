@@ -1,12 +1,15 @@
 var VideosCollection = Backbone.Collection.extend({
+
+  url: 'https://new-beers.herokuapp.com/beers',
   model: VideoModel,
 
-  addVideo: function (id, title, desc, thumb) {
-    this.add({
-      id: id,
-      title: title,
-      description: desc,
-      thumbnailUrl: thumb
-    });
+  parse: function (response) {
+    return response.map(function (vid) {
+      return {
+        title: vid.name,
+        description: vid.style,
+        thumbnailUrl: vid.image_url///add ID
+      }
+    })
   }
 });
