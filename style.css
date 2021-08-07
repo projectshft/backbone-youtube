@@ -1,0 +1,30 @@
+.header {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.form-row {
+  text-align: center;
+}
+
+input::placeholder {
+  font-style: italic;
+}
+
+.videos-row {
+  text-align: center;
+}
+
+.big-vid {
+  height: 300px;
+  width: 450px;
+}
+
+.small-vid {
+  height: 125px;
+  width: 200px;
+}
+
+ul {
+  list-style-type: none;
+}

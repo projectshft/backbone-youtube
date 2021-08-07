@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backbone YouTube</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1 class="header">Project YouTube</h1>
+          <hr />
+          <div class="row form-row">
+            <div class="col-10">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Please enter search term here"
+              />
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="row videos-row">
+          <div class="col big-video-col"></div>
+          <div class="col small-video-col"></div>
+        </div>
+      </div>
+    </div>
+
+    <script id="big-video-col-template" type="text/x-handlebars-template">
+      <div class="row">
+
+      </div>
+    </script>
+
+    <script id="small-video-col-template" type="text/x-handlebars-template">
+      <div class="row">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+    </script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
