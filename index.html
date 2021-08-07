@@ -3,9 +3,7 @@
   <head>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
     />
     
     <meta charset="UTF-8" />
@@ -61,7 +59,31 @@
         </div>
       </div>
     </div>
-    <!-- handlebar template(s) -->
+    <!-- <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="img-container">
+        <img src="{{thumbnail_url}}" />
+      </div>
+      <div class="content-container">
+        <a class="view-main-video" href="#" data-id="{{_id}}">
+          <p class="video-title">{{name}}</p>
+        </a>
+        <input class="beer-name edit-mode" value="{{name}}" />
+        <p>{{style}} - {{abv}}% ABV</p>
+      </div>
+    </script> -->
+     <!-- <script id="panel-video-template" type="text/x-handlebars-template">
+      <div class="img-container">
+        <img src="{{thumbnail_url}}" />
+      </div>
+      <div class="content-container">
+        <a class="view-panel-video" href="#" data-id="{{_id}}">
+          <p class="video-title">{{name}}</p>
+        </a>
+        <input class="beer-name edit-mode" value="{{name}}" />
+        <p>{{style}} - {{abv}}% ABV</p>
+      </div>
+    </script> -->
+    
 
     <script src=".node_modules/jquery/dist/jquery.js"></script>
     <script src=".node_modules/backbone/backbone.js"></script>
