@@ -16,7 +16,14 @@ var AppView = Backbone.View.extend({
   searchVideos: function () {
     var query = this.$('#search-query').val();
     this.model.get('videos').setUrl(query);
-    this.model.get('videos').fetch({reset: true});
+
+    var self = this;
+
+    this.model.get('videos').fetch({reset: true}).done(function() {
+      
+      var firstVidId = self.model.get('videos').first().get('id');
+      self.model.setCurrentVideo(firstVidId);
+    });
   },
 
   setVideo: function (e) {
@@ -29,11 +36,14 @@ var AppView = Backbone.View.extend({
     
     this.videoView = new VideoView({ model: this.model.get('currentVideo')});
 
-    this.$('.videos').append(this.videoView.render().el);
+    this.$('.video').append(this.videoView.render().el);
   },
 
   renderVideoList: function () {
     this.$('.video-list').empty();
+
+    if (this.model.get('currentVideo'))
+      this.renderCurrentVideo();
 
     this.model.get('videos').each(function (vid) {
       this.listView = new VideoListView({ model: vid});
