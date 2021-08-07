@@ -38,6 +38,9 @@
 
         <div class="videos">     
         </div>
+
+        <div class="video-list">
+        </div>
       </div>
     </div>
 
@@ -53,10 +56,13 @@
       <hr>
       <h4><strong>{{title}}</strong></h4>
       <p>{{description}}</p>
+      <hr>
     </script>
 
     <script id="list-video-template" type="text/x-handlebars-template">
-      <img src="{{thumbnailUrl}}">
+      <a href="#" class="video-link" data-id="{{id}}">
+        <img src="{{thumbnailUrl}}">
+      </a>
       <p>{{title}}</p>
       <hr>
     </script>
