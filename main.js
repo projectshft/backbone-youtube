@@ -4,32 +4,8 @@
 //  When the above video changes, the title and description beneath the main video updates (through handlebars)
 //  When the page first loads, their is a default string of videos that loads.  The user can then change videos as desired.  Search bar empty when page loads
 
-// Steps to take
-// Create handlebars templates for the main video  --  will take video URL, video URL, and video description
-//  Create handlebars template for the side video  --  will take video URL, summary
-//  Create handlebars for five side video lists  --  will take an array of 5 side videos.  Each object will have video URL and summary
-//  Create an API call function that takes as parameter the search value (key) and returns an object that contains the main video object and an array of five side video objects
-//  For the default page, call the API function given a default search key
-//  Put API data into Backbone model
-//  Use Backbone model in the handlebar template
-//  Upon user search, get the search key from the input. Call the API function, and do handlebar and backbone as above
 
 
-/* <iframe src="https://www.youtube.com/embed/xjhuhNKz70s" />
-
-<iframe src="https://www.youtube.com/embed/${id}" /> */
-
-// `https://www.youtube.com/watch?v=${id}`
-
-// var apiKey = AIzaSyBG5b1D7dEBXFY0PgaKlMSFBcV3rNA7A8w;
-
-// GET `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${apiKey}&q=searchTerm`;
-
-// https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBG5b1D7dEBXFY0PgaKlMSFBcV3rNA7A8w&q=searchTerm
-
-// GET `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${apiKey}&id=zr64hUY6qlg,3byFiCh3z4I`;
-
-// fetch('')
 
 var renderMainVideo = function (mainVideoInfo) {
   $('.mainVideo').empty();
@@ -41,6 +17,8 @@ var renderMainVideo = function (mainVideoInfo) {
 };
 
 
+//  Below is the setup for Backbone Model and Collection
+
 // var VideoModel = Backbone.Model.extend ({
 //   defaults: {
 //     videoID: '',
@@ -49,7 +27,6 @@ var renderMainVideo = function (mainVideoInfo) {
 //     viewed: false
 //   },
 // });
-
 
 // var AppModel = Backbone.Model.extend ({
 //   defaults: function () {
@@ -290,14 +267,36 @@ $( document ).ready(function() {
 
 
 
+//  iframe data, apiKey and GET addresses are below.  Referenced elsewhere on eval
+
+/* <iframe src="https://www.youtube.com/embed/xjhuhNKz70s" />
+
+<iframe src="https://www.youtube.com/embed/${id}" /> */
+
+// `https://www.youtube.com/watch?v=${id}`
+
+// var apiKey = AIzaSyBG5b1D7dEBXFY0PgaKlMSFBcV3rNA7A8w;
+
+// GET `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${apiKey}&q=searchTerm`;
+
+// https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBG5b1D7dEBXFY0PgaKlMSFBcV3rNA7A8w&q=searchTerm
+
+// GET `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${apiKey}&id=zr64hUY6qlg,3byFiCh3z4I`;
+
+// fetch('')
 
 
 
 
-
-
-
-
+// Steps to take
+// Create handlebars templates for the main video  --  will take video URL, video URL, and video description
+//  Create handlebars template for the side video  --  will take video URL, summary
+//  Create handlebars for five side video lists  --  will take an array of 5 side videos.  Each object will have video URL and summary
+//  Create an API call function that takes as parameter the search value (key) and returns an object that contains the main video object and an array of five side video objects
+//  For the default page, call the API function given a default search key
+//  Put API data into Backbone model
+//  Use Backbone model in the handlebar template
+//  Upon user search, get the search key from the input. Call the API function, and do handlebar and backbone as above
 
 
 
