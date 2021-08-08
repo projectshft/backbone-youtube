@@ -13,17 +13,16 @@ var AppView = Backbone.View.extend({
   handleQuerySearch: function () {
     var query = this.$('input').val()
     console.log(query);
+    this.model.get('videos').updateQuery(query);
     this.model.get('videos').fetch();
   },
 
   renderBigVideo: function (video) {
-    console.log('big vid!');
     var bigVideoView = new BigVideoView({model: video});
     this.$('.big-video-col').append(bigVideoView.render().el);
   },
 
   renderSmallVideo: function (video) {
-    console.log('small vid!');
     var smallVideoView = new SmallVideoView({model: video});
     this.$('.small-video-col').append(smallVideoView.render().el);
   },
