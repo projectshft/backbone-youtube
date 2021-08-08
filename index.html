@@ -1,0 +1,78 @@
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project YouTube</title>
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="header">
+          <h1><strong>Project YouTube</strong></h1>
+          <hr/>
+        </div>
+
+        <form class="search-form" onsubmit="event.preventDefault();">
+
+          <div class="form-group">
+            <input type="text" id="search-query" class="form-control">
+            </input>
+          </div>
+
+          <button type="button" class="btn btn-primary search">Search</button>    
+        </form>
+
+        <div class="video">     
+        </div>
+
+        <div class="video-list">
+        </div>
+      </div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <iframe width="560" 
+      height="315" 
+      src="https://www.youtube.com/embed/{{id}}" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+      </iframe>
+      <hr>
+      <h4><strong>{{title}}</strong></h4>
+      <p>{{description}}</p>
+      <hr>
+    </script>
+
+    <script id="list-video-template" type="text/x-handlebars-template">
+      <a href="#" class="video-link" data-id="{{id}}">
+        <img src="{{thumbnailUrl}}">
+      </a>
+      <p>{{title}}</p>
+      <hr>
+    </script>
+
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideoCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/VideoListView.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
