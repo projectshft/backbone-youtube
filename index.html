@@ -24,14 +24,14 @@
           <h1 class="header">Project YouTube</h1>
           <hr />
           <div class="row form-row">
-            <div class="col-10">
+            <div class="col-md-10">
               <input
                 type="text"
                 class="form-control"
                 placeholder="Please enter search term here"
               />
             </div>
-            <div class="col">
+            <div class="col-md-2">
               <button type="button" class="btn btn-primary">Search</button>
             </div>
           </div>
@@ -44,11 +44,31 @@
     </div>
 
     <script id="big-video-col-template" type="text/x-handlebars-template">
-      <img class="big-vid" src="{{thumbnailUrl}}" />
+      <iframe
+        class="big-vid"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/{{id}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <hr />
+      <h6><strong>{{title}}</strong></h6>
+      <p><em>{{description}}</em></p>
     </script>
 
     <script id="small-video-col-template" type="text/x-handlebars-template">
-      <img class="small-vid" src="{{thumbnailUrl}}" />
+      <div class="row">
+        <div class="col vid-thumb">
+          <img class="small-vid" src="{{thumbnailUrl}}" />
+        </div>
+        <div class="col vid-desc">
+          <p class="vid-desc-p align-midle">{{title}}</p>
+        </div>
+        <hr />
+      </div>
     </script>
 
     <script src="models/VideoModel.js"></script>

@@ -5,6 +5,7 @@
 
 .form-row {
   text-align: center;
+  margin-bottom: 25px;
 }
 
 input::placeholder {
@@ -23,8 +24,21 @@ input::placeholder {
 .small-vid {
   height: 125px;
   width: 200px;
+  margin-bottom: 10px;
 }
 
 ul {
   list-style-type: none;
+}
+
+.big-video-col {
+  text-align: left;
+}
+
+.small-video-col {
+  text-align: left;
+}
+
+.vid-desc-p {
+  margin-top: 35px;
 }

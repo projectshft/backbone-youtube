@@ -6,13 +6,12 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model.get('videos'), 'update', this.renderBigVideos)
-    this.listenTo(this.model.get('videos'), 'update', this.renderSmallVideos)
+    this.listenTo(this.model.get('videos'), 'update', this.renderBigVideos);
+    this.listenTo(this.model.get('videos'), 'update', this.renderSmallVideos);
   },
-
+  
   handleQuerySearch: function () {
     var query = this.$('input').val()
-    console.log(query);
     this.model.get('videos').updateQuery(query);
     this.model.get('videos').fetch();
   },
