@@ -5,7 +5,7 @@ var BigVideoView = Backbone.View.extend({
   className: 'big-vid',
 
   render: function () {
-    this.$el.html(this.template(this.model.toJSON()));
+    this.$el.html(this.template(this.model.models[0].toJSON()));
     return this;
   }
 })

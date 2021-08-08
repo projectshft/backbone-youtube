@@ -6,7 +6,8 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model.get('videos'), 'update', this.renderAllVideos)
+    this.listenTo(this.model.get('videos'), 'update', this.renderBigVideo)
+    this.listenTo(this.model.get('videos'), 'update', this.renderSmallVideos)
   },
 
   handleQuerySearch: function () {
@@ -15,23 +16,19 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').fetch();
   },
 
-  renderAllVideos: function () {
-    this.renderBigVideo();
-    this.renderSmallVideos();
-  },
-
-  renderBigVideo: function () {
+  renderBigVideo: function (video) {
     console.log('big vid!');
+    var bigVideoView = new BigVideoView({model: video});
+    this.$('.big-video-col').append(bigVideoView.render().el);
   },
 
   renderSmallVideo: function (video) {
-    console.log('rendering...');
-    var smallVideoView = new SmallVideoView({model: video})
+    console.log('small vid!');
+    var smallVideoView = new SmallVideoView({model: video});
     this.$('.small-video-col').append(smallVideoView.render().el);
   },
 
   renderSmallVideos: function () {
-    console.log('RENDERING!');
     this.model.get('videos').each(function (m) {
       this.renderSmallVideo(m);
     }, this);
