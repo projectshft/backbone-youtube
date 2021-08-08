@@ -1,6 +1,6 @@
 var VideosCollection = Backbone.Collection.extend({
 
-  query: 'cats',
+  query: '',
 
   url: function () {
     return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='+this.query+'&type=video&videoEmbeddable=true&key=AIzaSyD9UEtFA4Dv9Wu8szG6bynY9KA-EthTIEg'
