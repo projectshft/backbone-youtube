@@ -6,7 +6,7 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model.get('videos'), 'update', this.renderBigVideo)
+    this.listenTo(this.model.get('videos'), 'update', this.renderBigVideos)
     this.listenTo(this.model.get('videos'), 'update', this.renderSmallVideos)
   },
 
@@ -20,6 +20,12 @@ var AppView = Backbone.View.extend({
   renderBigVideo: function (video) {
     var bigVideoView = new BigVideoView({model: video});
     this.$('.big-video-col').append(bigVideoView.render().el);
+  },
+
+  renderBigVideos: function () {
+    this.model.get('videos').each(function (m) {
+      this.renderBigVideo(m);
+    }, this);
   },
 
   renderSmallVideo: function (video) {
