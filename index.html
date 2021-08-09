@@ -29,7 +29,7 @@
           <span>Search</span>
         </button>
         </div>
-        <div class="current-video"></div>
+        <div class="current-video col-lg-10"></div>
         <div class="videos row"></div>
         </div>
       </div>
@@ -38,16 +38,16 @@
       <div class="img-container">
         <a class="view-video" href="#" data-id={{id}}>
           <img src="{{thumb}}">
-          <h3>{{title}}</h3>
+          <p><strong>{{title}}</strong></p>
           <p>{{text}}</p>
         </a>
       </div>
     </script>
     <script id="main-video-template" type="text/x-handlebars-template">
-      <div class="col-lg">
-        <div class="embed-responsive ">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{video_url}}" allowfullscreen></iframe>          
-          <h3>{{title}}</h3>
+      <div class="container-fluid">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item large-vid" src="https://www.youtube.com/embed/{{id}}" allowfullscreen></iframe>          
+          <h4>{{title}}</h4>
           <p>{{text}}</p>
         </div>
       </div>

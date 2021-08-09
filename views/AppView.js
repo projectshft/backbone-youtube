@@ -1,3 +1,10 @@
+/*To fix 
+/ Alignment
+/Main video is tiny
+/ Allow for a second search without refreshing
+/ The five videos render multiple times
+*/
+
 var AppView = Backbone.View.extend({
   el: $('body'),
 
@@ -6,8 +13,9 @@ var AppView = Backbone.View.extend({
   initialize: function() {
     this.$searchInput = this.$('#search-query');
     this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
+    this.listenTo(this.model.get('videos'), 'add', this.renderInitVideo);
     this.listenTo(this.model, 'change:current_video', this.renderMainVideo)
-    //this.renderInitVideo();
+    
   },
 
   events: {
@@ -23,7 +31,8 @@ var AppView = Backbone.View.extend({
 
   ytSearch: function() {
     var query = this.$searchInput.val();
-    this.model.get('videos').fetch({data: { q: query}})
+    this.model.get('videos').fetch({data: { q: query}});
+    
   },
 
   renderVid: function (video) {
@@ -49,7 +58,7 @@ var AppView = Backbone.View.extend({
   },
 
   renderInitVideo: function () {
-    //set a current video and use the method commonly used to play video
+    this.model.set('current_video', this.model.get('videos').at(0));
   },
 
 })
