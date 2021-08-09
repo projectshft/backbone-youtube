@@ -1,14 +1,25 @@
 var AppView = Backbone.View.extend({
   el: $('body'),
 
+  mainVideo: null,
+
   initialize: function() {
     this.$searchInput = this.$('#search-query');
-    this.listenTo(this.model.get('videos'), 'add', this.renderVideos)
+    this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
+    this.listenTo(this.model, 'change:current_video', this.renderMainVideo)
+    //this.renderInitVideo();
   },
 
   events: {
-    'click .search': 'ytSearch'
+    'click .search': 'ytSearch',
+    'click .view-video': 'viewVideo'
   },  
+
+  viewVideo: function(e) {
+    var clickedVidId = $(e.currentTarget).data().id;
+    
+    this.model.updateCurrentVideo(clickedVidId);
+  },
 
   ytSearch: function() {
     var query = this.$searchInput.val();
@@ -24,5 +35,21 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').each(function(m) {
       this.renderVid(m);
     }, this);
-  }
+  },
+
+ 
+  renderMainVideo: function() {
+
+    if (this.mainVideo) {
+      this.mainVideo.remove();
+    }
+    this.mainVideo = new MainVideoView({ model: this.model.get('current_video')})
+    
+    this.$('.current-video').append(this.mainVideo.render().el);
+  },
+
+  renderInitVideo: function () {
+    //set a current video and use the method commonly used to play video
+  },
+
 })

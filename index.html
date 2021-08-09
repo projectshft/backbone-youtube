@@ -35,12 +35,12 @@
       </div>
     </div>
     <script id="video-template" type="text/x-handlebars-template">
-      <div class="col-md-4">
-        <div class="embed-responsive ">
+      <div class="img-container">
+        <a class="view-video" href="#" data-id={{id}}>
           <img src="{{thumb}}">
           <h3>{{title}}</h3>
           <p>{{text}}</p>
-        </div>
+        </a>
       </div>
     </script>
     <script id="main-video-template" type="text/x-handlebars-template">
@@ -58,6 +58,7 @@
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="views/VideoView.js"></script>
+    <script src="views/MainVideoView.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
