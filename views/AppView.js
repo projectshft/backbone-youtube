@@ -9,6 +9,7 @@ var AppView = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'update', this.renderBigVideos);
     this.listenTo(this.model.get('videos'), 'update', this.renderSmallVideos);
+    this.listenTo(this.model.get('videos'), 'update', this.loadInitialVideo);
 
     this.handleQuerySearch();
   },
@@ -45,6 +46,10 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').each(function (m) {
       this.renderSmallVideo(m);
     }, this);
+  },
+
+  loadInitialVideo: function () {
+    $('.toggler').first().toggleClass('hide-this');
   }
 
 })
