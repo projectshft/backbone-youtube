@@ -44,25 +44,27 @@
     </div>
 
     <script id="big-video-col-template" type="text/x-handlebars-template">
-      <iframe
-        class="big-vid"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/{{id}}"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-      <hr />
-      <h6><strong>{{title}}</strong></h6>
-      <p><em>{{description}}</em></p>
+      <div class="row toggler hide-this" id="{{id}}">
+        <iframe
+          class="big-vid"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/{{id}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <hr />
+        <h6><strong>{{title}}</strong></h6>
+        <p><em>{{description}}</em></p>
+      </div>
     </script>
 
     <script id="small-video-col-template" type="text/x-handlebars-template">
       <div class="row">
         <div class="col vid-thumb">
-          <img class="small-vid" src="{{thumbnailUrl}}" />
+          <img class="small-vid" src="{{thumbnailUrl}}" data-id="{{id}}" />
         </div>
         <div class="col vid-desc">
           <p class="vid-desc-p align-middle">{{title}}</p>

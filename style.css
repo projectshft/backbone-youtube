@@ -19,6 +19,7 @@ input::placeholder {
 .big-vid {
   height: 300px;
   width: 450px;
+  margin-bottom: 25px;
 }
 
 .small-vid {
@@ -37,4 +38,8 @@ input::placeholder {
 
 .vid-desc-p {
   margin-top: 35px;
+}
+
+.hide-this {
+  display: none;
 }
