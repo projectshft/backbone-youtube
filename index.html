@@ -75,26 +75,12 @@
       </div>
     </script> -->
 
+    <!-- not sure if the div below is necessary -->
+    <div class="sideVideo"></div>
+
     <script id="fivevideo-template" type="text/x-handlebars-template">
-      <div class="sideVideo">
-        <img src="{{items[1].snippet.thumbnails.default.url}}" />
-        <div>Summary: {{items[1].snippet.description}}</div>
-      </div>
-      <div class="sideVideo">
-        <img src="https://www.youtube.com/embed/{{videoID}}" />
-        <div>Summary: {{summary}}</div>
-      </div>
-      <div class="sideVideo">
-        <img src="https://www.youtube.com/embed/{{videoID}}" />
-        <div>Summary: {{summary}}</div>
-      </div>
-      <div class="sideVideo">
-        <img src="https://www.youtube.com/embed/{{videoID}}" />
-        <div>Summary: {{summary}}</div>
-      </div>
-      <div class="sideVideo">
-        <img src="https://www.youtube.com/embed/{{videoID}}" />
-        <div>Summary: {{summary}}</div>
+      <img src={{videoLoop.snippet.thumbnails.default.url}} />
+        <div>Summary: {{videoLoop.snippet.description}}</div>
       </div>
     </script>
 
