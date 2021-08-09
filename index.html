@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Youtube Project</title>
+  </head>
+
+  <body>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+          <h1>Youtube project</h1>
+          <hr />
+        </div>
+
+        <div class="input-group">
+          <input
+            id="search-query"
+            type="text"
+            class="form-control"
+            placeholder="Please enter search term here"
+          />
+
+          <span class="input-group-btn">
+            <button
+              id="search"
+              class="btn btn-primary search-video"
+              type="button"
+            >
+              Search
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="grid"></div>
+
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="mainVideo col-md-4 offset-md-3 grid-item">
+        <iframe
+          width="480"
+          height="360"
+          src="https://www.youtube.com/embed/{{id}}"
+          title="{{title}}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <hr />
+        <p>{{description}}</p>
+      </div>
+    </script>
+
+    <script id="video-sidebar-template" type="text/x-handlebars-template">
+      <div class="sidebar d-flex grid-item-2">
+        <img
+          class="icon{{index}}"
+          src="https://i.ytimg.com/vi/{{id}}/default.jpg"
+        />
+        <hr />
+        <p>{{description}}</p>
+      </div>
+    </script>
+
+    <script src="models/AppModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
