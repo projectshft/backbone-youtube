@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project YouTube</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 page-header">
+          <div class="page-header">
+          <h1>Project YouTube</h1>
+          <!-- <hr/> -->
+          </div>
+
+          <form class="search-form">
+            <div class="form-group">
+              <input type="text" id="search-query" class="form-control" placeholder="Enter search term here">
+              </input>
+            </div>
+
+          <button type="button" class="btn btn-primary search">Search</button>
+          </form>        
+          <!-- <hr/> -->
+          
+      </div>
+      </div>
+    </div>
+    <div class="video-container">
+      <div class="row">
+        <div class="col-md-8 offset-md-3">
+          <div class="main-video">
+            <div class="main-video-container">
+              <video src="https://i.ytimg.com/vi/L5dM6NdZXd4/default.jpg">video thumbnail</video>
+            </div>
+              <hr/>
+            <h4>Test Title</h4>
+            <h6>Test Description</h6>
+          </div>          
+        </div>
+        <div class="col-md-4">
+          <div class="panel-video">
+            <div class="panel-video-container">
+              <h5>Video1</h5>
+                <hr/>
+              <h5>Video2</h5>
+                <hr/>
+              <h5>Video3</h5>
+                <hr/>
+              <h5>Video4</h5>
+                <hr/>
+              <h5>Video5</h5>
+                <hr/>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="main-vid">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <hr/>
+          <p>{{title}}</p>
+          <p>{{description}}</p>
+      </div>
+    </script>
+     <!-- <script id="panel-video-template" type="text/x-handlebars-template">
+      <div class="img-container">
+        <img src="{{thumbnail_url}}" />
+      </div>
+      <div class="content-container">
+        <a class="view-panel-video" href="#" data-id="{{_id}}">
+          <p class="video-title">{{name}}</p>
+        </a>
+        <input class="beer-name edit-mode" value="{{name}}" />
+        <p>{{style}} - {{abv}}% ABV</p>
+      </div>
+    </script> -->
+    
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/backbone/backbone.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="node_modules/underscore/underscore.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+  </body>
+</html>
