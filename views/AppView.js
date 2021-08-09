@@ -21,6 +21,10 @@ var AppView = Backbone.View.extend({
   },
 
   handleThumbnailClick: function (e) {
+    $('iframe').each(function () {
+      var src = $(this).attr('src');
+      $(this).attr('src', src);
+    });
     $('.big-video-col').find('.toggler').addClass('hide-this');
     var grabId = $(e.currentTarget).attr('data-id');
     $('#'+grabId).toggleClass('hide-this');
