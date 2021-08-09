@@ -1,3 +1,11 @@
+var VideosCollection = Backbone.Collection.extend ({
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + /*search*/ + '&type=video&videoEmbeddable=true&key=' + apiKey,
+
+  model: ViewModel,
+
+
+})
+
 // var apiKey = 'AIzaSyAeMYE6GRPbLh4VzlKsO9qt4OYMZFmrfG0';
 
 // https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=SEARCH_TERM_HERE&type=video&videoEmbeddable=true&key=YOUR_API_KEY_HERE
