@@ -1,6 +1,6 @@
 /*To fix 
 / Alignment
-/Main video is tiny
+/ Main video is tiny
 / Allow for a second search without refreshing
 / The five videos render multiple times
 */
@@ -30,8 +30,9 @@ var AppView = Backbone.View.extend({
   },
 
   ytSearch: function() {
+    $(".videos").empty();
     var query = this.$searchInput.val();
-    this.model.get('videos').fetch({data: { q: query}});
+    this.model.get('videos').fetch({data: { q: query, reset: true}});
     
   },
 
