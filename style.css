@@ -1,0 +1,45 @@
+.header {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.form-row {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+input::placeholder {
+  font-style: italic;
+}
+
+.videos-row {
+  text-align: center;
+}
+
+.big-vid {
+  height: 300px;
+  width: 450px;
+  margin-bottom: 25px;
+}
+
+.small-vid {
+  height: 125px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.big-video-col {
+  text-align: left;
+}
+
+.small-video-col {
+  text-align: left;
+}
+
+.vid-desc-p {
+  margin-top: 35px;
+}
+
+.hide-this {
+  display: none;
+}
