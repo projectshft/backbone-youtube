@@ -59,23 +59,13 @@
     </div>
 
     <script id="mainvideo-template" type="text/x-handlebars-template">
-      <!-- <div class="mainVideo"> -->
       <iframe
         src="https://www.youtube.com/embed/{{mainVideoInfo.id.videoId}}"
       ></iframe>
       <h2>Title: {{mainVideoInfo.snippet.title}}</h2>
       <h3>Description: {{mainVideoInfo.snippet.description}}</h3>
-      <!-- </div> -->
     </script>
 
-    <!-- <script id="sidevideo-template" type="text/x-handlebars-template">
-      <div class="sideVideo">
-        <img src="https://www.youtube.com/embed/{{}}" />
-        <div>Summary: {{summary}}</div>
-      </div>
-    </script> -->
-
-    <!-- not sure if the div below is necessary -->
     <div class="sideVideo"></div>
 
     <script id="fivevideo-template" type="text/x-handlebars-template">
@@ -84,8 +74,8 @@
       </div>
     </script>
 
-    <!-- <iframe src="https://www.youtube.com/embed/${id}" /> -->
-
     <script src="main.js" async defer></script>
   </body>
 </html>
+
+<!-- <iframe src="https://www.youtube.com/embed/${id}" /> -->
