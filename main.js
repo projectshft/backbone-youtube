@@ -11,7 +11,6 @@ $('.search-button').on('click', function () {
 });
 
 
-
 var renderMainVideo = function (mainVideoInfo) {
   $('.mainVideo').empty();
   var source = $('#mainvideo-template').html();
