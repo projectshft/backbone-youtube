@@ -7,6 +7,7 @@ $('.search-button').on('click', function () {
     return response.json();
   })
   .then(function(data) {
+  //  function calls to render all videos and also have the side videos "playable"
   renderMainVideo(data.items[0]);
   renderSideVideos(data.items);
   setupReplaceListener();
@@ -24,7 +25,7 @@ var renderMainVideo = function (mainVideoInfo) {
   $('.mainVideo').append(newHTML);
 };
 
-//  variable to render the four "side" videos
+//  variable to render the five "side" videos
 var renderSideVideos = function (fiveVideoInfo) {
   $('.sideVideo').empty();
   var source = $('#fivevideo-template').html();
@@ -39,7 +40,7 @@ var renderSideVideos = function (fiveVideoInfo) {
   }
 };
 
-//  variable of apiData for the default video search
+//  variable of apiData for the default video search, which is Disney
 var apiData = {
   "kind": "youtube#searchListResponse",
   "etag": "f_RJ0O4oCnyC4jBijPkeDQWHJyI",
@@ -230,6 +231,8 @@ $( document ).ready(function() {
   setupReplaceListener()
 });
 
+
+//  function to make the five side videos "playable"
 function setupReplaceListener () {
   var thumbnails = document.querySelectorAll('.sideVideo img');
   thumbnails.forEach(function(thumbnail) {
@@ -244,6 +247,7 @@ function setupReplaceListener () {
         }
       }
       console.log(mainVideoInfo)
+      //  function call to make the side video become the "main video"
       renderMainVideo(mainVideoInfo);
     });
   });
