@@ -1,16 +1,21 @@
+
+//  jQuery call when a user clicks the search button
 $('.search-button').on('click', function () {
   var video = $('#video-search').val();
-  
-  fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${video}&type=video&videoEmbeddable=true&key=AIzaSyBG5b1D7dEBXFY0PgaKlMSFBcV3rNA7A8w`).then(function(response) {
+  if(video !== '') {
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${video}&type=video&videoEmbeddable=true&key=AIzaSyBG5b1D7dEBXFY0PgaKlMSFBcV3rNA7A8w`).then(function(response) {
     return response.json();
   })
   .then(function(data) {
   renderMainVideo(data.items[0]);
   renderSideVideos(data.items);
+  setupReplaceListener();
   });
-});
+  }
+  });
+  
 
-
+//  variable to render the main video to the page
 var renderMainVideo = function (mainVideoInfo) {
   $('.mainVideo').empty();
   var source = $('#mainvideo-template').html();
@@ -19,6 +24,7 @@ var renderMainVideo = function (mainVideoInfo) {
   $('.mainVideo').append(newHTML);
 };
 
+//  variable to render the four "side" videos
 var renderSideVideos = function (fiveVideoInfo) {
   $('.sideVideo').empty();
   var source = $('#fivevideo-template').html();
@@ -33,7 +39,7 @@ var renderSideVideos = function (fiveVideoInfo) {
   }
 };
 
-
+//  variable of apiData for the default video search
 var apiData = {
   "kind": "youtube#searchListResponse",
   "etag": "f_RJ0O4oCnyC4jBijPkeDQWHJyI",
@@ -217,10 +223,36 @@ var apiData = {
   ]
 }
 
+//  jQuery call to indicate what happens when the page first loads
 $( document ).ready(function() {
   renderMainVideo(apiData.items[0]);
   renderSideVideos(apiData.items);
+  setupReplaceListener()
 });
+
+function setupReplaceListener () {
+  var thumbnails = document.querySelectorAll('.sideVideo img');
+  thumbnails.forEach(function(thumbnail) {
+    thumbnail.addEventListener('click', function() {
+      const mainVideoInfo = {
+        id: {
+          videoId: thumbnail.dataset.videoId
+        },
+        snippet: {
+          title: thumbnail.dataset.videoTitle,
+          description: thumbnail.dataset.videoDescription
+        }
+      }
+      console.log(mainVideoInfo)
+      renderMainVideo(mainVideoInfo);
+    });
+  });
+}
+
+
+
+
+
 
 
 // Search bar at the top of the page, send the value of the string to the YouTube API to fetch videos.  

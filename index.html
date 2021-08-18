@@ -60,6 +60,8 @@
 
     <script id="mainvideo-template" type="text/x-handlebars-template">
       <iframe
+        width="1280"
+        height="1280"
         src="https://www.youtube.com/embed/{{mainVideoInfo.id.videoId}}"
       ></iframe>
       <h2>Title: {{mainVideoInfo.snippet.title}}</h2>
@@ -69,7 +71,11 @@
     <div class="sideVideo"></div>
 
     <script id="fivevideo-template" type="text/x-handlebars-template">
-      <img src={{videoLoop.snippet.thumbnails.default.url}} />
+      <img src={{videoLoop.snippet.thumbnails.default.url}}
+      data-video-id={{videoLoop.id.videoId}}
+      data-video-title={{videoLoop.snippet.title}}
+      data-video-description={{videoLoop.snippet.description}}
+      />
         <div>Summary: {{videoLoop.snippet.description}}</div>
       </div>
     </script>
@@ -77,5 +83,3 @@
     <script src="main.js" async defer></script>
   </body>
 </html>
-
-<!-- <iframe src="https://www.youtube.com/embed/${id}" /> -->
