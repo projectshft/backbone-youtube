@@ -2,6 +2,7 @@
 //  jQuery call when a user clicks the search button
 $('.search-button').on('click', function () {
   var video = $('#video-search').val();
+  // added code to prevent an empty search
   if(video !== '') {
     fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${video}&type=video&videoEmbeddable=true&key=AIzaSyBG5b1D7dEBXFY0PgaKlMSFBcV3rNA7A8w`).then(function(response) {
     return response.json();
