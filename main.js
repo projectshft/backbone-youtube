@@ -8,7 +8,7 @@ $('.search-button').on('click', function () {
     return response.json();
   })
   .then(function(data) {
-  //  function calls to render all videos and also have the side videos "playable"
+  //  function calls to render main video, side videos and also have the side videos "playable"
   renderMainVideo(data.items[0]);
   renderSideVideos(data.items);
   setupReplaceListener();
@@ -236,6 +236,7 @@ $( document ).ready(function() {
 //  function to make the five side videos "playable"
 function setupReplaceListener () {
   var thumbnails = document.querySelectorAll('.sideVideo img');
+// add a click listener "for each" video thumbnail
   thumbnails.forEach(function(thumbnail) {
     thumbnail.addEventListener('click', function() {
       const mainVideoInfo = {
@@ -287,17 +288,6 @@ function setupReplaceListener () {
 // fetch('')
 
 
-
-
-// Steps to take
-// Create handlebars templates for the main video  --  will take video URL, video URL, and video description
-//  Create handlebars template for the side video  --  will take video URL, summary
-//  Create handlebars for five side video lists  --  will take an array of 5 side videos.  Each object will have video URL and summary
-//  Create an API call function that takes as parameter the search value (key) and returns an object that contains the main video object and an array of five side video objects
-//  For the default page, call the API function given a default search key
-//  Put API data into Backbone model
-//  Use Backbone model in the handlebar template
-//  Upon user search, get the search key from the input. Call the API function, and do handlebar and backbone as above
 
 
 //  Below is the setup for Backbone Model and Collection
