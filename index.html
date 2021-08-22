@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/underscore/underscore.js"></script>
+    <script src="./node_modules/backbone/backbone.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <title>backbone-youtube</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row search">
+        <div class="col-md-6 offset-md-3">
+          <div class="header">
+            <h1>Backbone YouTube</h1>
+            <hr />
+          </div>
+
+          <form
+            class="form-inline video-form"
+            onsubmit="event.preventDefault();"
+          >
+            <label for="search" class="sr-only">Search Label</label>
+            <input
+              type="text"
+              class="form-control"
+              id="video-search"
+              placeholder="Video search"
+              required
+            />
+            <button type="submit" class="btn btn-primary search-button">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="mainVideo"></div>
+
+      <div class="row five-videos">
+        <div class="col-sm-12 five-videos">
+          <div class="row videos">
+            <div class="col-sm-6 main"></div>
+            <div class="col-sm-4 side-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- //  updated size of "main" YouTube video -->
+    <script id="mainvideo-template" type="text/x-handlebars-template">
+      <iframe
+        width="640"
+        height="640"
+        src="https://www.youtube.com/embed/{{mainVideoInfo.id.videoId}}"
+      ></iframe>
+      <h2>Title: {{mainVideoInfo.snippet.title}}</h2>
+      <h3>Description: {{mainVideoInfo.snippet.description}}</h3>
+    </script>
+
+    <div class="sideVideo"></div>
+
+    <!-- handlebars template for the five side videos -->
+    <script id="fivevideo-template" type="text/x-handlebars-template">
+      <img src={{videoLoop.snippet.thumbnails.default.url}}
+      data-video-id={{videoLoop.id.videoId}}
+      data-video-title={{videoLoop.snippet.title}}
+      data-video-description={{videoLoop.snippet.description}}
+      />
+        <div>Summary: {{videoLoop.snippet.description}}</div>
+      </div>
+    </script>
+
+    <script src="main.js" async defer></script>
+  </body>
+</html>
