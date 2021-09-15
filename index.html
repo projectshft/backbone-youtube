@@ -26,94 +26,76 @@
     <div class="container">
       <div class="header">
         <div class="row top-bar">
-          
           <div class="col-lg-4">
-            <h1><i class="fa fa-youtube-play" aria-hidden="true"></i> Backbone YouTube</h1>
+            <h1>
+              <i class="fa fa-youtube-play" aria-hidden="true"></i> Backbone
+              YouTube
+            </h1>
           </div>
-          
+
           <div class="col-lg-7">
             <div class="input-group mb-3 search-bar">
               <input
-              type="text"
-              class="form-control"
-              id="query"
-              placeholder="Search"
+                type="text"
+                class="form-control"
+                id="query"
+                placeholder="Search"
               />
               <div class="input-group-append">
-                <button class="btn btn-primary search"><i class="fa fa-search"></i></button>
+                <button class="btn btn-primary search">
+                  <i class="fa fa-search"></i>
+                </button>
               </div>
             </div>
           </div>
-
         </div>
       </div>
-      <hr>
+      <hr />
 
-      <div class="row">
-        <div class="col-lg-6 offset-lg-1">
-          <div class="iframe-container">
-            <iframe
-              src="https://www.youtube.com/embed/trfHP5LHVNY"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-        <div class="col-lg-2 ">
-          <div class="iframe-container">
-            <iframe
-              src="https://www.youtube.com/embed/trfHP5LHVNY"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
+      <div class="row video-container">
+        <div class="col-lg-7" id="showcase"></div>
 
-          <div class="iframe-container">
-            <iframe
-              src="https://www.youtube.com/embed/trfHP5LHVNY"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-
-          <div class="iframe-container">
-            <iframe
-              src="https://www.youtube.com/embed/trfHP5LHVNY"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-
-          <div class="iframe-container">
-            <iframe
-              src="https://www.youtube.com/embed/trfHP5LHVNY"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-          
-          <div class="iframe-container">
-            <iframe
-              src="https://www.youtube.com/embed/trfHP5LHVNY"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
+        <div class="col-lg-5 thumbnail-column"></div>
+      </div>
     </div>
   </body>
 </html>
 
 <!-- AIzaSyArC6FajpyBm0rlovk5duwNlrAXZsk-FlU -->
+
+<script id="showcase-template" type="text/x-handlebars-template">
+  <div class="iframe-container">
+    <iframe
+      src="https://www.youtube.com/embed/{{id}}"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div id="showcase-title">
+    <h4>{{title}}</h4>
+  </div>
+  <div id="showcase-description">
+    <p>{{description}}</p>
+  </div>
+</script>
+
+<script id="thumbnail-column-template" type="text/x-handlebars-template">
+  <div class="row thumbnail">
+    <div class="col-5">
+      <div class="iframe-container">
+        <iframe
+          src="https://www.youtube.com/embed/{{id}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+    <div class="col-6 thumbnail-title">
+      <h6>{{title}}</h6>
+    </div>
+  </div>
+</script>
