@@ -75,6 +75,7 @@ iframe {
   left: 0;
   width: 100%;
   height: 100%;
+  filter: drop-shadow(0 0 0.75rem rgba(128, 128, 128, 0.5));
 }
 
 .img-container {
@@ -92,8 +93,14 @@ iframe {
   left: 0;
   width: 100%;
   height: 100%;
+  filter: drop-shadow(0 0 0.75rem rgba(128, 128, 128, 0.5));
 }
 
 .thumbnail-title {
   margin-top: 15px;
+}
+
+a {
+  color: rgb(50, 50, 50);
+  text-decoration: none;
 }

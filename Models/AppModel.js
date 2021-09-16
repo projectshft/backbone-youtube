@@ -9,5 +9,13 @@ var AppModel = Backbone.Model.extend({
 
   fetchResults: function (query) {
     appModel.get('videos').fetch({ reset: true});
-  }
+  },
+
+  updateCurrentVideo: function (id) {
+    var allVideos = this.get('videos');
+    var currentVideo = allVideos.findWhere({id:id});
+    
+    this.set('current_video', currentVideo);
+  },
+
 });
