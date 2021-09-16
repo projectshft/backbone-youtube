@@ -53,37 +53,12 @@
       <hr />
 
       <div class="row video-container">
-        <div class="col-lg-7" id="showcase"></div>
-
-        <div class="col-lg-5 thumbnail-column"></div>
+        <div class="col-lg-8" id="showcase"></div>
+        <div class="col-lg-4 thumbnail-column"></div>
       </div>
     </div>
-  </body>
-</html>
 
-<!-- AIzaSyArC6FajpyBm0rlovk5duwNlrAXZsk-FlU -->
-
-<script id="showcase-template" type="text/x-handlebars-template">
-  <div class="iframe-container">
-    <iframe
-      src="https://www.youtube.com/embed/{{id}}"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-  </div>
-  <div id="showcase-title">
-    <h4>{{title}}</h4>
-  </div>
-  <div id="showcase-description">
-    <p>{{description}}</p>
-  </div>
-</script>
-
-<script id="thumbnail-column-template" type="text/x-handlebars-template">
-  <div class="row thumbnail">
-    <div class="col-5">
+    <script id="showcase-template" type="text/x-handlebars-template">
       <div class="iframe-container">
         <iframe
           src="https://www.youtube.com/embed/{{id}}"
@@ -93,9 +68,35 @@
           allowfullscreen
         ></iframe>
       </div>
-    </div>
-    <div class="col-6 thumbnail-title">
-      <h6>{{title}}</h6>
-    </div>
-  </div>
-</script>
+      <div id="showcase-title">
+        <h4>{{title}}</h4>
+      </div>
+      <div id="showcase-description">
+        <p>{{description}}</p>
+      </div>
+    </script>
+
+    <script id="thumbnail-column-template" type="text/x-handlebars-template">
+      <div class="row thumbnail">
+        <div class="col-5">
+          <div class="img-container">
+            <img src={{thumbnailURL}} />
+          </div>
+        </div>
+        <div class="col-6 thumbnail-title">
+          <h6>{{title}}</h6>
+        </div>
+      </div>
+    </script>
+
+    <script src="sampleData.js"></script>
+    <script src="Models/VideoModel.js"></script>
+    <script src="Collections/VideosCollection.js"></script>
+    <script src="Models/AppModel.js"></script>
+    <script src="Views/AppView.js"></script>
+    <script src="Models/VideoModel.js"></script>
+    <script src="Views/ShowcaseView.js"></script>
+    <script src="Views/ThumbnailView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
