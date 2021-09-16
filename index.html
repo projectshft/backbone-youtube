@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Backbone YouTube</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="row top-bar">
+          <div class="col-lg-4">
+            <h1>
+              <i class="fa fa-youtube-play" aria-hidden="true"></i> Backbone
+              YouTube
+            </h1>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="input-group mb-3 search-bar">
+              <input
+                type="text"
+                class="form-control"
+                id="query"
+                placeholder="Search"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-primary search">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <div class="row video-container">
+        <div class="col-lg-8" id="showcase"></div>
+        <div class="col-lg-4 thumbnail-column"></div>
+      </div>
+    </div>
+
+    <script id="showcase-template" type="text/x-handlebars-template">
+      <div class="iframe-container">
+        <iframe
+          src="https://www.youtube.com/embed/{{id}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div id="showcase-title">
+        <h4>{{title}}</h4>
+      </div>
+      <div id="showcase-description">
+        <p>{{description}}</p>
+      </div>
+    </script>
+
+    <script id="thumbnail-column-template" type="text/x-handlebars-template">
+      <a class="thumbnail" href="#" data-id="{{id}}">
+        <div class="row">
+          <div class="col-5">
+            <div class="img-container">
+              <img src={{thumbnailURL}} />
+            </div>
+          </div>
+          <div class="col-6 thumbnail-title">
+            <h6>{{title}}</h6>
+          </div>
+        </div>
+    </script>
+
+    <script src="sampleData.js"></script>
+    <script src="Models/VideoModel.js"></script>
+    <script src="Collections/VideosCollection.js"></script>
+    <script src="Models/AppModel.js"></script>
+    <script src="Views/AppView.js"></script>
+    <script src="Models/VideoModel.js"></script>
+    <script src="Views/ShowcaseView.js"></script>
+    <script src="Views/ThumbnailView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
