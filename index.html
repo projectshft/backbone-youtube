@@ -41,8 +41,9 @@
                 </div>
             </div>
             <div class="col video-container">               
-                <iframe width="300" height="315" src="https://www.youtube.com/embed/yLh_PP8GvS0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="500" height="315" src="https://www.youtube.com/embed/yLh_PP8GvS0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <hr>
             <div class="col video-list-container">
 
             </div>
@@ -51,7 +52,7 @@
 
         <script id="main-video-template" type="text/x-handlebars-template">
             <div class="content-container">
-              <span class="video-window"><iframe width="300" height="315" src="https://www.youtube.com/embed/{{ videoid }}" + title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></span>
+              <iframe width="500" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <span class="video-title">{{ title }}</span>
               <span class="video-description">{{ description }}</span>
             </div>
@@ -60,6 +61,7 @@
         <script id="video-list-template" type="text/x-handlebars-template">
             <div class="content-container">
                 <span class="video-thumbnails"><img src="{{ thumbnail }}"></span>
+                <span class="thumbnail-description">{{ description }}</span>
             </div>
         </script>
 

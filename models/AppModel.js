@@ -8,12 +8,18 @@ var AppModel = Backbone.Model.extend({
         };
     },
 
+    setCurrentVideo: function (id) {
+        var allVideos = this.get('videos');
+        var currentVideo = allVideos.findWhere({ _id: id});
+
+        this.set('current_video', currentVideo);        
+    },
     
     updateCurrentVideo: function(id) { 
         var allVideos = this.get('videos');
         var currentVideo = allVideos.findWhere({ _id: id});
 
-        this.set('current_video', currentVideo);
+        this.set('current_video', currentVideo);        
     },
 
     

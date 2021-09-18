@@ -7,16 +7,17 @@ var AppView = Backbone.View.extend({
     },
 
     initialize: function () {
-        this.$searchInput = this.$('#search-query');
-
+        this.$searchInput = this.$('#search-query');        
         this.listenTo(this.model.get('videos'), 'reset', this.renderVideo);
         this.listenTo(this.model.get('videos'), 'reset', this.renderThumbnails);
+        
     },
 
     viewVideo: function (e) {
-        var clickedVideoId = $(e.currentTarget).data().id.videoId;
+        var clickedVideoId = $(e.currentTarget).data()._id;
 
-        this.model.updateCurrentVideo(clickedVideoId);
+        this.model.updateCurrentVideo(clickedVideoId); 
+        console.log('Thumbnail clicked');
     },
 
 
@@ -26,20 +27,27 @@ var AppView = Backbone.View.extend({
         
         this.model.get('videos').updateUrl(searchText);        
         this.model.get('videos').fetch({ reset: true }); 
-        this.model.updateCurrentVideo(0);              
+        this.model.setCurrentVideo(0);         
+        
     },
 
     renderVideo: function(video) {
         var mainVideoView = new MainVideoView({ model: video});
         this.$('.video-container').html("");
-        this.$('.video-container').append(mainVideoView.render().el);        
+        this.$('.video-container').append(mainVideoView.render().el); 
+              
     },
 
-    renderThumbnails: function(video) {
-        var videoListView = new VideoListView({ model: video});
+    renderThumbnail: function(video) {
+        var videoListView = new VideoListView({ model: video});        
+        this.$('.video-list-container').append(videoListView.render().el);
+                
+    },
+
+    renderThumbnails: function (video) {
         this.$('.video-list-container').html("");
-        this.model.get('videos').each(this.$('.video-list-container').append(videoListView.render().el));
-        
+        this.model.get('videos').each(this.renderThumbnail);
+          
     }
 
     

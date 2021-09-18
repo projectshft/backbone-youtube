@@ -7,7 +7,7 @@ var VideosCollection = Backbone.Collection.extend({
     },
 
     
-    //Why does self/this work this way?  using this without declaring it outside of _.each would not work.
+    
     parse: function (response) {
         var self = this;
         
@@ -34,12 +34,3 @@ var VideosCollection = Backbone.Collection.extend({
 
 });
 
-/*
-        member.set('_id', index);
-        member.set('videoId', item.id.videoId);
-        member.set('title', item.snippet.title);
-        member.set('description', item.snippet.desription);
-        member.set('thumbnail', item.snippet.thumbnails.default);
-
-        return self.push(member);
-        */
