@@ -17,7 +17,7 @@ var AppModel = Backbone.Model.extend({
     
     updateCurrentVideo: function(id) { 
         var allVideos = this.get('videos');
-        var currentVideo = allVideos.findWhere({ _id: id});
+        var currentVideo = allVideos.findWhere({ videoId: id});
 
         this.set('current_video', currentVideo);        
     },

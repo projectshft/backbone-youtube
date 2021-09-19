@@ -24,8 +24,7 @@ var VideosCollection = Backbone.Collection.extend({
             self.push(video);
 
         });
-        console.log(this);
-
+        
         return this.models;
     }   
         
