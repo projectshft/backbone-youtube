@@ -52,16 +52,18 @@
 
         <script id="main-video-template" type="text/x-handlebars-template">
             <div class="content-container">
-              <iframe width="500" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <span class="video-title">{{ title }}</span>
-              <span class="video-description">{{ description }}</span>
+                <div class="col video-player">
+                    <iframe width="500" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <span class="row justify-content-center video-title">{{ title }}</span>
+                <span class="row justify-content-center video-description">{{ description }}</span>
             </div>
         </script>
 
         <script id="video-list-template" type="text/x-handlebars-template">
-            <div class="content-container">
-                <span class="video-thumbnails" data-id={{videoId}}><img src="{{ thumbnail }}"></span>
-                <span class="thumbnail-description">{{ description }}</span>                
+            <div class="container">                
+                    <span class="video-thumbnails" data-id={{videoId}}><img src="{{ thumbnail }}"></span>
+                    <span class="thumbnail-description">{{ description }}</span>                              
             </div>
         </script>
 
