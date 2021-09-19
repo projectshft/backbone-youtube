@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link 
+            rel="stylesheet"
+            type="text/css"
+            href="node_modules/bootstrap/dist/css/bootstrap.css"
+        />
+        <link 
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        />
+
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/underscore/underscore-min.js"></script>
+        <script src="node_modules/backbone/backbone-min.js"></script>
+        <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+        <title>Project Youtube</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <div class="header">
+                        <h1>Project Youtube</h1>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-4">                   
+                    <div class="form-group d-flex">
+                        <input type="text" id="search-query" class="form-control">
+                        <span class="input button">
+                            <button type="button" class="btn btn-primary video-search">Search</button>
+                        </span>         
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="col video-container">               
+                
+            </div>
+            <hr>
+            <div class="col video-list-container">
+
+            </div>
+
+        </div>
+
+        <script id="main-video-template" type="text/x-handlebars-template">
+            <div class="content-container">
+                <div class="col video-player">
+                    <iframe width="500" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <span class="row justify-content-center video-title">{{ title }}</span>
+                <span class="row justify-content-center video-description">{{ description }}</span>
+            </div>
+        </script>
+
+        <script id="video-list-template" type="text/x-handlebars-template">
+            <div class="container">                
+                    <span class="video-thumbnails" data-id={{videoId}}><img src="{{ thumbnail }}"></span>
+                    <span class="thumbnail-description">{{ description }}</span>                              
+            </div>
+        </script>
+
+        <script src="models/AppModel.js"></script>
+        <script src="models/VideoModel.js"></script>
+        <script src="views/AppView.js"></script>
+        <script src="views/MainVideoView.js"></script>
+        <script src="views/VideoListView.js"></script>
+        <script src="collections/VideosCollection.js"></script>
+        <script src="main.js"></script>
+        
+    </body>
+</html>
