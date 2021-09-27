@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Project YouTube</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <div class="page-header">
+            <h1><i class="fa fa-film"></i> Project YouTube <i class="fa fa-film"></i></h1>
+            </div>
+        </div>
+          
+        <div class="col-md-8 offset-md-2">
+          <hr/>
+        </div>
+
+        <div class="col-md-6 offset-md-3">
+          <div class="input-group">
+            <input type="text" id="search-query" class="form-control" autofocus="autofocus" placeholder="Please enter search term here">
+            </input>
+            <button type="button" class="btn btn-primary search">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 offset-md-2 current-video-container">
+        </div>  
+
+        <div class="col-md-4 videos-container">
+        </div>`
+      </div>
+    </div> 
+
+    <script id="video-template" type="text/x-handlebars-template">
+        <div class="img-container">
+          <img class="video-img" src="{{thumbnail_url}}" data-id={{videoId}} />
+        </div>
+        <div class="content-container">
+            <p class="video-title">{{title}}</p>
+        </div>
+      <hr/>
+    </script>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <iframe width="370" height="208" src={{embed_url}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <hr/>
+      <div class="content-container">
+        <p class="current-video-title"><strong>{{title}}</strong></p> 
+        <p class="current-video-description"><i>{{description}}</i></p> 
+      </div>
+    </script>
+
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

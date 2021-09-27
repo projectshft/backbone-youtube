@@ -1,0 +1,42 @@
+.page-header {
+  padding-top: 10px;
+}
+
+iframe {
+  display: block;
+  margin: auto;
+}
+
+.input-group {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.video img {
+  max-width: 161px;
+}
+
+.video .img-container {
+  display: inline-block;
+  width: 49%;
+}
+
+.video .content-container {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  vertical-align: middle;
+  width: 49%;
+}
+
+.current-video .content-container {
+  font-size: 13px;
+}
+
+.videos-container {
+  padding-left: 40px;
+}
+
+.current-video-container {
+  padding-right: 40px;
+}
