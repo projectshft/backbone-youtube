@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Youtube</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="header">
+            <h1>Project Youtube</h1>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form action="javascript:void(0);">
+          <div class="form-group">
+              <label>Search</label>
+              <input
+                type="text"
+                class="form-control search-input"
+                id="search-input"
+                placeholder="Search for a video"
+              />
+            </div>
+          </div>
+          <div class="col-lg-2 d-flex justify-content-center submit-col">
+            <button class="btn btn-primary submit-search">submit</button>
+          </div>
+        </div>
+      </form>
+
+        <div class="row videos-row">
+          <div class="col-md-6">
+            <div class="current-video-container">
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="videos-list">
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/{{id}}" title={{title}} class="iframe" data-id={{id}}>
+        </iframe>
+      </div>
+
+      <span class="main-vid-title">
+        <strong>{{ title }}</strong>
+      </span>
+      <hr>
+      <div class="main-vid-description">
+        {{description}}
+     </div>
+
+      </script>
+
+    <script id="videos-list-template" type="text/x-handlebars-template">
+      <!-- <div class="container"> -->
+      <div class="row video-list-row justify-content-start">
+        <div class="col-xs-2">
+          <a class="view-video" href="#" data-id={{id}}>
+            <div class="thumbnail">
+              <img src={{thumbnail_link}}>
+            </div>
+         
+        </div>
+        <div class="col-xs-2">
+          <span class="title">
+            {{ title }}
+          </span>
+        </div>
+      </a>
+      </div>
+    </div>
+    
+    </script>
+
+
+
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="main.js"></script>
+
+
+  </body>
+</html>
