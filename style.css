@@ -1,0 +1,17 @@
+body {
+  background-color: #eaebe7;
+}
+
+h1 {
+  text-align: center;
+}
+
+#search {
+  margin-left: 700;
+  padding-top: 40;
+}
+
+.col-md-3 {
+  margin-left: 450;
+  padding-top: 100;
+}

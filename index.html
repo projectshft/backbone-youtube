@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Project YouTube</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-auto">
+          <div class="header">
+            <h1>Project YouTube</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center" id="search">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="img-input"
+              placeholder="Please Enter Search Here"
+            />
+          </div>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary search-video">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">test</div>
+        <div class="col-md-3">test</div>
+      </div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="img-container">
+        <img src="{{image_url}}" />¡
+      </div>
+      <div class="content-container">
+        <a class="view-video" href="#" data-id="{{_id}}">
+          <p class="video-name">{{name}}</p></a>
+      </div>
+    </script>
+
+    <script src="collections/YoutubeCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="models/VidModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/VidView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
