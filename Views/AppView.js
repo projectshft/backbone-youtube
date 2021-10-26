@@ -5,4 +5,7 @@ var AppView = Backbone.View.extend({
     'click .search-video': 'searchVideo',
   },
 
+  searchVideo : function () {
+    console.log('test');
+  }
 });
