@@ -12,6 +12,10 @@ h1 {
 }
 
 .col-md-3 {
-  margin-left: 450;
+  margin-left: 300;
+  padding-top: 100;
+}
+
+iframe {
   padding-top: 100;
 }
