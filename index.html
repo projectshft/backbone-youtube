@@ -33,7 +33,7 @@
             <input
               type="text"
               class="form-control"
-              id="img-input"
+              id="search-input"
               placeholder="Please Enter Search Here"
             />
           </div>
@@ -47,10 +47,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
-          <div class="active-video">
-            <h2>{{title}}</h2>
-            <h4>{{description}}</h4>
-          </div>
+          <div class="active-video">//main video</div>
         </div>
         <div class="col-md-3">
           <div class="video-results">// Video Search Results Here</div>
@@ -58,15 +55,25 @@
       </div>
     </div>
 
-    <!-- <script id="video-template" type="text/x-handlebars-template">
-      <div class="img-container">
-        <img src="{{image_url}}" />¡
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="vid-container">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
       <div class="content-container">
         <a class="view-video" href="#" data-id="{{_id}}">
-          <p class="video-name">{{name}}</p></a>
+          <p class="video-name">{{title}}</p>
+          <img src="{{thumbnail}}" />
+        </a>
       </div>
-    </script> -->
+    </script>
 
     <script src="collections/YoutubeCollection.js"></script>
     <script src="models/AppModel.js"></script>
