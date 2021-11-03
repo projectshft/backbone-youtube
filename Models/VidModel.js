@@ -5,5 +5,5 @@ var VidModel = Backbone.Model.extend({
       videoId: '',
       thumbnail: '',
     }
-  }
+  },
 });

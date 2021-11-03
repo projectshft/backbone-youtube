@@ -55,6 +55,24 @@
       </div>
     </div>
 
+    <script id="active-template" type="text/x-handlebars-template">
+      <div class="iframe-container">
+        <iframe
+          src="https://www.youtube.com/embed/{{id}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div id="active-title">
+        <h4>{{title}}</h4>
+      </div>
+      <div id="active-description">
+        <p>{{description}}</p>
+      </div>
+    </script>
+
     <script id="video-template" type="text/x-handlebars-template">
       <div class="vid-container">
         <iframe
@@ -67,17 +85,14 @@
           allowfullscreen
         ></iframe>
       </div>
-      <div class="content-container">
-        <a class="view-video" href="#" data-id="{{_id}}">
-          <p class="video-name">{{title}}</p>
-          <img src="{{thumbnail}}" />
-        </a>
+      <div id="vid-title">
+        <h4>{{title}}</h4>
       </div>
     </script>
 
+    <script src="models/VidModel.js"></script>
     <script src="collections/YoutubeCollection.js"></script>
     <script src="models/AppModel.js"></script>
-    <script src="models/VidModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="views/VidView.js"></script>
     <script src="main.js"></script>

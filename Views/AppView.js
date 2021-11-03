@@ -6,11 +6,11 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+    this.listenTo(this.model.get('video'), 'add', this.renderVideo);
   },
 
   searchVideo : function () {
-    this.model.get('videos').addVideo(
+    this.model.get('video').searchVideos(
       this.$('#search-input').val(),
      );  
    },
@@ -21,7 +21,7 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideos: function () {
-    this.model.get('videos').each(function (m) {
+    this.model.get('video').each(function (m) {
       this.renderVideo(m);
     }, this);
   }
