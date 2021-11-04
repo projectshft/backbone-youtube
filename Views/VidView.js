@@ -1,5 +1,4 @@
 var VidView = Backbone.View.extend({
-  className: 'video',
 
   template: Handlebars.compile($('#video-template').html()),
 

@@ -1,5 +1,5 @@
 var MainVidView = Backbone.View.extend({
-  el: $('#active-video'),
+   el: $('.active-video'),
   
   template: Handlebars.compile($('#active-template').html()),
   
