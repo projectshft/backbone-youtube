@@ -6,35 +6,41 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model.get('video'), 'add', this.renderVideo);
-    this.listenTo(this.collection, 'add', this.render)
+    this.listenTo(this.model.get('videos'), 'reset', function(){
+      this.renderVideo();
+      this.renderVideos();
+    });
+    // this.listenTo(this.collection, 'add', this.render)
   },
 
   searchVideo : function () {
-    this.collection.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=' + this.$('#search-input').val() + '&type=video&videoEmbeddable=true&key=AIzaSyD9Dx50AZ_Dn1aTHwzUKOQHWHzK5jUlNbw';
-    this.collection.fetch({ reset: true });
+    
+    var searchTerm = this.$('#search-input').val();
+
+    this.model.get('videos').setUrlandFetch(searchTerm);
+
+    // this.collection.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=' + this.$('#search-input').val() + '&type=video&videoEmbeddable=true&key=AIzaSyD9Dx50AZ_Dn1aTHwzUKOQHWHzK5jUlNbw';
+    // this.collection.fetch({ reset: true });
    },
-
   
-  render: function () {
-    this.renderVideos();
-    this.renderVideo();
-    return this;
-  },
-
+  // render: function () {
+  //   this.renderVideos();
+  //   this.renderVideo();
+  //   return this;
+  // },
 
   renderVideo: function () {
-    var vidView = new MainVidView({ model: this.collection.at(0)});
+    var vidView = new MainVidView({ model: this.model.get('videos').at(0)});
     this.$('.active-video').append(vidView.render().el)
   },
 
   renderVideos: function () {
     this.$('.video-results').empty();
-    for(var i = 0; i < this.collection.length; i++){
-      var vidView = new VidView ({ model: this.collection.at(i)})
-      this.$('.video-results').append(vidView.render().el)
-    }
-  }
 
+    this.model.get('videos').forEach(function(video){
+      var vidView = new VidView ({ model: video })
+      this.$('.video-results').append(vidView.render().el)
+    });
+  }
 });
 

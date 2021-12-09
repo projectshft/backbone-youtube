@@ -6,16 +6,24 @@ h1 {
   text-align: center;
 }
 
-#search {
-  margin-left: 700;
-  padding-top: 40;
+.col-md-3 {
+  padding-top: 100;
+  float: left;
 }
 
-.col-md-3 {
-  margin-left: 300;
+.col-md-4 {
   padding-top: 100;
+  float: right;
 }
 
 iframe {
   padding-top: 100;
+}
+
+#input {
+  max-width: 100%;
+}
+
+#button {
+  float: right;
 }
