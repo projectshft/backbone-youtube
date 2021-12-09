@@ -1,0 +1,29 @@
+body {
+  background-color: #eaebe7;
+}
+
+h1 {
+  text-align: center;
+}
+
+.col-md-3 {
+  padding-top: 100;
+  float: left;
+}
+
+.col-md-4 {
+  padding-top: 100;
+  float: right;
+}
+
+iframe {
+  padding-top: 100;
+}
+
+#input {
+  max-width: 100%;
+}
+
+#button {
+  float: right;
+}
