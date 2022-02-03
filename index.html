@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE html> -->
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Backbone Youtube</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="header text-center">
+            <h1></i> Backbone Youtube</h1>
+          </div>
+           <hr>
+          <div class="search-container row">
+
+            <div class="form-group col-6 offset-2">
+              <input
+                type="text"
+                class="search-bar form-control col"
+                id="img-input"
+                placeholder="Please enter search term here"
+              />
+            </div>
+
+            <button class="btn btn-primary search-video col-2">Search</button>
+          </div>
+        </div>
+
+        <div class="col-md-8 offset-2 mt-5">
+            <div class="row">
+                <!-- Main Video -->
+                <div class="main-video col-7"></div>
+
+                <!-- Video List -->
+                <div class="video-list col-5">
+
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script id="main-video" type="text/x-handlebars-template">
+        <div class="col-12 main-video-wrap">
+            <iframe 
+            class="main-video-iframe"
+            src="https://www.youtube.com/embed/{{id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <hr>
+        <h5>{{title}}</h5>
+        <p>{{description}}</p>
+    </script>
+
+    <script id="video-list-item" type="text/x-handlebars-template">
+        <div class="row">
+            <div class="col-5">
+                <img src="{{thumbnails.default.url}}" alt="" srcset="">
+            </div>
+            <div class="col-7">
+                <p 
+                class="item-title">
+                    {{title}}
+                </p>
+            </div>
+        </div>
+        <hr>
+    </script>
+
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/VideoListItemView.js"></script>
+    <script src="views/MainVideoView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
