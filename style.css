@@ -1,0 +1,18 @@
+.main-video-wrap {
+  padding-bottom: 50%;
+  position: relative;
+}
+
+.main-video-iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.video-list-item {
+  cursor: pointer;
+}
+
+.video-list-item .item-title {
+  font-size: 12px;
+}
