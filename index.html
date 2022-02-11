@@ -26,15 +26,17 @@
       </div>
       <hr />
 
-      <div class="mainVideo"></div>
-      <div class="playlist"></div>
+      <div class="row">
+        <div class="mainVideo col-md-5 col-offset-2"></div>
+        <div class="sideVideosList col-md-5"></div>
+      </div>
     </div>
 
     <script id="mainVideo-template" type="text/x-handlebars-template">
       <div class="video container">
         <iframe
-          width="560"
-          height="315"
+          width="320"
+          height="180"
           src="https://www.youtube.com/embed/{{vidId}}"
           title="YouTube video player"
           frameborder="0"
@@ -46,9 +48,9 @@
       </div>
     </script>
 
-    <script id="playlist-template" type="text/x-handlebars-template">
-      <div class="sideVideos container">
-        <div>{{title}}</div>
+    <script id="sideVideos-template" type="text/x-handlebars-template">
+      <div class="sideVideo container">
+        <div><a>{{title}}</a></div>
         <img src="{{thumbnailUrl}}" alt="" />
       </div>
     </script>
