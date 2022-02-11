@@ -1,9 +1,17 @@
 var VideoModel = Backbone.Model.extend({
-  defaults: {
-    title: '',
-    description: '',
-    vidId: '',
-    thumbnailUrl: ''
+  defaults: function() {
+    return {
+      title: '',
+      description: '',
+      vidId: '',
+      thumbnailUrl: '',
+    }
+  },
+
+  urlRoot: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${this.searchTerm}&type=video&videoEmbeddable=true&key=`,
+
+  parse: function(response) {
+    console.log(response);
   }
 })
 
@@ -15,12 +23,22 @@ var SideVideoView = Backbone.View.extend({
   
 })
 
-var VideoCollection = Backbone.Collection.extend({
-  model: VideoModel
+var VideoCollection = Backbone.Collection.extend({ 
+  model: VideoModel,
+
+  initialize: function() {
+    this.on('add', function(model) {
+      model.fetch();
+    })
+  }
 })
 
 var AppModel = Backbone.Model.extend({
-  videos: new VideoCollection()
+  defaults: function() {
+    return {
+      videos: new VideoCollection()
+    }
+  } 
 })
 
 var AppView = Backbone.View.extend({
@@ -32,12 +50,23 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     this.$searchInput = this.$('#search-query');
+
   },
 
   handleSearchClick:function(){
-    var videoSearch = this.$searchInput.val();
+    var searchTerm = this.$searchInput.val();
 
+    this.model.get('videos').add({
+      query: searchTerm
+    })
+  },
+
+  renderMainVideo: function(video) {
     
+  },
+
+  renderPlaylist: function() {
+
   }
 });
 
