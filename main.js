@@ -8,15 +8,28 @@ var VideoModel = Backbone.Model.extend({
     }
   },
 
-  urlRoot: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${this.searchTerm}&type=video&videoEmbeddable=true&key=`,
+  urlRoot: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=crossfit&type=video&videoEmbeddable=true&key=AIzaSyAox3HZhZPjJitNh1kl5MUHB-BOPAnfNos`,
 
   parse: function(response) {
-    console.log(response);
+    return {
+      title: response.items[0].snippet.title,
+      description: response.items[0].snippet.description,
+      vidId: response.items[0].id.videoId,
+      thumbnailUrl: response.items[0].snippet.thumbnails.default.url,
+    }
   }
 })
 
 var MainVideoView = Backbone.View.extend({
-  
+  className: 'vid',
+
+  template: Handlebars.compile($('#mainVideo-template').html()),
+
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()))
+
+    return this;
+  }
 })
 
 var SideVideoView = Backbone.View.extend({
@@ -50,7 +63,10 @@ var AppView = Backbone.View.extend({
 
   initialize: function() {
     this.$searchInput = this.$('#search-query');
+    this.$mainVideo = this.$('.mainVideo')
 
+    this.listenTo(this.model.get('videos'), 'change', this.renderMainVideo);
+    // this.listenTo(this.model.get('videos'), 'change', this.renderPlaylist)
   },
 
   handleSearchClick:function(){
@@ -62,7 +78,8 @@ var AppView = Backbone.View.extend({
   },
 
   renderMainVideo: function(video) {
-    
+    var mainVideoView = new MainVideoView({ model: video })
+    this.$mainVideo.append(mainVideoView.render().el)
   },
 
   renderPlaylist: function() {
