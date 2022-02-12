@@ -30,6 +30,7 @@ var AppView = Backbone.View.extend({
     }
     //Clearing out input for next search
     this.$input.val("");
+    //Checking the search term against video info stored in local storage
     this.checkSearch(searchTerm);
   },
 
@@ -42,7 +43,7 @@ var AppView = Backbone.View.extend({
     //Have to call this to re-render the side panel
     this.renderSideVideos();
 
-    //Also calling this function to save clicked videos to local storage
+    //Also calling this function to save clicked videos (those assumed to be played) to local storage.
     var videoUrl = videoToSwitch.attributes.bigUrl;
     var videoName = videoToSwitch.attributes.title;
     this.setToStorage(videoName, videoUrl);
@@ -73,7 +74,8 @@ var AppView = Backbone.View.extend({
     }, this);
   },
 
-  //Setting the videos to local storage;
+  //These next two functions deal with the extension to save to local storage
+  //First, setting the videos to local storage;
   setToStorage: function (vidName, vidUrl) {
     var existingVideos = JSON.parse(localStorage.getItem("faveVideos"));
     if (existingVideos == null) existingVideos = [];
@@ -86,6 +88,7 @@ var AppView = Backbone.View.extend({
     localStorage.setItem("faveVideos", JSON.stringify(existingVideos));
   },
 
+  //When a search term is entered, the term is checked against the videos saved in local storage. If a match, the user is alerted to the video name and url
   checkSearch: function (search) {
     var existingVideos = JSON.parse(localStorage.getItem("faveVideos"));
     console.log(existingVideos);
