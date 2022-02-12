@@ -12,7 +12,7 @@
     <title>BackboneTube</title>
   </head>
   <body>
-    <div class="container app-container">
+    <div class="container app-container col-offset-3">
       <h1>BackboneTube</h1>
       <hr />
       <div class="input-group">
@@ -27,8 +27,8 @@
       <hr />
 
       <div class="row">
-        <div class="mainVideo col-md-5 col-offset-2"></div>
-        <div class="sideVideosList col-md-5"></div>
+        <div class="mainVideo col-md-6"></div>
+        <div class="sideVideosList col-md-6 col-offset-2"></div>
       </div>
     </div>
 
@@ -50,7 +50,7 @@
 
     <script id="sideVideos-template" type="text/x-handlebars-template">
       <div class="sideVideo container">
-        <div><a>{{title}}</a></div>
+        <div class="sideVideoClickable" data-id="{{vidId}}">{{title}}</div>
         <img src="{{thumbnailUrl}}" alt="" />
       </div>
     </script>

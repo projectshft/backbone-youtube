@@ -69,25 +69,42 @@ var AppModel = Backbone.Model.extend({
       videos: new VideoCollection(),
       mainVideo: null
     }
-  } 
+  }, 
+
+  initialize: function() {
+    this.listenTo(this.get('videos'), 'reset', this.setMainVideo);
+  },
+
+  setMainVideo: function() {
+    this.set('mainVideo', this.get('videos').at(0));
+  },
+
+  updateMainVideo: function (id) {
+    var allVideos = this.get('videos');
+    var currentVideo = allVideos.findWhere({ vidId: id });
+    this.set('mainVideo', currentVideo);
+  }
 })
 
 var AppView = Backbone.View.extend({
   el: $('.app-container'),
 
   events: {
-    'click .search':'handleSearchClick'
+    'click .search':'handleSearchClick',
+    'click .sideVideoClickable' : 'handleSideVideoClick'
   },
 
   initialize: function() {
     this.$searchInput = this.$('#search-query');
     this.$mainVideo = this.$('.mainVideo');
-    this.$sideVideos = this.$('.sideVideos')
+    this.$sideVideos = this.$('.sideVideosList')
 
     this.listenTo(this.model.get('videos'), 'reset', function() {
       this.renderMainVideo();
       this.renderSideVideos();
     });
+
+    this.listenTo(this.model, 'change:mainVideo', this.renderMainVideo);
   },
 
   handleSearchClick:function(){
@@ -96,9 +113,15 @@ var AppView = Backbone.View.extend({
     this.model.get('videos').searchVideos(searchTerm);
   },
 
+  handleSideVideoClick:function(e) {
+    var clickedVidId = $(e.currentTarget).data().id;
+
+    this.model.updateMainVideo(clickedVidId);
+  },
+
   renderMainVideo: function() {
     this.$mainVideo.html('');
-    var firstVideoModel = this.model.get('videos').at(0);
+    var firstVideoModel = this.model.get('mainVideo');
 
     var videoView = new MainVideoView({model: firstVideoModel});
 
