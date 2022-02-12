@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <title>Video Extravaganza</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Video Extravaganza</h1>
+      <hr class="h1-underline" />
+    </header>
+    <main class="container">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="What do you want to see?"
+          aria-label="Search"
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn btn-primary search-btn"
+          type="button"
+          id="button-addon2"
+        >
+          Search
+        </button>
+      </div>
+      <p class="repeat-watch">
+        It looks like you've watched a similar video. Details below:
+        <span class="watch-details"></span>
+      </p>
+
+      <div class="video-container">
+        <div class="main-video-container"></div>
+        <div class="sidebar-video-container"></div>
+      </div>
+    </main>
+
+    <script id="main-vid-template" type="text/x-handlebars-template">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/{{id}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <div class="main-video-details">
+        <h2 class="main-video-title">{{title}}</h2>
+        <p class="main-video-description">
+          {{description}}
+        </p>
+      </div>
+    </script>
+
+    <script id="side-vid-template" type="text/x-handlebars-template">
+      <div class="single-video-container" >
+          <div class="wrapper-single-vid" data-id={{id}}></div>
+          <iframe
+            class="sidebar-video"
+            width="180"
+            height="135"
+            src="https://www.youtube.com/embed/{{id}}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <div class="sidebar-video-title-div">
+            <h3 class="single-video-title">{{title}}</h3>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideoCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/MainVideoView.js"></script>
+    <script src="views/SidebarVideoView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
