@@ -23,26 +23,3 @@ var VideoCollection = Backbone.Collection.extend({
     return videos;
   },
 });
-
-var Controller = ListController.extend({
-  el: "#demo",
-  listView: ListView,
-
-  // tell infinite scroll to load more when reaching the end of this list
-  scrollContext: "#demo .list",
-
-  initialize: function () {
-    var fakeData = [],
-      i = 0;
-    while (i++ < 60) {
-      fakeData.push({ id: i, label: "Row " + i });
-    }
-
-    this.collection = new Coll(fakeData);
-  },
-});
-
-var listController = new Controller();
-
-// later... render the controller
-listController.render();

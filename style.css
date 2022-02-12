@@ -117,3 +117,9 @@ p {
   -webkit-line-clamp: 4; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
+
+.repeat-watch {
+  text-align: center;
+  font-style: italic;
+  display: none;
+}

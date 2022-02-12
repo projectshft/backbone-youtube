@@ -6,12 +6,11 @@ var AppView = Backbone.View.extend({
   events: {
     "click .search-btn": "handleSearch",
     "click .wrapper-single-vid": "handleMainVidSwitch",
-    "click .container": "setToStorage",
   },
 
   initialize: function () {
     //Initializing a dog search at load and then listening for changes
-    this.model.get("videos").getData("dogs");
+    this.model.get("videos").getData("puppies");
     this.$input = this.$(".search-input");
 
     this.listenTo(this.model.get("videos"), "reset", this.renderVideos);
@@ -31,6 +30,7 @@ var AppView = Backbone.View.extend({
     }
     //Clearing out input for next search
     this.$input.val("");
+    this.checkSearch(searchTerm);
   },
 
   //Please note that for the click event to work on the iframe, I wrapped the iframe in an empty div that lays on top of the iframe absolutely. Otherwise, it wouldn't register.
@@ -45,7 +45,6 @@ var AppView = Backbone.View.extend({
     //Also calling this function to save clicked videos to local storage
     var videoUrl = videoToSwitch.attributes.bigUrl;
     var videoName = videoToSwitch.attributes.title;
-    console.log(videoUrl, videoName);
     this.setToStorage(videoName, videoUrl);
   },
 
@@ -74,5 +73,32 @@ var AppView = Backbone.View.extend({
     }, this);
   },
 
-  setToStorage: function () {},
+  //Setting the videos to local storage;
+  setToStorage: function (vidName, vidUrl) {
+    var existingVideos = JSON.parse(localStorage.getItem("faveVideos"));
+    if (existingVideos == null) existingVideos = [];
+    var video = {
+      name: vidName,
+      url: vidUrl,
+    };
+
+    existingVideos.push(video);
+    localStorage.setItem("faveVideos", JSON.stringify(existingVideos));
+  },
+
+  checkSearch: function (search) {
+    var existingVideos = JSON.parse(localStorage.getItem("faveVideos"));
+    console.log(existingVideos);
+    existingVideos.forEach(function (vid) {
+      var lowerCaseSearch = search.toLowerCase();
+      if (vid.name.toLowerCase().includes(lowerCaseSearch)) {
+        $(".repeat-watch").css("display", "block");
+        var details = $(".watch-details");
+        $(details).html(`${vid.name} at ${vid.url}`);
+      }
+      setTimeout(function () {
+        $(".repeat-watch").css("display", "none");
+      }, 8000);
+    });
+  },
 });
