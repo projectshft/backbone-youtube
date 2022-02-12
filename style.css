@@ -48,7 +48,7 @@ p {
 
 .video-container {
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 70% 30%;
   width: 90%;
   margin: 0 auto;
   margin-top: 6rem;
@@ -114,6 +114,6 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-line-clamp: 4; /* number of lines to show */
   -webkit-box-orient: vertical;
 }

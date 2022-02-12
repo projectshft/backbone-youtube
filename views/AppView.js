@@ -6,13 +6,14 @@ var AppView = Backbone.View.extend({
   events: {
     "click .search-btn": "handleSearch",
     "click .wrapper-single-vid": "handleMainVidSwitch",
-    "click .single-video-title": "showFullTitle",
+    "click .container": "setToStorage",
   },
 
   initialize: function () {
     //Initializing a dog search at load and then listening for changes
     this.model.get("videos").getData("dogs");
     this.$input = this.$(".search-input");
+
     this.listenTo(this.model.get("videos"), "reset", this.renderVideos);
     this.listenTo(this.model, "change:main_video", this.renderMainVideo);
   },
@@ -25,6 +26,7 @@ var AppView = Backbone.View.extend({
 
     if (this.$input.val()) {
       var searchTerm = this.$input.val();
+      this.model.set("searchTerm", searchTerm);
       this.model.get("videos").getData(searchTerm);
     }
     //Clearing out input for next search
@@ -34,17 +36,19 @@ var AppView = Backbone.View.extend({
   //Please note that for the click event to work on the iframe, I wrapped the iframe in an empty div that lays on top of the iframe absolutely. Otherwise, it wouldn't register.
   handleMainVidSwitch: function (e) {
     var targetVidId = $(e.target).data("id");
-    this.model.set(
-      "main_video",
-      this.model.get("videos").findWhere({ id: targetVidId })
-    );
+    var videoToSwitch = this.model.get("videos").findWhere({ id: targetVidId });
+    this.model.set("main_video", videoToSwitch);
 
+    //Have to call this to re-render the side panel
     this.renderSideVideos();
+
+    //Also calling this function to save clicked videos to local storage
+    var videoUrl = videoToSwitch.attributes.bigUrl;
+    var videoName = videoToSwitch.attributes.title;
+    console.log(videoUrl, videoName);
+    this.setToStorage(videoName, videoUrl);
   },
 
-  showFullTitle: function (e) {
-    $(e.target).toggleClass("single-video-title");
-  },
   //This next function is the 'entry point to render upon 'reset'. I'm arbitriarily choosing the first result that returns as the 'main' video. That will trigger the renderMainVideo function (via listening above) and I'll call the side video in addition;
   renderVideos: function () {
     var mainVideo = this.model.get("videos").models[0];
@@ -69,4 +73,6 @@ var AppView = Backbone.View.extend({
       this.$(".sidebar-video-container").append(this.videoView.render().el);
     }, this);
   },
+
+  setToStorage: function () {},
 });

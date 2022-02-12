@@ -5,6 +5,7 @@ var AppModel = Backbone.Model.extend({
     return {
       videos: new VideoCollection(),
       main_video: null,
+      searchTerm: "",
     };
   },
 });

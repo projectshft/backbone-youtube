@@ -5,7 +5,7 @@ var VideoCollection = Backbone.Collection.extend({
   url: "",
 
   getData: function (searchTerm) {
-    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchTerm}&type=video&videoEmbeddable=true&key=AIzaSyDdd1XfHLPnCtCxeT2PhbQcc7H127MVUyo`;
+    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchTerm}&type=video&videoEmbeddable=true&key=AIzaSyDGNQ4EDJi19z-WPBKA_JxBG4DR6oTp1tU`;
 
     this.fetch({ reset: true });
   },
@@ -23,3 +23,26 @@ var VideoCollection = Backbone.Collection.extend({
     return videos;
   },
 });
+
+var Controller = ListController.extend({
+  el: "#demo",
+  listView: ListView,
+
+  // tell infinite scroll to load more when reaching the end of this list
+  scrollContext: "#demo .list",
+
+  initialize: function () {
+    var fakeData = [],
+      i = 0;
+    while (i++ < 60) {
+      fakeData.push({ id: i, label: "Row " + i });
+    }
+
+    this.collection = new Coll(fakeData);
+  },
+});
+
+var listController = new Controller();
+
+// later... render the controller
+listController.render();
