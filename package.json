@@ -1,0 +1,28 @@
+{
+  "name": "backbone-youtube",
+  "version": "1.0.0",
+  "description": "This project has been created by a student at Parsity, an online software engineering course. The work in this repository is wholly of the student based on a sample starter project that can be accessed by looking at the repository that this project forks.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iqholmes/backbone-youtube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iqholmes/backbone-youtube/issues"
+  },
+  "homepage": "https://github.com/iqholmes/backbone-youtube#readme",
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "bootstrap": "^4.6.0",
+    "eslint": "^7.23.0",
+    "handlebars": "^4.7.7",
+    "jquery": "^3.6.0",
+    "prettier": "^2.2.1",
+    "underscore": "^1.12.1"
+  }
+}
