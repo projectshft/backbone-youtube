@@ -11,7 +11,45 @@
     <link rel="stylesheet" href="style.css" />
     <title>YouTube - Backbone</title>
   </head>
+
   <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-3">
+          <header class="page-header" style="text-align: center">
+            <h1>Project YouTube</h1>
+            <hr />
+          </header>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-md-offset-1">
+                <div class="form-group text-center">
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search a video"
+                  />
+                  <button class="btn btn-primary search">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container" style="margin-top: 25px">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="main-video"></div>
+              </div>
+              <div class="col-md-6">
+                <div class="video-sidebar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="node_modules/underscore/underscore.js"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/backbone/backbone.js"></script>
