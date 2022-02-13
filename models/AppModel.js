@@ -18,7 +18,7 @@ const AppModel = Backbone.Model.extend({
   },
 
   updateReviewCollectionUrl() {
-    this.get('current_beer')
+    this.get('currentVideo')
       .get('reviews')
       .updateUrl(this.get('current_beer').get('_id'));
   },
@@ -27,6 +27,6 @@ const AppModel = Backbone.Model.extend({
     const allBeers = this.get('beers');
     const currentBeer = allBeers.findWhere({ _id: id });
 
-    this.set('current_beer', currentBeer);
+    this.set('currentVideo', currentBeer);
   },
 });

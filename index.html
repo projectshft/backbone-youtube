@@ -49,13 +49,14 @@
         </div>
       </div>
 
-      <div class="row">
-        <div id="main-video-div" class="offset-3 col-4"></div>
-        <div id="video-thumbnail-div" class="offset-3 col-6"></div>
+      <div class="row mt-2">
+        <div id="main-video-div" class="offset-2 col-5"></div>
+        <div id="video-thumbnail-div" class="offset-1 col-3"></div>
       </div>
+      <div style="height: 100px"></div>
 
       <footer class="offset-1 col-10 fixed-bottom py-3 my-4 border-top">
-        <p class="mb-0 text-muted text-center">Made by Nathan Drake</p>
+        <p class="offset-1 col mb-0 text-muted">Made by Nathan Drake</p>
       </footer>
     </div>
 
@@ -69,6 +70,8 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
+      <h3>{{title}}</h3>
+      <p>{{description}}</p>
     </script>
 
     <script id="video-thumbnail-template" type="text/x-handlebars-template">
@@ -81,6 +84,8 @@
     <script src="node_modules/backbone/backbone-min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="sampleData.js"></script>
 
     <script src="views/AppView.js"></script>
     <script src="views/CurrentVideoView.js"></script>

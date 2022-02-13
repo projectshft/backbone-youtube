@@ -11,12 +11,15 @@ const AppView = Backbone.View.extend({
 
   endPoint: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&videoEmbeddable=true&key=AIzaSyDG2W0sGtlj37V3J0cZUjSgkOjNGFCdrEw&q=`,
 
-  currentVideo: null,
-
   initialize() {
+    // this.model.get('videos').fetch({
+    //   reset: true,
+    //   url: `${this.endPoint}flight of the conchords dallas`,
+    // });
+
     this.model.get('videos').fetch({
       reset: true,
-      url: `${this.endPoint}flight of the conchords dallas`,
+      url: 'file:///Users/nathandrake/Dropbox/Coding%20Projects/parsity/backbone-youtube/sampleData.js',
     });
 
     this.listenTo(this.model.get('videos'), 'reset', this.renderAllVideos);
@@ -29,9 +32,8 @@ const AppView = Backbone.View.extend({
     });
   },
 
-  changeCurrent() {},
-
   renderCurrentVideo(video) {
+    this.$('#main-video-div').empty();
     const currentVideoView = new CurrentVideoView({ model: video });
     this.$('#main-video-div').append(currentVideoView.render().el);
   },
@@ -43,9 +45,8 @@ const AppView = Backbone.View.extend({
 
   renderAllVideos() {
     this.$('#video-thumbnail-div').empty();
-    this.currentVideo = this.model.get('videos').models[0];
 
-    this.renderCurrentVideo(this.currentVideo);
+    this.renderCurrentVideo(this.model.get('currentVideo'));
     this.model.get('videos').each(function (videoModel) {
       this.renderVideoThumbnail(videoModel);
     }, this);
