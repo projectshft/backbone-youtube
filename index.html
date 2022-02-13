@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>The Youtuber 3000</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row header">
+        <div class="offset-3 col-6">
+          <h1 class="display-4 text-center m-4">The Youtuber 3000</h1>
+          <hr />
+
+          <div class="input-group pt-2 mb-3">
+            <input
+              id="search-input"
+              type="text"
+              class="form-control"
+              placeholder="Search the Youtubez"
+            />
+            <div class="input-group-append">
+              <button
+                id="search-btn"
+                class="btn btn-outline-secondary"
+                type="button"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="main-video-div" class="offset-3 col-4"></div>
+        <div id="video-thumbnail-div" class="offset-3 col-6"></div>
+      </div>
+
+      <footer class="offset-1 col-10 fixed-bottom py-3 my-4 border-top">
+        <p class="mb-0 text-muted text-center">Made by Nathan Drake</p>
+      </footer>
+    </div>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/{{videoId}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </script>
+
+    <script id="video-thumbnail-template" type="text/x-handlebars-template">
+      <img src="{{thumbnailUrl}}" />
+      <p>{{title}}</p>
+    </script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="views/AppView.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
+    <script src="views/VideoThumbnailView.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
