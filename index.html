@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>YouTube - Backbone</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-3">
+          <header class="page-header" style="text-align: center">
+            <h1>Project YouTube</h1>
+            <hr />
+          </header>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-md-offset-1">
+                <div class="form-group text-center">
+                  <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search a video"
+                  />
+                  <button class="btn btn-primary search">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container" style="margin-top: 25px">
+            <div class="row">
+              <div class="col-md-6 column_">
+                <div class="main-video"></div>
+              </div>
+              <div class="col-md-6 column_">
+                <div class="video-sidebar text-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script id="thumbnail-template" type="text/x-handlebars-template">
+      <div class="wrapper">
+        <img class="thumbnail" data-id="{{id}}" src="{{thumbnail_url}}" />
+      </div>
+      <div class="wrapper">
+        <p>{{title}}</p>
+      </div>
+      <hr />
+    </script>
+
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="player-container text-center">
+        <iframe
+          width="500"
+          height="315"
+          src="https://www.youtube.com/embed/{{id}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <hr />
+      <div class="description-style">
+        <h4><strong>{{title}}</strong></h4>
+        <p>{{description}}</p>
+      </div>
+    </script>
+
+    <script src="node_modules/underscore/underscore.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/backbone/backbone.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="sampleresponse.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
