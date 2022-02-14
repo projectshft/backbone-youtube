@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Youtube Backbone App</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="page-header row">
+        <div class="col-md-8 offset-md-2">
+          <h1 class="text-center">Project Youtube</h1>
+          <hr />
+          <form>
+            <div class="row">
+              <div class="col-md-4 offset-md-3">
+                <input
+                  id="search-input"
+                  class="form-control"
+                  type="text"
+                  placeholder="Please enter search term here"
+                />
+              </div>
+              <div class="col-md-1">
+                <button id="video-submit" class="btn btn-primary" type="button">
+                  Search
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="main-col col-md-4 offset-md-2"></div>
+        <div class="thumb-col col-md-4"></div>
+      </div>
+    </div>
+    <script id="main-template" type="text/x-handlebars-template">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/{{id}}"
+        title="{{title}}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <hr />
+      <div class="video-description">
+        <p><strong>{{title}}</strong></p>
+        <p><em>{{description}}</em></p>
+      </div>
+    </script>
+    <script id="thumb-template" type="text/x-handlebars-template">
+        <div class="thumb-content row" data-id="{{id}}">
+          <div class="col-md-5">
+            <img src="{{thumbURL}}" />
+          </div>
+          <div class="col-md-7 thumb-title">
+            <p>
+              {{title}}
+            </p>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
