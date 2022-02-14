@@ -1,0 +1,29 @@
+.page-header {
+  margin-bottom: 50px;
+}
+
+.main-video iframe {
+  width: 100%;
+}
+
+.thumb {
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.thumb-content {
+  margin: auto;
+}
+
+.thumb img {
+  width: 100%;
+}
+
+.thumb-title {
+  font-size: 12px;
+  margin: auto;
+}
+
+.video-description p {
+  font-size: 14px;
+}
