@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Project YouTube</title>
+  </head>
+  <body>
+    <div class="container-fluid app-container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="page-header">
+            <h1>Project YouTube</h1>
+            <hr />
+          </div>
+
+          <form class="form-group">
+            <div class="input-group">
+              <input
+                type="text"
+                id="search-query"
+                placeholder="Please enter search term here"
+                class="form-control"
+              />
+              <span class="input-group-btn">
+                <input
+                  type="button"
+                  value="Search"
+                  class="btn btn-primary search"
+                />
+              </span>
+            </div>
+          </form>
+          <hr />
+          <dive class="row">
+            <div class="current-video col-md-6"></div>
+            <div class="suggested-videos col-md-4 offset-md-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <a class="view-video" href="#" data-id={{videoId}}>
+        <img class="img-fluid" src="{{thumbnail_url}}" /></a>
+      <h6>{{title}}</h6>
+      <p><small>{{description}}</small></p>
+      <hr />
+    </script>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <div class="ratio ratio-16x9">
+        <iframe
+          width="771"
+          height="434"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
