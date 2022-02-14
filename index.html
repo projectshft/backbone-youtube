@@ -51,32 +51,36 @@
 
       <div class="row mt-2">
         <div id="main-video-div" class="offset-2 col-5"></div>
-        <div id="video-thumbnail-div" class="offset-1 col-3"></div>
+        <div id="video-thumbnail-div" class="offset-1 col-2"></div>
       </div>
       <div style="height: 100px"></div>
 
-      <footer class="offset-1 col-10 fixed-bottom py-3 my-4 border-top">
+      <footer class="offset-1 col-10 fixed-bottom py-3 border-top">
         <p class="offset-1 col mb-0 text-muted">Made by Nathan Drake</p>
       </footer>
     </div>
 
     <script id="current-video-template" type="text/x-handlebars-template">
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/{{videoId}}"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-      <h3>{{title}}</h3>
-      <p>{{description}}</p>
+      <div class="ratio ratio-16x9">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <h4 class="pt-3">{{title}}</h4>
+      <p class="pt-1">{{description}}</p>
     </script>
 
     <script id="video-thumbnail-template" type="text/x-handlebars-template">
-      <img src="{{thumbnailUrl}}" />
-      <p>{{title}}</p>
+      <div class="thumbnail-video" data-id="{{videoId}}">
+        <img src="{{thumbnailUrl}}" class="img-fluid" />
+        <p style="font-size: 90%">{{title}}</p>
+      </div>
     </script>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>

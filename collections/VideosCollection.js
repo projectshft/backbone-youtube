@@ -11,7 +11,7 @@ const VideosCollection = Backbone.Collection.extend({
       videoModel.set('videoId', video.id.videoId);
       videoModel.set('title', video.snippet.title);
       videoModel.set('description', video.snippet.description);
-      videoModel.set('thumbnailUrl', video.snippet.thumbnails.default.url);
+      videoModel.set('thumbnailUrl', video.snippet.thumbnails.medium.url);
 
       this.push(videoModel);
     });
