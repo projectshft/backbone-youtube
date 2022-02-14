@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>The Youtuber 3000</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row header">
+        <div class="offset-3 col-6">
+          <h1 class="display-4 text-center m-4">The Youtuber 3000</h1>
+          <hr />
+
+          <div class="input-group pt-2 mb-3">
+            <input
+              id="search-input"
+              type="text"
+              class="form-control"
+              placeholder="Search the Youtubez"
+            />
+            <div class="input-group-append">
+              <button
+                id="search-btn"
+                class="btn btn-outline-secondary"
+                type="button"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div id="main-video-div" class="offset-2 col-5"></div>
+        <div id="video-thumbnail-div" class="offset-1 col-2"></div>
+      </div>
+      <div style="height: 100px"></div>
+
+      <footer class="offset-1 col-10 fixed-bottom py-3 border-top">
+        <p class="offset-1 col mb-0 text-muted">Made by Nathan Drake</p>
+      </footer>
+    </div>
+
+    <script id="current-video-template" type="text/x-handlebars-template">
+      <div class="ratio ratio-16x9">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <h4 class="pt-3">{{title}}</h4>
+      <p class="pt-1">{{description}}</p>
+    </script>
+
+    <script id="video-thumbnail-template" type="text/x-handlebars-template">
+      <div class="thumbnail-video" data-id="{{videoId}}">
+        <img src="{{thumbnailUrl}}" class="img-fluid" />
+        <p style="font-size: 90%">{{title}}</p>
+      </div>
+    </script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="sampleData.js"></script>
+
+    <script src="views/AppView.js"></script>
+    <script src="views/CurrentVideoView.js"></script>
+    <script src="views/VideoThumbnailView.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
