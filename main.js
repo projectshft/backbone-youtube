@@ -8,9 +8,7 @@ var VideoModel = Backbone.Model.extend({
 });
 
 var VideosCollection = Backbone.Collection.extend({
-  defaults: {
-    url: '',
-  },
+  url: '',
 
   model: VideoModel,
 
@@ -28,22 +26,52 @@ var VideosCollection = Backbone.Collection.extend({
 });
 
 var AppModel = Backbone.Model.extend({
-  mainVideo: null,
-
-  videos: new VideosCollection(),
+  defaults: function () {
+    return {
+      mainVideo: null,
+      videos: new VideosCollection()
+    }
+  },
 
   fillVideosCollection: function (query) {
     
     // this.videos.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + query + '&type=video&videoEmbeddable=true&key=AIzaSyCV6fnl409__rj0J_h7JEK6CauaPuM4TR0',
 
     // this.videos.fetch({reset: true});
-    this.videos.reset(this.videos.parse(sampleData))
+    this.get('videos').reset(this.get('videos').parse(sampleData))
   },
 
   setMainVideo: function (videoNumber) {
-    var newVideo = this.videos.models[videoNumber - 1];
+    var newVideo = this.get('videos').models[videoNumber - 1];
 
-    this.mainVideo = newVideo;
+    this.set('mainVideo', newVideo);
+    
+  },
+});
+
+var VideoView = Backbone.View.extend({
+  className: 'main-video-container',
+
+  template: Handlebars.compile($('#main-video-template').html()),
+
+  render: function () {
+    
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
+  },
+});
+
+
+var ThumbView = Backbone.View.extend({
+  className: 'thumbnail-container',
+
+  template: Handlebars.compile($('#thumbnail-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+
+    return this;
   },
 });
 
@@ -56,8 +84,8 @@ var AppView = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model.videos, 'reset', this.assignFirstVideo);
-    this.listenTo(this.model.videos, 'reset', this.renderThumbnails);
+    this.listenTo(this.model.get('videos'), 'reset', this.assignFirstVideo);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderThumbnails);
     this.listenTo(this.model, 'change:mainVideo', this.renderPlayerView);
   },
 
@@ -69,12 +97,24 @@ var AppView = Backbone.View.extend({
   },
 
   assignFirstVideo: function () {
+    
     this.model.setMainVideo(1);
   },
 
   renderThumbnails: function (collection) {
+    collection.each(function (model) {
+      var newThumbnailView = new ThumbView({model: model});
+
+      this.$('.video-sidebar').append(newThumbnailView.render().el);
+    }, this);
+  },
+
+  renderPlayerView: function () {
     
-  }
+    var newVideoView = new VideoView({model: this.model.get('mainVideo')});
+    this.$('.main-video').append(newVideoView.render().el);
+    
+  },
 });
 
 var appModel = new AppModel();

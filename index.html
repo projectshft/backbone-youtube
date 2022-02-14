@@ -50,6 +50,35 @@
       </div>
     </div>
 
+    <script id="thumbnail-template" type="text/x-handlebars-template">
+      <div class="wrapper">
+        <img src="{{thumbnail_url}}" />
+      </div>
+      <div class="wrapper">
+        <p>{{title}}</p>
+      </div>
+      <hr />
+    </script>
+
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="player-container">
+        <iframe
+          width="500"
+          height="315"
+          src="https://www.youtube.com/embed/{{id}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <hr />
+      <div class="description-style">
+        <h4><strong>{{title}}</strong></h4>
+        <p>{{description}}</p>
+      </div>
+    </script>
+
     <script src="node_modules/underscore/underscore.js"></script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/backbone/backbone.js"></script>
