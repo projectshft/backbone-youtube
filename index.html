@@ -38,11 +38,11 @@
 
           <div class="container" style="margin-top: 25px">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 column_">
                 <div class="main-video"></div>
               </div>
-              <div class="col-md-6">
-                <div class="video-sidebar"></div>
+              <div class="col-md-6 column_">
+                <div class="video-sidebar text-center"></div>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
 
     <script id="thumbnail-template" type="text/x-handlebars-template">
       <div class="wrapper">
-        <img src="{{thumbnail_url}}" />
+        <img class="thumbnail" data-id="{{id}}" src="{{thumbnail_url}}" />
       </div>
       <div class="wrapper">
         <p>{{title}}</p>
@@ -61,7 +61,7 @@
     </script>
 
     <script id="main-video-template" type="text/x-handlebars-template">
-      <div class="player-container">
+      <div class="player-container text-center">
         <iframe
           width="500"
           height="315"

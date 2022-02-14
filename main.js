@@ -35,14 +35,14 @@ var AppModel = Backbone.Model.extend({
 
   fillVideosCollection: function (query) {
     
-    // this.videos.url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + query + '&type=video&videoEmbeddable=true&key=AIzaSyCV6fnl409__rj0J_h7JEK6CauaPuM4TR0',
+    this.get('videos').url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + query + '&type=video&videoEmbeddable=true&key=AIzaSyCV6fnl409__rj0J_h7JEK6CauaPuM4TR0',
 
-    // this.videos.fetch({reset: true});
-    this.get('videos').reset(this.get('videos').parse(sampleData))
+    this.get('videos').fetch({reset: true});
+    // this.get('videos').reset(this.get('videos').parse(sampleData))
   },
 
-  setMainVideo: function (videoNumber) {
-    var newVideo = this.get('videos').models[videoNumber - 1];
+  setMainVideo: function (indexNumber) {
+    var newVideo = this.get('videos').models[indexNumber];
 
     this.set('mainVideo', newVideo);
     
@@ -80,13 +80,16 @@ var AppView = Backbone.View.extend({
   el: 'body',
 
   events: {
-    'click .search': 'updateVideoCollection'
+    'click .search': 'updateVideoCollection',
+    'click .thumbnail': 'assignNewMainVideo'
   },
 
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', this.assignFirstVideo);
     this.listenTo(this.model.get('videos'), 'reset', this.renderThumbnails);
     this.listenTo(this.model, 'change:mainVideo', this.renderPlayerView);
+
+    this.model.fillVideosCollection('clamavi+de+profundis');
   },
 
   updateVideoCollection: function () {
@@ -97,11 +100,19 @@ var AppView = Backbone.View.extend({
   },
 
   assignFirstVideo: function () {
-    
-    this.model.setMainVideo(1);
+    this.model.setMainVideo(0);
+  },
+
+  assignNewMainVideo: function (e) {
+    var videoId = $(e.currentTarget).data().id;
+    var video = this.model.get('videos').findWhere({id: videoId});
+    var index = this.model.get('videos').models.indexOf(video);
+
+    this.model.setMainVideo(index);
   },
 
   renderThumbnails: function (collection) {
+    this.$('.video-sidebar').empty();
     collection.each(function (model) {
       var newThumbnailView = new ThumbView({model: model});
 
@@ -110,10 +121,10 @@ var AppView = Backbone.View.extend({
   },
 
   renderPlayerView: function () {
-    
+    this.$('.main-video').empty();
+
     var newVideoView = new VideoView({model: this.model.get('mainVideo')});
     this.$('.main-video').append(newVideoView.render().el);
-    
   },
 });
 

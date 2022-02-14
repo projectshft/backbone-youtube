@@ -1,6 +1,15 @@
 .search-input {
   width: 50%;
 }
-.test {
-  color: firebrick;
+
+.description-style {
+  text-align: center;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.wrapper h4 {
+  margin: 3px 0 10px 0;
 }
