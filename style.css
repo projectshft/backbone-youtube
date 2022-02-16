@@ -1,0 +1,17 @@
+.mainVideoCol {
+  background-color: brown;
+}
+
+.vidListCol {
+  background-color: aqua;
+}
+
+.small-title {
+  font-size: small;
+  font-weight: bold;
+  width: 100%;
+}
+
+img {
+  width: 100%;
+}
