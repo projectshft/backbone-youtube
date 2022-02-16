@@ -1,11 +1,3 @@
-.mainVideoCol {
-  background-color: brown;
-}
-
-.vidListCol {
-  background-color: aqua;
-}
-
 .small-title {
   font-size: small;
   font-weight: bold;
@@ -14,4 +6,8 @@
 
 img {
   width: 100%;
+}
+
+.vidListCol {
+  overflow-y: scroll;
 }

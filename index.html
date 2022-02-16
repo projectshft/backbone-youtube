@@ -30,8 +30,9 @@
             <div class="input-group">
               <input
                 type="search"
-                class="form-control mx-2"
+                class="search-query form-control mx-2"
                 placeholder="Search video"
+                value="kung fu panda"
               />
               <button class="btn btn-primary search-video" type="button">
                 Search
@@ -53,14 +54,14 @@
     </div>
 
     <script id="video-template" type="text/x-handlebars-template">
-      <div class="row mb-4">
-        <div class="col-sm-7 img-container">
+      <div class="row mb-2">
+        <div class="col-sm-6 img-container vid-thumb" data-id="{{videoId}}">
           <img src="{{thumbnailUrl}}" />
         </div>
-        <div class="col-sm-5 desc-container">
+        <div class="col-sm-6 desc-container">
           <p class="small-title my-5">{{title}}</p>
         </div>
-        <hr />
+        <hr class="mt-4" />
       </div>
     </script>
 
@@ -71,6 +72,8 @@
         >
           <iframe
             class="embed-responsive-item"
+            width="100%"
+            height="350rem"
             src="https://www.youtube.com/embed/{{videoId}}"
             title="YouTube video player"
             frameborder="0"
@@ -97,6 +100,7 @@
     <script src="models/appModel.js"></script>
     <script src="views/appView.js"></script>
     <script src="views/videoView.js"></script>
+    <script src="views/mainVideoView.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
