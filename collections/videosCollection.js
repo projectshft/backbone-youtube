@@ -1,6 +1,6 @@
 var VideosCollection = Backbone.Collection.extend({
 
-  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=sharks&type=video&videoEmbeddable=true&key=' + api_key,
+  url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' + $('.search-query').val() + '&type=video&videoEmbeddable=true&key=' + api_key,
 
 
   parse: function (response, options) {

@@ -19,23 +19,21 @@ var AppView = Backbone.View.extend({
 
   createVideo: function () {
 
-    // this.model.get('videos').fetch();
-    for (let i = 0; i < sampleData.items.length; i++) {
-    const element = sampleData.items[i];
+    this.model.get('videos').fetch();
+
+    // for (let i = 0; i < sampleData.items.length; i++) {
+    // const element = sampleData.items[i];
  
-    this.model.get('videos').addVideo(
-      element.snippet.title,
-      element.snippet.description,
-      element.id.videoId,
-      element.snippet.thumbnails.high.url
-    )
-
-
-    }
+    //   this.model.get('videos').addVideo(
+    //     element.snippet.title,
+    //     element.snippet.description,
+    //     element.id.videoId,
+    //     element.snippet.thumbnails.high.url
+    //   )
+    // }
     
     this.model.set('current_video', null);
 
-    alert('happening')
   },
 
   handleThumbClick: function (e) {
@@ -64,11 +62,4 @@ var AppView = Backbone.View.extend({
     var mainVideoView = new MainVideoView({ model: currentVideo});
     this.$('.main-video').append(mainVideoView.render().el); 
   },
-
-  // renderVideos: function () {
-  //   this.model.get('videos').each(function (videoModel) {
-  //     this.renderVideo(videoModel);
-  //   }, this);
-
-  // }
 })
