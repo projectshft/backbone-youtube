@@ -20,25 +20,39 @@
   </head>
   <body>
     <div class="container">
-      <div class="row" id="search-bar"><form class="search-form">
-        <h3>Search Youtube</h3>  
-        <div class="form-group">
-          <input type="text" id="search-query" class="form-control">
-          </input>
-          <button type="button" class="btn btn-md btn-primary search">Search</button>
-        </div>
-      </form>
+      <div class="row" id="search-bar">
+        <form class="search-form">
+          <h3>Search Youtube</h3>  
+          <div class="form-group">
+            <input type="text" id="search-query" class="form-control">
+            </input>
+            <button type="button" class="btn btn-md btn-primary search">Search</button>
+          </div>
+        </form>
       </div>
-      <div class="row" id="video-results"></div>
+      <hr>
+      <div class="row results">
+        <div id="main-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ id }}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p><h3>{{ title }}</h3></p>
+          <p>{{ description }}</p>
+        </div>
+      <div id="video-results"></div>
     </div>
+  </div>
+    <!-- <script>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IXp4rVZFTVs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></script> -->
 
-    <script id="main-video"></script>
+    <script id="sidebar-template" type="text/x-handlebars-template">
+      <div class="content-container">
+        <span class="video-title">{{title}}</span>
+      </div>
+    </script>
 
-    <script id="sidebar-videos"></script>
-
-  
+    <script src="views/SideBarView.js"></script>
+    <script src="models/VideoModel.js"></script>
     <script src="models/AppModel.js"></script>
-    <script src="VideoCollection.js"></script>
+    <script src="collection/VideoCollection.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
   </body>
