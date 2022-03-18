@@ -32,20 +32,25 @@
       </div>
       <hr>
       <div class="row results">
-        <div id="main-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ id }}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <p><h3>{{ title }}</h3></p>
-          <p>{{ description }}</p>
-        </div>
-      <div id="video-results"></div>
+        <div class="main-display col-lg-4 offset-md-2">Main Display</div>
+        <div class="video-results col-md-2 offset-md-1">Sidebar</div>
     </div>
   </div>
     <!-- <script>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/IXp4rVZFTVs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></script> -->
+    <script id="main-video" type="text/x-handlebars-template">
+      <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="main-title"> <p><h3>{{ title }}</h3></p> </span>
+        <span class="main-description"> <p>{{ description }}</p> </span>
+      </div>
+    </script>
 
     <script id="sidebar-template" type="text/x-handlebars-template">
       <div class="content-container">
-        <span class="video-title">{{title}}</span>
+        <a class="video-title view-video" href="#" data-id={{videoId}}>
+        <b>{{title}}</b>
+        <p><span class="video-title"><img src="{{thumbnail}}"></span></p></a>
       </div>
     </script>
 
@@ -54,6 +59,7 @@
     <script src="models/AppModel.js"></script>
     <script src="collection/VideoCollection.js"></script>
     <script src="views/AppView.js"></script>
+    <script src="views/VideoView.js"></script>
     <script src="views/SideBarView.js"></script>
     <script src="main.js"></script>
   </body>

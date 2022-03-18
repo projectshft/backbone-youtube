@@ -1,7 +1,7 @@
-var ViewView = Backbone.View.extend({
+var VideoView = Backbone.View.extend({
   className: 'video',
 
-  template: Handlebars.compile($('.main-video').html()),
+  template: Handlebars.compile($('#main-video').html()),
 
   // initialize: function () {
   //   this.listenTo(this.model)
