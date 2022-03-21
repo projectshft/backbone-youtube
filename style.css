@@ -1,0 +1,44 @@
+.navbar-light {
+  height: 60px;
+}
+
+#search-input {
+  width: 700px;
+  margin-right: 15px;
+  margin-left: 20px;
+}
+
+.form-group {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.header {
+  margin-top: 20px;
+}
+
+.thumbnail-container {
+  padding-right: 45px;
+}
+
+.video-title {
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.video:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.title-container {
+  text-align: left;
+}
+
+.detail-img {
+  height: 300px;
+}
+
+.detail-view-container {
+  margin-top: 40px;
+}
