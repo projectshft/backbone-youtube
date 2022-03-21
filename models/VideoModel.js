@@ -1,13 +1,15 @@
 var VideoModel = Backbone.Model.extend({
- 
+
   defaults: {
+  id: '',
   videoId: '',
   thumbnail: '',
   title: '',
   description: ''
 },
 
-urlRoot: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyD-pH3NgLx7dZs4m36kgHBp-r0KYPtt7IA&q=",
+urlRoot: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyCUFrrY57c0l_8ufglh-bWcqIBJVq21DnE&q=",
+
 
 parse: function (response) {
   return response.items.map(function (e) {

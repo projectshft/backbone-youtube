@@ -3,10 +3,6 @@ var VideoView = Backbone.View.extend({
 
   template: Handlebars.compile($('#main-video').html()),
 
-  // initialize: function () {
-  //   this.listenTo(this.model)
-  // }
-
   render: function () {
     this.$el.html(this.template(this.model.toJSON()));
 
