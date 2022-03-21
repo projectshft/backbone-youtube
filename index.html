@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>YouTube Search</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" id="search-bar">
+        <form class="search-form">
+          <h3>Search Youtube</h3>  
+          <div class="form-group">
+            <input type="text" id="search-query" class="form-control">
+            </input>
+            <button type="button" class="btn btn-md btn-primary search">Search</button>
+          </div>
+        </form>
+      </div>
+      <hr>
+      <div class="row results">
+        <div class="main-display col-lg-4 offset-md-2">Main Display</div>
+        <div class="video-results col-md-2 offset-md-1">Sidebar</div>
+    </div>
+  </div>
+     <script id="main-video" type="text/x-handlebars-template">
+      <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <span class="main-title"> <p><h3>{{ title }}</h3></p> </span>
+        <span class="main-description"> <p>{{ description }}</p> </span>
+      </div>
+    </script>
+
+    <script id="sidebar-template" type="text/x-handlebars-template">
+      <div class="content-container">
+        <a class="video-title view-video" href="#" data-id={{videoId}}>
+        <b>{{title}}</b>{{ id }}
+        <p><span class="video-title"><img src="{{thumbnail}}"></span></p></a>
+      </div>
+    </script>
+
+    
+    <script src="models/VideoModel.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="collection/VideoCollection.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="views/SideBarView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
