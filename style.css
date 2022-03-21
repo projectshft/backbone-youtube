@@ -1,0 +1,49 @@
+body {
+  background-color: #dcdcdc;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-header {
+  border: 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+hr {
+  border: 1px solid #000;
+  color: #000;
+  height: 1px;
+}
+
+.search-form {
+  width: 100%;
+  margin: 0 auto 32px auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-default:focus {
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+p {
+  line-height: 1.25;
+}
+
+.title {
+  font-weight: bold;
+}

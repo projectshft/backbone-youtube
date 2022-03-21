@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+
+    <title>Project Youtube</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="page-header text-center">
+            <h1>Project Youtube</h1>
+          </div>
+
+          <hr />
+
+          <form class="search-form row row-cols-md-auto g-3">
+            <div class="col-md-5 offset-md-3">
+              <input
+                type="text"
+                class="form-control"
+                required
+                id="search-query"
+                placeholder="Enter your search here"
+              />
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-primary search"
+              id="submit-search"
+            >
+              Search
+            </button>
+          </form>
+
+          <div class="results row">
+            <div class="video-result col-md-8"></div>
+            <div class="side-videos col-md-3 offset-md-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <a class="thumbnail" href="#" data-id="{{videoId}}">
+        <img src="{{thumbnailUrl}}" />
+      </a>
+      <p class="title"><small>{{title}}</small></p>
+      <hr />
+    </script>
+
+    <script id="video-result-template" type="text/x-handlebars-template">
+      <div class="video-result-container">
+        <iframe
+          width="480"
+          height="360"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <p class="title">{{title}}</p>
+        <p class="description">{{description}}</p>
+      </div>
+    </script>
+
+    <script src="models/VideosModel.js" type="text/javascript"></script>
+    <script
+      src="collections/VideosCollection.js"
+      type="text/javascript"
+    ></script>
+    <script src="views/VideoResultView.js" type="text/javascript"></script>
+    <script src="views/SideVideosView.js" type="text/javascript"></script>
+    <script src="models/AppModel.js" type="text/javascript"></script>
+    <script src="views/AppView.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>
