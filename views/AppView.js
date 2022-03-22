@@ -13,7 +13,7 @@ var AppView = Backbone.View.extend({
     'keyup #search-query': 'handleEnterKey',
   },
 
-  results: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyBkGj1AnncX25Cf2HMNaSCRq_a27qeHVhI&q=`,
+  results: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyBKNZGIlCDmF6OqxU4eU4NsIcvV5Lx1SCw&q=`,
 
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'reset', this.renderDefault);
@@ -42,9 +42,9 @@ var AppView = Backbone.View.extend({
   },
 
   handleThumbnail: function (e) {
-    var { id } = $(e.currentTarget).data();
+    var id = $(e.currentTarget).data().id;
 
-    this.model.playVideoResult({ id });
+    this.model.playVideoResult(id);
   },
 
   handleEnterKey: function (e) {
