@@ -45,7 +45,6 @@ var AppView = Backbone.View.extend({
     var val = $('#search-query').val();
     this.model.get('videos').updateUrl(val);
   }
-
 });
 
 var sampleData = {

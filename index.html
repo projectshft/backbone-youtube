@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-md-6 offset-3">
           <div class="page-header">
-          <h1>YouTube</h1>
+          <h1>Little YouTube</h1>
           <hr />
         </div>
           <form class="search-form">
@@ -41,15 +41,15 @@
           <hr/>
         </div>
         <div class="row"></div>
-        <div class="col-md-6 main-video"></div>
-        <div class="col-md-6 video-list"></div>
+        <div class="col-md-4 offset-1 main-video"></div>
+        <div class="col-md-4 offset-1 video-list"></div>
       </div>
       <script id="main-video-template" type="text/x-handlebars-template">
         <div class="vid">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="title">{{title}}</div>
-        <div class="description">{{description}}</div>
+        <div class="main-title">{{title}}</div>
+        <div class="main-description">{{description}}</div>
       </script>
 
       <script id="video-template" type="text/x-handlebars-template">

@@ -8,7 +8,6 @@ var VideoView = Backbone.View.extend({
     this.listenTo(this.model, 'change:isMainVideo', this.renderMainVideo);
   },
 
- 
 
   renderMainVideo: function (mainVideo) {
     var mainVideoView = new MainVideoView({model: mainVideo});
@@ -29,5 +28,4 @@ var VideoView = Backbone.View.extend({
 
     return this;
   }
-
 });
