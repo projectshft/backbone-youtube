@@ -1,17 +1,17 @@
 var AppView = Backbone.View.extend({
   el: $('body'),
 
-  // events: {
-  //   'click .search': 'loadVideos'
-  // },
+  events: {
+    'click .search': 'getSearch'
+  },
 
 
   initialize: function () {
     this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
     this.loadVideos();
     this.loadMainVideo();
-  },
 
+  },
 
   loadVideos: function () {
     var items = sampleData.items;
@@ -30,12 +30,22 @@ var AppView = Backbone.View.extend({
   renderVideos: function (video) {
     var videoView = new VideoView({model: video});
     this.$('.video-list').append(videoView.render().el);
+    this.loadMainVideo();
   },
 
   loadMainVideo: function () {
-    var mainVideoView = new MainVideoView({ model: (this.model.get('videos').get('c5')) });
+    var lastVid = this.model.get('videos').at(this.model.get('videos').length - 1);
+    var mainVideoView = new MainVideoView({model: lastVid })
     this.$('.main-video').append(mainVideoView.renderMain().el);
-  } 
+  },
+
+  getSearch: function () {
+    this.$('.video-list').empty();
+    this.$('.main-video').empty();
+    var val = $('#search-query').val();
+    this.model.get('videos').updateUrl(val);
+  }
+
 });
 
 var sampleData = {

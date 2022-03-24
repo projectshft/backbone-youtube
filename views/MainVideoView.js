@@ -7,6 +7,6 @@ var MainVideoView = Backbone.View.extend({
     
     this.$el.html(this.template(this.model.toJSON()));
 
-   console.log(this);
+    return this;
   }
 });
