@@ -1,0 +1,19 @@
+1. Create a MODEL class for a single video:
+  - set default properties;
+  
+
+2. Create a COLLECTION class for models: 
+
+  - create a fetch API request that would load 5 new videos into collection;
+
+3. Create a VIEW class for a video:
+
+4. Create an APP MODEL class: 
+
+
+5. Create an APP VIEW class:
+  - initiliaze click listeners on submit button, passing in search value and envoking fetch() in video collection, that would parse API response and return array of objects;
+  - initialize a 'change' on video model collection listener function that would invoke render every time video model collection changes (as a result of fetch());
+
+6. 
+

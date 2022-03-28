@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BackBone YouTube</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Project YouTube</h2>
+      <hr />
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <div class="input-group input-group-lg">
+            <input
+              type="search"
+              class="form-control rounded input"
+              placeholder="Please enter search term here"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <button type="button" class="btn btn-primary btn-lg">search</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 current-vid"></div>
+        <div class="col-6 collection-vid">
+          <ul class="videosList"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script id="video-template" type="text/x-handlebars-template">
+      <div class="thumbnail-container">
+        <img src="{{ url }}">
+      </div>
+      <div class="title-container">
+        <p class="video-title"> {{ title }} </p>
+      </div>  
+      <div class="describtion-container">
+        <p> {{ describiton }} </p>
+      </div>
+    </script>
+    
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideoCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    
+    <script src="views/AppView.js"></script>
+    <script src="views/VideoView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
