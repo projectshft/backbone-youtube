@@ -1,4 +1,5 @@
 var VideoView = Backbone.View.extend({
+  el: $('.videosList'),
   className: 'video',
   tagName: 'li',
 
