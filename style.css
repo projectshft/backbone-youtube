@@ -1,0 +1,15 @@
+.fitted {
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+}
+
+.search-container {
+  margin-bottom: 3em;
+}
+
+.video-options:hover {
+  cursor: pointer;
+}
