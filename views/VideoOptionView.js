@@ -1,7 +1,7 @@
 let VideoOptionView = Backbone.View.extend({
     className: 'video',
     initialize: function() {
-        // console.log('video options view initialized');
+        console.log('video options view initialized');
     },
 
     events: {

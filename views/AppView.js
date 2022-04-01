@@ -5,71 +5,45 @@ let AppView = Backbone.View.extend({
         'click .video-option': 'handleSelectVideo'
     },
     initialize: function() {
-        // console.log('app view initialized');
-        this.listenTo(this.model, 'change:selectedVideoId', this.renderSelectedVideo);
-        this.listenTo(this.model, 'change:videos', this.handleVideoChange);
-        // this.listenTo(this.model, 'change:videos', function() {
-        //     this.renderVideoOptions();
-        //     this.model.set('selectedVideoId', this.model.get('videos').models[0]);
-        //     console.dir(this.model.get('videos'));
-        //     console.log('videos changed');
-        // });
-        this.renderVideoOptions();
-        this.renderSelectedVideo();
+        this.listenTo(this.model, 'change:selectedVideo', this.renderSelectedVideo);
+        this.listenTo(this.model.get('videos'), 'reset', this.handleVideoChange);
+
+        //
+        this.listenTo(this.model, 'change:videos', function() {
+            console.log('videos change event fired');
+            this.renderVideoOptions();
+            this.model.set('selectedVideoId', this.model.get('videos').models[0]);
+            // console.dir(this.model.get('videos'));
+            // console.log('videos changed');
+        });
+
     },
 
     //
     handleVideoChange: function() {
-        console.log('videos changed');
         this.renderVideoOptions();
-            this.model.set('selectedVideoId', this.model.get('videos').models[0]);
-            // console.dir(this.model.get('videos'));
-            console.log('videos changed');
+        // console.log(this.model.get('videos'));
+        this.model.set('selectedVideo', this.model.get('videos').models[0]);
     },
     //
 
     handleGetVideos: function() {
         let searchTerm = this.$('#search-bar').val().replace(' ', '+');
-        
-        console.log(searchTerm);
-
-        ////
-        // this.model.set('videos', new VideosCollection([{id: 3, video_url: 'https://www.youtube.com/embed/5_sfnQDr1-o', title: 'Baby Monkey on a Pig', description: 'A baby monkey rides backwards on a pig'}], {searchTerm: searchTerm}));
-        ////
-
-        this.model.set('videos', new VideosCollection([], {searchTerm: searchTerm}));
-        // console.dir(this.model.get('videos'));
-        //once new collection initialized need to then fetch, then listen to changes on collection, then get first video in collection and save it to selected video, then render the selected video and all video options, via this.renderVideoOptions and this.renderSelectedVideo
-
-        this.model.get('videos').fetch();
-        
-        console.log('successfully searched');
-        // this.model.get('videos').getVideos();
+        this.model.get('videos').url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchTerm}&type=video&videoEmbeddable=true&key=${API_KEY}`;
+        this.model.get('videos').fetch({reset: true});
     },
 
     handleSelectVideo: function(evt) {
-        // console.log('handle select video ran');
-        //get id of clicked video, set appropriate attribute on appModel
         let clickedVideoId = this.$(evt.target).data().id;
-        // console.log(clickedVideoId);
-        this.model.set('selectedVideoId', clickedVideoId);
+        console.log('clickedVideoId:', clickedVideoId);
+        this.model.setSelectedVideo(clickedVideoId);
     },
 
-    renderSelectedVideo: function(vid) {
-        //get model from collection whose id matches selectedVideoId
-        //create instance of SelectedVideoView using this model
-        //clear the container for the selected video
-        //append the view to the container
-        let selectedVideoModel = this.model.get('videos').get(this.model.get('selectedVideoId'));
+    renderSelectedVideo: function() {
+        let selectedVideoModel = this.model.get('selectedVideo');
 
-
-
-
+        console.log(selectedVideoModel);
         console.log('render selected video ran');
-
-        // console.log(vid);
-        // console.log('test');
-        // console.log(selectedVideoModel);
         let selectedVideo = new SelectedVideoView({model: selectedVideoModel});
         this.$('.selected-video').empty();
 
@@ -77,21 +51,14 @@ let AppView = Backbone.View.extend({
     },
     
     renderVideoOption: function(vid) {
-        console.log('rendering a video option')
-        console.dir(vid);
-        console.log('video option rendered')
-        // console.log('rendering a video option');
         let videoOptionView  = new VideoOptionView({model: vid});
         this.$('.video-options').append(videoOptionView.render().el);
     },
 
     renderVideoOptions: function() {
-        console.log('render video options ran');
-        // console.dir(this.model.get('videos'));
-        // this.$('.video-options').empty();
-        console.log(this.model.get('videos'));
-        console.log('about to render individual video options')
+        this.$('.video-options').empty();
         this.model.get('videos').each(function(vid) {
+            console.log('test');
             this.renderVideoOption(vid);
         }, this);
     }
