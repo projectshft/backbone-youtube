@@ -4,8 +4,10 @@ var VideoModel = Backbone.Model.extend({
     return {
     url: '',
     title: '',
-    describtion: ''
+    describtion: '',
+    id: ''
+
     }
-  }
+  },
 
 });

@@ -4,30 +4,56 @@ var AppView = Backbone.View.extend({
   el: $('body'),
 
   events: {
-    'click .btn': 'userSearch',  
-  },
+    'click .btn': function(e) {
+      this.userSearch(e);
+      this.clearVideos(e);
+    },
 
-  initialize: function(){
-    this.$videos = this.$('.videosList');
-    this.listenTo(this.collection, 'add', this.renderVideos);
-  },
-
+    'click .video': 'clickVideoHandler'
   
+  }, 
+
+  initialize: function(){ 
+    this.$video = this.$('.video');
+    this.$videos = this.$('.videosList');
+    this.$mainVideo = this.$('.main-vid');
+    this.listenTo(this.model.videos, 'update', this.render);
+    
+
+  },
+
+  clickVideoHandler: function(e) {
+    var clickedVideoId = $(e.currentTarget).data().id;
+    this.model.displayVideo(clickedVideoId);
+
+  },
+
+  clearVideos: function() {
+    this.$videos.empty();
+    this.model.videos.reset();
+  },
+
   userSearch: function() {
-    console.log('test');
     if(this.$('.input').val()) {
       var userInput = this.$('.input').val();
       this.model.videos.searchVideo(userInput);
     }
   },
 
-  renderVideos: function() {
-    console.log("renderVideos is invoked!");
-    // var videoView = new VideoView({model: videoModel});
-    // this.$videos.append(videoView.render().el);
-    // this.$el.html(this.template(this.model.videos));
+  render: function() {
+    this.model.videos.models.forEach((clip) => {
+      var videoModel = new VideoModel({
+        url: clip.attributes.url,
+        title: clip.attributes.title,
+        describtion: clip.attributes.describtion,
+        id: clip.attributes.id
+      })
+      var videoView = new VideoView({model: videoModel});
+      var newVideoHtml = videoView.render().el;
+      this.$videos.append(newVideoHtml);
+    });
     return this;
-  }
+  },
+
 });
 
-// TODO: listen for data added to collection, and display a list of returned models on the page. Each time renderVideos function is invoked (looks like it happens every time each one of 5 models get added to collection), invoke a render method in videoView in order to append it to a <ul> element with class name .videosList.

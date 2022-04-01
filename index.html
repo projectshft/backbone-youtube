@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-6 current-vid"></div>
+        <div class="col-6 main-vid"></div>
         <div class="col-6 collection-vid">
           <ul class="videosList"></ul>
         </div>
@@ -43,6 +43,19 @@
     </div>
 
     <script id="video-template" type="text/x-handlebars-template">
+      <div class="thumbnail-container">
+        <a class="video" href="#" data-id="{{id}}">
+        <img src="{{ url }}">
+      </div>
+      <div class="title-container">
+        <p class="video-title"> {{ title }} </p>
+      </div>  
+      <div class="describtion-container">
+        <p> {{ descripiton }} </p>
+      </div>
+    </script>
+
+    <script id="mainVideo-template" type="text/x-handlebars-template">
       <div class="thumbnail-container">
         <img src="{{ url }}">
       </div>
@@ -57,7 +70,6 @@
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideoCollection.js"></script>
     <script src="models/AppModel.js"></script>
-    
     <script src="views/AppView.js"></script>
     <script src="views/VideoView.js"></script>
     <script src="main.js"></script>
