@@ -2,8 +2,6 @@ let VideosCollection = Backbone.Collection.extend({
     model: VideoModel,
 
     parse: function(response) {
-        console.log(response);
-        
         let configuredResponse = response.items.map(function(vid) {
             return {
                 id: vid.id.videoId,
@@ -14,8 +12,6 @@ let VideosCollection = Backbone.Collection.extend({
             }
         })
 
-        // console.log(configuredResponse);
-        // console.log('response logged');
         return configuredResponse;
     }
 });

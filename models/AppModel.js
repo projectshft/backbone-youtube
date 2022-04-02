@@ -184,29 +184,10 @@
 let API_KEY = 'AIzaSyCHd0mgg00maYbK6w6fRP8iIBfqK6Jsmn4';
 
 let AppModel = Backbone.Model.extend({
-    // defaults: function() {
-    //     return {
-    //         //figure out how to get selected video id from first set of videos
-    //         selectedVideoId: 'JZpVUNiSg5s',
-    //         videos: new VideosCollection([], {searchTerm: 'taskmaster'})
-    //         // videos: sampleData.items
-    //         // videos: new VideosCollection(sampleData.items.map(function(vid) {
-    //         //     return {
-    //         //         id: vid.id.videoId,
-    //         //         video_url: 'https://www.youtube.com/embed/' + vid.id.videoId,
-    //         //         thumbnail_url: vid.snippet.thumbnails.default.url,
-    //         //         title: vid.snippet.title,
-    //         //         description: vid.snippet.description
-    //         //     }
-    //         // }), {searchTerm: 'taskmaster'})
-    //     }
-    // },
     defaults: function() {
         let videosCollection = new VideosCollection();
         videosCollection.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=taskmaster&type=video&videoEmbeddable=true&key=${API_KEY}`;
         videosCollection.fetch();
-        console.log(videosCollection);
-        console.log(`selectedVideo: ${videosCollection.models[0]}`);//looks like may have to set this as null to start then set it after videos reset via fetch b/c it's able to find the selected Video after searching, something wrong with initializing this way
         return {
             selectedVideo: videosCollection.models[0],
             videos: videosCollection
@@ -214,9 +195,10 @@ let AppModel = Backbone.Model.extend({
     },
 
     setSelectedVideo: function(id) {
-        id = parseInt(id);
         let allVideos = this.get('videos');
+        console.log(allVideos);
         let selectedVideo = allVideos.findWhere({id: id});
+        console.log(selectedVideo);
         console.log('setting selected video id');
         this.set('selectedVideo', selectedVideo);
     },

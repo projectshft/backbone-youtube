@@ -7,25 +7,17 @@ let AppView = Backbone.View.extend({
     initialize: function() {
         this.listenTo(this.model, 'change:selectedVideo', this.renderSelectedVideo);
         this.listenTo(this.model.get('videos'), 'reset', this.handleVideoChange);
-
-        //
         this.listenTo(this.model, 'change:videos', function() {
-            console.log('videos change event fired');
             this.renderVideoOptions();
             this.model.set('selectedVideoId', this.model.get('videos').models[0]);
-            // console.dir(this.model.get('videos'));
-            // console.log('videos changed');
         });
 
     },
 
-    //
     handleVideoChange: function() {
         this.renderVideoOptions();
-        // console.log(this.model.get('videos'));
         this.model.set('selectedVideo', this.model.get('videos').models[0]);
     },
-    //
 
     handleGetVideos: function() {
         let searchTerm = this.$('#search-bar').val().replace(' ', '+');
@@ -35,19 +27,15 @@ let AppView = Backbone.View.extend({
 
     handleSelectVideo: function(evt) {
         let clickedVideoId = this.$(evt.target).data().id;
-        console.log('clickedVideoId:', clickedVideoId);
         this.model.setSelectedVideo(clickedVideoId);
     },
 
     renderSelectedVideo: function() {
-        let selectedVideoModel = this.model.get('selectedVideo');
-
-        console.log(selectedVideoModel);
-        console.log('render selected video ran');
-        let selectedVideo = new SelectedVideoView({model: selectedVideoModel});
+        let selectedVideo = this.model.get('selectedVideo');
+        let selectedVideoView = new SelectedVideoView({model: selectedVideo});
         this.$('.selected-video').empty();
 
-        this.$('.selected-video').append(selectedVideo.render().el);
+        this.$('.selected-video').append(selectedVideoView.render().el);
     },
     
     renderVideoOption: function(vid) {
@@ -58,7 +46,6 @@ let AppView = Backbone.View.extend({
     renderVideoOptions: function() {
         this.$('.video-options').empty();
         this.model.get('videos').each(function(vid) {
-            console.log('test');
             this.renderVideoOption(vid);
         }, this);
     }
