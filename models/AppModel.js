@@ -1,16 +1,22 @@
 
 var AppModel = Backbone.Model.extend({ 
-
-      videos: new VideoCollection(),
-
-      current_video: null,
-      display_video: false,
+  defaults: function() {
+    return {
     
+      videos: new VideoCollection(),
+      current_video: null
+
+    }
+  },
+      
+      display_video: false,
       displayVideo: function(clickedVideoId) {
-        var allVideos = this.videos;
+        // debugger;
+        var allVideos = this.get('videos');
         var currentVideo = allVideos.findWhere({ id: clickedVideoId });
+        console.log(currentVideo);
         this.set('current_video', currentVideo);
+        
 
       },
-
   });

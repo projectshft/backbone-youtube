@@ -17,7 +17,7 @@ var AppView = Backbone.View.extend({
     this.$video = this.$('.video');
     this.$videos = this.$('.videosList');
     this.$mainVideo = this.$('.main-vid');
-    this.listenTo(this.model.videos, 'update', this.render);
+    this.listenTo(this.model.get('videos'), 'update', this.render);
     
 
   },
@@ -30,18 +30,18 @@ var AppView = Backbone.View.extend({
 
   clearVideos: function() {
     this.$videos.empty();
-    this.model.videos.reset();
+    this.model.get('videos').reset();
   },
 
   userSearch: function() {
     if(this.$('.input').val()) {
       var userInput = this.$('.input').val();
-      this.model.videos.searchVideo(userInput);
+      this.model.get('videos').searchVideo(userInput);
     }
   },
 
   render: function() {
-    this.model.videos.models.forEach((clip) => {
+    this.model.get('videos').forEach((clip) => {
       var videoModel = new VideoModel({
         url: clip.attributes.url,
         title: clip.attributes.title,
