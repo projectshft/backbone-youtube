@@ -6,3 +6,12 @@
 .page-header-text {
   text-align: center;
 }
+
+.search-bar {
+  text-align: center;
+}
+
+input {
+  width: 50%;
+  height: 30px;
+}
