@@ -1,8 +1,8 @@
-.page-header-text {
+.page-header {
   margin: auto;
   width: 50%;
 }
 
-h1 {
-  color: blue;
+.page-header-text {
+  text-align: center;
 }
