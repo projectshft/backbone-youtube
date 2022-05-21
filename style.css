@@ -15,3 +15,11 @@ input {
   width: 50%;
   height: 30px;
 }
+
+button {
+  height: 30px;
+}
+
+button img {
+  height: 15px;
+}
