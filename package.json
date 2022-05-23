@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/strider1212/backbone-youtube/issues"
   },
-  "homepage": "https://github.com/strider1212/backbone-youtube#readme"
+  "homepage": "https://github.com/strider1212/backbone-youtube#readme",
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
 }
