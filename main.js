@@ -1,5 +1,5 @@
 // turn our "template" into html
-var source = $('#store-template').html();
+var source = $('#video-view-template').html();
 
 // compile our template html using handlebars
 var template = Handlebars.compile(source);
