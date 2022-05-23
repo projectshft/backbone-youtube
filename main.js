@@ -1,3 +1,15 @@
+const VideoViewer = Backbone.Model.extend({
+  defaults: function () {
+    return {
+      video: '',
+      title: '',
+      description: ''
+    }
+  }
+})
+
+
+//HANDLEBARS SOURCE CODE
 // turn our "template" into html
 var source = $('#video-view-template').html();
 
