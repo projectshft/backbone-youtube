@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Backbone YouTube</title>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-latest.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./node_modules/handlebars/dist/handlebars.min.js"
+    ></script>
   </head>
   <body>
     <div class="page-header">
@@ -19,7 +27,17 @@
         </button>
       </div>
     </div>
-    <div class="backbone-container"></div>
+    <div class="backbone-container">
+      <div class="items"></div>
+    </div>
+
+    <script id="store-template" type="text/x-handlebars-template">
+      <div>
+        <span> {{item}} </span>
+        -
+        <span>{{price}} Dollars </span>
+      </div>
+    </script>
     <script src="main.js"></script>
   </body>
 </html>
