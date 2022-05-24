@@ -8,13 +8,21 @@ const VideoViewerModel = Backbone.Model.extend({
 
 
 const VideoViewerViewer = Backbone.View.extend({
-  template: Handlebars.compile($('#video-view-template').html())
+  template: Handlebars.compile($('#video-view-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.attributes))
+  }
+
+
 
 });
 
 const videoModel = new VideoViewerModel;
 
 const videoViewer = new VideoViewerViewer({ model: videoModel });
+
+$('.viewer-container').append(videoViewer.render().el);
 
 
 
