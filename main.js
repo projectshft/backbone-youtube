@@ -12,13 +12,11 @@ const VideoViewerViewer = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template(this.model.attributes))
-  }
-
-
+  },
 
 });
 
-const videoModel = new VideoViewerModel;
+const videoModel = new VideoViewerModel();
 
 const videoViewer = new VideoViewerViewer({ model: videoModel });
 
