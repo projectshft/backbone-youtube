@@ -222,7 +222,8 @@ const SidebarCollection = Backbone.Collection.extend({
   model: IndividualSidebarModel,
 
   initialize: function() {
-    console.log('testing')
+    const data = this.model.attributes
+    console.log(data)
   }
 })
 
@@ -239,9 +240,9 @@ const individualSidebarViewer = new IndividualSidebarView({ model: individualSid
 
 const sidebarCollection = new SidebarCollection();
 
-$('.viewer-container').append(individualSidebarViewer.render().el);
+$('.viewer-container').append(videoViewer.render().el);
 
-$('.sidebar-container').append(videoViewer.render().el);
+$('.sidebar-container').append(individualSidebarViewer.render().el);
 
 
 
