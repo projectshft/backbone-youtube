@@ -183,6 +183,7 @@ var sampleData = {
 
 
 
+
 const VideoViewerModel = Backbone.Model.extend({
   defaults: {
     video: 'video',
@@ -221,10 +222,6 @@ const IndividualSidebarView = Backbone.View.extend({
 const SidebarCollection = Backbone.Collection.extend({
   model: IndividualSidebarModel,
 
-  initialize: function() {
-    const data = this.model.attributes
-    console.log(data)
-  }
 })
 
 const videoModel = new VideoViewerModel();
@@ -240,8 +237,18 @@ const individualSidebarViewer = new IndividualSidebarView({ model: individualSid
 
 const sidebarCollection = new SidebarCollection();
 
+sampleData.items.map(data => {
+  sidebarCollection.add({
+    video: data.snippet.thumbnails.default.url,
+    title: data.snippet.title
+  })
+})
+
 $('.viewer-container').append(videoViewer.render().el);
 
 $('.sidebar-container').append(individualSidebarViewer.render().el);
+
+
+
 
 
