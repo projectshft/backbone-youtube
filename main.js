@@ -219,7 +219,11 @@ const IndividualSidebarView = Backbone.View.extend({
 })
 
 const SidebarCollection = Backbone.Collection.extend({
-  model: IndividualSidebarModel
+  model: IndividualSidebarModel,
+
+  initialize: function() {
+    console.log('testing')
+  }
 })
 
 const videoModel = new VideoViewerModel();
