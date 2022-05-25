@@ -244,6 +244,12 @@ sampleData.items.map(data => {
   })
 })
 
+const sidebarCollectionHTML = sidebarCollection.models.map(data => {
+  $('.sidebar-container').append(`<img src='${data.attributes.video}' />`) 
+})
+
+console.log(sidebarCollectionHTML)
+
 $('.viewer-container').append(videoViewer.render().el);
 
 $('.sidebar-container').append(individualSidebarViewer.render().el);
