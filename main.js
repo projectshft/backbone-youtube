@@ -225,7 +225,7 @@ const SidebarCollection = Backbone.Collection.extend({
 })
 
 const videoModel = new VideoViewerModel({
-  video: sampleData.items[0].snippet.thumbnails.default.url,
+  video: sampleData.items[0].snippet.thumbnails.high.url,
   title: sampleData.items[0].snippet.title,
   description: sampleData.items[0].snippet.description
 });

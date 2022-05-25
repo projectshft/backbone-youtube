@@ -30,3 +30,20 @@ button {
 button img {
   height: 15px;
 }
+
+/* .viewer-container {
+  text-align: center;
+} */
+
+#viewer-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.viewer-img {
+  width: 600px;
+  margin: auto;
+}
