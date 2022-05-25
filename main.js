@@ -224,13 +224,16 @@ const SidebarCollection = Backbone.Collection.extend({
 
 })
 
-const videoModel = new VideoViewerModel();
+const videoModel = new VideoViewerModel({
+  video: sampleData.items[0].snippet.thumbnails.default.url,
+  title: sampleData.items[0].snippet.title,
+  description: sampleData.items[0].snippet.description
+});
 
 const videoViewer = new VideoViewerViewer({ model: videoModel });
 
 const individualSidebarModel = new IndividualSidebarModel({
-  video: sampleData.items[0].snippet.thumbnails.default.url,
-  title: sampleData.items[0].snippet.title
+  
 });
 
 const individualSidebarViewer = new IndividualSidebarView({ model: individualSidebarModel });
@@ -252,7 +255,7 @@ console.log(sidebarCollectionHTML)
 
 $('.viewer-container').append(videoViewer.render().el);
 
-$('.sidebar-container').append(individualSidebarViewer.render().el);
+
 
 
 
