@@ -33,6 +33,10 @@ const IndividualSidebarView = Backbone.View.extend({
   },
 })
 
+const SidebarCollection = Backbone.Collection.extend({
+  model: IndividualSidebarModel
+})
+
 const videoModel = new VideoViewerModel();
 
 const videoViewer = new VideoViewerViewer({ model: videoModel });
@@ -40,6 +44,8 @@ const videoViewer = new VideoViewerViewer({ model: videoModel });
 const individualSidebarModel = new IndividualSidebarModel();
 
 const individualSidebarViewer = new IndividualSidebarView({ model: individualSidebarModel });
+
+const sidebarCollection = new SidebarCollection();
 
 $('.viewer-container').append(individualSidebarViewer.render().el);
 
