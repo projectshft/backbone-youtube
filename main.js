@@ -248,8 +248,8 @@ sampleData.items.map(data => {
 })
 
 const sidebarCollectionHTML = sidebarCollection.models.map(data => {
-  $('.sidebar-container').append(`<img src='${data.attributes.video}' />
-  <span>${data.attributes.title}</span>
+  $('.sidebar-container').append(`<img src='${data.attributes.video}' class="collection-img"/>
+  <span class="collection-title">${data.attributes.title}</span>
   `) 
 })
 
