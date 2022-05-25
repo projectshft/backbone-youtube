@@ -1,8 +1,8 @@
 const VideoViewerModel = Backbone.Model.extend({
   defaults: {
-    video: '',
-    title: '',
-    description: ''
+    video: 'video',
+    title: 'title',
+    description: 'description'
   }
 })
 
@@ -12,16 +12,38 @@ const VideoViewerViewer = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template(this.model.attributes))
+    return this
   },
 
 });
+
+const IndividualSidebarModel = Backbone.Model.extend({
+  defaults: {
+    video: 'video',
+    title: 'title'
+  }
+})
+
+const IndividualSidebarView = Backbone.View.extend({
+  template: Handlebars.compile($('#individual-sidebar-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.attributes))
+    return this
+  },
+})
 
 const videoModel = new VideoViewerModel();
 
 const videoViewer = new VideoViewerViewer({ model: videoModel });
 
-$('.viewer-container').append(videoViewer.render().el);
+const individualSidebarModel = new IndividualSidebarModel();
 
+const individualSidebarViewer = new IndividualSidebarView({ model: individualSidebarModel });
+
+$('.viewer-container').append(individualSidebarViewer.render().el);
+
+$('.sidebar-container').append(videoViewer.render().el);
 
 
 

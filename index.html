@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Backbone YouTube</title>
-    <script
-      type="text/javascript"
-      src="http://code.jquery.com/jquery-latest.min.js"
-    ></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
     <script
       type="text/javascript"
       src="./node_modules/handlebars/dist/handlebars.min.js"
@@ -29,6 +28,7 @@
     </div>
     <div class="backbone-container">
       <div class="viewer-container"></div>
+      <div class="sidebar-container"></div>
     </div>
 
     <script id="video-view-template" type="text/x-handlebars-template">
@@ -38,18 +38,12 @@
         <span>{{description}}</span>
       </div>
     </script>
-    <script
-      type="text/javascript"
-      src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"
-    ></script>
+    <script id="individual-sidebar-template" type="text/x-handlebars-template">
+      <div>
+        <span>{{video}}</span>
+        <span>{{title}}</span>
+      </div>
+    </script>
     <script src="main.js"></script>
   </body>
 </html>
