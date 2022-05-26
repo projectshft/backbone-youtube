@@ -181,17 +181,24 @@ var sampleData = {
   ]
 }
 
+//----------
+//----------
+//MAIN VIDEO
+//----------
+//----------
 
-
+//model and view
 
 const VideoViewerModel = Backbone.Model.extend({
+  
+  urlRoot: 'https://www.googleapis.com/youtube/v3/videos',
+  
   defaults: {
     video: 'video',
     title: 'title',
     description: 'description'
   }
 })
-
 
 const VideoViewerViewer = Backbone.View.extend({
   template: Handlebars.compile($('#video-view-template').html()),
@@ -202,6 +209,29 @@ const VideoViewerViewer = Backbone.View.extend({
   },
 
 });
+
+//instantiations
+
+const videoModel = new VideoViewerModel({
+  video: sampleData.items[0].snippet.thumbnails.high.url,
+  title: sampleData.items[0].snippet.title,
+  description: sampleData.items[0].snippet.description
+});
+
+const videoViewer = new VideoViewerViewer({ model: videoModel });
+
+//connection to the DOM
+
+$('.viewer-container').append(videoViewer.render().el);
+
+
+
+
+//-------
+//-------
+//SIDEBAR
+//-------
+//-------
 
 const IndividualSidebarModel = Backbone.Model.extend({
   defaults: {
@@ -223,14 +253,6 @@ const SidebarCollection = Backbone.Collection.extend({
   model: IndividualSidebarModel,
 
 })
-
-const videoModel = new VideoViewerModel({
-  video: sampleData.items[0].snippet.thumbnails.high.url,
-  title: sampleData.items[0].snippet.title,
-  description: sampleData.items[0].snippet.description
-});
-
-const videoViewer = new VideoViewerViewer({ model: videoModel });
 
 const individualSidebarModel = new IndividualSidebarModel({
   
@@ -256,7 +278,7 @@ const sidebarCollectionHTML = sidebarCollection.models.map(data => {
   `) 
 })
 
-$('.viewer-container').append(videoViewer.render().el);
+
 
 
 
