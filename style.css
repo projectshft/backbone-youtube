@@ -48,6 +48,11 @@ button img {
   margin: auto;
 }
 
+.viewer-title {
+  margin: 10px;
+  font-weight: bold;
+}
+
 .backbone-container {
   display: flex;
 }
@@ -63,6 +68,7 @@ button img {
 
 .img-n-title {
   display: flex;
+  margin: 10px;
 }
 
 .collection-img {
