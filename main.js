@@ -242,7 +242,7 @@ const sidebarCollection = new SidebarCollection();
 
 sampleData.items.map(data => {
   sidebarCollection.add({
-    video: data.snippet.thumbnails.default.url,
+    video: data.snippet.thumbnails.high.url,
     title: data.snippet.title
   })
 })
