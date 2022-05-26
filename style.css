@@ -79,4 +79,5 @@ button img {
 .collection-title {
   width: 300px;
   padding: 40px 0;
+  font-weight: bold;
 }
