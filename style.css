@@ -41,6 +41,7 @@ button img {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .viewer-img {
