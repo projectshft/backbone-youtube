@@ -48,6 +48,10 @@ button img {
   margin: auto;
 }
 
+.backbone-container {
+  display: flex;
+}
+
 .sidebar-container {
   float: right;
   display: flex;
