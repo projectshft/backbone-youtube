@@ -248,12 +248,13 @@ sampleData.items.map(data => {
 })
 
 const sidebarCollectionHTML = sidebarCollection.models.map(data => {
-  $('.sidebar-container').append(`<img src='${data.attributes.video}' class="collection-img"/>
-  <span class="collection-title">${data.attributes.title}</span>
+  $('.sidebar-container').append(`
+  <div class="img-n-title">
+    <img src='${data.attributes.video}' class="collection-img"/>
+    <span class="collection-title">${data.attributes.title}</span>
+  </div>
   `) 
 })
-
-console.log(sidebarCollectionHTML)
 
 $('.viewer-container').append(videoViewer.render().el);
 

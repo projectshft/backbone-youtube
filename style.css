@@ -31,9 +31,9 @@ button img {
   height: 15px;
 }
 
-/* .viewer-container {
-  text-align: center;
-} */
+.viewer-container {
+  margin-top: 30px;
+}
 
 #viewer-box {
   text-align: center;
@@ -58,8 +58,17 @@ button img {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 30px;
+}
+
+.img-n-title {
+  display: flex;
 }
 
 .collection-img {
   width: 200px;
+}
+
+.collection-title {
+  width: 300px;
 }
