@@ -181,9 +181,11 @@ var sampleData = {
   ]
 }
 
-const testParams = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyAkYHxQ1n8N7CXgMZbaBruoHSrUp-0Ne4E';
-
 const APIKey = 'AIzaSyCbxIwvQLvaZw2G4Br7LXXxIUm8sNv0shk';
+
+const testParams = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}`;
+
+
 
 //----------
 //----------
@@ -195,7 +197,7 @@ const APIKey = 'AIzaSyCbxIwvQLvaZw2G4Br7LXXxIUm8sNv0shk';
 
 const VideoViewerModel = Backbone.Model.extend({
   
-  urlRoot: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyAkYHxQ1n8N7CXgMZbaBruoHSrUp-0Ne4E',
+  urlRoot: testParams,
   
   defaults: {
     video: 'video',
