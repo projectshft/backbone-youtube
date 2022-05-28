@@ -216,24 +216,23 @@ const VideoViewerViewer = Backbone.View.extend({
 
 //instantiations
 
-const videoModel = new VideoViewerModel({
-  video: sampleData.items[0].snippet.thumbnails.high.url,
-  title: sampleData.items[0].snippet.title,
-  description: sampleData.items[0].snippet.description
-  
-});
+const videoModel = new VideoViewerModel();
+
 
 videoModel.fetch()
 .then(res => {
   videoModel.set({video: res.items[0].snippet.thumbnails.high.url})
 })
-.then(console.log(videoModel.attributes.video))
+.then(() => {
+  const videoViewer = new VideoViewerViewer({ model: videoModel })
+  $('.viewer-container').append(videoViewer.render().el)
+})
 
-const videoViewer = new VideoViewerViewer({ model: videoModel });
+
 
 //connection to the DOM
 
-$('.viewer-container').append(videoViewer.render().el);
+
 
 
 
