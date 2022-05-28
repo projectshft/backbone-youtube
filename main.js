@@ -208,11 +208,7 @@ const VideoViewerViewer = Backbone.View.extend({
   template: Handlebars.compile($('#video-view-template').html()),
 
   render: function () {
-    this.model.fetch()
-    .then(res => {
-      this.model.attributes.video = res.items[0].snippet.thumbnails.high.url;
-    })
-    .then(this.$el.html(this.template(this.model.attributes)))
+    this.$el.html(this.template(this.model.attributes))
     return this
   },
 
@@ -227,6 +223,11 @@ const videoModel = new VideoViewerModel({
   
 });
 
+videoModel.fetch()
+.then(res => {
+  videoModel.set({video: res.items[0].snippet.thumbnails.high.url})
+})
+.then(console.log(videoModel.attributes.video))
 
 const videoViewer = new VideoViewerViewer({ model: videoModel });
 
