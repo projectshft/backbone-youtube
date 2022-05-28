@@ -181,6 +181,10 @@ var sampleData = {
   ]
 }
 
+const testParams = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyAkYHxQ1n8N7CXgMZbaBruoHSrUp-0Ne4E';
+
+const APIKey = 'AIzaSyAkYHxQ1n8N7CXgMZbaBruoHSrUp-0Ne4E';
+
 //----------
 //----------
 //MAIN VIDEO
@@ -191,7 +195,7 @@ var sampleData = {
 
 const VideoViewerModel = Backbone.Model.extend({
   
-  urlRoot: 'https://www.googleapis.com/youtube/v3/videos',
+  urlRoot: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyAkYHxQ1n8N7CXgMZbaBruoHSrUp-0Ne4E',
   
   defaults: {
     video: 'video',
@@ -204,7 +208,11 @@ const VideoViewerViewer = Backbone.View.extend({
   template: Handlebars.compile($('#video-view-template').html()),
 
   render: function () {
-    this.$el.html(this.template(this.model.attributes))
+    this.model.fetch()
+    .then(res => {
+      this.model.attributes.video = res.items[0].snippet.thumbnails.high.url;
+    })
+    .then(this.$el.html(this.template(this.model.attributes)))
     return this
   },
 
@@ -216,7 +224,9 @@ const videoModel = new VideoViewerModel({
   video: sampleData.items[0].snippet.thumbnails.high.url,
   title: sampleData.items[0].snippet.title,
   description: sampleData.items[0].snippet.description
+  
 });
+
 
 const videoViewer = new VideoViewerViewer({ model: videoModel });
 
@@ -278,7 +288,11 @@ const sidebarCollectionHTML = sidebarCollection.models.map(data => {
   `) 
 })
 
+$('.search-button').click(() => {
+  const searchValue = $('#searchbar').val();
 
+  alert(searchValue);
+})
 
 
 
