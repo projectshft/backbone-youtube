@@ -4,6 +4,12 @@ const APIKey = 'AIzaSyA7i5YZ1rlLPjAeOfbXmOT3-r-Kk5pX7h4';
 
 const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}`;
 
+const searchParam = $('#searchbar').val();
+
+const searchParamQuery = `&q=${searchParam}`
+
+const APIURLWithQuery = APIURL + searchParamQuery;
+
 
 
 //----------
@@ -42,10 +48,6 @@ const videoModel = new VideoViewerModel();
 
 videoModel.fetch()
 .then(res => {
-  const searchParam = $('#searchbar').val();
-  const searchParamQuery = `&q=${searchParam}`;
-  console.log(searchParamQuery);
-  
   videoModel.set({
     video: res.items[0].snippet.thumbnails.high.url,
     title: res.items[0].snippet.title,
