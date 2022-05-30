@@ -260,6 +260,8 @@ const IndividualSidebarModel = Backbone.Model.extend({
 // })
 
 const SidebarCollection = Backbone.Collection.extend({
+  url: testParams,
+
   model: IndividualSidebarModel,
 
 })
@@ -276,12 +278,27 @@ const sidebarCollection = new SidebarCollection();
 
 //RENDERING
 
-sampleData.items.map(data => {
-  sidebarCollection.add({
-    video: data.snippet.thumbnails.high.url,
-    title: data.snippet.title
+sidebarCollection.fetch()
+.then(() => {
+  const itemer = sidebarCollection.models[0].attributes.items
+  itemer.map(res => {
+    $('.sidebar-container').append(`
+  <div class="img-n-title">
+    <img src='${res.snippet.thumbnails.high.url}' class="collection-img"/>
+  </div>
+  `) 
   })
 })
+
+
+//x.snippet.thumbnails.high.url
+
+// sampleData.items.map(data => {
+//   sidebarCollection.add({
+//     video: data.snippet.thumbnails.high.url,
+//     title: data.snippet.title
+//   })
+// })
 
 const sidebarCollectionHTML = sidebarCollection.models.map(data => {
   $('.sidebar-container').append(`
