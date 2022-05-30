@@ -2,7 +2,9 @@
 
 const APIKey = 'AIzaSyA7i5YZ1rlLPjAeOfbXmOT3-r-Kk5pX7h4';
 
-const testParams = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}`;
+const testParams = 'cat'
+
+const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${testParams}&type=video&videoEmbeddable=true&key=${APIKey}`;
 
 
 
@@ -16,7 +18,7 @@ const testParams = `https://www.googleapis.com/youtube/v3/search?part=snippet&ma
 
 const VideoViewerModel = Backbone.Model.extend({
   
-  urlRoot: testParams,
+  urlRoot: APIURL,
   
   defaults: {
     video: 'video',
@@ -79,7 +81,7 @@ const IndividualSidebarModel = Backbone.Model.extend({
 // })
 
 const SidebarCollection = Backbone.Collection.extend({
-  url: testParams,
+  url: APIURL,
 
   model: IndividualSidebarModel,
 
