@@ -1,6 +1,6 @@
 
 
-const APIKey = 'AIzaSyA7i5YZ1rlLPjAeOfbXmOT3-r-Kk5pX7h4';
+const APIKey = 'AIzaSyCrDu4kPqgyOtho8lS1sDWLNFTRDMDfvIk';
 
 const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}`;
 
@@ -76,7 +76,7 @@ const IndividualSidebarModel = Backbone.Model.extend({
 })
 
 const SidebarCollection = Backbone.Collection.extend({
-  url: APIURL,
+  url: APIURLWithQuery,
 
   model: IndividualSidebarModel,
 
@@ -106,9 +106,20 @@ sidebarCollection.fetch()
 })
 
 $('.search-button').click(() => {
-  const searchValue = $('#searchbar').val();
 
-  alert(searchValue);
+  videoModel.fetch()
+  .then(videoModel.extend({urlRoot: searchParamQuery}))
+  .then(res => {
+    videoModel.set({
+      video: res.items[0].snippet.thumbnails.high.url,
+      title: res.items[0].snippet.title,
+      description: res.items[0].snippet.description
+    })
+  })
+  .then(() => {
+    const videoViewer = new VideoViewerViewer({ model: videoModel })
+    $('.viewer-container').append(videoViewer.render().el)
+  })
 })
 
 
