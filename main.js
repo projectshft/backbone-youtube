@@ -235,19 +235,13 @@ videoModel.fetch()
 })
 
 
-
-//connection to the DOM
-
-
-
-
-
-
 //-------
 //-------
 //SIDEBAR
 //-------
 //-------
+
+//MODEL, VIEW, AND COLLECTION
 
 const IndividualSidebarModel = Backbone.Model.extend({
   defaults: {
@@ -256,27 +250,31 @@ const IndividualSidebarModel = Backbone.Model.extend({
   }
 })
 
-const IndividualSidebarView = Backbone.View.extend({
-  template: Handlebars.compile($('#individual-sidebar-template').html()),
+// const IndividualSidebarView = Backbone.View.extend({
+//   template: Handlebars.compile($('#individual-sidebar-template').html()),
 
-  render: function () {
-    this.$el.html(this.template(this.model.attributes))
-    return this
-  },
-})
+//   render: function () {
+//     this.$el.html(this.template(this.model.attributes))
+//     return this
+//   },
+// })
 
 const SidebarCollection = Backbone.Collection.extend({
   model: IndividualSidebarModel,
 
 })
 
+//INSTANTIATIONS
+
 const individualSidebarModel = new IndividualSidebarModel({
   
 });
 
-const individualSidebarViewer = new IndividualSidebarView({ model: individualSidebarModel });
+// const individualSidebarViewer = new IndividualSidebarView({ model: individualSidebarModel });
 
 const sidebarCollection = new SidebarCollection();
+
+//RENDERING
 
 sampleData.items.map(data => {
   sidebarCollection.add({
