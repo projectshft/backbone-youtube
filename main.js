@@ -45,7 +45,7 @@ const VideoViewerViewer = Backbone.View.extend({
 
 const videoModel = new VideoViewerModel();
 
-const videoViewer = new VideoViewerViewer({model: videoModel});
+const videoViewer = new VideoViewerViewer({ model: videoModel });
 
 
 videoModel.fetch()
@@ -57,7 +57,6 @@ videoModel.fetch()
   })
 })
 .then(() => {
-  const videoViewer = new VideoViewerViewer({ model: videoModel })
   $('.viewer-container').append(videoViewer.render().el)
 })
 
