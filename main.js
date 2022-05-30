@@ -2,9 +2,7 @@
 
 const APIKey = 'AIzaSyA7i5YZ1rlLPjAeOfbXmOT3-r-Kk5pX7h4';
 
-const testParams = 'cat'
-
-const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}&q=${testParams}`;
+const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}`;
 
 
 
@@ -110,15 +108,6 @@ sidebarCollection.fetch()
   </div>
   `) 
   })
-})
-
-const sidebarCollectionHTML = sidebarCollection.models.map(data => {
-  $('.sidebar-container').append(`
-  <div class="img-n-title">
-    <img src='${data.attributes.video}' class="collection-img"/>
-    <span class="collection-title">${data.attributes.title}</span>
-  </div>
-  `) 
 })
 
 $('.search-button').click(() => {
