@@ -4,7 +4,7 @@ const APIKey = 'AIzaSyA7i5YZ1rlLPjAeOfbXmOT3-r-Kk5pX7h4';
 
 const testParams = 'cat'
 
-const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${testParams}&type=video&videoEmbeddable=true&key=${APIKey}`;
+const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}&q=${testParams}`;
 
 
 
