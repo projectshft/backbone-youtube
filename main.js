@@ -1,6 +1,6 @@
 
 
-const APIKey = 'AIzaSyCbxIwvQLvaZw2G4Br7LXXxIUm8sNv0shk';
+const APIKey = 'AIzaSyA7i5YZ1rlLPjAeOfbXmOT3-r-Kk5pX7h4';
 
 const testParams = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}`;
 
