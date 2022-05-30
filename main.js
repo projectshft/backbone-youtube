@@ -285,13 +285,14 @@ sidebarCollection.fetch()
     $('.sidebar-container').append(`
   <div class="img-n-title">
     <img src='${res.snippet.thumbnails.high.url}' class="collection-img"/>
+    <span class="collection-title">${res.snippet.title}</span>
   </div>
   `) 
   })
 })
 
 
-//x.snippet.thumbnails.high.url
+//x.snippet.title
 
 // sampleData.items.map(data => {
 //   sidebarCollection.add({
