@@ -42,6 +42,8 @@ const videoModel = new VideoViewerModel();
 
 videoModel.fetch()
 .then(res => {
+  const searchParam = $('#searchbar').val();
+  console.log(searchParam)
   videoModel.set({
     video: res.items[0].snippet.thumbnails.high.url,
     title: res.items[0].snippet.title,
