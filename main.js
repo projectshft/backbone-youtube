@@ -1,14 +1,14 @@
 
 
-const APIKey = 'AIzaSyCrDu4kPqgyOtho8lS1sDWLNFTRDMDfvIk';
+const APIKey = 'AIzaSyAwCSZgkgbJ98nIxRAbxjIROi7QzKlrCvc';
 
 const APIURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=${APIKey}`;
 
 let searchParam = $('#searchbar').val();
 
-const searchParamQuery = `&q=${searchParam}`
+let searchParamQuery = `&q=${searchParam}`
 
-const APIURLWithQuery = APIURL + searchParamQuery;
+let APIURLWithQuery = APIURL + searchParamQuery;
 
 
 
@@ -107,8 +107,24 @@ sidebarCollection.fetch()
 })
 
 $('.search-button').click(() => {
-  searchParam = 'cat';  
+  searchParam = 'cat';
+  searchParamQuery = `&q=${searchParam}`;
+  APIURLWithQuery = APIURL + searchParamQuery;
+  console.log(APIURLWithQuery)
+  videoModel.set({urlRoot: APIURLWithQuery})
 
+  videoModel.fetch()
+  .then(res => {
+  videoModel.set({
+    video: res.items[0].snippet.thumbnails.high.url,
+    title: res.items[0].snippet.title,
+    description: res.items[0].snippet.description
+    })
+  })
+  .then(() => {
+   $('.viewer-container').append(videoViewer.render().el)
+  })
+  $('.viewer-container').append(videoViewer.render().el)
 })
 
 
