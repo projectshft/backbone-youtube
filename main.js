@@ -60,7 +60,7 @@ videoModel.fetch()
 //-------
 //-------
 
-//MODEL, VIEW, AND COLLECTION
+//MODEL AND COLLECTION
 
 const IndividualSidebarModel = Backbone.Model.extend({
   defaults: {
@@ -68,15 +68,6 @@ const IndividualSidebarModel = Backbone.Model.extend({
     title: 'title'
   }
 })
-
-// const IndividualSidebarView = Backbone.View.extend({
-//   template: Handlebars.compile($('#individual-sidebar-template').html()),
-
-//   render: function () {
-//     this.$el.html(this.template(this.model.attributes))
-//     return this
-//   },
-// })
 
 const SidebarCollection = Backbone.Collection.extend({
   url: APIURL,
@@ -90,8 +81,6 @@ const SidebarCollection = Backbone.Collection.extend({
 const individualSidebarModel = new IndividualSidebarModel({
   
 });
-
-// const individualSidebarViewer = new IndividualSidebarView({ model: individualSidebarModel });
 
 const sidebarCollection = new SidebarCollection();
 
