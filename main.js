@@ -83,6 +83,7 @@ const SidebarCollection = Backbone.Collection.extend({
 
 })
 
+
 //INSTANTIATIONS
 
 const individualSidebarModel = new IndividualSidebarModel({
@@ -107,24 +108,8 @@ sidebarCollection.fetch()
 })
 
 $('.search-button').click(() => {
-  searchParam = 'cat';
-  searchParamQuery = `&q=${searchParam}`;
-  APIURLWithQuery = APIURL + searchParamQuery;
-  console.log(APIURLWithQuery)
-  videoModel.set({urlRoot: APIURLWithQuery})
-
-  videoModel.fetch()
-  .then(res => {
-  videoModel.set({
-    video: res.items[0].snippet.thumbnails.high.url,
-    title: res.items[0].snippet.title,
-    description: res.items[0].snippet.description
-    })
-  })
-  .then(() => {
-   $('.viewer-container').append(videoViewer.render().el)
-  })
-  $('.viewer-container').append(videoViewer.render().el)
+  alert('Yeah...still working on this one.')
+  
 })
 
 
