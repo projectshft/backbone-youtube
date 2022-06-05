@@ -6,7 +6,8 @@ const AppView = Backbone.View.extend({
   },
 
   submitHandler: function() {
-    console.log('test');
+    const searchBarVal = $('#search-bar').val();
+    console.log(searchBarVal);
   }
 
 
