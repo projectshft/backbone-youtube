@@ -9,10 +9,13 @@ const AppView = Backbone.View.extend({
     // const searchBarVal = $('#search-bar').val();
     // console.log(searchBarVal);
     const newImg = sampleData.items[0].snippet.thumbnails.high.url
-    const newVideoModel = new VideoModel({img: newImg});
+    const newTitle = sampleData.items[0].snippet.title;
+    const newVideoModel = new VideoModel({img: newImg, title: newTitle});
     videoCollection.add(newVideoModel);
     const img = videoCollection.models[0].attributes.img;
+    const title = videoCollection.models[0].attributes.title;
     $('.main-video-row').append(`<img src=${img}>`);
+    $('.main-video-title-row').append(`<h3>${title}</h3>`)
   }
 
 
