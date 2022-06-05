@@ -11,6 +11,8 @@ const AppView = Backbone.View.extend({
     this.submitMainVideoHandler();
     this.submitVideoTwo();
     this.submitVideoThree();
+    this.submitVideoFour();
+    this.submitVideoFive();
   },
 
   submitMainVideoHandler: function() {
@@ -47,6 +49,28 @@ const AppView = Backbone.View.extend({
     const title = videoCollection.models[2].attributes.title;
     $('#side-video-two').append(`<img class="side-img" src=${img}>`);
     $('#side-title-two').append(`<h3>${title}</h3>`);
+  },
+
+  submitVideoFour: function() {
+    const newImg = sampleData.items[3].snippet.thumbnails.high.url
+    const newTitle = sampleData.items[3].snippet.title;
+    const newVideoModel = new VideoModel({img: newImg, title: newTitle});
+    videoCollection.add(newVideoModel);
+    const img = videoCollection.models[3].attributes.img;
+    const title = videoCollection.models[3].attributes.title;
+    $('#side-video-three').append(`<img class="side-img" src=${img}>`);
+    $('#side-title-three').append(`<h3>${title}</h3>`);
+  },
+
+  submitVideoFive: function() {
+    const newImg = sampleData.items[4].snippet.thumbnails.high.url
+    const newTitle = sampleData.items[4].snippet.title;
+    const newVideoModel = new VideoModel({img: newImg, title: newTitle});
+    videoCollection.add(newVideoModel);
+    const img = videoCollection.models[4].attributes.img;
+    const title = videoCollection.models[4].attributes.title;
+    $('#side-video-four').append(`<img class="side-img" src=${img}>`);
+    $('#side-title-four').append(`<h3>${title}</h3>`);
   }
 
 })
