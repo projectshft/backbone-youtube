@@ -45,6 +45,10 @@
   height: 50px;
 }
 
+.main-video-description-row p {
+  font-size: 0.75rem;
+}
+
 .side-video-row {
   margin: 5px;
   height: 100px;
