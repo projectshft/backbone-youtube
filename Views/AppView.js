@@ -29,13 +29,12 @@ const AppView = Backbone.View.extend({
   submitVideoTwo: function() {
     const newImg = sampleData.items[1].snippet.thumbnails.high.url
     const newTitle = sampleData.items[1].snippet.title;
-    const newDescription = sampleData.items[1].snippet.description;
-    const newVideoModel = new VideoModel({img: newImg, title: newTitle, description: newDescription});
+    const newVideoModel = new VideoModel({img: newImg, title: newTitle});
     videoCollection.add(newVideoModel);
     const img = videoCollection.models[1].attributes.img;
     const title = videoCollection.models[1].attributes.title;
-    const description = videoCollection.models[1].attributes.description;
-    $('#side-video-one').append(`<img class="side-img" src=${img}>`)
+    $('#side-video-one').append(`<img class="side-img" src=${img}>`);
+    $('#side-title-one').append(`<h3>${title}</h3>`);
   }
 
 })
