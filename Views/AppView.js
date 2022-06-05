@@ -26,7 +26,7 @@ const AppView = Backbone.View.extend({
     const description = videoCollection.models[0].attributes.description;
     $('.main-video-row').append(`<img src=${img}>`);
     $('.main-video-title-row').append(`<h3 id="main-video-title">${title}</h3>`)
-    $('.main-video-description-row').append(`<p>${description}</p>`)
+    $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
   },
 
   submitVideoTwo: function() {
