@@ -37,7 +37,7 @@ const AppView = Backbone.View.extend({
     const img = videoCollection.models[1].attributes.img;
     const title = videoCollection.models[1].attributes.title;
     $('#side-video-one').append(`<img class="side-img" src=${img}>`);
-    $('#side-title-one').append(`<h3>${title}</h3>`);
+    $('#side-title-one').append(`<h3 class="side-video-title-text">${title}</h3>`);
   },
 
   submitVideoThree: function() {
@@ -48,7 +48,7 @@ const AppView = Backbone.View.extend({
     const img = videoCollection.models[2].attributes.img;
     const title = videoCollection.models[2].attributes.title;
     $('#side-video-two').append(`<img class="side-img" src=${img}>`);
-    $('#side-title-two').append(`<h3>${title}</h3>`);
+    $('#side-title-two').append(`<h3 class="side-video-title-text">${title}</h3>`);
   },
 
   submitVideoFour: function() {
@@ -59,7 +59,7 @@ const AppView = Backbone.View.extend({
     const img = videoCollection.models[3].attributes.img;
     const title = videoCollection.models[3].attributes.title;
     $('#side-video-three').append(`<img class="side-img" src=${img}>`);
-    $('#side-title-three').append(`<h3>${title}</h3>`);
+    $('#side-title-three').append(`<h3 class="side-video-title-text">${title}</h3>`);
   },
 
   submitVideoFive: function() {
@@ -70,7 +70,7 @@ const AppView = Backbone.View.extend({
     const img = videoCollection.models[4].attributes.img;
     const title = videoCollection.models[4].attributes.title;
     $('#side-video-four').append(`<img class="side-img" src=${img}>`);
-    $('#side-title-four').append(`<h3>${title}</h3>`);
+    $('#side-title-four').append(`<h3 class="side-video-title-text">${title}</h3>`);
   }
 
 })
