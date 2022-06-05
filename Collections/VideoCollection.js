@@ -1,3 +1,3 @@
-// const VideoCollection = Backbone.Collection.extend({
-//   model: VideoModel
-// })
+const VideoCollection = Backbone.Collection.extend({
+  model: VideoModel
+})
