@@ -10,6 +10,7 @@ const AppView = Backbone.View.extend({
     // console.log(searchBarVal);
     this.submitMainVideoHandler();
     this.submitVideoTwo();
+    this.submitVideoThree();
   },
 
   submitMainVideoHandler: function() {
@@ -35,6 +36,17 @@ const AppView = Backbone.View.extend({
     const title = videoCollection.models[1].attributes.title;
     $('#side-video-one').append(`<img class="side-img" src=${img}>`);
     $('#side-title-one').append(`<h3>${title}</h3>`);
+  },
+
+  submitVideoThree: function() {
+    const newImg = sampleData.items[2].snippet.thumbnails.high.url
+    const newTitle = sampleData.items[2].snippet.title;
+    const newVideoModel = new VideoModel({img: newImg, title: newTitle});
+    videoCollection.add(newVideoModel);
+    const img = videoCollection.models[2].attributes.img;
+    const title = videoCollection.models[2].attributes.title;
+    $('#side-video-two').append(`<img class="side-img" src=${img}>`);
+    $('#side-title-two').append(`<h3>${title}</h3>`);
   }
 
 })
