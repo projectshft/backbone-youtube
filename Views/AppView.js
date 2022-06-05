@@ -9,6 +9,7 @@ const AppView = Backbone.View.extend({
     // const searchBarVal = $('#search-bar').val();
     // console.log(searchBarVal);
     this.submitMainVideoHandler();
+    this.submitVideoTwo();
   },
 
   submitMainVideoHandler: function() {
@@ -23,6 +24,18 @@ const AppView = Backbone.View.extend({
     $('.main-video-row').append(`<img src=${img}>`);
     $('.main-video-title-row').append(`<h3>${title}</h3>`)
     $('.main-video-description-row').append(`<p>${description}</p>`)
+  },
+
+  submitVideoTwo: function() {
+    const newImg = sampleData.items[1].snippet.thumbnails.high.url
+    const newTitle = sampleData.items[1].snippet.title;
+    const newDescription = sampleData.items[1].snippet.description;
+    const newVideoModel = new VideoModel({img: newImg, title: newTitle, description: newDescription});
+    videoCollection.add(newVideoModel);
+    const img = videoCollection.models[1].attributes.img;
+    const title = videoCollection.models[1].attributes.title;
+    const description = videoCollection.models[1].attributes.description;
+    $('#side-video-one').append(`<img class="side-img" src=${img}>`)
   }
 
 })

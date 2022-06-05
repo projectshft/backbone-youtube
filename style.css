@@ -51,9 +51,13 @@
 
 .side-video-row {
   margin: 5px;
-  height: 100px;
+  height: 150px;
 }
 
 h3 {
   font-size: 1rem;
+}
+
+.side-img {
+  width: 200px;
 }
