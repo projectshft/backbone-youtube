@@ -8,6 +8,10 @@ const AppView = Backbone.View.extend({
   submitHandler: function() {
     // const searchBarVal = $('#search-bar').val();
     // console.log(searchBarVal);
+    this.submitMainVideoHandler();
+  },
+
+  submitMainVideoHandler: function() {
     const newImg = sampleData.items[0].snippet.thumbnails.high.url
     const newTitle = sampleData.items[0].snippet.title;
     const newDescription = sampleData.items[0].snippet.description;
@@ -20,6 +24,5 @@ const AppView = Backbone.View.extend({
     $('.main-video-title-row').append(`<h3>${title}</h3>`)
     $('.main-video-description-row').append(`<p>${description}</p>`)
   }
-
 
 })
