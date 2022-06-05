@@ -1,1 +1,34 @@
+.col {
+  border: 1px solid black;
+}
 
+.row {
+  border: 1px solid red;
+}
+
+.display-row {
+  height: 500px;
+}
+
+.main-video-col {
+  margin: 10px;
+}
+
+.side-video-col {
+  margin: 10px;
+}
+
+.main-video-row {
+  margin: 5px;
+  height: 400px;
+}
+
+.main-video-text-row {
+  margin: 5px;
+  height: 50px;
+}
+
+.side-video-row {
+  margin: 5px;
+  height: 100px;
+}
