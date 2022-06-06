@@ -1,7 +1,3 @@
-$('.btn').on('click', function () {
-    var query = $('.query').val();
+var appModel = new AppModel();
 
-    console.log(query);
-
-    $('.query').val('');
-});
+var appView = new AppView({ model: appModel });
