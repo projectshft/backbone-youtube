@@ -16,7 +16,6 @@ const AppView = Backbone.View.extend({
   },
 
   submitMainVideoHandler: function() {
-
     if (videoCollection.length === 0) {
       const newImg = sampleData.items[0].snippet.thumbnails.high.url
       const newTitle = sampleData.items[0].snippet.title;
@@ -30,19 +29,18 @@ const AppView = Backbone.View.extend({
       $('.main-video-title-row').append(`<h3 id="main-video-title">${title}</h3>`)
       $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
     }
-
-    
   },
 
   submitSideVideoHandler: function(index, idNum) {
-    const newImg = sampleData.items[index].snippet.thumbnails.high.url
-    const newTitle = sampleData.items[index].snippet.title;
-    const newVideoModel = new VideoModel({img: newImg, title: newTitle});
-    videoCollection.add(newVideoModel);
-    const img = videoCollection.models[index].attributes.img;
-    const title = videoCollection.models[index].attributes.title;
-    $(`#side-video-${idNum}`).append(`<img class="side-img" src=${img}>`);
-    $(`#side-title-${idNum}`).append(`<h3 class="side-video-title-text">${title}</h3>`);
+    if (videoCollection.length > 0 && videoCollection.length < 5) {
+      const newImg = sampleData.items[index].snippet.thumbnails.high.url
+      const newTitle = sampleData.items[index].snippet.title;
+      const newVideoModel = new VideoModel({img: newImg, title: newTitle});
+      videoCollection.add(newVideoModel);
+      const img = videoCollection.models[index].attributes.img;
+      const title = videoCollection.models[index].attributes.title;
+      $(`#side-video-${idNum}`).append(`<img class="side-img" src=${img}>`);
+      $(`#side-title-${idNum}`).append(`<h3 class="side-video-title-text">${title}</h3>`);
+    }
   },
-
 })
