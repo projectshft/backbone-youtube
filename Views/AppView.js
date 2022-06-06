@@ -6,11 +6,20 @@ const AppView = Backbone.View.extend({
   },
 
   submitHandler: function() {
+    // this.compileURL();
     this.submitMainVideoHandler();
     this.submitSideVideoHandler(1, 'one');
     this.submitSideVideoHandler(2, 'two');
     this.submitSideVideoHandler(3, 'three');
     this.submitSideVideoHandler(4, 'four');
+  },
+
+  compileURL: function() {
+    const searchValue = $('#search-bar').val();
+    const searchValModifier = `&q=${searchValue}`;
+    const urlBase = this.model.attributes.videos.url;
+    const urlBaseWithSearchVal = urlBase + searchValModifier;
+    return urlBaseWithSearchVal;
   },
 
   submitMainVideoHandler: function() {
