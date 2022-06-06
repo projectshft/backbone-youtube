@@ -9,7 +9,7 @@ const AppView = Backbone.View.extend({
     // const searchBarVal = $('#search-bar').val();
     // console.log(searchBarVal);
     this.submitMainVideoHandler();
-    this.submitVideoTwo();
+    this.submitSideVideoHandler(1, 'one');
     this.submitVideoThree();
     this.submitVideoFour();
     this.submitVideoFive();
@@ -29,15 +29,15 @@ const AppView = Backbone.View.extend({
     $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
   },
 
-  submitVideoTwo: function() {
-    const newImg = sampleData.items[1].snippet.thumbnails.high.url
-    const newTitle = sampleData.items[1].snippet.title;
+  submitSideVideoHandler: function(index, idNum) {
+    const newImg = sampleData.items[index].snippet.thumbnails.high.url
+    const newTitle = sampleData.items[index].snippet.title;
     const newVideoModel = new VideoModel({img: newImg, title: newTitle});
     videoCollection.add(newVideoModel);
-    const img = videoCollection.models[1].attributes.img;
-    const title = videoCollection.models[1].attributes.title;
-    $('#side-video-one').append(`<img class="side-img" src=${img}>`);
-    $('#side-title-one').append(`<h3 class="side-video-title-text">${title}</h3>`);
+    const img = videoCollection.models[index].attributes.img;
+    const title = videoCollection.models[index].attributes.title;
+    $(`#side-video-${idNum}`).append(`<img class="side-img" src=${img}>`);
+    $(`#side-title-${idNum}`).append(`<h3 class="side-video-title-text">${title}</h3>`);
   },
 
   submitVideoThree: function() {
