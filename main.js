@@ -1,6 +1,6 @@
-const videoCollection = new VideoCollection();
+const appModel = new AppModel();
 
-const appView = new AppView();
+const appView = new AppView({model: appModel});
 
 const videoModel = new VideoModel();
 
