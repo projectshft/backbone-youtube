@@ -9,6 +9,7 @@ const AppView = Backbone.View.extend({
     const collection = this.model.attributes.videos;
     const compiledURL =  this.compileURL();
     collection.url = compiledURL;
+    collection.fetch();
     this.submitMainVideoHandler();
     this.submitSideVideoHandler(1, 'one');
     this.submitSideVideoHandler(2, 'two');
@@ -26,9 +27,8 @@ const AppView = Backbone.View.extend({
 
   submitMainVideoHandler: function() {
     const thisCollection = this.model.attributes.videos;
-    
     if (thisCollection.length === 0) {
-      const newImg = sampleData.items[0].snippet.thumbnails.high.url
+      const newImg = '';
       const newTitle = sampleData.items[0].snippet.title;
       const newDescription = sampleData.items[0].snippet.description;
       const newVideoModel = new VideoModel({img: newImg, title: newTitle, description: newDescription});
