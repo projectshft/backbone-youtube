@@ -6,8 +6,6 @@ const AppView = Backbone.View.extend({
   },
 
   submitHandler: function() {
-    // const searchBarVal = $('#search-bar').val();
-    // console.log(searchBarVal);
     this.submitMainVideoHandler();
     this.submitSideVideoHandler(1, 'one');
     this.submitSideVideoHandler(2, 'two');
