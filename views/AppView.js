@@ -8,7 +8,7 @@ var AppView = Backbone.View.extend({
 
     initialize: function () {
         this.model.get('videos').getData('Coding');
-        this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
+        this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
         this.listenTo(this.model, 'change:selected_video', this.renderSelectedVideo);
     },
 

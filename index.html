@@ -49,7 +49,7 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="selected-video-title">
-            <p>{{ title }}</p>
+            <h4>{{ title }}</h4>
         </div>
         <div class="selected-video-description">
             <p>{{ description }}</p>
@@ -59,12 +59,12 @@
       <script id="carousel-template" type="text/x-handlebars-template">
         <a class="thumbnail" href="#" data-id="{{videoId}}">
           <div class="row">
-            <div class="col-5">
-              <div class="img-container">
+            <div class="col">
+              <div>
                 <img src={{thumbnailURL}} />
               </div>
             </div>
-            <div class="col-6 title">
+            <div class="col">
               <h6>{{title}}</h6>
             </div>
           </div>
