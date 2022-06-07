@@ -38,29 +38,45 @@
 
     <section class="video-display container">
         <div class="row">
-            <div id="video-player" class="col"></div>
-            <div id="video-carousel" class="col"></div>
+            <div class="col video-player"></div>
+            <div class="col video-carousel"></div>
         </div>
     </section>
 
     <!-- Handlebars Templates -->
-    <script id="video-template" type="text/x-handlebars-template">
+    <script id="selected-video-template" type="text/x-handlebars-template">
         <div class="video">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="title">
+        <div class="selected-video-title">
             <p>{{ title }}</p>
         </div>
-        <div class="description">
+        <div class="selected-video-description">
             <p>{{ description }}</p>
         </div>
     </script>
+
+      <script id="carousel-template" type="text/x-handlebars-template">
+        <a class="thumbnail" href="#" data-id="{{videoId}}">
+          <div class="row">
+            <div class="col-5">
+              <div class="img-container">
+                <img src={{thumbnailURL}} />
+              </div>
+            </div>
+            <div class="col-6 title">
+              <h6>{{title}}</h6>
+            </div>
+          </div>
+        </a>
+      </script>
 
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
-    <script src="views/VideoView.js"></script>
+    <script src="views/SelectedVideoView.js"></script>
+    <script src="views/VideoCarouselView.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

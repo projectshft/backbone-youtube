@@ -10,6 +10,15 @@ var VideosCollection = Backbone.Collection.extend({
     },
 
     parse: function (data) {
-        console.log(data);
+        let videoData = data.items.map(function (video) {
+            return {
+                videoId: video.id["videoId"],
+                title: video.snippet["title"],
+                description: video.snippet["description"],
+                thumbnailURL: video.snippet.thumbnails["high"]
+            }
+        })
+
+        return videoData;
     }
 });
