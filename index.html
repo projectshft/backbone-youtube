@@ -43,6 +43,19 @@
         </div>
     </section>
 
+    <!-- Handlebars Templates -->
+    <script id="video-template" type="text/x-handlebars-template">
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="title">
+            <p>{{ title }}</p>
+        </div>
+        <div class="description">
+            <p>{{ description }}</p>
+        </div>
+    </script>
+
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideosCollection.js"></script>
     <script src="models/AppModel.js"></script>

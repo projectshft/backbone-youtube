@@ -5,10 +5,12 @@ var AppView = Backbone.View.extend({
         'click .submit-query': 'fetchVideos'
     },
 
-    fetchVideos: function () {
-        var query = $('.query').val();
+    initialize: function () {
+        this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
+    },
 
-        console.log(query);
+    fetchVideos: function () {
+        this.model.get('videos').getData($('.query').val());
 
         $('.query').val('');
     }
