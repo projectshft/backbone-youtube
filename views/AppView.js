@@ -7,7 +7,7 @@ var AppView = Backbone.View.extend({
     },
 
     initialize: function () {
-        this.model.get('videos').getData('Coding');
+        this.model.get('videos').getData('Coding'); // Loads page with a default search for 'Coding' videos
         this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
         this.listenTo(this.model, 'change:selected_video', this.renderSelectedVideo);
     },
