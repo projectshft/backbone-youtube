@@ -15,7 +15,7 @@ var VideosCollection = Backbone.Collection.extend({
                 videoId: video.id["videoId"],
                 title: video.snippet["title"],
                 description: video.snippet["description"],
-                thumbnailURL: video.snippet.thumbnails["high"]
+                thumbnailURL: video.snippet.thumbnails.high["url"]
             }
         })
 

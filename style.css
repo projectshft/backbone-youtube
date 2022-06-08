@@ -1,0 +1,12 @@
+.video-carousel img {
+    margin: 20px;
+}
+
+.video-player iframe {
+    margin: 20px;
+}
+
+.search-banner {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

@@ -26,7 +26,7 @@ var AppView = Backbone.View.extend({
 
     renderSelectedVideo: function () {
         var newSelectedVideo = this.model.get('selected_video');
-        var selectedVideoView = new SelectedVideoView({ model: selected_video });
+        var selectedVideoView = new SelectedVideoView({ model: newSelectedVideo });
         this.$('.video-player').append(selectedVideoView.render().el);
     },
 
