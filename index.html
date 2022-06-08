@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <title>Project YouTube</title>
+</head>
+<body>
+
+    <div class="search-banner container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8 text-center">
+                <h1>Project YouTube</h1>
+                <hr>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6">
+                <div class="input-group">
+                    <input type="text" class="form-control query" placeholder="Enter search term here...">
+                    <button type="button" class="btn btn-primary submit-query">Search</button>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <section class="video-display container">
+        <div class="row">
+            <div class="col video-player"></div>
+            <div class="col video-carousel"></div>
+        </div>
+    </section>
+
+    <!-- Handlebars Templates -->
+    <script id="selected-video-template" type="text/x-handlebars-template">
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <hr>
+        <div class="selected-video-title">
+            <h4>{{ title }}</h4>
+        </div>
+        <div class="selected-video-description">
+            <p>{{ description }}</p>
+        </div>
+    </script>
+
+    <script id="carousel-template" type="text/x-handlebars-template">
+        <div class="thumbnail row" data-id="{{videoId}}">
+            <div class="col">
+                <img src="{{thumbnailURL}}" width="200" height="140" class="img-fluid" />
+            </div>
+            <div class="col align-self-center">
+                <h6>{{title}}</h6>
+            </div>
+            <hr>
+        </div>
+    </script>
+
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideosCollection.js"></script>
+    <script src="models/AppModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/SelectedVideoView.js"></script>
+    <script src="views/VideoCarouselView.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
