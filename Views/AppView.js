@@ -9,7 +9,8 @@ const AppView = Backbone.View.extend({
     const collection = this.model.attributes.videos;
     const compiledURL =  this.compileURL();
     collection.url = compiledURL;
-    this.submitMainVideoHandler(collection)
+    
+    this.submitMainVideoHandler(collection);
     this.submitSideVideoHandler(collection, 1, 'one');
     this.submitSideVideoHandler(collection, 2, 'two');
     this.submitSideVideoHandler(collection, 3, 'three');
