@@ -1,3 +1,5 @@
+// Video Components
+
 var VideoModel = Backbone.Model.extend({
   defaults: {
       videoId: '',
@@ -20,10 +22,24 @@ var VideoCollection = Backbone.Collection.extend({
   }
 });
 
+var VideoView = Backbone.View.extend({
+  className: 'v-search-result',
+  
+  template: Handlebars.compile($('#v-search-result-template').html()),
+
+  render: function () {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
+});
+
+// App Comppnents
+
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideoCollection(),
+      selected_video: null
     }
   }
 });
@@ -37,12 +53,26 @@ var AppView = Backbone.View.extend({
 
   initialize: function () {
     this.$searchInput = this.$('#search-query');
+
+    this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+    this.renderVideos();
   },
 
   handleSearchClick: function () {
     var searchQuery = this.$searchInput.val();
     console.log(searchQuery)
   },
+
+  renderVideo: function (video) {
+    var videoView = new VideoView({ model: video });
+    this.$('.v-list').append(videoView.render().el)
+  },
+
+  renderVideos: function () {
+    this.model.get('videos').each(function (video) {
+      this.renderVideo(video);
+    }, this);
+  }
 });
 
 //////////////////////////////////////////////////////
