@@ -1,0 +1,17 @@
+.v-cur-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.v-description {
+  font-size: small;
+  font-style: italic;
+  color: gray;
+}
+
+.v-thumb-title {
+  font-size: small;
+  font-weight: bold;
+  line-height: 1rem;
+  margin: 0;
+}
