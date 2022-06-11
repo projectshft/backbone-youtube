@@ -1,5 +1,3 @@
-// Video Components
-
 var VideoModel = Backbone.Model.extend({
   defaults: {
       videoId: '',
@@ -12,14 +10,30 @@ var VideoModel = Backbone.Model.extend({
 var VideoCollection = Backbone.Collection.extend({
   model: VideoModel,
 
-  addVideo: function (videoId, title, description, thumbnail) {
-    this.add({
-      videoId: videoId,
-      title: title,
-      description: description,
-      thumbnail: thumbnail
+  url: '',
+
+  updateUrl: function (query) {
+    this.url = encodeURI(
+      'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoEmbeddable=true&key=AIzaSyCcu8lz3XjEN-rubIm4dum2-HTFwwijvRA&q=' + query
+    );
+
+    this.fetchVideoData()
+  },
+
+  fetchVideoData: function () {
+    this.fetch({ reset: true });
+  },
+
+  parse: function (response) {
+    return response.items.map(item => {
+      return {
+        videoId: item.id.videoId,
+        title: item.snippet.title,
+        description: item.snippet.description,
+        thumbnail: item.snippet.thumbnails.default.url
+      }
     });
-  }
+  },
 });
 
 var VideosView = Backbone.View.extend({
@@ -44,17 +58,28 @@ var VideoSelectedView = Backbone.View.extend({
   }
 });
 
-// App Comppnents
-
 var AppModel = Backbone.Model.extend({
   defaults: function () {
     return {
       videos: new VideoCollection(),
-      selected_video: null
+      selected_video: null,
+      search_query: ''
     }
   },
 
-  setSelectedVideo: function () {
+  initialize: function () {
+    this.listenTo(this, 'change:search_query', this.updateVideoCollectionUrl);
+  },
+
+  updateQuery: function (query) {
+    this.set('search_query', query);
+  },
+
+  updateVideoCollectionUrl: function () {
+    this.get('videos').updateUrl(this.get('search_query'));
+  },
+
+  setDefaultSelectedVideo: function () {
     this.set('selected_video', this.get('videos').at(0));
   },
 
@@ -70,34 +95,35 @@ var AppView = Backbone.View.extend({
   
   events: {
     'click .search' : 'handleSearchClick',
-    'click .thumbnail' : 'selectVideo'
+    'click .thumbnail' : 'selectVideo',
+    'keydown .search-input' : 'handleKeydown',
   },
 
   initialize: function () {
-    this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
+    this.model.get('videos').updateUrl('funny cats');
+    this.listenTo(this.model.get('videos'), 'add', this.renderVideos);
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideos);
     this.listenTo(this.model, 'change:selected_video', this.renderSelectedVideo);
-    // this.renderSelectedVideo();
-    // this.renderVideos();
+  },
+
+  handleKeydown: function (e) {
+    if (e.which === 13) {
+      e.preventDefault();
+      this.handleSearchClick();
+    }
   },
 
   handleSearchClick: function () {
     var searchQuery = this.$('#search-query').val();
-    console.log(searchQuery);
-    this.model.get('videos').reset();
-    
-    sampleData.items.forEach((item, index) => {
-      console.log('Video ' + index + ' loaded');
-      appModel.get('videos').addVideo(
-        item.id.videoId,
-        item.snippet.title,
-        item.snippet.description,
-        item.snippet.thumbnails.default.url
-      )
-    });
 
-    this.model.setSelectedVideo();
+    this.$('.v-selected-container').empty();
+    this.$('.v-list-container').empty();
+    this.model.get('videos').reset();
+
+    this.model.updateQuery(searchQuery);
+    this.$('#search-query').val('');
   },
+
 
   selectVideo: function (e) {
     var selectedVideoId = $(e.currentTarget).data().video_id;
@@ -121,8 +147,9 @@ var AppView = Backbone.View.extend({
   },
 
   renderVideos: function () {
-    this.$('.v-list-container').empty();
+    // this.$('.v-list-container').empty();
     this.model.get('videos').each(function (video) {
+      this.model.setDefaultSelectedVideo();
       this.renderVideo(video);
     }, this);
   }
