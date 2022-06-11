@@ -42,8 +42,8 @@ const AppView = Backbone.View.extend({
     const title = col.models[0].attributes.items[0].snippet.title;
     const description = col.models[0].attributes.items[0].snippet.description;
     $('.main-video-row').append(`<img class="appended-item" src=${img}>`);
-    $('.main-video-title-row').append(`<h3 id="main-video-title">${title}</h3>`)
-    $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
+    $('.main-video-title-row').append(`<h3 class="appended-item" id="main-video-title">${title}</h3>`)
+    $('.main-video-description-row').append(`<p class="appended-item" id="main-video-description">${description}</p>`)
      
   },
 
@@ -52,8 +52,8 @@ const AppView = Backbone.View.extend({
     if (col.length > 0 && col.length < 5) {
       const img = col.models[0].attributes.items[index].snippet.thumbnails.high.url;
       const title = col.models[0].attributes.items[index].snippet.title;
-      $(`#side-video-${idNum}`).append(`<img class="side-img" src=${img}>`);
-      $(`#side-title-${idNum}`).append(`<h3 class="side-video-title-text">${title}</h3>`);
+      $(`#side-video-${idNum}`).append(`<img class="side-img appended-item" src=${img}>`);
+      $(`#side-title-${idNum}`).append(`<h3 class="side-video-title-text appended-item">${title}</h3>`);
     }
   },
 })
