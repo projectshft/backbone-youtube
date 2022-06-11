@@ -6,12 +6,6 @@ const videoModel = new VideoModel();
 
 const mainVideoView = new MainVideoView();
 
-appModel.get('videos').fetch({
-  reset: true,
-  success: function() {
-    console.log('fetch was successful')
-  },
-  error: function() {
-    console.log('fetch failed')
-  }
-});
+appModel.get('videos').fetch({reset: true})
+.done(function() {console.log('fetch was successful')})
+.fail(function() {console.log('fetch failed')})
