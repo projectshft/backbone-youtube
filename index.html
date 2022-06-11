@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/88e3f79cc9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Backbone YouTube</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+    <script
+      type="text/javascript"
+      src="./node_modules/handlebars/dist/handlebars.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row title-row">
+        <h1>Backbone YouTube Project</h1>
+      </div>
+      <div class="row search-bar-row">
+        <div class="col-8 input-bar">
+          <input type="text" placeholder="Search..." id="search-bar" />
+        </div>
+        <div class="col-4 submit-button">
+          <button class="btn" id="submit-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row display-row">
+        <div class="col main-video-col">
+          <div class="row main-video-row justify-content-center"></div>
+          <div class="row main-video-title-row"></div>
+          <div class="row main-video-description-row"></div>
+        </div>
+        <div class="col side-video-col">
+          <div class="row side-video-row">
+            <div class="col side-video-vid-col" id="side-video-zero"></div>
+            <div class="col side-video-text-col" id="side-title-zero"></div>
+          </div>
+          <div class="row side-video-row">
+            <div class="col side-video-vid-col" id="side-video-one"></div>
+            <div class="col side-video-text-col" id="side-title-one"></div>
+          </div>
+          <div class="row side-video-row">
+            <div class="col side-video-vid-col" id="side-video-two"></div>
+            <div class="col side-video-text-col" id="side-title-two"></div>
+          </div>
+          <div class="row side-video-row">
+            <div class="col side-video-vid-col" id="side-video-three"></div>
+            <div class="col side-video-text-col" id="side-title-three"></div>
+          </div>
+          <div class="row side-video-row">
+            <div class="col side-video-vid-col" id="side-video-four"></div>
+            <div class="col side-video-text-col" id="side-title-four"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="sampleData.js"></script>
+    <script src="Models/VideoModel.js"></script>
+    <script src="Collections/VideoCollection.js"></script>
+    <script src="Models/AppModel.js"></script>
+    <script src="Views/SideVideoView.js"></script>
+    <script src="Views/MainVideoView.js"></script>
+    <script src="Views/AppView.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
