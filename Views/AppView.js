@@ -54,12 +54,8 @@ const AppView = Backbone.View.extend({
   submitSideVideoHandler: function(index, idNum) {
     const col = this.model.get('videos')
     if (col.length > 0 && col.length < 5) {
-      const newImg = sampleData.items[index].snippet.thumbnails.high.url
-      const newTitle = sampleData.items[index].snippet.title;
-      const newVideoModel = new VideoModel({img: newImg, title: newTitle});
-      col.add(newVideoModel);
-      const img = col.models[index].attributes.img;
-      const title = col.models[index].attributes.title;
+      const img = col.models[0].attributes.items[index].snippet.thumbnails.high.url;
+      const title = col.models[0].attributes.items[index].snippet.title;
       $(`#side-video-${idNum}`).append(`<img class="side-img" src=${img}>`);
       $(`#side-title-${idNum}`).append(`<h3 class="side-video-title-text">${title}</h3>`);
     }
