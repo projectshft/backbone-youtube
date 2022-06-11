@@ -22,6 +22,7 @@ const AppView = Backbone.View.extend({
       success: function() {
         console.log('fetch was successful');
         appView.submitMainVideoHandler();
+        appView.submitSideVideoHandler(0, 'zero')
         appView.submitSideVideoHandler(1, 'one')
         appView.submitSideVideoHandler(2, 'two')
         appView.submitSideVideoHandler(3, 'three')
