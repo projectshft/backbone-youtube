@@ -1,5 +1,9 @@
 const AppView = Backbone.View.extend({
   el: $('body'),
+
+  initialize: function() {
+    this.submitHandler();
+  },
   
   events: {
     'click #submit-btn': 'submitHandler',
