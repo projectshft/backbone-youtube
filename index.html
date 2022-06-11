@@ -41,17 +41,21 @@
 
     <div class="row mt-5 gx-md-5 justify-content-center">
 
-      <div class="col-lg-6 bg-primary bg-opacity-10">
+      <!-- <div class="col-lg-6 bg-primary bg-opacity-10">
         <div class="ratio ratio-16x9">
           <iframe src="https://www.youtube.com/embed/L5dM6NdZXd4" title="YouTube video" allowfullscreen></iframe>
         </div>
         <hr />
         <p class="v-cur-title">Josh Bridges 2021 CrossFit Open Prep + Dave Castro Gets Called Out | Paying the Man Ep.083</p>
         <p class="v-description">The CrossFit season is just around the corner so I show you how I am preparing for the 2021 CrossFit Open. I also call out Dave Castro, to get him and I in a ring, ...</p>
+      </div> -->
+
+      <div class="col-lg-6 bg-primary bg-opacity-10">
+        <div class="v-selected-container"></div>
       </div>
 
       <div class="col-lg-4 bg-warning bg-opacity-25 mt-4 mt-lg-0">
-        <div class="v-list"></div>
+        <div class="v-list-container"></div>
       </div>
 
     </div>
@@ -127,9 +131,18 @@
 
   </div>
 
+  <script id="v-selected-template" type="text/x-handlebars-template">
+    <div class="ratio ratio-16x9">
+      <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video" allowfullscreen></iframe>
+    </div>
+    <hr />
+    <p class="v-cur-title">{{ title }}</p>
+    <p class="v-description">{{ description }}</p>
+  </script>
+
   <script id="v-search-result-template" type="text/x-handlebars-template">
     <div class="d-flex flex-row">
-      <img src="{{ thumbnail }}">
+      <img class="thumbnail" data-video_id={{ videoId }} src="{{ thumbnail }}">
       <div class="d-flex align-items-center ms-2">
         <p class="v-thumb-title">{{ title }}</p>
       </div>
