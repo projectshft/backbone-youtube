@@ -43,7 +43,8 @@ const AppView = Backbone.View.extend({
   submitMainVideoHandler: function() {
     const col = this.model.get('videos')
 
-    const img = col.models[0].attributes.items[0].snippet.thumbnails.high.url;
+    const vid = col.models[0].attributes.items[0].id.videoId
+    console.log(vid)
     const title = col.models[0].attributes.items[0].snippet.title;
     const description = col.models[0].attributes.items[0].snippet.description;
     $('.main-video-row').append(`<img class="appended-item" src=${img}>`);
