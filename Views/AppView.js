@@ -21,7 +21,7 @@ const AppView = Backbone.View.extend({
       reset: true,
       success: function() {
         console.log('fetch was successful');
-        appView.submitMainVideoHandler();
+        appView.submitMainVideoHandler(0);
         appView.submitSideVideoHandler(0, 'zero')
         appView.submitSideVideoHandler(1, 'one')
         appView.submitSideVideoHandler(2, 'two')
@@ -40,12 +40,12 @@ const AppView = Backbone.View.extend({
     return urlBaseWithSearchVal;
   },
 
-  submitMainVideoHandler: function() {
+  submitMainVideoHandler: function(index) {
     const col = this.model.get('videos')
 
-    const vid = col.models[0].attributes.items[0].id.videoId;
-    const title = col.models[0].attributes.items[0].snippet.title;
-    const description = col.models[0].attributes.items[0].snippet.description;
+    const vid = col.models[0].attributes.items[index].id.videoId;
+    const title = col.models[0].attributes.items[index].snippet.title;
+    const description = col.models[0].attributes.items[index].snippet.description;
     $('.main-video-row').append(`<iframe class="appended-item" width="560" height="315" src="https://www.youtube.com/embed/${vid}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
     $('.main-video-title-row').append(`<h3 class="appended-item" id="main-video-title">${title}</h3>`)
     $('.main-video-description-row').append(`<p class="appended-item" id="main-video-description">${description}</p>`)
@@ -61,4 +61,8 @@ const AppView = Backbone.View.extend({
       $(`#side-title-${idNum}`).append(`<h3 class="side-video-title-text appended-item">${title}</h3>`);
     }
   },
+
+  vidOneClick: function() {
+
+  }
 })
