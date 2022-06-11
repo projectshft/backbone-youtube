@@ -6,3 +6,4 @@ const videoModel = new VideoModel();
 
 const mainVideoView = new MainVideoView();
 
+appModel.get('videos').fetch({reset: true})

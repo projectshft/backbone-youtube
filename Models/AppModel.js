@@ -6,3 +6,4 @@ const AppModel = Backbone.Model.extend({
     }
   }
 })
+
