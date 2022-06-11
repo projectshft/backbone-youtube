@@ -7,9 +7,10 @@ const AppView = Backbone.View.extend({
   
   events: {
     'click #submit-btn': 'submitHandler',
-    'click #side-video-one': 'vidOneClickHandler',
     'click #side-video-zero': 'vidZeroClickHandler',
-    'click #side-video-two': 'vidTwoClickHandler'
+    'click #side-video-one': 'vidOneClickHandler',
+    'click #side-video-two': 'vidTwoClickHandler',
+    'click #side-video-three': 'vidTwoClickHandler'
   },
 
   submitHandler: function() {
@@ -88,6 +89,16 @@ const AppView = Backbone.View.extend({
   vidTwoClickHandler: function() {
     $('.appended-item').remove();
     appView.submitMainVideoHandler(2);
+    appView.submitSideVideoHandler(0, 'zero')
+    appView.submitSideVideoHandler(1, 'one')
+    appView.submitSideVideoHandler(2, 'two')
+    appView.submitSideVideoHandler(3, 'three')
+    appView.submitSideVideoHandler(4, 'four')
+  },
+
+  vidThreeClickHandler: function() {
+    $('.appended-item').remove();
+    appView.submitMainVideoHandler(3);
     appView.submitSideVideoHandler(0, 'zero')
     appView.submitSideVideoHandler(1, 'one')
     appView.submitSideVideoHandler(2, 'two')
