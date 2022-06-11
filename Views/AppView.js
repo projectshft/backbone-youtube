@@ -1,9 +1,5 @@
 const AppView = Backbone.View.extend({
   el: $('body'),
-
-  // initialize: function () {
-  //   this.submitHandler();
-  // },
   
   events: {
     'click #submit-btn': 'submitHandler',
@@ -14,13 +10,16 @@ const AppView = Backbone.View.extend({
     const compiledURL =  this.compileURL();
     collection.url = compiledURL;
 
-    this.model.get('videos').fetch({reset: true})
-    .done(function() {console.log('fetch was successful')})
-    .fail(function() {console.log('fetch failed')})
+    this.model.get('videos').fetch({
+      reset: true,
+      success: this.submitMainVideoHandler(),
+      error: function() {console.log('fetch failed')}
+    })
+   
 
      
     
-    // this.submitMainVideoHandler(collection);
+    this.submitMainVideoHandler(collection);
     // this.submitSideVideoHandler(collection, 1, 'one');
     // this.submitSideVideoHandler(collection, 2, 'two');
     // this.submitSideVideoHandler(collection, 3, 'three');
