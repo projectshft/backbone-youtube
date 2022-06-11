@@ -22,15 +22,6 @@ const AppView = Backbone.View.extend({
       },
       error: function() {console.log('fetch failed')}
     })
-   
-
-     
-    
-    // this.submitMainVideoHandler(collection);
-    // this.submitSideVideoHandler(collection, 1, 'one');
-    // this.submitSideVideoHandler(collection, 2, 'two');
-    // this.submitSideVideoHandler(collection, 3, 'three');
-    // this.submitSideVideoHandler(collection, 4, 'four');
   },
 
   compileURL: function() {
