@@ -1,9 +1,9 @@
 const AppView = Backbone.View.extend({
   el: $('body'),
 
-  initialize: function () {
-    this.submitHandler();
-  },
+  // initialize: function () {
+  //   this.submitHandler();
+  // },
   
   events: {
     'click #submit-btn': 'submitHandler'
@@ -31,11 +31,11 @@ const AppView = Backbone.View.extend({
 
   submitMainVideoHandler: function(col) {
     if (col.length === 0) {
-      const newImg = sampleData.items[0].snippet.thumbnails.high.url
-      const newTitle = sampleData.items[0].snippet.title;
-      const newDescription = sampleData.items[0].snippet.description;
-      const newVideoModel = new VideoModel({img: newImg, title: newTitle, description: newDescription});
-      col.add(newVideoModel);
+      // const newImg = sampleData.items[0].snippet.thumbnails.high.url
+      // const newTitle = sampleData.items[0].snippet.title;
+      // const newDescription = sampleData.items[0].snippet.description;
+      // const newVideoModel = new VideoModel({img: newImg, title: newTitle, description: newDescription});
+      // col.add(newVideoModel);
       const img = col.models[0].attributes.img;
       const title = col.models[0].attributes.title;
       const description = col.models[0].attributes.description;
