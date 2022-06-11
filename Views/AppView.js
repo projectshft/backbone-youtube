@@ -43,8 +43,7 @@ const AppView = Backbone.View.extend({
   submitMainVideoHandler: function() {
     const col = this.model.get('videos')
 
-    const vid = col.models[0].attributes.items[0].id.videoId
-    console.log(vid)
+    const vid = col.models[0].attributes.items[0].id.videoId;
     const title = col.models[0].attributes.items[0].snippet.title;
     const description = col.models[0].attributes.items[0].snippet.description;
     $('.main-video-row').append(`<iframe class="appended-item" width="560" height="315" src="https://www.youtube.com/embed/${vid}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
