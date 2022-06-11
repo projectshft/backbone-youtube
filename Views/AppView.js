@@ -47,7 +47,7 @@ const AppView = Backbone.View.extend({
     console.log(vid)
     const title = col.models[0].attributes.items[0].snippet.title;
     const description = col.models[0].attributes.items[0].snippet.description;
-    $('.main-video-row').append(`<img class="appended-item" src=${img}>`);
+    $('.main-video-row').append(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${vid}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
     $('.main-video-title-row').append(`<h3 class="appended-item" id="main-video-title">${title}</h3>`)
     $('.main-video-description-row').append(`<p class="appended-item" id="main-video-description">${description}</p>`)
      
