@@ -12,14 +12,17 @@ const AppView = Backbone.View.extend({
 
     this.model.get('videos').fetch({
       reset: true,
-      success: this.submitMainVideoHandler(),
+      success: function() {
+        console.log('fetch was successful');
+        appView.submitMainVideoHandler();
+      },
       error: function() {console.log('fetch failed')}
     })
    
 
      
     
-    this.submitMainVideoHandler(collection);
+    // this.submitMainVideoHandler(collection);
     // this.submitSideVideoHandler(collection, 1, 'one');
     // this.submitSideVideoHandler(collection, 2, 'two');
     // this.submitSideVideoHandler(collection, 3, 'three');
@@ -36,7 +39,7 @@ const AppView = Backbone.View.extend({
 
   submitMainVideoHandler: function() {
     const col = this.model.get('videos')
-    if (col.length > 0 && col.length < 5) {
+      console.log(col)
       console.log(col.url)
       console.log(col.models[0].attributes.items[0].snippet.title)
       // const newImg = sampleData.items[0].snippet.thumbnails.high.url
@@ -50,7 +53,6 @@ const AppView = Backbone.View.extend({
       $('.main-video-row').append(`<img src=${img}>`);
       $('.main-video-title-row').append(`<h3 id="main-video-title">${title}</h3>`)
       $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
-    }
   },
 
   submitSideVideoHandler: function(col, index, idNum) {
