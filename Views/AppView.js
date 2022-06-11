@@ -36,8 +36,8 @@ const AppView = Backbone.View.extend({
       // const newDescription = sampleData.items[0].snippet.description;
       // const newVideoModel = new VideoModel({img: newImg, title: newTitle, description: newDescription});
       // col.add(newVideoModel);
-    
-      const img = col.models[0].attributes.img;
+      debugger;
+      const img = col.models[0].attributes.items[0].snippet.thumbnails.high.url;
       const title = col.models[0].attributes.title;
       const description = col.models[0].attributes.description;
       $('.main-video-row').append(`<img src=${img}>`);
