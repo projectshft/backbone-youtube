@@ -6,9 +6,10 @@ const AppView = Backbone.View.extend({
   },
 
   submitHandler: function() {
-    const collection = this.model.attributes.videos;
+    const collection = this.model.get('videos')
     const compiledURL =  this.compileURL();
     collection.url = compiledURL;
+
 
     this.model.get('videos').fetch({
       reset: true,
@@ -27,21 +28,20 @@ const AppView = Backbone.View.extend({
   compileURL: function() {
     const searchValue = $('#search-bar').val();
     const searchValModifier = `&q=${searchValue}`;
-    const urlBase = this.model.attributes.videos.url;
+    const urlBase = this.model.get('videos').url;
     const urlBaseWithSearchVal = urlBase + searchValModifier;
     return urlBaseWithSearchVal;
   },
 
   submitMainVideoHandler: function() {
     const col = this.model.get('videos')
-    if(col.length > 0 && col.length < 5) {
-      const img = col.models[0].attributes.items[0].snippet.thumbnails.high.url;
-      const title = col.models[0].attributes.items[0].snippet.title;
-      const description = col.models[0].attributes.items[0].snippet.description;
-      $('.main-video-row').append(`<img src=${img}>`);
-      $('.main-video-title-row').append(`<h3 id="main-video-title">${title}</h3>`)
-      $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
-    }
+
+    const img = col.models[0].attributes.items[0].snippet.thumbnails.high.url;
+    const title = col.models[0].attributes.items[0].snippet.title;
+    const description = col.models[0].attributes.items[0].snippet.description;
+    $('.main-video-row').append(`<img src=${img}>`);
+    $('.main-video-title-row').append(`<h3 id="main-video-title">${title}</h3>`)
+    $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
      
   },
 
