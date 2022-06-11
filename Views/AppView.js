@@ -6,7 +6,7 @@ const AppView = Backbone.View.extend({
   // },
   
   events: {
-    'click #submit-btn': 'submitHandler'
+    'click #submit-btn': 'submitHandler',
   },
 
   submitHandler: function() {
@@ -15,14 +15,16 @@ const AppView = Backbone.View.extend({
     collection.url = compiledURL;
 
     this.model.get('videos').fetch({reset: true})
-    .done(function() {console.log('click fetch successful')})
+    .done(function() {console.log('fetch was successful')})
     .fail(function() {console.log('fetch failed')})
+
+     
     
-    this.submitMainVideoHandler(collection);
-    this.submitSideVideoHandler(collection, 1, 'one');
-    this.submitSideVideoHandler(collection, 2, 'two');
-    this.submitSideVideoHandler(collection, 3, 'three');
-    this.submitSideVideoHandler(collection, 4, 'four');
+    // this.submitMainVideoHandler(collection);
+    // this.submitSideVideoHandler(collection, 1, 'one');
+    // this.submitSideVideoHandler(collection, 2, 'two');
+    // this.submitSideVideoHandler(collection, 3, 'three');
+    // this.submitSideVideoHandler(collection, 4, 'four');
   },
 
   compileURL: function() {
@@ -33,7 +35,8 @@ const AppView = Backbone.View.extend({
     return urlBaseWithSearchVal;
   },
 
-  submitMainVideoHandler: function(col) {
+  submitMainVideoHandler: function() {
+    const col = this.model.get('videos')
     if (col.length > 0 && col.length < 5) {
       console.log(col.url)
       console.log(col.models[0].attributes.items[0].snippet.title)
