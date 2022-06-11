@@ -6,11 +6,13 @@ const AppView = Backbone.View.extend({
   },
 
   submitHandler: function() {
+
+    $('.appended-item').remove();
+
     const collection = this.model.get('videos')
     const compiledURL =  this.compileURL();
     collection.url = compiledURL;
-
-
+    
     collection.fetch({
       reset: true,
       success: function() {
@@ -39,7 +41,7 @@ const AppView = Backbone.View.extend({
     const img = col.models[0].attributes.items[0].snippet.thumbnails.high.url;
     const title = col.models[0].attributes.items[0].snippet.title;
     const description = col.models[0].attributes.items[0].snippet.description;
-    $('.main-video-row').append(`<img src=${img}>`);
+    $('.main-video-row').append(`<img class="appended-item" src=${img}>`);
     $('.main-video-title-row').append(`<h3 id="main-video-title">${title}</h3>`)
     $('.main-video-description-row').append(`<p id="main-video-description">${description}</p>`)
      
