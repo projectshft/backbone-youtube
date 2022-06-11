@@ -5,7 +5,7 @@ const baseURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxRe
 const staticSearchValue = '&q=chess'
 
 const VideoCollection = Backbone.Collection.extend({
-  url: baseURL + APIKey + staticSearchValue,
+  url: baseURL + APIKey,
 
   model: VideoModel
 })
