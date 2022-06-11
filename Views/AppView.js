@@ -11,7 +11,7 @@ const AppView = Backbone.View.extend({
     collection.url = compiledURL;
 
 
-    this.model.get('videos').fetch({
+    collection.fetch({
       reset: true,
       success: function() {
         console.log('fetch was successful');
