@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Project BackTube</title>
+</head>
+
+<body class="p-3">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-md-10 p-0">
+        <h1 class="text-center">Project BackTube</h1>
+        <hr />
+      </div>
+    </div>
+
+    <form>
+      <div class="row gap-2 justify-content-center">
+        <div class="col-md-6 p-0 text-center">
+          <input type="text" id="search-query" class="form-control search-input" placeholder="Please enter search term here"></input>
+        </div>
+        <div class="col-md-auto p-0 text-center">
+          <button type="button" class="btn btn-primary px-4 w-100 search">Search</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row mt-5 gx-md-5 justify-content-center">
+
+      <div class="col-lg-6">
+        <div class="v-selected-container"></div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="v-list-container"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script id="v-selected-template" type="text/x-handlebars-template">
+    <div class="ratio ratio-16x9">
+      <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video" allowfullscreen></iframe>
+    </div>
+    <hr />
+    <p class="v-cur-title">{{ title }}</p>
+    <p class="v-description">{{ description }}</p>
+  </script>
+
+  <script id="v-search-result-template" type="text/x-handlebars-template">
+    <div class="d-flex flex-row">
+      <img class="thumbnail" data-video_id={{ videoId }} src="{{ thumbnail }}">
+      <div class="d-flex align-items-center ms-2">
+        <p class="v-thumb-title">{{ title }}</p>
+      </div>
+    </div>
+    <hr />
+  </script>
+
+  <!-- <script src="sampleData.js"></script> -->
+  <script src="models/VideoModel.js"></script>
+  <script src="collections/VideoCollection.js"></script>
+  <script src="views/VideosView.js"></script>
+  <script src="views/VideoSelectedView.js"></script>
+  <script src="models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
