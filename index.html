@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap v5 -->
+    <link
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- CSS Stylesheet-->
+    <link rel="stylesheet" href="style.css" />
+    <title>Github Backbone</title>
+  </head>
+  <body class>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand bg-primary">
+          <div class="container justify-content-start align-items-center">
+            <span class="name nav-title navbar-brand text-light">The Youtube Project</span>
+          </div>
+        </nav>
+        <!-- Hero Section -->
+        <section class="bg-primary text-light text-center">
+          <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <h1 class="h1-style">
+                  Search for your Favorite Videos
+                </h1>
+          </div>
+        </section>
+        <!-- Search Bar -->
+        <div class="container mt-3">
+          <div class="input-group input-group-lg justify-content-center">
+            <input
+              type="text"
+              class="search-bar form-control-lg mr-3"
+              placeholder="search"
+            />
+           <button class="btn btn-primary" type="button">Search</button>
+          </div>
+        </div>
+        <!-- Main Video Container -->
+        <div class="main-video-container"></div>
+        <!-- Video List Container -->
+        <div class="video-list-container"></div>
+
+    <!-- Handlebars Template Video List -->
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="card m-2" style="width: 15rem">
+        <div class="card-body">
+          <h4 class="card-title">{{title}}</h4>
+          <img src="{{thumbnail}}" class="card-img-top" alt="..." />
+          <p class="card-text">{{description}</p>
+        </div>
+      </div>
+    </script>
+    <!-- jQ -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <!-- Handlebars -->
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <!-- Underscore -->
+    <script src="node_modules/underscore/underscore.js"></script>
+    <!-- Backbone -->
+    <script src="node_modules/backbone/backbone.js"></script>
+    <!-- JS -->
+    <script src="main.js"></script>
+  </body>
+</html>
