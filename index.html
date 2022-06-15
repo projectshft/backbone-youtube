@@ -11,9 +11,9 @@
     />
     <!-- CSS Stylesheet-->
     <link rel="stylesheet" href="style.css" />
-    <title>Github Backbone</title>
+    <title>Youtube Backbone</title>
   </head>
-  <body class>
+  <body class="bg-light application-view">
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand bg-primary">
           <div class="container justify-content-start align-items-center">
@@ -46,16 +46,22 @@
         <!-- Video List Container -->
         <div class="video-list-container"></div>
 
-    <!-- Handlebars Template Video List -->
-    <script id="main-video-template" type="text/x-handlebars-template">
-      <div class="card m-2" style="width: 15rem">
-        <div class="card-body">
-          <h4 class="card-title">{{title}}</h4>
-          <img src="{{thumbnail}}" class="card-img-top" alt="..." />
-          <p class="card-text">{{description}</p>
+    <!-- Handlebars Template Main Video -->
+    <script src="main-video-template" type="text/x-handlebars-template">
+      <div class="container">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </script>
+      <!-- Handlebars Template Video List -->
+      <script id="video-list-template" type="text/x-handlebars-template">
+        <div class="card m-2" style="width: 15rem">
+          <div class="card-body">
+            <h4 class="card-title">{{title}}</h4>
+            <img src="{{thumbnail}}" class="card-img-top" alt="..." />
+            <p class="card-text">{{description}</p>
+          </div>
         </div>
-      </div>
-    </script>
+      </script>
     <!-- jQ -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <!-- Handlebars -->
@@ -64,6 +70,11 @@
     <script src="node_modules/underscore/underscore.js"></script>
     <!-- Backbone -->
     <script src="node_modules/backbone/backbone.js"></script>
+    <!-- Linking Project JS Files -->
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideoCollection.js"></script>
+    <script src="models/ApplicationModel.js"></script>
+    <script src="views/ApplicationView.js"></script>
     <!-- JS -->
     <script src="main.js"></script>
   </body>
