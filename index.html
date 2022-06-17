@@ -44,7 +44,10 @@
         <!-- Main Video Container -->
         <div class="main-video-container"></div>
         <!-- Video List Container -->
+        <div class="d-flex justify-content-around align-content-around">
         <div class="video-list-container"></div>
+        </div>
+        
 
     <!-- Handlebars Template Main Video -->
     <script src="main-video-template" type="text/x-handlebars-template">
@@ -52,16 +55,17 @@
               <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           </script>
-      <!-- Handlebars Template Video List -->
-      <script id="video-list-template" type="text/x-handlebars-template">
-        <div class="card m-2" style="width: 15rem">
-          <div class="card-body">
-            <h4 class="card-title">{{title}}</h4>
-            <img src="{{thumbnail}}" class="card-img-top" alt="..." />
-            <p class="card-text">{{description}</p>
-          </div>
+    <!-- Handlebars Template Video List -->
+    <script id="video-list-template" type="text/x-handlebars-template">
+      <div class="videos-container m-3" style="width: 20rem">
+        <div class="videos-container-body">
+          <img src="{{thumbnail}}" class="card-img-top" alt="..." /> 
+          <h4 class="videos-container-title">{{title}}</h4>
+          <p class="videos-container-text">{{description}}</p>
+          <hr>
         </div>
-      </script>
+      </div>
+    </script>
     <!-- jQ -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <!-- Handlebars -->
@@ -71,10 +75,14 @@
     <!-- Backbone -->
     <script src="node_modules/backbone/backbone.js"></script>
     <!-- Linking Project JS Files -->
+    <script src="sampleData.js"></script>
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideoCollection.js"></script>
     <script src="models/ApplicationModel.js"></script>
     <script src="views/ApplicationView.js"></script>
+    <script src="views/VideoView.js"></script>
+  
+  
     <!-- JS -->
     <script src="main.js"></script>
   </body>
