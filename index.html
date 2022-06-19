@@ -13,56 +13,80 @@
     <link rel="stylesheet" href="style.css" />
     <title>Youtube Backbone</title>
   </head>
-  <body class="bg-light application-view">
-        <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand bg-primary">
-          <div class="container justify-content-start align-items-center">
-            <span class="name nav-title navbar-brand text-light">The Youtube Project</span>
-          </div>
-        </nav>
-        <!-- Hero Section -->
-        <section class="bg-primary text-light text-center">
-          <div class="container">
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <h1 class="h1-style">
-                  Search for your Favorite Videos
-                </h1>
-          </div>
-        </section>
-        <!-- Search Bar -->
-        <div class="container mt-3">
-          <div class="input-group input-group-lg justify-content-center">
-            <input
-              type="text"
-              class="search-bar form-control-lg mr-3"
-              placeholder="search"
-            />
-           <button class="btn btn-primary" type="button">Search</button>
-          </div>
-        </div>
-        <!-- Main Video Container -->
-        <div class="main-video-container"></div>
-        <!-- Video List Container -->
-        <div class="d-flex justify-content-around align-content-around">
-        <div class="video-list-container"></div>
-        </div>
-        
-
-    <!-- Handlebars Template Main Video -->
-    <script src="main-video-template" type="text/x-handlebars-template">
+  <body class="application-view bg-secondary">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-sm bg-dark fixed-top py-2">
+      <div class="container justify-content-start align-items-center">
+        <span class="name nav-title navbar-brand text-light"
+          ><span class="text-danger">The Youtube </span> Project
+        </span>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="bg-dark text-light p-3 pt-lg-5 text-center text-sm-start">
       <div class="container">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </script>
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h1 class="h1-style">
+              Search for <span class="text-danger"> your Favorite Videos</span>
+            </h1>
+          </div>
+          <img
+            class="hero-img img-fluid w-50 d-none d-sm-block"
+            src="https://static.vecteezy.com/system/resources/previews/003/206/623/original/youtube-editorial-app-icon-free-vector.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Search Bar -->
+    <div class="container mt-3">
+      <div class="input-group justify-content-center">
+        <input
+          type="text"
+          class="search-bar form-control-lg mr-3"
+          placeholder="search"
+        />
+        <button class="btn btn-danger" type="button">Search</button>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around flex-wrap mt-5">
+      <!-- Main Video Container -->
+      <div class="main-video-container"></div>
+      <!-- Video List Container -->
+      <div class="d-flex justify-content-around align-content-around">
+        <div class="video-list-container"></div>
+      </div>
+    </div>
+    <!-- Handlebars Template Main Video -->
+    <script id="main-video-template" type="text/x-handlebars-template">
+      <div class="videos-container bg-light show" style="width:30rem">
+        <iframe
+          class="m-3"
+          width="450"
+          height="300"
+          src="https://www.youtube.com/embed/{{videoId}}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <h4 class="videos-container-title">{{title}}</h4>
+        <p class="videos-container-text">{{description}}</p>
+      </div>
+    </script>
     <!-- Handlebars Template Video List -->
     <script id="video-list-template" type="text/x-handlebars-template">
-      <div class="videos-container m-3" style="width: 20rem">
+      <div class="videos-container bg-light" style="width:21rem">
+        <div class="img-container">
+          <img src="{{thumbnail}}" class="card-img-top p-3" />
+        </div>
         <div class="videos-container-body">
-          <img src="{{thumbnail}}" class="card-img-top" alt="..." /> 
-          <h4 class="videos-container-title">{{title}}</h4>
+          <a class="view-video" href="#" data-id="{{videoId}}">
+            <h4 class="videos-container-title">{{title}}</h4>
+          </a>
           <p class="videos-container-text">{{description}}</p>
-          <hr>
+          <hr />
         </div>
       </div>
     </script>
@@ -75,14 +99,12 @@
     <!-- Backbone -->
     <script src="node_modules/backbone/backbone.js"></script>
     <!-- Linking Project JS Files -->
-    <script src="sampleData.js"></script>
     <script src="models/VideoModel.js"></script>
     <script src="collections/VideoCollection.js"></script>
     <script src="models/ApplicationModel.js"></script>
     <script src="views/ApplicationView.js"></script>
     <script src="views/VideoView.js"></script>
-  
-  
+    <script src="views/MainVideoView.js"></script>
     <!-- JS -->
     <script src="main.js"></script>
   </body>
