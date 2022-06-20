@@ -23,22 +23,20 @@ const ApplicationView = Backbone.View.extend({
     const searchValue = this.$searchInput.val();
     $('.main-video-container').empty();
     $('.video-list-container').empty();
-
     this.model.get('videos').updateUrl(searchValue);
   },
   renderVideo(video) {
-    // New instance of VideoView //
     const videoView = new VideoView({ model: video });
     this.$('.video-list-container').append(videoView.render().el);
   },
-  // Loading the main dummy Video //
+
   renderMainVideoDefault(video) {
     const mainVideoView = new MainVideoView({
       model: video.models[0],
     });
     this.$('.main-video-container').append(mainVideoView.render().el);
   },
-  // Loading the main dummy Video on click //
+
   renderMainVideoOnClick(video) {
     this.$('.main-video').addClass('hide');
     const mainVideoView = new MainVideoView({
@@ -47,13 +45,12 @@ const ApplicationView = Backbone.View.extend({
     this.$('.main-video-container').append(mainVideoView.render().el);
   },
 
-  // Loading the dummy Videos //
   renderVideos() {
     this.model.get('videos').each((model) => {
       this.renderVideo(model);
     });
   },
-  // Updating the main video //
+
   viewMainVideo(video) {
     const clickedVideo = $(video.currentTarget).data().id;
     this.model.updateCurrentVideo(clickedVideo);

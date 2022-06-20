@@ -1,7 +1,5 @@
-body::before {
+body {
   display: block;
-  content: "";
-  height: 60px;
 }
 .hero-img {
   border-radius: 25px;
@@ -17,6 +15,7 @@ body::before {
 }
 .videos-container-text {
   text-align: center;
+  font-weight: bold;
 }
 
 .hide {

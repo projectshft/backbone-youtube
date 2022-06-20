@@ -1,4 +1,3 @@
-// Dynamic View for the Main Video //
 const MainVideoView = Backbone.View.extend({
   className: 'main-video',
 

@@ -15,6 +15,7 @@ const VideoCollection = Backbone.Collection.extend({
     this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${value}&type=video&videoEmbeddable=true&key=AIzaSyBQytHjjh4SI1Oty6aF_m_A-gTwHLBTzw8`;
     applicationModel.get('videos').fetch({ reset: true });
   },
+
   parse(response) {
     response.items.forEach((item) => {
       applicationModel
