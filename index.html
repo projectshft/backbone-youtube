@@ -60,11 +60,14 @@
     </div>
     <!-- Handlebars Template Main Video -->
     <script id="main-video-template" type="text/x-handlebars-template">
-      <div class="videos-container bg-light show" style="width:30rem">
+      <div
+        class="card m-3 pt-3 align-items-center border-danger videos-container bg-light"
+        style="width:40rem"
+      >
         <iframe
           class="m-3"
-          width="450"
-          height="300"
+          width="560"
+          height="315"
           src="https://www.youtube.com/embed/{{videoId}}"
           title="YouTube video player"
           frameborder="0"
@@ -77,7 +80,10 @@
     </script>
     <!-- Handlebars Template Video List -->
     <script id="video-list-template" type="text/x-handlebars-template">
-      <div class="videos-container bg-light" style="width:21rem">
+      <div
+        class="card m-3 border-danger videos-container bg-light"
+        style="width:25rem"
+      >
         <div class="img-container">
           <img src="{{thumbnail}}" class="card-img-top p-3" />
         </div>
@@ -86,7 +92,7 @@
             <h4 class="videos-container-title">{{title}}</h4>
           </a>
           <p class="videos-container-text">{{description}}</p>
-          <hr />
+
         </div>
       </div>
     </script>

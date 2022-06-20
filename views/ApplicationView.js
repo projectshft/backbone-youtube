@@ -7,37 +7,40 @@ const ApplicationView = Backbone.View.extend({
   },
   initialize() {
     this.$searchInput = this.$('.search-bar');
+    this.listenTo(
+      this.model.get('videos'),
+      'reset',
+      this.renderMainVideoDefault
+    );
     this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
     this.listenTo(
       this.model,
       'change:current_video',
       this.renderMainVideoOnClick
     );
-    // List of 5 videos //
-    this.renderVideos();
-    // Main video default //
-    this.renderMainVideoDefault(applicationModel.get('videos').models[0]);
   },
   handleSearchClick() {
     const searchValue = this.$searchInput.val();
-    // For Later when we hook up the API //
-    // this.model.get('videos').updateUrl(searchValue);
+    $('.main-video-container').empty();
+    $('.video-list-container').empty();
+
+    this.model.get('videos').updateUrl(searchValue);
   },
   renderVideo(video) {
     // New instance of VideoView //
     const videoView = new VideoView({ model: video });
-
     this.$('.video-list-container').append(videoView.render().el);
   },
   // Loading the main dummy Video //
   renderMainVideoDefault(video) {
     const mainVideoView = new MainVideoView({
-      model: video,
+      model: video.models[0],
     });
     this.$('.main-video-container').append(mainVideoView.render().el);
   },
   // Loading the main dummy Video on click //
   renderMainVideoOnClick(video) {
+    this.$('.main-video').addClass('hide');
     const mainVideoView = new MainVideoView({
       model: video.attributes.current_video,
     });
@@ -55,8 +58,4 @@ const ApplicationView = Backbone.View.extend({
     const clickedVideo = $(video.currentTarget).data().id;
     this.model.updateCurrentVideo(clickedVideo);
   },
-  hideMainVideo() {},
 });
-
-// For Later when we hook up the API //
-// this.model.get('videos').updateUrl(searchValue);

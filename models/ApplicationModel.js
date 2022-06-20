@@ -9,6 +9,7 @@ const ApplicationModel = Backbone.Model.extend({
 
   updateCurrentVideo(videoId) {
     const currentVideo = this.get('videos').findWhere({ videoId });
+    console.log(currentVideo, 'current Video');
     this.set('current_video', currentVideo);
   },
 });
