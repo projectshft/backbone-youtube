@@ -1,0 +1,27 @@
+body {
+  display: block;
+}
+.hero-img {
+  border-radius: 25px;
+  border-color: red;
+}
+.nav-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.videos-container-title {
+  text-align: center;
+}
+.videos-container-text {
+  text-align: center;
+  font-weight: bold;
+}
+
+.hide {
+  display: none;
+}
+
+.display {
+  display: block;
+}
