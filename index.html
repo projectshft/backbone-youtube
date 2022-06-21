@@ -30,36 +30,34 @@
                 id="search-query"
                 placeholder="Please enter search term here"
               />
-
-              <button class="btn btn-primary video-search">Search</button>
+              
+              <button class="btn btn-primary" id="search">Search</button>
             </div>
 
-            <div class="container-fluid">
-              <div id="main-video">
-                 </div>
-
-                 <div class="container-fluid">
-                  <div id="side-videos">
-                     </div>
  
-    <script id="main-video-template" type="text/x-handlebars-template">
-      <div><video src="{{videos_url}}"></video></div>
-         <div><p class="{{ title }}"></p></div>
-          <p class="{{ description }}"></p>}}"
-    <script id="side-videos-template" type="text/x-handlebars-template">
-      <div><video src="{{videos_url}}"></video></div>
-         <div><p class="{{ title }}"></p></div>
-          <p class="{{ description }}"></p>
-        </div>
-      </script>
+ <div
+ class="d-flex flex-wrap justify-content-around align-content-around"></div>
 
-<script src="models/VideoModel.js"></script>
-<script src="collections/VideosCollection.js"></script>
-<script src="models/AppModel.js"></script>
-<script src="views/VideoView.js"></script>
-<script src="views/AppView.js"></script>
-<script src="main.js"></script>
-<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<div
+ class="card-group d-flex flex-wrap justify-content-center align-content-around" id="videos"
+></div>
+ 
+    <script id="main-video-template" type="text/x-handlebars-template">                                    <p class="{{ title }}"></p>
+      <p class="{{ description }}"></p>
+      <img class="{{ thumbnails }}">/img>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
+    </script> 
+    
+      <script id="side-videos-template" type="text/x-handlebars-template">
+        <p class="{{ title }}"></p>
+        <p class="{{ description }}"></p>
+        <img class="{{ thumbnails }}">/img>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
+      </script> 
+
+
+      <script src="main.js"></script>
+
 
    </body>
 </html>

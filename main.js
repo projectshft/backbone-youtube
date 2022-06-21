@@ -6,11 +6,10 @@ var VideosModel = Backbone.Model.extend({
 //   // thumbnails: 'https://i.ytimg.com/vi/d3c7gAR5iOM/mqdefault.jpg',
 //   // videoId: 'd3c7gAR5iOM'
 // });
+});
 
-
-//   var VideosCollection = Backbone.Collection.extend({
-//     model: VideosModel,
-//     url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyDJP_kbSFYteTAEL6Dao64hwbagEOuZT_c",
+var VideosCollection = Backbone.Collection.extend({
+  url: "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=dogs&type=video&videoEmbeddable=true&key=AIzaSyDJP_kbSFYteTAEL6Dao64hwbagEOuZT_c",
  });
  
 var VideosView = Backbone.View.extend({
@@ -21,10 +20,10 @@ var VideosView = Backbone.View.extend({
   },
 
   initialize: function () {
-    // VideosView.listenTo(this.model.get('videosCollection'), 'reset', function () {
-    //   this.renderMainVideo();
-    //   this.renderSideVideos();
-    // }, this);
+    
+      // this.renderMainVideo();
+      // this.renderSideVideos();
+    //
    },
 
   displayVideos: function () {
@@ -36,3 +35,6 @@ var VideosView = Backbone.View.extend({
 });
 
 var videosView = new VideosView();
+
+var videosCollection = new VideosCollection();
+videosCollection.fetch() 

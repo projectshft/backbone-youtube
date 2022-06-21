@@ -1,17 +1,17 @@
-const VideosCollection = Backbone.Collection.extend({
-  model: VideoModel,
-  url: '', 
 
-  addVideo: function (title, description, thumbnail, videoId) {
-    this.add({
-      title: title,
-      description: description,
-      thumbnail: thumbnail,
-      videoId: videoId
-      })
-  }
-});
-   
+//    const VideosCollection = Backbone.Collection.extend({
+//   model: VideoModel,
+//   url: '', 
+
+//   addVideo: function (title, description, thumbnail, videoId) {
+//     this.add({
+//       title: title,
+//       description: description,
+//       thumbnail: thumbnail,
+//       videoId: videoId
+//       })
+//   }
+// });
 //will this code work???
 
 // collection.fetch({ data: $.param({ someParam: 12345}) });
