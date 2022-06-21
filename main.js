@@ -1,11 +1,10 @@
 var VideosModel = Backbone.Model.extend({
-
-
-//   // title: 'Best Funny DOG Videos Compilation!',
-//   // description: 'Compilation of Funny DOG Videos!',
-//   // thumbnails: 'https://i.ytimg.com/vi/d3c7gAR5iOM/mqdefault.jpg',
-//   // videoId: 'd3c7gAR5iOM'
-// });
+  defaults: {
+    title: 'Best Funny DOG Videos Compilation!',
+    description: 'Compilation of Funny DOG Videos!',
+    thumbnails: 'https://i.ytimg.com/vi/d3c7gAR5iOM/mqdefault.jpg',
+    videoId: 'd3c7gAR5iOM'
+  }
 });
 
 var VideosCollection = Backbone.Collection.extend({
@@ -20,21 +19,21 @@ var VideosView = Backbone.View.extend({
   },
 
   initialize: function () {
-    
-      // this.renderMainVideo();
-      // this.renderSideVideos();
-    //
-   },
+    this.listenTo(this.collection, 'reset', function () {
+      this.renderMainVideo();
+      this.renderSideVideos();
+   })
+  },
 
   displayVideos: function () {
-    console.log('click');
+    /console.log('click');
    
   }
 
 
 });
 
-var videosView = new VideosView();
+var videosView = new VideosView({ model: VideosModel });
 
-var videosCollection = new VideosCollection();
+var videosCollection = new VideosCollection({ model: VideosModel });
 videosCollection.fetch() 
