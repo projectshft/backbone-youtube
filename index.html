@@ -4,8 +4,7 @@
     <link ref="node_modules/bootstrap/dist/css/bootstap.css" />
     <link
     rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
-  />
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="style.css" />
     
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -16,7 +15,6 @@
     <title>Backbone YouTube</title>
   </head>
   <body>
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -37,12 +35,9 @@
 
  
  <div class="video-container">
-  <embed style = "width:720px; height: 450px;" src="https://www.youtube.com/embed/BPW1Xdc4v4s" ></embed>
- <div class="d-flex flex-wrap justify-content-around align-content-around"></div>
+   <div class="d-flex flex-wrap justify-content-around align-content-around"></div>
 
-<div
- class="card-group d-flex flex-wrap justify-content-center align-content-around" id="videos"
-></div>
+  <div class="card-group d-flex flex-wrap justify-content-center align-content-around" id="videos"></div>
  
     <script id="main-video-template" type="text/x-handlebars-template">                                    
       <p class="{{ title }}"></p>
@@ -51,22 +46,17 @@
       <iframe width="560" height="315" src="https://www.youtube.com/embed/{{videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
     </script> 
     
-      <script id="side-videos-template" type="text/x-handlebars-template">
-        <div>
-          {{#each []}}
-            <p class="{{this.title}}"></p>
-            <p class="{{this.description }}"></p>
-            <img class="{{this.thumbnails }}">/img>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{this.videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
-          </div>  
-        
-     
-      </script> 
+    <script id="side-videos-template" type="text/x-handlebars-template">
+      <div>
+        <p class="{{this.title}}"></p>
+        <p class="{{this.description }}"></p>
+        <img class="{{this.thumbnails }}">/img>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{this.videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
+      </div>  
+    </script> 
     </div>
 
+    <script src="main.js"></script>
 
-      <script src="main.js"></script>
-
-
-   </body>
+  </body>
 </html>
