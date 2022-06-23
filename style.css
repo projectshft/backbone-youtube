@@ -1,9 +1,3 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .video-container {
   width: 90%;
   max-width: 1000px;
@@ -20,48 +14,21 @@ video {
   width: 50%;
 }
 
-/* div#container-fluid {
-  background-color: green;
-  margin: 50px 50px;
-  block
-} */
-
 #videos-column {
   display: block;
   top: 0;
 }
 
-#side-video-div {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-div#main-video-div {
+v#main-video-div {
   display: table;
   padding: 20px;
   width: 60%;
   margin: 50px 50px;
 }
 
-div#side-video-div {
+#side-video-div {
   display: inline-block;
-  background-color: blue;
   padding: 10px;
   width: 15%;
   margin: 20px 10px;
-}
-
-.column {
-  float: left;
-  top: 0;
-  padding: 100px;
-  height: 500px; /* Should be removed. Only for demonstration */
-}
-
-.left {
-  width: 25%;
-}
-
-.right {
-  width: 75%;
 }
