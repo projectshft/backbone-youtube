@@ -52,18 +52,20 @@
     </div>
 
     <script id="video-player-template" type="text/x-handlebars-template">
-      <div class="video-player iframe-container">
+      <div class="iframe-container">
         <iframe
           src="https://www.youtube.com/embed/{{videoId}}"
+          width="560"
+          height="315"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
-        <hr />
-        <h4 class="video-title">{{title}}</h4>
-        <p class="video-description">{{description}}</p>
       </div>
+      <hr />
+      <h4 class="video-title">{{title}}</h4>
+      <p class="video-description">{{description}}</p>
     </script>
 
     <script id="video-list-template" type="text/x-handlebars-template">

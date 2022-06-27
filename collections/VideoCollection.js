@@ -4,7 +4,7 @@ const VideoCollection = Backbone.Collection.extend({
   url: '',
 
   updateUrl(query) {
-    this.url = `https://www.googleapis.com/youtube/v3/videos/search?part=snippet&maxResults=5&q=${query}&type=video&videoEmbeddable=true&key=${apiKey}`;
+    this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&type=video&videoEmbeddable=true&key=${apiKey}`;
 
     this.fetch({ reset: true });
   },
@@ -21,13 +21,4 @@ const VideoCollection = Backbone.Collection.extend({
     console.log(searchArr);
     return searchArr;
   },
-
-  addVideo(videoId, title, description, thumbnailUrl) {
-    this.create({
-      videoId,
-      title,
-      description,
-      thumbnailUrl,
-    }, { wait: true });
-  }
 });
