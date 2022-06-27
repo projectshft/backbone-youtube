@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.video-list-item {
+  margin-bottom: 15px;
+}
+
 .video-list-title {
   font-size: small;
   font-weight: bold;

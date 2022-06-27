@@ -8,6 +8,7 @@ const AppView = Backbone.View.extend({
   initialize() {
     this.model.get('videos').updateUrl('javascript');
     this.listenTo(this.model.get('videos'), 'reset', this.renderVideoPlayer);
+    this.listenTo(this.model.get('videos'), 'reset', this.renderVideoList);
   },
 
   findVideos() {
@@ -25,5 +26,12 @@ const AppView = Backbone.View.extend({
     const currentVideo = this.model.get('videos').models[0];
     const videoPlayer = new VideoPlayerView({ model: currentVideo });
     this.$('.player-container').append(videoPlayer.render().el);
+  },
+
+  renderVideoList() {
+    this.model.get('videos').each(function (video) {
+      const videoListItem = new VideoListView({ model: video});
+      this.$('.list-container').append(videoListItem.render().el);
+    });
   },
 });
