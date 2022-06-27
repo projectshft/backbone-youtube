@@ -18,7 +18,7 @@ const VideoCollection = Backbone.Collection.extend({
         thumbnailUrl: video.snippet.thumbnails.default.url,
       };
     });
-    
+    console.log(searchArr);
     return searchArr;
   },
 });
