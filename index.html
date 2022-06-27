@@ -60,21 +60,26 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
+        <hr />
+        <h4 class="video-title">{{title}}</h4>
+        <p class="video-description">{{description}}</p>
       </div>
     </script>
 
     <script id="video-list-template" type="text/x-handlebars-template">
       <div class="video-list-item row" data-id="{{videoId}}">
         <div class="col-xl-auto col-lg-5 col-md-auto col-sm-12 col-4">
-          <img src="{{thumbnail}}" class="video-img" />
+          <img src="{{thumbnailUrl}}" class="video-img" />
         </div>
         <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-8">
-          <p>{{title}}</p>
+          <p class="video-list-title">{{title}}</p>
         </div>
       </div>
     </script>
 
     <script src="../key.js"></script>
+    <script src="models/VideoModel.js"></script>
+    <script src="collections/VideoCollection.js"></script>
     <script src="models/AppModel.js"></script>
     <script src="views/AppView.js"></script>
     <script src="main.js"></script>
