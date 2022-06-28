@@ -5,8 +5,4 @@ const AppModel = Backbone.Model.extend({
       iframeVideo: null,
     };
   },
-  
-  updateIframeVideo(id) {
-    this.set('iframeVideo', id);
-  },
 });

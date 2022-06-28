@@ -18,6 +18,9 @@ const AppView = Backbone.View.extend({
       return alert('Please enter a search term');
     }
 
+    //clear out iframeVideo for renderVideoPlayer to work properly
+    this.model.set('iframeVideo', null);
+
     const query = this.$('#search-query').val();
     this.model.get('videos').updateUrl(query);
 
@@ -26,20 +29,25 @@ const AppView = Backbone.View.extend({
 
   renderVideoPlayer() {
     let currentVideoId = this.model.get('iframeVideo');
-    //On initial page load iframeVideo is null, so check for this to avoid null being set as the id
+
+    //On initial page/search load iframeVideo is null, so check for this to avoid null being set as the id
     if (!currentVideoId) {
       currentVideoId = this.model.get('videos').models[0].id;
     }
+    
     const currentVideo = _.find(this.model.get('videos').models, function (item) {
       return item.id === currentVideoId;
     });
+
     const videoPlayer = new VideoPlayerView({ model: currentVideo });
+
     this.$('.player-container').html('');
     this.$('.player-container').append(videoPlayer.render().el);
   },
 
   renderVideoList() {
     this.$('.list-container').html('');
+
     this.model.get('videos').each(function (video) {
       const videoListItem = new VideoListView({ model: video});
       this.$('.list-container').append(videoListItem.render().el);
@@ -48,6 +56,6 @@ const AppView = Backbone.View.extend({
 
   changeVideoPlayer(e) {
     const clickedVideoId = $(e.currentTarget).data().id;
-    this.model.updateIframeVideo(clickedVideoId);
+    this.model.set('iframeVideo', clickedVideoId);
   },
 });
