@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="stylesheet" href="style.css" />
+   
+    <title>Backbone YouTube</title>
+  </head>
+  <body>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="page-header">
+            <h1 style="text-align: center">Project YouTube</h1>
+            <hr />
+
+
+  <div class="appView-container"
+
+  <form> 
+    <div class="input-group mb-3" style="text-align: center">
+      <input id="search-query" placeholder="Please enter search term here"></input> 
+      <script id="input-template" type="text/x-handlebars-template">
+        <p> {{ sentence }} </p>
+      </script>
+                    
+              
+      <button class="btn btn-primary" id="search">Search</button>
+      </div>
+  </form> -->
+ 
+   <div class="d-flex flex-wrap justify-content-around align-content-around" ></div>
+   <div class="main-video-container"></div>
+
+  <div class="card-group d-flex flex-wrap justify-content-center align-content-around" id="videos"></div> -->
+  <script id="main-video-template" type="text/x-handlebars-template">  
+      
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/{{videoId}}" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+  <p class="{{ title }}"></p>
+  <p class="{{ description }}"></p>
+                              
+  <div class="side-video-container">
+    
+    <script id="side-videos-template" type="text/x-handlebars-template">
+
+    <iframe 
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/embed/{{this.videoId}}" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>>
+      <div>
+        <p class="{{ title}}"></p>
+               
+      </div>  
+    </script> 
+
+   
+    <script id="main-initial-view-template" type="text/x-handlebars-template">
+      <img 
+        <p class="{{ description }}"></p>
+      </div>
+      </script> 
+
+      <script id="side-initial-view-template" type="text/x-handlebars-template">
+        <div>
+          <img class="{{ thumbnail }}">/img>
+          <p class="{{ title }}"><</p>
+        </div>
+        </script> 
+   
+  </div>
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/underscore/underscore.js"></script>
+  <script src="node_modules/backbone/backbone.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.js"></script>
+  <script src="main.js"></script>
+
+  </body>
+</html>

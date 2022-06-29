@@ -1,0 +1,39 @@
+.main-video-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-container {
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+video {
+  width: 100%;
+}
+
+.form-control {
+  width: 50%;
+}
+
+#videos-column {
+  display: block;
+  top: 0;
+}
+
+v#main-video-div {
+  display: table;
+  padding: 20px;
+  width: 60%;
+  margin: 50px 50px;
+}
+
+#side-video-div {
+  display: inline-block;
+  padding: 10px;
+  width: 15%;
+  margin: 20px 10px;
+}
